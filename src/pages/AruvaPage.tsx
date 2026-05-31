@@ -998,51 +998,162 @@ function MMImageDemo() {
   )
 }
 
+// Animated SVG path — remounts on key change so draw animation restarts
+function AnimatedGraphPath({ d, color, animKey }: { d: string; color: string; animKey: number }) {
+  const [revealed, setRevealed] = React.useState(false)
+  React.useEffect(() => {
+    setRevealed(false)
+    const id = setTimeout(() => setRevealed(true), 60)
+    return () => clearTimeout(id)
+  }, [animKey, d])
+  if (!d) return null
+  return (
+    <path d={d} fill="none" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"
+      pathLength="1" strokeDasharray="1" strokeDashoffset={revealed ? 0 : 1}
+      style={{ transition: revealed ? 'stroke-dashoffset 1.3s cubic-bezier(0.4,0,0.2,1)' : 'none' }}
+    />
+  )
+}
+
 function MMGraphDemo() {
-  const FORMULA = 'sin(x) · 1.5'
-  const [typed, setTyped] = React.useState(0)
+  const GW = 320, GH = 210, CX = 160, CY = 105, XS = 20, YS = 22
+  const DEMO_DISPLAY = 'sin(x) · 2'
+  const DEMO_EVAL    = 'sin(x) * 2'
+  const EXAMPLES     = ['x**2 / 5', 'cos(x) + x/4', 'tan(x/2)', 'sin(x)*cos(x)']
+
+  const [userFormula, setUserFormula] = React.useState('')
+  const [activeFormula, setActiveFormula] = React.useState('')
+  const [animKey, setAnimKey]   = React.useState(0)
+  const [typed, setTyped]       = React.useState(0)
+  const [demoPhase, setDemoPhase] = React.useState<'typing'|'done'>('typing')
+  const [focused, setFocused]   = React.useState(false)
+  const [inputVal, setInputVal] = React.useState('')
+
+  // Auto-type demo formula on mount
   React.useEffect(() => {
     let i = 0
-    const id = setInterval(() => { i++; setTyped(i); if (i >= FORMULA.length) clearInterval(id) }, 70)
+    const id = setInterval(() => {
+      i++; setTyped(i)
+      if (i >= DEMO_DISPLAY.length) {
+        clearInterval(id)
+        setTimeout(() => { setActiveFormula(DEMO_EVAL); setAnimKey(k => k+1); setDemoPhase('done') }, 350)
+      }
+    }, 70)
     return () => clearInterval(id)
   }, [])
-  const done = typed >= FORMULA.length
-  const fStr = FORMULA.slice(0, typed)
+
+  function safeEval(expr: string, x: number): number | null {
+    try {
+      const s = expr
+        .replace(/·/g,'*').replace(/×/g,'*').replace(/÷/g,'/')
+        .replace(/\bsin\b/g,'Math.sin').replace(/\bcos\b/g,'Math.cos')
+        .replace(/\btan\b/g,'Math.tan').replace(/\bsqrt\b/g,'Math.sqrt')
+        .replace(/\babs\b/g,'Math.abs').replace(/\bln\b/g,'Math.log')
+        .replace(/\blog\b/g,'Math.log10').replace(/\bpi\b/gi,'Math.PI')
+        .replace(/\be\b/g,'Math.E').replace(/\^/g,'**')
+      // eslint-disable-next-line no-new-func
+      const v = new Function('x', `"use strict";try{const _v=(${s});return typeof _v==='number'&&isFinite(_v)?_v:null}catch{return null}`)(x)
+      return v
+    } catch { return null }
+  }
+
+  function buildPath(expr: string): string {
+    let d = '', pen = false
+    for (let px = 0; px <= GW; px += 1.5) {
+      const x = (px - CX) / XS
+      const y = safeEval(expr, x)
+      if (y === null || Math.abs(y) > 7) { pen = false; continue }
+      const py = CY - y * YS
+      if (!pen) { d += `M${px.toFixed(1)},${py.toFixed(1)}`; pen = true }
+      else d += ` L${px.toFixed(1)},${py.toFixed(1)}`
+    }
+    return d
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const f = inputVal.trim()
+    if (!f) return
+    setUserFormula(f)
+    setActiveFormula(f)
+    setAnimKey(k => k+1)
+  }
+
+  const handleExample = (ex: string) => {
+    setInputVal(ex); setUserFormula(ex); setActiveFormula(ex); setAnimKey(k => k+1)
+  }
+
+  const displayLabel = demoPhase === 'typing'
+    ? DEMO_DISPLAY.slice(0, typed)
+    : (userFormula || DEMO_DISPLAY)
+
+  const path = activeFormula ? buildPath(activeFormula) : ''
+
   return (
     <div style={{ display:'flex', flexDirection:'column', flex:1 }}>
-      <div style={{ borderBottom:'1px solid #e5e7eb', padding:'10px 18px', display:'flex', flexDirection:'column', gap:7 }}>
-        <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-          <div style={{ width:9, height:9, borderRadius:'50%', background:'#34a853', flexShrink:0 }}/>
-          <span style={{ fontSize:12, color:'#374151', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:500 }}>f: y = 3x + 3</span>
+      {/* Formula bar */}
+      <form onSubmit={handleSubmit}>
+        <div style={{ borderBottom:'1px solid #e5e7eb', padding:'10px 14px', background:'#fafbfc', display:'flex', alignItems:'center', gap:8 }}>
+          <div style={{
+            display:'flex', alignItems:'center', gap:8, flex:1,
+            background: focused ? '#fff' : '#f8fafc',
+            border:`1.5px solid ${focused ? '#d97706' : '#e2e8f0'}`,
+            borderRadius:8, padding:'6px 12px',
+            boxShadow: focused ? '0 0 0 3px rgba(217,119,6,0.12)' : 'none',
+            transition:'border-color 0.2s, box-shadow 0.2s',
+          }}>
+            <span style={{ fontSize:12, fontFamily:"'Roboto Mono',monospace", color:'#d97706', fontWeight:700, flexShrink:0 }}>f(x) =</span>
+            <input
+              value={inputVal}
+              onChange={e => setInputVal(e.target.value)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              placeholder={demoPhase==='typing' ? DEMO_DISPLAY.slice(0,typed) : 'try sin(x)*2…'}
+              style={{ flex:1, border:'none', outline:'none', fontSize:13, fontFamily:"'Roboto Mono',monospace", color:'#1e1b4b', background:'transparent', minWidth:0 }}
+            />
+            {demoPhase==='typing' && !inputVal && (
+              <span style={{ display:'inline-block', width:2, height:13, background:'#d97706', borderRadius:1, animation:'mmCursor 0.8s step-end infinite' }}/>
+            )}
+          </div>
+          <button type="submit" style={{
+            padding:'7px 16px', borderRadius:8,
+            background:'linear-gradient(135deg,#f59e0b,#d97706)',
+            border:'none', color:'white', fontSize:12, fontWeight:700, cursor:'pointer', flexShrink:0,
+            boxShadow:'0 2px 8px rgba(217,119,6,0.30)',
+          }}>Plot →</button>
         </div>
-        <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-          <div style={{ width:9, height:9, borderRadius:'50%', background:'#4285f4', flexShrink:0 }}/>
-          <span style={{ fontSize:12, color:'#374151', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:500 }}>
-            g(x) = {fStr}
-            {!done && <span style={{ display:'inline-block', width:2, height:12, background:'#4285f4', marginLeft:1, verticalAlign:'middle', animation:'mmCursor 0.8s step-end infinite' }}/>}
-          </span>
-        </div>
-      </div>
-      <div style={{ flex:1 }}>
-        <svg width="100%" viewBox={`0 0 ${_GW} ${_GH}`} style={{ display:'block' }}>
-          {Array.from({length:13},(_,i)=><line key={`v${i}`} x1={(i/12)*_GW} y1={0} x2={(i/12)*_GW} y2={_GH} stroke="#f0f0f0" strokeWidth="0.5"/>)}
-          {Array.from({length:9},(_,i)=><line key={`h${i}`} x1={0} y1={(i/8)*_GH} x2={_GW} y2={(i/8)*_GH} stroke="#f0f0f0" strokeWidth="0.5"/>)}
-          <line x1={_CX} y1={0} x2={_CX} y2={_GH} stroke="#d1d5db" strokeWidth="1"/>
-          <line x1={0} y1={_CY} x2={_GW} y2={_CY} stroke="#d1d5db" strokeWidth="1"/>
-          {[-4,-2,2,4].map(n=><text key={`xl${n}`} x={_CX+n*_XS} y={_CY+9} textAnchor="middle" fontSize="6" fill="#9ca3af" fontFamily="Roboto,sans-serif">{n}</text>)}
-          {[-2,2].map(n=><text key={`yl${n}`} x={_CX-5} y={_CY-n*_YS+2} textAnchor="end" fontSize="6" fill="#9ca3af" fontFamily="Roboto,sans-serif">{n}</text>)}
-          <line x1={LINEAR_PTS.x1} y1={LINEAR_PTS.y1} x2={LINEAR_PTS.x2} y2={LINEAR_PTS.y2}
-            stroke="#34a853" strokeWidth="1.8" strokeLinecap="round"
-            strokeDasharray={300} strokeDashoffset={done?0:300}
-            style={{transition:done?'stroke-dashoffset 0.9s ease 0.05s':'none'}}/>
-          <text x={LINEAR_PTS.x2+4} y={10} fontSize="9" fill="#34a853" fontWeight="700" fontFamily="Roboto,sans-serif"
-            style={{opacity:done?1:0,transition:done?'opacity 0.3s ease 0.9s':'none'}}>f</text>
-          <path d={SINE_PATH} fill="none" stroke="#4285f4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
-            strokeDasharray={SINE_LEN} strokeDashoffset={done?0:SINE_LEN}
-            style={{transition:done?'stroke-dashoffset 1.4s ease 0.3s':'none'}}/>
-          <text x={_CX+1.5*_XS+3} y={_CY-1.5*_YS-4} fontSize="9" fill="#4285f4" fontWeight="700" fontFamily="Roboto,sans-serif"
-            style={{opacity:done?1:0,transition:done?'opacity 0.3s ease 1.7s':'none'}}>g</text>
+      </form>
+
+      {/* Graph */}
+      <div style={{ flex:1, position:'relative', background:'#fff' }}>
+        <svg width="100%" viewBox={`0 0 ${GW} ${GH}`} style={{ display:'block' }}>
+          {Array.from({length:17},(_,i)=><line key={`v${i}`} x1={(i/16)*GW} y1={0} x2={(i/16)*GW} y2={GH} stroke="#f0f4f8" strokeWidth="0.7"/>)}
+          {Array.from({length:11},(_,i)=><line key={`h${i}`} x1={0} y1={(i/10)*GH} x2={GW} y2={(i/10)*GH} stroke="#f0f4f8" strokeWidth="0.7"/>)}
+          <line x1={CX} y1={0} x2={CX} y2={GH} stroke="#d1d5db" strokeWidth="1.2"/>
+          <line x1={0}  y1={CY} x2={GW} y2={CY} stroke="#d1d5db" strokeWidth="1.2"/>
+          {[-7,-5,-3,-1,1,3,5,7].map(n=><text key={`xl${n}`} x={CX+n*XS} y={CY+10} textAnchor="middle" fontSize="7" fill="#9ca3af" fontFamily="Roboto,sans-serif">{n}</text>)}
+          {[-3,-2,-1,1,2,3].map(n=><text key={`yl${n}`} x={CX-6} y={CY-n*YS+2.5} textAnchor="end" fontSize="7" fill="#9ca3af" fontFamily="Roboto,sans-serif">{n}</text>)}
+          <AnimatedGraphPath key={animKey} d={path} color="#d97706" animKey={animKey} />
+          {activeFormula && path && (
+            <text x={GW-8} y={16} textAnchor="end" fontSize="9" fill="#d97706" fontWeight="700" fontFamily="'Roboto Mono',monospace">
+              f(x) = {displayLabel}
+            </text>
+          )}
         </svg>
+
+        {/* Example pills */}
+        {demoPhase === 'done' && (
+          <div style={{ position:'absolute', bottom:8, left:10, right:10, display:'flex', gap:5, flexWrap:'wrap' }}>
+            {EXAMPLES.map(ex => (
+              <button key={ex} onClick={() => handleExample(ex)} style={{
+                fontSize:10, padding:'3px 9px', borderRadius:12,
+                border:'1px solid rgba(217,119,6,0.25)', background:'rgba(217,119,6,0.07)',
+                color:'#92400e', cursor:'pointer', fontFamily:"'Roboto Mono',monospace",
+                transition:'background 0.2s',
+              }}>{ex}</button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -1093,26 +1204,26 @@ function MultimodalSection() {
     <section ref={sectionRef} style={{ background:'#f8fafc', padding:'96px 0', borderTop:'1px solid #e8ecf2', borderBottom:'1px solid #e8ecf2' }}>
       <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
 
-        {/* Section header */}
-        <div style={{
-          opacity: inView?1:0, transform: inView?'translateY(0)':'translateY(20px)',
-          transition: 'opacity 0.6s ease, transform 0.6s ease',
-          marginBottom: 52,
-        }}>
-          <p className="type-label" style={{ color:'#228DC1', marginBottom:12 }}>Multimodal AI</p>
-          <h2 style={{ fontFamily:'Roboto,system-ui,sans-serif', fontWeight:700, fontSize:40, letterSpacing:'-0.02em', lineHeight:1.1, color:'#0a1628' }}>
-            One AI. Every way <span style={{ color:'#228DC1' }}>students learn.</span>
-          </h2>
-          <p style={{ fontSize:17, color:'rgba(10,22,40,0.58)', lineHeight:1.75, marginTop:14, maxWidth:520 }}>
-            Aruva speaks, writes, draws and graphs. Meeting every student exactly where their understanding breaks down, in whichever format makes it click.
-          </p>
-        </div>
+        {/* Two-column: left = title + tabs, right = demo */}
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', gap:56, alignItems:'start' }}>
 
-        {/* Two-column: tabs left, demo right */}
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.5fr', gap:40, alignItems:'start' }}>
-
-          {/* LEFT — clickable modality tabs with progress bar */}
+          {/* LEFT — title, brief, then tabs */}
           <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
+
+            {/* Section header inside left column */}
+            <div style={{
+              opacity: inView?1:0, transform: inView?'translateY(0)':'translateY(20px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              marginBottom: 32,
+            }}>
+              <p className="type-label" style={{ color:'#228DC1', marginBottom:12 }}>Multimodal AI</p>
+              <h2 style={{ fontFamily:'Roboto,system-ui,sans-serif', fontWeight:700, fontSize:36, letterSpacing:'-0.02em', lineHeight:1.12, color:'#0a1628' }}>
+                One AI. Every way <span style={{ color:'#228DC1' }}>students learn.</span>
+              </h2>
+              <p style={{ fontSize:15.5, color:'rgba(10,22,40,0.58)', lineHeight:1.75, marginTop:14 }}>
+                Aruva speaks, writes, draws and graphs — meeting every student exactly where their understanding breaks down, in whichever format makes it click.
+              </p>
+            </div>
             {MM_MODALITIES.map((m, i) => {
               const isActive = active === i
               return (
