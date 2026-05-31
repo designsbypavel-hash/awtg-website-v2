@@ -1,0 +1,168 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; hyphens: none; -webkit-hyphens: none; }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Roboto', system-ui, sans-serif; font-weight: 600; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    background-color: #ffffff;
+    color: #0a1628;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root { min-height: 100vh; }
+
+  /* ── WCAG 2.4.7 / 2.4.11: Focus visible ── */
+  :focus-visible {
+    outline: 2px solid #228DC1;
+    outline-offset: 3px;
+  }
+  .focus-ring-light:focus-visible {
+    outline-color: #ffffff;
+  }
+}
+
+/* ── WCAG 2.4.1: Skip navigation link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: #228DC1;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Scrolling ticker */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 32s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+@keyframes navDrop {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes progressBar {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@keyframes hubRing {
+  0%   { transform: scale(1);    opacity: 0.55; }
+  60%  { transform: scale(1.55); opacity: 0; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+@keyframes kaiGlow {
+  0%   { box-shadow: 0 0 0 0px rgba(144,62,142,0.30), 0 0 24px rgba(144,62,142,0.18), 0 4px 20px rgba(144,62,142,0.10); }
+  50%  { box-shadow: 0 0 0 8px rgba(144,62,142,0.08), 0 0 48px rgba(144,62,142,0.32), 0 4px 28px rgba(144,62,142,0.18); }
+  100% { box-shadow: 0 0 0 0px rgba(144,62,142,0.30), 0 0 24px rgba(144,62,142,0.18), 0 4px 20px rgba(144,62,142,0.10); }
+}
+
+@keyframes kaiPulseRing {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+/* ── WCAG 1.4.2: Reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+  html { scroll-behavior: auto; }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TYPE SYSTEM — Intercom-inspired scale (Roboto)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   52px  Hero H1        — page-level title, weight 700
+   40px  Section H2     — main section headings, weight 600
+   28px  Sub-section H3 — section-level sub-headings, weight 600
+   24px  Card heading   — card/feature group titles, weight 600
+   20px  Item heading   — smaller named items, weight 600
+   16px  Body           — paragraphs, line-height 1.7
+   14px  Secondary      — supporting body, muted
+   12px  Meta/caption   — notes, stat footnotes
+   11px  Label/eyebrow  — UPPERCASE tracking (minimum)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Hero H1 */
+.font-serif-display {
+  font-family: 'Roboto', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 52px;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Section H2 */
+.font-heading {
+  font-family: 'Roboto', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 40px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Card / feature headings */
+.font-card-heading {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* Eyebrow labels */
+.type-label {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+}

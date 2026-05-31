@@ -1,0 +1,19 @@
+<svg width="104" height="122" viewBox="0 0 104 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="103" height="121" rx="7.5" fill="#F4F4FF" stroke="#A1A1AA"/>
+<!-- Telegram logo: blue circle + white paper plane, centred in card -->
+<g transform="translate(22,31)">
+  <!-- Blue circle background -->
+  <circle cx="30" cy="30" r="30" fill="url(#tg_grad)"/>
+  <!-- Paper plane path (scaled from 24×24 viewBox to 60×60) -->
+  <!-- Original path viewBox 0 0 24 24, scaled ×2.5, shifted by (0,0) since circle centres match -->
+  <g transform="scale(2.5) translate(0,0)">
+    <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" fill="white"/>
+  </g>
+</g>
+<defs>
+  <linearGradient id="tg_grad" x1="15" y1="5" x2="45" y2="55" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#37AEE2"/>
+    <stop offset="1" stop-color="#1E96C8"/>
+  </linearGradient>
+</defs>
+</svg>
