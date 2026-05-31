@@ -847,26 +847,6 @@ const DOK_KEYWORDS = [
 ]
 
 // -- Multimodal capabilities section ------------------------------------------
-// Pre-compute graph paths (outside component — pure maths, no side effects)
-const _GW = 200, _GH = 130, _CX = 100, _CY = 65
-const _XS = 15, _YS = 13        // px per unit
-function _sinePath() {
-  let d = ''
-  for (let px = 0; px <= _GW; px += 2) {
-    const rx = (px - _CX) / _XS
-    const py = _CY - Math.sin(rx) * 1.5 * _YS
-    d += px === 0 ? `M${px},${py.toFixed(1)}` : ` L${px},${py.toFixed(1)}`
-  }
-  return d
-}
-function _linearEndpoints() {
-  const pxAtBottom = _CX + (((_CY - _GH) / _YS - 3) / 3) * _XS
-  const pxAtTop    = _CX + (((_CY - 0)   / _YS - 3) / 3) * _XS
-  return { x1: pxAtBottom, y1: _GH, x2: pxAtTop, y2: 0 }
-}
-const SINE_PATH   = _sinePath()
-const LINEAR_PTS  = _linearEndpoints()
-const SINE_LEN    = 400
 
 const MM_MODALITIES = [
   { faIcon: faMicrophone, label: 'Voice', color: '#228DC1', desc: 'Spoken narration for any concept' },
