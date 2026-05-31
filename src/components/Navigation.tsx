@@ -12,68 +12,52 @@ type NavEntry =
 
 const navItems: NavEntry[] = [
   {
-    label: 'AI for Solutions',
-    key: 'ai-solutions',
-    groups: [
-      {
-        heading: 'Products',
-        items: [
-          { label: 'Kai', desc: 'Enterprise AI platform for customer service and operations', href: '/products/kai' },
-          { label: 'Aruva', desc: 'AI-powered teaching and formative assessment for higher education', href: '/products/aruva' },
-        ],
-      },
-      {
-        heading: 'Services',
-        items: [
-          { label: 'Generative AI', desc: 'Production-ready GenAI for enterprise workflows', href: '/solutions/generative-ai' },
-          { label: 'AI/ML Solutions', desc: 'Machine learning and intelligent automation', href: '/services/ai-ml' },
-          { label: 'Software Development', desc: 'Custom platforms and application development', href: '/services/software' },
-          { label: 'Consultancy', desc: 'Strategic technology advisory and planning', href: '/services/consultancy' },
-          { label: 'Digital Transformation', desc: 'End-to-end modernisation programmes', href: '/services/digital-transformation' },
-        ],
-      },
-      {
-        heading: 'Industries',
-        items: [
-          { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
-          { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
-          { label: 'Retail', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
-          { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
-        ],
-      },
+    label: 'Products',
+    key: 'products',
+    cols: 3,
+    items: [
+      { label: 'Aruva', desc: 'AI-powered teaching and formative assessment for higher education', href: '/products/aruva' },
+      { label: 'Kai', desc: 'Enterprise AI platform for customer service and operations', href: '/products/kai' },
+      { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
     ],
   },
   {
-    label: 'AI for Connectivity',
-    key: 'ai-connectivity',
-    groups: [
-      {
-        heading: 'Products',
-        items: [
-          { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
-          { label: 'SCAP', desc: 'Spectrum and capacity analysis platform for network planning', href: '/products/scap' },
-          { label: 'Borderlands', desc: 'Edge network management and border connectivity platform', href: '/products/borderlands' },
-        ],
-      },
-      {
-        heading: 'Solutions',
-        items: [
-          { label: 'Telecoms AI', desc: 'AI-powered network intelligence and optimisation', href: '/solutions/telecoms-ai' },
-          { label: 'Private Network as a Service', desc: 'Managed 4G/5G enterprise connectivity', href: '/solutions/mobile-private-networks' },
-          { label: 'Smart Cities', desc: 'Urban IoT and digital infrastructure platforms', href: '/solutions/smart-cities' },
-          { label: 'Industry 4.0', desc: 'Connected manufacturing and logistics solutions', href: '/solutions/industry-4' },
-          { label: 'Smart Health', desc: 'Digital health connectivity and AI platforms', href: '/solutions/smart-health' },
-          { label: 'IoT Platforms', desc: 'Connected device management and analytics', href: '/services/iot' },
-          { label: 'Engineering', desc: 'RF, 5G and network engineering services', href: '/services/engineering' },
-        ],
-      },
-      {
-        heading: 'Industries',
-        items: [
-          { label: 'Telecommunications', desc: 'MNOs, MVNOs and infrastructure vendors', href: '/industries/telecoms' },
-          { label: 'Defence', desc: 'Secure, mission-critical communications', href: '/industries/defence' },
-        ],
-      },
+    label: 'Solutions',
+    key: 'solutions',
+    cols: 3,
+    items: [
+      { label: 'Telecoms AI', desc: 'AI-powered network intelligence and optimisation', href: '/solutions/telecoms-ai' },
+      { label: 'Generative AI', desc: 'Production-ready GenAI for enterprise workflows', href: '/solutions/generative-ai' },
+      { label: 'Private Network as a Service', desc: 'Managed 4G/5G enterprise connectivity', href: '/solutions/mobile-private-networks' },
+      { label: 'Smart Cities', desc: 'Urban IoT and digital infrastructure platforms', href: '/solutions/smart-cities' },
+      { label: 'Industry 4.0', desc: 'Connected manufacturing and logistics solutions', href: '/solutions/industry-4' },
+      { label: 'Smart Health', desc: 'Digital health connectivity and AI platforms', href: '/solutions/smart-health' },
+    ],
+  },
+  {
+    label: 'Services',
+    key: 'services',
+    cols: 3,
+    items: [
+      { label: 'Consultancy', desc: 'Strategic technology advisory and planning', href: '/services/consultancy' },
+      { label: 'Engineering', desc: 'RF, 5G and network engineering services', href: '/services/engineering' },
+      { label: 'Software Development', desc: 'Custom platforms and application development', href: '/services/software' },
+      { label: 'Digital Transformation', desc: 'End-to-end modernisation programmes', href: '/services/digital-transformation' },
+      { label: 'AI/ML Solutions', desc: 'Machine learning and intelligent automation', href: '/services/ai-ml' },
+      { label: 'IoT Platforms', desc: 'Connected device management and analytics', href: '/services/iot' },
+    ],
+  },
+  {
+    label: 'Industries',
+    key: 'industries',
+    cols: 3,
+    items: [
+      { label: 'Telecommunications', desc: 'MNOs, MVNOs and infrastructure vendors', href: '/industries/telecoms' },
+      { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
+      { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
+      { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
+      { label: 'Retail', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
+      { label: 'Defence', desc: 'Secure, mission-critical communications', href: '/industries/defence' },
     ],
   },
   {

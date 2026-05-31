@@ -3,6 +3,252 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faBookOpen, faShield, faArrowsRotate, faWandSparkles, faCircleCheck, faMicrophone, faPen, faImage, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
+
+// -- Hero Dashboard (Student Hub mockup) --------------------------------------
+const HERO_SKILLS = [
+  { name: 'Variables & Scoping',    pct: 32, color: '#ef4444', badge: 'NEEDS ATTENTION', bbg: 'rgba(239,68,68,0.10)',  bbd: 'rgba(239,68,68,0.28)',  trend: '▲ NEEDS FOCUS' },
+  { name: 'Syntax & Fundamentals',  pct: 55, color: '#f59e0b', badge: 'PRACTICING',       bbg: 'rgba(245,158,11,0.10)', bbd: 'rgba(245,158,11,0.28)', trend: '↑ IMPROVING'   },
+  { name: 'Functional Programming', pct: 0,  color: '#9ca3af', badge: 'NO DATA YET',       bbg: 'rgba(156,163,175,0.10)',bbd: 'rgba(156,163,175,0.28)',trend: ''              },
+]
+const HERO_BLOOM  = ['Remember','Understand','Apply','Analyze','Evaluate','Create']
+const HERO_INSIGHTS = [
+  { label: 'GROWTH RECOMMENDATION', title: 'FOCUS: CLOSURES',    text: "You understand theory of ES6 but struggled with the Environment Setup assignment. Let's practice the application." },
+  { label: 'STRENGTH SIGNAL',        title: 'STRENGTH: SYNTAX',   text: 'Fundamentals are improving consistently. Push toward the Apply level this week.' },
+  { label: 'GAP DETECTED',           title: 'GAP: EVALUATE',      text: 'Higher-order thinking not yet established. Targeted practice recommended.' },
+]
+const HERO_NAV = ['Dashboard','My Courses','Schedule','Learning Map','Skill Mastery','AI Insights','Milestones','Demo Lecture']
+
+function AruvaHeroDashboard() {
+  const [skillProg,  setSkillProg]  = React.useState([0,0,0])
+  const [bloomVals,  setBloomVals]  = React.useState([0,0,0,0,0,0])
+  const [mastery,    setMastery]    = React.useState(0)
+  const [activeSkill,setActiveSkill]= React.useState(0)
+  const [insightIdx, setInsightIdx] = React.useState(0)
+  const [insightVis, setInsightVis] = React.useState(true)
+  const [mounted,    setMounted]    = React.useState(false)
+  const [entered,    setEntered]    = React.useState(false)
+
+  React.useEffect(() => {
+    const raf = requestAnimationFrame(() => { setMounted(true); setTimeout(() => setEntered(true), 60) })
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  React.useEffect(() => {
+    const targets = [32, 55, 0], t0 = performance.now()
+    const tick = (now: number) => {
+      const p = Math.min((now - t0) / 1500, 1), e = 1 - (1-p)**4
+      setSkillProg(targets.map(v => v * e))
+      if (p < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }, [])
+
+  React.useEffect(() => {
+    const t0 = performance.now()
+    const tick = (now: number) => {
+      const p = Math.min((now - t0) / 1500, 1), e = 1 - (1-p)**4
+      setMastery(Math.round(22 * e))
+      if (p < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }, [])
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      const targets = [85,72,65,48,28,38], t0 = performance.now()
+      const tick = (now: number) => {
+        const p = Math.min((now - t0) / 1600, 1), e = 1 - (1-p)**3
+        setBloomVals(targets.map(v => v * e))
+        if (p < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }, 450)
+    return () => clearTimeout(timer)
+  }, [])
+
+  React.useEffect(() => {
+    const id = setInterval(() => setActiveSkill(s => (s+1) % HERO_SKILLS.length), 2200)
+    return () => clearInterval(id)
+  }, [])
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setInsightVis(false)
+      setTimeout(() => { setInsightIdx(i => (i+1) % HERO_INSIGHTS.length); setInsightVis(true) }, 380)
+    }, 4000)
+    return () => clearInterval(id)
+  }, [])
+
+  const bloomPoly = bloomVals.map((v, i) => {
+    const a = i / 6 * Math.PI * 2 - Math.PI / 2, r = v / 100 * 64
+    return `${(95 + r * Math.cos(a)).toFixed(1)},${(88 + r * Math.sin(a)).toFixed(1)}`
+  }).join(' ')
+
+  return (
+    <div className="relative w-full max-w-[580px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)' }}>
+      <div className="absolute -inset-6 hidden lg:block" style={{ background: 'radial-gradient(ellipse at 60% 40%, rgba(34,141,193,0.13) 0, transparent 70%)' }} />
+      <div className="relative overflow-hidden bg-[#f4f4f6]" style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif', boxShadow: '0 32px 80px rgba(10,22,40,0.20), 0 8px 24px rgba(10,22,40,0.09)' }}>
+
+        {/* Header */}
+        <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-gray-100">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 bg-[#2c9b6e] flex items-center justify-center" style={{ borderRadius: '8px' }}>
+              <svg viewBox="0 0 20 20" className="w-4 h-4 fill-white" aria-hidden="true"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838l-2.727 1.168 1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z"/></svg>
+            </div>
+            <div>
+              <p style={{ fontSize: '7px', fontWeight: 500, letterSpacing: '0.16em', color: 'rgba(10,22,40,0.38)', textTransform: 'uppercase' }}>Active Space</p>
+              <p style={{ fontSize: '11.5px', fontWeight: 800, color: '#0a1628', lineHeight: 1 }}>STUDENT HUB</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 opacity-50">
+              <svg viewBox="0 0 20 20" fill="currentColor" style={{ width: '13px', height: '13px', color: '#6b7280' }}><path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" style={{ width: '13px', height: '13px', color: '#6b7280' }}><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-7 h-7 rounded-full overflow-hidden bg-[#c8a882] flex items-center justify-center">
+                <p style={{ fontSize: '8px', fontWeight: 800, color: 'white' }}>MG</p>
+              </div>
+              <div>
+                <p style={{ fontSize: '10px', fontWeight: 700, color: '#0a1628', lineHeight: 1 }}>Maria Garcia</p>
+                <p style={{ fontSize: '7px', color: 'rgba(10,22,40,0.38)', letterSpacing: '0.06em' }}>STUDENT HUB</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="flex" style={{ height: '356px' }}>
+          {/* Sidebar */}
+          <div className="shrink-0 bg-white border-r border-gray-100 py-2" style={{ width: '120px' }}>
+            {HERO_NAV.map(item => {
+              const active = item === 'Skill Mastery'
+              return (
+                <div key={item} className="flex items-center gap-2 mx-2 px-2.5 mb-0.5 cursor-pointer transition-colors" style={{ paddingTop: '6px', paddingBottom: '6px', background: active ? '#1e2d7d' : 'transparent', borderRadius: active ? '6px' : undefined, color: active ? 'white' : 'rgba(10,22,40,0.45)' }}>
+                  <div className="shrink-0 flex items-center justify-center" style={{ width: '14px', height: '14px' }}>
+                    {active ? (
+                      <svg viewBox="0 0 14 14" style={{ width: '10px', height: '10px', fill: 'white' }}><circle cx="7" cy="7" r="5" fill="none" stroke="white" strokeWidth="1.5"/><circle cx="7" cy="7" r="2"/></svg>
+                    ) : (
+                      <div style={{ width: '7px', height: '7px', borderRadius: '2px', background: 'rgba(10,22,40,0.18)' }} />
+                    )}
+                  </div>
+                  <p style={{ fontSize: '9px', fontWeight: active ? 700 : 400, lineHeight: 1.3, letterSpacing: active ? '0.01em' : '0' }}>{item}</p>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Main panel */}
+          <div className="flex-1 min-w-0 bg-[#f4f4f6] overflow-hidden" style={{ padding: '14px 14px 10px' }}>
+            <div className="flex items-start justify-between mb-3">
+              <div>
+                <p style={{ fontSize: '16px', fontWeight: 900, color: '#0a1628', letterSpacing: '-0.01em', lineHeight: 1 }}>SKILL MASTERY</p>
+                <p style={{ fontSize: '8.5px', color: 'rgba(10,22,40,0.45)', fontWeight: 400, marginTop: '3px', lineHeight: 1.4 }}>Real time quantification of your academic<br/>competency and cognitive growth.</p>
+              </div>
+              <div className="text-center bg-white border border-gray-200 px-3 py-1.5 shrink-0 ml-2" style={{ borderRadius: '10px', boxShadow: '0 1px 6px rgba(10,22,40,0.06)' }}>
+                <p style={{ fontSize: '6.5px', letterSpacing: '0.14em', color: 'rgba(10,22,40,0.35)', textTransform: 'uppercase', fontWeight: 700 }}>Global Mastery</p>
+                <div className="flex items-center gap-1 justify-center mt-0.5">
+                  <p style={{ fontSize: '19px', fontWeight: 900, color: '#0a1628', lineHeight: 1 }}>{mastery}%</p>
+                  <span style={{ fontSize: '14px' }}>🎓</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Course */}
+            <div className="bg-white border border-gray-200 mb-3" style={{ padding: '10px 12px', borderRadius: '10px', boxShadow: '0 1px 4px rgba(10,22,40,0.05)' }}>
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 bg-[#fbbf24] flex items-center justify-center shrink-0" style={{ borderRadius: '9px' }}>
+                  <svg viewBox="0 0 20 20" className="w-5 h-5" fill="white" aria-hidden="true"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.669 0-3.218.51-4.5 1.385V4.8z"/></svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p style={{ fontSize: '11px', fontWeight: 800, color: '#0a1628', letterSpacing: '0.03em', lineHeight: 1.2 }}>INTRODUCTION TO JAVASCRIPT</p>
+                  <p style={{ fontSize: '8.5px', color: 'rgba(10,22,40,0.40)', marginTop: '1px' }}>DR ABEER · SPRING 2026</p>
+                </div>
+                <div className="text-right shrink-0">
+                  <p style={{ fontSize: '6.5px', color: 'rgba(10,22,40,0.35)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>Target Mastery</p>
+                  <p style={{ fontSize: '22px', fontWeight: 900, color: '#0a1628', lineHeight: 1 }}>29%</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Skills */}
+            <div className="flex items-center justify-between mb-2">
+              <p style={{ fontSize: '7.5px', letterSpacing: '0.2em', color: 'rgba(10,22,40,0.35)', textTransform: 'uppercase', fontWeight: 700 }}>COGNITIVE OUTCOMES</p>
+              <p style={{ fontSize: '7.5px', letterSpacing: '0.14em', color: 'rgba(10,22,40,0.28)', textTransform: 'uppercase', fontWeight: 600 }}>4 SKILLS TRACKED</p>
+            </div>
+            <div className="space-y-2">
+              {HERO_SKILLS.map((sk, idx) => {
+                const active = activeSkill === idx
+                return (
+                  <div key={sk.name} onClick={() => setActiveSkill(idx)} className="cursor-pointer rounded-xl px-2 py-1.5" style={{ background: active ? `${sk.color}09` : 'transparent', border: active ? `1px solid ${sk.color}22` : '1px solid transparent', transition: 'background 0.35s ease, border-color 0.35s ease' }}>
+                    <div className="flex items-center justify-between mb-1">
+                      <p style={{ fontSize: '11px', fontWeight: active ? 800 : 700, color: active ? '#0a1628' : 'rgba(10,22,40,0.60)', transition: 'color 0.3s ease' }}>{sk.name}</p>
+                      <div className="flex items-center gap-1 px-2 py-0.5" style={{ background: sk.bbg, border: `1px solid ${sk.bbd}`, borderRadius: '20px', opacity: active ? 1 : 0.65, transform: active ? 'scale(1)' : 'scale(0.95)', transition: 'opacity 0.35s ease, transform 0.35s ease' }}>
+                        {sk.pct > 0 && <span style={{ fontSize: '6px', color: sk.color }}>▲</span>}
+                        <p style={{ fontSize: '7.5px', fontWeight: 700, color: sk.color, letterSpacing: '0.06em' }}>{sk.badge}</p>
+                        <svg viewBox="0 0 6 10" style={{ width: '5px', height: '9px', marginLeft: '1px' }} fill="none"><path d="M1 1l4 4-4 4" stroke="rgba(10,22,40,0.28)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 h-[5px] bg-gray-200 overflow-hidden" style={{ borderRadius: '3px' }}>
+                        <div style={{ height: '100%', borderRadius: '3px', width: mounted ? `${sk.pct}%` : '0%', background: `linear-gradient(90deg,${sk.color}bb,${sk.color})`, boxShadow: active && sk.pct > 0 ? `0 0 10px ${sk.color}70` : 'none', transition: `width 1.4s cubic-bezier(0.22,1,0.36,1) ${idx * 160}ms, box-shadow 0.35s ease` }} />
+                      </div>
+                      <p style={{ fontSize: '11px', fontWeight: 800, color: active ? sk.color : 'rgba(10,22,40,0.45)', minWidth: '30px', textAlign: 'right', transition: 'color 0.35s ease' }}>{sk.pct > 0 ? `${Math.round(skillProg[idx])}%` : ''}</p>
+                    </div>
+                    {sk.trend && <p style={{ fontSize: '7.5px', color: sk.color, fontWeight: 600, marginTop: '2px', opacity: active ? 0.9 : 0, maxHeight: active ? '16px' : '0px', transition: 'opacity 0.35s ease, max-height 0.35s ease', overflow: 'hidden' }}>{sk.trend}</p>}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Bloom + Insights panel */}
+          <div className="shrink-0 bg-white border-l border-gray-100 overflow-y-auto" style={{ width: '178px', padding: '12px 11px' }}>
+            <p style={{ fontSize: '8px', fontWeight: 800, letterSpacing: '0.14em', color: '#0a1628', textTransform: 'uppercase', lineHeight: 1.2 }}>BLOOM TAXONOMY MASTERY</p>
+            <p style={{ fontSize: '6.5px', color: 'rgba(10,22,40,0.38)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px', marginBottom: '2px', lineHeight: 1.3 }}>Shows depth of understanding across cognitive levels</p>
+            <svg viewBox="0 0 190 176" style={{ width: '100%', display: 'block', marginBottom: '5px' }}>
+              {[25, 50, 75].map(pct => (
+                <polygon key={pct} fill="none" stroke="rgba(10,22,40,0.08)" strokeWidth="0.7"
+                  points={Array.from({ length: 6 }, (_, i) => {
+                    const a = i / 6 * Math.PI * 2 - Math.PI / 2, r = pct / 100 * 64
+                    return `${(95 + r * Math.cos(a)).toFixed(1)},${(88 + r * Math.sin(a)).toFixed(1)}`
+                  }).join(' ')} />
+              ))}
+              {Array.from({ length: 6 }, (_, i) => {
+                const a = i / 6 * Math.PI * 2 - Math.PI / 2
+                return <line key={i} x1={95} y1={88} x2={(95 + 64 * Math.cos(a)).toFixed(1)} y2={(88 + 64 * Math.sin(a)).toFixed(1)} stroke="rgba(10,22,40,0.08)" strokeWidth="0.7" />
+              })}
+              <polygon points={bloomPoly} fill="rgba(79,76,190,0.50)" stroke="rgba(79,76,190,0.90)" strokeWidth="1.6" strokeLinejoin="round" />
+              {HERO_BLOOM.map((label, i) => {
+                const a = i / 6 * Math.PI * 2 - Math.PI / 2
+                return <text key={label} x={(95 + 84 * Math.cos(a)).toFixed(1)} y={(88 + 84 * Math.sin(a)).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="7.5" fill="rgba(10,22,40,0.50)" fontFamily="Inter, system-ui, sans-serif" fontWeight="500">{label}</text>
+              })}
+            </svg>
+            <div className="flex items-start gap-1.5 mb-2.5 pb-2.5 border-b border-gray-100">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444] mt-[3.5px] shrink-0" />
+              <p style={{ fontSize: '8px', color: 'rgba(10,22,40,0.52)', lineHeight: 1.35 }}>Weakest areas: <span style={{ fontWeight: 700, color: '#0a1628' }}>Create, Evaluate</span></p>
+            </div>
+            <p style={{ fontSize: '7px', fontWeight: 700, letterSpacing: '0.18em', color: 'rgba(10,22,40,0.32)', textTransform: 'uppercase', marginBottom: '6px' }}>ADAPTIVE INSIGHTS</p>
+            <div style={{ background: 'white', border: '1px solid rgba(10,22,40,0.07)', borderRadius: '8px', padding: '10px', minHeight: '88px', opacity: insightVis ? 1 : 0, transform: insightVis ? 'translateY(0)' : 'translateY(6px)', transition: 'opacity 0.38s ease, transform 0.38s cubic-bezier(0.22,1,0.36,1)' }}>
+              <div className="flex items-center gap-1.5 mb-1.5">
+                <div className="w-5 h-5 bg-[#ede9fe] flex items-center justify-center shrink-0" style={{ borderRadius: '5px' }}>
+                  <svg viewBox="0 0 20 20" style={{ width: '11px', height: '11px' }} fill="#7c3aed"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z"/></svg>
+                </div>
+                <p style={{ fontSize: '6.5px', fontWeight: 700, letterSpacing: '0.16em', color: 'rgba(10,22,40,0.38)', textTransform: 'uppercase' }}>{HERO_INSIGHTS[insightIdx].label}</p>
+              </div>
+              <p style={{ fontSize: '9px', fontWeight: 900, color: '#0a1628', letterSpacing: '0.06em', marginBottom: '5px', lineHeight: 1.2 }}>{HERO_INSIGHTS[insightIdx].title}</p>
+              <div className="flex gap-1.5">
+                <div style={{ width: '2.5px', background: '#7c3aed', borderRadius: '2px', flexShrink: 0, alignSelf: 'stretch' }} />
+                <p style={{ fontSize: '7.5px', color: 'rgba(10,22,40,0.55)', lineHeight: 1.45, fontStyle: 'italic' }}>"{HERO_INSIGHTS[insightIdx].text}"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null)
@@ -1689,27 +1935,34 @@ export default function AruvaPage() {
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(circle at 65% 20%, rgba(34,141,193,0.18) 0, transparent 50%), radial-gradient(circle at 10% 80%, rgba(5,150,105,0.07) 0, transparent 40%)' }} />
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.6 }}>
-            Aruva · AI for Education
-          </p>
-          <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6 max-w-4xl">
-            AI that understands<br />
-            <span style={{ color: '#228DC1' }}>how your students learn.</span>
-          </h1>
-          <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-xl mb-10">
-            Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link to="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
-              Request a Demo
-            </Link>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.6 }}>
+                AI for Education
+              </p>
+              <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
+                AI that understands<br />
+                <span style={{ color: '#228DC1' }}>how your students learn.</span>
+              </h1>
+              <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-xl mb-10">
+                Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
+                  Request a Demo
+                </Link>
+              </div>
+            </div>
+            <div className="flex items-center justify-center lg:justify-end">
+              <AruvaHeroDashboard />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Marquee */}
-      <div className="bg-[#f8fafc] border-y border-gray-100 py-3.5 overflow-hidden">
+      <div className="bg-[#faf7f2] border-y border-amber-100 py-3.5 overflow-hidden">
         <div className="flex gap-10 animate-[marquee_35s_linear_infinite] whitespace-nowrap w-max">
           {[
             'Russell Group Universities','Teaching and Learning Teams','Academic Quality Officers',
@@ -1717,8 +1970,8 @@ export default function AruvaPage() {
             'IT and Data Governance','Student Experience Teams','Russell Group Universities',
             'Teaching and Learning Teams','Academic Quality Officers','Professors and Lecturers',
           ].map((item, i) => (
-            <span key={i} className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/65 flex items-center gap-10">
-              {item}<span className="w-1 h-1 rounded-full bg-[#0a1628]/25" />
+            <span key={i} className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/65 flex items-center gap-10">
+              {item}<span className="w-1.5 h-1.5 rounded-full bg-[#fbbf24]" />
             </span>
           ))}
         </div>
