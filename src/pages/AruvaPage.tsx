@@ -1970,23 +1970,36 @@ function BloomInsightSection() {
 function PrinciplesSection() {
   const [ref, inView] = useInView(0.08)
   return (
-    <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
+    <section className="py-24 bg-[#f0f4f8] border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="mb-14">
-          <p className="type-label text-[#228DC1] mb-4">Our Principles</p>
-          <h2 className="font-heading text-[#0a1628] mb-3">Four foundations every decision is built on</h2>
+          <p className="type-label text-[#228DC1] mb-4">Product Principles</p>
+          <h2 className="font-heading text-[#0a1628] mb-3">
+            Four foundations <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every decision</span> is built on
+          </h2>
           <p className="text-[#0a1628]/60 text-base font-normal leading-relaxed max-w-xl">
             The principles that define how universities actually need AI to work.
           </p>
         </div>
-        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
+        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {principles.map((p, i) => (
-            <div key={p.label} className="group bg-white p-8 hover:bg-[#f8fafc] transition-colors" style={reveal(inView, i * 80)}>
-              <div className="w-10 h-10 flex items-center justify-center mb-6" style={{ backgroundColor: '#228DC112' }}>
-                <FontAwesomeIcon icon={p.icon} className="w-5 h-5 text-[#228DC1]" />
+            <div key={p.label}
+              className="bg-white rounded-2xl p-8 hover:shadow-md transition-shadow"
+              style={{
+                borderTop: `3px solid ${p.color}`,
+                boxShadow: '0 2px 12px rgba(10,22,40,0.06)',
+                ...reveal(inView, i * 80),
+              }}>
+              {/* Icon */}
+              <div className="w-11 h-11 flex items-center justify-center rounded-xl mb-6"
+                style={{ background: p.color + '15', border: `1px solid ${p.color}25` }}>
+                <FontAwesomeIcon icon={p.icon} style={{ width:18, height:18, color: p.color }} />
               </div>
-              <p className="type-label text-[#228DC1] mb-2">{p.label}</p>
-              <h3 className="text-[#0a1628] font-semibold text-[15px] leading-snug mb-3">{p.title}</h3>
+              {/* Label */}
+              <p className="type-label mb-2" style={{ color: p.color }}>{p.label}</p>
+              {/* Title */}
+              <h3 className="text-[#0a1628] font-semibold text-[16px] leading-snug mb-3">{p.title}</h3>
+              {/* Desc */}
               <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{p.desc}</p>
             </div>
           ))}
