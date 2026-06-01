@@ -2044,27 +2044,40 @@ function PillarsSection() {
 function AudienceSection() {
   const [ref, inView] = useInView(0.08)
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#f5f0e8]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="mb-14">
-          <p className="type-label text-[#228DC1] mb-4">Who It's For</p>
-          <h2 className="font-heading text-[#0a1628]">Built for every layer of the institution</h2>
+          <span style={{ display:'inline-block', background:'#e8f4fc', border:'1px solid #b8ddf0', color:'#228DC1', fontSize:11, fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', padding:'4px 12px', borderRadius:20, marginBottom:16 }}>Who It's For</span>
+          <h2 className="font-heading text-[#0a1628]">
+            Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
+          </h2>
         </div>
-        <div ref={ref} className="grid sm:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
+        <div ref={ref} className="grid sm:grid-cols-3 gap-5">
           {audiences.map((a, i) => (
-            <div key={a.label} className="bg-white p-8 hover:bg-[#f8fafc] transition-colors" style={reveal(inView, i * 100)}>
-              <p className="type-label text-[#228DC1] mb-4">{a.label}</p>
-              <h3 className="text-[#0a1628] font-semibold text-[16px] leading-snug mb-6">{a.headline}</h3>
-              <div className="space-y-3">
+            <div key={a.label} className="bg-white rounded-2xl p-8 flex flex-col"
+              style={{
+                borderTop: '3px solid #228DC1',
+                boxShadow: '0 2px 16px rgba(10,22,40,0.06)',
+                ...reveal(inView, i * 100),
+              }}>
+              {/* Label pill */}
+              <span style={{ display:'inline-block', background:'#e8f4fc', border:'1px solid #b8ddf0', color:'#228DC1', fontSize:10, fontWeight:700, letterSpacing:'0.12em', textTransform:'uppercase', padding:'3px 10px', borderRadius:20, marginBottom:16, alignSelf:'flex-start' }}>{a.label}</span>
+              {/* Headline */}
+              <h3 className="text-[#0a1628] font-bold text-[16px] leading-snug mb-6">{a.headline}</h3>
+              {/* Points */}
+              <div className="space-y-3 flex-1">
                 {a.points.map((point) => (
                   <div key={point} className="flex items-start gap-2.5">
-                    <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#228DC1] shrink-0 mt-0.5" />
+                    <FontAwesomeIcon icon={faCircleCheck} style={{ width:15, height:15, color:'#228DC1', flexShrink:0, marginTop:2 }} />
                     <p className="text-[#0a1628]/70 text-[13px] font-normal leading-relaxed">{point}</p>
                   </div>
                 ))}
               </div>
-              <Link to="/contact" className="inline-flex items-center gap-1.5 mt-6 text-[12px] font-semibold text-[#228DC1] hover:gap-2.5 transition-all">
-                Learn more <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+              {/* Learn more button */}
+              <Link to="/contact"
+                className="inline-flex items-center justify-center mt-8 px-5 py-2.5 rounded-lg text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
+                style={{ background:'#228DC1', alignSelf:'flex-start' }}>
+                Learn more
               </Link>
             </div>
           ))}
