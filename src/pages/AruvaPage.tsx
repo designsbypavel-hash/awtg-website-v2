@@ -202,7 +202,7 @@ function AruvaHeroDashboard() {
           </div>
 
           {/* Bloom + Insights panel */}
-          <div className="shrink-0 bg-white border-l border-gray-100 overflow-y-auto" style={{ width: '178px', padding: '12px 11px' }}>
+          <div className="shrink-0 bg-white border-l border-gray-100 overflow-hidden" style={{ width: '178px', padding: '12px 11px' }}>
             <p style={{ fontSize: '8px', fontWeight: 800, letterSpacing: '0.14em', color: '#0a1628', textTransform: 'uppercase', lineHeight: 1.2 }}>BLOOM TAXONOMY MASTERY</p>
             <p style={{ fontSize: '6.5px', color: 'rgba(10,22,40,0.38)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px', marginBottom: '2px', lineHeight: 1.3 }}>Shows depth of understanding across cognitive levels</p>
             <svg viewBox="0 0 190 176" style={{ width: '100%', display: 'block', marginBottom: '5px' }}>
@@ -382,7 +382,6 @@ function HIWStepText({ step, index, total }: { step: { num: string; label: strin
       <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
         <span style={{ fontSize:12, fontWeight:800, color: active ? '#228DC1' : '#9ca3af', letterSpacing:'0.12em', transition:'color 0.3s' }}>{step.num}</span>
         <div style={{ height:1, width:28, background: active ? '#228DC1' : '#e5e7eb', transition:'background 0.3s' }}/>
-        {active && <div style={{ width:6, height:6, borderRadius:'50%', background:'#228DC1', animation:'mmCursor 1.5s ease-in-out infinite' }}/>}
       </div>
       <h3 style={{ fontSize:22, fontWeight:700, color:'#0a1628', lineHeight:1.2, marginBottom:12 }}>{step.label}</h3>
       <p style={{ fontSize:16, color:'rgba(10,22,40,0.65)', lineHeight:1.7, marginBottom:10 }}>{step.desc}</p>
@@ -892,11 +891,125 @@ const MM_STEPS = [
   { label:'Check ✓', val:'4 − 10 + 6 = 0 ✓' },
 ]
 
+const MM_TEXT_EXAMPLES = [
+  {
+    topic: 'Quadratic factoring',
+    equation: 'x^2 - 5x + 6 = 0',
+    steps: [
+      { label:'Given',  val:'x^2 - 5x + 6 = 0' },
+      { label:'Factor', val:'(x - 2)(x - 3) = 0' },
+      { label:'Solve',  val:'x = 2 or x = 3' },
+      { label:'Check',  val:'4 - 10 + 6 = 0' },
+    ],
+    result: '2 solutions found',
+    confidence: 96,
+  },
+  {
+    topic: 'Linear equation',
+    equation: '3x + 7 = 22',
+    steps: [
+      { label:'Given',  val:'3x + 7 = 22' },
+      { label:'Move',   val:'3x = 22 - 7' },
+      { label:'Divide', val:'x = 15 / 3' },
+      { label:'Check',  val:'3(5) + 7 = 22' },
+    ],
+    result: 'x = 5',
+    confidence: 99,
+  },
+  {
+    topic: 'Percentage change',
+    equation: '48 increased by 25%',
+    steps: [
+      { label:'Base',   val:'48 x 0.25 = 12' },
+      { label:'Add',    val:'48 + 12 = 60' },
+      { label:'Result', val:'new value = 60' },
+      { label:'Check',  val:'60 / 48 = 1.25' },
+    ],
+    result: '25% increase verified',
+    confidence: 94,
+  },
+]
+
+function MMTextDemo() {
+  const [active, setActive] = React.useState(0)
+  const [score, setScore] = React.useState(MM_TEXT_EXAMPLES[0].confidence)
+  const activeExample = MM_TEXT_EXAMPLES[active]
+  const stepCount = MM_STEPS.length
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setActive(prev => (prev + 1) % MM_TEXT_EXAMPLES.length)
+    }, 2200)
+    return () => clearInterval(id)
+  }, [])
+
+  React.useEffect(() => {
+    let raf: number | undefined
+    const from = score
+    const to = activeExample.confidence
+    const start = performance.now()
+    const step = (now: number) => {
+      const pct = Math.min((now - start) / 520, 1)
+      const eased = 1 - Math.pow(1 - pct, 3)
+      setScore(Math.round(from + (to - from) * eased))
+      if (pct < 1) raf = requestAnimationFrame(step)
+    }
+    raf = requestAnimationFrame(step)
+    return () => { if (raf) cancelAnimationFrame(raf) }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active])
+
+  return (
+    <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'30px 36px' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:2 }}>
+        <div style={{ flex:1 }}>
+          <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:700, lineHeight:1.2 }}>Solving: {activeExample.equation}</p>
+          <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.32)', marginTop:3 }}>{activeExample.topic} · {stepCount} steps · equation updates automatically</p>
+        </div>
+        <div style={{ minWidth:78, textAlign:'right' }}>
+          <p style={{ fontSize:20, fontWeight:800, color:'#7c3aed', lineHeight:1 }}>{score}%</p>
+          <p style={{ fontSize:9, color:'rgba(10,22,40,0.36)', fontWeight:700, textTransform:'uppercase', letterSpacing:'0.08em' }}>confidence</p>
+        </div>
+      </div>
+
+      <div key={active} style={{ display:'flex', flexDirection:'column', gap:13 }}>
+        {activeExample.steps.map((s, i) => (
+          <div key={`${s.label}-${s.val}`} style={{
+            display:'flex', alignItems:'center', gap:10,
+            opacity:0, transform:'translateY(6px)',
+            animation:`mmCardIn 0.36s ease ${0.1+i*0.18}s forwards`,
+          }}>
+            <span style={{ fontSize:9, fontWeight:800, color:'#7c3aed', letterSpacing:'0.10em', textTransform:'uppercase', minWidth:50, flexShrink:0 }}>{s.label}</span>
+            <span style={{ fontSize:13, fontFamily:"'Roboto Mono','Courier New',monospace", color:'#1e1b4b', background:'rgba(124,58,237,0.07)', padding:'6px 12px', borderRadius:6, border:'1px solid rgba(124,58,237,0.16)', flex:1 }}>{s.val}</span>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display:'grid', gridTemplateColumns:'1fr auto', alignItems:'center', gap:14, marginTop:6, padding:'10px 12px', background:'linear-gradient(90deg,rgba(124,58,237,0.10),rgba(124,58,237,0.03))', border:'1px solid rgba(124,58,237,0.16)', borderRadius:10 }}>
+        <div>
+          <p style={{ fontSize:10, color:'rgba(10,22,40,0.40)', textTransform:'uppercase', letterSpacing:'0.12em', fontWeight:800, lineHeight:1 }}>Result</p>
+          <p style={{ fontSize:14, color:'#1e1b4b', fontWeight:800, lineHeight:1.2, marginTop:4 }}>{activeExample.result}</p>
+        </div>
+        <div style={{ width:74, height:8, borderRadius:999, background:'rgba(124,58,237,0.14)', overflow:'hidden' }}>
+          <div style={{ height:'100%', width:`${score}%`, borderRadius:999, background:'linear-gradient(90deg,#a78bfa,#7c3aed)', transition:'width 0.18s ease' }}/>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function MMImageDemo() {
   const [show, setShow] = React.useState(false)
   const [phase, setPhase] = React.useState(0)
-  const PROMPT = 'Illustrate: photosynthesis'
+  const PROMPT = 'Generate: photosynthesis lesson diagram'
   const [typed, setTyped] = React.useState(0)
+  const graphNodes = [
+    { label:'Light', x:38, y:34, color:'#f59e0b', delay:'0s' },
+    { label:'Leaf', x:112, y:88, color:'#059669', delay:'0.18s' },
+    { label:'CO2', x:214, y:48, color:'#228DC1', delay:'0.36s' },
+    { label:'ATP', x:206, y:126, color:'#7c3aed', delay:'0.54s' },
+    { label:'Sugar', x:122, y:146, color:'#dc2626', delay:'0.72s' },
+  ]
 
   React.useEffect(() => {
     let i = 0
@@ -904,10 +1017,10 @@ function MMImageDemo() {
       i++; setTyped(i)
       if (i >= PROMPT.length) {
         clearInterval(typeId)
-        setTimeout(() => setPhase(1), 250)
-        setTimeout(() => setShow(true), 650)
+        setTimeout(() => setPhase(1), 120)
+        setTimeout(() => setShow(true), 260)
       }
-    }, 52)
+    }, 38)
     return () => clearInterval(typeId)
   }, [])
 
@@ -915,7 +1028,6 @@ function MMImageDemo() {
     <div style={{ display:'flex', flexDirection:'column', flex:1 }}>
       {/* Prompt bar */}
       <div style={{ borderBottom:'1px solid #e5e7eb', padding:'9px 18px', display:'flex', alignItems:'center', gap:8, background:'#fafbfc' }}>
-        <div style={{ width:7, height:7, borderRadius:'50%', background: phase>=1 ? '#059669' : '#d1d5db', transition:'background 0.4s ease', flexShrink:0 }}/>
         <span style={{ fontSize:11, color:'#374151', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:500, flex:1 }}>
           {PROMPT.slice(0, typed)}
           {typed < PROMPT.length && <span style={{ display:'inline-block', width:2, height:11, background:'#059669', marginLeft:1, verticalAlign:'middle', animation:'mmCursor 0.8s step-end infinite' }}/>}
@@ -926,82 +1038,95 @@ function MMImageDemo() {
       </div>
 
       {/* Illustration canvas */}
-      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'12px 16px' }}>
-        <svg viewBox="0 0 280 178" style={{ width:'100%', height:'auto', borderRadius:10, overflow:'hidden' }}>
-          <defs>
-            <linearGradient id="imgSky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#bfdbfe"/>
-              <stop offset="100%" stopColor="#dbeafe"/>
-            </linearGradient>
-            <linearGradient id="imgSea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#60a5fa"/>
-              <stop offset="100%" stopColor="#3b82f6"/>
-            </linearGradient>
-          </defs>
+      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'12px 16px', background:'#f8fafc' }}>
+        <div style={{ position:'relative', width:'100%', aspectRatio:'280 / 178', borderRadius:12, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#0f3b33' }}>
+          <img
+            src="/images/aruva-photosynthesis-realistic.png"
+            alt="AI-generated photosynthesis lesson diagram"
+            style={{
+              position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover',
+              opacity: show ? 1 : 0,
+              transform: show ? 'scale(1)' : 'scale(1.035)',
+              transition: show ? 'opacity 0.7s ease, transform 1.2s ease' : 'none',
+            }}
+          />
+          <div style={{
+            position:'absolute', inset:0,
+            background:'linear-gradient(90deg,rgba(6,21,35,0.10),rgba(6,21,35,0.00) 38%,rgba(6,21,35,0.22)), radial-gradient(circle at 13% 16%,rgba(254,240,138,0.30),transparent 26%)',
+            opacity: show ? 1 : 0,
+            transition:'opacity 0.55s ease 0.35s',
+            pointerEvents:'none',
+          }}/>
+          <svg viewBox="0 0 280 178" style={{ position:'absolute', inset:0, width:'100%', height:'100%', display:'block', overflow:'visible' }}>
+            <defs>
+              <marker id="mmArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                <path d="M0,0 L7,3.5 L0,7 Z" fill="#fef08a"/>
+              </marker>
+            </defs>
 
-          {/* Sky */}
-          <rect x="0" y="0" width="280" height="178" fill="url(#imgSky)"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.5s ease 0s':'none' }}/>
-          {/* Ocean */}
-          <path d="M0 128 Q70 122 140 128 Q210 134 280 128 L280 178 L0 178 Z" fill="url(#imgSea)"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.5s ease 0.2s':'none' }}/>
-          {/* Mountains back-left */}
-          <path d="M-5 130 L55 62 L115 130 Z" fill="#a5b4fc"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 0.3s':'none' }}/>
-          {/* Mountains back-right */}
-          <path d="M162 130 L225 55 L290 130 Z" fill="#c4b5fd"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 0.35s':'none' }}/>
-          {/* Ground */}
-          <path d="M0 130 Q70 120 140 126 Q210 132 280 126 L280 155 L0 155 Z" fill="#86efac"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 0.4s':'none' }}/>
+            <g style={{ opacity: show?1:0, transition: show?'opacity 0.45s ease 0.08s':'none' }}>
+              <circle cx="38" cy="30" r="24" fill="rgba(254,240,138,0.18)" style={{ animation:'mmSunPulse 2.8s ease-in-out infinite' }}/>
+              {[0,35,70,105,140,175,210,245,280,315].map((angle,i) => {
+                const r = (angle * Math.PI) / 180
+                return <line key={angle} x1={38+Math.cos(r)*25} y1={30+Math.sin(r)*25} x2={38+Math.cos(r)*38} y2={30+Math.sin(r)*38}
+                  stroke="#fef08a" strokeWidth="2.2" strokeLinecap="round" opacity={0.75}
+                  style={{ animation:`mmSunRay 2.4s ease-in-out ${i*0.08}s infinite` }}/>
+              })}
+            </g>
 
-          {/* Sun */}
-          <circle cx="232" cy="34" r="18" fill="#fbbf24"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 0.05s':'none' }}/>
-          {[0,45,90,135,180,225,270,315].map((angle,i) => {
-            const r = (angle * Math.PI) / 180
-            return <line key={angle} x1={232+Math.cos(r)*21} y1={34+Math.sin(r)*21} x2={232+Math.cos(r)*28} y2={34+Math.sin(r)*28}
-              stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"
-              style={{ opacity: show?0.9:0, transition: show?`opacity 0.3s ease ${0.1+i*0.03}s`:'none' }}/>
-          })}
+            <path className="mm-photo-flow" d="M52 42 C76 57 82 77 112 85" markerEnd="url(#mmArrow)" style={{ opacity: show?1:0 }}/>
+            <path className="mm-photo-flow mm-photo-delay-1" d="M213 47 C241 55 250 80 235 101" markerEnd="url(#mmArrow)" style={{ opacity: show?1:0 }}/>
+            <path className="mm-photo-flow mm-photo-delay-2" d="M191 121 C163 152 123 156 88 135" markerEnd="url(#mmArrow)" style={{ opacity: show?1:0 }}/>
+            <path className="mm-photo-flow mm-photo-delay-3" d="M118 143 C158 172 220 158 244 128" markerEnd="url(#mmArrow)" style={{ opacity: show?1:0 }}/>
 
-          {/* Cloud 1 */}
-          <g style={{ opacity: show?1:0, transition: show?'opacity 0.5s ease 0.5s':'none' }}>
-            <ellipse cx="72" cy="42" rx="26" ry="14" fill="white"/>
-            <ellipse cx="55" cy="48" rx="17" ry="12" fill="white"/>
-            <ellipse cx="89" cy="48" rx="17" ry="11" fill="white"/>
-          </g>
-          {/* Cloud 2 */}
-          <g style={{ opacity: show?1:0, transition: show?'opacity 0.5s ease 0.6s':'none' }}>
-            <ellipse cx="166" cy="28" rx="20" ry="11" fill="white" opacity="0.9"/>
-            <ellipse cx="151" cy="33" rx="13" ry="9"  fill="white" opacity="0.9"/>
-            <ellipse cx="181" cy="33" rx="13" ry="9"  fill="white" opacity="0.9"/>
-          </g>
+            <g style={{ opacity: show?1:0, transition: show?'opacity 0.45s ease 0.62s':'none' }}>
+              {[[219,45,0],[234,68,0.4],[216,124,0.85],[96,138,1.1]].map(([x,y,d],i) => (
+                <g key={i} style={{ animation:`mmMoleculeDrift 3.4s ease-in-out ${d}s infinite` }}>
+                  <circle cx={x-7} cy={y-4} r="4.2" fill="#ef4444"/>
+                  <circle cx={x} cy={y} r="6.4" fill="#1f2937"/>
+                  <circle cx={x+8} cy={y-4} r="4.2" fill="#ef4444"/>
+                </g>
+              ))}
+            </g>
 
-          {/* Rain drops from cloud 1 */}
-          {[[65,66],[74,72],[82,66],[58,72],[90,72]].map(([x,y],i) => (
-            <line key={i} x1={x} y1={y} x2={x-3} y2={y+11} stroke="#93c5fd" strokeWidth="1.8" strokeLinecap="round"
-              style={{ opacity: show?0.85:0, transition: show?`opacity 0.3s ease ${0.85+i*0.06}s`:'none' }}/>
-          ))}
+            <svg x="0" y="0" width="280" height="178" viewBox="0 0 280 178">
+              <path className="mm-ai-edge" d="M38 34 L112 88 L214 48 L206 126 L122 146 L112 88" style={{ opacity: show?1:0 }}/>
+              <path className="mm-ai-edge mm-ai-edge-delay" d="M38 34 L214 48 M112 88 L206 126 M122 146 L214 48" style={{ opacity: show?0.72:0 }}/>
+              {graphNodes.map(node => (
+                <g key={node.label} className="mm-ai-node" style={{ animationDelay: node.delay, opacity: show?1:0 }}>
+                  <circle cx={node.x} cy={node.y} r="4.4" fill={node.color}/>
+                  <circle cx={node.x} cy={node.y} r="8" fill="none" stroke={node.color} strokeWidth="1" opacity="0.55"/>
+                  <text x={node.x} y={node.y-12} textAnchor="middle" fontSize="7" fontWeight="800" fill="#ffffff" fontFamily="Roboto,sans-serif">{node.label}</text>
+                </g>
+              ))}
+            </svg>
 
-          {/* Evaporation arrows */}
-          {[[108,122],[140,118],[172,122]].map(([x,y],i) => (
-            <path key={i} d={`M${x},${y} C${x-4},${y-9} ${x+4},${y-15} ${x},${y-23}`}
-              fill="none" stroke="rgba(147,197,253,0.75)" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="3 2.5"
-              style={{ opacity: show?1:0, transition: show?`opacity 0.4s ease ${1.0+i*0.08}s`:'none' }}/>
-          ))}
+            <g style={{ opacity: show?1:0, transition: show?'opacity 0.45s ease 0.85s':'none' }}>
+              <text x="70" y="60" textAnchor="middle" fontSize="8" fontWeight="900" fill="#6b3f05" fontFamily="Roboto,sans-serif">LIGHT ENERGY</text>
+              <text x="229" y="32" textAnchor="middle" fontSize="8" fontWeight="900" fill="#0f172a" fontFamily="Roboto,sans-serif">CO2</text>
+              <text x="213" y="143" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">ATP</text>
+              <text x="84" y="163" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">SUGAR</text>
+            </g>
+          </svg>
 
-          {/* Labels */}
-          {[
-            { x:232, y:12,  t:'Sun',        c:'#92400e' },
-            { x:140, y:148, t:'Ocean',      c:'#1e40af' },
-            { x:72,  y:96,  t:'Rainfall',   c:'#1e40af' },
-            { x:140, y:108, t:'Evaporation',c:'#065f46' },
-          ].map(l => (
-            <text key={l.t} x={l.x} y={l.y} textAnchor="middle" fontSize="8" fontWeight="700" fill={l.c} fontFamily="Roboto,sans-serif"
-              style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 1.25s':'none' }}>{l.t}</text>
-          ))}
-        </svg>
+          <div style={{ position:'absolute', left:10, right:10, bottom:9, display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:7 }}>
+            {[
+              { label:'Image', value: show ? 'Generated' : 'Rendering' },
+              { label:'Graph', value:'Animated' },
+              { label:'Lesson', value:'Biology' },
+            ].map((stat, i) => (
+              <div key={stat.label} style={{
+                background:'rgba(6,21,35,0.78)', border:'1px solid rgba(255,255,255,0.12)',
+                backdropFilter:'blur(8px)', borderRadius:8, padding:'7px 8px',
+                opacity: show?1:0, transform: show?'translateY(0)':'translateY(8px)',
+                transition:`opacity 0.35s ease ${0.9+i*0.08}s, transform 0.35s ease ${0.9+i*0.08}s`,
+              }}>
+                <p style={{ fontSize:7.5, color:'rgba(255,255,255,0.50)', lineHeight:1, textTransform:'uppercase', letterSpacing:'0.12em', fontWeight:800, marginBottom:4 }}>{stat.label}</p>
+                <p style={{ fontSize:10.5, color:'#fff', lineHeight:1, fontWeight:800 }}>{stat.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -1029,9 +1154,16 @@ function MMGraphDemo() {
   const DEMO_DISPLAY = 'sin(x) · 2'
   const DEMO_EVAL    = 'sin(x) * 2'
   const EXAMPLES     = ['x**2 / 5', 'cos(x) + x/4', 'tan(x/2)', 'sin(x)*cos(x)']
+  const AUTO_GRAPHS  = [
+    { display:'sin(x) * 2', eval:'sin(x) * 2' },
+    { display:'x^2 / 5 - 2', eval:'x**2 / 5 - 2' },
+    { display:'cos(x) + x/4', eval:'cos(x) + x/4' },
+    { display:'sin(x) * cos(x)', eval:'sin(x)*cos(x)' },
+  ]
 
   const [userFormula, setUserFormula] = React.useState('')
   const [activeFormula, setActiveFormula] = React.useState('')
+  const [autoIndex, setAutoIndex] = React.useState(0)
   const [animKey, setAnimKey]   = React.useState(0)
   const [typed, setTyped]       = React.useState(0)
   const [demoPhase, setDemoPhase] = React.useState<'typing'|'done'>('typing')
@@ -1050,6 +1182,21 @@ function MMGraphDemo() {
     }, 70)
     return () => clearInterval(id)
   }, [])
+
+  React.useEffect(() => {
+    if (demoPhase !== 'done' || focused) return
+    const id = setInterval(() => {
+      setAutoIndex(prev => {
+        const next = (prev + 1) % AUTO_GRAPHS.length
+        setUserFormula(AUTO_GRAPHS[next].display)
+        setInputVal(AUTO_GRAPHS[next].display)
+        setActiveFormula(AUTO_GRAPHS[next].eval)
+        setAnimKey(k => k + 1)
+        return next
+      })
+    }, 1900)
+    return () => clearInterval(id)
+  }, [demoPhase, focused])
 
   function safeEval(expr: string, x: number): number | null {
     try {
@@ -1094,7 +1241,7 @@ function MMGraphDemo() {
 
   const displayLabel = demoPhase === 'typing'
     ? DEMO_DISPLAY.slice(0, typed)
-    : (userFormula || DEMO_DISPLAY)
+    : (userFormula || AUTO_GRAPHS[autoIndex].display)
 
   const path = activeFormula ? buildPath(activeFormula) : ''
 
@@ -1176,7 +1323,7 @@ function MultimodalSection() {
   const activeRef = React.useRef(0)
   const startRef  = React.useRef(0)
   const rafRef    = React.useRef<number | undefined>(undefined)
-  const CYCLE = 4800
+  const CYCLE = 7600
 
   // RAF-driven auto-cycle — starts when section scrolls into view
   React.useEffect(() => {
@@ -1217,6 +1364,40 @@ function MultimodalSection() {
         @keyframes waveBar     { 0%,100%{transform:scaleY(0.35)} 50%{transform:scaleY(1)} }
         @keyframes voiceOrbMorph { 0%,100%{border-radius:54% 46% 38% 62%/61% 35% 65% 39%} 33%{border-radius:42% 58% 55% 45%/53% 62% 38% 47%} 66%{border-radius:61% 39% 44% 56%/39% 57% 43% 61%} }
         @keyframes orbFloat    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+        @keyframes mmGraphDash { 0%{stroke-dashoffset:70;opacity:0.28} 48%{opacity:1} 100%{stroke-dashoffset:0;opacity:0.28} }
+        @keyframes mmNodePulse { 0%,100%{transform:scale(1);opacity:0.78} 50%{transform:scale(1.22);opacity:1} }
+        @keyframes mmSunPulse  { 0%,100%{transform:scale(1);opacity:0.95} 50%{transform:scale(1.08);opacity:1} }
+        @keyframes mmSunRay    { 0%,100%{opacity:0.35;transform:scale(0.88)} 50%{opacity:0.95;transform:scale(1.08)} }
+        @keyframes mmMoleculeDrift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(6px,-5px)} }
+        .mm-photo-flow {
+          fill: none;
+          stroke: #fef08a;
+          stroke-width: 2.6;
+          stroke-linecap: round;
+          stroke-dasharray: 8 11;
+          animation: mmGraphDash 2.7s linear infinite;
+          filter: drop-shadow(0 0 5px rgba(250,204,21,0.55));
+          transition: opacity 0.45s ease 0.52s;
+        }
+        .mm-photo-delay-1 { animation-delay: 0.42s; }
+        .mm-photo-delay-2 { animation-delay: 0.84s; }
+        .mm-photo-delay-3 { animation-delay: 1.26s; }
+        .mm-ai-edge {
+          fill: none;
+          stroke: rgba(255,255,255,0.75);
+          stroke-width: 1.1;
+          stroke-linecap: round;
+          stroke-dasharray: 5 7;
+          animation: mmGraphDash 3.25s linear infinite;
+          transition: opacity 0.45s ease 0.72s;
+        }
+        .mm-ai-edge-delay { animation-delay: 1.05s; }
+        .mm-ai-node {
+          transform-box: fill-box;
+          transform-origin: center;
+          animation: mmNodePulse 2.15s ease-in-out infinite;
+          transition: opacity 0.35s ease 0.9s;
+        }
       `}</style>
       <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
 
@@ -1237,7 +1418,7 @@ function MultimodalSection() {
                 One AI. Every way <span style={{ color:'#228DC1' }}>students learn.</span>
               </h2>
               <p style={{ fontSize:15.5, color:'rgba(10,22,40,0.58)', lineHeight:1.75, marginTop:14 }}>
-                Aruva speaks, writes, draws and graphs — meeting every student exactly where their understanding breaks down, in whichever format makes it click.
+                Aruva speaks, writes, draws and graphs, meeting every student exactly where their understanding breaks down, in whichever format makes it click.
               </p>
             </div>
             {MM_MODALITIES.map((m, i) => {
@@ -1363,7 +1544,8 @@ function MultimodalSection() {
               )}
 
               {/* ── Text ── */}
-              {active === 1 && (
+              {active === 1 && <MMTextDemo />}
+              {false && (
                 <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'32px 36px' }}>
                   <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:600, marginBottom:4 }}>Solving: x² − 5x + 6 = 0</p>
                   {MM_STEPS.map((s, i) => (
@@ -1524,6 +1706,7 @@ function BloomInsightSection() {
   const pt   = (i: number, v: number) => ({ x: CX + (v/100)*R*Math.cos(ang(i)), y: CY + (v/100)*R*Math.sin(ang(i)) })
   const lab  = (i: number) => ({ x: CX + 128*Math.cos(ang(i)), y: CY + 128*Math.sin(ang(i)) })
   const poly = (vals: number[]) => vals.map((v,i) => `${pt(i,v).x},${pt(i,v).y}`).join(' ')
+  const masteryColor = (value: number, fallback: string) => value > 75 ? '#059669' : fallback
 
   return (
     <section ref={sectionRef} className="py-28 bg-[#f8fafc] border-t border-gray-100">
@@ -1640,6 +1823,16 @@ function BloomInsightSection() {
               <div>
                 <p className="text-[12px] font-black uppercase tracking-[0.18em] mb-1.5" style={{ color: sem.accent }}>{sem.label}</p>
                 <p className="text-[20px] font-semibold text-[#0a1628] leading-snug">{sem.headline}</p>
+                <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-gray-200 bg-[#f8fafc] px-3 py-2 shadow-[0_1px_8px_rgba(10,22,40,0.04)]">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-black text-white shadow-sm"
+                    style={{ background: `linear-gradient(135deg,${sem.accent},#fb7185)` }}>
+                    MG
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
+                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile · compared with class average</p>
+                  </div>
+                </div>
               </div>
               <div className="shrink-0 ml-4 text-right">
                 <p className="text-[40px] font-black leading-none tabular-nums" style={{ color: sem.accent }}>{sem.grade}%</p>
@@ -1662,6 +1855,24 @@ function BloomInsightSection() {
                       <stop offset="0%"   stopColor={sem.accent} stopOpacity="0.22"/>
                       <stop offset="100%" stopColor={sem.accent} stopOpacity="0.04"/>
                     </radialGradient>
+                    <linearGradient id={`rstroke-${active}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor={sem.accent}/>
+                      <stop offset="58%" stopColor="#fb7185"/>
+                      <stop offset="100%" stopColor="#fda4af"/>
+                    </linearGradient>
+                    <linearGradient id={`ravg-${active}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#94a3b8"/>
+                      <stop offset="100%" stopColor="#cbd5e1"/>
+                    </linearGradient>
+                    <radialGradient id={`ravgFill-${active}`} cx="50%" cy="50%" r="62%">
+                      <stop offset="0%" stopColor="#94a3b8" stopOpacity="0.11"/>
+                      <stop offset="72%" stopColor="#cbd5e1" stopOpacity="0.075"/>
+                      <stop offset="100%" stopColor="#f8fafc" stopOpacity="0.02"/>
+                    </radialGradient>
+                    <filter id={`ravgGlow-${active}`} x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="2.2" result="b"/>
+                      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
                   </defs>
 
                   {/* Grid rings */}
@@ -1671,7 +1882,6 @@ function BloomInsightSection() {
                       fill={pct===33 ? sem.accent+'03' : 'none'}
                       stroke={pct===100 ? 'rgba(10,22,40,0.12)' : 'rgba(10,22,40,0.06)'}
                       strokeWidth={pct===100 ? 1.5 : 1}
-                      strokeDasharray={pct===66 ? '4 4' : 'none'}
                     />
                   ))}
                   {/* Spokes */}
@@ -1681,23 +1891,36 @@ function BloomInsightSection() {
                   ))}
 
                   {/* Cohort average — dashed grey polygon */}
-                  <polygon points={poly(sem.cohortAvg)} fill="rgba(10,22,40,0.04)"
-                    stroke="rgba(10,22,40,0.25)" strokeWidth="1.5" strokeDasharray="5 3"
-                    strokeLinejoin="round" />
+                  <polygon points={poly(sem.cohortAvg)} fill={`url(#ravgFill-${active})`}
+                    stroke={`url(#ravg-${active})`} strokeWidth="2"
+                    strokeLinejoin="round" strokeLinecap="round" opacity="0.9"
+                    filter={`url(#ravgGlow-${active})`} />
+                  <polygon points={poly(sem.cohortAvg)} fill="none"
+                    stroke="rgba(255,255,255,0.72)" strokeWidth="0.9"
+                    strokeLinejoin="round" strokeLinecap="round" opacity="0.8" />
 
                   {/* Student filled area */}
                   <polygon points={poly(disp)} fill={`url(#rfill-${active})`} stroke="none" />
                   <polygon points={poly(disp)} fill="none"
-                    stroke={sem.accent} strokeWidth="3" strokeLinejoin="round"
+                    stroke={sem.accent} strokeWidth="8" strokeLinejoin="round"
+                    strokeLinecap="round" opacity="0.12" />
+                  <polygon points={poly(disp)} fill="none"
+                    stroke={`url(#rstroke-${active})`} strokeWidth="4" strokeLinejoin="round"
+                    strokeLinecap="round"
                     filter="url(#rglow)" />
+                  <polygon points={poly(disp)} fill="none"
+                    stroke="rgba(255,255,255,0.78)" strokeWidth="1.25" strokeLinejoin="round"
+                    strokeLinecap="round" opacity="0.72" />
 
                   {/* Pulse rings + dots */}
                   {disp.map((v,i) => (
                     <g key={i}>
-                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="13" fill={sem.accent} opacity="0"
+                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="13" fill={masteryColor(Math.round(v), sem.accent)} opacity="0"
                         style={{ animation: `pulseRing 2.4s ease ${i*0.22}s infinite` }} />
-                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="5.5"
-                        fill={sem.accent} stroke="white" strokeWidth="3" />
+                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="7.5"
+                        fill="white" stroke={masteryColor(Math.round(v), sem.accent)} strokeWidth="2.5" />
+                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="3.2"
+                        fill={masteryColor(Math.round(v), sem.accent)} />
                     </g>
                   ))}
 
@@ -1707,17 +1930,18 @@ function BloomInsightSection() {
                     const val = Math.round(disp[i])
                     const isMax = val === Math.round(Math.max(...disp))
                     const isMin = val === Math.round(Math.min(...disp))
+                    const color = masteryColor(val, isMax ? sem.accent : isMin ? '#d97706' : 'rgba(10,22,40,0.5)')
                     return (
                       <g key={label}>
                         <text x={p.x} y={p.y - 8} textAnchor="middle" dominantBaseline="middle"
                           fontSize="12.5" fontFamily="system-ui,sans-serif"
                           fontWeight={isMax ? '700' : '500'}
-                          fill={isMax ? sem.accent : isMin ? '#d97706' : 'rgba(10,22,40,0.5)'}>
+                          fill={color}>
                           {label}
                         </text>
                         <text x={p.x} y={p.y + 8} textAnchor="middle" dominantBaseline="middle"
                           fontSize="11.5" fontFamily="system-ui,sans-serif" fontWeight="700"
-                          fill={isMax ? sem.accent : isMin ? '#d97706cc' : 'rgba(10,22,40,0.3)'}>
+                          fill={val > 75 ? '#059669cc' : isMax ? sem.accent : isMin ? '#d97706cc' : 'rgba(10,22,40,0.3)'}>
                           {val}%
                         </text>
                       </g>
@@ -1732,7 +1956,7 @@ function BloomInsightSection() {
                     <span className="text-[11px] font-semibold text-[#0a1628]/60">Maria</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <svg width="16" height="3" viewBox="0 0 16 3"><line x1="0" y1="1.5" x2="16" y2="1.5" stroke="rgba(10,22,40,0.35)" strokeWidth="1.5" strokeDasharray="4 2.5"/></svg>
+                    <svg width="18" height="5" viewBox="0 0 18 5"><line x1="1" y1="2.5" x2="17" y2="2.5" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round"/><circle cx="9" cy="2.5" r="2" fill="#cbd5e1"/></svg>
                     <span className="text-[11px] font-semibold text-[#0a1628]/45">Class avg</span>
                   </div>
                 </div>
@@ -1745,37 +1969,42 @@ function BloomInsightSection() {
                   const isTop = Math.round(disp[i]) === Math.round(Math.max(...disp))
                   const isLow = Math.round(disp[i]) === Math.round(Math.min(...disp))
                   const cavg  = Math.round(sem.cohortAvg[i])
+                  const barColor = masteryColor(val, isLow ? '#d97706' : sem.accent)
                   return (
                     <div key={label}>
                       <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-[15px] font-semibold"
-                            style={{ color: isTop ? sem.accent : isLow ? '#d97706' : 'rgba(10,22,40,0.75)' }}>
+                            style={{ color: val > 75 ? '#059669' : isTop ? sem.accent : isLow ? '#d97706' : 'rgba(10,22,40,0.75)' }}>
                             {label}
                           </span>
                           <span className="text-[13px] text-[#0a1628]/35 hidden sm:inline">{BLOOM_SIMPLE[i]}</span>
                           {isTop && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md"
                             style={{ background: sem.accent + '15', color: sem.accent }}>top</span>}
-                          {isLow && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md bg-[#fef3c7] text-[#b45309]">gap</span>}
+                          {isLow && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md bg-[#fef3c7] text-[#b45309]">Progress</span>}
                         </div>
                         <span className="text-[16px] font-black tabular-nums shrink-0 ml-3"
-                          style={{ color: isLow ? '#d97706' : sem.accent }}>
+                          style={{ color: barColor }}>
                           {val}%
                         </span>
                       </div>
-                      <div className="relative h-[8px] bg-gray-100 rounded-full overflow-hidden">
+                      <div className="relative h-[8px] bg-gray-100 rounded-full">
                         <div className="h-full rounded-full"
                           style={{
                             width: `${val}%`,
-                            background: isLow
+                            background: val > 75
+                              ? 'linear-gradient(90deg,#059669,#34d399)'
+                              : isLow
                               ? 'linear-gradient(90deg,#f59e0b,#fbbf24)'
                               : `linear-gradient(90deg,${sem.accent},${sem.accent}99)`,
-                            boxShadow: isTop ? `0 0 10px ${sem.accent}55` : 'none',
+                            boxShadow: val > 75 ? '0 0 10px rgba(5,150,105,0.28)' : isTop ? `0 0 10px ${sem.accent}55` : 'none',
                             transition: 'width 0.75s cubic-bezier(0.34,1.1,0.64,1)',
                           }} />
                         {/* Class avg marker */}
-                        <div className="absolute top-0 bottom-0 w-[2px] rounded-full"
-                          style={{ left: `${cavg}%`, background: 'rgba(10,22,40,0.30)' }} />
+                        <div className="absolute -top-[4px] -bottom-[4px] w-[2px] rounded-full"
+                          style={{ left: `${cavg}%`, background: 'linear-gradient(180deg,#cbd5e1,#64748b)', boxShadow: '0 0 0 3px rgba(148,163,184,0.12)' }} />
+                        <div className="absolute top-1/2 w-[7px] h-[7px] rounded-full border border-white bg-[#94a3b8] shadow-sm"
+                          style={{ left: `calc(${cavg}% - 3px)`, transform: 'translateY(-50%)' }} />
                       </div>
                     </div>
                   )
@@ -1859,6 +2088,16 @@ function BloomInsightSection() {
               <div>
                 <p className="text-[12px] font-black uppercase tracking-[0.18em] mb-1.5" style={{ color: dokSem.accent }}>{dokSem.label}</p>
                 <p className="text-[20px] font-semibold text-[#0a1628] leading-snug">{dokSem.headline}</p>
+                <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-gray-200 bg-[#f8fafc] px-3 py-2 shadow-[0_1px_8px_rgba(10,22,40,0.04)]">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-black text-white shadow-sm"
+                    style={{ background: `linear-gradient(135deg,${dokSem.accent},#60a5fa)` }}>
+                    MG
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
+                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile · compared with class average</p>
+                  </div>
+                </div>
               </div>
               <div className="shrink-0 ml-4 text-right">
                 <p className="text-[40px] font-black leading-none tabular-nums" style={{ color: dokSem.accent }}>{dokSem.grade}%</p>
@@ -1884,7 +2123,7 @@ function BloomInsightSection() {
                           </span>
                           {isTop && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md"
                             style={{ background: dokSem.accent + '15', color: dokSem.accent }}>top</span>}
-                          {isLow && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md bg-[#fef3c7] text-[#b45309]">gap</span>}
+                          {isLow && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md bg-[#fef3c7] text-[#b45309]">Progress</span>}
                         </div>
                         <p className="text-[12px] font-medium pl-8" style={{ color: DOK_TEXT_COLORS[i] }}>{DOK_SIMPLE[i]}</p>
                       </div>
@@ -1893,7 +2132,7 @@ function BloomInsightSection() {
                         {val}%
                       </span>
                     </div>
-                    <div className="relative h-[9px] bg-gray-100 rounded-full overflow-hidden">
+                    <div className="relative h-[9px] bg-gray-100 rounded-full">
                       <div className="h-full rounded-full"
                         style={{
                           width: `${val}%`,
@@ -1904,8 +2143,10 @@ function BloomInsightSection() {
                           transition: 'width 0.75s cubic-bezier(0.34,1.1,0.64,1)',
                         }} />
                       {/* Class avg marker */}
-                      <div className="absolute top-0 bottom-0 w-[2px] rounded-full"
-                        style={{ left: `${cavg}%`, background: 'rgba(10,22,40,0.30)' }} />
+                      <div className="absolute -top-[4px] -bottom-[4px] w-[2px] rounded-full"
+                        style={{ left: `${cavg}%`, background: 'linear-gradient(180deg,#cbd5e1,#64748b)', boxShadow: '0 0 0 3px rgba(148,163,184,0.12)' }} />
+                      <div className="absolute top-1/2 w-[7px] h-[7px] rounded-full border border-white bg-[#94a3b8] shadow-sm"
+                        style={{ left: `calc(${cavg}% - 3px)`, transform: 'translateY(-50%)' }} />
                     </div>
                     <div className="flex flex-wrap gap-1 mt-2 items-center justify-between">
                       <div className="flex flex-wrap gap-1">
