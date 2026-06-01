@@ -838,13 +838,11 @@ function MapWidget() {
 
 // ─── Voice + Chat demo ────────────────────────────────────────────────────────
 type OrbMode   = 'listen' | 'user' | 'ai'
-type DemoPhase = 'voice' | 'chat' | 'chat-out'
+type DemoPhase = 'voice' | 'chat' | 'csat' | 'csat-out'
 
 function KaiChatDemo() {
   const [phase,   setPhase]   = useState<DemoPhase>('voice')
   const [orbMode, setOrbMode] = useState<OrbMode>('listen')
-  const [turnIdx, setTurnIdx] = useState(-1)
-  const [words,   setWords]   = useState(0)
   const tids = useRef<number[]>([])
 
   const sched = (fn: () => void, ms: number) => {
@@ -853,33 +851,33 @@ function KaiChatDemo() {
 
   const run = () => {
     tids.current.forEach(clearTimeout); tids.current = []
-    setPhase('voice'); setOrbMode('listen'); setTurnIdx(-1); setWords(0)
+    setPhase('voice'); setOrbMode('listen')
 
     let t = 1200 // initial silence
 
-    VOICE_SCRIPT.forEach((turn, i) => {
+    VOICE_SCRIPT.forEach((turn) => {
       const tokens = turn.text.split(' ')
       const msPw   = turn.speaker === 'ai' ? 80 : 100
 
       if (turn.speaker === 'user') {
-        // Brief listening pause before user speaks
-        sched(() => { setTurnIdx(i); setWords(0); setOrbMode('listen') }, t)
+        sched(() => setOrbMode('listen'), t)
         t += 700
         sched(() => setOrbMode('user'), t)
       } else {
-        sched(() => { setTurnIdx(i); setWords(0); setOrbMode('ai') }, t)
+        sched(() => setOrbMode('ai'), t)
       }
 
-      tokens.forEach((_, j) => sched(() => setWords(j + 1), t + j * msPw))
       t += tokens.length * msPw
 
-      sched(() => setOrbMode('listen'), t)           // brief listen between turns
+      sched(() => setOrbMode('listen'), t)
       t += turn.speaker === 'ai' ? 1100 : 850
     })
 
     sched(() => setPhase('chat'), t)
-    t += 6000
-    sched(() => setPhase('chat-out'), t)
+    t += 4000                              // show chat for 4s
+    sched(() => setPhase('csat'), t)       // CSAT card eases in
+    t += 4500
+    sched(() => setPhase('csat-out'), t)
     sched(run, t + 700)
   }
 
@@ -888,14 +886,11 @@ function KaiChatDemo() {
     return () => { clearTimeout(id); tids.current.forEach(clearTimeout) }
   }, [])
 
-  const currentTurn = turnIdx >= 0 ? VOICE_SCRIPT[turnIdx] : null
-  const prevTurn    = turnIdx > 0  ? VOICE_SCRIPT[turnIdx - 1] : null
-  const tokens      = currentTurn ? currentTurn.text.split(' ') : []
-  const transcript  = tokens.slice(0, words).join(' ')
-
-  const isVoice    = phase === 'voice'
-  const isChat     = phase === 'chat' || phase === 'chat-out'
-  const chatOpacity = phase === 'chat' ? 1 : 0
+  const isVoice     = phase === 'voice'
+  const isChat      = phase === 'chat' || phase === 'csat' || phase === 'csat-out'
+  const chatOpacity = phase === 'chat' || phase === 'csat' ? 1 : 0
+  const isCsat      = phase === 'csat' || phase === 'csat-out'
+  const csatOpacity = phase === 'csat' ? 1 : 0
 
   const orbAnim =
     orbMode === 'ai'   ? 'kaiOrbSpeak 1s ease-in-out infinite' :
@@ -909,11 +904,8 @@ function KaiChatDemo() {
 
   const orbGlow =
     orbMode === 'user'
-      ? '0 0 48px rgba(34,193,141,0.82), 0 0 96px rgba(34,193,141,0.42), 0 0 150px rgba(34,193,141,0.18)'
-      : '0 0 48px rgba(34,141,193,0.88), 0 0 96px rgba(34,141,193,0.48), 0 0 150px rgba(34,141,193,0.20)'
-
-  // Listening label: show when waiting between turns before user speaks
-  const showListeningLabel = orbMode === 'listen' && currentTurn?.speaker === 'user' && words === 0
+      ? '0 0 55px rgba(34,193,141,0.85), 0 0 110px rgba(34,193,141,0.45), 0 0 170px rgba(34,193,141,0.18)'
+      : '0 0 55px rgba(34,141,193,0.90), 0 0 110px rgba(34,141,193,0.50), 0 0 170px rgba(34,141,193,0.22)'
 
   return (
     <div className="select-none" style={{ width: '100%', maxWidth: 400 }}>
@@ -923,7 +915,7 @@ function KaiChatDemo() {
           {/* ── VOICE VIEW ── */}
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(180deg, #071220 0%, #0d1c31 55%, #08162a 100%)',
+            background: 'linear-gradient(180deg, #071220 0%, #0c1b30 55%, #08152a 100%)',
             opacity: isVoice ? 1 : 0,
             transition: 'opacity 0.65s ease',
             pointerEvents: isVoice ? 'auto' : 'none',
@@ -939,50 +931,57 @@ function KaiChatDemo() {
               <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(255,255,255,0.28)', marginLeft: 4 }} />
             </div>
 
-            {/* Transcript area — prev turn dimmed, current turn active */}
-            <div style={{ position: 'absolute', top: 76, left: 24, right: 24, bottom: 210, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: 18, overflow: 'hidden' }}>
-              {!currentTurn && !prevTurn && (
-                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.22)', textAlign: 'center', letterSpacing: '0.06em', margin: 0 }}>Listening…</p>
-              )}
-              {prevTurn && (
-                <div style={{ opacity: 0.32 }}>
-                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 4px',
-                    color: prevTurn.speaker === 'ai' ? 'rgba(106,193,239,1)' : 'rgba(255,255,255,0.7)' }}>
-                    {prevTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
-                  </p>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', lineHeight: 1.55, margin: 0 }}>{prevTurn.text}</p>
-                </div>
-              )}
-              {currentTurn && (
-                <div>
-                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 6px',
-                    color: currentTurn.speaker === 'ai' ? 'rgba(106,193,239,1)' : 'rgba(255,255,255,0.6)' }}>
-                    {currentTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
-                  </p>
-                  {showListeningLabel
-                    ? <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.30)', letterSpacing: '0.06em', margin: 0 }}>Listening…</p>
-                    : <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.92)', lineHeight: 1.65, margin: 0 }}>{transcript}</p>
-                  }
-                </div>
-              )}
+            {/* KAI VOICE pill label */}
+            <div style={{ position: 'absolute', top: 74, left: 22, display: 'flex', alignItems: 'center', gap: 6 }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
+              <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.42)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>
+                KAI VOICE
+              </span>
             </div>
 
-            {/* Orb — sits above the input bar */}
-            <div style={{ position: 'absolute', bottom: 82, left: '50%', transform: 'translateX(-50%)' }}>
+            {/* Orb + waveform — vertically centred in the dark area */}
+            <div style={{
+              position: 'absolute', top: 96, left: 0, right: 0, bottom: 58,
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              gap: 22,
+            }}>
               <div style={{
-                width: 92, height: 92,
+                width: 112, height: 112, borderRadius: '50%',
                 background: orbBg,
                 boxShadow: orbGlow,
                 animation: orbAnim,
                 transition: 'background 0.6s ease, box-shadow 0.6s ease',
               }} />
+
+              {/* Audio waveform bars */}
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 28 }}>
+                {[5,10,18,24,28,24,18,10,5].map((h, i) => {
+                  const delays = [0.12, 0.06, 0.22, 0.04, 0.16, 0.08, 0.20, 0.02, 0.14]
+                  const dur = orbMode === 'ai' ? 0.55 : orbMode === 'user' ? 0.38 : 1.6
+                  const barColor = orbMode === 'user' ? 'rgba(52,199,138,0.72)' : 'rgba(106,193,239,0.65)'
+                  return (
+                    <div key={i} style={{
+                      width: 3.5, height: h, borderRadius: 2, background: barColor,
+                      transformOrigin: 'bottom',
+                      animation: `kaiWaveBar ${dur}s ease-in-out ${delays[i]}s infinite alternate`,
+                      transition: 'background 0.5s ease',
+                    }} />
+                  )
+                })}
+              </div>
             </div>
 
-            {/* Voice input bar — white, matches chat bar */}
+            {/* KAI label — bottom left */}
+            <div style={{ position: 'absolute', bottom: 66, left: 22 }}>
+              <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>
+                KAI
+              </span>
+            </div>
+
+            {/* Voice input bar */}
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0,
-              background: '#fff',
-              borderRadius: '0 0 30px 30px',
+              background: '#fff', borderRadius: '0 0 30px 30px',
               padding: '11px 16px 14px',
               display: 'flex', alignItems: 'center', gap: 10,
               borderTop: '0.5px solid #e5e7eb',
@@ -990,26 +989,14 @@ function KaiChatDemo() {
               <span style={{
                 flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15,
                 color: orbMode === 'user' ? '#228DC1' : 'rgba(10,22,40,0.35)',
-                letterSpacing: '0.01em', userSelect: 'none',
-                transition: 'color 0.3s ease',
+                userSelect: 'none', transition: 'color 0.3s ease',
               }}>
                 {orbMode === 'ai' ? 'AI Speaking…' : 'Listening…'}
               </span>
-              {/* Mic button — highlighted when user is speaking */}
-              <div style={{
-                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-                background: orbMode === 'user' ? '#228DC1' : '#f0f2f5',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'background 0.3s ease',
-              }}>
+              <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: orbMode === 'user' ? '#228DC1' : '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.3s ease' }}>
                 <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: orbMode === 'user' ? '#fff' : 'rgba(10,22,40,0.4)' }} />
               </div>
-              {/* X / close button */}
-              <div style={{
-                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-                background: '#f0f2f5',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
+              <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <FontAwesomeIcon icon={faXmark} style={{ width: 14, height: 14, color: 'rgba(10,22,40,0.4)' }} />
               </div>
             </div>
@@ -1072,6 +1059,38 @@ function KaiChatDemo() {
                   )
                 })}
               </div>
+
+              {/* CSAT rating overlay — eases in over messages at end */}
+              {isCsat && (
+                <div style={{
+                  position: 'absolute', inset: 0, zIndex: 5,
+                  background: '#f3f5f8',
+                  opacity: csatOpacity,
+                  transition: 'opacity 0.5s ease',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  padding: '0 18px',
+                }}>
+                  <div style={{
+                    background: '#fff', borderRadius: 16, padding: '22px 18px', width: '100%',
+                    boxShadow: '0 4px 24px rgba(10,22,40,0.09)',
+                    animation: phase === 'csat' ? 'csatIn 0.55s cubic-bezier(0.22,1,0.36,1) both' : 'none',
+                  }}>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: '#0a1628', textAlign: 'center', margin: '0 0 16px', lineHeight: 1.45 }}>
+                      Rate your experience to help us improve!
+                    </p>
+                    <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+                      {[{ e: '👍', l: 'Satisfied' }, { e: '👎', l: 'Dissatisfied' }].map(b => (
+                        <div key={b.l} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, padding: '10px 8px', border: '1px solid #e5e7eb', borderRadius: 10, background: '#fff', fontSize: 13, fontWeight: 600, color: '#0a1628', cursor: 'default' }}>
+                          <span style={{ fontSize: 16 }}>{b.e}</span>{b.l}
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ border: '1px solid #e5e7eb', borderRadius: 10, padding: '10px 14px', color: 'rgba(10,22,40,0.32)', fontSize: 13, fontFamily: 'Roboto,sans-serif' }}>
+                      Leave a comment (optional)
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Input bar — matches voice bar layout */}
               <div style={{ borderTop: '0.5px solid #e5e7eb', padding: '11px 16px 14px', display: 'flex', alignItems: 'center', gap: 10, background: '#fff', flexShrink: 0 }}>

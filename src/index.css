@@ -143,6 +143,16 @@
   100% { transform: scale(1.00); border-radius: 50%; }
 }
 
+@keyframes kaiWaveBar {
+  from { transform: scaleY(0.28); }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes csatIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
 .kai-chat-scroll {
   scrollbar-width: none;
 }
