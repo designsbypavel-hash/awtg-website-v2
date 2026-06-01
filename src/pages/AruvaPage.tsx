@@ -2164,6 +2164,12 @@ export default function AruvaPage() {
         </div>
       </section>
 
+      {/* Bloom + DOK — Learning Intelligence */}
+      <BloomInsightSection />
+
+      {/* Multimodal */}
+      <MultimodalSection />
+
       {/* Platform Architecture */}
       <PlatformDiagram />
 
@@ -2210,18 +2216,11 @@ export default function AruvaPage() {
         </div>
       </section>
 
-      {/* Multimodal */}
-      <MultimodalSection />
-
       {/* Four principles */}
       <PrinciplesSection />
 
-
       {/* Who it's for */}
       <AudienceSection />
-
-      {/* Bloom + DOK */}
-      <BloomInsightSection />
 
       {/* Governance */}
       <section className="py-20 bg-white border-t border-gray-100">
@@ -2299,16 +2298,18 @@ export default function AruvaPage() {
       </section>
 
       {/* Pilot CTA */}
-      <section className="py-16 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
-          <div>
-            <p className="text-[#0a1628] font-semibold text-[16px] mb-1">Start with a focused course pilot.</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal">
-              Select 2 to 3 courses, connect your LMS and measure value before scaling across departments.
-            </p>
-          </div>
+      <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 text-center">
+          <p className="type-label text-[#228DC1] mb-4">Start Your Pilot</p>
+          <h2 className="font-heading text-[#0a1628] mb-4">
+            Ready to see Aruva<br />in your courses?
+          </h2>
+          <p className="text-[#0a1628]/65 text-base font-normal leading-relaxed max-w-lg mx-auto mb-8">
+            Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution.
+          </p>
           <Link to="/contact"
-            className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1] text-[#228DC1] text-[13px] font-semibold hover:bg-[#228DC1] hover:text-white transition-all">
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-white text-[14px] font-semibold hover:opacity-90 transition-opacity"
+            style={{ background:'#228DC1' }}>
             Request a Demo <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
           </Link>
         </div>
