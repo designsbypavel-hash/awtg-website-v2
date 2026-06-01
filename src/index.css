@@ -115,15 +115,32 @@
 
 
 @keyframes kaiOrbListen {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.06); }
+  0%, 100% { transform: scale(1.00); border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+  35%      { transform: scale(1.04); border-radius: 48% 52% 44% 56% / 54% 46% 52% 48%; }
+  68%      { transform: scale(1.07); border-radius: 52% 48% 56% 44% / 46% 54% 48% 52%; }
+}
+
+@keyframes kaiOrbUser {
+  0%   { transform: scale(1.00); border-radius: 50%; }
+  10%  { transform: scale(1.10); border-radius: 44% 56% 48% 52% / 52% 44% 56% 48%; }
+  22%  { transform: scale(0.94); border-radius: 56% 44% 54% 46% / 46% 56% 44% 54%; }
+  34%  { transform: scale(1.12); border-radius: 48% 52% 42% 58% / 58% 44% 52% 46%; }
+  46%  { transform: scale(0.95); border-radius: 52% 48% 58% 42% / 44% 52% 48% 56%; }
+  58%  { transform: scale(1.09); border-radius: 46% 54% 50% 50% / 54% 46% 52% 48%; }
+  72%  { transform: scale(0.96); border-radius: 54% 46% 44% 56% / 48% 54% 46% 52%; }
+  86%  { transform: scale(1.11); border-radius: 42% 58% 52% 48% / 56% 42% 50% 50%; }
+  100% { transform: scale(1.00); border-radius: 50%; }
 }
 
 @keyframes kaiOrbSpeak {
-  0%, 100% { transform: scale(1); }
-  20%      { transform: scale(1.14); }
-  50%      { transform: scale(0.93); }
-  75%      { transform: scale(1.10); }
+  0%   { transform: scale(1.00); border-radius: 50%; }
+  12%  { transform: scale(1.11); border-radius: 46% 54% 42% 58% / 54% 46% 58% 42%; }
+  28%  { transform: scale(0.93); border-radius: 56% 44% 58% 42% / 44% 56% 42% 58%; }
+  44%  { transform: scale(1.14); border-radius: 44% 56% 48% 52% / 58% 42% 54% 46%; }
+  60%  { transform: scale(0.95); border-radius: 58% 42% 52% 48% / 42% 58% 46% 54%; }
+  76%  { transform: scale(1.10); border-radius: 50% 50% 44% 56% / 56% 44% 50% 50%; }
+  90%  { transform: scale(0.96); border-radius: 46% 54% 56% 44% / 44% 56% 48% 52%; }
+  100% { transform: scale(1.00); border-radius: 50%; }
 }
 
 .kai-chat-scroll {

@@ -763,30 +763,42 @@ const KAI_MSG_USER = '#ffffff'          // User message row bg
 const KAI_HDR_TXT  = '#1a253e'
 const KAI_INPUT_BD = '#b3b3b3'
 
-// ─── Conversation script (shown in full in the chat view) ────────────────────
+// ─── Voice script (drives the animated voice phase) ──────────────────────────
+type VoiceSpeaker = 'ai' | 'user'
+interface VoiceTurn { speaker: VoiceSpeaker; text: string }
+const VOICE_SCRIPT: VoiceTurn[] = [
+  { speaker: 'ai',   text: "Hi there! How can I help you today?" },
+  { speaker: 'user', text: "Where's my parcel? It's been 5 days." },
+  { speaker: 'ai',   text: "Found it! Order #48291 is out for delivery — arriving today before 6 PM." },
+  { speaker: 'user', text: "Can you send me the tracking link?" },
+  { speaker: 'ai',   text: "Done! I've sent the tracking link to your registered email." },
+  { speaker: 'user', text: "Perfect. Thanks so much!" },
+  { speaker: 'ai',   text: "Happy to help! Have a great day." },
+]
+
+// ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
 type ChatRole = 'ai' | 'user' | 'signal'
 const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
   { role: 'ai',     text: "Hi there! 👋\nHow can I help you today?" },
-  { role: 'user',   text: "My order hasn't arrived. It's been 5 days." },
-  { role: 'ai',     text: "I can see order #48291. It shipped Monday and is with the courier. Delivery is due today before 6 pm.", meta: 'Order #48291 · CRM synced' },
-  { role: 'user',   text: "Perfect, thank you!" },
-  { role: 'ai',     text: "You're welcome! A satisfaction survey has been sent to your email.\n\nIs there anything else I can help with?" },
-  { role: 'signal', text: 'Resolved · 38s · CSAT sent' },
+  { role: 'user',   text: "Where's my parcel? It's been 5 days." },
+  { role: 'ai',     text: "Found it! Order #48291 is out for delivery — arriving today before 6 PM.", meta: 'Order #48291 · GPS active' },
+  { role: 'user',   text: "Can you send me the tracking link?" },
+  { role: 'ai',     text: "Done! I've sent the tracking link to your registered email." },
+  { role: 'user',   text: "Perfect. Thanks so much!" },
+  { role: 'ai',     text: "Happy to help! Have a great day." },
+  { role: 'signal', text: 'Resolved · 48s · CSAT sent' },
 ]
 
 // ─── Voice + Chat demo ────────────────────────────────────────────────────────
-type DemoPhase = 'listen' | 'user-speak' | 'ai-speak' | 'chat' | 'chat-out'
+type OrbMode   = 'listen' | 'user' | 'ai'
+type DemoPhase = 'voice' | 'chat' | 'chat-out'
 
 function KaiChatDemo() {
-  const [phase,     setPhase]     = useState<DemoPhase>('listen')
-  const [userWords, setUserWords] = useState(0)
-  const [aiWords,   setAiWords]   = useState(0)
+  const [phase,   setPhase]   = useState<DemoPhase>('voice')
+  const [orbMode, setOrbMode] = useState<OrbMode>('listen')
+  const [turnIdx, setTurnIdx] = useState(-1)
+  const [words,   setWords]   = useState(0)
   const tids = useRef<number[]>([])
-
-  const USER_LINE   = "My order hasn't arrived. It's been 5 days."
-  const AI_LINE     = "I can see order #48291. It shipped Monday and is with the courier. Delivery is due today before 6 pm."
-  const userTokens  = USER_LINE.split(' ')
-  const aiTokens    = AI_LINE.split(' ')
 
   const sched = (fn: () => void, ms: number) => {
     const id = window.setTimeout(fn, ms); tids.current.push(id)
@@ -794,52 +806,77 @@ function KaiChatDemo() {
 
   const run = () => {
     tids.current.forEach(clearTimeout); tids.current = []
-    setPhase('listen'); setUserWords(0); setAiWords(0)
+    setPhase('voice'); setOrbMode('listen'); setTurnIdx(-1); setWords(0)
 
-    let t = 3000                                               // listen phase
+    let t = 1200 // initial silence
 
-    sched(() => setPhase('user-speak'), t)
-    userTokens.forEach((_, i) => sched(() => setUserWords(i + 1), t + i * 110))
-    t += userTokens.length * 110 + 900                        // pause after user
+    VOICE_SCRIPT.forEach((turn, i) => {
+      const tokens = turn.text.split(' ')
+      const msPw   = turn.speaker === 'ai' ? 80 : 100
 
-    sched(() => { setPhase('ai-speak'); setAiWords(0) }, t)
-    aiTokens.forEach((_, i) => sched(() => setAiWords(i + 1), t + i * 90))
-    t += aiTokens.length * 90 + 1400                          // pause after AI
+      if (turn.speaker === 'user') {
+        // Brief listening pause before user speaks
+        sched(() => { setTurnIdx(i); setWords(0); setOrbMode('listen') }, t)
+        t += 700
+        sched(() => setOrbMode('user'), t)
+      } else {
+        sched(() => { setTurnIdx(i); setWords(0); setOrbMode('ai') }, t)
+      }
 
-    sched(() => setPhase('chat'), t)                          // show full chat
-    t += 5500
+      tokens.forEach((_, j) => sched(() => setWords(j + 1), t + j * msPw))
+      t += tokens.length * msPw
 
+      sched(() => setOrbMode('listen'), t)           // brief listen between turns
+      t += turn.speaker === 'ai' ? 1100 : 850
+    })
+
+    sched(() => setPhase('chat'), t)
+    t += 6000
     sched(() => setPhase('chat-out'), t)
     sched(run, t + 700)
   }
 
   useEffect(() => {
-    const id = window.setTimeout(run, 600)
+    const id = window.setTimeout(run, 500)
     return () => { clearTimeout(id); tids.current.forEach(clearTimeout) }
   }, [])
 
-  const isVoice     = phase === 'listen' || phase === 'user-speak' || phase === 'ai-speak'
-  const isChat      = phase === 'chat' || phase === 'chat-out'
+  const currentTurn = turnIdx >= 0 ? VOICE_SCRIPT[turnIdx] : null
+  const prevTurn    = turnIdx > 0  ? VOICE_SCRIPT[turnIdx - 1] : null
+  const tokens      = currentTurn ? currentTurn.text.split(' ') : []
+  const transcript  = tokens.slice(0, words).join(' ')
+
+  const isVoice    = phase === 'voice'
+  const isChat     = phase === 'chat' || phase === 'chat-out'
   const chatOpacity = phase === 'chat' ? 1 : 0
 
-  const userTranscript = userTokens.slice(0, userWords).join(' ')
-  const aiTranscript   = aiTokens.slice(0, aiWords).join(' ')
-
   const orbAnim =
-    phase === 'ai-speak'   ? 'kaiOrbSpeak 0.85s ease-in-out infinite' :
-    phase === 'user-speak' ? 'kaiOrbListen 1.6s ease-in-out infinite' :
-                             'kaiOrbListen 3s ease-in-out infinite'
+    orbMode === 'ai'   ? 'kaiOrbSpeak 1s ease-in-out infinite' :
+    orbMode === 'user' ? 'kaiOrbUser 1.1s ease-in-out infinite' :
+                         'kaiOrbListen 2.8s ease-in-out infinite'
+
+  const orbBg =
+    orbMode === 'user'
+      ? 'radial-gradient(circle at 36% 34%, #a8f0d4 0%, #34c78a 32%, #0d9e60 60%, #076b41 100%)'
+      : 'radial-gradient(circle at 36% 34%, #b8e4f9 0%, #55b0de 28%, #228DC1 58%, #0b5a88 100%)'
+
+  const orbGlow =
+    orbMode === 'user'
+      ? '0 0 48px rgba(34,193,141,0.82), 0 0 96px rgba(34,193,141,0.42), 0 0 150px rgba(34,193,141,0.18)'
+      : '0 0 48px rgba(34,141,193,0.88), 0 0 96px rgba(34,141,193,0.48), 0 0 150px rgba(34,141,193,0.20)'
+
+  // Listening label: show when waiting between turns before user speaks
+  const showListeningLabel = orbMode === 'listen' && currentTurn?.speaker === 'user' && words === 0
 
   return (
     <div className="select-none" style={{ width: '100%', maxWidth: 400 }}>
       <div style={{ padding: 6, borderRadius: 36, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
         <div style={{ position: 'relative', width: '100%', height: 588, borderRadius: 30, overflow: 'hidden' }}>
 
-          {/* ── VOICE VIEW (dark, orb + transcript) ── */}
+          {/* ── VOICE VIEW ── */}
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(180deg, #071220 0%, #0d1c31 60%, #081525 100%)',
-            display: 'flex', flexDirection: 'column',
+            background: 'linear-gradient(180deg, #071220 0%, #0d1c31 55%, #08162a 100%)',
             opacity: isVoice ? 1 : 0,
             transition: 'opacity 0.65s ease',
             pointerEvents: isVoice ? 'auto' : 'none',
@@ -850,39 +887,47 @@ function KaiChatDemo() {
               <div style={{ width: 40, height: 40, background: 'rgba(255,255,255,0.08)', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.10)' }}>
                 <img src="/kai-logo.svg" alt="Kai" style={{ width: 24, height: 24, objectFit: 'contain' }} />
               </div>
-              <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: '#fff', lineHeight: 1 }}>
-                AI Assistant
-              </span>
+              <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: '#fff', lineHeight: 1 }}>AI Assistant</span>
               <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(255,255,255,0.28)' }} />
               <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(255,255,255,0.28)', marginLeft: 4 }} />
             </div>
 
-            {/* Transcript area */}
-            <div style={{ position: 'absolute', top: 78, left: 24, right: 24, bottom: 220, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: 22 }}>
-              {!userTranscript && !aiTranscript && (
-                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)', textAlign: 'center', letterSpacing: '0.06em', margin: 0 }}>Listening…</p>
+            {/* Transcript area — prev turn dimmed, current turn active */}
+            <div style={{ position: 'absolute', top: 76, left: 24, right: 24, bottom: 215, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: 18, overflow: 'hidden' }}>
+              {!currentTurn && !prevTurn && (
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.22)', textAlign: 'center', letterSpacing: '0.06em', margin: 0 }}>Listening…</p>
               )}
-              {userTranscript && (
-                <div>
-                  <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 6px' }}>You</p>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.80)', lineHeight: 1.65, margin: 0 }}>{userTranscript}</p>
+              {prevTurn && (
+                <div style={{ opacity: 0.32 }}>
+                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 4px',
+                    color: prevTurn.speaker === 'ai' ? 'rgba(106,193,239,1)' : 'rgba(255,255,255,0.7)' }}>
+                    {prevTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
+                  </p>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', lineHeight: 1.55, margin: 0 }}>{prevTurn.text}</p>
                 </div>
               )}
-              {aiTranscript && (
+              {currentTurn && (
                 <div>
-                  <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(106,193,239,0.65)', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 6px' }}>AI Assistant</p>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.88)', lineHeight: 1.65, margin: 0 }}>{aiTranscript}</p>
+                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 6px',
+                    color: currentTurn.speaker === 'ai' ? 'rgba(106,193,239,1)' : 'rgba(255,255,255,0.6)' }}>
+                    {currentTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
+                  </p>
+                  {showListeningLabel
+                    ? <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.30)', letterSpacing: '0.06em', margin: 0 }}>Listening…</p>
+                    : <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.92)', lineHeight: 1.65, margin: 0 }}>{transcript}</p>
+                  }
                 </div>
               )}
             </div>
 
             {/* Orb */}
-            <div style={{ position: 'absolute', bottom: 70, left: '50%', transform: 'translateX(-50%)' }}>
+            <div style={{ position: 'absolute', bottom: 68, left: '50%', transform: 'translateX(-50%)' }}>
               <div style={{
-                width: 90, height: 90, borderRadius: '50%',
-                background: 'radial-gradient(circle at 36% 34%, #b8e4f9 0%, #55b0de 28%, #228DC1 58%, #0b5a88 100%)',
-                boxShadow: '0 0 48px rgba(34,141,193,0.88), 0 0 96px rgba(34,141,193,0.48), 0 0 150px rgba(34,141,193,0.20)',
+                width: 92, height: 92,
+                background: orbBg,
+                boxShadow: orbGlow,
                 animation: orbAnim,
+                transition: 'background 0.6s ease, box-shadow 0.6s ease',
               }} />
             </div>
 
