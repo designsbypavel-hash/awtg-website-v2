@@ -1009,62 +1009,53 @@ const MM_STEPS = [
   { label:'Check ✓', val:'4 − 10 + 6 = 0 ✓' },
 ]
 
-const MM_TEXT_EXAMPLES = [
+const MM_TEXT_CONVERSATIONS = [
   {
-    topic: 'Quadratic factoring',
-    equation: 'x^2 - 5x + 6 = 0',
-    steps: [
-      { label:'Given',  val:'x^2 - 5x + 6 = 0' },
-      { label:'Factor', val:'(x - 2)(x - 3) = 0' },
-      { label:'Solve',  val:'x = 2 or x = 3' },
-      { label:'Check',  val:'4 - 10 + 6 = 0' },
-    ],
-    result: '2 solutions found',
-    confidence: 96,
+    name: 'Maria Garcia',
+    initials: 'MG',
+    style: 'Analogy-oriented',
+    accent: '#f59e0b',
+    soft: '#fff7ed',
+    border: '#fed7aa',
+    prompt: 'What does mitochondria actually do?',
+    response: 'Think of mitochondria as the power station of the cell. Just like a city needs electricity, the cell needs ATP to keep everything running.',
+    followUp: 'So mitochondria basically create energy for the cell?',
+    result: 'Analogy understood',
+    confidence: 92,
   },
   {
-    topic: 'Linear equation',
-    equation: '3x + 7 = 22',
-    steps: [
-      { label:'Given',  val:'3x + 7 = 22' },
-      { label:'Move',   val:'3x = 22 - 7' },
-      { label:'Divide', val:'x = 15 / 3' },
-      { label:'Check',  val:'3(5) + 7 = 22' },
-    ],
-    result: 'x = 5',
-    confidence: 99,
-  },
-  {
-    topic: 'Percentage change',
-    equation: '48 increased by 25%',
-    steps: [
-      { label:'Base',   val:'48 x 0.25 = 12' },
-      { label:'Add',    val:'48 + 12 = 60' },
-      { label:'Result', val:'new value = 60' },
-      { label:'Check',  val:'60 / 48 = 1.25' },
-    ],
-    result: '25% increase verified',
+    name: 'Elena Rossi',
+    initials: 'ER',
+    style: 'Analytical',
+    accent: '#7c3aed',
+    soft: '#f5f3ff',
+    border: '#ddd6fe',
+    prompt: 'If oxygen decreases, what happens to ATP?',
+    response: 'ATP production becomes less efficient because aerobic respiration depends on oxygen. The cell has less usable energy available.',
+    followUp: 'So oxygen level changes the energy output?',
+    result: 'Reasoning depth improved',
     confidence: 94,
   },
 ]
 
 function MMTextDemo() {
   const [active, setActive] = React.useState(0)
-  const [score, setScore] = React.useState(MM_TEXT_EXAMPLES[0].confidence)
-  const activeExample = MM_TEXT_EXAMPLES[active]
-  const stepCount = MM_STEPS.length
+  const [score, setScore] = React.useState(MM_TEXT_CONVERSATIONS[0].confidence)
+  const activeStudent = MM_TEXT_CONVERSATIONS[active]
+  const activeExample = { equation: '', topic: '', result: '', steps: [] as Array<{ label: string; val: string }> }
+  const stepCount = 0
 
   React.useEffect(() => {
     const id = setInterval(() => {
-      setActive(prev => (prev + 1) % MM_TEXT_EXAMPLES.length)
-    }, 2200)
+      setActive(prev => (prev + 1) % MM_TEXT_CONVERSATIONS.length)
+    }, 2600)
     return () => clearInterval(id)
   }, [])
 
   React.useEffect(() => {
     let raf: number | undefined
     const from = score
-    const to = activeExample.confidence
+    const to = activeStudent.confidence
     const start = performance.now()
     const step = (now: number) => {
       const pct = Math.min((now - start) / 520, 1)
@@ -1076,6 +1067,54 @@ function MMTextDemo() {
     return () => { if (raf) cancelAnimationFrame(raf) }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
+
+  return (
+    <div style={{ flex:1, display:'flex', flexDirection:'column', gap:14, padding:'24px 28px' }}>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(2, minmax(0, 1fr))', gap:10 }}>
+        {MM_TEXT_CONVERSATIONS.map((student, index) => (
+          <button key={student.name} type="button" onClick={() => setActive(index)}
+            style={{ display:'flex', alignItems:'center', gap:10, textAlign:'left', padding:'10px 12px', borderRadius:14, background: active === index ? student.soft : '#f8fafc', border:`1px solid ${active === index ? student.border : '#e5e7eb'}`, boxShadow: active === index ? `0 10px 24px ${student.accent}22` : 'none', transition:'all 0.25s ease' }}>
+            <span style={{ width:34, height:34, borderRadius:10, background: active === index ? student.accent : '#e5e7eb', color: active === index ? '#fff' : '#94a3b8', display:'flex', alignItems:'center', justifyContent:'center', fontSize:11, fontWeight:900, flexShrink:0 }}>{student.initials}</span>
+            <span style={{ minWidth:0 }}>
+              <span style={{ display:'block', fontSize:11, fontWeight:900, color: active === index ? student.accent : 'rgba(10,22,40,0.42)', letterSpacing:'0.12em', textTransform:'uppercase', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{student.name}</span>
+              <span style={{ display:'block', fontSize:12, fontWeight:700, color:'rgba(10,22,40,0.62)', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{student.style}</span>
+            </span>
+          </button>
+        ))}
+      </div>
+      <div key={active} style={{ flex:1, display:'grid', gridTemplateColumns:'minmax(0, 1fr) 104px', gap:14, alignItems:'stretch' }}>
+        <div style={{ display:'flex', flexDirection:'column', gap:10, justifyContent:'center' }}>
+          <div style={{ alignSelf:'flex-end', maxWidth:'78%', padding:'10px 14px', borderRadius:'18px 18px 4px 18px', background:activeStudent.accent, boxShadow:`0 12px 22px ${activeStudent.accent}28`, opacity:0, transform:'translateY(6px)', animation:'mmCardIn 0.32s ease 0.05s forwards' }}>
+            <p style={{ color:'#fff', fontSize:13, lineHeight:1.5, fontWeight:600 }}>{activeStudent.prompt}</p>
+          </div>
+          <div style={{ display:'flex', alignItems:'flex-start', gap:10, opacity:0, transform:'translateY(6px)', animation:'mmCardIn 0.32s ease 0.25s forwards' }}>
+            <div style={{ width:30, height:30, borderRadius:10, background:'#fff', border:'1px solid #e5e7eb', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 4px 12px rgba(10,22,40,0.08)', flexShrink:0 }}>
+              <img src="/aruva-logo.png" alt="Aruva" style={{ height:12, width:'auto', objectFit:'contain' }} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
+            </div>
+            <div style={{ flex:1, padding:'13px 15px', borderRadius:'4px 18px 18px 18px', background:'#fff', border:'1px solid #eef2f7', boxShadow:'0 10px 24px rgba(10,22,40,0.06)' }}>
+              <p style={{ color:'rgba(10,22,40,0.78)', fontSize:13, lineHeight:1.55 }}>{activeStudent.response}</p>
+            </div>
+          </div>
+          <div style={{ alignSelf:'flex-end', maxWidth:'74%', padding:'10px 14px', borderRadius:'18px 18px 4px 18px', background:'#f8fafc', border:'1px solid #eef2f7', opacity:0, transform:'translateY(6px)', animation:'mmCardIn 0.32s ease 0.45s forwards' }}>
+            <p style={{ color:'rgba(10,22,40,0.74)', fontSize:13, lineHeight:1.45 }}>{activeStudent.followUp}</p>
+          </div>
+        </div>
+        <div style={{ display:'flex', flexDirection:'column', justifyContent:'center', gap:12, padding:'12px', borderRadius:14, background:activeStudent.soft, border:`1px solid ${activeStudent.border}` }}>
+          <div>
+            <p style={{ fontSize:9, color:'rgba(10,22,40,0.42)', fontWeight:900, textTransform:'uppercase', letterSpacing:'0.12em', marginBottom:4 }}>Result</p>
+            <p style={{ fontSize:13, color:activeStudent.accent, fontWeight:900, lineHeight:1.25 }}>{activeStudent.result}</p>
+          </div>
+          <div>
+            <p style={{ fontSize:22, color:activeStudent.accent, fontWeight:900, lineHeight:1 }}>{score}%</p>
+            <p style={{ fontSize:9, color:'rgba(10,22,40,0.40)', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.08em', marginTop:2 }}>confidence</p>
+          </div>
+          <div style={{ width:'100%', height:7, borderRadius:999, background:'rgba(10,22,40,0.08)', overflow:'hidden' }}>
+            <div style={{ height:'100%', width:`${score}%`, borderRadius:999, background:activeStudent.accent, transition:'width 0.18s ease' }}/>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'30px 36px' }}>
