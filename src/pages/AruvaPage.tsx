@@ -2119,16 +2119,17 @@ function BloomInsightSection() {
                       <stop offset="100%" stopColor="#fda4af"/>
                     </linearGradient>
                     <linearGradient id={`ravg-${active}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#94a3b8"/>
-                      <stop offset="100%" stopColor="#cbd5e1"/>
+                      <stop offset="0%" stopColor="#f59e0b"/>
+                      <stop offset="50%" stopColor="#fb923c"/>
+                      <stop offset="100%" stopColor="#fbbf24"/>
                     </linearGradient>
                     <radialGradient id={`ravgFill-${active}`} cx="50%" cy="50%" r="62%">
-                      <stop offset="0%" stopColor="#94a3b8" stopOpacity="0.11"/>
-                      <stop offset="72%" stopColor="#cbd5e1" stopOpacity="0.075"/>
-                      <stop offset="100%" stopColor="#f8fafc" stopOpacity="0.02"/>
+                      <stop offset="0%" stopColor="#fbbf24" stopOpacity="0.08"/>
+                      <stop offset="72%" stopColor="#f59e0b" stopOpacity="0.04"/>
+                      <stop offset="100%" stopColor="#fffbeb" stopOpacity="0.01"/>
                     </radialGradient>
                     <filter id={`ravgGlow-${active}`} x="-40%" y="-40%" width="180%" height="180%">
-                      <feGaussianBlur stdDeviation="2.2" result="b"/>
+                      <feGaussianBlur stdDeviation="3.5" result="b"/>
                       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
                     </filter>
                   </defs>
@@ -2148,14 +2149,15 @@ function BloomInsightSection() {
                       stroke="rgba(10,22,40,0.06)" strokeWidth="1" />
                   ))}
 
-                  {/* Cohort average — dashed grey polygon */}
+                  {/* Cohort average — amber dashed polygon */}
                   <polygon points={poly(sem.cohortAvg)} fill={`url(#ravgFill-${active})`}
-                    stroke={`url(#ravg-${active})`} strokeWidth="2"
-                    strokeLinejoin="round" strokeLinecap="round" opacity="0.9"
-                    filter={`url(#ravgGlow-${active})`} />
+                    stroke={`url(#ravg-${active})`} strokeWidth="2.5"
+                    strokeDasharray="7 4" strokeLinejoin="round" strokeLinecap="round"
+                    opacity="0.95" filter={`url(#ravgGlow-${active})`} />
                   <polygon points={poly(sem.cohortAvg)} fill="none"
-                    stroke="rgba(255,255,255,0.72)" strokeWidth="0.9"
-                    strokeLinejoin="round" strokeLinecap="round" opacity="0.8" />
+                    stroke="rgba(255,255,255,0.55)" strokeWidth="0.8"
+                    strokeDasharray="7 4" strokeLinejoin="round" strokeLinecap="round"
+                    opacity="0.6" />
 
                   {/* Student filled area */}
                   <polygon points={poly(disp)} fill={`url(#rfill-${active})`} stroke="none" />
@@ -2214,8 +2216,8 @@ function BloomInsightSection() {
                     <span className="text-[11px] font-semibold text-[#0a1628]/60">Maria</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <svg width="18" height="5" viewBox="0 0 18 5"><line x1="1" y1="2.5" x2="17" y2="2.5" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round"/><circle cx="9" cy="2.5" r="2" fill="#cbd5e1"/></svg>
-                    <span className="text-[11px] font-semibold text-[#0a1628]/45">Class avg</span>
+                    <svg width="22" height="6" viewBox="0 0 22 6"><line x1="1" y1="3" x2="21" y2="3" stroke="#f59e0b" strokeWidth="2.5" strokeDasharray="5 3" strokeLinecap="round"/></svg>
+                    <span className="text-[11px] font-semibold text-[#f59e0b]">Class avg</span>
                   </div>
                 </div>
               </div>
