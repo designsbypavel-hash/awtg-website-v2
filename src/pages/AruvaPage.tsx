@@ -948,19 +948,19 @@ const BLOOM_SEMS = [
     bloom:[65,55,50,42,28,52],
     cohortAvg:[63,61,58,60,59,62],
     headline:'Higher-order thinking gaps flagged early',
-    detail:'Adam recalls facts well but Evaluate and Analyse are underdeveloped. Aruva surfaces this in week 2, not at the end of term.',
+    detail:'The student recalls facts well but Evaluate and Analyse are underdeveloped. Aruva surfaces this in week 2, not at the end of term.',
     delta: null, accent:'#e11d48' },
   { id:'S2', label:'Semester 2', grade:71, gradeLabel:'C+',
     bloom:[78,72,70,66,52,74],
     cohortAvg:[67,65,63,64,62,66],
     headline:'Targeted intervention closes the evaluation gap',
-    detail:'Focused practice on Evaluate (weeks 4 to 6) drove a 24-point jump in that dimension. Overall grade improved 9%. Adam\'s biggest single semester gain.',
+    detail:'Focused practice on Evaluate (weeks 4 to 6) drove a 24-point jump in that dimension. Overall grade improved 9%. Their biggest single semester gain.',
     delta:'+9%', accent:'#d97706' },
   { id:'S3', label:'Semester 3', grade:81, gradeLabel:'B',
     bloom:[88,85,84,80,76,91],
     cohortAvg:[72,70,69,71,70,74],
     headline:'Balanced mastery across all six levels',
-    detail:'All six dimensions above 76%. Adam is now in the top quartile of his cohort, a 19-point improvement from Semester 1.',
+    detail:'All six dimensions above 76%. Now in the top quartile of the cohort, a 19-point improvement from Semester 1.',
     delta:'+19%', accent:'#059669' },
 ]
 const BLOOM_LABELS  = ['Remember','Understand','Apply','Analyse','Evaluate','Create']
@@ -971,7 +971,7 @@ const DOK_SEMS = [
   { id:'S1', label:'Semester 1', grade:62, gradeLabel:'D+',
     dok:[72, 54, 31, 38], cohortAvg:[68, 62, 55, 52],
     headline:'Strategic thinking is the ceiling',
-    detail:'Adam handles recall and surface-level skills confidently, but DOK 3 and DOK 4 tasks reveal a clear ceiling. Aruva flags this gap before the mid-term.',
+    detail:'Strong recall and surface-level skills, but DOK 3 and DOK 4 tasks reveal a clear ceiling. Aruva flags this gap before the mid-term.',
     delta: null, accent:'#e11d48' },
   { id:'S2', label:'Semester 2', grade:71, gradeLabel:'C+',
     dok:[82, 71, 58, 62], cohortAvg:[70, 65, 58, 55],
@@ -981,7 +981,7 @@ const DOK_SEMS = [
   { id:'S3', label:'Semester 3', grade:81, gradeLabel:'B',
     dok:[91, 86, 79, 83], cohortAvg:[74, 70, 66, 63],
     headline:'All four depths operating at mastery',
-    detail:'Adam is performing above 79% across all DOK levels. Extended thinking tasks that were previously a gap are now a strength. Top quartile cohort result.',
+    detail:'Performing above 79% across all DOK levels. Extended thinking tasks that were previously a gap are now a strength. Top quartile cohort result.',
     delta:'+19%', accent:'#059669' },
 ]
 const DOK_LABELS  = ['DOK 1','DOK 2','DOK 3','DOK 4']
@@ -1875,7 +1875,7 @@ function BloomInsightSection() {
             One student.<br />Three semesters. One clear picture.
           </h2>
           <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.75]">
-            Adam's grade climbed from 62% to 81% over three semesters. Aruva shows exactly why, and which skill gap was holding him back.
+            Grade climbed from 62% to 81% over three semesters. Aruva shows exactly why, and which skill gap was holding them back.
           </p>
         </div>
 
