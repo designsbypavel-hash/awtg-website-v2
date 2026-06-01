@@ -764,292 +764,207 @@ const KAI_HDR_TXT  = '#1a253e'
 const KAI_INPUT_BD = '#b3b3b3'
 const KAI_CHIP_CLR = '#4b94c1'          // chip border + text colour
 
-// Suggestion chips shown after last AI message
-const CHIPS = ['Track my order', 'Reset my password', 'Contact support']
-
-// ─── Conversation script ──────────────────────────────────────────────────────
+// ─── Conversation script (shown in full in the chat view) ────────────────────
 type ChatRole = 'ai' | 'user' | 'signal'
-interface LiveMsg { id: number; role: ChatRole; text: string; meta?: string }
-
 const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
-  { role: 'ai',   text: "Hi there! 👋\nHow can I help you today?" },
-  { role: 'user', text: "My order hasn't arrived. It's been 5 days." },
-  { role: 'ai',   text: "I can see order #48291. It shipped Monday and is with the courier. Delivery is due today before 6 pm.", meta: 'Order #48291 · CRM synced' },
-  { role: 'user', text: "Perfect, thank you!" },
-  { role: 'ai',   text: "You're welcome! A satisfaction survey has been sent to your email.\n\nIs there anything else I can help with?" },
+  { role: 'ai',     text: "Hi there! 👋\nHow can I help you today?" },
+  { role: 'user',   text: "My order hasn't arrived. It's been 5 days." },
+  { role: 'ai',     text: "I can see order #48291. It shipped Monday and is with the courier. Delivery is due today before 6 pm.", meta: 'Order #48291 · CRM synced' },
+  { role: 'user',   text: "Perfect, thank you!" },
+  { role: 'ai',     text: "You're welcome! A satisfaction survey has been sent to your email.\n\nIs there anything else I can help with?" },
   { role: 'signal', text: 'Resolved · 38s · CSAT sent' },
 ]
-const HOLD_AFTER = [2000, 600, 2400, 600, 2800, 3400]
-const AI_TYP_MS  = [0,    0,   1500, 0,   1400, 0   ]
 
-// ─── Typing indicator — flat row matching Figma message layout ────────────────
-function TypingDots() {
-  return (
-    <div style={{
-      width:'100%', background:KAI_MSG_AI,
-      padding:'12px 12px 14px',
-      display:'flex', flexDirection:'column', gap:8,
-    }}>
-      <span style={{ fontSize:12, fontWeight:700, color:'#000', lineHeight:1, whiteSpace:'nowrap' }}>
-        AI Assistant
-      </span>
-      <div style={{
-        display:'inline-flex', alignItems:'center', gap:6,
-        background:'rgba(255,255,255,0.85)', borderRadius:14,
-        padding:'9px 13px', alignSelf:'flex-start',
-        boxShadow:'0 1px 3px rgba(0,0,0,0.07)',
-      }}>
-        {[0,1,2].map(i => (
-          <span key={i} style={{
-            display:'block', width:7, height:7, borderRadius:'50%',
-            background:'#228DC1', opacity:0.75,
-          }}/>
-        ))}
-      </div>
-    </div>
-  )
-}
+// ─── Voice + Chat demo ────────────────────────────────────────────────────────
+type DemoPhase = 'listen' | 'user-speak' | 'ai-speak' | 'chat' | 'chat-out'
 
-// ─── Message row — Figma: full-width bands, alternating bg, label above text ──
-function MsgRow({ msg }: { msg: LiveMsg }) {
-  if (msg.role === 'signal') {
-    return (
-      <div style={{
-        display:'flex', justifyContent:'center', padding:'10px 12px',
-      }}>
-        <span style={{
-          display:'inline-flex', alignItems:'center', gap:5,
-          fontSize:11, fontWeight:600, color:'#059669',
-          background:'rgba(5,150,105,0.12)', borderRadius:99, padding:'4px 14px',
-        }}>
-          ✓&nbsp;{msg.text}
-        </span>
-      </div>
-    )
-  }
-
-  const isAI   = msg.role === 'ai'
-  const bg     = isAI ? KAI_MSG_AI : KAI_MSG_USER
-  const label  = isAI ? 'AI Assistant' : 'You'
-
-  return (
-    <div style={{
-      width:'100%', background:bg,
-      padding:'12px 12px 14px',
-      display:'flex', flexDirection:'column', gap:6,
-      wordBreak:'break-word',
-    }}>
-      {/* Label — Figma: Nunito Bold 12px #000 */}
-      <span style={{ fontSize:12, fontWeight:700, color:'#000', lineHeight:1, whiteSpace:'nowrap' }}>
-        {label}
-      </span>
-      {/* Body — Figma: Regular 16px rgba(0,0,0,0.87), adapted to 14px for 400px width */}
-      <p style={{ fontSize:14, lineHeight:1.65, color:'rgba(0,0,0,0.87)', margin:0, whiteSpace:'pre-line' }}>
-        {msg.text}
-      </p>
-      {/* Meta badge (AI only) */}
-      {msg.meta && isAI && (
-        <span style={{
-          display:'inline-flex', alignItems:'center', gap:4, alignSelf:'flex-start',
-          fontSize:10, fontWeight:600, color:'#228DC1',
-          background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px',
-        }}>
-          ⚡ {msg.meta}
-        </span>
-      )}
-    </div>
-  )
-}
-
-// ─── Main chat demo component ─────────────────────────────────────────────────
 function KaiChatDemo() {
-  const [msgs,      setMsgs]      = useState<LiveMsg[]>([])
-  const [typing,    setTyping]    = useState(false)
-  const [fading,    setFading]    = useState(false)
-  const [showChips, setShowChips] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const tids      = useRef<number[]>([])
-  const msgId     = useRef(0)
+  const [phase,     setPhase]     = useState<DemoPhase>('listen')
+  const [userWords, setUserWords] = useState(0)
+  const [aiWords,   setAiWords]   = useState(0)
+  const tids = useRef<number[]>([])
+
+  const USER_LINE   = "My order hasn't arrived. It's been 5 days."
+  const AI_LINE     = "I can see order #48291. It shipped Monday and is with the courier. Delivery is due today before 6 pm."
+  const userTokens  = USER_LINE.split(' ')
+  const aiTokens    = AI_LINE.split(' ')
 
   const sched = (fn: () => void, ms: number) => {
-    const id = window.setTimeout(fn, ms)
-    tids.current.push(id)
+    const id = window.setTimeout(fn, ms); tids.current.push(id)
   }
 
-  const runChat = () => {
-    tids.current.forEach(clearTimeout)
-    tids.current = []
-    setMsgs([])
-    setTyping(false)
-    setFading(false)
-    setShowChips(false)
+  const run = () => {
+    tids.current.forEach(clearTimeout); tids.current = []
+    setPhase('listen'); setUserWords(0); setAiWords(0)
 
-    let t = 800
-    CHAT_SCRIPT.forEach((msg, i) => {
-      const typMs = msg.role === 'ai' ? AI_TYP_MS[i] : 0
-      if (typMs > 0) {
-        sched(() => setTyping(true), t)
-        t += typMs
-        sched(() => {
-          setTyping(false)
-          setMsgs(prev => [...prev, { ...msg, id: msgId.current++ }])
-          // Show chips with the second-to-last AI message
-          if (i === CHAT_SCRIPT.length - 2) sched(() => setShowChips(true), 300)
-        }, t)
-      } else {
-        sched(() => setMsgs(prev => [...prev, { ...msg, id: msgId.current++ }]), t)
-      }
-      t += HOLD_AFTER[i]
-    })
-    sched(() => setFading(true), t)
-    sched(() => runChat(), t + 600)
+    let t = 3000                                               // listen phase
+
+    sched(() => setPhase('user-speak'), t)
+    userTokens.forEach((_, i) => sched(() => setUserWords(i + 1), t + i * 110))
+    t += userTokens.length * 110 + 900                        // pause after user
+
+    sched(() => { setPhase('ai-speak'); setAiWords(0) }, t)
+    aiTokens.forEach((_, i) => sched(() => setAiWords(i + 1), t + i * 90))
+    t += aiTokens.length * 90 + 1400                          // pause after AI
+
+    sched(() => setPhase('chat'), t)                          // show full chat
+    t += 5500
+
+    sched(() => setPhase('chat-out'), t)
+    sched(run, t + 700)
   }
 
   useEffect(() => {
-    const id = window.setTimeout(runChat, 500)
+    const id = window.setTimeout(run, 600)
     return () => { clearTimeout(id); tids.current.forEach(clearTimeout) }
   }, [])
 
-  useEffect(() => {
-    const el = scrollRef.current
-    if (!el) return
-    el.scrollTo({ top: el.scrollHeight, behavior: 'instant' })
-  }, [msgs, typing])
+  const isVoice     = phase === 'listen' || phase === 'user-speak' || phase === 'ai-speak'
+  const isChat      = phase === 'chat' || phase === 'chat-out'
+  const chatOpacity = phase === 'chat' ? 1 : 0
+
+  const userTranscript = userTokens.slice(0, userWords).join(' ')
+  const aiTranscript   = aiTokens.slice(0, aiWords).join(' ')
+
+  const orbAnim =
+    phase === 'ai-speak'   ? 'kaiOrbSpeak 0.85s ease-in-out infinite' :
+    phase === 'user-speak' ? 'kaiOrbListen 1.6s ease-in-out infinite' :
+                             'kaiOrbListen 3s ease-in-out infinite'
 
   return (
-    <div className="select-none" style={{
-      width:'100%',
-      maxWidth:400,
-    }}>
+    <div className="select-none" style={{ width: '100%', maxWidth: 400 }}>
+      <div style={{ padding: 6, borderRadius: 36, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
+        <div style={{ position: 'relative', width: '100%', height: 588, borderRadius: 30, overflow: 'hidden' }}>
 
-      {/*
-        ── Gradient border technique ──
-        CSS border can't be a gradient directly on a rounded box.
-        Solution: outer div carries the gradient as its background + padding:6px
-        so the gradient peeks through as the "border". Inner div clips content.
-      */}
-      <div style={{
-        padding:6,
-        borderRadius:36,           /* 30 (inner) + 6 (padding) */
-        background:KAI_HDR_GRAD,
-        boxShadow:'0px 4px 4px 0px rgba(0,0,0,0.25)',
-      }}>
-      <div style={{
-        position:'relative',
-        width:'100%', height:588,  /* 600 − 12 (6px top+bottom padding) */
-        borderRadius:30,
-        background:KAI_HDR_GRAD,
-        overflow:'hidden',
-      }}>
-
-        {/* ── Header ── Figma: left-20 top-16, gap-8, 40×40 logo, SemiBold 16px */}
-        <div style={{
-          position:'absolute', top:16, left:20, right:20,
-          display:'flex', alignItems:'center', gap:8,
-        }}>
+          {/* ── VOICE VIEW (dark, orb + transcript) ── */}
           <div style={{
-            width:40, height:40, background:'#fff', borderRadius:12, flexShrink:0,
-            display:'flex', alignItems:'center', justifyContent:'center',
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(180deg, #071220 0%, #0d1c31 60%, #081525 100%)',
+            display: 'flex', flexDirection: 'column',
+            opacity: isVoice ? 1 : 0,
+            transition: 'opacity 0.65s ease',
+            pointerEvents: isVoice ? 'auto' : 'none',
+            zIndex: 1,
           }}>
-            <img src="/kai-logo.svg" alt="Kai" style={{ width:24, height:24, objectFit:'contain' }} />
-          </div>
-          <span style={{ flex:1, fontFamily:'Roboto,sans-serif', fontWeight:600,
-                         fontSize:16, color:KAI_HDR_TXT, lineHeight:1 }}>
-            AI Assistant
-          </span>
-          <FontAwesomeIcon icon={faGear}        style={{ width:18, height:18, color:'rgba(26,37,62,0.5)' }} />
-          <FontAwesomeIcon icon={faChevronDown} style={{ width:18, height:18, color:'rgba(26,37,62,0.5)', marginLeft:4 }} />
-        </div>
+            {/* Header */}
+            <div style={{ position: 'absolute', top: 16, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ width: 40, height: 40, background: 'rgba(255,255,255,0.08)', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.10)' }}>
+                <img src="/kai-logo.svg" alt="Kai" style={{ width: 24, height: 24, objectFit: 'contain' }} />
+              </div>
+              <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: '#fff', lineHeight: 1 }}>
+                AI Assistant
+              </span>
+              <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(255,255,255,0.28)' }} />
+              <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(255,255,255,0.28)', marginLeft: 4 }} />
+            </div>
 
-        {/* ── Chat area ── Figma: top-70, rounded-30, bg white, gap-4 */}
-        <div style={{
-          position:'absolute', top:70, left:0, right:0, bottom:0,
-          background:'#fff',
-          borderRadius:30,
-          display:'flex', flexDirection:'column', gap:4,
-          overflow:'hidden',
-        }}>
-
-          {/* ── Messages scroll — bg white (alternating per row), gap 0 so rows butt up */}
-          <div
-            ref={scrollRef}
-            className="kai-chat-scroll"
-            style={{
-              flex:1, overflowY:'auto', overflowX:'hidden',
-              background:'#fff',
-              display:'flex', flexDirection:'column', gap:0,
-              opacity: fading ? 0 : 1,
-              transition: fading ? 'opacity 0.45s ease' : 'opacity 0s',
-            }}
-          >
-            {msgs.map(m => <MsgRow key={m.id} msg={m} />)}
-            {typing && <TypingDots />}
-          </div>
-
-          {/* ── Suggestion chips ── Figma: gap-4, px-8 py-2, chip border #4b94c1 rounded-8 p-6, text 12px */}
-          {showChips && (
-            <div style={{
-              position:'relative', flexShrink:0,
-              display:'flex', gap:4, alignItems:'flex-start',
-              padding:'2px 8px', overflowX:'hidden',
-            }}>
-              {CHIPS.map(chip => (
-                <div key={chip} style={{
-                  border:`1px solid ${KAI_CHIP_CLR}`, borderRadius:8,
-                  padding:'6px 8px', whiteSpace:'nowrap',
-                  background:'#fff', flexShrink:0, cursor:'pointer',
-                }}>
-                  <span style={{ fontSize:12, color:KAI_CHIP_CLR, lineHeight:'normal' }}>
-                    {chip}
-                  </span>
+            {/* Transcript area */}
+            <div style={{ position: 'absolute', top: 78, left: 24, right: 24, bottom: 220, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: 22 }}>
+              {!userTranscript && !aiTranscript && (
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)', textAlign: 'center', letterSpacing: '0.06em', margin: 0 }}>Listening…</p>
+              )}
+              {userTranscript && (
+                <div>
+                  <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 6px' }}>You</p>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.80)', lineHeight: 1.65, margin: 0 }}>{userTranscript}</p>
                 </div>
-              ))}
-              {/* Right fade-out — Figma: linear-gradient(-90deg, white 45.9%, transparent) */}
+              )}
+              {aiTranscript && (
+                <div>
+                  <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(106,193,239,0.65)', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 6px' }}>AI Assistant</p>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.88)', lineHeight: 1.65, margin: 0 }}>{aiTranscript}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Orb */}
+            <div style={{ position: 'absolute', bottom: 70, left: '50%', transform: 'translateX(-50%)' }}>
               <div style={{
-                position:'absolute', right:0, top:0, bottom:0, width:48, pointerEvents:'none',
-                background:'linear-gradient(-90deg, #fff 45%, transparent)',
+                width: 90, height: 90, borderRadius: '50%',
+                background: 'radial-gradient(circle at 36% 34%, #b8e4f9 0%, #55b0de 28%, #228DC1 58%, #0b5a88 100%)',
+                boxShadow: '0 0 48px rgba(34,141,193,0.88), 0 0 96px rgba(34,141,193,0.48), 0 0 150px rgba(34,141,193,0.20)',
+                animation: orbAnim,
               }} />
             </div>
-          )}
 
-          {/* ── Input bar ── Figma node 2691:17421: border-t 0.5px #b3b3b3, px-24 py-12, items-center */}
-          <div style={{
-            borderTop:`0.5px solid ${KAI_INPUT_BD}`,
-            padding:'12px 24px',
-            display:'flex', alignItems:'center', gap:8,
-            background:'#fff', flexShrink:0,
-          }}>
-            <span style={{
-              flex:1, minWidth:0,
-              fontFamily:'Roboto,sans-serif', fontWeight:600,
-              fontSize:16, lineHeight:'normal',
-              color:'rgba(0,0,0,0.38)', userSelect:'none',
-            }}>
-              Type here...
-            </span>
-            <div style={{ padding:12, borderRadius:12, flexShrink:0,
-                          display:'flex', alignItems:'center', cursor:'pointer' }}>
-              <FontAwesomeIcon icon={faPaperPlane}
-                style={{ width:20, height:20, color:'rgba(0,0,0,0.38)' }} />
+            {/* Powered by */}
+            <div style={{ position: 'absolute', bottom: 12, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
+              <span style={{ fontFamily: 'Roboto,sans-serif', fontWeight: 300, fontSize: 7, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.04em' }}>
+                Kai · powered by AWTG
+              </span>
             </div>
           </div>
 
-          {/* ── "Powered by" ── Figma: absolute bottom-4, ExtraLight 6px */}
+          {/* ── CHAT VIEW (full conversation revealed at once) ── */}
           <div style={{
-            position:'absolute', bottom:4, left:0, right:0,
-            display:'flex', justifyContent:'center', alignItems:'center', gap:3,
-            pointerEvents:'none',
+            position: 'absolute', inset: 0,
+            background: KAI_HDR_GRAD,
+            opacity: chatOpacity,
+            transition: 'opacity 0.65s ease',
+            pointerEvents: isChat ? 'auto' : 'none',
+            zIndex: 2,
           }}>
-            <img src="/kai-logo.svg" alt="" style={{ width:8, height:8, opacity:0.22 }} />
-            <span style={{ fontFamily:'Roboto,sans-serif', fontWeight:300,
-                           fontSize:7, color:'rgba(26,37,62,0.28)', letterSpacing:'0.03em' }}>
-              Kai · powered by AWTG
-            </span>
+            {/* Header */}
+            <div style={{ position: 'absolute', top: 16, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ width: 40, height: 40, background: '#fff', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/kai-logo.svg" alt="Kai" style={{ width: 24, height: 24, objectFit: 'contain' }} />
+              </div>
+              <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: KAI_HDR_TXT, lineHeight: 1 }}>
+                AI Assistant
+              </span>
+              <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)' }} />
+              <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)', marginLeft: 4 }} />
+            </div>
+
+            {/* Chat area */}
+            <div style={{ position: 'absolute', top: 70, left: 0, right: 0, bottom: 0, background: '#fff', borderRadius: 30, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+              {/* All messages visible at once */}
+              <div className="kai-chat-scroll" style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+                {CHAT_SCRIPT.map((msg, i) => {
+                  if (msg.role === 'signal') return (
+                    <div key={i} style={{ display: 'flex', justifyContent: 'center', padding: '10px 12px' }}>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, color: '#059669', background: 'rgba(5,150,105,0.12)', borderRadius: 99, padding: '4px 14px' }}>
+                        ✓&nbsp;{msg.text}
+                      </span>
+                    </div>
+                  )
+                  const isAI = msg.role === 'ai'
+                  return (
+                    <div key={i} style={{ width: '100%', background: isAI ? KAI_MSG_AI : KAI_MSG_USER, padding: '12px 12px 14px', display: 'flex', flexDirection: 'column', gap: 6, wordBreak: 'break-word' }}>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: '#000', lineHeight: 1 }}>{isAI ? 'AI Assistant' : 'You'}</span>
+                      <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(0,0,0,0.87)', margin: 0, whiteSpace: 'pre-line' }}>{msg.text}</p>
+                      {msg.meta && isAI && (
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, alignSelf: 'flex-start', fontSize: 10, fontWeight: 600, color: '#228DC1', background: 'rgba(34,141,193,0.10)', borderRadius: 4, padding: '2px 8px' }}>
+                          ⚡ {msg.meta}
+                        </span>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Input bar */}
+              <div style={{ borderTop: `0.5px solid ${KAI_INPUT_BD}`, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 8, background: '#fff', flexShrink: 0 }}>
+                <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: 'rgba(0,0,0,0.38)', userSelect: 'none' }}>
+                  Type here...
+                </span>
+                <div style={{ padding: 12, borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+                  <FontAwesomeIcon icon={faPaperPlane} style={{ width: 20, height: 20, color: 'rgba(0,0,0,0.38)' }} />
+                </div>
+              </div>
+
+              {/* Powered by */}
+              <div style={{ position: 'absolute', bottom: 4, left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 3, pointerEvents: 'none' }}>
+                <img src="/kai-logo.svg" alt="" style={{ width: 8, height: 8, opacity: 0.22 }} />
+                <span style={{ fontFamily: 'Roboto,sans-serif', fontWeight: 300, fontSize: 7, color: 'rgba(26,37,62,0.28)', letterSpacing: '0.03em' }}>
+                  Kai · powered by AWTG
+                </span>
+              </div>
+            </div>
           </div>
 
         </div>
-      </div>{/* end inner clip div */}
-      </div>{/* end gradient border wrapper */}
+      </div>
     </div>
   )
 }
