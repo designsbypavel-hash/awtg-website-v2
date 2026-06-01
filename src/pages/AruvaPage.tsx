@@ -1964,7 +1964,7 @@ function BloomInsightSection() {
   const pt   = (i: number, v: number) => ({ x: CX + (v/100)*R*Math.cos(ang(i)), y: CY + (v/100)*R*Math.sin(ang(i)) })
   const lab  = (i: number) => ({ x: CX + 128*Math.cos(ang(i)), y: CY + 128*Math.sin(ang(i)) })
   const poly = (vals: number[]) => vals.map((v,i) => `${pt(i,v).x},${pt(i,v).y}`).join(' ')
-  const masteryColor = (value: number, fallback: string) => value > 75 ? '#059669' : fallback
+  const masteryColor = (value: number, fallback: string) => value >= 75 ? '#059669' : fallback
 
   return (
     <section ref={sectionRef} className="py-28 bg-[#f8fafc] border-t border-gray-100">
@@ -2201,7 +2201,7 @@ function BloomInsightSection() {
                         </text>
                         <text x={p.x} y={p.y + 8} textAnchor="middle" dominantBaseline="middle"
                           fontSize="11.5" fontFamily="system-ui,sans-serif" fontWeight="700"
-                          fill={val > 75 ? '#059669cc' : isMax ? sem.accent : isMin ? '#d97706cc' : 'rgba(10,22,40,0.3)'}>
+                          fill={val >= 75 ? '#059669cc' : isMax ? sem.accent : isMin ? '#d97706cc' : 'rgba(10,22,40,0.3)'}>
                           {val}%
                         </text>
                       </g>
@@ -2229,13 +2229,13 @@ function BloomInsightSection() {
                   const isTop = Math.round(disp[i]) === Math.round(Math.max(...disp))
                   const isLow = Math.round(disp[i]) === Math.round(Math.min(...disp))
                   const cavg  = Math.round(sem.cohortAvg[i])
-                  const barColor = val > 75 ? '#059669' : '#d97706'
+                  const barColor = val >= 75 ? '#059669' : '#d97706'
                   return (
                     <div key={label}>
                       <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-[15px] font-semibold"
-                            style={{ color: val > 75 ? '#059669' : 'rgba(10,22,40,0.72)' }}>
+                            style={{ color: val >= 75 ? '#059669' : 'rgba(10,22,40,0.72)' }}>
                             {label}
                           </span>
                           <span className="text-[13px] text-[#0a1628]/35 hidden sm:inline">{BLOOM_SIMPLE[i]}</span>
@@ -2252,10 +2252,10 @@ function BloomInsightSection() {
                         <div className="h-full rounded-full"
                           style={{
                             width: `${val}%`,
-                            background: val > 75
+                            background: val >= 75
                               ? 'linear-gradient(90deg,#059669,#34d399)'
                               : 'linear-gradient(90deg,#f59e0b,#fbbf24)',
-                            boxShadow: val > 75 ? '0 0 10px rgba(5,150,105,0.28)' : 'none',
+                            boxShadow: val >= 75 ? '0 0 10px rgba(5,150,105,0.28)' : 'none',
                             transition: 'width 0.75s cubic-bezier(0.34,1.1,0.64,1)',
                           }} />
                         {/* Class avg marker */}
