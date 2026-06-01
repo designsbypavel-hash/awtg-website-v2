@@ -2487,7 +2487,7 @@ export default function AruvaPage() {
             <div>
               {/* Aruva logo wordmark */}
               <div className="mb-5">
-                <img src="/aruva-logo.png" alt="Aruva" style={{ height: 28, objectFit: 'contain' }}
+                <img src="/aruva-logo.png" alt="Aruva" style={{ height: 48, objectFit: 'contain' }}
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
               </div>
               <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.7 }}>
