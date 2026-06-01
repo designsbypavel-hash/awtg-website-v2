@@ -771,7 +771,9 @@ const VOICE_SCRIPT: VoiceTurn[] = [
   { speaker: 'user', text: "Where's my parcel? It's been 5 days." },
   { speaker: 'ai',   text: "Found it! Order #48291 is out for delivery, arriving today before 6 PM." },
   { speaker: 'user', text: "How far away is the driver?" },
-  { speaker: 'ai',   text: "Just 2.4 miles away, arriving before 6 PM today." },
+  { speaker: 'ai',   text: "Just 2.4 miles away. They'll be with you before 6 PM." },
+  { speaker: 'user', text: "Can I change the delivery address?" },
+  { speaker: 'ai',   text: "Yes! I've updated the address. You'll receive a confirmation shortly." },
 ]
 
 // ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
@@ -782,8 +784,10 @@ const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
   { role: 'ai',     text: "Found it! Order #48291 is out for delivery, arriving today before 6 PM.", meta: 'Order #48291 · GPS active' },
   { role: 'map',    text: '' },
   { role: 'user',   text: "How far away is the driver?" },
-  { role: 'ai',     text: "Just 2.4 miles away, arriving before 6 PM today. 📦" },
-  { role: 'signal', text: 'Resolved · 41s · CSAT sent' },
+  { role: 'ai',     text: "Just 2.4 miles away. They'll be with you before 6 PM. 📦" },
+  { role: 'user',   text: "Can I change the delivery address?" },
+  { role: 'ai',     text: "Yes! I've updated the address. You'll receive a confirmation shortly. ✅" },
+  { role: 'signal', text: 'Resolved · 52s · CSAT sent' },
   { role: 'chips',  text: '' },
 ]
 
@@ -853,15 +857,15 @@ function KaiChatDemo() {
     tids.current.forEach(clearTimeout); tids.current = []
     setPhase('voice'); setOrbMode('listen')
 
-    let t = 1200 // initial silence
+    let t = 1800 // initial silence — longer pause before first turn
 
     VOICE_SCRIPT.forEach((turn) => {
       const tokens = turn.text.split(' ')
-      const msPw   = turn.speaker === 'ai' ? 80 : 100
+      const msPw   = turn.speaker === 'ai' ? 80 : 95
 
       if (turn.speaker === 'user') {
         sched(() => setOrbMode('listen'), t)
-        t += 700
+        t += 1100                          // longer "listening" window before user speaks
         sched(() => setOrbMode('user'), t)
       } else {
         sched(() => setOrbMode('ai'), t)
@@ -870,7 +874,7 @@ function KaiChatDemo() {
       t += tokens.length * msPw
 
       sched(() => setOrbMode('listen'), t)
-      t += turn.speaker === 'ai' ? 1100 : 850
+      t += turn.speaker === 'ai' ? 1400 : 1100  // longer pauses between turns
     })
 
     sched(() => setPhase('chat'), t)
@@ -957,8 +961,8 @@ function KaiChatDemo() {
               <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 28 }}>
                 {[5,10,18,24,28,24,18,10,5].map((h, i) => {
                   const delays = [0.12, 0.06, 0.22, 0.04, 0.16, 0.08, 0.20, 0.02, 0.14]
-                  const dur = orbMode === 'ai' ? 0.55 : orbMode === 'user' ? 0.38 : 1.6
-                  const barColor = orbMode === 'user' ? 'rgba(52,199,138,0.72)' : 'rgba(106,193,239,0.65)'
+                  const dur = orbMode === 'ai' ? 0.50 : orbMode === 'user' ? 0.34 : 1.8
+                  const barColor = orbMode === 'user' ? 'rgba(52,199,138,0.75)' : 'rgba(106,193,239,0.68)'
                   return (
                     <div key={i} style={{
                       width: 3.5, height: h, borderRadius: 2, background: barColor,
@@ -969,6 +973,16 @@ function KaiChatDemo() {
                   )
                 })}
               </div>
+
+              {/* Status text — under the orb+waveform in the dark area */}
+              <p style={{
+                fontSize: 12, fontWeight: 500, letterSpacing: '0.06em',
+                color: orbMode === 'user' ? 'rgba(52,199,138,0.75)' : 'rgba(255,255,255,0.32)',
+                margin: 0, fontFamily: 'Roboto,sans-serif',
+                transition: 'color 0.4s ease',
+              }}>
+                {orbMode === 'ai' ? 'Speaking…' : 'Listening…'}
+              </p>
             </div>
 
             {/* KAI label — bottom left */}
@@ -978,22 +992,21 @@ function KaiChatDemo() {
               </span>
             </div>
 
-            {/* Voice input bar */}
+            {/* Voice input bar — minimal, buttons only */}
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0,
               background: '#fff', borderRadius: '0 0 30px 30px',
               padding: '11px 16px 14px',
-              display: 'flex', alignItems: 'center', gap: 10,
+              display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 10,
               borderTop: '0.5px solid #e5e7eb',
             }}>
-              <span style={{
-                flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15,
-                color: orbMode === 'user' ? '#228DC1' : 'rgba(10,22,40,0.35)',
-                userSelect: 'none', transition: 'color 0.3s ease',
+              <div style={{ flex: 1 }} />
+              <div style={{
+                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                background: orbMode === 'user' ? '#228DC1' : '#f0f2f5',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'background 0.3s ease',
               }}>
-                {orbMode === 'ai' ? 'AI Speaking…' : 'Listening…'}
-              </span>
-              <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: orbMode === 'user' ? '#228DC1' : '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.3s ease' }}>
                 <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: orbMode === 'user' ? '#fff' : 'rgba(10,22,40,0.4)' }} />
               </div>
               <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
