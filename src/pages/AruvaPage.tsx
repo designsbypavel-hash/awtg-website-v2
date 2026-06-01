@@ -819,7 +819,8 @@ function PlatformDiagram() {
         </div>
 
         {/* ── Main diagram ── */}
-        <div className="flex items-stretch overflow-hidden shadow-[0_4px_32px_rgba(10,22,40,0.10)] border border-gray-200" style={{ borderRadius: 18 }}>
+        <div className="flex flex-col overflow-hidden shadow-[0_4px_32px_rgba(10,22,40,0.10)] border border-gray-200" style={{ borderRadius: 18 }}>
+        <div className="flex items-stretch">
 
           {/* ── ZONE 1: INTEGRATIONS ── */}
           <div className="flex flex-col shrink-0" style={{ width: 196 }}>
@@ -931,7 +932,24 @@ function PlatformDiagram() {
             </div>
           </div>
 
+        </div>{/* end flex items-stretch */}
+
+        {/* ── Footer strip: platform qualities ── */}
+        <div className="flex items-center justify-center gap-3 px-6 py-3.5 bg-[#0a1628] border-t border-white/10 flex-wrap">
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mr-2">Platform qualities</span>
+          {['Traceable','Auditable','Explainable','Measurable','With Logs'].map((q, i) => {
+            const colors = ['#228DC1','#7c3aed','#059669','#d97706','#e11d48']
+            return (
+              <span key={q} className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-bold rounded-full"
+                style={{ background: colors[i] + '22', color: colors[i], border: `1px solid ${colors[i]}40` }}>
+                <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill={colors[i]}/></svg>
+                {q}
+              </span>
+            )
+          })}
         </div>
+
+        </div>{/* end outer flex flex-col */}
       </div>
     </section>
   )
