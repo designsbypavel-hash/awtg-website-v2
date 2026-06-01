@@ -960,14 +960,17 @@ function KaiChatDemo() {
             pointerEvents: isVoice ? 'auto' : 'none',
             zIndex: 1,
           }}>
-            {/* Header */}
+            {/* Header background strip — matches chat view gradient */}
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 68, background: KAI_HDR_GRAD }} />
+
+            {/* Header — identical styling to chat view */}
             <div style={{ position: 'absolute', top: 16, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ width: 40, height: 40, background: 'rgba(255,255,255,0.08)', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.10)' }}>
+              <div style={{ width: 40, height: 40, background: '#fff', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img src="/kai-logo.svg" alt="Kai" style={{ width: 24, height: 24, objectFit: 'contain' }} />
               </div>
-              <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: '#fff', lineHeight: 1 }}>AI Assistant</span>
-              <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(255,255,255,0.28)' }} />
-              <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(255,255,255,0.28)', marginLeft: 4 }} />
+              <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: KAI_HDR_TXT, lineHeight: 1 }}>AI Assistant</span>
+              <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)' }} />
+              <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)', marginLeft: 4 }} />
             </div>
 
             {/* ── Main body: transcript TOP, orb BOTTOM ── */}
