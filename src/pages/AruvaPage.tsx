@@ -753,33 +753,23 @@ function TutorVisualOld() {
 // -- Platform architecture diagram ---------------------------------------------
 function PlatformDiagram() {
   const layers = [
-    { label: 'Smart Syllabus',          sublabel: 'How the AI knows your course',          color: '#228DC1', items: ['Outcome mapping','Teaching rules','Rubric logic','AI boundaries'] },
-    { label: 'Learning Curve AI',        sublabel: 'Each student, individually tracked',   color: '#7c3aed', items: ['Mastery tracking','Confidence signals','Workload modelling','Early risk signals'] },
-    { label: 'Governance Layer',         sublabel: 'Your institution, your rules',          color: '#059669', items: ['Role based access','Full audit trail','Data residency','Policy enforcement'] },
-    { label: 'Traceable Knowledge Layer',sublabel: 'Every answer, fully sourced',           color: '#d97706', items: ['Source provenance','Citation resolver','Attribution','AI auditability'] },
+    { label: 'Smart Syllabus',           sublabel: 'How the AI knows your course',        color: '#228DC1', items: ['Outcome mapping','Teaching rules','Rubric logic','AI boundaries'] },
+    { label: 'Learning Curve AI',         sublabel: 'Each student, individually tracked', color: '#7c3aed', items: ['Mastery tracking','Confidence signals','Workload modelling','Early risk signals'] },
+    { label: 'Governance Layer',          sublabel: 'Your institution, your rules',        color: '#059669', items: ['Role based access','Full audit trail','Data residency','Policy enforcement'] },
+    { label: 'Traceable Knowledge Layer', sublabel: 'Every answer, fully sourced',         color: '#d97706', items: ['Source provenance','Citation resolver','Attribution','AI auditability'] },
   ]
 
   const surfaces = [
-    {
-      label: 'Adaptive Tutor', desc: 'Teaches from your course, not the open web', color: '#228DC1',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>,
-    },
-    {
-      label: 'Professor Dashboard', desc: 'See where your class is, right now', color: '#7c3aed',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/></svg>,
-    },
-    {
-      label: 'Formative Assessment', desc: 'Spot the gaps while you can still close them', color: '#059669',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-    },
-    {
-      label: 'Student Planner', desc: 'Organised around what matters this week', color: '#ea580c',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>,
-    },
-    {
-      label: 'Institutional Analytics', desc: 'One view across every course you run', color: '#dc2626',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>,
-    },
+    { label: 'Adaptive Tutor',         desc: 'Teaches from your course, not the open web',   color: '#228DC1',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg> },
+    { label: 'Professor Dashboard',    desc: 'See where your class is, right now',            color: '#7c3aed',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/></svg> },
+    { label: 'Formative Assessment',   desc: 'Spot the gaps while you can still close them', color: '#059669',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg> },
+    { label: 'Student Planner',        desc: 'Organised around what matters this week',       color: '#ea580c',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg> },
+    { label: 'Institutional Analytics',desc: 'One view across every course you run',          color: '#dc2626',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg> },
   ]
 
   const lmsList = [
@@ -791,24 +781,30 @@ function PlatformDiagram() {
 
   const dataSources = ['SIS / Student Records','Library Systems','Assessment Tools','SSO / SAML','Email & Notifications','Attendance Data']
 
-  const topBar: React.CSSProperties = {
-    background: '#0a1628',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    padding: '7px 12px', flexShrink: 0,
-  }
-  const topBarText: React.CSSProperties = {
-    color: 'rgba(255,255,255,0.75)', fontSize: 9, fontWeight: 800,
-    letterSpacing: '0.22em', textTransform: 'uppercase', whiteSpace: 'nowrap',
-  }
+  const ZoneHeader = ({ label }: { label: string }) => (
+    <div style={{ background: '#0a1628', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+      <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' }}>{label}</span>
+    </div>
+  )
 
-  const ArrowR = () => (
-    <svg width="22" height="12" viewBox="0 0 22 12" fill="none">
-      <path d="M1 6h20M15 1l6 5-6 5" stroke="#9ca3af" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
+  const ConnectorArrow = ({ label, flip }: { label: string; flip?: boolean }) => (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+      {!flip && (
+        <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+          <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )}
+      <span style={{ fontSize: 9, fontWeight: 800, color: '#0a1628', letterSpacing: '0.14em', textTransform: 'uppercase', textAlign: 'center', lineHeight: 1.4 }}>{label}</span>
+      {flip && (
+        <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+          <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )}
+    </div>
   )
 
   return (
-    <section className="py-24" style={{ background: '#f0f4f8' }}>
+    <section className="py-24" style={{ background: '#f8fafc' }}>
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Section header */}
@@ -817,35 +813,35 @@ function PlatformDiagram() {
           <h2 className="font-heading text-[#0a1628] mb-3">
             Four layers. <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
           </h2>
-          <p className="text-[#0a1628]/55 text-[17px] font-normal leading-[1.7] max-w-xl mx-auto">
+          <p className="text-[#0a1628]/60 text-[17px] font-normal leading-[1.7] max-w-xl mx-auto">
             Not a bundle of tools. One connected system where every layer talks to the next.
           </p>
         </div>
 
-        {/* ── Main diagram: LEFT → RIGHT ── */}
-        <div className="flex items-stretch overflow-hidden border border-gray-200 shadow-sm" style={{ borderRadius: 16 }}>
+        {/* ── Main diagram ── */}
+        <div className="flex items-stretch overflow-hidden shadow-[0_4px_32px_rgba(10,22,40,0.10)] border border-gray-200" style={{ borderRadius: 18 }}>
 
           {/* ── ZONE 1: INTEGRATIONS ── */}
-          <div className="flex flex-col shrink-0" style={{ width: 190 }}>
-            <div style={topBar}><span style={topBarText}>Integrations</span></div>
-            <div className="flex-1 flex flex-col gap-4 px-4 py-4 bg-white border-r border-gray-100">
+          <div className="flex flex-col shrink-0" style={{ width: 196 }}>
+            <ZoneHeader label="Integrations" />
+            <div className="flex-1 flex flex-col gap-5 px-4 py-5 bg-white border-r border-gray-100">
               <div>
-                <p className="text-[9px] font-black uppercase tracking-[0.22em] text-[#0a1628]/35 mb-2">VLE / LMS</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">VLE / LMS</p>
                 <div className="flex flex-col gap-1.5">
                   {lmsList.map(lms => (
                     <span key={lms.name}
-                      className="inline-flex items-center gap-2 px-2.5 py-1.5 border bg-white text-[12px] font-semibold text-[#0a1628]"
-                      style={{ borderLeftWidth: 3, borderLeftColor: lms.color, borderTopColor: '#e5e7eb', borderRightColor: '#e5e7eb', borderBottomColor: '#e5e7eb' }}>
-                      <img src={lms.logo} alt={lms.name} className="w-3 h-3 object-contain" />{lms.name}
+                      className="inline-flex items-center gap-2 px-3 py-2 bg-white text-[12px] font-semibold text-[#0a1628]"
+                      style={{ borderLeft: `3px solid ${lms.color}`, borderTop: '1px solid #e5e7eb', borderRight: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb', borderRadius: 6 }}>
+                      <img src={lms.logo} alt={lms.name} className="w-3.5 h-3.5 object-contain" />{lms.name}
                     </span>
                   ))}
                 </div>
               </div>
               <div>
-                <p className="text-[9px] font-black uppercase tracking-[0.22em] text-[#0a1628]/35 mb-2">Data Sources</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">Data Sources</p>
                 <div className="flex flex-col gap-1.5">
                   {dataSources.map(d => (
-                    <span key={d} className="px-2.5 py-1 bg-[#f8fafc] border border-gray-200 text-[11px] font-medium text-[#0a1628]/70">
+                    <span key={d} className="px-3 py-1.5 bg-[#f1f5f9] border border-gray-200 text-[11px] font-medium text-[#0a1628]/80" style={{ borderRadius: 5 }}>
                       {d}
                     </span>
                   ))}
@@ -854,26 +850,19 @@ function PlatformDiagram() {
             </div>
           </div>
 
-          {/* ── CONNECTOR: Sync & Deploy / Read & Write ── */}
-          <div className="flex flex-col items-center justify-center gap-3 px-3 bg-[#f8fafc] border-r border-gray-100 shrink-0" style={{ width: 78 }}>
-            <div className="flex flex-col items-center gap-1.5">
-              <ArrowR />
-              <span className="text-[8px] font-black uppercase tracking-[0.14em] text-[#0a1628]/40 text-center leading-tight">Sync &amp;<br/>Deploy</span>
-            </div>
-            <div className="w-full h-px bg-gray-200" />
-            <div className="flex flex-col items-center gap-1.5">
-              <span className="text-[8px] font-black uppercase tracking-[0.14em] text-[#0a1628]/40 text-center leading-tight">Read &amp;<br/>Write</span>
-              <ArrowR />
-            </div>
+          {/* ── CONNECTOR LEFT ── */}
+          <div className="flex flex-col items-center justify-center gap-5 shrink-0 bg-[#f1f5f9] border-r border-gray-200" style={{ width: 86 }}>
+            <ConnectorArrow label={'Sync &\nDeploy'} />
+            <div style={{ width: '60%', height: 1, background: '#cbd5e1' }} />
+            <ConnectorArrow label={'Read &\nWrite'} flip />
           </div>
 
           {/* ── ZONE 2: SERVICES ── */}
           <div className="flex flex-col flex-1">
-            <div style={topBar}><span style={topBarText}>Services</span></div>
-            {/* Platform label sits above all rows */}
-            <div className="bg-white border-b border-gray-100 px-5 py-3 flex items-center justify-center gap-3">
+            <ZoneHeader label="Services" />
+            <div className="bg-[#f8fafc] border-b border-gray-100 px-5 py-2.5 flex items-center justify-center gap-3">
               <div className="h-px flex-1 bg-gray-200" />
-              <p className="font-black text-[#0a1628]/45 text-[10px] uppercase tracking-[0.22em] shrink-0">
+              <p className="font-black text-[#0a1628]/60 text-[10px] uppercase tracking-[0.2em] shrink-0 px-2">
                 Aruva Intelligent Education Platform
               </p>
               <div className="h-px flex-1 bg-gray-200" />
@@ -882,25 +871,25 @@ function PlatformDiagram() {
               {layers.map(layer => (
                 <div key={layer.label} className="flex items-stretch">
                   {/* Coloured identity block */}
-                  <div className="shrink-0 flex flex-col justify-center px-4 py-4"
-                    style={{ width: 180, background: layer.color, minHeight: 76 }}>
+                  <div className="shrink-0 flex flex-col justify-center px-5 py-4"
+                    style={{ width: 190, background: layer.color, minHeight: 82 }}>
                     <p className="text-white font-bold text-[13px] leading-snug">{layer.label}</p>
-                    <p className="text-white/75 text-[10px] font-normal leading-snug mt-1">{layer.sublabel}</p>
+                    <p className="text-white/80 text-[11px] font-normal leading-snug mt-1">{layer.sublabel}</p>
                   </div>
-                  {/* Small arrow bridge */}
-                  <div className="flex items-center justify-center shrink-0 px-2"
-                    style={{ background: layer.color + '18' }}>
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                      <path d="M1 5h12M8 1l5 4-5 4" stroke={layer.color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  {/* Arrow bridge */}
+                  <div className="flex items-center justify-center shrink-0 px-3"
+                    style={{ background: layer.color + '14' }}>
+                    <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+                      <path d="M1 6h14M11 2l6 4-6 4" stroke={layer.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
-                  {/* Chips — tinted background matching layer colour */}
-                  <div className="flex-1 flex flex-wrap items-center gap-2 px-4 py-4"
-                    style={{ background: layer.color + '0a' }}>
+                  {/* Chips */}
+                  <div className="flex-1 flex flex-wrap items-center gap-2 px-5 py-4"
+                    style={{ background: layer.color + '08' }}>
                     {layer.items.map(item => (
                       <span key={item}
-                        className="px-2.5 py-1 bg-white text-[11px] font-semibold text-[#0a1628] shadow-[0_1px_4px_rgba(10,22,40,0.06)]"
-                        style={{ border: `1px solid ${layer.color}30`, borderRadius: 6 }}>
+                        className="px-3 py-1 bg-white text-[11px] font-semibold text-[#0a1628] shadow-[0_1px_6px_rgba(10,22,40,0.07)]"
+                        style={{ border: `1px solid ${layer.color}35`, borderRadius: 6 }}>
                         {item}
                       </span>
                     ))}
@@ -910,31 +899,32 @@ function PlatformDiagram() {
             </div>
           </div>
 
-          {/* ── CONNECTOR: Aruva Platform API ── */}
-          <div className="flex flex-col items-center justify-center gap-3 px-3 bg-[#f8fafc] border-l border-gray-100 shrink-0" style={{ width: 78 }}>
-            <ArrowR />
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white border border-gray-200 shadow-sm"
-              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', whiteSpace: 'nowrap', borderRadius: 20 }}>
-              <div className="w-1.5 h-1.5 rounded-full bg-[#228DC1]" />
-              <span className="text-[8px] font-black uppercase tracking-[0.14em] text-[#0a1628]">Aruva API</span>
-              <div className="w-1.5 h-1.5 rounded-full bg-[#228DC1]" />
+          {/* ── CONNECTOR RIGHT ── */}
+          <div className="flex flex-col items-center justify-center gap-4 shrink-0 bg-[#f1f5f9] border-l border-gray-200" style={{ width: 86 }}>
+            <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+              <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <div style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ fontSize: 9, fontWeight: 800, color: '#0a1628', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Aruva API</span>
             </div>
-            <ArrowR />
+            <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+              <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
 
           {/* ── ZONE 3: USER INTERFACE ── */}
-          <div className="flex flex-col shrink-0" style={{ width: 205 }}>
-            <div style={topBar}><span style={topBarText}>User Interface</span></div>
-            <div className="flex-1 flex flex-col gap-2 p-3 bg-white">
+          <div className="flex flex-col shrink-0" style={{ width: 212 }}>
+            <ZoneHeader label="User Interface" />
+            <div className="flex-1 flex flex-col gap-2 p-3.5 bg-white">
               {surfaces.map(s => (
-                <div key={s.label} className="flex items-start gap-2.5 p-2.5 border border-gray-100 bg-white shadow-[0_1px_6px_rgba(10,22,40,0.05)]" style={{ borderRadius: 10 }}>
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: s.color + '14', color: s.color }}>
+                <div key={s.label} className="flex items-start gap-3 p-3 border border-gray-100 bg-white" style={{ borderRadius: 10, boxShadow: '0 1px 8px rgba(10,22,40,0.06)' }}>
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                    style={{ background: s.color + '15', color: s.color, border: `1px solid ${s.color}25` }}>
                     {s.icon}
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
-                    <p className="text-[10px] text-[#0a1628]/50 font-normal leading-snug mt-0.5">{s.desc}</p>
+                    <p className="text-[11px] text-[#0a1628]/55 font-normal leading-snug mt-0.5">{s.desc}</p>
                   </div>
                 </div>
               ))}
