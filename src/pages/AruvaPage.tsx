@@ -521,52 +521,118 @@ function AlignVisual() {
 }
 
 function TutorVisual() {
+  const conversations = [
+    {
+      name: 'Maria Garcia',
+      initials: 'MG',
+      style: 'Analogy-oriented',
+      accent: '#f59e0b',
+      soft: '#fff7ed',
+      border: '#fed7aa',
+      prompt: 'What does mitochondria actually do?',
+      strategy: 'Analogy-driven reinforcement',
+      response: 'Think of mitochondria as the power station of the cell. Just like a city needs electricity, the cell needs ATP to keep every process running.',
+      followUp: 'So mitochondria basically create energy for the cell?',
+      signal: 'Analogy understood',
+    },
+    {
+      name: 'Elena Rossi',
+      initials: 'ER',
+      style: 'Analytical',
+      accent: '#6d5dfc',
+      soft: '#f3f0ff',
+      border: '#d8ccff',
+      prompt: 'If oxygen drops, what changes in respiration?',
+      strategy: 'Analytical application reinforcement',
+      response: 'Mitochondria produce ATP through cellular respiration. When oxygen is limited, aerobic respiration becomes less efficient and ATP output decreases.',
+      followUp: 'So low oxygen means the cell has less usable energy?',
+      signal: 'Reasoning depth improved',
+    },
+  ]
+
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
       {/* Header */}
-      <div className="px-5 py-3 flex items-center justify-between bg-[#f8fafc] border-b border-gray-100">
-        <div className="flex items-center gap-2">
-          <div className="bg-white rounded-lg flex items-center px-2 border border-gray-200 shadow-sm" style={{ height: 26 }}>
-            <img
-              src="/aruva-logo.png"
-              alt="Aruva"
-              style={{ height: 14, width: 'auto', objectFit: 'contain' }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-            />
+      <div className="px-5 py-3 flex flex-col gap-3 bg-[#f8fafc] border-b border-gray-100">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <div className="bg-white rounded-lg flex items-center px-2 border border-gray-200 shadow-sm" style={{ height: 26 }}>
+              <img
+                src="/aruva-logo.png"
+                alt="Aruva"
+                style={{ height: 14, width: 'auto', objectFit: 'contain' }}
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+            </div>
+            <span className="text-[#0a1628]/60 text-[14px] font-semibold">Adaptive Tutor</span>
+            <span className="text-[#0a1628]/20 text-[14px]">|</span>
+            <span className="text-[#0a1628]/40 text-[14px]">Biology 101</span>
           </div>
-          <span className="text-[#0a1628]/60 text-[14px] font-semibold">Tutor</span>
-          <span className="text-[#0a1628]/20 text-[14px]">·</span>
-          <span className="text-[#0a1628]/40 text-[14px]">Week 3 · Socratic mode</span>
+          <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
         </div>
-        <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
+        <div className="grid grid-cols-2 gap-2">
+          {conversations.map((student) => (
+            <div key={student.name} className="flex items-center gap-2 rounded-xl px-3 py-2 border shadow-sm" style={{ background: student.soft, borderColor: student.border }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: student.accent }}>
+                {student.initials}
+              </div>
+              <div className="min-w-0">
+                <p className="text-[12px] font-black uppercase tracking-[0.14em] truncate" style={{ color: student.accent }}>{student.name}</p>
+                <p className="text-[12px] font-semibold text-[#0a1628]/70 truncate">{student.style}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       {/* Messages */}
-      <div className="p-5 space-y-4 bg-[#fafafa]">
-        <div className="flex justify-end">
-          <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[80%] bg-[#228DC1]">
-            <p className="text-white text-[14px] leading-relaxed">Can you solve this Porter's Five Forces analysis for me?</p>
-          </div>
-        </div>
-        <div className="flex gap-2.5 items-start">
-          <div className="rounded-md flex items-center justify-center shrink-0 bg-white border border-gray-200 shadow-sm px-2" style={{ height: 28, minWidth: 28 }}>
-            <img
-              src="/aruva-logo.png"
-              alt="Aruva"
-              style={{ height: 12, width: 'auto', objectFit: 'contain' }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-            />
-          </div>
-          <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-sm">
-            <p className="text-[#0a1628]/80 text-[14px] leading-relaxed mb-2.5">Which of the five forces has the strongest impact here? Start with your instinct.</p>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[14px] font-semibold text-[#228DC1] bg-[#e5f4fa] border border-[#228DC1]/20">
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.1-1.1m-.757-4.9a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              Porter, 2008, Ch.2
+      <div className="p-5 bg-[#fafafa]">
+        <div className="grid md:grid-cols-2 gap-4">
+          {conversations.map((student) => (
+            <div key={student.name} className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black" style={{ background: student.accent }}>
+                  {student.initials}
+                </div>
+                <div>
+                  <p className="text-[13px] font-bold text-[#0a1628] leading-none">{student.name}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mt-1" style={{ color: student.accent }}>{student.strategy}</p>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex justify-end">
+                  <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[88%]" style={{ background: student.accent }}>
+                    <p className="text-white text-[13px] leading-relaxed">{student.prompt}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2.5 items-start">
+                  <div className="rounded-md flex items-center justify-center shrink-0 bg-white border border-gray-200 shadow-sm px-2" style={{ height: 28, minWidth: 28 }}>
+                    <img
+                      src="/aruva-logo.png"
+                      alt="Aruva"
+                      style={{ height: 12, width: 'auto', objectFit: 'contain' }}
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                    />
+                  </div>
+                  <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-sm">
+                    <p className="text-[#0a1628]/80 text-[13px] leading-relaxed">{student.response}</p>
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[88%] bg-[#f8fafc] border border-gray-100">
+                    <p className="text-[#0a1628]/75 text-[13px] leading-relaxed">{student.followUp}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 px-3 py-2 rounded-xl" style={{ background: student.soft, border: `1px solid ${student.border}` }}>
+                  <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: student.accent }} />
+                  <p className="text-[12px] font-black uppercase tracking-[0.08em]" style={{ color: student.accent }}>{student.signal}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#f0fdf4] border border-[#059669]/20">
-          <div className="w-1.5 h-1.5 rounded-full shrink-0 bg-[#059669]" />
-          <p className="text-[14px] font-semibold text-[#059669]">Mastery signal captured. Learning Curve updated</p>
+          ))}
         </div>
       </div>
     </div>
@@ -617,7 +683,59 @@ function AnalyticsVisual() {
   )
 }
 
-
+/*
+function TutorVisualOld() {
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
+      <div className="px-5 py-3 flex items-center justify-between bg-[#f8fafc] border-b border-gray-100">
+        <div className="flex items-center gap-2">
+          <div className="bg-white rounded-lg flex items-center px-2 border border-gray-200 shadow-sm" style={{ height: 26 }}>
+            <img
+              src="/aruva-logo.png"
+              alt="Aruva"
+              style={{ height: 14, width: 'auto', objectFit: 'contain' }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          </div>
+          <span className="text-[#0a1628]/60 text-[14px] font-semibold">Tutor</span>
+          <span className="text-[#0a1628]/20 text-[14px]">·</span>
+          <span className="text-[#0a1628]/40 text-[14px]">Week 3 · Socratic mode</span>
+        </div>
+        <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
+      </div>
+      Messages
+      <div className="p-5 space-y-4 bg-[#fafafa]">
+        <div className="flex justify-end">
+          <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[80%] bg-[#228DC1]">
+            <p className="text-white text-[14px] leading-relaxed">Can you solve this Porter's Five Forces analysis for me?</p>
+          </div>
+        </div>
+        <div className="flex gap-2.5 items-start">
+          <div className="rounded-md flex items-center justify-center shrink-0 bg-white border border-gray-200 shadow-sm px-2" style={{ height: 28, minWidth: 28 }}>
+            <img
+              src="/aruva-logo.png"
+              alt="Aruva"
+              style={{ height: 12, width: 'auto', objectFit: 'contain' }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          </div>
+          <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-sm">
+            <p className="text-[#0a1628]/80 text-[14px] leading-relaxed mb-2.5">Which of the five forces has the strongest impact here? Start with your instinct.</p>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[14px] font-semibold text-[#228DC1] bg-[#e5f4fa] border border-[#228DC1]/20">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.1-1.1m-.757-4.9a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              Porter, 2008, Ch.2
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#f0fdf4] border border-[#059669]/20">
+          <div className="w-1.5 h-1.5 rounded-full shrink-0 bg-[#059669]" />
+          <p className="text-[14px] font-semibold text-[#059669]">Mastery signal captured. Learning Curve updated</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+*/
 
 
 // -- Platform architecture diagram ---------------------------------------------
