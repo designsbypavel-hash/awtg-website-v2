@@ -2224,29 +2224,76 @@ export default function AruvaPage() {
       <BloomInsightSection />
 
       {/* Governance */}
-      <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
+      <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+            {/* Left */}
             <div>
               <p className="type-label text-[#228DC1] mb-4">Governance and Trust</p>
-              <h2 className="font-heading text-[#0a1628] mb-5">AI that institutions can govern.</h2>
-              <p className="text-[#0a1628]/65 text-base font-normal leading-relaxed">
-                Built for the real requirements of higher education: data residency, audit trails, role-based access and full control over how AI behaves.
+              <h2 className="font-heading text-[#0a1628] mb-5">
+                AI that institutions<br />
+                <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>can govern.</span>
+              </h2>
+              <p className="text-[#0a1628]/65 text-base font-normal leading-relaxed mb-8">
+                Built for the real requirements of higher education: data residency, audit trails, role based access and full control over how AI behaves.
               </p>
-            </div>
-            <div className="grid grid-cols-2 gap-px bg-gray-200 border border-gray-200">
-              {[
-                { label: 'Data Residency',     desc: 'Cloud, hybrid or on-prem.' },
-                { label: 'Audit Trail',         desc: 'Every interaction traceable.' },
-                { label: 'Access Control',      desc: 'Role-based, institution-wide.' },
-                { label: 'Academic Integrity',  desc: 'Socratic AI, no shortcuts.' },
-              ].map((item) => (
-                <div key={item.label} className="bg-white p-6">
-                  <p className="text-[#0a1628] font-semibold text-[14px] mb-1.5">{item.label}</p>
-                  <p className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{item.desc}</p>
+              {/* Dark card */}
+              <div className="rounded-2xl p-8" style={{ background:'#0a1628' }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ background:'rgba(255,255,255,0.1)' }}>
+                  <FontAwesomeIcon icon={faShield} style={{ width:18, height:18, color:'#fbbf24' }} />
                 </div>
-              ))}
+                <p className="type-label mb-3" style={{ color:'rgba(255,255,255,0.45)' }}>Governance Built In</p>
+                <h3 className="font-bold text-white mb-3" style={{ fontSize:22, lineHeight:1.25 }}>
+                  Designed for institutions with real compliance requirements
+                </h3>
+                <p style={{ fontSize:13, color:'rgba(255,255,255,0.55)', lineHeight:1.7 }}>
+                  Audit trails, role based access and data residency are core to how Aruva is architected.
+                </p>
+              </div>
             </div>
+
+            {/* Right */}
+            <div className="flex flex-col gap-4">
+              {/* 2x3 feature grid */}
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { tag:'DATA',      title:'Data residency',    desc:'Cloud, hybrid or on prem. Your institution keeps full ownership.' },
+                  { tag:'ACCESS',    title:'Role based access',  desc:'Students, educators and admins each see exactly what they need.' },
+                  { tag:'AUDIT',     title:'Full audit trail',   desc:'Every AI interaction is logged, attributed and traceable.' },
+                  { tag:'INTEGRITY', title:'Academic integrity', desc:'Socratic only mode enforced. The AI never gives answers away.' },
+                  { tag:'GDPR',      title:'GDPR aligned',       desc:'UK and EU data residency options. No third party model training.' },
+                  { tag:'AI GOV',    title:'Auditable AI',       desc:'Rules for access, consent, escalation and AI behaviour enforcement.' },
+                ].map(item => (
+                  <div key={item.tag} className="bg-white rounded-xl p-5 border border-gray-100"
+                    style={{ boxShadow:'0 1px 8px rgba(10,22,40,0.05)' }}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background:'#228DC1' }}>
+                        <FontAwesomeIcon icon={faCircleCheck} style={{ width:12, height:12, color:'white' }} />
+                      </div>
+                      <span className="type-label text-[#228DC1]">{item.tag}</span>
+                    </div>
+                    <p className="font-semibold text-[#0a1628] text-[14px] mb-1.5">{item.title}</p>
+                    <p className="text-[#0a1628]/55 text-[12px] leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* 3 bottom badges */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { tag:'AUDIT READY',   val:'Logs + trails' },
+                  { tag:'DATA CONTROL',  val:'GDPR aligned' },
+                  { tag:'DEPLOYMENT',    val:'Your choice' },
+                ].map(b => (
+                  <div key={b.tag} className="bg-[#f8fafc] rounded-xl p-4 border border-gray-100 text-center">
+                    <p className="type-label text-[#0a1628]/40 mb-1">{b.tag}</p>
+                    <p className="font-semibold text-[#0a1628] text-[13px]">{b.val}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
