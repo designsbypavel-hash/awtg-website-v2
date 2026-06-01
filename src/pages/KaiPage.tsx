@@ -769,25 +769,72 @@ interface VoiceTurn { speaker: VoiceSpeaker; text: string }
 const VOICE_SCRIPT: VoiceTurn[] = [
   { speaker: 'ai',   text: "Hi there! How can I help you today?" },
   { speaker: 'user', text: "Where's my parcel? It's been 5 days." },
-  { speaker: 'ai',   text: "Found it! Order #48291 is out for delivery — arriving today before 6 PM." },
-  { speaker: 'user', text: "Can you send me the tracking link?" },
-  { speaker: 'ai',   text: "Done! I've sent the tracking link to your registered email." },
-  { speaker: 'user', text: "Perfect. Thanks so much!" },
-  { speaker: 'ai',   text: "Happy to help! Have a great day." },
+  { speaker: 'ai',   text: "Found it! Order #48291 is out for delivery, arriving today before 6 PM." },
+  { speaker: 'user', text: "How far away is the driver?" },
+  { speaker: 'ai',   text: "Just 2.4 miles away, arriving before 6 PM today." },
 ]
 
 // ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
-type ChatRole = 'ai' | 'user' | 'signal'
+type ChatRole = 'ai' | 'user' | 'signal' | 'map' | 'chips'
 const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
   { role: 'ai',     text: "Hi there! 👋\nHow can I help you today?" },
   { role: 'user',   text: "Where's my parcel? It's been 5 days." },
-  { role: 'ai',     text: "Found it! Order #48291 is out for delivery — arriving today before 6 PM.", meta: 'Order #48291 · GPS active' },
-  { role: 'user',   text: "Can you send me the tracking link?" },
-  { role: 'ai',     text: "Done! I've sent the tracking link to your registered email." },
-  { role: 'user',   text: "Perfect. Thanks so much!" },
-  { role: 'ai',     text: "Happy to help! Have a great day." },
-  { role: 'signal', text: 'Resolved · 48s · CSAT sent' },
+  { role: 'ai',     text: "Found it! Order #48291 is out for delivery, arriving today before 6 PM.", meta: 'Order #48291 · GPS active' },
+  { role: 'map',    text: '' },
+  { role: 'user',   text: "How far away is the driver?" },
+  { role: 'ai',     text: "Just 2.4 miles away, arriving before 6 PM today. 📦" },
+  { role: 'signal', text: 'Resolved · 41s · CSAT sent' },
+  { role: 'chips',  text: '' },
 ]
+
+// ─── Delivery map widget ──────────────────────────────────────────────────────
+function MapWidget() {
+  return (
+    <div style={{ width: '100%', lineHeight: 0, background: '#ede8df' }}>
+      <svg width="100%" viewBox="0 0 360 155" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
+        {/* Base */}
+        <rect width="360" height="155" fill="#ede8df"/>
+        {/* Vertical streets */}
+        {[0,75,155,235,315,350].map(x => <rect key={x} x={x} width="10" height="155" fill="#fff" opacity="0.82"/>)}
+        {/* Horizontal streets */}
+        <rect y="0"   width="360" height="8"  fill="#fff" opacity="0.7"/>
+        <rect y="62"  width="360" height="16" fill="#fff" opacity="0.92"/>
+        <rect y="115" width="360" height="10" fill="#fff" opacity="0.7"/>
+        <rect y="145" width="360" height="10" fill="#fff" opacity="0.6"/>
+        {/* Row 1 blocks (y 8–62) */}
+        <rect x="10"  y="8" width="65" height="54" fill="#d9cebc"/>
+        <rect x="85"  y="8" width="70" height="54" fill="#d9cebc"/>
+        <rect x="165" y="8" width="70" height="54" fill="#b5d49a"/>
+        <rect x="245" y="8" width="70" height="54" fill="#d9cebc"/>
+        <rect x="325" y="8" width="25" height="54" fill="#d9cebc"/>
+        {/* Row 2 blocks (y 78–115) */}
+        <rect x="10"  y="78" width="65" height="37" fill="#b5d49a"/>
+        <rect x="85"  y="78" width="70" height="37" fill="#d9cebc"/>
+        <rect x="165" y="78" width="70" height="37" fill="#d9cebc"/>
+        <rect x="245" y="78" width="70" height="37" fill="#d9cebc"/>
+        <rect x="325" y="78" width="25" height="37" fill="#d9cebc"/>
+        {/* Row 3 blocks (y 125–145) */}
+        {[10,85,165,245,325].map((x,i) => <rect key={i} x={x} y="125" width={x===325?25:i===0?65:70} height="20" fill="#d9cebc"/>)}
+        {/* Route line */}
+        <line x1="44" y1="70" x2="316" y2="70" stroke="#2563EB" strokeWidth="3.5" strokeLinecap="round"/>
+        {/* Chevron arrows */}
+        {[118,193,265].map(x => (
+          <polyline key={x} points={`${x-5},65 ${x+1},70 ${x-5},75`} fill="none" stroke="#2563EB" strokeWidth="2" strokeOpacity="0.65" strokeLinecap="round" strokeLinejoin="round"/>
+        ))}
+        {/* Current position */}
+        <circle cx="44" cy="70" r="10" fill="#2563EB" stroke="white" strokeWidth="2.5"/>
+        <circle cx="44" cy="70" r="4"  fill="white"/>
+        {/* Destination pin */}
+        <path d="M316 47 C316 47 301 63 301 70 C301 78.3 307.8 85 316 85 C324.2 85 331 78.3 331 70 C331 63 316 47 Z" fill="#dc2626"/>
+        <circle cx="316" cy="70" r="5" fill="white"/>
+        {/* ETA badge */}
+        <rect x="236" y="127" width="118" height="23" rx="5" fill="white" opacity="0.94"/>
+        <circle cx="249" cy="138.5" r="4.5" fill="#dc2626"/>
+        <text x="258" y="143" fontSize="10.5" fill="#374151" fontFamily="system-ui,sans-serif" fontWeight="500">2.4 mi · ETA 6 PM</text>
+      </svg>
+    </div>
+  )
+}
 
 // ─── Voice + Chat demo ────────────────────────────────────────────────────────
 type OrbMode   = 'listen' | 'user' | 'ai'
@@ -994,11 +1041,21 @@ function KaiChatDemo() {
               {/* All messages visible at once */}
               <div className="kai-chat-scroll" style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
                 {CHAT_SCRIPT.map((msg, i) => {
+                  if (msg.role === 'map') return <MapWidget key={i} />
                   if (msg.role === 'signal') return (
                     <div key={i} style={{ display: 'flex', justifyContent: 'center', padding: '10px 12px' }}>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, color: '#059669', background: 'rgba(5,150,105,0.12)', borderRadius: 99, padding: '4px 14px' }}>
                         ✓&nbsp;{msg.text}
                       </span>
+                    </div>
+                  )
+                  if (msg.role === 'chips') return (
+                    <div key={i} style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '6px 12px 12px' }}>
+                      {['Track my order', 'Reset my password', 'Contact support'].map(chip => (
+                        <div key={chip} style={{ border: '1px solid #228DC1', borderRadius: 8, padding: '5px 10px', fontSize: 11, color: '#228DC1', background: '#fff', cursor: 'default', whiteSpace: 'nowrap' }}>
+                          {chip}
+                        </div>
+                      ))}
                     </div>
                   )
                   const isAI = msg.role === 'ai'
