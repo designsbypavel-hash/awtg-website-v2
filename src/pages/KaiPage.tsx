@@ -789,7 +789,6 @@ function TypingDots() {
       width:'100%', background:KAI_MSG_AI,
       padding:'12px 12px 14px',
       display:'flex', flexDirection:'column', gap:8,
-      animation:'chatFromLeft 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both',
     }}>
       <span style={{ fontSize:12, fontWeight:700, color:'#000', lineHeight:1, whiteSpace:'nowrap' }}>
         AI Assistant
@@ -804,7 +803,6 @@ function TypingDots() {
           <span key={i} style={{
             display:'block', width:7, height:7, borderRadius:'50%',
             background:'#228DC1', opacity:0.75,
-            animation:`bounce 0.9s ease-in-out ${i*165}ms infinite`,
           }}/>
         ))}
       </div>
@@ -818,7 +816,6 @@ function MsgRow({ msg }: { msg: LiveMsg }) {
     return (
       <div style={{
         display:'flex', justifyContent:'center', padding:'10px 12px',
-        animation:'signalPop 0.48s cubic-bezier(0.22,1,0.36,1) both',
       }}>
         <span style={{
           display:'inline-flex', alignItems:'center', gap:5,
@@ -834,16 +831,13 @@ function MsgRow({ msg }: { msg: LiveMsg }) {
   const isAI   = msg.role === 'ai'
   const bg     = isAI ? KAI_MSG_AI : KAI_MSG_USER
   const label  = isAI ? 'AI Assistant' : 'You'
-  const anim   = isAI
-    ? 'chatFromLeft 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both'
-    : 'chatFromRight 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both'
 
   return (
     <div style={{
       width:'100%', background:bg,
       padding:'12px 12px 14px',
       display:'flex', flexDirection:'column', gap:6,
-      animation:anim, wordBreak:'break-word',
+      wordBreak:'break-word',
     }}>
       {/* Label — Figma: Nunito Bold 12px #000 */}
       <span style={{ fontSize:12, fontWeight:700, color:'#000', lineHeight:1, whiteSpace:'nowrap' }}>
@@ -998,7 +992,6 @@ function KaiChatDemo() {
               position:'relative', flexShrink:0,
               display:'flex', gap:4, alignItems:'flex-start',
               padding:'2px 8px', overflowX:'hidden',
-              animation:'fadeIn 0.35s ease both',
             }}>
               {CHIPS.map(chip => (
                 <div key={chip} style={{
