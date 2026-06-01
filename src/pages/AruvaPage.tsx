@@ -2348,19 +2348,20 @@ export default function AruvaPage() {
       </section>
 
       {/* Pilot CTA */}
-      <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 text-center">
-          <p className="type-label text-[#228DC1] mb-4">Start Your Pilot</p>
-          <h2 className="font-heading text-[#0a1628] mb-4">
-            Ready to see Aruva<br />in your courses?
+      <section className="py-24 text-center" style={{ background:'#0a1628' }}>
+        <div className="max-w-2xl mx-auto px-8">
+          <span style={{ display:'inline-block', background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.15)', color:'rgba(255,255,255,0.7)', fontSize:11, fontWeight:700, letterSpacing:'0.14em', textTransform:'uppercase', padding:'5px 14px', borderRadius:20, marginBottom:24 }}>Start Your Pilot</span>
+          <h2 className="font-heading mb-5" style={{ color:'white', fontSize:42, lineHeight:1.1 }}>
+            Ready to see Aruva<br />
+            <span style={{ color:'#fbbf24' }}>in your courses?</span>
           </h2>
-          <p className="text-[#0a1628]/65 text-base font-normal leading-relaxed max-w-lg mx-auto mb-8">
+          <p style={{ color:'rgba(255,255,255,0.6)', fontSize:16, lineHeight:1.75, marginBottom:32 }}>
             Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution.
           </p>
           <Link to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-white text-[14px] font-semibold hover:opacity-90 transition-opacity"
-            style={{ background:'#228DC1' }}>
-            Request a Demo <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-[14px] font-semibold hover:opacity-90 transition-opacity"
+            style={{ background:'#fbbf24', color:'#0a1628' }}>
+            Request a Demo
           </Link>
         </div>
       </section>
