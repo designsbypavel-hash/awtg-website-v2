@@ -2256,8 +2256,6 @@ export default function AruvaPage() {
       {/* Four principles */}
       <PrinciplesSection />
 
-      {/* Platform pillars */}
-      <PillarsSection />
 
       {/* Who it's for */}
       <AudienceSection />
