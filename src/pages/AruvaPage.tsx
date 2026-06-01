@@ -2722,17 +2722,22 @@ export default function AruvaPage() {
                 ))}
               </div>
 
-              {/* 3 bottom badges */}
-              <div className="grid grid-cols-3 gap-3">
+              {/* Platform quality badges */}
+              <div className="flex flex-wrap items-center gap-2 px-5 py-4 rounded-xl border border-gray-200" style={{ background: '#0a1628' }}>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/35 mr-1">Platform</span>
                 {[
-                  { tag:'AUDIT READY',   val:'Logs + trails' },
-                  { tag:'DATA CONTROL',  val:'GDPR aligned' },
-                  { tag:'DEPLOYMENT',    val:'Your choice' },
-                ].map(b => (
-                  <div key={b.tag} className="bg-[#f8fafc] rounded-xl p-4 border border-gray-100 text-center">
-                    <p className="type-label text-[#0a1628]/40 mb-1">{b.tag}</p>
-                    <p className="font-semibold text-[#0a1628] text-[13px]">{b.val}</p>
-                  </div>
+                  { label: 'Traceable',   color: '#228DC1' },
+                  { label: 'Auditable',   color: '#7c3aed' },
+                  { label: 'Explainable', color: '#059669' },
+                  { label: 'Measurable',  color: '#d97706' },
+                  { label: 'With Logs',   color: '#e11d48' },
+                ].map(q => (
+                  <span key={q.label}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-bold rounded-full"
+                    style={{ background: q.color + '22', color: q.color, border: `1px solid ${q.color}40` }}>
+                    <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill={q.color}/></svg>
+                    {q.label}
+                  </span>
                 ))}
               </div>
             </div>
