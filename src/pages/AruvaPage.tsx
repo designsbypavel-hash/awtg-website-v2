@@ -355,15 +355,6 @@ const audiences = [
 ]
 
 // -- Platform pillars ----------------------------------------------------------
-const pillars = [
-  { num: '01', label: 'Smart Syllabus',         tag: 'Course Intelligence',   desc: 'Turns course outcomes, resources and assessments into the intelligence layer that guides every tutoring and assessment interaction.' },
-  { num: '02', label: 'Professor-Guided Tutor',  tag: 'Adaptive Teaching',    desc: 'Educators define tone, depth and rules. Students receive Socratic guidance that builds genuine understanding, not shortcuts.' },
-  { num: '03', label: 'Formative Assessment',    tag: 'Assessment Intelligence', desc: 'Supports quizzes, rubrics and early gap detection so educators can intervene during the term, not after grades are submitted.' },
-  { num: '04', label: 'Learning Curve AI',       tag: 'Performance Profiling', desc: 'Builds individual student profiles across mastery, confidence, pace and workload, adapting support as each student progresses.' },
-  { num: '05', label: 'Educator Analytics',      tag: 'Teaching Insight',     desc: 'Real-time visibility into engagement, topic difficulty and intervention opportunities across cohorts.' },
-  { num: '06', label: 'Governance Layer',        tag: 'Institutional Control', desc: 'Role-based access, audit trails and data residency controls keep AI accountable and under institutional control.' },
-]
-
 // -- How It Works sticky-scroll step text -------------------------------------
 function HIWStepText({ step, index, total }: { step: { num: string; label: string; desc: string; detail: string; visual: string }; index: number; total: number }) {
   const [active, setActive] = React.useState(false)
