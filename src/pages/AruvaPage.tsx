@@ -2366,7 +2366,6 @@ export default function AruvaPage() {
         </div>
       </section>
 
-      <CTASection />
     </>
   )
 }
