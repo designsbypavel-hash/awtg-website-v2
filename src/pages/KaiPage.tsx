@@ -923,7 +923,12 @@ function KaiChatDemo() {
   }, [msgs, typing])
 
   return (
-    <div className="select-none" style={{ width:'100%', maxWidth:400 }}>
+    <div className="select-none" style={{
+      width:'100%',
+      maxWidth:400,
+      animation:'kaiWidgetFloat 7s ease-in-out infinite',
+      willChange:'transform',
+    }}>
 
       {/*
         ── Gradient border technique ──
@@ -935,6 +940,8 @@ function KaiChatDemo() {
         padding:6,
         borderRadius:36,           /* 30 (inner) + 6 (padding) */
         background:KAI_HDR_GRAD,
+        backgroundSize:'180% 180%',
+        animation:'kaiGradientShift 8s ease-in-out infinite',
         boxShadow:'0px 4px 4px 0px rgba(0,0,0,0.25)',
       }}>
       <div style={{
