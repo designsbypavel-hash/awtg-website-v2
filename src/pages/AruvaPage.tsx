@@ -2375,9 +2375,7 @@ function PrinciplesSection() {
                 <FontAwesomeIcon icon={p.icon} style={{ width:18, height:18, color: p.color }} />
               </div>
               {/* Label */}
-              <p className="type-label mb-2" style={{ color: p.color }}>{p.label}</p>
-              {/* Title */}
-              <h3 className="text-[#0a1628] font-semibold text-[16px] leading-snug mb-3">{p.title}</h3>
+              <p className="type-label mb-3" style={{ color: p.color }}>{p.label}</p>
               {/* Desc */}
               <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{p.desc}</p>
             </div>
