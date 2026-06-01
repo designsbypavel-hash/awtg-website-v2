@@ -476,45 +476,166 @@ function SyllabusVisual() {
 
 function AlignVisual() {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
-      <p className="text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-5">AI Policy Compilation</p>
-      <div className="flex items-stretch gap-4">
-        {/* Inputs */}
-        <div className="flex flex-col gap-2 flex-1">
-          {[
-            { label: 'Outcomes',         color: '#228DC1' },
-            { label: 'Rubric rules',     color: '#7c3aed' },
-            { label: 'Approved content', color: '#059669' },
-            { label: 'AI mode',          color: '#d97706' },
-          ].map(item => (
-            <div key={item.label} className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#f8fafc] border border-gray-100">
-              <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
-              <span className="text-[#0a1628]/65 text-[14px] font-medium">{item.label}</span>
-            </div>
-          ))}
+    <div className="bg-white border border-gray-200 shadow-[0_4px_24px_rgba(10,22,40,0.10)] overflow-hidden">
+      {/* Card header */}
+      <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-100">
+        <div className="w-8 h-8 bg-[#f0fdf4] border border-[#bbf7d0] flex items-center justify-center shrink-0">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+          </svg>
         </div>
-        {/* Arrow */}
-        <div className="flex flex-col items-center justify-center gap-2 shrink-0 px-2">
-          <div className="flex-1 w-px bg-gradient-to-b from-transparent to-[#228DC1]/40" />
-          <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#e5f4fa] border border-[#228DC1]/30">
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M3 8l4 5 4-5" stroke="#228DC1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <div>
+          <p className="text-[#0a1628] font-semibold text-[13px] leading-tight">Image Generation</p>
+          <p className="text-[#0a1628]/45 text-[11px]">Educational illustration generated</p>
+        </div>
+      </div>
+
+      {/* Prompt bar */}
+      <div className="flex items-center justify-between px-4 py-2 bg-[#f8fafc] border-b border-gray-100">
+        <code className="text-[11px] text-[#059669] font-mono tracking-tight">Generate: photosynthesis lesson diagram</code>
+        <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#059669] border border-[#059669]/40 px-2 py-0.5">Generated</span>
+      </div>
+
+      {/* Diagram — shown immediately, animated flow lines on top */}
+      <div className="relative overflow-hidden" style={{ minHeight: '260px', background: 'linear-gradient(150deg,#0b2a1a 0%,#173d25 30%,#0e3530 60%,#071e2e 100%)' }}>
+
+        {/* Base SVG diagram — all nodes visible immediately */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 560 260" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#fef08a"/>
+              <stop offset="60%" stopColor="#fbbf24" stopOpacity="0.9"/>
+              <stop offset="100%" stopColor="#f59e0b" stopOpacity="0"/>
+            </radialGradient>
+            <radialGradient id="leafGrad" cx="30%" cy="30%" r="70%">
+              <stop offset="0%" stopColor="#4ade80"/>
+              <stop offset="100%" stopColor="#15803d"/>
+            </radialGradient>
+            <filter id="glow2">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          {/* ── Light rays from sun ── */}
+          {[[-20,60],[0,90],[15,115],[25,145]].map(([dx,dy],i) => (
+            <line key={i} x1={60+dx} y1={30+dy} x2="60" y2="30" stroke="#fde68a" strokeWidth="1.5" opacity={0.18 - i*0.03}/>
+          ))}
+
+          {/* ── Sun ── */}
+          <circle cx="60" cy="30" r="36" fill="url(#sunGrad)" opacity="0.75"/>
+          <circle cx="60" cy="30" r="18" fill="#fde68a" filter="url(#glow2)"/>
+          <text x="60" y="26" fill="#78350f" fontSize="10" fontWeight="800" textAnchor="middle">LIGHT</text>
+          <text x="60" y="38" fill="#92400e" fontSize="10" fontWeight="700" textAnchor="middle">ENERGY</text>
+
+          {/* ── Leaf silhouette ── */}
+          <ellipse cx="175" cy="155" rx="90" ry="52" fill="url(#leafGrad)" opacity="0.35" transform="rotate(-18,175,155)"/>
+
+          {/* ── Leaf label ── */}
+          <text x="115" y="185" fill="#86efac" fontSize="13" fontWeight="800" opacity="0.9">Leaf</text>
+
+          {/* ── Thylakoid membrane ── */}
+          <ellipse cx="195" cy="160" rx="55" ry="32" fill="#082e20" stroke="#22c55e" strokeWidth="1.6"/>
+          <text x="195" y="155" fill="#86efac" fontSize="9.5" fontWeight="800" textAnchor="middle">THYLAKOID</text>
+          <text x="195" y="167" fill="#4ade80" fontSize="8" textAnchor="middle" opacity="0.7">Light reactions</text>
+          {/* Photosystem dots */}
+          {[170,183,196,209,222].map((cx,i) => (
+            <circle key={cx} cx={cx} cy="178" r="3.5" fill="#22c55e" opacity={0.75 - i * 0.1}/>
+          ))}
+
+          {/* ── H2O node ── */}
+          <circle cx="112" cy="160" r="16" fill="#1e40af" filter="url(#glow2)"/>
+          <text x="112" y="157" fill="white" fontSize="9.5" fontWeight="700" textAnchor="middle">H&#8322;O</text>
+          <text x="112" y="169" fill="#93c5fd" fontSize="8" textAnchor="middle">splits</text>
+
+          {/* ── O2 output ── */}
+          <circle cx="195" cy="112" r="14" fill="#064e3b" stroke="#34d399" strokeWidth="1.4"/>
+          <text x="195" y="109" fill="#34d399" fontSize="9.5" fontWeight="700" textAnchor="middle">O&#8322;</text>
+          <text x="195" y="120" fill="#34d399" fontSize="7.5" textAnchor="middle">released</text>
+
+          {/* ── ATP badge ── */}
+          <rect x="262" y="130" width="36" height="18" rx="3" fill="#7c2d12" stroke="#fb923c" strokeWidth="1.1"/>
+          <text x="280" y="142" fill="#fed7aa" fontSize="9" fontWeight="800" textAnchor="middle">ATP</text>
+
+          {/* ── NADPH badge ── */}
+          <rect x="258" y="158" width="46" height="18" rx="3" fill="#7c2d12" stroke="#fb923c" strokeWidth="1.1"/>
+          <text x="281" y="170" fill="#fed7aa" fontSize="9" fontWeight="800" textAnchor="middle">NADPH</text>
+
+          {/* ── CO2 node ── */}
+          <circle cx="420" cy="28" r="16" fill="#1e293b" stroke="#94a3b8" strokeWidth="1.3"/>
+          <text x="420" y="25" fill="#e2e8f0" fontSize="9.5" fontWeight="700" textAnchor="middle">CO&#8322;</text>
+          <text x="420" y="36" fill="#94a3b8" fontSize="7.5" textAnchor="middle">input</text>
+          {/* Second CO2 molecule drifting */}
+          <circle cx="466" cy="55" r="10" fill="#1e293b" stroke="#94a3b8" strokeWidth="1"/>
+          <text x="466" y="59" fill="#94a3b8" fontSize="8" fontWeight="700" textAnchor="middle">CO&#8322;</text>
+
+          {/* ── Calvin Cycle ── */}
+          <circle cx="420" cy="155" r="62" fill="#082233" stroke="#228DC1" strokeWidth="1.8"/>
+          <circle cx="420" cy="155" r="57" fill="none" stroke="#228DC1" strokeWidth="0.6" strokeDasharray="5 5" opacity="0.28"/>
+          {/* Wedge divisions */}
+          <path d="M420,155 L420,93" stroke="#228DC1" strokeWidth="0.6" opacity="0.2"/>
+          <path d="M420,155 L474,186" stroke="#228DC1" strokeWidth="0.6" opacity="0.2"/>
+          <path d="M420,155 L366,186" stroke="#228DC1" strokeWidth="0.6" opacity="0.2"/>
+          {/* Labels */}
+          <text x="420" y="118" fill="#7ac4e0" fontSize="8" fontWeight="700" textAnchor="middle" opacity="0.7">Carbon</text>
+          <text x="420" y="128" fill="#7ac4e0" fontSize="8" fontWeight="700" textAnchor="middle" opacity="0.7">Fixation</text>
+          <text x="452" y="172" fill="#7ac4e0" fontSize="7.5" fontWeight="700" textAnchor="middle" opacity="0.65">Reduction</text>
+          <text x="386" y="172" fill="#7ac4e0" fontSize="7.5" fontWeight="700" textAnchor="middle" opacity="0.65">Regen.</text>
+          <text x="420" y="151" fill="#38bdf8" fontSize="11" fontWeight="800" textAnchor="middle">CALVIN</text>
+          <text x="420" y="164" fill="#38bdf8" fontSize="11" fontWeight="800" textAnchor="middle">CYCLE</text>
+          <text x="420" y="175" fill="#228DC1" fontSize="7.5" textAnchor="middle" opacity="0.65">Rubisco · RuBP</text>
+
+          {/* ── G3P node ── */}
+          <rect x="486" y="208" width="44" height="22" rx="3" fill="#134e2a" stroke="#22c55e" strokeWidth="1.2"/>
+          <text x="508" y="218" fill="#86efac" fontSize="9.5" fontWeight="700" textAnchor="middle">G3P</text>
+          <text x="508" y="227" fill="#4ade80" fontSize="7.5" textAnchor="middle">3-carbon</text>
+
+          {/* ── Glucose ── */}
+          <rect x="360" y="232" width="68" height="24" rx="3" fill="#451a03" stroke="#fbbf24" strokeWidth="1.3"/>
+          <text x="394" y="243" fill="#fde68a" fontSize="9.5" fontWeight="800" textAnchor="middle">GLUCOSE</text>
+          <text x="394" y="252" fill="#fbbf24" fontSize="7.5" textAnchor="middle">C&#8326;H&#8321;&#8322;O&#8326;</text>
+
+          {/* ── SUGAR label ── */}
+          <text x="454" y="252" fill="#fbbf24" fontSize="8.5" fontWeight="700" opacity="0.7">&#x2192; Sugar</text>
+
+          {/* ── Animated flow lines ── */}
+          {/* H2O → Thylakoid */}
+          <path className="graph-flow-line graph-flow-line-delay-1" style={{ stroke: '#60a5fa' }} d="M128,155 C148,152 162,152 140,152"/>
+          {/* Sun → Thylakoid */}
+          <path className="graph-flow-line" style={{ stroke: '#fde68a' }} d="M75,55 C110,90 145,120 145,138"/>
+          {/* Thylakoid → O2 */}
+          <path className="graph-flow-line graph-flow-line-delay-2" style={{ stroke: '#34d399' }} d="M195,128 L195,126"/>
+          {/* Thylakoid → ATP */}
+          <path className="graph-flow-line" style={{ stroke: '#fb923c' }} d="M248,148 C254,142 258,139 262,139"/>
+          {/* Thylakoid → NADPH */}
+          <path className="graph-flow-line graph-flow-line-delay-1" style={{ stroke: '#fb923c' }} d="M248,160 C252,162 256,165 258,167"/>
+          {/* CO2 → Calvin */}
+          <path className="graph-flow-line graph-flow-line-delay-2" style={{ stroke: '#94a3b8' }} d="M420,44 L420,93"/>
+          {/* ATP → Calvin */}
+          <path className="graph-flow-line graph-flow-line-delay-3" style={{ stroke: '#fb923c' }} d="M298,139 C330,138 358,138 358,148"/>
+          {/* NADPH → Calvin */}
+          <path className="graph-flow-line" style={{ stroke: '#fb923c' }} d="M304,167 C330,166 356,162 358,162"/>
+          {/* Calvin → G3P */}
+          <path className="graph-flow-line graph-flow-line-delay-1" style={{ stroke: '#34d399' }} d="M470,192 C476,198 482,204 486,212"/>
+          {/* G3P → Glucose */}
+          <path className="graph-flow-line graph-flow-line-delay-2" style={{ stroke: '#fbbf24' }} d="M494,230 C484,234 470,236 428,236"/>
+          {/* Regeneration arc */}
+          <path className="graph-flow-line graph-flow-line-delay-3" style={{ stroke: '#a78bfa', strokeDasharray: '5 9' }} d="M380,206 C348,188 360,116 382,100"/>
+        </svg>
+      </div>
+
+      {/* Footer stats */}
+      <div className="grid grid-cols-3 divide-x divide-gray-100 border-t border-gray-100">
+        {[
+          { label: 'IMAGE',  value: 'Generated' },
+          { label: 'GRAPH',  value: 'Animated'  },
+          { label: 'LESSON', value: 'Biology'   },
+        ].map((stat) => (
+          <div key={stat.label} className="px-4 py-2.5">
+            <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#0a1628]/35 mb-0.5">{stat.label}</p>
+            <p className="text-[13px] font-semibold text-[#0a1628]">{stat.value}</p>
           </div>
-          <div className="flex-1 w-px bg-gradient-to-b from-[#228DC1]/40 to-transparent" />
-        </div>
-        {/* Outputs */}
-        <div className="flex flex-col gap-2 flex-1">
-          {[
-            { label: 'Policy Graph', color: '#228DC1' },
-            { label: 'RAG Scope',    color: '#7c3aed' },
-            { label: 'Hint Stages',  color: '#059669' },
-            { label: 'Rubric Rules', color: '#d97706' },
-          ].map(n => (
-            <div key={n.label} className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl" style={{ background: n.color + '0e', border: '1px solid ' + n.color + '25' }}>
-              <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: n.color }} />
-              <span className="text-[14px] font-semibold" style={{ color: n.color }}>{n.label}</span>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </div>
   )
