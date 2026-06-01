@@ -1182,6 +1182,13 @@ function MultimodalSection() {
 
   return (
     <section ref={sectionRef} style={{ background:'#f8fafc', padding:'96px 0', borderTop:'1px solid #e8ecf2', borderBottom:'1px solid #e8ecf2' }}>
+      <style>{`
+        @keyframes mmCardIn    { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes mmCursor    { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes waveBar     { 0%,100%{transform:scaleY(0.35)} 50%{transform:scaleY(1)} }
+        @keyframes voiceOrbMorph { 0%,100%{border-radius:54% 46% 38% 62%/61% 35% 65% 39%} 33%{border-radius:42% 58% 55% 45%/53% 62% 38% 47%} 66%{border-radius:61% 39% 44% 56%/39% 57% 43% 61%} }
+        @keyframes orbFloat    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+      `}</style>
       <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
 
         {/* Two-column: left = title + tabs, right = demo */}
