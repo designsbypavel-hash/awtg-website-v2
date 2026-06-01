@@ -2708,21 +2708,24 @@ export default function AruvaPage() {
               </div>
 
               {/* Platform quality badges */}
-              <div className="flex flex-wrap items-center gap-2 px-5 py-4 rounded-xl border border-gray-200" style={{ background: '#0a1628' }}>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/35 mr-1">Platform</span>
+              <div className="flex items-center gap-3 px-5 py-3.5 rounded-xl border border-gray-200 bg-white shadow-[0_1px_8px_rgba(10,22,40,0.06)] flex-wrap">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a1628]/35 shrink-0">Platform</span>
+                <div className="w-px h-4 bg-gray-200 shrink-0" />
                 {[
                   { label: 'Traceable',   color: '#228DC1' },
                   { label: 'Auditable',   color: '#7c3aed' },
                   { label: 'Explainable', color: '#059669' },
                   { label: 'Measurable',  color: '#d97706' },
                   { label: 'With Logs',   color: '#e11d48' },
-                ].map(q => (
-                  <span key={q.label}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-bold rounded-full"
-                    style={{ background: q.color + '22', color: q.color, border: `1px solid ${q.color}40` }}>
-                    <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill={q.color}/></svg>
-                    {q.label}
-                  </span>
+                ].map((q, i, arr) => (
+                  <React.Fragment key={q.label}>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[12px] font-semibold rounded-lg"
+                      style={{ background: q.color + '10', color: q.color, border: `1px solid ${q.color}25` }}>
+                      <svg width="7" height="7" viewBox="0 0 7 7"><circle cx="3.5" cy="3.5" r="3.5" fill={q.color}/></svg>
+                      {q.label}
+                    </span>
+                    {i < arr.length - 1 && <span className="text-gray-200 text-[16px] font-light select-none">·</span>}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
