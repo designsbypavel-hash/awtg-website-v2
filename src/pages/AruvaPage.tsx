@@ -2258,11 +2258,11 @@ function BloomInsightSection() {
                             boxShadow: val >= 75 ? '0 0 10px rgba(5,150,105,0.28)' : 'none',
                             transition: 'width 0.75s cubic-bezier(0.34,1.1,0.64,1)',
                           }} />
-                        {/* Class avg marker */}
-                        <div className="absolute -top-[4px] -bottom-[4px] w-[2px] rounded-full"
-                          style={{ left: `${cavg}%`, background: 'linear-gradient(180deg,#cbd5e1,#64748b)', boxShadow: '0 0 0 3px rgba(148,163,184,0.12)' }} />
-                        <div className="absolute top-1/2 w-[7px] h-[7px] rounded-full border border-white bg-[#94a3b8] shadow-sm"
-                          style={{ left: `calc(${cavg}% - 3px)`, transform: 'translateY(-50%)' }} />
+                        {/* Fixed 75% threshold marker */}
+                        <div className="absolute -top-[5px] -bottom-[5px] w-[2px] rounded-full"
+                          style={{ left: '75%', background: 'linear-gradient(180deg,#6b7280,#374151)', boxShadow: '0 0 0 3px rgba(107,114,128,0.15)' }} />
+                        <div className="absolute top-1/2 w-[7px] h-[7px] rounded-full border-2 border-white bg-[#6b7280] shadow-sm"
+                          style={{ left: 'calc(75% - 3.5px)', transform: 'translateY(-50%)' }} />
                       </div>
                     </div>
                   )
