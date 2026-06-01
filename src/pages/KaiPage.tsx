@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck, faBolt, faShield, faChartBar, faGear, faCheck, faXmark, faComments, faArrowTrendUp, faWandSparkles, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faCircleCheck, faBolt, faShield, faChartBar, faGear, faCheck, faXmark, faComments, faArrowTrendUp, faWandSparkles, faSliders, faBookOpen, faPlug } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
 // -- Scroll utilities ----------------------------------------------------------
@@ -559,23 +559,23 @@ function IntegrationsSection() {
   const [ref, inView] = useInView(0.08)
 
   // 5 � 3 grid = 15 slots; Kai sits at index 7 (row 1, col 2 � dead centre)
-  type Item = { label: string; category: string; logo: string | null; isKai?: true }
+  type Item = { label: string; category: string; logo: string | null; isKai?: true; isMcp?: true }
   const items: Item[] = [
-    { label: 'HubSpot',      category: 'CRM',        logo: '/logos/hubspot.svg' },
-    { label: 'Salesforce',   category: 'CRM',        logo: '/logos/salesforce.svg' },
-    { label: 'Zendesk',      category: 'Support',    logo: '/logos/zendesk.svg' },
-    { label: 'Yahoo Mail',   category: 'Email',      logo: '/logos/yahoo-mail.svg' },
-    { label: 'Apple Mail',   category: 'Email',      logo: '/logos/apple-mail.svg' },
-    { label: 'Proton Mail',  category: 'Email',      logo: '/logos/proton-mail.svg' },
-    { label: 'WhatsApp',     category: 'Messaging',  logo: '/logos/whatsapp.svg' },
-    { label: 'Kai',          category: 'AI Agent',   logo: '/kai-logo.svg',         isKai: true },
-    { label: 'Slack',        category: 'Messaging',  logo: '/logos/slack.svg' },
-    { label: 'Teams',        category: 'Messaging',  logo: '/logos/teams.svg' },
-    { label: 'Jira',         category: 'Ticketing',  logo: '/logos/jira.svg' },
-    { label: 'Gmail',        category: 'Email',      logo: '/logos/gmail.svg' },
-    { label: 'Outlook',      category: 'Email',      logo: '/logos/outlook.svg' },
-    { label: 'SAP',          category: 'ERP',        logo: '/logos/sap.svg' },
-    { label: 'Zoho',         category: 'CRM',        logo: '/logos/zoho.svg' },
+    { label: 'HubSpot',     category: 'CRM',        logo: '/logos/hubspot.svg' },
+    { label: 'Salesforce',  category: 'CRM',        logo: '/logos/salesforce.svg' },
+    { label: 'Zendesk',     category: 'Support',    logo: '/logos/zendesk.svg' },
+    { label: 'Agentforce',  category: 'AI CRM',     logo: '/logos/agentforce.svg' },
+    { label: 'Freshdesk',   category: 'Support',    logo: '/logos/freshdesk.svg' },
+    { label: 'Fin',         category: 'AI Support', logo: '/logos/fin.svg' },
+    { label: 'WhatsApp',    category: 'Messaging',  logo: '/logos/whatsapp.svg' },
+    { label: 'Kai',         category: 'AI Agent',   logo: '/kai-logo.svg',        isKai: true },
+    { label: 'Slack',       category: 'Messaging',  logo: '/logos/slack.svg' },
+    { label: 'Teams',       category: 'Messaging',  logo: '/logos/teams.svg' },
+    { label: 'Zoom',        category: 'Video',      logo: '/logos/zoom.svg' },
+    { label: 'Gmail',       category: 'Email',      logo: '/logos/gmail.svg' },
+    { label: 'Outlook',     category: 'Email',      logo: '/logos/outlook.svg' },
+    { label: 'Jira',        category: 'Ticketing',  logo: '/logos/jira.svg' },
+    { label: 'MCP',         category: 'Protocol',   logo: null,                   isMcp: true },
   ]
 
   // Manhattan distance from center card (row 1, col 2 in a 5-col grid)
@@ -593,17 +593,16 @@ function IntegrationsSection() {
               Works with your stack.<br />MCP-ready on day one.
             </h2>
             <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] mb-8">
-              Kai sits alongside your existing setup. It pulls context from your CRM, picks up conversations on your support desk and responds through the channels your customers use. Nothing gets removed or replaced.
+              Kai sits at the centre of your ecosystem, connected to every CRM, support platform, messaging channel and protocol without ripping anything out.
             </p>
             <div className="flex flex-col gap-3">
               {[
-                { label: 'CRM, tickets, knowledge base',  value: 'reads live data'        },
-                { label: 'Email, chat, messaging, voice', value: 'acts through channels'  },
-                { label: 'API, webhooks and MCP',         value: 'connects to anything'   },
+                { label: 'Custom systems',  value: 'API + webhooks' },
+                { label: 'Tool access',     value: 'MCP supported'  },
               ].map((item) => (
-                <div key={item.label} className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#228DC1] rounded-full shrink-0 mt-1.5" />
-                  <span className="text-[#0a1628]/60 text-[13px] font-medium">{item.label} <span className="text-[#0a1628]/40 font-normal">({item.value})</span></span>
+                <div key={item.label} className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#228DC1] rounded-full shrink-0" />
+                  <span className="text-[#0a1628]/60 text-[13px]">{item.label} <span className="font-semibold text-[#0a1628]">{item.value}</span></span>
                 </div>
               ))}
             </div>
@@ -662,6 +661,16 @@ function IntegrationsSection() {
                       <span className="relative text-[8px] font-semibold text-[#903E8E] bg-[#903E8E]/10 border border-[#903E8E]/30 px-1.5 py-0.5 rounded-sm">
                         AI Agent · MCP
                       </span>
+                    </>
+                  ) : item.isMcp ? (
+                    <>
+                      <div className="w-8 h-8 flex items-center justify-center bg-[#e5f4fa] border border-[#228DC1]/25">
+                        <span className="text-[#228DC1] text-[9px] font-black tracking-tight">MCP</span>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-[#0a1628]/65 text-[10px] font-semibold">MCP</p>
+                        <p className="text-[#0a1628]/35 text-[9px] leading-tight mt-0.5">Protocol</p>
+                      </div>
                     </>
                   ) : (
                     <>
@@ -755,853 +764,42 @@ function SecurityComplianceSection() {
   )
 }
 
-// ─── Figma design tokens (node 2691:17369) ───────────────────────────────────
-const KAI_HDR_GRAD = 'linear-gradient(216.2deg,#4c97c3 0.12%,#6ac1ef 26.33%,#bef3ff 40%,#67d7e4 46.95%,#6ac1ef 59.44%)'
-// const KAI_BORDER   = '#4c97c3'          // gradient border handled by wrapper padding
-const KAI_MSG_AI   = '#f4fbff'          // AI message row bg
-const KAI_MSG_USER = '#ffffff'          // User message row bg
-const KAI_HDR_TXT  = '#1a253e'
-const KAI_INPUT_BD = '#b3b3b3'
-const KAI_CHIP_CLR = '#4b94c1'          // chip border + text colour
-
-// Suggestion chips shown after last AI message
-const CHIPS = ['Track my order', 'Reset my password', 'Contact support']
-
-// ─── Conversation script ──────────────────────────────────────────────────────
-type ChatRole = 'ai' | 'user' | 'signal'
-interface LiveMsg { id: number; role: ChatRole; text: string; meta?: string }
-
-const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
-  { role: 'ai',   text: "Hi there! 👋\nHow can I help you today?" },
-  { role: 'user', text: "My order hasn't arrived. It's been 5 days." },
-  { role: 'ai',   text: "I can see order #48291. It shipped Monday and is with the courier. Delivery is due today before 6 pm.", meta: 'Order #48291 · CRM synced' },
-  { role: 'user', text: "Perfect, thank you!" },
-  { role: 'ai',   text: "You're welcome! A satisfaction survey has been sent to your email.\n\nIs there anything else I can help with?" },
-  { role: 'signal', text: 'Resolved · 38s · CSAT sent' },
-]
-const HOLD_AFTER = [2000, 600, 2400, 600, 2800, 3400]
-const AI_TYP_MS  = [0,    0,   1500, 0,   1400, 0   ]
-
-// ─── Typing indicator — flat row matching Figma message layout ────────────────
-function TypingDots() {
-  return (
-    <div style={{
-      width:'100%', background:KAI_MSG_AI,
-      padding:'12px 12px 14px',
-      display:'flex', flexDirection:'column', gap:8,
-      animation:'chatFromLeft 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both',
-    }}>
-      <span style={{ fontSize:12, fontWeight:700, color:'#000', lineHeight:1, whiteSpace:'nowrap' }}>
-        AI Assistant
-      </span>
-      <div style={{
-        display:'inline-flex', alignItems:'center', gap:6,
-        background:'rgba(255,255,255,0.85)', borderRadius:14,
-        padding:'9px 13px', alignSelf:'flex-start',
-        boxShadow:'0 1px 3px rgba(0,0,0,0.07)',
-      }}>
-        {[0,1,2].map(i => (
-          <span key={i} style={{
-            display:'block', width:7, height:7, borderRadius:'50%',
-            background:'#228DC1', opacity:0.75,
-            animation:`bounce 0.9s ease-in-out ${i*165}ms infinite`,
-          }}/>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-// ─── Message row — Figma: full-width bands, alternating bg, label above text ──
-function MsgRow({ msg }: { msg: LiveMsg }) {
-  if (msg.role === 'signal') {
-    return (
-      <div style={{
-        display:'flex', justifyContent:'center', padding:'10px 12px',
-        animation:'signalPop 0.48s cubic-bezier(0.22,1,0.36,1) both',
-      }}>
-        <span style={{
-          display:'inline-flex', alignItems:'center', gap:5,
-          fontSize:11, fontWeight:600, color:'#059669',
-          background:'rgba(5,150,105,0.12)', borderRadius:99, padding:'4px 14px',
-        }}>
-          ✓&nbsp;{msg.text}
-        </span>
-      </div>
-    )
-  }
-
-  const isAI   = msg.role === 'ai'
-  const bg     = isAI ? KAI_MSG_AI : KAI_MSG_USER
-  const label  = isAI ? 'AI Assistant' : 'You'
-  const anim   = isAI
-    ? 'chatFromLeft 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both'
-    : 'chatFromRight 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both'
-
-  return (
-    <div style={{
-      width:'100%', background:bg,
-      padding:'12px 12px 14px',
-      display:'flex', flexDirection:'column', gap:6,
-      animation:anim, wordBreak:'break-word',
-    }}>
-      {/* Label — Figma: Nunito Bold 12px #000 */}
-      <span style={{ fontSize:12, fontWeight:700, color:'#000', lineHeight:1, whiteSpace:'nowrap' }}>
-        {label}
-      </span>
-      {/* Body — Figma: Regular 16px rgba(0,0,0,0.87), adapted to 14px for 400px width */}
-      <p style={{ fontSize:14, lineHeight:1.65, color:'rgba(0,0,0,0.87)', margin:0, whiteSpace:'pre-line' }}>
-        {msg.text}
-      </p>
-      {/* Meta badge (AI only) */}
-      {msg.meta && isAI && (
-        <span style={{
-          display:'inline-flex', alignItems:'center', gap:4, alignSelf:'flex-start',
-          fontSize:10, fontWeight:600, color:'#228DC1',
-          background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px',
-        }}>
-          ⚡ {msg.meta}
-        </span>
-      )}
-    </div>
-  )
-}
-
-// ─── Main chat demo component ─────────────────────────────────────────────────
-function KaiChatDemo() {
-  const [msgs,      setMsgs]      = useState<LiveMsg[]>([])
-  const [typing,    setTyping]    = useState(false)
-  const [fading,    setFading]    = useState(false)
-  const [showChips, setShowChips] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const tids      = useRef<number[]>([])
-  const msgId     = useRef(0)
-
-  const sched = (fn: () => void, ms: number) => {
-    const id = window.setTimeout(fn, ms)
-    tids.current.push(id)
-  }
-
-  const runChat = () => {
-    tids.current.forEach(clearTimeout)
-    tids.current = []
-    setMsgs([])
-    setTyping(false)
-    setFading(false)
-    setShowChips(false)
-
-    let t = 800
-    CHAT_SCRIPT.forEach((msg, i) => {
-      const typMs = msg.role === 'ai' ? AI_TYP_MS[i] : 0
-      if (typMs > 0) {
-        sched(() => setTyping(true), t)
-        t += typMs
-        sched(() => {
-          setTyping(false)
-          setMsgs(prev => [...prev, { ...msg, id: msgId.current++ }])
-          // Show chips with the second-to-last AI message
-          if (i === CHAT_SCRIPT.length - 2) sched(() => setShowChips(true), 300)
-        }, t)
-      } else {
-        sched(() => setMsgs(prev => [...prev, { ...msg, id: msgId.current++ }]), t)
-      }
-      t += HOLD_AFTER[i]
-    })
-    sched(() => setFading(true), t)
-    sched(() => runChat(), t + 600)
-  }
-
-  useEffect(() => {
-    const id = window.setTimeout(runChat, 500)
-    return () => { clearTimeout(id); tids.current.forEach(clearTimeout) }
-  }, [])
-
-  useEffect(() => {
-    const el = scrollRef.current
-    if (!el) return
-    el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
-  }, [msgs, typing])
-
-  return (
-    <div className="select-none" style={{ width:'100%', maxWidth:400 }}>
-
-      {/*
-        ── Gradient border technique ──
-        CSS border can't be a gradient directly on a rounded box.
-        Solution: outer div carries the gradient as its background + padding:6px
-        so the gradient peeks through as the "border". Inner div clips content.
-      */}
-      <div style={{
-        padding:6,
-        borderRadius:36,           /* 30 (inner) + 6 (padding) */
-        background:KAI_HDR_GRAD,
-        boxShadow:'0px 4px 4px 0px rgba(0,0,0,0.25)',
-      }}>
-      <div style={{
-        position:'relative',
-        width:'100%', height:588,  /* 600 − 12 (6px top+bottom padding) */
-        borderRadius:30,
-        background:KAI_HDR_GRAD,
-        overflow:'hidden',
-      }}>
-
-        {/* ── Header ── Figma: left-20 top-16, gap-8, 40×40 logo, SemiBold 16px */}
-        <div style={{
-          position:'absolute', top:16, left:20, right:20,
-          display:'flex', alignItems:'center', gap:8,
-        }}>
-          <div style={{
-            width:40, height:40, background:'#fff', borderRadius:12, flexShrink:0,
-            display:'flex', alignItems:'center', justifyContent:'center',
-          }}>
-            <img src="/kai-logo.svg" alt="Kai" style={{ width:24, height:24, objectFit:'contain' }} />
-          </div>
-          <span style={{ flex:1, fontFamily:'Roboto,sans-serif', fontWeight:600,
-                         fontSize:16, color:KAI_HDR_TXT, lineHeight:1 }}>
-            AI Assistant
-          </span>
-          <FontAwesomeIcon icon={faGear}        style={{ width:18, height:18, color:'rgba(26,37,62,0.5)' }} />
-          <FontAwesomeIcon icon={faChevronDown} style={{ width:18, height:18, color:'rgba(26,37,62,0.5)', marginLeft:4 }} />
-        </div>
-
-        {/* ── Chat area ── Figma: top-70, rounded-30, bg white, gap-4 */}
-        <div style={{
-          position:'absolute', top:70, left:0, right:0, bottom:0,
-          background:'#fff',
-          borderRadius:30,
-          display:'flex', flexDirection:'column', gap:4,
-          overflow:'hidden',
-        }}>
-
-          {/* ── Messages scroll — bg white (alternating per row), gap 0 so rows butt up */}
-          <div
-            ref={scrollRef}
-            className="kai-chat-scroll"
-            style={{
-              flex:1, overflowY:'auto', overflowX:'hidden',
-              background:'#fff',
-              display:'flex', flexDirection:'column', gap:0,
-              opacity: fading ? 0 : 1,
-              transition: fading ? 'opacity 0.45s ease' : 'opacity 0s',
-            }}
-          >
-            {msgs.map(m => <MsgRow key={m.id} msg={m} />)}
-            {typing && <TypingDots />}
-          </div>
-
-          {/* ── Suggestion chips ── Figma: gap-4, px-8 py-2, chip border #4b94c1 rounded-8 p-6, text 12px */}
-          {showChips && (
-            <div style={{
-              position:'relative', flexShrink:0,
-              display:'flex', gap:4, alignItems:'flex-start',
-              padding:'2px 8px', overflowX:'hidden',
-              animation:'fadeIn 0.35s ease both',
-            }}>
-              {CHIPS.map(chip => (
-                <div key={chip} style={{
-                  border:`1px solid ${KAI_CHIP_CLR}`, borderRadius:8,
-                  padding:'6px 8px', whiteSpace:'nowrap',
-                  background:'#fff', flexShrink:0, cursor:'pointer',
-                }}>
-                  <span style={{ fontSize:12, color:KAI_CHIP_CLR, lineHeight:'normal' }}>
-                    {chip}
-                  </span>
-                </div>
-              ))}
-              {/* Right fade-out — Figma: linear-gradient(-90deg, white 45.9%, transparent) */}
-              <div style={{
-                position:'absolute', right:0, top:0, bottom:0, width:48, pointerEvents:'none',
-                background:'linear-gradient(-90deg, #fff 45%, transparent)',
-              }} />
-            </div>
-          )}
-
-          {/* ── Input bar ── Figma node 2691:17421: border-t 0.5px #b3b3b3, px-24 py-12, items-center */}
-          <div style={{
-            borderTop:`0.5px solid ${KAI_INPUT_BD}`,
-            padding:'12px 24px',
-            display:'flex', alignItems:'center', gap:8,
-            background:'#fff', flexShrink:0,
-          }}>
-            <span style={{
-              flex:1, minWidth:0,
-              fontFamily:'Roboto,sans-serif', fontWeight:600,
-              fontSize:16, lineHeight:'normal',
-              color:'rgba(0,0,0,0.38)', userSelect:'none',
-            }}>
-              Type here...
-            </span>
-            <div style={{ padding:12, borderRadius:12, flexShrink:0,
-                          display:'flex', alignItems:'center', cursor:'pointer' }}>
-              <FontAwesomeIcon icon={faPaperPlane}
-                style={{ width:20, height:20, color:'rgba(0,0,0,0.38)' }} />
-            </div>
-          </div>
-
-          {/* ── "Powered by" ── Figma: absolute bottom-4, ExtraLight 6px */}
-          <div style={{
-            position:'absolute', bottom:4, left:0, right:0,
-            display:'flex', justifyContent:'center', alignItems:'center', gap:3,
-            pointerEvents:'none',
-          }}>
-            <img src="/kai-logo.svg" alt="" style={{ width:8, height:8, opacity:0.22 }} />
-            <span style={{ fontFamily:'Roboto,sans-serif', fontWeight:300,
-                           fontSize:7, color:'rgba(26,37,62,0.28)', letterSpacing:'0.03em' }}>
-              Kai · powered by AWTG
-            </span>
-          </div>
-
-        </div>
-      </div>{/* end inner clip div */}
-      </div>{/* end gradient border wrapper */}
-    </div>
-  )
-}
-
-
-// -- Escalation chart with hover interaction ----------------------------------
-function EscalationChart() {
-  const [hovered, setHovered] = useState<number | null>(null)
-
-  const pts = [
-    { x:54,  y:67,  pct:'40%', lbl:'MAY 2024' },
-    { x:136, y:92,  pct:'34%', lbl:'SEP 2024' },
-    { x:219, y:120, pct:'28%', lbl:'JAN 2025' },
-    { x:301, y:147, pct:'22%', lbl:'MAY 2025' },
-    { x:383, y:174, pct:'16%', lbl:'SEP 2025' },
-    { x:466, y:192, pct:'12%', lbl:'DEC 2025' },
-    { x:548, y:201, pct:'10%', lbl:'MAR 2026' },
-  ]
-
-  const hp = hovered !== null ? pts[hovered] : null
-  // Keep tooltip box (80px wide) fully within the 560-wide viewBox
-  const tx = hp ? Math.min(Math.max(hp.x, 44), 516) : 0
-
-  return (
-    <svg width="100%" viewBox="0 0 560 295" xmlns="http://www.w3.org/2000/svg" style={{ display:'block' }}>
-      <defs>
-        <pattern id="escDots" x="0" y="0" width="9" height="9" patternUnits="userSpaceOnUse">
-          <rect width="9" height="9" fill="#228DC1"/>
-          <circle cx="4.5" cy="4.5" r="1.6" fill="white" opacity="0.42"/>
-        </pattern>
-        <linearGradient id="escFade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#228DC1" stopOpacity="0.55"/>
-          <stop offset="100%" stopColor="#228DC1" stopOpacity="1"/>
-        </linearGradient>
-        <clipPath id="escClip">
-          <rect x="54" y="10" width="494" height="234"/>
-        </clipPath>
-        <mask id="escMask">
-          <rect x="54" y="10" width="494" height="234" fill="url(#escFade)"/>
-        </mask>
-      </defs>
-
-      {/* Chart bg */}
-      <rect x="54" y="10" width="494" height="234" fill="white"/>
-
-      {/* Dashed grid lines + Y labels */}
-      {[
-        { pct:50, y:20  },
-        { pct:40, y:67  },
-        { pct:30, y:114 },
-        { pct:20, y:161 },
-        { pct:10, y:208 },
-      ].map(({ pct, y }) => (
-        <g key={pct}>
-          <line x1="54" y1={y} x2="548" y2={y} stroke="#ddd" strokeDasharray="5,4" strokeWidth="1"/>
-          <text x="46" y={y+4} textAnchor="end" fontSize="11" fill="#aab8c2" fontFamily="Roboto,sans-serif">{pct}%</text>
-        </g>
-      ))}
-
-      {/* X-axis baseline */}
-      <line x1="54" y1="244" x2="548" y2="244" stroke="#ccc" strokeWidth="1"/>
-
-      {/* Area fill */}
-      <polygon
-        points="54,67 136,92 219,120 301,147 383,174 466,192 548,201 548,244 54,244"
-        fill="url(#escDots)" clipPath="url(#escClip)" mask="url(#escMask)"
-      />
-
-      {/* Line */}
-      <polyline
-        points="54,67 136,92 219,120 301,147 383,174 466,192 548,201"
-        fill="none" stroke="#228DC1" strokeWidth="2.5"
-        strokeLinecap="round" strokeLinejoin="round"
-      />
-
-      {/* Vertical indicator line on hover */}
-      {hp && (
-        <line
-          x1={hp.x} y1={hp.y + 8} x2={hp.x} y2={244}
-          stroke="#228DC1" strokeWidth="1.5" strokeDasharray="4,3" opacity="0.4"
-        />
-      )}
-
-      {/* Data points + labels */}
-      {pts.map((pt, i) => (
-        <g key={pt.lbl} style={{ cursor:'crosshair' }}
-          onMouseEnter={() => setHovered(i)}
-          onMouseLeave={() => setHovered(null)}
-        >
-          {/* Static % label — hidden while its tooltip is showing */}
-          {hovered !== i && (
-            <text x={pt.x} y={pt.y - 11} textAnchor="middle" fontSize="10.5" fontWeight="700"
-              fill="#1a6e99" fontFamily="Roboto,sans-serif">{pt.pct}</text>
-          )}
-          {/* X-axis date label */}
-          <text x={pt.x} y="256" textAnchor="end" fontSize="9" fill="#9aabb9"
-            fontFamily="Roboto,sans-serif" transform={`rotate(-60,${pt.x},256)`}>{pt.lbl}</text>
-          {/* Wide invisible hit area for easy hover */}
-          <circle cx={pt.x} cy={pt.y} r="20" fill="transparent"/>
-          {/* Visible circle — filled on hover */}
-          <circle cx={pt.x} cy={pt.y} r={hovered === i ? 7 : 5}
-            fill={hovered === i ? '#228DC1' : 'white'}
-            stroke="#228DC1" strokeWidth="2.5"/>
-        </g>
-      ))}
-
-      {/* Tooltip card */}
-      {hp && (
-        <g style={{ pointerEvents:'none' }}>
-          <rect x={tx-40} y={hp.y - 70} width="80" height="46"
-            rx="6" fill="#0a1628"/>
-          <text x={tx} y={hp.y - 49} textAnchor="middle"
-            fontSize="15" fontWeight="700" fill="white" fontFamily="Roboto,sans-serif">{hp.pct}</text>
-          <text x={tx} y={hp.y - 33} textAnchor="middle"
-            fontSize="9" fill="rgba(255,255,255,0.58)" fontFamily="Roboto,sans-serif" letterSpacing="0.04em">{hp.lbl}</text>
-          {/* Arrow */}
-          <polygon points={`${tx-6},${hp.y-24} ${tx+6},${hp.y-24} ${tx},${hp.y-16}`} fill="#0a1628"/>
-        </g>
-      )}
-    </svg>
-  )
-}
-
-// -- Omnichannel Section -------------------------------------------------------
-//
-// Layout mirrors the Intercom "Fin" showcase:
-//   • dot-grid section background
-//   • 7 channel icon squares in a 3-column grid (matching panels below)
-//   • SVG connector: stubs → horizontal bar → 3 drops → panel tops
-//   • Three panels: Telegram | KAI Web Chat | Gmail
-//
-// SVG coordinate system  viewBox="0 0 1000 80"  preserveAspectRatio="none"
-//   Column centres: 160 | 500 | 840   (same proportions as CSS grid cols)
-//   Left icon stubs  x = 120, 160, 200   Right icon stubs  x = 800, 840, 880
-//   Bar  y = 38   Drops  y = 38 → 80
-// ---------------------------------------------------------------------------
-
-function OmnichannelSection() {
-  // ─── Design tokens ──────────────────────────────────────────────────────
-  const OMNI_BG  = '#f4f4ff'
-  const CONN_CLR = '#4c97c3'
-
-  // ─── Telegram messages ──────────────────────────────────────────────────
-  const tgMsgs = [
-    { from:'bot',  text:"Hi! I'm Kai 👋\nHow can I help you today?",                                        time:'09:41' },
-    { from:'user', text:'I need help raising a complaint about a missed delivery',                            time:'09:42', ticks:'✓✓' },
-    { from:'bot',  text:"Got it! I've raised case #7823 and notified the delivery team.\nExpect a callback within 2 hours. ✅", time:'09:42' },
-    { from:'user', text:'Brilliant, thank you!',                                                              time:'09:43', ticks:'✓✓' },
-  ]
-
-  // ─── KAI web messages ───────────────────────────────────────────────────
-  const kaiMsgs: { from:'ai'|'user'; text:string; meta?:string; signal?:string }[] = [
-    { from:'ai',   text:"Hi there! 👋\nWhat can I help you with today?" },
-    { from:'user', text:"I'd like to upgrade my subscription to the Pro plan." },
-    { from:'ai',   text:"Your current plan is Starter. Pro unlocks unlimited agents, priority support and full analytics.", meta:'Account #10284 · CRM synced' },
-    { from:'user', text:'What does it cost per month?' },
-    { from:'ai',   text:"Pro is £299/month. I've emailed a full comparison and a one-click upgrade link.", signal:'Upgraded · 44s · CSAT sent' },
-  ]
-
-  // ─── Channel icon box ────────────────────────────────────────────────
-  const ChIcon = ({
-    color, bg, children, glow = false,
-  }: { color:string; bg:string; children:React.ReactNode; glow?:boolean }) => (
-    <div style={{
-      width:44, height:44, borderRadius:12, flexShrink:0,
-      background: bg,
-      border: `1.5px solid ${color}30`,
-      display:'flex', alignItems:'center', justifyContent:'center',
-      boxShadow: glow
-        ? `0 0 0 5px ${color}18, 0 4px 16px ${color}28`
-        : '0 2px 8px rgba(0,0,0,0.07)',
-    }}>
-      {children}
-    </div>
-  )
-
-  // ─── Telegram icon path ───────────────────────────────────────────────
-  const TgPath = ({ size = 20, fill = '#229ED9' }: { size?:number; fill?:string }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill={fill}>
-      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-    </svg>
-  )
-
-  return (
-    <section
-      className="border-b border-gray-100"
-      style={{
-        background: OMNI_BG,
-        backgroundImage: 'radial-gradient(circle, rgba(76,151,195,0.055) 1px, transparent 1px)',
-        backgroundSize: '22px 22px',
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-20">
-
-        {/* ── Centred heading ── */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="type-label text-[#228DC1] mb-4">Omnichannel</p>
-          <h2 className="font-heading text-[#0a1628] mb-5">One AI. Every channel.</h2>
-          <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">
-            Kai meets customers on Telegram, your website or email — with the same intelligence, context and resolution on every channel.
-          </p>
-        </div>
-
-        {/* ═══════════════════════════════════════════════════════════════════
-            DESKTOP ROUTING DIAGRAM
-        ══════════════════════════════════════════════════════════════════════ */}
-        <div className="hidden lg:block">
-
-          {/* ── Channel icon row (3-col grid matching panels) ── */}
-          <div className="grid grid-cols-3 gap-6 mb-0">
-
-            {/* Left: WhatsApp · Telegram · Teams */}
-            <div className="flex justify-center items-center gap-2">
-              <ChIcon color="#25D366" bg="rgba(37,211,102,0.10)">
-                <img src="/logos/whatsapp.svg" alt="WhatsApp" style={{ width:24, height:24 }}
-                  onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
-              </ChIcon>
-              <ChIcon color="#229ED9" bg="rgba(34,158,217,0.10)">
-                <TgPath size={22} fill="#229ED9" />
-              </ChIcon>
-              <ChIcon color="#6264A7" bg="rgba(98,100,167,0.10)">
-                <img src="/logos/teams.svg" alt="Teams" style={{ width:24, height:24 }}
-                  onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
-              </ChIcon>
-            </div>
-
-            {/* Centre: KAI (glowing) */}
-            <div className="flex justify-center items-center">
-              <ChIcon color="#228DC1" bg="rgba(34,141,193,0.10)" glow>
-                <img src="/kai-logo.svg" alt="Kai" style={{ width:26, height:26 }}
-                  onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
-              </ChIcon>
-            </div>
-
-            {/* Right: Gmail · Outlook · Slack */}
-            <div className="flex justify-center items-center gap-2">
-              <ChIcon color="#EA4335" bg="rgba(234,67,53,0.10)">
-                <img src="/logos/gmail.svg" alt="Gmail" style={{ width:24, height:24 }}
-                  onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
-              </ChIcon>
-              <ChIcon color="#0078D4" bg="rgba(0,120,212,0.10)">
-                <img src="/logos/outlook.svg" alt="Outlook" style={{ width:24, height:24 }}
-                  onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
-              </ChIcon>
-              <ChIcon color="#4A154B" bg="rgba(74,21,75,0.10)">
-                <img src="/logos/slack.svg" alt="Slack" style={{ width:24, height:24 }}
-                  onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
-              </ChIcon>
-            </div>
-          </div>
-
-          {/* ── SVG connector ── */}
-          <svg
-            width="100%" height="80"
-            viewBox="0 0 1000 80"
-            preserveAspectRatio="none"
-            style={{ display:'block', overflow:'visible' }}
-          >
-            {[120,160,200,500,800,840,880].map(x => (
-              <line key={`stub-${x}`} x1={x} y1="0" x2={x} y2="40"
-                stroke="#cdd5de" strokeWidth="1.5" strokeDasharray="5,4" />
-            ))}
-            <line x1="120" y1="40" x2="880" y2="40" stroke="#cdd5de" strokeWidth="1.5" strokeDasharray="5,4" />
-            {[160,500,840].map(x => (
-              <line key={`drop-${x}`} x1={x} y1="40" x2={x} y2="80"
-                stroke={CONN_CLR} strokeWidth="1.5" strokeDasharray="5,4" opacity="0.55" />
-            ))}
-            {[120,160,200,500,800,840,880].map(x => (
-              <circle key={`dot-${x}`} cx={x} cy="40" r="3.5"
-                fill="white" stroke="#cdd5de" strokeWidth="1.5" />
-            ))}
-            {[160,500,840].map(x => (
-              <circle key={`entry-${x}`} cx={x} cy="80" r="4.5"
-                fill="white" stroke={CONN_CLR} strokeWidth="1.5" opacity="0.7" />
-            ))}
-          </svg>
-
-          {/* ── Three channel panels ── */}
-          <div className="grid grid-cols-3 gap-6">
-
-            {/* ════ LEFT: TELEGRAM ════ */}
-            <div style={{ border:'1px solid #e0e6ed', borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', boxShadow:'0 4px 24px rgba(10,22,40,0.07)' }}>
-
-              {/* Header */}
-              <div style={{ background:'#229ED9', padding:'11px 14px', display:'flex', alignItems:'center', gap:10, flexShrink:0 }}>
-                <div style={{ width:34, height:34, borderRadius:'50%', background:'rgba(255,255,255,0.22)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                  <TgPath size={17} fill="white" />
-                </div>
-                <div style={{ flex:1 }}>
-                  <p style={{ color:'white', fontSize:13, fontWeight:600, lineHeight:1.2 }}>Kai Support Bot</p>
-                  <p style={{ color:'rgba(255,255,255,0.65)', fontSize:11, marginTop:1 }}>bot · online</p>
-                </div>
-                <div style={{ display:'flex', gap:2, alignItems:'flex-end' }}>
-                  {[9,13,17].map((h,i) => (
-                    <div key={i} style={{ width:2.5, height:h, background:'rgba(255,255,255,0.55)', borderRadius:1 }} />
-                  ))}
-                </div>
-              </div>
-
-              {/* Messages */}
-              <div style={{ flex:1, padding:'12px 10px', display:'flex', flexDirection:'column', gap:8, background:'#EFEFF4' }}>
-                {tgMsgs.map((msg, i) =>
-                  msg.from === 'bot' ? (
-                    <div key={i} style={{ display:'flex', gap:7, alignItems:'flex-end' }}>
-                      <div style={{ width:26, height:26, borderRadius:'50%', background:'#229ED9', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                        <span style={{ color:'white', fontSize:10, fontWeight:800 }}>K</span>
-                      </div>
-                      <div style={{ background:'white', borderRadius:'12px 12px 12px 4px', padding:'8px 11px', maxWidth:'82%', boxShadow:'0 1px 2px rgba(0,0,0,0.07)' }}>
-                        <p style={{ fontSize:13, color:'#000', lineHeight:1.5, whiteSpace:'pre-line' }}>{msg.text}</p>
-                        <p style={{ fontSize:10, color:'rgba(0,0,0,0.38)', marginTop:3, textAlign:'right' }}>{msg.time}</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div key={i} style={{ display:'flex', justifyContent:'flex-end' }}>
-                      <div style={{ background:'#DCFFBE', borderRadius:'12px 12px 4px 12px', padding:'8px 11px', maxWidth:'82%', boxShadow:'0 1px 2px rgba(0,0,0,0.07)' }}>
-                        <p style={{ fontSize:13, color:'#000', lineHeight:1.5 }}>{msg.text}</p>
-                        <p style={{ fontSize:10, color:'rgba(0,0,0,0.38)', marginTop:3, textAlign:'right' }}>
-                          {msg.ticks ?? ''} {msg.time}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                )}
-                <div style={{ display:'flex', justifyContent:'center', marginTop:6 }}>
-                  <span style={{ background:'rgba(0,0,0,0.09)', borderRadius:20, padding:'4px 12px', fontSize:11, color:'rgba(0,0,0,0.45)', fontFamily:'Roboto,sans-serif' }}>
-                    ✓ Case raised · 28s
-                  </span>
-                </div>
-              </div>
-
-              {/* Input */}
-              <div style={{ padding:'8px 10px', display:'flex', alignItems:'center', gap:8, background:'white', borderTop:'1px solid #ebebeb', flexShrink:0 }}>
-                <div style={{ flex:1, background:'#F5F5F5', borderRadius:20, padding:'7px 14px' }}>
-                  <p style={{ fontSize:13, color:'rgba(0,0,0,0.33)', fontFamily:'Roboto,sans-serif' }}>Message...</p>
-                </div>
-                <div style={{ width:34, height:34, borderRadius:'50%', background:'#229ED9', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                </div>
-              </div>
-            </div>
-
-            {/* ════ CENTRE: KAI WEB CHAT ════ */}
-            <div style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, boxShadow:'0px 8px 32px rgba(0,0,0,0.18)', display:'flex', flexDirection:'column' }}>
-              <div style={{ borderRadius:15, background:'#fff', overflow:'hidden', flex:1, display:'flex', flexDirection:'column' }}>
-
-                {/* KAI header */}
-                <div style={{ background:KAI_HDR_GRAD, padding:'13px 16px', display:'flex', alignItems:'center', gap:8, flexShrink:0 }}>
-                  <div style={{ width:32, height:32, background:'#fff', borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                    <img src="/kai-logo.svg" alt="Kai" style={{ width:20, height:20 }}
-                      onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
-                  </div>
-                  <span style={{ flex:1, fontFamily:'Roboto,sans-serif', fontWeight:600, fontSize:14, color:KAI_HDR_TXT }}>AI Assistant</span>
-                  <FontAwesomeIcon icon={faGear} style={{ width:14, height:14, color:'rgba(26,37,62,0.45)' }} />
-                  <FontAwesomeIcon icon={faChevronDown} style={{ width:14, height:14, color:'rgba(26,37,62,0.45)', marginLeft:4 }} />
-                </div>
-
-                {/* Messages */}
-                <div style={{ flex:1, display:'flex', flexDirection:'column', overflowY:'hidden' }}>
-                  {kaiMsgs.map((msg, i) =>
-                    msg.from === 'ai' ? (
-                      <div key={i} style={{ background:KAI_MSG_AI, padding:'10px 12px 12px', display:'flex', flexDirection:'column', gap:5, flexShrink:0 }}>
-                        <span style={{ fontSize:11, fontWeight:700, color:'#000', lineHeight:1 }}>AI Assistant</span>
-                        <p style={{ fontSize:13, color:'rgba(0,0,0,0.87)', lineHeight:1.55, whiteSpace:'pre-line', margin:0 }}>{msg.text}</p>
-                        {msg.meta && (
-                          <span style={{ display:'inline-flex', alignItems:'center', gap:4, fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px', alignSelf:'flex-start' }}>
-                            ⚡ {msg.meta}
-                          </span>
-                        )}
-                        {msg.signal && (
-                          <span style={{ display:'inline-flex', alignItems:'center', gap:5, fontSize:11, fontWeight:600, color:'#059669', background:'rgba(5,150,105,0.10)', borderRadius:99, padding:'4px 14px', alignSelf:'center', marginTop:4 }}>
-                            ✓ {msg.signal}
-                          </span>
-                        )}
-                      </div>
-                    ) : (
-                      <div key={i} style={{ background:KAI_MSG_USER, padding:'10px 12px 12px', display:'flex', flexDirection:'column', gap:5, flexShrink:0 }}>
-                        <span style={{ fontSize:11, fontWeight:700, color:'#000', lineHeight:1 }}>You</span>
-                        <p style={{ fontSize:13, color:'rgba(0,0,0,0.87)', lineHeight:1.55, margin:0 }}>{msg.text}</p>
-                      </div>
-                    )
-                  )}
-                </div>
-
-                {/* Input */}
-                <div style={{ borderTop:`0.5px solid ${KAI_INPUT_BD}`, padding:'10px 16px', display:'flex', alignItems:'center', gap:8, background:'#fff', flexShrink:0 }}>
-                  <span style={{ flex:1, fontFamily:'Roboto,sans-serif', fontWeight:600, fontSize:14, color:'rgba(0,0,0,0.33)' }}>Type here...</span>
-                  <FontAwesomeIcon icon={faPaperPlane} style={{ width:16, height:16, color:'rgba(0,0,0,0.33)' }} />
-                </div>
-              </div>
-            </div>
-
-            {/* ════ RIGHT: GMAIL ════ */}
-            <div style={{ border:'1px solid #e0e6ed', borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', boxShadow:'0 4px 24px rgba(10,22,40,0.07)' }}>
-
-              {/* Gmail toolbar */}
-              <div style={{ background:'white', borderBottom:'1px solid #e8e8e8', padding:'9px 14px', display:'flex', alignItems:'center', gap:10, flexShrink:0 }}>
-                <svg width="20" height="15" viewBox="0 0 24 18">
-                  <rect width="24" height="18" rx="2" fill="#fff"/>
-                  <path d="M0 2L12 11 24 2" fill="none" stroke="#EA4335" strokeWidth="1.6"/>
-                  <path d="M0 2v14h3.5V6.8L12 12l8.5-5.2V16H24V2L12 11z" fill="#EA4335"/>
-                </svg>
-                <span style={{ fontSize:13, fontWeight:700, color:'#202124', flex:1, fontFamily:'Roboto,sans-serif' }}>Gmail</span>
-                <div style={{ width:26, height:26, borderRadius:'50%', background:'#228DC1', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                  <span style={{ color:'white', fontSize:11, fontWeight:700 }}>K</span>
-                </div>
-              </div>
-
-              {/* Thread header */}
-              <div style={{ padding:'12px 14px 8px', borderBottom:'1px solid #f0f0f0', flexShrink:0 }}>
-                <p style={{ fontSize:14, fontWeight:600, color:'#202124', marginBottom:3, fontFamily:'Roboto,sans-serif' }}>
-                  RE: Subscription Upgrade — Pro Plan
-                </p>
-                <div style={{ display:'flex', alignItems:'center', gap:5 }}>
-                  <span style={{ fontSize:11, color:'rgba(10,22,40,0.45)', fontFamily:'Roboto,sans-serif' }}>2 messages</span>
-                  <span style={{ width:3, height:3, borderRadius:'50%', background:'rgba(10,22,40,0.2)', display:'inline-block' }}/>
-                  <span style={{ fontSize:11, color:'rgba(10,22,40,0.45)', fontFamily:'Roboto,sans-serif' }}>Today</span>
-                </div>
-              </div>
-
-              {/* Customer email — collapsed */}
-              <div style={{ padding:'9px 14px', borderBottom:'1px solid #f5f5f5', background:'#fafafa', flexShrink:0 }}>
-                <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-                  <div style={{ width:28, height:28, borderRadius:'50%', background:'#dde2e8', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                    <span style={{ fontSize:12, fontWeight:700, color:'#5f6368' }}>J</span>
-                  </div>
-                  <div style={{ flex:1, minWidth:0 }}>
-                    <div style={{ display:'flex', justifyContent:'space-between' }}>
-                      <span style={{ fontSize:12, fontWeight:600, color:'#202124', fontFamily:'Roboto,sans-serif' }}>James Hargreaves</span>
-                      <span style={{ fontSize:11, color:'rgba(10,22,40,0.4)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
-                    </div>
-                    <p style={{ fontSize:11, color:'rgba(10,22,40,0.5)', lineHeight:1.4, marginTop:1, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontFamily:'Roboto,sans-serif' }}>
-                      Hi, I'd like to upgrade from Starter to the Pro plan...
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* KAI reply — expanded */}
-              <div style={{ padding:'12px 14px', flex:1 }}>
-                <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:9 }}>
-                  <div style={{ width:30, height:30, borderRadius:'50%', background:'#228DC1', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                    <span style={{ fontSize:12, fontWeight:700, color:'white' }}>K</span>
-                  </div>
-                  <div style={{ flex:1, minWidth:0 }}>
-                    <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-                      <div style={{ display:'flex', alignItems:'center', gap:5 }}>
-                        <span style={{ fontSize:13, fontWeight:600, color:'#202124', fontFamily:'Roboto,sans-serif' }}>Kai</span>
-                        <span style={{ fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'1px 6px' }}>AI Agent</span>
-                      </div>
-                      <span style={{ fontSize:11, color:'rgba(10,22,40,0.4)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
-                    </div>
-                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.42)', fontFamily:'Roboto,sans-serif' }}>kai@awtg.co.uk → james.h@email.com</span>
-                  </div>
-                </div>
-
-                <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif' }}>
-                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics — at <strong>£299/month</strong>.
-                </p>
-                <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif', marginTop:6 }}>
-                  I've sent a one-click upgrade link to your inbox. Let me know if you have any questions!
-                </p>
-                <div style={{ marginTop:9 }}>
-                  <span style={{ fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px', fontFamily:'Roboto,sans-serif' }}>
-                    ⚡ Account #10284 · CRM synced
-                  </span>
-                </div>
-              </div>
-
-              {/* Reply input */}
-              <div style={{ margin:'0 14px 12px', border:'1px solid #e4e8ed', borderRadius:8, padding:'8px 12px', flexShrink:0 }}>
-                <p style={{ fontSize:12, color:'rgba(10,22,40,0.30)', fontFamily:'Roboto,sans-serif' }}>Reply...</p>
-              </div>
-            </div>
-
-          </div>{/* end panels grid */}
-        </div>{/* end desktop block */}
-
-        {/* ═══════════════════════════════════════════════════════════════════
-            MOBILE: channel pills + KAI widget
-        ══════════════════════════════════════════════════════════════════════ */}
-        <div className="lg:hidden flex flex-wrap justify-center gap-2 mb-10">
-          {['WhatsApp','Telegram','Teams','Web Chat','Gmail','Outlook','Slack'].map(ch => (
-            <span key={ch} className="text-[11px] font-semibold text-[#228DC1] bg-white border border-[#228DC1]/20 px-3 py-1.5 rounded-full shadow-sm">
-              {ch}
-            </span>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  )
-}
-
-// -- Hero Section --------------------------------------------------------------
-function HeroSection() {
-  return (
-    <section className="relative overflow-hidden bg-[#f0f4f9] pt-32 pb-16">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 65% 20%, rgba(34,141,193,0.18) 0, transparent 55%), radial-gradient(circle at 90% 60%, rgba(144,62,142,0.14) 0, transparent 45%), radial-gradient(circle at 10% 85%, rgba(34,141,193,0.05) 0, transparent 40%)' }}
-      />
-      <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
-
-          {/* Left: copy */}
-          <div>
-            <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.6 }}>
-              Kai · Enterprise AI Agent
-            </p>
-            <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
-              Enterprise AI<br />
-              that <span style={{ color: '#228DC1' }}>resolves,</span><br />
-              not just responds.
-            </h1>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-xl mb-10">
-              Kai connects to your systems, follows your rules and helps teams resolve work faster.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
-                Request a Demo
-              </Link>
-              <Link to="/contact" className="px-7 py-3.5 border border-gray-200 bg-white text-[#0a1628]/70 text-[13px] font-medium hover:border-[#228DC1]/50 hover:text-[#228DC1] transition-all">
-                Talk to an expert
-              </Link>
-            </div>
-          </div>
-
-          {/* Right: live chat demo */}
-          <div className="flex items-center justify-center lg:justify-end">
-            <KaiChatDemo />
-          </div>
-
-        </div>
-      </div>
-    </section>
-  )
-}
-
 // -- Main page -----------------------------------------------------------------
 export default function KaiPage() {
   const [stepsRef, stepsInView] = useInView()
   const [capsRef, capsInView] = useInView()
+  const [chartRef, chartInView] = useInView(0.3)
 
   return (
     <>
       <ScrollProgress />
       {/* -- Hero -- */}
-      <HeroSection />
+      <section className="relative overflow-hidden bg-white pt-32 pb-24">
+        <div className="relative max-w-4xl mx-auto px-8 lg:px-12">
+          <div className="flex items-center gap-3 mb-6">
+            <img src="/kai-logo.svg" alt="Kai" className="h-7 w-auto object-contain" />
+            <p className="font-black text-[#228DC1]" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.6 }}>
+              Kai · Enterprise AI Agent
+            </p>
+          </div>
+          <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
+            Enterprise AI<br />
+            that <span style={{ color: '#228DC1' }}>resolves,</span><br />
+            not just responds.
+          </h1>
+          <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-10 max-w-xl">
+            Kai connects to your systems, follows your rules and helps teams resolve work faster.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
+              Request a Demo
+            </Link>
+            <Link to="/contact" className="px-7 py-3.5 border border-gray-200 text-[#0a1628]/70 text-[13px] font-medium hover:border-[#228DC1]/50 hover:text-[#228DC1] transition-all">
+              Talk to an expert
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* -- Single combined logo strip -- */}
       {(() => {
@@ -1632,7 +830,7 @@ export default function KaiPage() {
                       src={item.src}
                       alt={item.alt}
                       className="h-9 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-300 grayscale hover:grayscale-0"
-                      style={{ maxWidth: '200px' }}
+                      style={{ maxWidth: '160px' }}
                     />
                   </div>
                 ))}
@@ -1652,7 +850,7 @@ export default function KaiPage() {
                 Our AI agent is live<br />at enterprise scale.
               </h2>
               <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-8">
-                Kai is running in production at enterprise organisations today. Real query volume, real containment rates, real CSAT improvement. Tracked from the first week, not the first quarter.
+                Live integrations across HubSpot, WhatsApp, Jira and email. Built for real support at production scale.
               </p>
               <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#228DC1] hover:gap-3 transition-all">
                 Read the case study <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
@@ -1689,60 +887,6 @@ export default function KaiPage() {
           </div>
         </div>
       </section>
-
-      {/* -- Escalation Rate Chart -- */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="grid lg:grid-cols-[1fr_1.65fr] gap-14 lg:gap-20 items-start">
-
-            {/* Left: copy */}
-            <div className="lg:pt-2">
-              <p className="type-label text-[#228DC1] mb-5">Resolution Impact</p>
-              <h2 className="font-heading text-[#0a1628] mb-5">
-                Escalation rate<br />drops from 40%<br />to 10%
-              </h2>
-              <p className="text-[#0a1628]/65 text-[17px] font-normal leading-[1.7] mb-10">
-                Kai handles the complex queries that used to demand human escalation, steadily containing more every month from day one.
-              </p>
-              {[
-                { stat: '−30pp', label: 'reduction in escalation rate' },
-                { stat: '38s',   label: 'average AI handle time' },
-              ].map(item => (
-                <div key={item.stat} className="flex items-baseline gap-4 pb-4 mb-4 border-b border-gray-100 last:border-0 last:mb-0 last:pb-0">
-                  <span className="font-black text-[#228DC1] shrink-0" style={{ fontSize:26, letterSpacing:'-0.03em' }}>{item.stat}</span>
-                  <span className="text-[#0a1628]/55 text-[14px]">{item.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Right: chart card — Intercom-style */}
-            <div style={{ border:'1px solid #e4e8ed', background:'#fafaf7' }}>
-              {/* Card header */}
-              <div style={{ padding:'18px 20px 10px' }}>
-                <p className="type-label" style={{ color:'rgba(10,22,40,0.4)', letterSpacing:'0.14em' }}>
-                  KAI'S ESCALATION RATE REDUCES EVERY MONTH
-                </p>
-              </div>
-
-              {/* SVG chart — hover-interactive */}
-              <div style={{ padding:'4px 16px 20px' }}>
-                <EscalationChart />
-              </div>
-
-              {/* Card footer note */}
-              <div style={{ borderTop:'1px solid #e4e8ed', padding:'10px 20px' }}>
-                <p style={{ fontSize:11, color:'rgba(10,22,40,0.38)', fontFamily:'Roboto,sans-serif' }}>
-                  Based on enterprise production deployment data · measured monthly
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* -- Omnichannel (Telegram / KAI / Gmail) -- */}
-      <OmnichannelSection />
 
       {/* -- Integrations -- */}
       <IntegrationsSection />
@@ -1857,7 +1001,7 @@ export default function KaiPage() {
                 Performance<br />you can measure.
               </h2>
               <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-12">
-                From the first conversation, Kai tracks containment, CSAT and handle time. You get a clear picture of what is working before the end of the first week.
+                Track containment, CSAT and handle time from day one.
               </p>
               <div className="space-y-8">
                 {[
@@ -1878,19 +1022,126 @@ export default function KaiPage() {
               </div>
             </div>
 
-            {/* Right: Dashboard screenshot */}
-            <div className="border border-gray-200 shadow-[0_8px_40px_rgba(10,22,40,0.08)] overflow-hidden">
-              <div className="flex items-center gap-1.5 px-4 py-3 bg-[#f3f4f6] border-b border-gray-200">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#fc5f57]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-                <span className="ml-3 text-[11px] font-medium text-[#0a1628]/40 tracking-wide">Kai Dashboard · Live view</span>
+            {/* Right: SVG area chart */}
+            <div className="bg-white border border-gray-200 shadow-[0_16px_50px_rgba(10,22,40,0.07)] p-6 sm:p-8">
+              {/* Chart header */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5 mb-7">
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-2">Live performance trend</p>
+                  <p className="text-[#0a1628] font-semibold text-[18px] leading-tight">Containment rate after launch</p>
+                </div>
+                <div className="flex items-center gap-5 pt-0.5">
+                  <span className="flex items-center gap-2">
+                    <svg width="22" height="10"><line x1="0" y1="5" x2="22" y2="5" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="4 4" /></svg>
+                    <span className="text-[11px] text-[#0a1628]/55">Baseline</span>
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <svg width="22" height="10"><line x1="0" y1="5" x2="22" y2="5" stroke="#228DC1" strokeWidth="2.5" /></svg>
+                    <span className="text-[11px] text-[#0a1628]/65">Kai live</span>
+                  </span>
+                </div>
               </div>
-              <img
-                src="/kai-mockup.png"
-                alt="Kai dashboard"
-                className="w-full block"
-              />
+
+              {/* Chart */}
+              <div ref={chartRef} className="bg-[#f8fbfd] border border-gray-100 px-4 sm:px-6 pt-6 pb-4">
+              <svg viewBox="0 0 560 280" className="w-full" style={{ overflow: 'visible' }}>
+                <defs>
+                  <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#228DC1" stopOpacity="0.24" />
+                    <stop offset="100%" stopColor="#228DC1" stopOpacity="0.01" />
+                  </linearGradient>
+                  <filter id="chartGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="10" stdDeviation="10" floodColor="#228DC1" floodOpacity="0.18" />
+                  </filter>
+                </defs>
+
+                {/* Horizontal grid lines at 55%, 65%, 75% */}
+                {[
+                  { y: 198, label: '55%' },
+                  { y: 132, label: '65%' },
+                  { y: 66,  label: '75%' },
+                ].map(({ y, label }) => (
+                  <g key={label}>
+                    <line x1="44" y1={y} x2="532" y2={y} stroke="#0a1628" strokeWidth="0.5" strokeOpacity="0.07" />
+                    <text x="34" y={y + 4} textAnchor="end" fontSize="10" fill="#0a1628" fillOpacity="0.32" fontFamily="Inter, system-ui, sans-serif">{label}</text>
+                  </g>
+                ))}
+
+                {/* X-axis labels */}
+                {[
+                  { x: 44,  label: 'Baseline' },
+                  { x: 168, label: 'Launch' },
+                  { x: 354, label: 'Week 6' },
+                  { x: 532, label: 'Week 12' },
+                ].map(({ x, label }) => (
+                  <text key={label} x={x} y="258" textAnchor="middle" fontSize="10" fill="#0a1628" fillOpacity="0.36" fontFamily="Inter, system-ui, sans-serif">{label}</text>
+                ))}
+
+                {/* X-axis base line */}
+                <line x1="44" y1="232" x2="532" y2="232" stroke="#0a1628" strokeWidth="0.5" strokeOpacity="0.1" />
+
+                {/* Kai go-live dashed vertical */}
+                <line x1="168" y1="34" x2="168" y2="232" stroke="#228DC1" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.38" />
+
+                {/* "Kai live" pill */}
+                <rect x="133" y="10" width="70" height="22" rx="11" fill="#228DC1" fillOpacity="0.12" />
+                <text x="168" y="25" textAnchor="middle" fontSize="10" fill="#228DC1" fontWeight="700" fontFamily="Inter, system-ui, sans-serif">Launch</text>
+
+                {/* Pre-Kai dashed baseline */}
+                <path
+                  d="M44,198 L75,204 L106,191 L137,198 L168,198"
+                  fill="none"
+                  stroke="#94a3b8"
+                  strokeWidth="1.5"
+                  strokeDasharray="5 4"
+                />
+                {/* Pre-Kai start dot */}
+                <circle cx="44" cy="198" r="3" fill="#94a3b8" />
+
+                {/* Area fill under post-Kai line */}
+                <path
+                  d="M168,198 L199,152 L230,118 L261,98 L292,82 L323,72 L354,66 L385,58 L416,52 L447,49 L478,48 L509,48 L532,48 L532,232 L168,232 Z"
+                  fill="url(#areaGrad)"
+                  style={{ opacity: chartInView ? 1 : 0, transition: 'opacity 1.2s ease 0.9s' }}
+                />
+
+                {/* Post-Kai solid line � draws on scroll */}
+                <path
+                  d="M168,198 L199,152 L230,118 L261,98 L292,82 L323,72 L354,66 L385,58 L416,52 L447,49 L478,48 L509,48 L532,48"
+                  fill="none"
+                  stroke="#228DC1"
+                  strokeWidth="3"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  pathLength="1"
+                  style={{ strokeDasharray: 1, strokeDashoffset: chartInView ? 0 : 1, transition: 'stroke-dashoffset 1.8s cubic-bezier(0.16,1,0.3,1) 0.2s' } as CSSProperties}
+                  filter="url(#chartGlow)"
+                />
+
+                {/* Endpoint dot + value */}
+                <circle cx="532" cy="48" r="12" fill="#228DC1" fillOpacity="0.14" style={{ opacity: chartInView ? 1 : 0, transition: 'opacity 0.4s ease 2s' }} />
+                <circle cx="532" cy="48" r="5.5" fill="#228DC1" style={{ opacity: chartInView ? 1 : 0, transition: 'opacity 0.4s ease 2s' }} />
+                <text x="519" y="33" textAnchor="middle" fontSize="12" fill="#228DC1" fontWeight="800" fontFamily="Inter, system-ui, sans-serif" style={{ opacity: chartInView ? 1 : 0, transition: 'opacity 0.4s ease 2.2s' }}>77.5%</text>
+
+                {/* +22.5% annotation badge */}
+                <rect x="242" y="82" width="92" height="26" rx="13" fill="#ffffff" stroke="#228DC1" strokeOpacity="0.18" style={{ opacity: chartInView ? 1 : 0, transition: 'opacity 0.4s ease 1.6s' }} />
+                <text x="288" y="99" textAnchor="middle" fontSize="11" fill="#228DC1" fontWeight="800" fontFamily="Inter, system-ui, sans-serif" style={{ opacity: chartInView ? 1 : 0, transition: 'opacity 0.4s ease 1.6s' }}>+22.5% uplift</text>
+              </svg>
+              </div>
+
+              {/* Bottom summary row */}
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {[
+                  { val: '55%', label: 'Baseline containment', colour: '#64748b' },
+                  { val: '77.5%', label: 'Week 12 containment', colour: '#228DC1' },
+                  { val: '+17%', label: 'CSAT uplift', colour: '#228DC1' },
+                ].map(item => (
+                  <div key={item.label} className="bg-white border border-gray-200 px-5 py-4">
+                    <p className="font-black text-[20px] mb-1" style={{ color: item.colour, letterSpacing: '-0.02em' }}>{item.val}</p>
+                    <p className="text-[11px] text-[#0a1628]/58 font-medium leading-tight">{item.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
