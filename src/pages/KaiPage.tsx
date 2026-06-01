@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck, faShield, faGear, faCheck, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faCircleCheck, faShield, faGear, faCheck, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
 // -- Scroll utilities ----------------------------------------------------------
@@ -893,7 +893,7 @@ function KaiChatDemo() {
             </div>
 
             {/* Transcript area — prev turn dimmed, current turn active */}
-            <div style={{ position: 'absolute', top: 76, left: 24, right: 24, bottom: 215, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: 18, overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: 76, left: 24, right: 24, bottom: 210, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: 18, overflow: 'hidden' }}>
               {!currentTurn && !prevTurn && (
                 <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.22)', textAlign: 'center', letterSpacing: '0.06em', margin: 0 }}>Listening…</p>
               )}
@@ -920,8 +920,8 @@ function KaiChatDemo() {
               )}
             </div>
 
-            {/* Orb */}
-            <div style={{ position: 'absolute', bottom: 68, left: '50%', transform: 'translateX(-50%)' }}>
+            {/* Orb — sits above the input bar */}
+            <div style={{ position: 'absolute', bottom: 82, left: '50%', transform: 'translateX(-50%)' }}>
               <div style={{
                 width: 92, height: 92,
                 background: orbBg,
@@ -931,11 +931,40 @@ function KaiChatDemo() {
               }} />
             </div>
 
-            {/* Powered by */}
-            <div style={{ position: 'absolute', bottom: 12, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
-              <span style={{ fontFamily: 'Roboto,sans-serif', fontWeight: 300, fontSize: 7, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.04em' }}>
-                Kai · powered by AWTG
+            {/* Voice input bar — white, matches chat bar */}
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0,
+              background: '#fff',
+              borderRadius: '0 0 30px 30px',
+              padding: '11px 16px 14px',
+              display: 'flex', alignItems: 'center', gap: 10,
+              borderTop: '0.5px solid #e5e7eb',
+            }}>
+              <span style={{
+                flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15,
+                color: orbMode === 'user' ? '#228DC1' : 'rgba(10,22,40,0.35)',
+                letterSpacing: '0.01em', userSelect: 'none',
+                transition: 'color 0.3s ease',
+              }}>
+                {orbMode === 'ai' ? 'AI Speaking…' : 'Listening…'}
               </span>
+              {/* Mic button — highlighted when user is speaking */}
+              <div style={{
+                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                background: orbMode === 'user' ? '#228DC1' : '#f0f2f5',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'background 0.3s ease',
+              }}>
+                <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: orbMode === 'user' ? '#fff' : 'rgba(10,22,40,0.4)' }} />
+              </div>
+              {/* X / close button */}
+              <div style={{
+                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                background: '#f0f2f5',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <FontAwesomeIcon icon={faXmark} style={{ width: 14, height: 14, color: 'rgba(10,22,40,0.4)' }} />
+              </div>
             </div>
           </div>
 
@@ -987,22 +1016,19 @@ function KaiChatDemo() {
                 })}
               </div>
 
-              {/* Input bar */}
-              <div style={{ borderTop: `0.5px solid ${KAI_INPUT_BD}`, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 8, background: '#fff', flexShrink: 0 }}>
-                <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: 'rgba(0,0,0,0.38)', userSelect: 'none' }}>
+              {/* Input bar — matches voice bar layout */}
+              <div style={{ borderTop: '0.5px solid #e5e7eb', padding: '11px 16px 14px', display: 'flex', alignItems: 'center', gap: 10, background: '#fff', flexShrink: 0 }}>
+                <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15, color: 'rgba(10,22,40,0.35)', userSelect: 'none' }}>
                   Type here...
                 </span>
-                <div style={{ padding: 12, borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center' }}>
-                  <FontAwesomeIcon icon={faPaperPlane} style={{ width: 20, height: 20, color: 'rgba(0,0,0,0.38)' }} />
+                {/* Mic button */}
+                <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: 'rgba(10,22,40,0.4)' }} />
                 </div>
-              </div>
-
-              {/* Powered by */}
-              <div style={{ position: 'absolute', bottom: 4, left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 3, pointerEvents: 'none' }}>
-                <img src="/kai-logo.svg" alt="" style={{ width: 8, height: 8, opacity: 0.22 }} />
-                <span style={{ fontFamily: 'Roboto,sans-serif', fontWeight: 300, fontSize: 7, color: 'rgba(26,37,62,0.28)', letterSpacing: '0.03em' }}>
-                  Kai · powered by AWTG
-                </span>
+                {/* Send button */}
+                <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#228DC1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FontAwesomeIcon icon={faPaperPlane} style={{ width: 14, height: 14, color: '#fff' }} />
+                </div>
               </div>
             </div>
           </div>
