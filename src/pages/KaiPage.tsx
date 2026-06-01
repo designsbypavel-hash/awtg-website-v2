@@ -762,7 +762,6 @@ const KAI_MSG_AI   = '#f4fbff'          // AI message row bg
 const KAI_MSG_USER = '#ffffff'          // User message row bg
 const KAI_HDR_TXT  = '#1a253e'
 const KAI_INPUT_BD = '#b3b3b3'
-const KAI_CHIP_CLR = '#4b94c1'          // chip border + text colour
 
 // ─── Conversation script (shown in full in the chat view) ────────────────────
 type ChatRole = 'ai' | 'user' | 'signal'
