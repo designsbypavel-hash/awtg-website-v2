@@ -2726,7 +2726,7 @@ export default function AruvaPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-28 pb-0">
           <div className="mb-16">
             <p className="type-label text-[#228DC1] mb-4">How It Works</p>
-            <h2 className="font-heading text-[#0a1628] mb-4">From syllabus to <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">intelligent tutor</span> in hours</h2>
+            <h2 className="font-heading text-[#0a1628] mb-4">From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Smart Syllabus</span> in minutes</h2>
             <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed max-w-2xl">
               Aruva transforms your existing course structure into a governed AI teaching layer. No rip-and-replace, no new workflows.
             </p>
