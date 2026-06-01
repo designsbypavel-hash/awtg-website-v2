@@ -951,6 +951,22 @@ function KaiChatDemo() {
       <div style={{ padding: 6, borderRadius: 36, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
         <div style={{ position: 'relative', width: '100%', height: 588, borderRadius: 30, overflow: 'hidden' }}>
 
+          {/* ── SHARED HEADER — always on top, never transitions ── */}
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: 68,
+            background: KAI_HDR_GRAD,
+            zIndex: 10,
+            display: 'flex', alignItems: 'center',
+            padding: '0 20px', gap: 8,
+          }}>
+            <div style={{ width: 40, height: 40, background: '#fff', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src="/kai-logo.svg" alt="Kai" style={{ width: 24, height: 24, objectFit: 'contain' }} />
+            </div>
+            <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: KAI_HDR_TXT, lineHeight: 1 }}>AI Assistant</span>
+            <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)' }} />
+            <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)', marginLeft: 4 }} />
+          </div>
+
           {/* ── VOICE VIEW ── */}
           <div style={{
             position: 'absolute', inset: 0,
@@ -960,18 +976,6 @@ function KaiChatDemo() {
             pointerEvents: isVoice ? 'auto' : 'none',
             zIndex: 1,
           }}>
-            {/* Header background strip — matches chat view gradient */}
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 68, background: KAI_HDR_GRAD }} />
-
-            {/* Header — identical styling to chat view */}
-            <div style={{ position: 'absolute', top: 16, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ width: 40, height: 40, background: '#fff', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src="/kai-logo.svg" alt="Kai" style={{ width: 24, height: 24, objectFit: 'contain' }} />
-              </div>
-              <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: KAI_HDR_TXT, lineHeight: 1 }}>AI Assistant</span>
-              <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)' }} />
-              <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)', marginLeft: 4 }} />
-            </div>
 
             {/* ── Main body: transcript TOP, orb BOTTOM ── */}
             <div style={{
@@ -1085,20 +1089,8 @@ function KaiChatDemo() {
             pointerEvents: isChat ? 'auto' : 'none',
             zIndex: 2,
           }}>
-            {/* Header */}
-            <div style={{ position: 'absolute', top: 16, left: 20, right: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ width: 40, height: 40, background: '#fff', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src="/kai-logo.svg" alt="Kai" style={{ width: 24, height: 24, objectFit: 'contain' }} />
-              </div>
-              <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: KAI_HDR_TXT, lineHeight: 1 }}>
-                AI Assistant
-              </span>
-              <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)' }} />
-              <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)', marginLeft: 4 }} />
-            </div>
-
-            {/* Chat area */}
-            <div style={{ position: 'absolute', top: 70, left: 0, right: 0, bottom: 0, background: '#fff', borderRadius: 30, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+            {/* Chat area — starts just below the shared header */}
+            <div style={{ position: 'absolute', top: 68, left: 0, right: 0, bottom: 0, background: '#fff', borderRadius: 30, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
               {/* All messages visible at once */}
               <div className="kai-chat-scroll" style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
                 {CHAT_SCRIPT.map((msg, i) => {
