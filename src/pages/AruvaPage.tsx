@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faBookOpen, faShield, faArrowsRotate, faWandSparkles, faCircleCheck, faMicrophone, faPen, faImage, faChartLine } from '@fortawesome/free-solid-svg-icons'
-import CTASection from '@/components/CTASection'
 
 // -- Hero Dashboard (Student Hub mockup) --------------------------------------
 const HERO_SKILLS = [
