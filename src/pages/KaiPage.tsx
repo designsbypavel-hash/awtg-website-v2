@@ -919,7 +919,7 @@ function KaiChatDemo() {
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
-    el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
+    el.scrollTo({ top: el.scrollHeight, behavior: 'instant' })
   }, [msgs, typing])
 
   return (
