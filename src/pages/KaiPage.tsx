@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck, faBolt, faShield, faChartBar, faGear, faCheck, faXmark, faComments, faArrowTrendUp, faWandSparkles, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faCircleCheck, faShield, faGear, faCheck, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
 // -- Scroll utilities ----------------------------------------------------------
@@ -78,7 +78,7 @@ function StatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
 }
 
 // -- Kai Dashboard mockup ------------------------------------------------------
-function KaiDashboard() {
+export function KaiDashboard() {
   const [activeTab,  setActiveTab]  = useState('details')
   const [activeAsst, setActiveAsst] = useState(0)
   const [visible,    setVisible]    = useState<number[]>([])
@@ -926,8 +926,6 @@ function KaiChatDemo() {
     <div className="select-none" style={{
       width:'100%',
       maxWidth:400,
-      animation:'kaiWidgetFloat 7s ease-in-out infinite',
-      willChange:'transform',
     }}>
 
       {/*
@@ -1602,7 +1600,6 @@ function HeroSection() {
 // -- Main page -----------------------------------------------------------------
 export default function KaiPage() {
   const [stepsRef, stepsInView] = useInView()
-  const [capsRef, capsInView] = useInView()
 
   return (
     <>
@@ -1851,122 +1848,6 @@ export default function KaiPage() {
 
       {/* -- Security & compliance -- */}
       <SecurityComplianceSection />
-
-      {/* -- Performance Graph -- */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-16 items-center">
-
-            {/* Left: heading + qualitative outcomes */}
-            <div>
-              <p className="type-label text-[#228DC1] mb-4">Measured Outcomes</p>
-              <h2 className="font-heading text-[#0a1628] mb-5">
-                Performance<br />you can measure.
-              </h2>
-              <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-12">
-                From the first conversation, Kai tracks containment, CSAT and handle time. You get a clear picture of what is working before the end of the first week.
-              </p>
-              <div className="space-y-8">
-                {[
-                  { icon: faBolt,      label: 'Resolve at first touch',   desc: 'Kai handles routine queries from start to finish, keeping agents free for complex work.' },
-                  { icon: faChartBar, label: 'Track what matters',       desc: 'Containment, CSAT and escalation rates visible from the moment Kai goes live.' },
-                  { icon: faShield,   label: 'Governed before go-live',  desc: 'Rules, audit trails and escalation paths are configured, not bolted on later.' },
-                ].map(({ icon, label, desc }) => (
-                  <div key={label} className="flex items-start gap-4">
-                    <div className="w-9 h-9 flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: '#228DC112' }}>
-                      <FontAwesomeIcon icon={icon} className="w-4 h-4 text-[#228DC1]" />
-                    </div>
-                    <div>
-                      <p className="text-[#0a1628] font-semibold text-[14px] mb-1">{label}</p>
-                      <p className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Dashboard screenshot */}
-            <div className="border border-gray-200 shadow-[0_8px_40px_rgba(10,22,40,0.08)] overflow-hidden">
-              <div className="flex items-center gap-1.5 px-4 py-3 bg-[#f3f4f6] border-b border-gray-200">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#fc5f57]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-                <span className="ml-3 text-[11px] font-medium text-[#0a1628]/40 tracking-wide">Kai Dashboard · Live view</span>
-              </div>
-              <img
-                src="/kai-mockup.png"
-                alt="Kai dashboard"
-                className="w-full block"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* -- Animated Demo -- */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <p className="type-label text-[#228DC1] mb-4">See Kai in Action</p>
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              From first message<br />to resolved ticket.
-            </h2>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">
-              Kai reads intent, checks live systems and keeps the workflow moving.
-            </p>
-          </div>
-          <KaiDashboard />
-          <div className="mt-10 grid sm:grid-cols-3 gap-4">
-            {[
-              { label: 'System-connected', desc: 'CRM, ticketing and messaging in one flow.' },
-              { label: 'Policy-governed', desc: 'Actions follow your configured rules.' },
-              { label: 'Outcome-measured', desc: 'Containment, CSAT and escalation tracked live.' },
-            ].map((item) => (
-              <div key={item.label} className="bg-white border border-gray-200 px-8 py-6 shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
-                <p className="text-[#0a1628] font-semibold text-[14px] mb-2">{item.label}</p>
-                <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* -- Capabilities -- */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">What Kai Does</p>
-          <h2 className="font-heading text-[#0a1628] mb-12">
-            Built to act,<br />not just answer.
-          </h2>
-          <div ref={capsRef} className="grid lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
-            {[
-              {
-                icon: faComments,
-                label: 'Resolve customer issues.',
-                desc: 'Kai handles queries from first message to closed ticket, without waiting for a human.',
-              },
-              {
-                icon: faArrowTrendUp,
-                label: 'Identify leads.',
-                desc: 'Spot buying signals in every conversation and route high-intent contacts to your sales team instantly.',
-              },
-              {
-                icon: faWandSparkles,
-                label: 'Coming soon.',
-                desc: 'More capabilities are on the way. Check back shortly.',
-              },
-            ].map((cap, i) => (
-              <div key={cap.label} className="group bg-white p-8 hover:bg-[#f8fafc] transition-colors" style={reveal(capsInView, i * 120)}>
-                <div className="w-10 h-10 flex items-center justify-center mb-5" style={{ backgroundColor: '#228DC112' }}>
-                  <FontAwesomeIcon icon={cap.icon} className="w-5 h-5 text-[#228DC1]" />
-                </div>
-                <h3 className="text-[#0a1628] font-semibold text-[20px] leading-snug mb-2">{cap.label}</h3>
-                <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">{cap.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* -- What Kai Delivers -- */}
       <section className="py-24 bg-[#f8fafc] border-t border-gray-100">

@@ -77,6 +77,41 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes homeHeroReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes homeHeroMediaSettle {
+  0% {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.home-hero-media {
+  animation: homeHeroMediaSettle 1200ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transform-origin: center;
+}
+
+.home-hero-reveal {
+  opacity: 0;
+  animation: homeHeroReveal 780ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  will-change: opacity, transform, filter;
+}
+
 @keyframes chatFromLeft {
   from {
     opacity: 0;
@@ -233,4 +268,15 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1;
+}
+
+/* Uniform button treatment across pages */
+:root {
+  --awtg-button-radius: 8px;
+}
+
+button,
+[role="button"],
+a[href][class*="px-"][class*="py-"] {
+  border-radius: var(--awtg-button-radius) !important;
 }

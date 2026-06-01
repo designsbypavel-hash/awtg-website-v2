@@ -120,7 +120,7 @@ const tickerLogos = [
 
 function Hero() {
   return (
-    <section className="relative h-screen min-h-[700px] flex flex-col overflow-hidden">
+    <section className="home-hero relative h-screen min-h-[700px] flex flex-col overflow-hidden">
 
       {/* -- Cinematic background (decorative, aria-hidden) -- */}
       <div className="absolute inset-0" aria-hidden="true">
@@ -129,7 +129,7 @@ function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="home-hero-media w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1800&q=80&auto=format&fit=crop"
         >
           <source src="https://cdn.pixabay.com/video/2025/04/23/273922_large.mp4" type="video/mp4" />
@@ -141,25 +141,23 @@ function Hero() {
       {/* -- Content, Harvey layout: bottom-left, minimal copy -- */}
       <div className="relative flex-1 flex flex-col justify-end pb-16 max-w-7xl mx-auto w-full px-8 lg:px-12">
 
-        {/* Headline, Nokia register: urgency + optimism, not fear */}
+        {/* Headline */}
         <h1
-          className="font-serif-display text-white leading-[1.02] mb-6"
-         
+          className="home-hero-reveal text-white text-[42px] md:text-[52px] font-normal leading-[1.08] tracking-normal mb-6"
         >
-          The organisations<br />
-          winning the AI era<br />
-          <span className="italic">aren't waiting.</span>
+          Helping organisations<br />
+          put AI to work.
         </h1>
 
         {/* One-liner, StoryBrand: customer is the hero, AWTG is the guide */}
-        <p className="text-white/70 text-[16px] leading-[1.7] max-w-sm mb-10 font-normal">
+        <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-10 font-normal" style={{ animationDelay: '160ms' }}>
           AWTG delivers AI, 5G, private networks and software solutions
           for UK enterprises and public sector, end-to-end,
           accountable, built to perform.
         </p>
 
         {/* CTA */}
-        <div>
+        <div className="home-hero-reveal" style={{ animationDelay: '300ms' }}>
           <Link
             to="/contact"
             className="inline-block px-7 py-3.5 border border-white text-white text-[14px] font-normal tracking-wide hover:bg-white hover:text-[#0a1628] transition-all duration-200"
@@ -556,26 +554,25 @@ function WhyAWTG() {
   return (
     <section className="py-20 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-end mb-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-end mb-14">
           <div>
             <p className="type-label text-[#228DC1] mb-4">Why AWTG</p>
-            <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
-              19 years. 1,000+ sites.<br />
-              <span className="italic text-[#228DC1]">8 sectors. One team.</span>
+            <h2 className="font-serif-display text-[#0a1628] leading-[1.08] max-w-3xl">
+              The experience to deliver, and the team to stay with you.
             </h2>
           </div>
           <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
             Crown Commercial Service approved. ISO 9001, 27001, 14001, 45001 and 42001 certified. Cyber Essentials Plus. SC and DV cleared engineers.
           </p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#e7edf3] border border-[#e7edf3]">
           {[
             { value: '19+', label: 'Years', sub: 'Engineering since 2006' },
             { value: '1,000+', label: 'Sites', sub: 'Deployed globally' },
             { value: '100+', label: 'Experts', sub: 'Engineers & specialists' },
             { value: '8', label: 'Sectors', sub: 'Public & private' },
           ].map((s) => (
-            <div key={s.label} className="bg-white p-8">
+            <div key={s.label} className="bg-white p-7 md:p-8">
               <p className="font-serif-display text-[#0a1628] mb-1" style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}>{s.value}</p>
               <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#228DC1] mb-1">{s.label}</p>
               <p className="text-[14px] text-[#0a1628]/65 font-normal">{s.sub}</p>
