@@ -2229,13 +2229,13 @@ function BloomInsightSection() {
                   const isTop = Math.round(disp[i]) === Math.round(Math.max(...disp))
                   const isLow = Math.round(disp[i]) === Math.round(Math.min(...disp))
                   const cavg  = Math.round(sem.cohortAvg[i])
-                  const barColor = masteryColor(val, isLow ? '#d97706' : sem.accent)
+                  const barColor = val > 75 ? '#059669' : '#d97706'
                   return (
                     <div key={label}>
                       <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-[15px] font-semibold"
-                            style={{ color: val > 75 ? '#059669' : isTop ? sem.accent : isLow ? '#d97706' : 'rgba(10,22,40,0.75)' }}>
+                            style={{ color: val > 75 ? '#059669' : 'rgba(10,22,40,0.72)' }}>
                             {label}
                           </span>
                           <span className="text-[13px] text-[#0a1628]/35 hidden sm:inline">{BLOOM_SIMPLE[i]}</span>
@@ -2254,10 +2254,8 @@ function BloomInsightSection() {
                             width: `${val}%`,
                             background: val > 75
                               ? 'linear-gradient(90deg,#059669,#34d399)'
-                              : isLow
-                              ? 'linear-gradient(90deg,#f59e0b,#fbbf24)'
-                              : `linear-gradient(90deg,${sem.accent},${sem.accent}99)`,
-                            boxShadow: val > 75 ? '0 0 10px rgba(5,150,105,0.28)' : isTop ? `0 0 10px ${sem.accent}55` : 'none',
+                              : 'linear-gradient(90deg,#f59e0b,#fbbf24)',
+                            boxShadow: val > 75 ? '0 0 10px rgba(5,150,105,0.28)' : 'none',
                             transition: 'width 0.75s cubic-bezier(0.34,1.1,0.64,1)',
                           }} />
                         {/* Class avg marker */}
