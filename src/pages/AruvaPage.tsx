@@ -354,43 +354,6 @@ const audiences = [
 ]
 
 // -- Platform pillars ----------------------------------------------------------
-// -- How It Works sticky-scroll step text -------------------------------------
-function HIWStepText({ step, index, total }: { step: { num: string; label: string; desc: string; detail: string; visual: string }; index: number; total: number }) {
-  const [active, setActive] = React.useState(false)
-  React.useEffect(() => {
-    const onScroll = () => {
-      const blocks = document.querySelectorAll('.hiw-visual-block')
-      const block = blocks[index] as HTMLElement | undefined
-      if (!block) return
-      const rect = block.getBoundingClientRect()
-      const mid = window.innerHeight * 0.45
-      setActive(rect.top <= mid && rect.bottom >= mid)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [index])
-
-  return (
-    <div style={{
-      padding: '28px 0',
-      borderBottom: index < total - 1 ? '1px solid #f0f4f8' : 'none',
-      opacity: active ? 1 : 0.35,
-      transform: active ? 'translateX(0)' : 'translateX(-6px)',
-      transition: 'opacity 0.4s ease, transform 0.4s ease',
-    }}>
-      <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
-        <span style={{ fontSize:12, fontWeight:800, color: active ? '#228DC1' : '#9ca3af', letterSpacing:'0.12em', transition:'color 0.3s' }}>{step.num}</span>
-        <div style={{ height:1, width:28, background: active ? '#228DC1' : '#e5e7eb', transition:'background 0.3s' }}/>
-      </div>
-      <h3 style={{ fontSize:22, fontWeight:700, color:'#0a1628', lineHeight:1.2, marginBottom:12 }}>{step.label}</h3>
-      <p style={{ fontSize:16, color:'rgba(10,22,40,0.65)', lineHeight:1.7, marginBottom:10 }}>{step.desc}</p>
-      {step.detail && (
-        <p style={{ fontSize:13, color: active ? '#228DC1' : 'rgba(10,22,40,0.38)', lineHeight:1.6, transition:'color 0.3s', fontStyle:'italic' }}>{step.detail}</p>
-      )}
-    </div>
-  )
-}
 
 // -- How It Works steps --------------------------------------------------------
 const howItWorksSteps = [
@@ -445,7 +408,6 @@ function SyllabusVisual() {
         </div>
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h14M11 2l4 4-4 4" stroke="#228DC1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
         <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[14px] font-bold" style={{ background: '#228DC115', border: '1px solid #228DC130', color: '#228DC1' }}>
-          <div className="w-1.5 h-1.5 rounded-full bg-[#228DC1]" />
           Smart Syllabus
         </div>
       </div>
@@ -457,8 +419,7 @@ function SyllabusVisual() {
           { week: 'Week 4', topic: 'Competitive Advantage',  mode: 'Guided hints',  color: '#7c3aed' },
           { week: 'Week 5', topic: 'Market Segmentation',    mode: 'Open tutor',    color: '#059669' },
         ].map(row => (
-          <div key={row.week} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f8fafc] border border-gray-100">
-            <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: row.color }} />
+          <div key={row.week} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f8fafc] border border-gray-100" style={{ borderLeft: `2px solid ${row.color}` }}>
             <span className="text-[#0a1628]/35 text-[14px] font-semibold w-12 shrink-0">{row.week}</span>
             <span className="text-[#0a1628]/70 text-[14px] font-medium flex-1">{row.topic}</span>
             <span className="text-[14px] px-2 py-0.5 rounded-full font-semibold" style={{ background: row.color + '12', color: row.color, border: '1px solid ' + row.color + '25' }}>{row.mode}</span>
@@ -467,7 +428,6 @@ function SyllabusVisual() {
       </div>
       {/* Status */}
       <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#e5f4fa] border border-[#228DC1]/20">
-        <div className="w-2 h-2 rounded-full bg-[#228DC1] shrink-0" />
         <span className="text-[14px] text-[#228DC1] font-semibold">Policy layer compiled. AI is ready to teach</span>
       </div>
     </div>
@@ -475,167 +435,60 @@ function SyllabusVisual() {
 }
 
 function AlignVisual() {
+  const inputs = [
+    { label: 'Outcomes & objectives', color: '#228DC1' },
+    { label: 'Rubric rules',          color: '#7c3aed' },
+    { label: 'Approved content',      color: '#059669' },
+    { label: 'AI mode: Socratic',     color: '#d97706' },
+  ]
+  const outputs = [
+    { label: 'Policy Graph',  color: '#228DC1' },
+    { label: 'RAG Scope',     color: '#7c3aed' },
+    { label: 'Hint Stages',   color: '#059669' },
+    { label: 'Rubric Rules',  color: '#d97706' },
+  ]
   return (
-    <div className="bg-white border border-gray-200 shadow-[0_4px_24px_rgba(10,22,40,0.10)] overflow-hidden">
-      {/* Card header */}
-      <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-100">
-        <div className="w-8 h-8 bg-[#f0fdf4] border border-[#bbf7d0] flex items-center justify-center shrink-0">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+    <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
+      {/* Header */}
+      <div className="mb-5">
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1">Policy Compilation</p>
+        <p className="text-[#0a1628] font-semibold text-[15px]">Course inputs → compiled AI policy</p>
+      </div>
+
+      {/* Three-column layout: inputs | arrow | outputs */}
+      <div className="flex items-center gap-4 mb-5">
+        {/* Inputs */}
+        <div className="flex-1 space-y-2">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Course Inputs</p>
+          {inputs.map(row => (
+            <div key={row.label} className="px-3 py-2 rounded-lg bg-[#f8fafc] border border-gray-100 text-[13px] font-semibold text-[#0a1628]/70" style={{ borderLeft: `2px solid ${row.color}` }}>
+              {row.label}
+            </div>
+          ))}
+        </div>
+
+        {/* Arrow */}
+        <div className="shrink-0 flex flex-col items-center gap-1">
+          <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
+            <path d="M1 8h28M22 2l8 6-8 6" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
+          <span className="text-[9px] font-black uppercase tracking-[0.12em] text-[#228DC1]/70">compile</span>
         </div>
-        <div>
-          <p className="text-[#0a1628] font-semibold text-[13px] leading-tight">Image Generation</p>
-          <p className="text-[#0a1628]/45 text-[11px]">Educational illustration generated</p>
+
+        {/* Outputs */}
+        <div className="flex-1 space-y-2">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Policy Outputs</p>
+          {outputs.map(row => (
+            <div key={row.label} className="px-3 py-2 rounded-lg bg-[#f8fafc] border border-gray-100 text-[13px] font-semibold text-[#0a1628]/70" style={{ borderLeft: `2px solid ${row.color}` }}>
+              {row.label}
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Prompt bar */}
-      <div className="flex items-center justify-between px-4 py-2 bg-[#f8fafc] border-b border-gray-100">
-        <code className="text-[11px] text-[#059669] font-mono tracking-tight">Generate: photosynthesis lesson diagram</code>
-        <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#059669] border border-[#059669]/40 px-2 py-0.5">Generated</span>
-      </div>
-
-      {/* Diagram — shown immediately, animated flow lines on top */}
-      <div className="relative overflow-hidden" style={{ minHeight: '260px', background: 'linear-gradient(150deg,#0b2a1a 0%,#173d25 30%,#0e3530 60%,#071e2e 100%)' }}>
-
-        {/* Base SVG diagram — all nodes visible immediately */}
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 560 260" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <defs>
-            <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#fef08a"/>
-              <stop offset="60%" stopColor="#fbbf24" stopOpacity="0.9"/>
-              <stop offset="100%" stopColor="#f59e0b" stopOpacity="0"/>
-            </radialGradient>
-            <radialGradient id="leafGrad" cx="30%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#4ade80"/>
-              <stop offset="100%" stopColor="#15803d"/>
-            </radialGradient>
-            <filter id="glow2">
-              <feGaussianBlur stdDeviation="4" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-
-          {/* ── Light rays from sun ── */}
-          {[[-20,60],[0,90],[15,115],[25,145]].map(([dx,dy],i) => (
-            <line key={i} x1={60+dx} y1={30+dy} x2="60" y2="30" stroke="#fde68a" strokeWidth="1.5" opacity={0.18 - i*0.03}/>
-          ))}
-
-          {/* ── Sun ── */}
-          <circle cx="60" cy="30" r="36" fill="url(#sunGrad)" opacity="0.75"/>
-          <circle cx="60" cy="30" r="18" fill="#fde68a" filter="url(#glow2)"/>
-          <text x="60" y="26" fill="#78350f" fontSize="10" fontWeight="800" textAnchor="middle">LIGHT</text>
-          <text x="60" y="38" fill="#92400e" fontSize="10" fontWeight="700" textAnchor="middle">ENERGY</text>
-
-          {/* ── Leaf silhouette ── */}
-          <ellipse cx="175" cy="155" rx="90" ry="52" fill="url(#leafGrad)" opacity="0.35" transform="rotate(-18,175,155)"/>
-
-          {/* ── Leaf label ── */}
-          <text x="115" y="185" fill="#86efac" fontSize="13" fontWeight="800" opacity="0.9">Leaf</text>
-
-          {/* ── Thylakoid membrane ── */}
-          <ellipse cx="195" cy="160" rx="55" ry="32" fill="#082e20" stroke="#22c55e" strokeWidth="1.6"/>
-          <text x="195" y="155" fill="#86efac" fontSize="9.5" fontWeight="800" textAnchor="middle">THYLAKOID</text>
-          <text x="195" y="167" fill="#4ade80" fontSize="8" textAnchor="middle" opacity="0.7">Light reactions</text>
-          {/* Photosystem dots */}
-          {[170,183,196,209,222].map((cx,i) => (
-            <circle key={cx} cx={cx} cy="178" r="3.5" fill="#22c55e" opacity={0.75 - i * 0.1}/>
-          ))}
-
-          {/* ── H2O node ── */}
-          <circle cx="112" cy="160" r="16" fill="#1e40af" filter="url(#glow2)"/>
-          <text x="112" y="157" fill="white" fontSize="9.5" fontWeight="700" textAnchor="middle">H&#8322;O</text>
-          <text x="112" y="169" fill="#93c5fd" fontSize="8" textAnchor="middle">splits</text>
-
-          {/* ── O2 output ── */}
-          <circle cx="195" cy="112" r="14" fill="#064e3b" stroke="#34d399" strokeWidth="1.4"/>
-          <text x="195" y="109" fill="#34d399" fontSize="9.5" fontWeight="700" textAnchor="middle">O&#8322;</text>
-          <text x="195" y="120" fill="#34d399" fontSize="7.5" textAnchor="middle">released</text>
-
-          {/* ── ATP badge ── */}
-          <rect x="262" y="130" width="36" height="18" rx="3" fill="#7c2d12" stroke="#fb923c" strokeWidth="1.1"/>
-          <text x="280" y="142" fill="#fed7aa" fontSize="9" fontWeight="800" textAnchor="middle">ATP</text>
-
-          {/* ── NADPH badge ── */}
-          <rect x="258" y="158" width="46" height="18" rx="3" fill="#7c2d12" stroke="#fb923c" strokeWidth="1.1"/>
-          <text x="281" y="170" fill="#fed7aa" fontSize="9" fontWeight="800" textAnchor="middle">NADPH</text>
-
-          {/* ── CO2 node ── */}
-          <circle cx="420" cy="28" r="16" fill="#1e293b" stroke="#94a3b8" strokeWidth="1.3"/>
-          <text x="420" y="25" fill="#e2e8f0" fontSize="9.5" fontWeight="700" textAnchor="middle">CO&#8322;</text>
-          <text x="420" y="36" fill="#94a3b8" fontSize="7.5" textAnchor="middle">input</text>
-          {/* Second CO2 molecule drifting */}
-          <circle cx="466" cy="55" r="10" fill="#1e293b" stroke="#94a3b8" strokeWidth="1"/>
-          <text x="466" y="59" fill="#94a3b8" fontSize="8" fontWeight="700" textAnchor="middle">CO&#8322;</text>
-
-          {/* ── Calvin Cycle ── */}
-          <circle cx="420" cy="155" r="62" fill="#082233" stroke="#228DC1" strokeWidth="1.8"/>
-          <circle cx="420" cy="155" r="57" fill="none" stroke="#228DC1" strokeWidth="0.6" strokeDasharray="5 5" opacity="0.28"/>
-          {/* Wedge divisions */}
-          <path d="M420,155 L420,93" stroke="#228DC1" strokeWidth="0.6" opacity="0.2"/>
-          <path d="M420,155 L474,186" stroke="#228DC1" strokeWidth="0.6" opacity="0.2"/>
-          <path d="M420,155 L366,186" stroke="#228DC1" strokeWidth="0.6" opacity="0.2"/>
-          {/* Labels */}
-          <text x="420" y="118" fill="#7ac4e0" fontSize="8" fontWeight="700" textAnchor="middle" opacity="0.7">Carbon</text>
-          <text x="420" y="128" fill="#7ac4e0" fontSize="8" fontWeight="700" textAnchor="middle" opacity="0.7">Fixation</text>
-          <text x="452" y="172" fill="#7ac4e0" fontSize="7.5" fontWeight="700" textAnchor="middle" opacity="0.65">Reduction</text>
-          <text x="386" y="172" fill="#7ac4e0" fontSize="7.5" fontWeight="700" textAnchor="middle" opacity="0.65">Regen.</text>
-          <text x="420" y="151" fill="#38bdf8" fontSize="11" fontWeight="800" textAnchor="middle">CALVIN</text>
-          <text x="420" y="164" fill="#38bdf8" fontSize="11" fontWeight="800" textAnchor="middle">CYCLE</text>
-          <text x="420" y="175" fill="#228DC1" fontSize="7.5" textAnchor="middle" opacity="0.65">Rubisco · RuBP</text>
-
-          {/* ── G3P node ── */}
-          <rect x="486" y="208" width="44" height="22" rx="3" fill="#134e2a" stroke="#22c55e" strokeWidth="1.2"/>
-          <text x="508" y="218" fill="#86efac" fontSize="9.5" fontWeight="700" textAnchor="middle">G3P</text>
-          <text x="508" y="227" fill="#4ade80" fontSize="7.5" textAnchor="middle">3-carbon</text>
-
-          {/* ── Glucose ── */}
-          <rect x="360" y="232" width="68" height="24" rx="3" fill="#451a03" stroke="#fbbf24" strokeWidth="1.3"/>
-          <text x="394" y="243" fill="#fde68a" fontSize="9.5" fontWeight="800" textAnchor="middle">GLUCOSE</text>
-          <text x="394" y="252" fill="#fbbf24" fontSize="7.5" textAnchor="middle">C&#8326;H&#8321;&#8322;O&#8326;</text>
-
-          {/* ── SUGAR label ── */}
-          <text x="454" y="252" fill="#fbbf24" fontSize="8.5" fontWeight="700" opacity="0.7">&#x2192; Sugar</text>
-
-          {/* ── Animated flow lines ── */}
-          {/* H2O → Thylakoid */}
-          <path className="graph-flow-line graph-flow-line-delay-1" style={{ stroke: '#60a5fa' }} d="M128,155 C148,152 162,152 140,152"/>
-          {/* Sun → Thylakoid */}
-          <path className="graph-flow-line" style={{ stroke: '#fde68a' }} d="M75,55 C110,90 145,120 145,138"/>
-          {/* Thylakoid → O2 */}
-          <path className="graph-flow-line graph-flow-line-delay-2" style={{ stroke: '#34d399' }} d="M195,128 L195,126"/>
-          {/* Thylakoid → ATP */}
-          <path className="graph-flow-line" style={{ stroke: '#fb923c' }} d="M248,148 C254,142 258,139 262,139"/>
-          {/* Thylakoid → NADPH */}
-          <path className="graph-flow-line graph-flow-line-delay-1" style={{ stroke: '#fb923c' }} d="M248,160 C252,162 256,165 258,167"/>
-          {/* CO2 → Calvin */}
-          <path className="graph-flow-line graph-flow-line-delay-2" style={{ stroke: '#94a3b8' }} d="M420,44 L420,93"/>
-          {/* ATP → Calvin */}
-          <path className="graph-flow-line graph-flow-line-delay-3" style={{ stroke: '#fb923c' }} d="M298,139 C330,138 358,138 358,148"/>
-          {/* NADPH → Calvin */}
-          <path className="graph-flow-line" style={{ stroke: '#fb923c' }} d="M304,167 C330,166 356,162 358,162"/>
-          {/* Calvin → G3P */}
-          <path className="graph-flow-line graph-flow-line-delay-1" style={{ stroke: '#34d399' }} d="M470,192 C476,198 482,204 486,212"/>
-          {/* G3P → Glucose */}
-          <path className="graph-flow-line graph-flow-line-delay-2" style={{ stroke: '#fbbf24' }} d="M494,230 C484,234 470,236 428,236"/>
-          {/* Regeneration arc */}
-          <path className="graph-flow-line graph-flow-line-delay-3" style={{ stroke: '#a78bfa', strokeDasharray: '5 9' }} d="M380,206 C348,188 360,116 382,100"/>
-        </svg>
-      </div>
-
-      {/* Footer stats */}
-      <div className="grid grid-cols-3 divide-x divide-gray-100 border-t border-gray-100">
-        {[
-          { label: 'IMAGE',  value: 'Generated' },
-          { label: 'GRAPH',  value: 'Animated'  },
-          { label: 'LESSON', value: 'Biology'   },
-        ].map((stat) => (
-          <div key={stat.label} className="px-4 py-2.5">
-            <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#0a1628]/35 mb-0.5">{stat.label}</p>
-            <p className="text-[13px] font-semibold text-[#0a1628]">{stat.value}</p>
-          </div>
-        ))}
+      {/* Footer */}
+      <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#f0fdf4] border border-[#059669]/20">
+        <span className="text-[14px] text-[#059669] font-semibold">Policy layer compiled. AI ready to teach.</span>
       </div>
     </div>
   )
@@ -748,7 +601,7 @@ function TutorVisual() {
                 </div>
 
                 <div className="flex items-center gap-2 px-3 py-2 rounded-xl" style={{ background: student.soft, border: `1px solid ${student.border}` }}>
-                  <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: student.accent }} />
+                  <span className="text-[13px] font-black shrink-0" style={{ color: student.accent }}>✓</span>
                   <p className="text-[12px] font-black uppercase tracking-[0.08em]" style={{ color: student.accent }}>{student.signal}</p>
                 </div>
               </div>
@@ -794,7 +647,7 @@ function AnalyticsVisual() {
         ))}
       </div>
       <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-[#fef3c7] border border-[#d97706]/20">
-        <div className="w-2 h-2 rounded-full mt-0.5 shrink-0 bg-[#d97706]" />
+        <span className="text-[13px] shrink-0 mt-0.5 font-bold" style={{ color: '#d97706' }}>▲</span>
         <div>
           <p className="text-[14px] font-semibold text-[#d97706]">3 students at risk on Buyer Power</p>
           <p className="text-[14px] text-[#d97706]/70 mt-0.5">Gap detected in Week 3. Intervene now</p>
@@ -2721,9 +2574,10 @@ export default function AruvaPage() {
       {/* Platform Architecture */}
       <PlatformDiagram />
 
-      {/* How It Works — sticky scroll */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-28 pb-0">
+      {/* How It Works — full-width alternating layout */}
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          {/* Section header */}
           <div className="mb-16">
             <p className="type-label text-[#228DC1] mb-4">How It Works</p>
             <h2 className="font-heading text-[#0a1628] mb-4">From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Smart Syllabus</span> in minutes</h2>
@@ -2731,35 +2585,36 @@ export default function AruvaPage() {
               Aruva transforms your existing course structure into a governed AI teaching layer. No rip-and-replace, no new workflows.
             </p>
           </div>
-        </div>
 
-        {/* Sticky scroll container */}
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex gap-16 items-start">
-
-            {/* LEFT — sticky text steps */}
-            <div className="w-[42%] shrink-0 sticky top-24 self-start pb-28">
-              {howItWorksSteps.map((step, i) => (
-                <HIWStepText key={step.num} step={step} index={i} total={howItWorksSteps.length} />
-              ))}
-            </div>
-
-            {/* RIGHT — scrolling visuals stacked vertically */}
-            <div className="flex-1 flex flex-col gap-16 pb-28 pt-2">
-              {howItWorksSteps.map((step) => {
-                const Visual = step.visual === 'syllabus' ? SyllabusVisual
-                  : step.visual === 'align' ? AlignVisual
-                  : step.visual === 'tutor' ? TutorVisual
-                  : AnalyticsVisual
-                return (
-                  <div key={step.num} className="hiw-visual-block" data-step={step.num}
-                    style={{ minHeight: '420px', display:'flex', alignItems:'center' }}>
-                    <div style={{ width:'100%' }}><Visual /></div>
+          {/* Step rows */}
+          <div className="space-y-0">
+            {howItWorksSteps.map((step, i) => {
+              const Visual = step.visual === 'syllabus' ? SyllabusVisual
+                : step.visual === 'align' ? AlignVisual
+                : step.visual === 'tutor' ? TutorVisual
+                : AnalyticsVisual
+              const isOdd = i % 2 === 0
+              return (
+                <div key={step.num} className={`grid lg:grid-cols-2 gap-16 items-center py-20${i < howItWorksSteps.length - 1 ? ' border-b border-gray-100' : ''}`}>
+                  {/* Text side */}
+                  <div className={isOdd ? '' : 'lg:order-2'}>
+                    <div className="flex items-center gap-3 mb-5">
+                      <span className="text-[13px] font-black tracking-[0.14em] text-[#228DC1]">{step.num}</span>
+                      <div className="h-px w-7 bg-[#228DC1]/40" />
+                    </div>
+                    <h3 className="font-heading text-[#0a1628] mb-4" style={{ fontSize: 28, lineHeight: 1.2 }}>{step.label}</h3>
+                    <p className="text-[#0a1628]/65 text-[16px] leading-[1.75] mb-4">{step.desc}</p>
+                    {step.detail && (
+                      <p className="text-[14px] text-[#228DC1]/80 italic leading-relaxed">{step.detail}</p>
+                    )}
                   </div>
-                )
-              })}
-            </div>
-
+                  {/* Visual side */}
+                  <div className={isOdd ? '' : 'lg:order-1'}>
+                    <Visual />
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
