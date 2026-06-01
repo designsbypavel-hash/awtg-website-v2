@@ -2228,7 +2228,6 @@ function BloomInsightSection() {
                   const val   = Math.round(disp[i])
                   const isTop = Math.round(disp[i]) === Math.round(Math.max(...disp))
                   const isLow = Math.round(disp[i]) === Math.round(Math.min(...disp))
-                  const cavg  = Math.round(sem.cohortAvg[i])
                   const barColor = val >= 75 ? '#059669' : '#d97706'
                   return (
                     <div key={label}>
