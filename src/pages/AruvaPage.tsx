@@ -364,6 +364,45 @@ const pillars = [
   { num: '06', label: 'Governance Layer',        tag: 'Institutional Control', desc: 'Role-based access, audit trails and data residency controls keep AI accountable and under institutional control.' },
 ]
 
+// -- How It Works sticky-scroll step text -------------------------------------
+function HIWStepText({ step, index, total }: { step: { num: string; label: string; desc: string; detail: string; visual: string }; index: number; total: number }) {
+  const [active, setActive] = React.useState(false)
+  React.useEffect(() => {
+    const onScroll = () => {
+      const blocks = document.querySelectorAll('.hiw-visual-block')
+      const block = blocks[index] as HTMLElement | undefined
+      if (!block) return
+      const rect = block.getBoundingClientRect()
+      const mid = window.innerHeight * 0.45
+      setActive(rect.top <= mid && rect.bottom >= mid)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [index])
+
+  return (
+    <div style={{
+      padding: '28px 0',
+      borderBottom: index < total - 1 ? '1px solid #f0f4f8' : 'none',
+      opacity: active ? 1 : 0.35,
+      transform: active ? 'translateX(0)' : 'translateX(-6px)',
+      transition: 'opacity 0.4s ease, transform 0.4s ease',
+    }}>
+      <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
+        <span style={{ fontSize:12, fontWeight:800, color: active ? '#228DC1' : '#9ca3af', letterSpacing:'0.12em', transition:'color 0.3s' }}>{step.num}</span>
+        <div style={{ height:1, width:28, background: active ? '#228DC1' : '#e5e7eb', transition:'background 0.3s' }}/>
+        {active && <div style={{ width:6, height:6, borderRadius:'50%', background:'#228DC1', animation:'mmCursor 1.5s ease-in-out infinite' }}/>}
+      </div>
+      <h3 style={{ fontSize:22, fontWeight:700, color:'#0a1628', lineHeight:1.2, marginBottom:12 }}>{step.label}</h3>
+      <p style={{ fontSize:16, color:'rgba(10,22,40,0.65)', lineHeight:1.7, marginBottom:10 }}>{step.desc}</p>
+      {step.detail && (
+        <p style={{ fontSize:13, color: active ? '#228DC1' : 'rgba(10,22,40,0.38)', lineHeight:1.6, transition:'color 0.3s', fontStyle:'italic' }}>{step.detail}</p>
+      )}
+    </div>
+  )
+}
+
 // -- How It Works steps --------------------------------------------------------
 const howItWorksSteps = [
   {
@@ -2142,39 +2181,45 @@ export default function AruvaPage() {
       {/* Platform Architecture */}
       <PlatformDiagram />
 
-      {/* How It Works */}
-      <section className="py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-20">
+      {/* How It Works — sticky scroll */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-28 pb-0">
+          <div className="mb-16">
             <p className="type-label text-[#228DC1] mb-4">How It Works</p>
             <h2 className="font-heading text-[#0a1628] mb-4">From syllabus to <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">intelligent tutor</span> in hours</h2>
             <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed max-w-2xl">
               Aruva transforms your existing course structure into a governed AI teaching layer. No rip-and-replace, no new workflows.
             </p>
           </div>
-          <div className="space-y-0">
-            {howItWorksSteps.map((step, i) => {
-              const isEven = i % 2 === 1
-              const Visual = step.visual === 'syllabus' ? SyllabusVisual
-                : step.visual === 'align' ? AlignVisual
-                : step.visual === 'tutor' ? TutorVisual
-                : AnalyticsVisual
-              return (
-                <div key={step.num}>
-                  <div className={`grid lg:grid-cols-2 gap-16 items-center py-16 ${i < howItWorksSteps.length - 1 ? 'border-b border-gray-100' : ''}`}>
-                    <div className={isEven ? 'lg:order-2' : ''}>
-                      <div className="flex items-center gap-3 mb-5">
-                        <span className="font-black tabular-nums text-[#228DC1] text-sm">{step.num}</span>
-                        <div className="h-px flex-1 bg-gray-100 max-w-8" />
-                      </div>
-                      <h3 className="font-semibold text-[#0a1628] mb-4" style={{ fontSize: '20px', lineHeight: 1.1 }}>{step.label}</h3>
-                      <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed">{step.desc}</p>
-                    </div>
-                    <div className={isEven ? 'lg:order-1' : ''}><Visual /></div>
+        </div>
+
+        {/* Sticky scroll container */}
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="flex gap-16 items-start">
+
+            {/* LEFT — sticky text steps */}
+            <div className="w-[42%] shrink-0 sticky top-24 self-start pb-28">
+              {howItWorksSteps.map((step, i) => (
+                <HIWStepText key={step.num} step={step} index={i} total={howItWorksSteps.length} />
+              ))}
+            </div>
+
+            {/* RIGHT — scrolling visuals stacked vertically */}
+            <div className="flex-1 flex flex-col gap-16 pb-28 pt-2">
+              {howItWorksSteps.map((step) => {
+                const Visual = step.visual === 'syllabus' ? SyllabusVisual
+                  : step.visual === 'align' ? AlignVisual
+                  : step.visual === 'tutor' ? TutorVisual
+                  : AnalyticsVisual
+                return (
+                  <div key={step.num} className="hiw-visual-block" data-step={step.num}
+                    style={{ minHeight: '420px', display:'flex', alignItems:'center' }}>
+                    <div style={{ width:'100%' }}><Visual /></div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
+
           </div>
         </div>
       </section>
