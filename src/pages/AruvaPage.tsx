@@ -1278,6 +1278,7 @@ function MMTextDemo() {
 
 function MMImageDemo() {
   const PROMPT = 'Generate: photosynthesis lesson diagram'
+  const [arrows, setArrows] = React.useState(false)
   const graphNodes = [
     { label:'Light', x:38, y:34, color:'#f59e0b' },
     { label:'Leaf', x:112, y:88, color:'#059669' },
@@ -1286,9 +1287,15 @@ function MMImageDemo() {
     { label:'Sugar', x:122, y:146, color:'#dc2626' },
   ]
 
+  // Image appears immediately; arrows fade in 400ms later
+  React.useEffect(() => {
+    const id = setTimeout(() => setArrows(true), 400)
+    return () => clearTimeout(id)
+  }, [])
+
   return (
     <div style={{ display:'flex', flexDirection:'column', flex:1 }}>
-      {/* Prompt bar — static, no typewriter */}
+      {/* Prompt bar — static */}
       <div style={{ borderBottom:'1px solid #e5e7eb', padding:'9px 18px', display:'flex', alignItems:'center', gap:8, background:'#fafbfc' }}>
         <span style={{ fontSize:11, color:'#374151', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:500, flex:1 }}>
           {PROMPT}
@@ -1296,9 +1303,11 @@ function MMImageDemo() {
         <span style={{ fontSize:9, fontWeight:700, color:'#059669', background:'rgba(5,150,105,0.10)', padding:'3px 8px', borderRadius:10, border:'1px solid rgba(5,150,105,0.22)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Generated</span>
       </div>
 
-      {/* Illustration canvas — all elements visible immediately */}
+      {/* Illustration canvas */}
       <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'12px 16px', background:'#f8fafc' }}>
         <div style={{ position:'relative', width:'100%', aspectRatio:'280 / 178', borderRadius:12, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#0f3b33' }}>
+
+          {/* ① Image — visible immediately */}
           <img
             src="/images/aruva-photosynthesis-realistic.png"
             alt="AI-generated photosynthesis lesson diagram"
@@ -1309,7 +1318,9 @@ function MMImageDemo() {
             background:'linear-gradient(90deg,rgba(6,21,35,0.10),rgba(6,21,35,0.00) 38%,rgba(6,21,35,0.22)), radial-gradient(circle at 13% 16%,rgba(254,240,138,0.30),transparent 26%)',
             pointerEvents:'none',
           }}/>
-          <svg viewBox="0 0 280 178" style={{ position:'absolute', inset:0, width:'100%', height:'100%', display:'block', overflow:'visible' }}>
+
+          {/* ② Arrows + graph — fade in 400ms after image */}
+          <svg viewBox="0 0 280 178" style={{ position:'absolute', inset:0, width:'100%', height:'100%', display:'block', overflow:'visible', opacity: arrows ? 1 : 0, transition:'opacity 0.5s ease' }}>
             <defs>
               <marker id="mmArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
                 <path d="M0,0 L7,3.5 L0,7 Z" fill="#fef08a"/>
@@ -1325,7 +1336,7 @@ function MMImageDemo() {
                 style={{ animation:`mmSunRay 2.4s ease-in-out ${i*0.08}s infinite` }}/>
             })}
 
-            {/* Flow arrows — all visible, animated dashes */}
+            {/* Flow arrows */}
             <path className="mm-photo-flow" d="M52 42 C76 57 82 77 112 85" markerEnd="url(#mmArrow)"/>
             <path className="mm-photo-flow mm-photo-delay-1" d="M213 47 C241 55 250 80 235 101" markerEnd="url(#mmArrow)"/>
             <path className="mm-photo-flow mm-photo-delay-2" d="M191 121 C163 152 123 156 88 135" markerEnd="url(#mmArrow)"/>
@@ -1344,7 +1355,7 @@ function MMImageDemo() {
             <path className="mm-ai-edge" d="M38 34 L112 88 L214 48 L206 126 L122 146 L112 88"/>
             <path className="mm-ai-edge mm-ai-edge-delay" d="M38 34 L214 48 M112 88 L206 126 M122 146 L214 48" opacity="0.72"/>
 
-            {/* Graph nodes — all visible immediately */}
+            {/* Graph nodes */}
             {graphNodes.map(node => (
               <g key={node.label} className="mm-ai-node">
                 <circle cx={node.x} cy={node.y} r="4.4" fill={node.color}/>
