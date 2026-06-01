@@ -1277,62 +1277,36 @@ function MMTextDemo() {
 }
 
 function MMImageDemo() {
-  const [show, setShow] = React.useState(false)
-  const [phase, setPhase] = React.useState(0)
   const PROMPT = 'Generate: photosynthesis lesson diagram'
-  const [typed, setTyped] = React.useState(0)
   const graphNodes = [
-    { label:'Light', x:38, y:34, color:'#f59e0b', delay:'0s' },
-    { label:'Leaf', x:112, y:88, color:'#059669', delay:'0.18s' },
-    { label:'CO2', x:214, y:48, color:'#228DC1', delay:'0.36s' },
-    { label:'ATP', x:206, y:126, color:'#7c3aed', delay:'0.54s' },
-    { label:'Sugar', x:122, y:146, color:'#dc2626', delay:'0.72s' },
+    { label:'Light', x:38, y:34, color:'#f59e0b' },
+    { label:'Leaf', x:112, y:88, color:'#059669' },
+    { label:'CO2', x:214, y:48, color:'#228DC1' },
+    { label:'ATP', x:206, y:126, color:'#7c3aed' },
+    { label:'Sugar', x:122, y:146, color:'#dc2626' },
   ]
-
-  React.useEffect(() => {
-    let i = 0
-    const typeId = setInterval(() => {
-      i++; setTyped(i)
-      if (i >= PROMPT.length) {
-        clearInterval(typeId)
-        setTimeout(() => setPhase(1), 120)
-        setTimeout(() => setShow(true), 260)
-      }
-    }, 38)
-    return () => clearInterval(typeId)
-  }, [])
 
   return (
     <div style={{ display:'flex', flexDirection:'column', flex:1 }}>
-      {/* Prompt bar */}
+      {/* Prompt bar — static, no typewriter */}
       <div style={{ borderBottom:'1px solid #e5e7eb', padding:'9px 18px', display:'flex', alignItems:'center', gap:8, background:'#fafbfc' }}>
         <span style={{ fontSize:11, color:'#374151', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:500, flex:1 }}>
-          {PROMPT.slice(0, typed)}
-          {typed < PROMPT.length && <span style={{ display:'inline-block', width:2, height:11, background:'#059669', marginLeft:1, verticalAlign:'middle', animation:'mmCursor 0.8s step-end infinite' }}/>}
+          {PROMPT}
         </span>
-        {phase >= 1 && (
-          <span style={{ fontSize:9, fontWeight:700, color:'#059669', background:'rgba(5,150,105,0.10)', padding:'3px 8px', borderRadius:10, border:'1px solid rgba(5,150,105,0.22)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Generated</span>
-        )}
+        <span style={{ fontSize:9, fontWeight:700, color:'#059669', background:'rgba(5,150,105,0.10)', padding:'3px 8px', borderRadius:10, border:'1px solid rgba(5,150,105,0.22)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Generated</span>
       </div>
 
-      {/* Illustration canvas */}
+      {/* Illustration canvas — all elements visible immediately */}
       <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'12px 16px', background:'#f8fafc' }}>
         <div style={{ position:'relative', width:'100%', aspectRatio:'280 / 178', borderRadius:12, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#0f3b33' }}>
           <img
             src="/images/aruva-photosynthesis-realistic.png"
             alt="AI-generated photosynthesis lesson diagram"
-            style={{
-              position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover',
-              opacity: show ? 1 : 0,
-              transform: show ? 'scale(1)' : 'scale(1.035)',
-              transition: show ? 'opacity 0.7s ease, transform 1.2s ease' : 'none',
-            }}
+            style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }}
           />
           <div style={{
             position:'absolute', inset:0,
             background:'linear-gradient(90deg,rgba(6,21,35,0.10),rgba(6,21,35,0.00) 38%,rgba(6,21,35,0.22)), radial-gradient(circle at 13% 16%,rgba(254,240,138,0.30),transparent 26%)',
-            opacity: show ? 1 : 0,
-            transition:'opacity 0.55s ease 0.35s',
             pointerEvents:'none',
           }}/>
           <svg viewBox="0 0 280 178" style={{ position:'absolute', inset:0, width:'100%', height:'100%', display:'block', overflow:'visible' }}>
@@ -1342,63 +1316,58 @@ function MMImageDemo() {
               </marker>
             </defs>
 
-            <g style={{ opacity: show?1:0, transition: show?'opacity 0.45s ease 0.08s':'none' }}>
-              <circle cx="38" cy="30" r="24" fill="rgba(254,240,138,0.18)" style={{ animation:'mmSunPulse 2.8s ease-in-out infinite' }}/>
-              {[0,35,70,105,140,175,210,245,280,315].map((angle,i) => {
-                const r = (angle * Math.PI) / 180
-                return <line key={angle} x1={38+Math.cos(r)*25} y1={30+Math.sin(r)*25} x2={38+Math.cos(r)*38} y2={30+Math.sin(r)*38}
-                  stroke="#fef08a" strokeWidth="2.2" strokeLinecap="round" opacity={0.75}
-                  style={{ animation:`mmSunRay 2.4s ease-in-out ${i*0.08}s infinite` }}/>
-              })}
-            </g>
+            {/* Sun rays */}
+            <circle cx="38" cy="30" r="24" fill="rgba(254,240,138,0.18)" style={{ animation:'mmSunPulse 2.8s ease-in-out infinite' }}/>
+            {[0,35,70,105,140,175,210,245,280,315].map((angle,i) => {
+              const rad = (angle * Math.PI) / 180
+              return <line key={angle} x1={38+Math.cos(rad)*25} y1={30+Math.sin(rad)*25} x2={38+Math.cos(rad)*38} y2={30+Math.sin(rad)*38}
+                stroke="#fef08a" strokeWidth="2.2" strokeLinecap="round" opacity={0.75}
+                style={{ animation:`mmSunRay 2.4s ease-in-out ${i*0.08}s infinite` }}/>
+            })}
 
-            <path className="mm-photo-flow" d="M52 42 C76 57 82 77 112 85" markerEnd="url(#mmArrow)" style={{ opacity: show?1:0 }}/>
-            <path className="mm-photo-flow mm-photo-delay-1" d="M213 47 C241 55 250 80 235 101" markerEnd="url(#mmArrow)" style={{ opacity: show?1:0 }}/>
-            <path className="mm-photo-flow mm-photo-delay-2" d="M191 121 C163 152 123 156 88 135" markerEnd="url(#mmArrow)" style={{ opacity: show?1:0 }}/>
-            <path className="mm-photo-flow mm-photo-delay-3" d="M118 143 C158 172 220 158 244 128" markerEnd="url(#mmArrow)" style={{ opacity: show?1:0 }}/>
+            {/* Flow arrows — all visible, animated dashes */}
+            <path className="mm-photo-flow" d="M52 42 C76 57 82 77 112 85" markerEnd="url(#mmArrow)"/>
+            <path className="mm-photo-flow mm-photo-delay-1" d="M213 47 C241 55 250 80 235 101" markerEnd="url(#mmArrow)"/>
+            <path className="mm-photo-flow mm-photo-delay-2" d="M191 121 C163 152 123 156 88 135" markerEnd="url(#mmArrow)"/>
+            <path className="mm-photo-flow mm-photo-delay-3" d="M118 143 C158 172 220 158 244 128" markerEnd="url(#mmArrow)"/>
 
-            <g style={{ opacity: show?1:0, transition: show?'opacity 0.45s ease 0.62s':'none' }}>
-              {[[219,45,0],[234,68,0.4],[216,124,0.85],[96,138,1.1]].map(([x,y,d],i) => (
-                <g key={i} style={{ animation:`mmMoleculeDrift 3.4s ease-in-out ${d}s infinite` }}>
-                  <circle cx={x-7} cy={y-4} r="4.2" fill="#ef4444"/>
-                  <circle cx={x} cy={y} r="6.4" fill="#1f2937"/>
-                  <circle cx={x+8} cy={y-4} r="4.2" fill="#ef4444"/>
-                </g>
-              ))}
-            </g>
+            {/* Molecule dots */}
+            {([[219,45,0],[234,68,0.4],[216,124,0.85],[96,138,1.1]] as [number,number,number][]).map(([x,y,d],i) => (
+              <g key={i} style={{ animation:`mmMoleculeDrift 3.4s ease-in-out ${d}s infinite` }}>
+                <circle cx={x-7} cy={y-4} r="4.2" fill="#ef4444"/>
+                <circle cx={x} cy={y} r="6.4" fill="#1f2937"/>
+                <circle cx={x+8} cy={y-4} r="4.2" fill="#ef4444"/>
+              </g>
+            ))}
 
-            <svg x="0" y="0" width="280" height="178" viewBox="0 0 280 178">
-              <path className="mm-ai-edge" d="M38 34 L112 88 L214 48 L206 126 L122 146 L112 88" style={{ opacity: show?1:0 }}/>
-              <path className="mm-ai-edge mm-ai-edge-delay" d="M38 34 L214 48 M112 88 L206 126 M122 146 L214 48" style={{ opacity: show?0.72:0 }}/>
-              {graphNodes.map(node => (
-                <g key={node.label} className="mm-ai-node" style={{ animationDelay: node.delay, opacity: show?1:0 }}>
-                  <circle cx={node.x} cy={node.y} r="4.4" fill={node.color}/>
-                  <circle cx={node.x} cy={node.y} r="8" fill="none" stroke={node.color} strokeWidth="1" opacity="0.55"/>
-                  <text x={node.x} y={node.y-12} textAnchor="middle" fontSize="7" fontWeight="800" fill="#ffffff" fontFamily="Roboto,sans-serif">{node.label}</text>
-                </g>
-              ))}
-            </svg>
+            {/* Graph edges */}
+            <path className="mm-ai-edge" d="M38 34 L112 88 L214 48 L206 126 L122 146 L112 88"/>
+            <path className="mm-ai-edge mm-ai-edge-delay" d="M38 34 L214 48 M112 88 L206 126 M122 146 L214 48" opacity="0.72"/>
 
-            <g style={{ opacity: show?1:0, transition: show?'opacity 0.45s ease 0.85s':'none' }}>
-              <text x="70" y="60" textAnchor="middle" fontSize="8" fontWeight="900" fill="#6b3f05" fontFamily="Roboto,sans-serif">LIGHT ENERGY</text>
-              <text x="229" y="32" textAnchor="middle" fontSize="8" fontWeight="900" fill="#0f172a" fontFamily="Roboto,sans-serif">CO2</text>
-              <text x="213" y="143" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">ATP</text>
-              <text x="84" y="163" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">SUGAR</text>
-            </g>
+            {/* Graph nodes — all visible immediately */}
+            {graphNodes.map(node => (
+              <g key={node.label} className="mm-ai-node">
+                <circle cx={node.x} cy={node.y} r="4.4" fill={node.color}/>
+                <circle cx={node.x} cy={node.y} r="8" fill="none" stroke={node.color} strokeWidth="1" opacity="0.55"/>
+                <text x={node.x} y={node.y-12} textAnchor="middle" fontSize="7" fontWeight="800" fill="#ffffff" fontFamily="Roboto,sans-serif">{node.label}</text>
+              </g>
+            ))}
+
+            {/* Labels */}
+            <text x="70" y="60" textAnchor="middle" fontSize="8" fontWeight="900" fill="#6b3f05" fontFamily="Roboto,sans-serif">LIGHT ENERGY</text>
+            <text x="229" y="32" textAnchor="middle" fontSize="8" fontWeight="900" fill="#0f172a" fontFamily="Roboto,sans-serif">CO2</text>
+            <text x="213" y="143" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">ATP</text>
+            <text x="84" y="163" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">SUGAR</text>
           </svg>
 
+          {/* Stats bar */}
           <div style={{ position:'absolute', left:10, right:10, bottom:9, display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:7 }}>
             {[
-              { label:'Image', value: show ? 'Generated' : 'Rendering' },
-              { label:'Graph', value:'Animated' },
-              { label:'Lesson', value:'Biology' },
-            ].map((stat, i) => (
-              <div key={stat.label} style={{
-                background:'rgba(6,21,35,0.78)', border:'1px solid rgba(255,255,255,0.12)',
-                backdropFilter:'blur(8px)', borderRadius:8, padding:'7px 8px',
-                opacity: show?1:0, transform: show?'translateY(0)':'translateY(8px)',
-                transition:`opacity 0.35s ease ${0.9+i*0.08}s, transform 0.35s ease ${0.9+i*0.08}s`,
-              }}>
+              { label:'Image', value:'Generated' },
+              { label:'Graph', value:'Animated'  },
+              { label:'Lesson', value:'Biology'  },
+            ].map((stat) => (
+              <div key={stat.label} style={{ background:'rgba(6,21,35,0.78)', border:'1px solid rgba(255,255,255,0.12)', backdropFilter:'blur(8px)', borderRadius:8, padding:'7px 8px' }}>
                 <p style={{ fontSize:7.5, color:'rgba(255,255,255,0.50)', lineHeight:1, textTransform:'uppercase', letterSpacing:'0.12em', fontWeight:800, marginBottom:4 }}>{stat.label}</p>
                 <p style={{ fontSize:10.5, color:'#fff', lineHeight:1, fontWeight:800 }}>{stat.value}</p>
               </div>
