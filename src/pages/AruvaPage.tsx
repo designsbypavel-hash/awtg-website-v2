@@ -2009,37 +2009,6 @@ function PrinciplesSection() {
   )
 }
 
-// -- Pillars -------------------------------------------------------------------
-function PillarsSection() {
-  const [ref, inView] = useInView(0.08)
-  return (
-    <section className="py-24 bg-[#f8fafc]">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="mb-14">
-          <p className="type-label text-[#228DC1] mb-4">Platform</p>
-          <h2 className="font-heading text-[#0a1628] mb-4">Six pillars, one learning loop</h2>
-          <p className="text-[#0a1628]/60 text-base font-normal leading-relaxed max-w-xl">
-            Every capability connects. Smart Syllabus feeds the tutor. The tutor feeds assessment. Assessment feeds analytics.
-          </p>
-        </div>
-        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
-          {pillars.map((p, i) => (
-            <div key={p.num} className="group bg-white p-8 hover:bg-[#f8fafc] transition-colors" style={reveal(inView, i * 80)}>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="font-black text-[10px] text-[#228DC1]" style={{ letterSpacing: '0.05em' }}>{p.num}</span>
-                <div className="h-px flex-1 bg-gray-100" />
-                <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#0a1628]/35">{p.tag}</span>
-              </div>
-              <h3 className="text-[#0a1628] font-semibold text-[15px] leading-snug mb-2">{p.label}</h3>
-              <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 // -- Audience ------------------------------------------------------------------
 function AudienceSection() {
   const [ref, inView] = useInView(0.08)
