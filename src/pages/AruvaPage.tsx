@@ -2386,7 +2386,7 @@ function AudienceSection() {
     <section className="py-24 bg-[#f5f0e8]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="mb-14">
-          <span style={{ display:'inline-block', background:'#e8f4fc', border:'1px solid #b8ddf0', color:'#228DC1', fontSize:11, fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', padding:'4px 12px', borderRadius:20, marginBottom:16 }}>Who It's For</span>
+          <p className="type-label text-[#228DC1] mb-4">Who It's For</p>
           <h2 className="font-heading text-[#0a1628]">
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
@@ -2534,7 +2534,7 @@ export default function AruvaPage() {
       <section className="py-28 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-12">
-            <p className="inline-flex items-center px-3 py-1 bg-[#e5f4fa] text-[#228DC1] rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-5">Why Aruva</p>
+            <p className="type-label text-[#228DC1] mb-5">Why Aruva</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Most AI answers questions directly.<br />
               <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva draws</span> students critical thinking.
