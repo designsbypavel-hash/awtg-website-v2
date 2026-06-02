@@ -2566,7 +2566,7 @@ export default function AruvaPage() {
             <p className="type-label text-[#228DC1] mb-5">Why Aruva</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Most AI answers questions directly.<br />
-              <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva draws</span> students critical thinking.
+              <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva develops</span> students' critical thinking.
             </h2>
             <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.75] max-w-2xl">
               Generic AI adds a chat interface to your institution. Aruva connects the entire academic lifecycle: syllabus, tutoring, assessment and analytics, into one <strong className="font-semibold text-[#0a1628]/80">continuous learning intelligence loop.</strong>
