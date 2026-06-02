@@ -2111,7 +2111,6 @@ function BloomInsightSection() {
                 {BLOOM_LABELS.map((label, i) => {
                   const val   = Math.round(disp[i])
                   const isTop = Math.round(disp[i]) === Math.round(Math.max(...disp))
-                  const isLow = Math.round(disp[i]) === Math.round(Math.min(...disp))
                   const barColor = val >= 75 ? '#059669' : '#d97706'
                   return (
                     <div key={label}>
@@ -2124,7 +2123,6 @@ function BloomInsightSection() {
                           <span className="text-[13px] text-[#0a1628]/35 hidden sm:inline">{BLOOM_SIMPLE[i]}</span>
                           {isTop && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md"
                             style={{ background: sem.accent + '15', color: sem.accent }}>top</span>}
-                          {isLow && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md bg-[#fef3c7] text-[#b45309]">Progress</span>}
                         </div>
                         <span className="text-[16px] font-black tabular-nums shrink-0 ml-3"
                           style={{ color: barColor }}>
