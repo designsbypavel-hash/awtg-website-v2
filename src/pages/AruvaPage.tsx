@@ -588,6 +588,15 @@ function TutorVisual() {
         <div className="grid md:grid-cols-2 gap-4">
           {conversations.map((student) => (
             <div key={student.name} className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: student.accent }}>
+                  {student.initials}
+                </div>
+                <div>
+                  <p className="text-[13px] font-bold text-[#0a1628] leading-none">{student.name}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mt-1" style={{ color: student.accent }}>{student.strategy}</p>
+                </div>
+              </div>
 
               <div className="space-y-3">
                 <div className="flex justify-end">
