@@ -473,6 +473,144 @@ const reveal = (inView: boolean, delay = 0): CSSProperties => ({
   transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
 })
 
+const curriculumSubjects = [
+  { name: 'Geography',  signal: 'Climate systems',         color: '#228DC1', soft: '#e5f4fa' },
+  { name: 'Physics',    signal: 'Forces and motion',       color: '#7c3aed', soft: '#f3f0ff' },
+  { name: 'Biology',    signal: 'Cellular respiration',    color: '#059669', soft: '#ecfdf5' },
+  { name: 'Psychology', signal: 'Cognitive bias',          color: '#dc2626', soft: '#fff1f2' },
+  { name: 'Maths',      signal: 'Algebraic reasoning',     color: '#2563eb', soft: '#eff6ff' },
+  { name: 'Economics',  signal: 'Market behaviour',        color: '#d97706', soft: '#fff7ed' },
+  { name: 'Chemistry',  signal: 'Reaction pathways',       color: '#0891b2', soft: '#ecfeff' },
+  { name: 'History',    signal: 'Source interpretation',   color: '#9333ea', soft: '#faf5ff' },
+]
+
+function CurriculumAgnosticSection() {
+  const [active, setActive] = React.useState(0)
+  const [isPaused, setIsPaused] = React.useState(false)
+  const [ref, inView] = useInView(0.15)
+  const activeSubject = curriculumSubjects[active]
+
+  React.useEffect(() => {
+    if (!inView || isPaused) return
+    const id = window.setInterval(() => {
+      setActive(prev => (prev + 1) % curriculumSubjects.length)
+    }, 2200)
+    return () => window.clearInterval(id)
+  }, [inView, isPaused])
+
+  return (
+    <section ref={ref} className="py-24 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
+      <style>{`
+        @keyframes subjectPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+        @keyframes subjectLine { from{stroke-dashoffset:240} to{stroke-dashoffset:0} }
+      `}</style>
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        <div className="grid lg:grid-cols-[0.82fr_1fr] gap-16 items-center">
+          <div style={reveal(inView, 0)}>
+            <p className="type-label text-[#228DC1] mb-5">Curriculum Agnostic</p>
+            <h2 className="font-heading text-[#0a1628] mb-5">
+              One central Aruva layer.<br />
+              <span className="text-[#228DC1]">Every subject can use it.</span>
+            </h2>
+            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.75] max-w-xl">
+              Aruva stays centralised while the curriculum changes around it. Geography, Physics, Biology, Psychology, Maths, Economics, Chemistry and History all connect to the same governed learning intelligence layer.
+            </p>
+            <div className="mt-8 grid sm:grid-cols-2 gap-3 max-w-xl">
+              {['Subject-aware tutoring', 'Same governance model', 'Outcome mapping by course', 'Shared learning signals'].map((item) => (
+                <div key={item} className="flex items-center gap-3 rounded-[10px] border border-[#d7e9f2] bg-white px-4 py-3 shadow-[0_8px_20px_rgba(34,141,193,0.05)]">
+                  <span className="h-2 w-2 rounded-full bg-[#228DC1]" />
+                  <span className="text-[13px] font-semibold text-[#0a1628]/70">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className="relative min-h-[430px] rounded-[24px] border border-[#d7e9f2] bg-white p-6 shadow-[0_24px_70px_rgba(10,22,40,0.08)]"
+            style={reveal(inView, 120)}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="absolute inset-6 rounded-[20px] bg-[radial-gradient(circle_at_center,rgba(34,141,193,0.13),transparent_55%)]" />
+            <svg className="absolute inset-0 h-full w-full pointer-events-none" viewBox="0 0 620 430" fill="none" preserveAspectRatio="none">
+              {curriculumSubjects.map((subject, index) => {
+                const angle = (-90 + (360 / curriculumSubjects.length) * index) * (Math.PI / 180)
+                const x = 310 + Math.cos(angle) * 190
+                const y = 215 + Math.sin(angle) * 126
+                const isActive = index === active
+                return (
+                  <path
+                    key={subject.name}
+                    d={`M310 215 L${x} ${y}`}
+                    stroke={isActive ? subject.color : '#d7e9f2'}
+                    strokeWidth={isActive ? 2.2 : 1}
+                    strokeDasharray={isActive ? '6 7' : '3 9'}
+                    style={{ animation: isActive ? 'subjectLine 1.2s linear infinite' : 'none' }}
+                  />
+                )
+              })}
+            </svg>
+
+            <div className="absolute left-1/2 top-1/2 z-10 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[22px] border border-[#bfe5f7] bg-white px-4 text-center shadow-[0_18px_42px_rgba(34,141,193,0.18)]">
+              <img src="/aruva-logo-wordmark.png" alt="Aruva" className="h-7 w-auto object-contain" />
+              <span className="mt-3 rounded-full bg-[#e5f4fa] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#228DC1]">
+                Centralised AI
+              </span>
+              <span className="mt-3 text-[12px] font-bold leading-snug text-[#0a1628]" style={{ color: activeSubject.color }}>
+                {activeSubject.name}
+              </span>
+              <span className="mt-1 text-[10px] font-medium leading-snug text-[#0a1628]/45">
+                {activeSubject.signal}
+              </span>
+            </div>
+
+            <div className="absolute inset-0">
+              {curriculumSubjects.map((subject, index) => {
+                const angle = -90 + (360 / curriculumSubjects.length) * index
+                const radiusX = 32
+                const radiusY = 31
+                const x = 50 + Math.cos(angle * Math.PI / 180) * radiusX
+                const y = 50 + Math.sin(angle * Math.PI / 180) * radiusY
+                const isActive = index === active
+                return (
+                  <button
+                    key={subject.name}
+                    type="button"
+                    onMouseEnter={() => {
+                      setIsPaused(true)
+                      setActive(index)
+                    }}
+                    onFocus={() => {
+                      setIsPaused(true)
+                      setActive(index)
+                    }}
+                    onBlur={() => setIsPaused(false)}
+                    className="absolute w-[128px] -translate-x-1/2 -translate-y-1/2 rounded-[14px] border bg-white px-3 py-2.5 text-left transition-all duration-300 sm:w-[154px] sm:px-4 sm:py-3"
+                    style={{
+                      left: `${x}%`,
+                      top: `${y}%`,
+                      borderColor: isActive ? subject.color : '#e5e7eb',
+                      boxShadow: isActive ? `0 16px 34px ${subject.color}24` : '0 8px 20px rgba(10,22,40,0.06)',
+                      background: isActive ? subject.soft : '#ffffff',
+                      animation: isActive ? 'subjectPulse 1.8s ease-in-out infinite' : 'none',
+                    }}
+                  >
+                    <span className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full text-[12px] font-black text-white" style={{ background: subject.color }}>
+                      {subject.name.slice(0, 2)}
+                    </span>
+                    <span className="block text-[13px] font-bold text-[#0a1628] sm:text-[14px]">{subject.name}</span>
+                    <span className="mt-1 block text-[10px] font-medium leading-snug text-[#0a1628]/50 sm:text-[11px]">{subject.signal}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 
 function ScrollProgress() {
   const [pct, setPct] = useState(0)
@@ -2913,6 +3051,9 @@ export default function AruvaPage() {
           </div>
         </div>
       </section>
+
+      {/* Curriculum agnostic */}
+      <CurriculumAgnosticSection />
 
       {/* Bloom + DOK — Learning Intelligence */}
       <BloomInsightSection />
