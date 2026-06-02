@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faCircleCheck, faShield, faGear, faCheck, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
+import ProductDemoModal from '@/components/ProductDemoModal'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -1672,7 +1673,7 @@ function OmnichannelSection() {
 }
 
 // -- Hero Section --------------------------------------------------------------
-function HeroSection() {
+function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
   return (
     <section className="relative overflow-hidden pt-32 pb-16" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
 
@@ -1740,12 +1741,12 @@ function HeroSection() {
               Kai connects to your systems, follows your rules and helps teams resolve work faster.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
+              <button type="button" onClick={onDemoClick} className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
                 Request a Demo
-              </Link>
-              <Link to="/contact" className="px-7 py-3.5 border border-gray-200 bg-white text-[#0a1628]/70 text-[13px] font-medium hover:border-[#228DC1]/50 hover:text-[#228DC1] transition-all">
+              </button>
+              <button type="button" onClick={onDemoClick} className="px-7 py-3.5 border border-gray-200 bg-white text-[#0a1628]/70 text-[13px] font-medium hover:border-[#228DC1]/50 hover:text-[#228DC1] transition-all">
                 Talk to an expert
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -1763,12 +1764,32 @@ function HeroSection() {
 // -- Main page -----------------------------------------------------------------
 export default function KaiPage() {
   const [stepsRef, stepsInView] = useInView()
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+  const openDemo = () => setIsDemoOpen(true)
+  const closeDemo = () => setIsDemoOpen(false)
 
   return (
     <>
       <ScrollProgress />
+      <ProductDemoModal
+        isOpen={isDemoOpen}
+        onClose={closeDemo}
+        productName="Kai"
+        productLabel="Enterprise AI Agent"
+        title="See Kai in action"
+        description="Share a few details and we will show how Kai can resolve customer and operational workflows across your systems, channels and governance rules."
+        logoSrc="/kai-logo-horiz.svg"
+        accentColor="#228DC1"
+        trustItems={['British Council', 'Enterprise support', 'Governed AI', 'Hybrid deployment', 'Live integrations', 'Audit-ready workflows']}
+        outcomes={[
+          'A focused demo around your support or service workflow',
+          'Recommended integrations for your CRM, helpdesk and channels',
+          'Guidance on escalation, consent and governance design',
+          'A practical pilot path with measurable resolution outcomes',
+        ]}
+      />
       {/* -- Hero -- */}
-      <HeroSection />
+      <HeroSection onDemoClick={openDemo} />
 
       {/* -- Single combined logo strip -- */}
       {(() => {
@@ -2141,16 +2162,24 @@ export default function KaiPage() {
               One channel. One workflow. Measure real outcomes, then scale.
             </p>
           </div>
-          <Link
-            to="/contact"
+          <button
+            type="button"
+            onClick={openDemo}
             className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1] text-[#228DC1] text-[13px] font-semibold hover:bg-[#228DC1] hover:text-white transition-all"
           >
             Request a Demo <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-          </Link>
+          </button>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection
+        title="Ready to see Kai in your workflows?"
+        subtitle="Talk to our AI delivery team about a focused pilot across your systems, channels and governance model."
+        primaryLabel="Request a Demo"
+        primaryOnClick={openDemo}
+        secondaryLabel="View Solutions"
+        secondaryHref="/solutions"
+      />
     </>
   )
 }

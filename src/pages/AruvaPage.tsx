@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faShield, faArrowsRotate, faWandSparkles, faCircleCheck, faMicrophone, faPen, faImage, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import ProductDemoModal from '@/components/ProductDemoModal'
 
 // -- Hero Dashboard (Student Hub mockup) --------------------------------------
 const HERO_SKILLS = [
@@ -2380,7 +2380,7 @@ function PrinciplesSection() {
 }
 
 // -- Audience ------------------------------------------------------------------
-function AudienceSection() {
+function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
   const [ref, inView] = useInView(0.08)
   return (
     <section className="py-24 bg-[#f5f0e8]">
@@ -2413,11 +2413,11 @@ function AudienceSection() {
                 ))}
               </div>
               {/* Learn more button */}
-              <Link to="/contact"
+              <button type="button" onClick={onDemoClick}
                 className="inline-flex items-center justify-center mt-8 px-5 py-2.5 rounded-lg text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
                 style={{ background:'#228DC1', alignSelf:'flex-start' }}>
                 Learn more
-              </Link>
+              </button>
             </div>
           ))}
         </div>
@@ -2428,9 +2428,30 @@ function AudienceSection() {
 
 // -- Main page -----------------------------------------------------------------
 export default function AruvaPage() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+  const openDemo = () => setIsDemoOpen(true)
+  const closeDemo = () => setIsDemoOpen(false)
+
   return (
     <>
       <ScrollProgress />
+      <ProductDemoModal
+        isOpen={isDemoOpen}
+        onClose={closeDemo}
+        productName="Aruva"
+        productLabel="AI for Education"
+        title="See Aruva in action"
+        description="Share a few details and we will show how Aruva maps student understanding, supports educators and turns course content into governed learning intelligence."
+        logoSrc="/aruva-logo-wordmark.png"
+        accentColor="#228DC1"
+        trustItems={['Higher education', 'Learning analytics', 'Governed AI', 'LMS integration', 'Bloom mapping', 'Academic support']}
+        outcomes={[
+          'A demo tailored to your courses, LMS and assessment model',
+          'A walkthrough of Bloom-level insight and student learning profiles',
+          'Guidance on governance, data residency and academic integrity',
+          'A pilot plan for 2 to 3 courses with measurable learning impact',
+        ]}
+      />
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
@@ -2509,10 +2530,10 @@ export default function AruvaPage() {
                 Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact"
+                <button type="button" onClick={openDemo}
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
                   Request a Demo
-                </Link>
+                </button>
               </div>
             </div>
             <div className="flex items-center justify-center lg:justify-end">
@@ -2657,7 +2678,7 @@ export default function AruvaPage() {
       <PrinciplesSection />
 
       {/* Who it's for */}
-      <AudienceSection />
+      <AudienceSection onDemoClick={openDemo} />
 
       {/* Governance */}
       <section className="py-20 bg-white border-t border-gray-100">
@@ -2749,11 +2770,11 @@ export default function AruvaPage() {
           <p style={{ color:'rgba(255,255,255,0.6)', fontSize:16, lineHeight:1.75, marginBottom:32 }}>
             Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution.
           </p>
-          <Link to="/contact"
+          <button type="button" onClick={openDemo}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-[14px] font-semibold hover:opacity-90 transition-opacity"
             style={{ background:'#fbbf24', color:'#0a1628' }}>
             Request a Demo
-          </Link>
+          </button>
         </div>
       </section>
 
