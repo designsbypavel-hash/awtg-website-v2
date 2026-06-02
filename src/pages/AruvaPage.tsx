@@ -575,7 +575,16 @@ const audiences = [
 // -- How It Works — accordion LEFT, visual RIGHT (Intercom-style) --------------
 function HowItWorksSection() {
   const [active, setActive] = React.useState(0)
+  const [isPaused, setIsPaused] = React.useState(false)
   const [ref, inView] = useInView(0.1)
+
+  React.useEffect(() => {
+    if (!inView || isPaused) return
+    const id = window.setInterval(() => {
+      setActive(prev => (prev + 1) % howItWorksSteps.length)
+    }, 5200)
+    return () => window.clearInterval(id)
+  }, [inView, isPaused])
 
   const step = howItWorksSteps[active]
   const Visual = step.visual === 'syllabus' ? SyllabusVisual
@@ -587,6 +596,7 @@ function HowItWorksSection() {
     <section ref={ref} className="bg-white py-28 border-t border-gray-100">
       <style>{`
         @keyframes hiwVisual { from{opacity:0;transform:translateX(10px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes hiwProgress { from{transform:scaleX(0)} to{transform:scaleX(1)} }
         .hiw-step-btn { border-radius: 0 !important; background: transparent !important; }
       `}</style>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
@@ -603,7 +613,11 @@ function HowItWorksSection() {
         </div>
 
         {/* accordion LEFT + visual RIGHT — both pinned to top */}
-        <div className="grid lg:grid-cols-[440px_1fr] gap-16 items-start">
+        <div
+          className="grid lg:grid-cols-[440px_1fr] gap-16 items-start"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
 
           {/* LEFT — active step always at top, inactive steps below */}
           <div style={reveal(inView, 100)}>
@@ -617,12 +631,23 @@ function HowItWorksSection() {
                     <div style={{ width:8, height:8, borderRadius:2, marginTop: isActive ? 7 : 5, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.4s ease' }}/>
                     <div className="flex-1">
                       <p style={{ fontSize: isActive ? 17 : 14, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.38)', lineHeight:1.25, marginBottom: isActive ? 10 : 0, transition:'all 0.4s ease' }}>
-                        {s.label}
+                        {index + 1}. {s.label}
                       </p>
                       {isActive && (
                         <>
                           <p style={{ fontSize:14, color:'rgba(10,22,40,0.65)', lineHeight:1.75, marginBottom: s.detail ? 10 : 0 }}>{s.desc}</p>
                           {s.detail && <p style={{ fontSize:13, color:'#228DC1', fontStyle:'italic', lineHeight:1.55 }}>{s.detail}</p>}
+                          <div style={{ height:2, marginTop:16, background:'rgba(34,141,193,0.12)', overflow:'hidden', transformOrigin:'left' }}>
+                            <div
+                              key={`${active}-${isPaused ? 'paused' : 'running'}`}
+                              style={{
+                                height:'100%',
+                                background:'#228DC1',
+                                transformOrigin:'left',
+                                animation: isPaused ? 'none' : 'hiwProgress 5.2s linear forwards',
+                              }}
+                            />
+                          </div>
                         </>
                       )}
                     </div>
