@@ -2262,7 +2262,6 @@ function BloomInsightSection() {
                           </span>
                           {isTop && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md"
                             style={{ background: dokSem.accent + '15', color: dokSem.accent }}>top</span>}
-                          {isLow && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md bg-[#fef3c7] text-[#b45309]">Progress</span>}
                         </div>
                         <p className="text-[12px] font-medium pl-8" style={{ color: DOK_TEXT_COLORS[i] }}>{DOK_SIMPLE[i]}</p>
                       </div>
