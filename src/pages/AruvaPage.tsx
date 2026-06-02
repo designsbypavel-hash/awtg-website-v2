@@ -2707,9 +2707,6 @@ export default function AruvaPage() {
 
               {/* Platform quality tags */}
               <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden divide-x divide-gray-200 bg-white shadow-[0_1px_6px_rgba(10,22,40,0.05)]">
-                <div className="px-4 py-3 shrink-0 bg-[#f8fafc]">
-                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#0a1628]/40">Platform</span>
-                </div>
                 {[
                   { label: 'Traceable',   color: '#228DC1' },
                   { label: 'Auditable',   color: '#7c3aed' },
