@@ -1447,7 +1447,6 @@ function MMGraphDemo() {
 function MultimodalSection() {
   const [sectionRef, inView] = useInView(0.10)
   const [active, setActive]       = React.useState(2)
-  const [progress, setProgress]   = React.useState(0)
   const [cycleCount, setCycleCount] = React.useState(0)
   const activeRef = React.useRef(2)
   const startRef  = React.useRef(0)
@@ -1460,7 +1459,6 @@ function MultimodalSection() {
     startRef.current = performance.now()
     const tick = (now: number) => {
       const elapsed = now - startRef.current
-      setProgress(Math.min((elapsed / CYCLE) * 100, 100))
       if (elapsed >= CYCLE) {
         const next = (activeRef.current + 1) % 4
         activeRef.current = next
