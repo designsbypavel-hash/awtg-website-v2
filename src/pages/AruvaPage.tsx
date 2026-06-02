@@ -2725,21 +2725,18 @@ export default function AruvaPage() {
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              {/* Aruva logo wordmark — vector, 2× */}
+              {/* Aruva logo — full wordmark vector */}
               <div className="mb-8">
                 <img
                   src="/aruva-logo-vector.svg"
                   alt="Aruva"
                   style={{
-                    width: 'clamp(240px, 18vw, 300px)',
+                    width: 'clamp(280px, 22vw, 360px)',
                     height: 'auto',
                     objectFit: 'contain',
-                    filter: 'drop-shadow(0 4px 16px rgba(4,40,158,0.18))',
+                    display: 'block',
                   }}
-                  onError={(e) => {
-                    const el = e.target as HTMLImageElement
-                    el.style.display = 'none'
-                  }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
               <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.7 }}>
