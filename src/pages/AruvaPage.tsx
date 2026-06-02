@@ -577,11 +577,6 @@ function HowItWorksSection() {
   const [active, setActive] = React.useState(0)
   const [ref, inView] = useInView(0.1)
 
-  React.useEffect(() => {
-    const id = setInterval(() => setActive(p => (p + 1) % howItWorksSteps.length), 5000)
-    return () => clearInterval(id)
-  }, [])
-
   const step = howItWorksSteps[active]
   const Visual = step.visual === 'syllabus' ? SyllabusVisual
     : step.visual === 'align' ? AlignVisual
@@ -600,10 +595,10 @@ function HowItWorksSection() {
         <div className="mb-14" style={reveal(inView, 0)}>
           <p className="type-label text-[#228DC1] mb-4">How It Works</p>
           <h2 className="font-heading text-[#0a1628] mb-4">
-            From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Smart Syllabus</span> to AI Teaching Layer in minutes
+            From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">student questions</span> to guided learning in minutes
           </h2>
           <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed max-w-2xl">
-            Aruva transforms your existing course structure into a governed AI teaching layer. No rip-and-replace, no new workflows.
+            Aruva guides students through your course content, while your syllabus, rules and analytics stay connected behind the scenes.
           </p>
         </div>
 
@@ -655,24 +650,24 @@ function HowItWorksSection() {
 const howItWorksSteps = [
   {
     num: '01',
+    label: 'Students learn. AI guides.',
+    desc: 'A Socratic tutor that asks questions and cites sources. Not one that gives away answers.',
+    detail: 'Live with real students. Used in production at British Council English Online.',
+    visual: 'tutor',
+  },
+  {
+    num: '02',
     label: 'Connect your course',
     desc: 'Upload your syllabus, connect your LMS and set the rules. Every outcome and rubric becomes part of the intelligence layer.',
     detail: 'Works with Canvas, Moodle, Blackboard and Brightspace.',
     visual: 'syllabus',
   },
   {
-    num: '02',
+    num: '03',
     label: 'AI aligns to your rules',
     desc: 'Aruva compiles your course into a policy layer. How the AI tutors, what content it draws from and what hint stages to apply.',
     detail: 'Every response is course aware. Nothing operates outside the bounds you set.',
     visual: 'align',
-  },
-  {
-    num: '03',
-    label: 'Students learn. AI guides.',
-    desc: 'A Socratic tutor that asks questions and cites sources. Not one that gives away answers.',
-    detail: 'Live with real students. Used in production at British Council English Online.',
-    visual: 'tutor',
   },
   {
     num: '04',
