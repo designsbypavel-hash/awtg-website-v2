@@ -2739,9 +2739,6 @@ export default function AruvaPage() {
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
-              <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.7 }}>
-                AI for Education
-              </p>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
                 AI that understands<br />
                 <span style={{ color: '#228DC1' }}>how your students learn.</span>
