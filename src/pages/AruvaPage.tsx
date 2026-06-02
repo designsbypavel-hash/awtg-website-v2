@@ -893,8 +893,8 @@ const MM_STEPS = [
 ]
 
 function MMImageDemo() {
-  const [show, setShow] = React.useState(false)
   const [phase, setPhase] = React.useState(0)
+  const [step, setStep] = React.useState(0)
   const PROMPT = 'Illustrate: photosynthesis'
   const [typed, setTyped] = React.useState(0)
 
@@ -904,12 +904,19 @@ function MMImageDemo() {
       i++; setTyped(i)
       if (i >= PROMPT.length) {
         clearInterval(typeId)
-        setTimeout(() => setPhase(1), 250)
-        setTimeout(() => setShow(true), 650)
+        setTimeout(() => setPhase(1), 300)
+        setTimeout(() => setStep(1), 700)
+        setTimeout(() => setStep(2), 1300)
+        setTimeout(() => setStep(3), 1900)
+        setTimeout(() => setStep(4), 2500)
+        setTimeout(() => setStep(5), 3100)
       }
     }, 52)
     return () => clearInterval(typeId)
   }, [])
+
+  const s = (n: number) => ({ opacity: step >= n ? 1 : 0, transition:'opacity 0.5s ease' })
+  const p = (n: number, len = 300) => ({ strokeDasharray: len, strokeDashoffset: step >= n ? 0 : len, transition:'stroke-dashoffset 0.8s cubic-bezier(0.4,0,0.2,1)' })
 
   return (
     <div style={{ display:'flex', flexDirection:'column', flex:1 }}>
@@ -925,82 +932,128 @@ function MMImageDemo() {
         )}
       </div>
 
-      {/* Illustration canvas */}
-      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'12px 16px' }}>
-        <svg viewBox="0 0 280 178" style={{ width:'100%', height:'auto', borderRadius:10, overflow:'hidden' }}>
+      {/* Photosynthesis diagram */}
+      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'10px 14px', background:'#f0fdf4' }}>
+        <svg viewBox="0 0 300 190" style={{ width:'100%', height:'auto' }} fontFamily="Roboto,sans-serif">
           <defs>
-            <linearGradient id="imgSky" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="sunGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#fde68a"/>
+              <stop offset="100%" stopColor="#f59e0b"/>
+            </linearGradient>
+            <linearGradient id="leafGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#86efac"/>
+              <stop offset="100%" stopColor="#16a34a"/>
+            </linearGradient>
+            <linearGradient id="cycleGrad" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#bfdbfe"/>
-              <stop offset="100%" stopColor="#dbeafe"/>
+              <stop offset="100%" stopColor="#60a5fa"/>
             </linearGradient>
-            <linearGradient id="imgSea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#60a5fa"/>
-              <stop offset="100%" stopColor="#3b82f6"/>
-            </linearGradient>
+            <marker id="arrowG" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#16a34a"/>
+            </marker>
+            <marker id="arrowB" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#2563eb"/>
+            </marker>
+            <marker id="arrowY" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#d97706"/>
+            </marker>
           </defs>
 
-          {/* Sky */}
-          <rect x="0" y="0" width="280" height="178" fill="url(#imgSky)"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.5s ease 0s':'none' }}/>
-          {/* Ocean */}
-          <path d="M0 128 Q70 122 140 128 Q210 134 280 128 L280 178 L0 178 Z" fill="url(#imgSea)"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.5s ease 0.2s':'none' }}/>
-          {/* Mountains back-left */}
-          <path d="M-5 130 L55 62 L115 130 Z" fill="#a5b4fc"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 0.3s':'none' }}/>
-          {/* Mountains back-right */}
-          <path d="M162 130 L225 55 L290 130 Z" fill="#c4b5fd"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 0.35s':'none' }}/>
-          {/* Ground */}
-          <path d="M0 130 Q70 120 140 126 Q210 132 280 126 L280 155 L0 155 Z" fill="#86efac"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 0.4s':'none' }}/>
+          {/* Background */}
+          <rect width="300" height="190" fill="#f0fdf4" rx="8"/>
 
-          {/* Sun */}
-          <circle cx="232" cy="34" r="18" fill="#fbbf24"
-            style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 0.05s':'none' }}/>
-          {[0,45,90,135,180,225,270,315].map((angle,i) => {
-            const r = (angle * Math.PI) / 180
-            return <line key={angle} x1={232+Math.cos(r)*21} y1={34+Math.sin(r)*21} x2={232+Math.cos(r)*28} y2={34+Math.sin(r)*28}
-              stroke="#fbbf24" strokeWidth="2" strokeLinecap="round"
-              style={{ opacity: show?0.9:0, transition: show?`opacity 0.3s ease ${0.1+i*0.03}s`:'none' }}/>
-          })}
-
-          {/* Cloud 1 */}
-          <g style={{ opacity: show?1:0, transition: show?'opacity 0.5s ease 0.5s':'none' }}>
-            <ellipse cx="72" cy="42" rx="26" ry="14" fill="white"/>
-            <ellipse cx="55" cy="48" rx="17" ry="12" fill="white"/>
-            <ellipse cx="89" cy="48" rx="17" ry="11" fill="white"/>
-          </g>
-          {/* Cloud 2 */}
-          <g style={{ opacity: show?1:0, transition: show?'opacity 0.5s ease 0.6s':'none' }}>
-            <ellipse cx="166" cy="28" rx="20" ry="11" fill="white" opacity="0.9"/>
-            <ellipse cx="151" cy="33" rx="13" ry="9"  fill="white" opacity="0.9"/>
-            <ellipse cx="181" cy="33" rx="13" ry="9"  fill="white" opacity="0.9"/>
+          {/* ── SUN ── */}
+          <g style={s(1)}>
+            <circle cx="38" cy="28" r="16" fill="url(#sunGrad)" style={{ filter:'drop-shadow(0 2px 6px rgba(245,158,11,0.5))' }}/>
+            {[0,45,90,135,180,225,270,315].map((a,i) => {
+              const r = a*Math.PI/180
+              return <line key={i} x1={38+Math.cos(r)*18} y1={28+Math.sin(r)*18} x2={38+Math.cos(r)*24} y2={28+Math.sin(r)*24} stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" style={{ animation:`orbFloat ${1.2+i*0.1}s ease-in-out ${i*0.1}s infinite` }}/>
+            })}
+            <text x="38" y="32" textAnchor="middle" fontSize="7.5" fontWeight="800" fill="#92400e">SUN</text>
           </g>
 
-          {/* Rain drops from cloud 1 */}
-          {[[65,66],[74,72],[82,66],[58,72],[90,72]].map(([x,y],i) => (
-            <line key={i} x1={x} y1={y} x2={x-3} y2={y+11} stroke="#93c5fd" strokeWidth="1.8" strokeLinecap="round"
-              style={{ opacity: show?0.85:0, transition: show?`opacity 0.3s ease ${0.85+i*0.06}s`:'none' }}/>
-          ))}
+          {/* Light energy arrow */}
+          <g style={s(1)}>
+            <path d="M54 36 L95 70" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" markerEnd="url(#arrowY)" {...p(1,60)}/>
+            <text x="62" y="52" fontSize="6.5" fontWeight="700" fill="#b45309" transform="rotate(38,62,52)">LIGHT</text>
+          </g>
 
-          {/* Evaporation arrows */}
-          {[[108,122],[140,118],[172,122]].map(([x,y],i) => (
-            <path key={i} d={`M${x},${y} C${x-4},${y-9} ${x+4},${y-15} ${x},${y-23}`}
-              fill="none" stroke="rgba(147,197,253,0.75)" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="3 2.5"
-              style={{ opacity: show?1:0, transition: show?`opacity 0.4s ease ${1.0+i*0.08}s`:'none' }}/>
-          ))}
+          {/* ── LEAF / CHLOROPLAST ── */}
+          <g style={s(1)}>
+            <ellipse cx="105" cy="110" rx="38" ry="52" fill="url(#leafGrad)" opacity="0.25" transform="rotate(-20,105,110)"/>
+            <ellipse cx="105" cy="108" rx="22" ry="30" fill="#bbf7d0" opacity="0.7" transform="rotate(-15,105,108)"/>
+            <text x="105" y="145" textAnchor="middle" fontSize="6" fontWeight="700" fill="#166534" opacity="0.8">CHLOROPLAST</text>
+          </g>
 
-          {/* Labels */}
-          {[
-            { x:232, y:12,  t:'Sun',        c:'#92400e' },
-            { x:140, y:148, t:'Ocean',      c:'#1e40af' },
-            { x:72,  y:96,  t:'Rainfall',   c:'#1e40af' },
-            { x:140, y:108, t:'Evaporation',c:'#065f46' },
-          ].map(l => (
-            <text key={l.t} x={l.x} y={l.y} textAnchor="middle" fontSize="8" fontWeight="700" fill={l.c} fontFamily="Roboto,sans-serif"
-              style={{ opacity: show?1:0, transition: show?'opacity 0.4s ease 1.25s':'none' }}>{l.t}</text>
-          ))}
+          {/* H2O input */}
+          <g style={s(2)}>
+            <path d="M42 155 L88 130" stroke="#3b82f6" strokeWidth="1.8" strokeDasharray="4 3" markerEnd="url(#arrowB)" {...p(2,70)}/>
+            <circle cx="32" cy="158" r="10" fill="#bfdbfe" stroke="#3b82f6" strokeWidth="1"/>
+            <text x="32" y="162" textAnchor="middle" fontSize="7" fontWeight="700" fill="#1e40af">H₂O</text>
+          </g>
+
+          {/* O2 output */}
+          <g style={s(2)}>
+            <path d="M98 80 L78 50" stroke="#059669" strokeWidth="1.8" markerEnd="url(#arrowG)" {...p(2,50)}/>
+            <circle cx="74" cy="40" r="10" fill="#d1fae5" stroke="#059669" strokeWidth="1"/>
+            <text x="74" y="44" textAnchor="middle" fontSize="7" fontWeight="700" fill="#065f46">O₂</text>
+          </g>
+
+          {/* ── CALVIN CYCLE ── */}
+          <g style={s(3)}>
+            <circle cx="210" cy="100" r="42" fill="url(#cycleGrad)" opacity="0.15" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="6 3"/>
+            <text x="210" y="96" textAnchor="middle" fontSize="8" fontWeight="800" fill="#1e40af">CALVIN</text>
+            <text x="210" y="107" textAnchor="middle" fontSize="8" fontWeight="800" fill="#1e40af">CYCLE</text>
+          </g>
+
+          {/* Calvin cycle rotation arrow */}
+          <g style={s(3)}>
+            <path d="M210 58 A42 42 0 1 1 168 100" fill="none" stroke="#3b82f6" strokeWidth="2" markerEnd="url(#arrowB)" {...p(3,220)}/>
+          </g>
+
+          {/* CO2 input to cycle */}
+          <g style={s(3)}>
+            <path d="M250 28 L225 65" stroke="#6b7280" strokeWidth="1.8" markerEnd="url(#arrowB)" {...p(3,55)}/>
+            <circle cx="260" cy="22" r="11" fill="#f3f4f6" stroke="#6b7280" strokeWidth="1"/>
+            <text x="260" y="26" textAnchor="middle" fontSize="7" fontWeight="700" fill="#374151">CO₂</text>
+          </g>
+
+          {/* ATP arrow from chloroplast to cycle */}
+          <g style={s(4)}>
+            <path d="M132 100 L162 100" stroke="#d97706" strokeWidth="2" markerEnd="url(#arrowY)" {...p(4,40)}/>
+            <rect x="133" y="90" width="22" height="11" rx="3" fill="#fde68a" stroke="#d97706" strokeWidth="1"/>
+            <text x="144" y="99" textAnchor="middle" fontSize="6.5" fontWeight="800" fill="#92400e">ATP</text>
+          </g>
+
+          {/* NADPH arrow */}
+          <g style={s(4)}>
+            <path d="M130 116 L162 112" stroke="#7c3aed" strokeWidth="2" markerEnd="url(#arrowB)" {...p(4,40)}/>
+            <rect x="128" y="118" width="28" height="11" rx="3" fill="#ede9fe" stroke="#7c3aed" strokeWidth="1"/>
+            <text x="142" y="127" textAnchor="middle" fontSize="6" fontWeight="800" fill="#5b21b6">NADPH</text>
+          </g>
+
+          {/* G3P → Glucose output */}
+          <g style={s(5)}>
+            <path d="M220 142 L220 165" stroke="#16a34a" strokeWidth="2" markerEnd="url(#arrowG)" {...p(5,35)}/>
+            <rect x="192" y="162" width="56" height="20" rx="5" fill="#dcfce7" stroke="#16a34a" strokeWidth="1.2"/>
+            <text x="220" y="171" textAnchor="middle" fontSize="7" fontWeight="800" fill="#166534">GLUCOSE C₆H₁₂O₆</text>
+          </g>
+
+          {/* Rubisco label */}
+          <g style={s(3)}>
+            <text x="187" y="72" textAnchor="middle" fontSize="6" fontWeight="700" fill="#1d4ed8" opacity="0.8">Rubisco</text>
+          </g>
+
+          {/* G3P label inside cycle */}
+          <g style={s(4)}>
+            <text x="248" y="122" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#1d4ed8">G3P</text>
+          </g>
+
+          {/* STARCH GRAIN small circle */}
+          <g style={s(5)}>
+            <circle cx="264" cy="162" r="9" fill="#fef3c7" stroke="#d97706" strokeWidth="1"/>
+            <text x="264" y="166" textAnchor="middle" fontSize="5.5" fontWeight="700" fill="#92400e">STARCH</text>
+          </g>
         </svg>
       </div>
     </div>
