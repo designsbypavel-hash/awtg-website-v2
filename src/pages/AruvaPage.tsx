@@ -2873,7 +2873,7 @@ export default function AruvaPage() {
         productLabel="AI for Education"
         title="See Aruva in action"
         description="Share a few details and we will show how Aruva maps student understanding, supports educators and turns course content into governed learning intelligence."
-        logoSrc="/aruva-logo-wordmark.png"
+        logoSrc="/aruva-logo-vector.svg"
         accentColor="#228DC1"
         trustItems={['Higher education', 'Learning analytics', 'Governed AI', 'LMS integration', 'Bloom mapping', 'Academic support']}
         outcomes={[
