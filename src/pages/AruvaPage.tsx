@@ -2516,7 +2516,6 @@ function BloomInsightSection() {
               <div className="flex-1 space-y-4">
                 {BLOOM_LABELS.map((label, i) => {
                   const val   = Math.round(disp[i])
-                  const isTop = Math.round(disp[i]) === Math.round(Math.max(...disp))
                   const barColor = val >= 75 ? '#059669' : '#d97706'
                   return (
                     <div key={label}>
@@ -2527,8 +2526,6 @@ function BloomInsightSection() {
                             {label}
                           </span>
                           <span className="text-[13px] text-[#0a1628]/35 hidden sm:inline">{BLOOM_SIMPLE[i]}</span>
-                          {isTop && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md"
-                            style={{ background: sem.accent + '15', color: sem.accent }}>top</span>}
                         </div>
                         <span className="text-[16px] font-black tabular-nums shrink-0 ml-3"
                           style={{ color: barColor }}>
@@ -2666,8 +2663,6 @@ function BloomInsightSection() {
                           <span className="text-[15px] font-semibold" style={{ color: isLow ? '#d97706' : 'rgba(10,22,40,0.8)' }}>
                             {DOK_NAMES[i]}
                           </span>
-                          {isTop && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md"
-                            style={{ background: dokSem.accent + '15', color: dokSem.accent }}>top</span>}
                         </div>
                         <p className="text-[12px] font-medium pl-8" style={{ color: DOK_TEXT_COLORS[i] }}>{DOK_SIMPLE[i]}</p>
                       </div>
