@@ -590,6 +590,7 @@ function HowItWorksSection() {
   const Visual = step.visual === 'syllabus' ? SyllabusVisual
     : step.visual === 'align' ? AlignVisual
     : step.visual === 'tutor' ? TutorVisual
+    : step.visual === 'mastery' ? MasteryStoryVisual
     : AnalyticsVisual
 
   return (
@@ -605,10 +606,10 @@ function HowItWorksSection() {
         <div className="mb-14" style={reveal(inView, 0)}>
           <p className="type-label text-[#228DC1] mb-4">How It Works</p>
           <h2 className="font-heading text-[#0a1628] mb-4">
-            From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">student questions</span> to guided learning in minutes
+            A learning story, guided by <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva</span>
           </h2>
           <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed max-w-2xl">
-            Aruva guides students through your course content, while your syllabus, rules and analytics stay connected behind the scenes.
+            Start with a student question. Aruva guides the answer, captures the learning signal, adapts the next step and gives educators the evidence while learning is still happening.
           </p>
         </div>
 
@@ -679,23 +680,23 @@ const howItWorksSteps = [
   },
   {
     num: '02',
-    label: 'Connect your course',
-    desc: 'Upload your syllabus, connect your LMS and set the rules. Every outcome and rubric becomes part of the intelligence layer.',
-    detail: 'Works with Canvas, Moodle, Blackboard and Brightspace.',
-    visual: 'syllabus',
+    label: 'Aruva spots the skill gap.',
+    desc: 'Every interaction updates mastery signals, showing where the student is confident and where understanding is still fragile.',
+    detail: 'Bloom levels, confidence and topic gaps are tracked continuously.',
+    visual: 'mastery',
   },
   {
     num: '03',
-    label: 'AI aligns to your rules',
-    desc: 'Aruva compiles your course into a policy layer. How the AI tutors, what content it draws from and what hint stages to apply.',
-    detail: 'Every response is course aware. Nothing operates outside the bounds you set.',
+    label: 'The course rules shape the support.',
+    desc: 'Your syllabus, outcomes and rubrics decide what Aruva can teach, what it can cite and how much help it should give.',
+    detail: 'The tutor stays inside your approved academic boundaries.',
     visual: 'align',
   },
   {
     num: '04',
-    label: 'Educators see everything.',
-    desc: 'Engagement, topic difficulty and at risk signals in one dashboard. While learning is still happening.',
-    detail: 'Analytics roll up to department and programme level.',
+    label: 'Educators see progress.',
+    desc: 'Teachers see who is improving, which concepts are blocking progress and where intervention is needed before the exam.',
+    detail: 'Insight rolls up from student to course, department and programme level.',
     visual: 'analytics',
   },
 ]
@@ -802,6 +803,63 @@ function AlignVisual() {
       {/* Footer */}
       <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#f0fdf4] border border-[#059669]/20">
         <span className="text-[14px] text-[#059669] font-semibold">Policy layer compiled. AI ready to teach.</span>
+      </div>
+    </div>
+  )
+}
+
+function MasteryStoryVisual() {
+  const skills = [
+    { label: 'Variables & Scoping', pct: 32, color: '#e11d48', status: 'Needs attention' },
+    { label: 'Syntax & Fundamentals', pct: 55, color: '#d97706', status: 'Practicing' },
+    { label: 'Functional Programming', pct: 0, color: '#9ca3af', status: 'No data yet' },
+  ]
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
+      <div className="px-6 py-5 bg-[#f8fafc] border-b border-gray-100 flex items-start justify-between">
+        <div>
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Skill Mastery</p>
+          <h3 className="text-[#0a1628] text-[22px] font-black leading-tight">Aruva turns learning into signals</h3>
+          <p className="text-[13px] text-[#0a1628]/55 mt-2">Real-time quantification of academic competency and cognitive growth.</p>
+        </div>
+        <div className="rounded-2xl bg-white px-5 py-3 text-center border border-gray-200 shadow-[0_6px_18px_rgba(10,22,40,0.06)]">
+          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#0a1628]/35">Global mastery</p>
+          <p className="text-[24px] font-black text-[#0a1628] leading-none mt-1">22%</p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-5 p-6 bg-white">
+        <div className="space-y-4">
+          {skills.map((skill) => (
+            <div key={skill.label} className="rounded-2xl border border-gray-100 bg-white px-5 py-4 shadow-[0_2px_12px_rgba(10,22,40,0.04)]">
+              <div className="flex items-center justify-between gap-4 mb-3">
+                <div>
+                  <p className="text-[14px] font-bold text-[#0a1628]">{skill.label}</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color: skill.color }}>{skill.status}</p>
+                </div>
+                <p className="text-[18px] font-black" style={{ color: skill.color }}>{skill.pct}%</p>
+              </div>
+              <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
+                <div className="h-full rounded-full" style={{ width: `${skill.pct}%`, background: skill.color }} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="rounded-2xl border border-gray-100 bg-[#fbfcfe] p-5 flex flex-col justify-between">
+          <div>
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-4">Bloom mastery</p>
+            <div className="mx-auto mb-5 h-40 w-40 rounded-full border border-[#228DC1]/15 bg-white flex items-center justify-center">
+              <div className="h-24 w-24 rounded-[28px] bg-[#1e2d7d]/70 rotate-45 shadow-[0_10px_30px_rgba(30,45,125,0.22)]" />
+            </div>
+            <p className="text-[13px] font-semibold text-[#0a1628]/70">Weakest areas: <span className="text-[#0a1628]">Create, Evaluate</span></p>
+          </div>
+          <div className="mt-5 rounded-xl bg-[#e8f4fc] border border-[#b8ddf0] px-4 py-3">
+            <p className="text-[13px] font-bold text-[#228DC1]">Insight captured</p>
+            <p className="text-[12px] text-[#0a1628]/50 mt-1">Next tutor prompt adapts to the detected gap.</p>
+          </div>
+        </div>
       </div>
     </div>
   )
