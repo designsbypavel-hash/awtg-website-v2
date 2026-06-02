@@ -548,105 +548,83 @@ function AlignVisual() {
 }
 
 function TutorVisual() {
-  const conversations = [
-    {
-      name: 'Maria Garcia',
-      initials: 'MG',
-      style: 'Analogy-oriented',
-      accent: '#f59e0b',
-      soft: '#fff7ed',
-      border: '#fed7aa',
-      prompt: 'What does mitochondria actually do?',
-      strategy: 'Analogy-driven reinforcement',
-      response: 'Think of mitochondria as the power station of the cell. Just like a city needs electricity, the cell needs ATP to keep every process running.',
-      followUp: 'So mitochondria basically create energy for the cell?',
-      signal: 'Analogy understood',
-    },
-    {
-      name: 'Elena Rossi',
-      initials: 'ER',
-      style: 'Analytical',
-      accent: '#6d5dfc',
-      soft: '#f3f0ff',
-      border: '#d8ccff',
-      prompt: 'If oxygen drops, what changes in respiration?',
-      strategy: 'Analytical application reinforcement',
-      response: 'Mitochondria produce ATP through cellular respiration. When oxygen is limited, aerobic respiration becomes less efficient and ATP output decreases.',
-      followUp: 'So low oxygen means the cell has less usable energy?',
-      signal: 'Reasoning depth improved',
-    },
+  const messages = [
+    { role: 'student', text: "Can you just solve Porter's Five Forces for me?" },
+    { role: 'aruva',   text: "Let's build that understanding together. Which of the five forces do you think has the strongest impact here — start with your instinct." },
+    { role: 'student', text: "Maybe buyer power? Because there are lots of alternatives?" },
+    { role: 'aruva',   text: "Good instinct. Now think about what actually gives buyers that power — is it the number of alternatives, switching costs, or something else?" },
+    { role: 'student', text: "I think it's switching costs. If it's easy to switch, buyers have more leverage." },
   ]
+  const signal = { label: 'Mastery signal captured', sub: 'Apply level · Bloom taxonomy updated', color: '#228DC1', bg: '#e8f4fc', border: '#b8ddf0' }
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
       {/* Header */}
-      <div className="px-5 py-3 flex flex-col gap-3 bg-[#f8fafc] border-b border-gray-100">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <div className="bg-white rounded-lg flex items-center px-2 border border-gray-200 shadow-sm" style={{ height: 26 }}>
-              <img
-                src="/aruva-logo.png"
-                alt="Aruva"
-                style={{ height: 14, width: 'auto', objectFit: 'contain' }}
-                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-              />
-            </div>
-            <span className="text-[#0a1628]/60 text-[14px] font-semibold">Adaptive Tutor</span>
-            <span className="text-[#0a1628]/20 text-[14px]">|</span>
-            <span className="text-[#0a1628]/40 text-[14px]">Biology 101</span>
+      <div className="px-5 py-3.5 flex items-center justify-between bg-[#f8fafc] border-b border-gray-100">
+        <div className="flex items-center gap-2.5">
+          <div className="bg-white rounded-lg flex items-center px-2 border border-gray-200 shadow-sm" style={{ height: 28 }}>
+            <img src="/aruva-logo.png" alt="Aruva" style={{ height: 14, width: 'auto', objectFit: 'contain' }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
           </div>
-          <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
+          <span className="text-[14px] font-semibold text-[#0a1628]/65">Adaptive Tutor</span>
+          <span className="text-[#0a1628]/20">·</span>
+          <span className="text-[13px] text-[#0a1628]/40">Business Strategy 101 · Week 3</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">Socratic mode</span>
         </div>
       </div>
-      {/* Messages */}
-      <div className="p-5 bg-[#fafafa]">
-        <div className="grid md:grid-cols-2 gap-4">
-          {conversations.map((student) => (
-            <div key={student.name} className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: student.accent }}>
-                  {student.initials}
-                </div>
-                <div>
-                  <p className="text-[13px] font-bold text-[#0a1628] leading-none">{student.name}</p>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mt-1" style={{ color: student.accent }}>{student.strategy}</p>
-                </div>
-              </div>
 
-              <div className="space-y-3">
-                <div className="flex justify-end">
-                  <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[88%]" style={{ background: student.accent }}>
-                    <p className="text-white text-[13px] leading-relaxed">{student.prompt}</p>
-                  </div>
-                </div>
+      {/* Student info strip */}
+      <div className="flex items-center gap-3 px-5 py-3 border-b border-gray-100 bg-white">
+        <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: '#f59e0b' }}>MG</div>
+        <div>
+          <p className="text-[13px] font-semibold text-[#0a1628] leading-none">Maria Garcia</p>
+          <p className="text-[11px] text-[#0a1628]/45 mt-0.5">Business Strategy 101 · Analogy-oriented learner</p>
+        </div>
+        <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fef3c7] border border-[#d97706]/20">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
+          <span className="text-[11px] font-semibold text-[#d97706]">Week 3 — Porter's Five Forces</span>
+        </div>
+      </div>
 
-                <div className="flex gap-2.5 items-start">
-                  <div className="rounded-md flex items-center justify-center shrink-0 bg-white border border-gray-200 shadow-sm px-2" style={{ height: 28, minWidth: 28 }}>
-                    <img
-                      src="/aruva-logo.png"
-                      alt="Aruva"
-                      style={{ height: 12, width: 'auto', objectFit: 'contain' }}
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                    />
-                  </div>
-                  <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-sm">
-                    <p className="text-[#0a1628]/80 text-[13px] leading-relaxed">{student.response}</p>
-                  </div>
-                </div>
-
-                <div className="flex justify-end">
-                  <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[88%] bg-[#f8fafc] border border-gray-100">
-                    <p className="text-[#0a1628]/75 text-[13px] leading-relaxed">{student.followUp}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 px-3 py-2 rounded-xl" style={{ background: student.soft, border: `1px solid ${student.border}` }}>
-                  <span className="text-[13px] font-black shrink-0" style={{ color: student.accent }}>✓</span>
-                  <p className="text-[12px] font-black uppercase tracking-[0.08em]" style={{ color: student.accent }}>{student.signal}</p>
-                </div>
+      {/* Chat messages */}
+      <div className="p-5 space-y-4 bg-[#fafafa]">
+        {messages.map((m, i) => (
+          m.role === 'student' ? (
+            <div key={i} className="flex justify-end">
+              <div className="px-4 py-3 rounded-2xl rounded-br-sm max-w-[78%] bg-[#f59e0b] shadow-[0_4px_14px_rgba(245,158,11,0.22)]">
+                <p className="text-white text-[13px] leading-relaxed">{m.text}</p>
               </div>
             </div>
-          ))}
+          ) : (
+            <div key={i} className="flex gap-2.5 items-start">
+              <div className="rounded-xl flex items-center justify-center shrink-0 bg-white border border-gray-200 shadow-sm px-2" style={{ height: 32, minWidth: 32 }}>
+                <img src="/aruva-logo.png" alt="Aruva" style={{ height: 13, width: 'auto', objectFit: 'contain' }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
+              </div>
+              <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.06)]">
+                <p className="text-[#0a1628]/80 text-[13px] leading-relaxed">{m.text}</p>
+                {i === 1 && (
+                  <div className="flex items-center gap-1.5 mt-2.5 pt-2.5 border-t border-gray-100">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#228DC1" strokeWidth="2.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.1-1.1m-.757-4.9a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" strokeLinecap="round"/></svg>
+                    <span className="text-[11px] font-semibold text-[#228DC1]">Porter (2008), Ch. 2 — cited source</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )
+        ))}
+
+        {/* Mastery signal */}
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl" style={{ background: signal.bg, border: `1px solid ${signal.border}` }}>
+          <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ background: signal.color }}>
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+          <div>
+            <p className="text-[12px] font-bold" style={{ color: signal.color }}>{signal.label}</p>
+            <p className="text-[11px] text-[#0a1628]/50">{signal.sub}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -2662,7 +2640,7 @@ export default function AruvaPage() {
                   : AnalyticsVisual
                 return (
                   <div key={step.num} className="hiw-visual-block" data-step={step.num}
-                    style={{ minHeight: '420px', display: 'flex', alignItems: 'center' }}>
+                    style={{ minHeight: '560px', display: 'flex', alignItems: 'center' }}>
                     <div style={{ width: '100%' }}><Visual /></div>
                   </div>
                 )
