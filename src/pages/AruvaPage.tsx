@@ -485,27 +485,42 @@ const curriculumSubjects = [
 ]
 
 function CurriculumAgnosticSection() {
-  const [active, setActive] = React.useState(0)
-  const [isPaused, setIsPaused] = React.useState(false)
-  const [ref, inView] = useInView(0.15)
-  const activeSubject = curriculumSubjects[active]
-
-  React.useEffect(() => {
-    if (!inView || isPaused) return
-    const id = window.setInterval(() => {
-      setActive(prev => (prev + 1) % curriculumSubjects.length)
-    }, 2200)
-    return () => window.clearInterval(id)
-  }, [inView, isPaused])
+  const [ref, inView] = useInView(0.1)
+  const ORBIT_DUR = 20 // seconds per revolution
+  const N = curriculumSubjects.length // 8
+  const R = 178 // orbit radius in px
+  const SIZE = 520 // container size in px
 
   return (
     <section ref={ref} className="py-24 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
       <style>{`
-        @keyframes subjectPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
-        @keyframes subjectLine { from{stroke-dashoffset:240} to{stroke-dashoffset:0} }
+        @keyframes orbitSpin  { from{transform:rotate(0deg)}    to{transform:rotate(-360deg)} }
+        @keyframes cardFloat  {
+          0%   { transform: rotate(0deg)   scale(1.28); filter: drop-shadow(0 8px 20px rgba(34,141,193,0.30)); }
+          12%  { transform: rotate(43deg)  scale(1.05); filter: drop-shadow(0 4px 10px rgba(10,22,40,0.08)); }
+          25%  { transform: rotate(90deg)  scale(0.95); filter: none; }
+          50%  { transform: rotate(180deg) scale(0.88); filter: none; }
+          75%  { transform: rotate(270deg) scale(0.95); filter: none; }
+          88%  { transform: rotate(317deg) scale(1.05); filter: drop-shadow(0 4px 10px rgba(34,141,193,0.14)); }
+          100% { transform: rotate(360deg) scale(1.28); filter: drop-shadow(0 8px 20px rgba(34,141,193,0.30)); }
+        }
+        @keyframes connectionPulse {
+          0%,100% { opacity:0; transform: scale(0.92); }
+          50%     { opacity:1; transform: scale(1); }
+        }
+        @keyframes logoGlow {
+          0%,100% { box-shadow: 0 0 0 0 rgba(34,141,193,0); }
+          50%     { box-shadow: 0 0 0 16px rgba(34,141,193,0.06); }
+        }
+        @keyframes beamDash {
+          from { stroke-dashoffset: 60; }
+          to   { stroke-dashoffset: 0; }
+        }
       `}</style>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[0.82fr_1fr] gap-16 items-center">
+
+          {/* LEFT — text */}
           <div style={reveal(inView, 0)}>
             <p className="type-label text-[#228DC1] mb-5">Curriculum Agnostic</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
@@ -525,92 +540,132 @@ function CurriculumAgnosticSection() {
             </div>
           </div>
 
-          <div
-            className="relative min-h-[430px] rounded-[24px] border border-[#d7e9f2] bg-white p-6 shadow-[0_24px_70px_rgba(10,22,40,0.08)]"
-            style={reveal(inView, 120)}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <div className="absolute inset-6 rounded-[20px] bg-[radial-gradient(circle_at_center,rgba(34,141,193,0.13),transparent_55%)]" />
-            <svg className="absolute inset-0 h-full w-full pointer-events-none" viewBox="0 0 620 430" fill="none" preserveAspectRatio="none">
-              {curriculumSubjects.map((subject, index) => {
-                const angle = (-90 + (360 / curriculumSubjects.length) * index) * (Math.PI / 180)
-                const x = 310 + Math.cos(angle) * 190
-                const y = 215 + Math.sin(angle) * 126
-                const isActive = index === active
-                return (
-                  <path
-                    key={subject.name}
-                    d={`M310 215 L${x} ${y}`}
-                    stroke={isActive ? subject.color : '#d7e9f2'}
-                    strokeWidth={isActive ? 2.2 : 1}
-                    strokeDasharray={isActive ? '6 7' : '3 9'}
-                    style={{ animation: isActive ? 'subjectLine 1.2s linear infinite' : 'none' }}
-                  />
-                )
-              })}
-            </svg>
+          {/* RIGHT — orbital visual */}
+          <div className="flex items-center justify-center" style={reveal(inView, 120)}>
+            <div style={{ position:'relative', width:SIZE, height:SIZE, flexShrink:0 }}>
 
-            <div className="absolute left-1/2 top-1/2 z-10 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-[28px] bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_100%)] p-[1px] shadow-[0_24px_60px_rgba(34,141,193,0.28)]">
-              <div className="absolute -inset-5 -z-10 rounded-[34px] bg-[radial-gradient(circle,rgba(34,141,193,0.28),transparent_68%)]" />
-              <div className="absolute inset-x-8 top-0 h-[3px] rounded-b-full bg-[#228DC1]" />
-              <div className="flex h-full w-full flex-col items-center justify-center rounded-[27px] border border-[#bfe5f7] bg-white px-5 text-center">
-                <div className="flex h-14 w-full items-center justify-center">
-                  <img src="/aruva-logo-wordmark.png" alt="Aruva" className="h-9 w-auto object-contain" />
-                </div>
-                <span className="mt-3 rounded-full bg-[#e5f4fa] px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-[#228DC1] shadow-[inset_0_0_0_1px_rgba(34,141,193,0.12)]">
-                  Centralised AI
-                </span>
-                <div className="mt-4 w-full rounded-[14px] px-3 py-2" style={{ background: activeSubject.soft, border: `1px solid ${activeSubject.color}28` }}>
-                  <span className="block text-[13px] font-black leading-snug" style={{ color: activeSubject.color }}>
-                    {activeSubject.name}
-                  </span>
-                  <span className="mt-1 block text-[10px] font-semibold leading-snug text-[#0a1628]/48">
-                    {activeSubject.signal}
-                  </span>
-                </div>
+              {/* Orbit ring */}
+              <div style={{
+                position:'absolute',
+                top: SIZE/2 - R, left: SIZE/2 - R,
+                width: R*2, height: R*2,
+                borderRadius:'50%',
+                border:'1.5px dashed rgba(34,141,193,0.18)',
+                pointerEvents:'none',
+              }}/>
+
+              {/* Second subtle ring */}
+              <div style={{
+                position:'absolute',
+                top: SIZE/2 - R*0.62, left: SIZE/2 - R*0.62,
+                width: R*2*0.62, height: R*2*0.62,
+                borderRadius:'50%',
+                border:'1px solid rgba(34,141,193,0.07)',
+                pointerEvents:'none',
+              }}/>
+
+              {/* Radial glow behind center */}
+              <div style={{
+                position:'absolute',
+                top: SIZE/2 - 90, left: SIZE/2 - 90,
+                width:180, height:180,
+                borderRadius:'50%',
+                background:'radial-gradient(circle, rgba(34,141,193,0.18) 0%, transparent 70%)',
+                pointerEvents:'none',
+              }}/>
+
+              {/* Connection beam SVG — always points upward from center, beam appears for top card */}
+              <svg style={{ position:'absolute', inset:0, width:SIZE, height:SIZE, pointerEvents:'none' }} viewBox={`0 0 ${SIZE} ${SIZE}`}>
+                <line
+                  x1={SIZE/2} y1={SIZE/2}
+                  x2={SIZE/2} y2={SIZE/2 - R + 10}
+                  stroke="#228DC1"
+                  strokeWidth="1.5"
+                  strokeDasharray="5 5"
+                  style={{ animation:'beamDash 0.8s linear infinite', opacity:0.55 }}
+                />
+                {/* Connection dot at top */}
+                <circle cx={SIZE/2} cy={SIZE/2 - R + 10} r="4" fill="#228DC1" opacity="0.7"
+                  style={{ animation:'connectionPulse 2s ease-in-out infinite' }}/>
+              </svg>
+
+              {/* CENTER — Aruva logo */}
+              <div style={{
+                position:'absolute',
+                top:'50%', left:'50%',
+                transform:'translate(-50%,-50%)',
+                zIndex:20,
+                display:'flex', flexDirection:'column', alignItems:'center', gap:8,
+                animation:'logoGlow 3s ease-in-out infinite',
+                borderRadius:'50%',
+                padding:16,
+              }}>
+                <img
+                  src="/aruva-logo-vector.svg"
+                  alt="Aruva"
+                  style={{ width:130, height:'auto', objectFit:'contain', display:'block' }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display='none' }}
+                />
+                <span style={{
+                  fontSize:9, fontWeight:800, letterSpacing:'0.18em', textTransform:'uppercase',
+                  color:'#228DC1', background:'#e5f4fa', borderRadius:20,
+                  padding:'3px 12px', border:'1px solid rgba(34,141,193,0.20)',
+                  whiteSpace:'nowrap',
+                }}>Centralised AI</span>
               </div>
-            </div>
 
-            <div className="absolute inset-0">
-              {curriculumSubjects.map((subject, index) => {
-                const angle = -90 + (360 / curriculumSubjects.length) * index
-                const radiusX = 32
-                const radiusY = 31
-                const x = 50 + Math.cos(angle * Math.PI / 180) * radiusX
-                const y = 50 + Math.sin(angle * Math.PI / 180) * radiusY
-                const isActive = index === active
-                return (
-                  <button
-                    key={subject.name}
-                    type="button"
-                    onMouseEnter={() => {
-                      setIsPaused(true)
-                      setActive(index)
-                    }}
-                    onFocus={() => {
-                      setIsPaused(true)
-                      setActive(index)
-                    }}
-                    onBlur={() => setIsPaused(false)}
-                    className="absolute w-[128px] -translate-x-1/2 -translate-y-1/2 rounded-[14px] border bg-white px-3 py-2.5 text-left transition-all duration-300 sm:w-[154px] sm:px-4 sm:py-3"
-                    style={{
-                      left: `${x}%`,
-                      top: `${y}%`,
-                      borderColor: isActive ? subject.color : '#e5e7eb',
-                      boxShadow: isActive ? `0 16px 34px ${subject.color}24` : '0 8px 20px rgba(10,22,40,0.06)',
-                      background: isActive ? subject.soft : '#ffffff',
-                      animation: isActive ? 'subjectPulse 1.8s ease-in-out infinite' : 'none',
-                    }}
-                  >
-                    <span className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full text-[12px] font-black text-white" style={{ background: subject.color }}>
-                      {subject.name.slice(0, 2)}
-                    </span>
-                    <span className="block text-[13px] font-bold text-[#0a1628] sm:text-[14px]">{subject.name}</span>
-                    <span className="mt-1 block text-[10px] font-medium leading-snug text-[#0a1628]/50 sm:text-[11px]">{subject.signal}</span>
-                  </button>
-                )
-              })}
+              {/* ORBITING CARDS — single container rotates, cards counter-rotate + scale */}
+              <div style={{
+                position:'absolute', inset:0,
+                animation: inView ? `orbitSpin ${ORBIT_DUR}s linear infinite` : 'none',
+              }}>
+                {curriculumSubjects.map((subj, i) => {
+                  const angleDeg = i * (360 / N) // 0=top, clockwise
+                  const angleRad = (angleDeg - 90) * Math.PI / 180
+                  const cx = SIZE/2 + Math.cos(angleRad) * R
+                  const cy = SIZE/2 + Math.sin(angleRad) * R
+                  // delay so card is at 0% (peak/top) when it actually reaches the top
+                  const delay = -(ORBIT_DUR * (1 - angleDeg / 360))
+
+                  return (
+                    <div key={subj.name} style={{
+                      position:'absolute',
+                      left: cx, top: cy,
+                      transform:'translate(-50%,-50%)',
+                    }}>
+                      <div style={{
+                        animation: inView ? `cardFloat ${ORBIT_DUR}s linear infinite` : 'none',
+                        animationDelay: `${delay}s`,
+                        transformOrigin:'center',
+                      }}>
+                        <div style={{
+                          background:'white',
+                          border:`1.5px solid ${subj.color}35`,
+                          borderRadius:12,
+                          padding:'8px 12px',
+                          minWidth:112,
+                          boxShadow:`0 4px 16px ${subj.color}18`,
+                          display:'flex', flexDirection:'column', gap:3,
+                        }}>
+                          <div style={{ display:'flex', alignItems:'center', gap:6 }}>
+                            <div style={{
+                              width:24, height:24, borderRadius:'50%',
+                              background:subj.color,
+                              display:'flex', alignItems:'center', justifyContent:'center',
+                              fontSize:9, fontWeight:900, color:'white', flexShrink:0,
+                            }}>
+                              {subj.name.slice(0,2)}
+                            </div>
+                            <span style={{ fontSize:12, fontWeight:700, color:'#0a1628', whiteSpace:'nowrap' }}>{subj.name}</span>
+                          </div>
+                          <span style={{ fontSize:9.5, color:'rgba(10,22,40,0.48)', lineHeight:1.3, paddingLeft:30 }}>{subj.signal}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
             </div>
           </div>
         </div>
