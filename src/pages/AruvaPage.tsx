@@ -390,6 +390,7 @@ function HowItWorksSection() {
     <section ref={ref} className="bg-white py-28 border-t border-gray-100">
       <style>{`
         @keyframes hiwVisual { from{opacity:0;transform:translateX(10px)} to{opacity:1;transform:translateX(0)} }
+        .hiw-step-btn { border-radius: 0 !important; background: transparent !important; }
       `}</style>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
@@ -413,8 +414,8 @@ function HowItWorksSection() {
               const isActive = active === i
               return (
                 <button key={s.num} onClick={() => setActive(i)}
-                  className="w-full text-left"
-                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding:'22px 0', display:'block', transition:'border-color 0.4s ease', borderRadius:0, outline:'none' }}>
+                  className="hiw-step-btn w-full text-left"
+                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding:'22px 0', display:'block', transition:'border-color 0.4s ease', outline:'none' }}>
                   <div className="flex items-start gap-3">
                     <div style={{ width:8, height:8, borderRadius:2, marginTop:7, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.4s ease' }}/>
                     <div className="flex-1">
