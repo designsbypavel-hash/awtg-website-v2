@@ -2140,7 +2140,7 @@ function BloomInsightSection() {
         <div className="max-w-3xl mb-10" style={{ animation: 'fadeUp 0.6s ease both' }}>
           <p className="type-label text-[#228DC1] mb-4">Learning Intelligence</p>
           <h2 className="font-heading text-[#0a1628] mb-5">
-            One student journey.<br />Three semesters. One clear progression picture.
+            One student journey. Three semesters.<br />One clear progression picture.
           </h2>
           <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75]">
             Grade climbed from 62% to 81% over three semesters. Aruva shows exactly why, and which skill gap was holding them back.
