@@ -415,16 +415,16 @@ function HowItWorksSection() {
               return (
                 <button key={s.num} onClick={() => setActive(i)}
                   className="hiw-step-btn w-full text-left"
-                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding:'22px 0', display:'block', transition:'border-color 0.4s ease', outline:'none' }}>
+                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding: isActive ? '20px 0 22px' : '14px 0', display:'block', transition:'border-color 0.4s ease, padding 0.4s ease', outline:'none' }}>
                   <div className="flex items-start gap-3">
-                    <div style={{ width:8, height:8, borderRadius:2, marginTop:7, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.4s ease' }}/>
+                    <div style={{ width:8, height:8, borderRadius:2, marginTop: isActive ? 7 : 5, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.4s ease' }}/>
                     <div className="flex-1">
-                      <p style={{ fontSize:17, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.38)', lineHeight:1.25, marginBottom: isActive ? 10 : 0, transition:'color 0.4s ease, font-weight 0.3s ease' }}>
+                      <p style={{ fontSize: isActive ? 17 : 15, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.38)', lineHeight:1.25, marginBottom: isActive ? 10 : 0, transition:'all 0.4s ease' }}>
                         {s.label}
                       </p>
                       <div style={{ display:'grid', gridTemplateRows: isActive ? '1fr' : '0fr', transition:'grid-template-rows 0.4s cubic-bezier(0.4,0,0.2,1)' }}>
                         <div style={{ overflow:'hidden' }}>
-                          <p style={{ fontSize:14, color:'rgba(10,22,40,0.65)', lineHeight:1.75, marginBottom: s.detail ? 10 : 0, paddingTop: isActive ? 0 : 0 }}>{s.desc}</p>
+                          <p style={{ fontSize:14, color:'rgba(10,22,40,0.65)', lineHeight:1.75, marginBottom: s.detail ? 10 : 0 }}>{s.desc}</p>
                           {s.detail && <p style={{ fontSize:13, color:'#228DC1', fontStyle:'italic', lineHeight:1.55 }}>{s.detail}</p>}
                         </div>
                       </div>
@@ -435,8 +435,8 @@ function HowItWorksSection() {
             })}
           </div>
 
-          {/* RIGHT — visual, smooth ease-in on swap */}
-          <div key={active} style={{ animation:'hiwVisual 0.45s cubic-bezier(0.4,0,0.2,1) both', ...reveal(inView, 160) }}>
+          {/* RIGHT — visual aligned to top, smooth ease-in on swap */}
+          <div key={active} className="self-start" style={{ animation:'hiwVisual 0.45s cubic-bezier(0.4,0,0.2,1) both', ...reveal(inView, 160) }}>
             <Visual />
           </div>
 
