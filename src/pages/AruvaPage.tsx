@@ -918,13 +918,11 @@ function PlatformDiagram() {
           </div>
 
           {/* ── CONNECTOR RIGHT ── */}
-          <div className="flex flex-col items-center justify-center gap-4 shrink-0 bg-[#f1f5f9] border-l border-gray-200" style={{ width: 86 }}>
+          <div className="flex flex-col items-center justify-center gap-3 shrink-0 bg-[#f1f5f9] border-l border-gray-200" style={{ width: 110 }}>
             <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
               <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <div style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ fontSize: 9, fontWeight: 800, color: '#0a1628', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Aruva API</span>
-            </div>
+            <span style={{ fontSize: 9, fontWeight: 800, color: '#228DC1', letterSpacing: '0.16em', textTransform: 'uppercase', background: '#e5f0fa', border: '1px solid #b8d8f0', borderRadius: 6, padding: '4px 8px', whiteSpace: 'nowrap' }}>Aruva API</span>
             <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
               <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
