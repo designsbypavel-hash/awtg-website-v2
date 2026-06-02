@@ -324,7 +324,7 @@ export function KaiDashboard() {
                   <div className="grid grid-cols-3 gap-3">
                     {[
                       { label: 'Resolution',      val: '74%',   color: '#059669' },
-                      { label: 'Avg handle time', val: '45s',   color: '#228DC1' },
+                      { label: 'Avg handle time', val: '38 sec', color: '#228DC1' },
                       { label: 'CSAT score',      val: '4.7/5', color: '#7c3aed' },
                     ].map(s => (
                       <div key={s.label} className="bg-[#f8fafc] border border-gray-100 px-3 py-3">
@@ -756,12 +756,13 @@ function SecurityComplianceSection() {
 }
 
 // ─── Figma design tokens (node 2691:17369) ───────────────────────────────────
-const KAI_HDR_GRAD = 'linear-gradient(216.2deg,#4c97c3 0.12%,#6ac1ef 26.33%,#bef3ff 40%,#67d7e4 46.95%,#6ac1ef 59.44%)'
+const KAI_HDR_GRAD = 'linear-gradient(126deg,#4C97C3 0%,#6AC1EF 28.5%,#BEF3FF 43.36%,#67D7E4 50.91%,#6AC1EF 64.5%)'
 // const KAI_BORDER   = '#4c97c3'          // gradient border handled by wrapper padding
 const KAI_MSG_AI   = '#f4fbff'          // AI message row bg
 const KAI_MSG_USER = '#ffffff'          // User message row bg
 const KAI_HDR_TXT  = '#1a253e'
 const KAI_INPUT_BD = '#b3b3b3'
+const KAI_ICON_DARK = '#353535'
 
 // ─── Voice script (drives the animated voice phase) ──────────────────────────
 type VoiceSpeaker = 'ai' | 'user'
@@ -947,24 +948,24 @@ function KaiChatDemo() {
   const showListeningLabel = orbMode === 'listen' && currentTurn?.speaker === 'user' && words === 0
 
   return (
-    <div className="select-none" style={{ width: '100%', maxWidth: 400 }}>
-      <div style={{ padding: 6, borderRadius: 36, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
-        <div style={{ position: 'relative', width: '100%', height: 588, borderRadius: 30, overflow: 'hidden' }}>
+    <div className="select-none" style={{ width: '100%', maxWidth: 420, aspectRatio: '420 / 613' }}>
+      <div style={{ width: '100%', height: '100%', padding: 7, borderRadius: 33, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
+        <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 30, overflow: 'hidden', background: KAI_HDR_GRAD }}>
 
           {/* ── SHARED HEADER — always on top, never transitions ── */}
           <div style={{
-            position: 'absolute', top: 0, left: 0, right: 0, height: 68,
+            position: 'absolute', top: 0, left: 0, right: 0, height: 73,
             background: KAI_HDR_GRAD,
             zIndex: 10,
             display: 'flex', alignItems: 'center',
-            padding: '0 20px', gap: 8,
+            padding: '0 23px', gap: 10,
           }}>
             <div style={{ width: 40, height: 40, background: '#fff', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img src="/kai-logo.svg" alt="Kai" style={{ width: 24, height: 24, objectFit: 'contain' }} />
+              <img src="/kai-logo.svg" alt="Kai" style={{ width: 28, height: 22, objectFit: 'contain' }} />
             </div>
             <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: KAI_HDR_TXT, lineHeight: 1 }}>AI Assistant</span>
-            <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)' }} />
-            <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: 'rgba(26,37,62,0.5)', marginLeft: 4 }} />
+            <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: KAI_ICON_DARK, opacity: 0.72 }} />
+            <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: KAI_ICON_DARK, opacity: 0.72, marginLeft: 7 }} />
           </div>
 
           {/* ── VOICE VIEW ── */}
@@ -979,7 +980,7 @@ function KaiChatDemo() {
 
             {/* ── Main body: transcript TOP, orb BOTTOM ── */}
             <div style={{
-              position: 'absolute', top: 68, left: 0, right: 0, bottom: 58,
+              position: 'absolute', top: 73, left: 0, right: 0, bottom: 58,
               display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
               padding: '6px 0 14px',
             }}>
@@ -1090,7 +1091,7 @@ function KaiChatDemo() {
             zIndex: 2,
           }}>
             {/* Chat area — starts just below the shared header */}
-            <div style={{ position: 'absolute', top: 68, left: 0, right: 0, bottom: 0, background: '#fff', borderRadius: 30, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: 73, left: 0, right: 0, bottom: 0, background: '#fff', borderRadius: 30, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
               {/* All messages visible at once */}
               <div className="kai-chat-scroll" style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
                 {CHAT_SCRIPT.map((msg, i) => {
@@ -1850,7 +1851,7 @@ export default function KaiPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <StatCard prefix="+" num={22.5} suffix="%" label="Containment uplift" note="Measured in production" delay={0} />
             <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="Learner satisfaction" delay={100} />
-            <StatCard num={45} suffix="s" label="Avg handle time" note="AI-resolved queries" delay={200} />
+            <StatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
             <StatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
           </div>
         </div>
@@ -1872,7 +1873,7 @@ export default function KaiPage() {
               </p>
               {[
                 { stat: '−30pp', label: 'reduction in escalation rate' },
-                { stat: '38s',   label: 'average AI handle time' },
+                { stat: '45 sec', label: 'average resolution time' },
               ].map(item => (
                 <div key={item.stat} className="flex items-baseline gap-4 pb-4 mb-4 border-b border-gray-100 last:border-0 last:mb-0 last:pb-0">
                   <span className="font-black text-[#228DC1] shrink-0" style={{ fontSize:26, letterSpacing:'-0.03em' }}>{item.stat}</span>
