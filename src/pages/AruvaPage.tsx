@@ -389,8 +389,7 @@ function HowItWorksSection() {
   return (
     <section ref={ref} className="bg-white py-28 border-t border-gray-100">
       <style>{`
-        @keyframes hiwProgress { from{width:0%} to{width:100%} }
-        @keyframes hiwVisual   { from{opacity:0;transform:translateX(10px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes hiwVisual { from{opacity:0;transform:translateX(10px)} to{opacity:1;transform:translateX(0)} }
       `}</style>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
@@ -405,8 +404,8 @@ function HowItWorksSection() {
           </p>
         </div>
 
-        {/* accordion LEFT + visual RIGHT */}
-        <div className="grid lg:grid-cols-[440px_1fr] gap-16 items-center">
+        {/* accordion LEFT + visual RIGHT — both pinned to top */}
+        <div className="grid lg:grid-cols-[440px_1fr] gap-16 items-start">
 
           {/* LEFT — stacked accordion steps */}
           <div style={reveal(inView, 100)}>
@@ -414,26 +413,20 @@ function HowItWorksSection() {
               const isActive = active === i
               return (
                 <button key={s.num} onClick={() => setActive(i)}
-                  className="w-full text-left relative"
-                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding:'22px 0', display:'block', transition:'border-color 0.25s' }}>
-
-                  {/* Animated progress fills the top border */}
-                  {isActive && (
-                    <div style={{ position:'absolute', top:-2, left:0, height:2, background:'#228DC1', animation:'hiwProgress 5s linear forwards' }}/>
-                  )}
-
+                  className="w-full text-left"
+                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding:'22px 0', display:'block', transition:'border-color 0.4s ease' }}>
                   <div className="flex items-start gap-3">
-                    <div style={{ width:8, height:8, borderRadius:2, marginTop:7, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.25s' }}/>
+                    <div style={{ width:8, height:8, borderRadius:2, marginTop:7, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.4s ease' }}/>
                     <div className="flex-1">
-                      <p style={{ fontSize:17, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.38)', lineHeight:1.25, marginBottom: isActive ? 10 : 0, transition:'color 0.25s' }}>
+                      <p style={{ fontSize:17, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.38)', lineHeight:1.25, marginBottom: isActive ? 10 : 0, transition:'color 0.4s ease, font-weight 0.3s ease' }}>
                         {s.label}
                       </p>
-                      {isActive && (
-                        <>
-                          <p style={{ fontSize:14, color:'rgba(10,22,40,0.65)', lineHeight:1.75, marginBottom: s.detail ? 10 : 0 }}>{s.desc}</p>
+                      <div style={{ display:'grid', gridTemplateRows: isActive ? '1fr' : '0fr', transition:'grid-template-rows 0.4s cubic-bezier(0.4,0,0.2,1)' }}>
+                        <div style={{ overflow:'hidden' }}>
+                          <p style={{ fontSize:14, color:'rgba(10,22,40,0.65)', lineHeight:1.75, marginBottom: s.detail ? 10 : 0, paddingTop: isActive ? 0 : 0 }}>{s.desc}</p>
                           {s.detail && <p style={{ fontSize:13, color:'#228DC1', fontStyle:'italic', lineHeight:1.55 }}>{s.detail}</p>}
-                        </>
-                      )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </button>
@@ -441,8 +434,8 @@ function HowItWorksSection() {
             })}
           </div>
 
-          {/* RIGHT — visual, swaps with active step */}
-          <div key={active} style={{ animation:'hiwVisual 0.4s ease both', ...reveal(inView, 160) }}>
+          {/* RIGHT — visual, smooth ease-in on swap */}
+          <div key={active} style={{ animation:'hiwVisual 0.45s cubic-bezier(0.4,0,0.2,1) both', ...reveal(inView, 160) }}>
             <Visual />
           </div>
 
