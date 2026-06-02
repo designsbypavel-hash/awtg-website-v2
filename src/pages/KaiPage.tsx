@@ -2026,23 +2026,28 @@ export default function KaiPage() {
           </div>
 
           {/* Kai capabilities table */}
-          <div className="border border-gray-200 overflow-hidden shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
+          <div className="border border-gray-200 overflow-hidden shadow-[0_10px_30px_rgba(10,22,40,0.06)] bg-white">
             {/* Header row */}
             <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-[#0a1628]">
-              <div className="px-6 py-4 border-r border-white/10">
-                <p className="text-white/40 text-[11px] font-semibold uppercase tracking-[0.18em]">Capability</p>
+              <div className="px-6 py-5 border-r border-white/10">
+                <p className="text-white/50 text-[11px] font-bold uppercase tracking-[0.20em]">Capability</p>
               </div>
-              <div className="px-6 py-4 border-r border-white/10 flex items-center gap-3">
-                <img
-                  src="/kai-logo.svg"
-                  alt="Kai"
-                  className="shrink-0 h-6 w-6 object-contain brightness-0 invert"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                />
-                <p className="text-[13px] font-bold text-[#228DC1]">Kai</p>
+              <div className="relative px-6 py-5 border-r border-[#6AC1EF]/25 flex items-center gap-3 bg-gradient-to-r from-[#10304d] via-[#0e2843] to-[#0a1628] shadow-[inset_4px_0_0_#6AC1EF]">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[8px] bg-white shadow-[0_0_24px_rgba(106,193,239,0.28)]">
+                  <img
+                    src="/kai-logo.svg"
+                    alt="Kai"
+                    className="h-5 w-5 object-contain"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                  />
+                </div>
+                <div>
+                  <p className="text-[14px] font-bold text-white leading-none">Kai</p>
+                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6AC1EF]">AWTG AI Agent</p>
+                </div>
               </div>
-              <div className="px-6 py-4 flex items-center">
-                <p className="text-[13px] font-semibold text-white/40">Typical AI Agent</p>
+              <div className="px-6 py-5 flex items-center">
+                <p className="text-[13px] font-semibold text-white/50">Typical AI Agent</p>
               </div>
             </div>
 
@@ -2084,33 +2089,37 @@ export default function KaiPage() {
                 competitor: false,
               },
             ].map((row, rowIdx) => (
-              <div key={row.label} className={`grid grid-cols-[1.2fr_1fr_1fr] border-t border-gray-100 ${rowIdx % 2 === 0 ? 'bg-white' : 'bg-[#fafafa]'}`}>
-                <div className="px-6 py-4 border-r border-gray-100">
-                  <p className="text-[#0a1628] text-[13px] font-semibold">{row.label}</p>
+              <div key={row.label} className={`grid grid-cols-[1.2fr_1fr_1fr] border-t border-gray-100 ${rowIdx % 2 === 0 ? 'bg-white' : 'bg-[#fbfcfe]'}`}>
+                <div className="px-6 py-5 border-r border-gray-100 flex items-center">
+                  <p className="text-[#0a1628] text-[13px] font-bold leading-snug">{row.label}</p>
                 </div>
                 {/* Kai cell � highlighted */}
-                <div className="px-6 py-4 border-r border-gray-100 bg-[#e5f4fa]/40">
+                <div className="px-6 py-5 border-r border-[#bfe5f7] bg-gradient-to-r from-[#e5f4fa] to-[#f4fbff] shadow-[inset_4px_0_0_#228DC1] flex items-center">
                   {typeof row.kai === 'boolean' ? (
-                    <FontAwesomeIcon icon={faCheck} className="w-4 h-4 text-[#228DC1]" />
+                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#228DC1] text-white shadow-[0_4px_14px_rgba(34,141,193,0.24)]">
+                      <FontAwesomeIcon icon={faCheck} className="w-3.5 h-3.5" />
+                    </span>
                   ) : (
-                    <p className="text-[12px] font-medium text-[#0a1628]">{row.kai}</p>
+                    <p className="text-[13px] font-semibold text-[#0a1628] leading-relaxed">{row.kai}</p>
                   )}
                 </div>
                 {/* Competitor cell */}
-                <div className="px-6 py-4">
+                <div className="px-6 py-5 flex items-center bg-white/45">
                   {typeof row.competitor === 'boolean' ? (
                     row.competitor
                       ? <FontAwesomeIcon icon={faCheck} className="w-4 h-4 text-[#228DC1]" />
-                      : <FontAwesomeIcon icon={faXmark} className="w-4 h-4 text-gray-300" />
+                      : <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-gray-300">
+                          <FontAwesomeIcon icon={faXmark} className="w-3.5 h-3.5" />
+                        </span>
                   ) : (
-                    <p className="text-[12px] font-normal text-[#0a1628]/50">{row.competitor}</p>
+                    <p className="text-[13px] font-normal text-[#0a1628]/55 leading-relaxed">{row.competitor}</p>
                   )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 p-6 border border-[#228DC1]/20 bg-[#e5f4fa]/40 shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
+          <div className="mt-8 p-6 border border-[#bfe5f7] bg-[#f4fbff] shadow-[0_8px_22px_rgba(34,141,193,0.08)]">
             <p className="text-[#0a1628] text-[14px] font-medium leading-relaxed">
               <span className="text-[#228DC1] font-semibold">The Kai difference:</span>{' '}
               Configure Kai around your escalation logic, consent flows, integrations and governance model.
