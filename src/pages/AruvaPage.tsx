@@ -1242,19 +1242,19 @@ function PlatformDiagram() {
 const BLOOM_SEMS = [
   { id:'S1', label:'Semester 1', grade:62, gradeLabel:'D+',
     bloom:[65,55,50,42,28,52],
-    cohortAvg:[63,61,58,60,59,62],
+    cohortAvg:[62,54,58,47,44,56],
     headline:'Higher-order thinking gaps flagged early',
     detail:'The student recalls facts well but Evaluate and Analyse are underdeveloped. Aruva surfaces this in week 2, not at the end of term.',
     delta: null, accent:'#e11d48' },
   { id:'S2', label:'Semester 2', grade:71, gradeLabel:'C+',
     bloom:[78,72,70,66,52,74],
-    cohortAvg:[67,65,63,64,62,66],
+    cohortAvg:[70,61,65,55,50,63],
     headline:'Targeted intervention closes the evaluation gap',
     detail:'Focused practice on Evaluate (weeks 4 to 6) drove a 24-point jump in that dimension. Overall grade improved 9%. Their biggest single semester gain.',
     delta:'+9%', accent:'#d97706' },
   { id:'S3', label:'Semester 3', grade:81, gradeLabel:'B',
     bloom:[88,85,84,80,76,91],
-    cohortAvg:[72,70,69,71,70,74],
+    cohortAvg:[78,68,73,64,70,62],
     headline:'Balanced mastery across all six levels',
     detail:'All six dimensions above 76%. Now in the top quartile of the cohort, a 19-point improvement from Semester 1.',
     delta:'+19%', accent:'#059669' },
@@ -2271,14 +2271,14 @@ function BloomInsightSection() {
                       <stop offset="100%" stopColor="#fda4af"/>
                     </linearGradient>
                     <linearGradient id={`ravg-${active}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#f59e0b"/>
-                      <stop offset="50%" stopColor="#fb923c"/>
-                      <stop offset="100%" stopColor="#fbbf24"/>
+                      <stop offset="0%" stopColor="#0066B1"/>
+                      <stop offset="55%" stopColor="#1C69D4"/>
+                      <stop offset="100%" stopColor="#81C4FF"/>
                     </linearGradient>
                     <radialGradient id={`ravgFill-${active}`} cx="50%" cy="50%" r="62%">
-                      <stop offset="0%" stopColor="#fbbf24" stopOpacity="0.08"/>
-                      <stop offset="72%" stopColor="#f59e0b" stopOpacity="0.04"/>
-                      <stop offset="100%" stopColor="#fffbeb" stopOpacity="0.01"/>
+                      <stop offset="0%" stopColor="#1C69D4" stopOpacity="0.10"/>
+                      <stop offset="72%" stopColor="#0066B1" stopOpacity="0.05"/>
+                      <stop offset="100%" stopColor="#E8F3FF" stopOpacity="0.01"/>
                     </radialGradient>
                     <filter id={`ravgGlow-${active}`} x="-40%" y="-40%" width="180%" height="180%">
                       <feGaussianBlur stdDeviation="3.5" result="b"/>
@@ -2368,8 +2368,8 @@ function BloomInsightSection() {
                     <span className="text-[11px] font-semibold text-[#0a1628]/60">Maria</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <svg width="22" height="6" viewBox="0 0 22 6"><line x1="1" y1="3" x2="21" y2="3" stroke="#f59e0b" strokeWidth="2.5" strokeDasharray="5 3" strokeLinecap="round"/></svg>
-                    <span className="text-[11px] font-semibold text-[#f59e0b]">Class avg</span>
+                    <svg width="22" height="6" viewBox="0 0 22 6"><line x1="1" y1="3" x2="21" y2="3" stroke="#0066B1" strokeWidth="2.5" strokeDasharray="5 3" strokeLinecap="round"/></svg>
+                    <span className="text-[11px] font-semibold text-[#0066B1]">Class avg</span>
                   </div>
                 </div>
               </div>
