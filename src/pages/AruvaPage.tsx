@@ -370,41 +370,88 @@ const audiences = [
 
 // -- Platform pillars ----------------------------------------------------------
 
-// -- How It Works sticky step text ---------------------------------------------
-function HIWStepText({ step, index, total }: { step: { num: string; label: string; desc: string; detail: string; visual: string }; index: number; total: number }) {
-  const [active, setActive] = React.useState(false)
+// -- How It Works section (tab switcher — guaranteed alignment) ----------------
+function HowItWorksSection() {
+  const [active, setActive] = React.useState(0)
+  const [ref, inView] = useInView(0.1)
+
+  // Auto-advance every 5s
   React.useEffect(() => {
-    const onScroll = () => {
-      const blocks = document.querySelectorAll('.hiw-visual-block')
-      const block = blocks[index] as HTMLElement | undefined
-      if (!block) return
-      const rect = block.getBoundingClientRect()
-      const mid = window.innerHeight * 0.45
-      setActive(rect.top <= mid && rect.bottom >= mid)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [index])
+    const id = setInterval(() => setActive(p => (p + 1) % howItWorksSteps.length), 5000)
+    return () => clearInterval(id)
+  }, [])
+
+  const step = howItWorksSteps[active]
+  const Visual = step.visual === 'syllabus' ? SyllabusVisual
+    : step.visual === 'align' ? AlignVisual
+    : step.visual === 'tutor' ? TutorVisual
+    : AnalyticsVisual
 
   return (
-    <div style={{
-      padding: '28px 0',
-      borderBottom: index < total - 1 ? '1px solid #f0f4f8' : 'none',
-      opacity: active ? 1 : 0.32,
-      transform: active ? 'translateX(0)' : 'translateX(-6px)',
-      transition: 'opacity 0.4s ease, transform 0.4s ease',
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-        <span style={{ fontSize: 12, fontWeight: 800, color: active ? '#228DC1' : '#9ca3af', letterSpacing: '0.12em', transition: 'color 0.3s' }}>{step.num}</span>
-        <div style={{ height: 1, width: 28, background: active ? '#228DC1' : '#e5e7eb', transition: 'background 0.3s' }} />
+    <section ref={ref} className="bg-white py-28 border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+
+        {/* Section header */}
+        <div className="mb-14" style={reveal(inView, 0)}>
+          <p className="type-label text-[#228DC1] mb-4">How It Works</p>
+          <h2 className="font-heading text-[#0a1628] mb-4">
+            From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Smart Syllabus</span> to AI Teaching Layer in minutes
+          </h2>
+          <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed max-w-2xl">
+            Aruva transforms your existing course structure into a governed AI teaching layer. No rip-and-replace, no new workflows.
+          </p>
+        </div>
+
+        {/* Two-column: steps left, visual right */}
+        <div className="grid lg:grid-cols-[420px_1fr] gap-12 items-start">
+
+          {/* LEFT — step list */}
+          <div className="flex flex-col" style={reveal(inView, 100)}>
+            {howItWorksSteps.map((s, i) => {
+              const isActive = active === i
+              return (
+                <button key={s.num} onClick={() => setActive(i)}
+                  className="text-left relative"
+                  style={{
+                    padding: '24px 20px 24px 28px',
+                    borderLeft: `3px solid ${isActive ? '#228DC1' : '#e5e7eb'}`,
+                    background: isActive ? 'rgba(34,141,193,0.04)' : 'transparent',
+                    transition: 'all 0.3s ease',
+                    marginBottom: 4,
+                    borderRadius: '0 12px 12px 0',
+                  }}>
+                  {/* Progress bar on active */}
+                  {isActive && (
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 2, background: '#e8f4fc', borderRadius: '0 0 12px 0', overflow: 'hidden' }}>
+                      <div style={{ height: '100%', background: '#228DC1', animation: 'hiwProgress 5s linear forwards' }} />
+                    </div>
+                  )}
+                  <div className="flex items-center gap-2 mb-2">
+                    <span style={{ fontSize: 11, fontWeight: 800, color: isActive ? '#228DC1' : '#9ca3af', letterSpacing: '0.14em' }}>{s.num}</span>
+                    <div style={{ height: 1, width: 20, background: isActive ? '#228DC1' : '#e5e7eb', transition: 'background 0.3s' }} />
+                  </div>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.45)', lineHeight: 1.2, marginBottom: 8, transition: 'color 0.3s' }}>{s.label}</h3>
+                  <p style={{ fontSize: 14, color: isActive ? 'rgba(10,22,40,0.65)' : 'rgba(10,22,40,0.35)', lineHeight: 1.65, marginBottom: s.detail ? 8 : 0, transition: 'color 0.3s' }}>{s.desc}</p>
+                  {s.detail && isActive && (
+                    <p style={{ fontSize: 13, color: '#228DC1', lineHeight: 1.55, fontStyle: 'italic' }}>{s.detail}</p>
+                  )}
+                </button>
+              )
+            })}
+          </div>
+
+          {/* RIGHT — visual, swaps on tab click */}
+          <div key={active} style={{ ...reveal(inView, 200), animation: 'hiwFadeIn 0.4s ease both' }}>
+            <Visual />
+          </div>
+
+        </div>
       </div>
-      <h3 style={{ fontSize: 22, fontWeight: 700, color: '#0a1628', lineHeight: 1.2, marginBottom: 12 }}>{step.label}</h3>
-      <p style={{ fontSize: 16, color: 'rgba(10,22,40,0.65)', lineHeight: 1.7, marginBottom: 10 }}>{step.desc}</p>
-      {step.detail && (
-        <p style={{ fontSize: 13, color: active ? '#228DC1' : 'rgba(10,22,40,0.38)', lineHeight: 1.6, transition: 'color 0.3s', fontStyle: 'italic' }}>{step.detail}</p>
-      )}
-    </div>
+      <style>{`
+        @keyframes hiwProgress { from { width: 0% } to { width: 100% } }
+        @keyframes hiwFadeIn   { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: translateY(0) } }
+      `}</style>
+    </section>
   )
 }
 
@@ -2609,47 +2656,8 @@ export default function AruvaPage() {
       {/* Platform Architecture */}
       <PlatformDiagram />
 
-      {/* How It Works — sticky text left, scrolling visuals right */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-28 pb-0">
-          <div className="mb-16">
-            <p className="type-label text-[#228DC1] mb-4">How It Works</p>
-            <h2 className="font-heading text-[#0a1628] mb-4">From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Smart Syllabus</span> to AI Teaching Layer in minutes</h2>
-            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed max-w-2xl">
-              Aruva transforms your existing course structure into a governed AI teaching layer. No rip-and-replace, no new workflows.
-            </p>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex gap-16 items-start">
-
-            {/* LEFT — sticky step text */}
-            <div className="w-[42%] shrink-0 sticky top-24 self-start pb-28">
-              {howItWorksSteps.map((step, i) => (
-                <HIWStepText key={step.num} step={step} index={i} total={howItWorksSteps.length} />
-              ))}
-            </div>
-
-            {/* RIGHT — scrolling visuals */}
-            <div className="flex-1 flex flex-col gap-16 pb-28 pt-2">
-              {howItWorksSteps.map((step) => {
-                const Visual = step.visual === 'syllabus' ? SyllabusVisual
-                  : step.visual === 'align' ? AlignVisual
-                  : step.visual === 'tutor' ? TutorVisual
-                  : AnalyticsVisual
-                return (
-                  <div key={step.num} className="hiw-visual-block" data-step={step.num}
-                    style={{ minHeight: '560px', display: 'flex', alignItems: 'center' }}>
-                    <div style={{ width: '100%' }}><Visual /></div>
-                  </div>
-                )
-              })}
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* How It Works */}
+      <HowItWorksSection />
 
       {/* Four principles */}
       <PrinciplesSection />
