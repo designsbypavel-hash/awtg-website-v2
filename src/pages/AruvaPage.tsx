@@ -408,26 +408,29 @@ function HowItWorksSection() {
         {/* accordion LEFT + visual RIGHT — both pinned to top */}
         <div className="grid lg:grid-cols-[440px_1fr] gap-16 items-start">
 
-          {/* LEFT — stacked accordion steps */}
+          {/* LEFT — active step always at top, inactive steps below */}
           <div style={reveal(inView, 100)}>
-            {howItWorksSteps.map((s, i) => {
-              const isActive = active === i
+            {[
+              howItWorksSteps[active],
+              ...howItWorksSteps.filter((_, i) => i !== active),
+            ].map((s) => {
+              const isActive = s.num === howItWorksSteps[active].num
               return (
-                <button key={s.num} onClick={() => setActive(i)}
+                <button key={s.num} onClick={() => setActive(howItWorksSteps.indexOf(s))}
                   className="hiw-step-btn w-full text-left"
-                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding: isActive ? '20px 0 22px' : '14px 0', display:'block', transition:'border-color 0.4s ease, padding 0.4s ease', outline:'none' }}>
+                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding: isActive ? '20px 0 22px' : '13px 0', display:'block', transition:'border-color 0.4s ease', outline:'none' }}>
                   <div className="flex items-start gap-3">
                     <div style={{ width:8, height:8, borderRadius:2, marginTop: isActive ? 7 : 5, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.4s ease' }}/>
                     <div className="flex-1">
-                      <p style={{ fontSize: isActive ? 17 : 15, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.38)', lineHeight:1.25, marginBottom: isActive ? 10 : 0, transition:'all 0.4s ease' }}>
+                      <p style={{ fontSize: isActive ? 17 : 14, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.38)', lineHeight:1.25, marginBottom: isActive ? 10 : 0, transition:'all 0.4s ease' }}>
                         {s.label}
                       </p>
-                      <div style={{ display:'grid', gridTemplateRows: isActive ? '1fr' : '0fr', transition:'grid-template-rows 0.4s cubic-bezier(0.4,0,0.2,1)' }}>
-                        <div style={{ overflow:'hidden' }}>
+                      {isActive && (
+                        <>
                           <p style={{ fontSize:14, color:'rgba(10,22,40,0.65)', lineHeight:1.75, marginBottom: s.detail ? 10 : 0 }}>{s.desc}</p>
                           {s.detail && <p style={{ fontSize:13, color:'#228DC1', fontStyle:'italic', lineHeight:1.55 }}>{s.detail}</p>}
-                        </div>
-                      </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </button>
