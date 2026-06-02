@@ -496,13 +496,13 @@ function CurriculumAgnosticSection() {
       <style>{`
         @keyframes orbitSpin  { from{transform:rotate(0deg)}    to{transform:rotate(-360deg)} }
         @keyframes cardFloat  {
-          0%   { transform: rotate(0deg)   scale(1.28); filter: drop-shadow(0 8px 20px rgba(34,141,193,0.30)); }
-          12%  { transform: rotate(43deg)  scale(1.05); filter: drop-shadow(0 4px 10px rgba(10,22,40,0.08)); }
-          25%  { transform: rotate(90deg)  scale(0.95); filter: none; }
-          50%  { transform: rotate(180deg) scale(0.88); filter: none; }
-          75%  { transform: rotate(270deg) scale(0.95); filter: none; }
-          88%  { transform: rotate(317deg) scale(1.05); filter: drop-shadow(0 4px 10px rgba(34,141,193,0.14)); }
-          100% { transform: rotate(360deg) scale(1.28); filter: drop-shadow(0 8px 20px rgba(34,141,193,0.30)); }
+          0%   { transform: rotate(0deg)   scale(1.55); filter: drop-shadow(0 16px 36px rgba(34,141,193,0.55)); animation-timing-function: cubic-bezier(0.55,0,1,1); }
+          7%   { transform: rotate(25deg)  scale(1.18); filter: drop-shadow(0 8px 18px rgba(34,141,193,0.22)); animation-timing-function: linear; }
+          25%  { transform: rotate(90deg)  scale(0.94); filter: none; animation-timing-function: linear; }
+          50%  { transform: rotate(180deg) scale(0.84); filter: none; animation-timing-function: linear; }
+          75%  { transform: rotate(270deg) scale(0.94); filter: none; animation-timing-function: linear; }
+          93%  { transform: rotate(335deg) scale(1.18); filter: drop-shadow(0 8px 18px rgba(34,141,193,0.22)); animation-timing-function: cubic-bezier(0,0,0.45,1); }
+          100% { transform: rotate(360deg) scale(1.55); filter: drop-shadow(0 16px 36px rgba(34,141,193,0.55)); }
         }
         @keyframes connectionPulse {
           0%,100% { opacity:0; transform: scale(0.92); }
