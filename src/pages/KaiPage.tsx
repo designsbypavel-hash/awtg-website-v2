@@ -590,7 +590,7 @@ function IntegrationsSection() {
           <div>
             <p className="text-[#228DC1] mb-4" style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.75 }}>Integrations</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Works with your stack.<br />MCP-ready on day one.
+              Works with your stack.<br />Ready on day one.
             </h2>
             <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] mb-8">
               Kai sits alongside your existing setup. It pulls context from your CRM, picks up conversations on your support desk and responds through the channels your customers use. Nothing gets removed or replaced.
@@ -599,7 +599,7 @@ function IntegrationsSection() {
               {[
                 { label: 'CRM, tickets, knowledge base',  value: 'reads live data'        },
                 { label: 'Email, chat, messaging, voice', value: 'acts through channels'  },
-                { label: 'API, webhooks and MCP',         value: 'connects to anything'   },
+                { label: 'API and webhooks',              value: 'connects to anything'   },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 bg-[#228DC1] rounded-full shrink-0 mt-1.5" />
