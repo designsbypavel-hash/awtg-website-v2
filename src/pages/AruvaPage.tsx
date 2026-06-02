@@ -370,7 +370,7 @@ const audiences = [
 
 // -- Platform pillars ----------------------------------------------------------
 
-// -- How It Works section (tab switcher — guaranteed alignment) ----------------
+// -- How It Works section ------------------------------------------------------
 function HowItWorksSection() {
   const [active, setActive] = React.useState(0)
   const [ref, inView] = useInView(0.1)
@@ -389,10 +389,14 @@ function HowItWorksSection() {
 
   return (
     <section ref={ref} className="bg-white py-28 border-t border-gray-100">
+      <style>{`
+        @keyframes hiwProgress { from{width:0%} to{width:100%} }
+        @keyframes hiwFadeIn   { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+      `}</style>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Section header */}
-        <div className="mb-14" style={reveal(inView, 0)}>
+        <div className="mb-12" style={reveal(inView, 0)}>
           <p className="type-label text-[#228DC1] mb-4">How It Works</p>
           <h2 className="font-heading text-[#0a1628] mb-4">
             From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Smart Syllabus</span> to AI Teaching Layer in minutes
@@ -402,55 +406,51 @@ function HowItWorksSection() {
           </p>
         </div>
 
-        {/* Two-column: steps left, visual right */}
-        <div className="grid lg:grid-cols-[420px_1fr] gap-12 items-start">
-
-          {/* LEFT — step list */}
-          <div className="flex flex-col" style={reveal(inView, 100)}>
-            {howItWorksSteps.map((s, i) => {
-              const isActive = active === i
-              return (
-                <button key={s.num} onClick={() => setActive(i)}
-                  className="text-left relative"
-                  style={{
-                    padding: '24px 20px 24px 28px',
-                    borderLeft: `3px solid ${isActive ? '#228DC1' : '#e5e7eb'}`,
-                    background: isActive ? 'rgba(34,141,193,0.04)' : 'transparent',
-                    transition: 'all 0.3s ease',
-                    marginBottom: 4,
-                    borderRadius: '0 12px 12px 0',
-                  }}>
-                  {/* Progress bar on active */}
-                  {isActive && (
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 2, background: '#e8f4fc', borderRadius: '0 0 12px 0', overflow: 'hidden' }}>
-                      <div style={{ height: '100%', background: '#228DC1', animation: 'hiwProgress 5s linear forwards' }} />
-                    </div>
-                  )}
-                  <div className="flex items-center gap-2 mb-2">
-                    <span style={{ fontSize: 11, fontWeight: 800, color: isActive ? '#228DC1' : '#9ca3af', letterSpacing: '0.14em' }}>{s.num}</span>
-                    <div style={{ height: 1, width: 20, background: isActive ? '#228DC1' : '#e5e7eb', transition: 'background 0.3s' }} />
+        {/* Step tabs */}
+        <div className="flex gap-0 mb-10 border-b border-gray-200" style={reveal(inView, 80)}>
+          {howItWorksSteps.map((s, i) => {
+            const isActive = active === i
+            return (
+              <button key={s.num} onClick={() => setActive(i)}
+                className="relative flex items-center gap-2.5 px-6 py-4 text-left"
+                style={{ borderBottom: `2px solid ${isActive ? '#228DC1' : 'transparent'}`, marginBottom: -1, transition: 'border-color 0.25s' }}>
+                {/* Progress bar */}
+                {isActive && (
+                  <div style={{ position:'absolute', bottom:-2, left:0, right:0, height:2, background:'#228DC1', overflow:'hidden' }}>
+                    <div style={{ height:'100%', width:'100%', background:'rgba(34,141,193,0.3)', animation:'hiwProgress 5s linear forwards' }}/>
                   </div>
-                  <h3 style={{ fontSize: 20, fontWeight: 700, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.45)', lineHeight: 1.2, marginBottom: 8, transition: 'color 0.3s' }}>{s.label}</h3>
-                  <p style={{ fontSize: 14, color: isActive ? 'rgba(10,22,40,0.65)' : 'rgba(10,22,40,0.35)', lineHeight: 1.65, marginBottom: s.detail ? 8 : 0, transition: 'color 0.3s' }}>{s.desc}</p>
-                  {s.detail && isActive && (
-                    <p style={{ fontSize: 13, color: '#228DC1', lineHeight: 1.55, fontStyle: 'italic' }}>{s.detail}</p>
-                  )}
-                </button>
-              )
-            })}
+                )}
+                <span style={{ fontSize:11, fontWeight:800, color: isActive ? '#228DC1' : '#9ca3af', letterSpacing:'0.14em', transition:'color 0.25s', whiteSpace:'nowrap' }}>{s.num}</span>
+                <span style={{ fontSize:14, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.45)', transition:'color 0.25s', whiteSpace:'nowrap' }}>{s.label}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Active step: text left + visual right — always the same row */}
+        <div key={active} className="grid lg:grid-cols-[380px_1fr] gap-12 items-start"
+          style={{ animation:'hiwFadeIn 0.35s ease both' }}>
+
+          {/* LEFT — active step detail */}
+          <div className="pt-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span style={{ fontSize:11, fontWeight:800, color:'#228DC1', letterSpacing:'0.14em' }}>{step.num}</span>
+              <div style={{ height:1, width:24, background:'#228DC1' }}/>
+            </div>
+            <h3 style={{ fontSize:24, fontWeight:700, color:'#0a1628', lineHeight:1.2, marginBottom:14 }}>{step.label}</h3>
+            <p style={{ fontSize:16, color:'rgba(10,22,40,0.65)', lineHeight:1.75, marginBottom:12 }}>{step.desc}</p>
+            {step.detail && (
+              <p style={{ fontSize:13, color:'#228DC1', lineHeight:1.6, fontStyle:'italic' }}>{step.detail}</p>
+            )}
           </div>
 
-          {/* RIGHT — visual, swaps on tab click */}
-          <div key={active} style={{ ...reveal(inView, 200), animation: 'hiwFadeIn 0.4s ease both' }}>
+          {/* RIGHT — matching visual, same row as text */}
+          <div>
             <Visual />
           </div>
 
         </div>
       </div>
-      <style>{`
-        @keyframes hiwProgress { from { width: 0% } to { width: 100% } }
-        @keyframes hiwFadeIn   { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: translateY(0) } }
-      `}</style>
     </section>
   )
 }
