@@ -3,244 +3,447 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faShield, faArrowsRotate, faWandSparkles, faCircleCheck, faMicrophone, faPen, faImage, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import ProductDemoModal from '@/components/ProductDemoModal'
 
-// -- Hero Dashboard (Student Hub mockup) --------------------------------------
-const HERO_SKILLS = [
-  { name: 'Variables & Scoping',    pct: 32, color: '#ef4444', badge: 'NEEDS ATTENTION', bbg: 'rgba(239,68,68,0.10)',  bbd: 'rgba(239,68,68,0.28)',  trend: '▲ NEEDS FOCUS' },
-  { name: 'Syntax & Fundamentals',  pct: 55, color: '#f59e0b', badge: 'PRACTICING',       bbg: 'rgba(245,158,11,0.10)', bbd: 'rgba(245,158,11,0.28)', trend: '↑ IMPROVING'   },
-  { name: 'Functional Programming', pct: 0,  color: '#9ca3af', badge: 'NO DATA YET',       bbg: 'rgba(156,163,175,0.10)',bbd: 'rgba(156,163,175,0.28)',trend: ''              },
+// -- Hero Screen Showcase (cycles all 8 Student Hub screens) ------------------
+const HERO_NAV = [
+  { label: 'Dashboard',    icon: 'M3 3h7v7H3zm8 0h7v7h-7zM3 11h7v7H3zm8 0h7v7h-7z' },
+  { label: 'My Courses',   icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
+  { label: 'Schedule',     icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+  { label: 'Learning Map', icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7' },
+  { label: 'Skill Mastery',icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+  { label: 'AI Insights',  icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+  { label: 'Milestones',   icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
+  { label: 'Demo Lecture', icon: 'M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
 ]
-const HERO_BLOOM  = ['Remember','Understand','Apply','Analyze','Evaluate','Create']
-const HERO_INSIGHTS = [
-  { label: 'GROWTH RECOMMENDATION', title: 'FOCUS: CLOSURES',    text: "You understand theory of ES6 but struggled with the Environment Setup assignment. Let's practice the application." },
-  { label: 'STRENGTH SIGNAL',        title: 'STRENGTH: SYNTAX',   text: 'Fundamentals are improving consistently. Push toward the Apply level this week.' },
-  { label: 'GAP DETECTED',           title: 'GAP: EVALUATE',      text: 'Higher-order thinking not yet established. Targeted practice recommended.' },
-]
-const HERO_NAV = ['Dashboard','My Courses','Schedule','Learning Map','Skill Mastery','AI Insights','Milestones','Demo Lecture']
 
 function AruvaHeroDashboard() {
-  const [skillProg,  setSkillProg]  = React.useState([0,0,0])
-  const [bloomVals,  setBloomVals]  = React.useState([0,0,0,0,0,0])
-  const [mastery,    setMastery]    = React.useState(0)
-  const [activeSkill,setActiveSkill]= React.useState(0)
-  const [insightIdx, setInsightIdx] = React.useState(0)
-  const [insightVis, setInsightVis] = React.useState(true)
-  const [mounted,    setMounted]    = React.useState(false)
-  const [entered,    setEntered]    = React.useState(false)
+  const [active,  setActive]  = React.useState(0)
+  const [entered, setEntered] = React.useState(false)
 
   React.useEffect(() => {
-    const raf = requestAnimationFrame(() => { setMounted(true); setTimeout(() => setEntered(true), 60) })
+    const raf = requestAnimationFrame(() => setTimeout(() => setEntered(true), 80))
     return () => cancelAnimationFrame(raf)
   }, [])
 
   React.useEffect(() => {
-    const targets = [32, 55, 0], t0 = performance.now()
-    const tick = (now: number) => {
-      const p = Math.min((now - t0) / 1500, 1), e = 1 - (1-p)**4
-      setSkillProg(targets.map(v => v * e))
-      if (p < 1) requestAnimationFrame(tick)
-    }
-    requestAnimationFrame(tick)
-  }, [])
-
-  React.useEffect(() => {
-    const t0 = performance.now()
-    const tick = (now: number) => {
-      const p = Math.min((now - t0) / 1500, 1), e = 1 - (1-p)**4
-      setMastery(Math.round(22 * e))
-      if (p < 1) requestAnimationFrame(tick)
-    }
-    requestAnimationFrame(tick)
-  }, [])
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      const targets = [85,72,65,48,28,38], t0 = performance.now()
-      const tick = (now: number) => {
-        const p = Math.min((now - t0) / 1600, 1), e = 1 - (1-p)**3
-        setBloomVals(targets.map(v => v * e))
-        if (p < 1) requestAnimationFrame(tick)
-      }
-      requestAnimationFrame(tick)
-    }, 450)
-    return () => clearTimeout(timer)
-  }, [])
-
-  React.useEffect(() => {
-    const id = setInterval(() => setActiveSkill(s => (s+1) % HERO_SKILLS.length), 2200)
+    const id = setInterval(() => setActive(p => (p + 1) % HERO_NAV.length), 2800)
     return () => clearInterval(id)
   }, [])
 
-  React.useEffect(() => {
-    const id = setInterval(() => {
-      setInsightVis(false)
-      setTimeout(() => { setInsightIdx(i => (i+1) % HERO_INSIGHTS.length); setInsightVis(true) }, 380)
-    }, 4000)
-    return () => clearInterval(id)
-  }, [])
-
-  const bloomPoly = bloomVals.map((v, i) => {
-    const a = i / 6 * Math.PI * 2 - Math.PI / 2, r = v / 100 * 64
-    return `${(95 + r * Math.cos(a)).toFixed(1)},${(88 + r * Math.sin(a)).toFixed(1)}`
-  }).join(' ')
-
-  return (
-    <div className="relative w-full max-w-[580px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)' }}>
-      <div className="absolute -inset-6 hidden lg:block" style={{ background: 'radial-gradient(ellipse at 60% 40%, rgba(34,141,193,0.13) 0, transparent 70%)' }} />
-      <div className="relative overflow-hidden bg-[#f4f4f6]" style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif', boxShadow: '0 32px 80px rgba(10,22,40,0.20), 0 8px 24px rgba(10,22,40,0.09)' }}>
-
-        {/* Header */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-gray-100">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-[#2c9b6e] flex items-center justify-center" style={{ borderRadius: '8px' }}>
-              <svg viewBox="0 0 20 20" className="w-4 h-4 fill-white" aria-hidden="true"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838l-2.727 1.168 1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z"/></svg>
+  const screens = [
+    /* 0 Dashboard */
+    <div key="dashboard" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
+      <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', marginBottom:10 }}>
+        <div>
+          <p style={{ fontSize:15, fontWeight:900, color:'#0a1628', letterSpacing:'-0.02em', lineHeight:1 }}>WELCOME BACK, ALEX</p>
+          <div style={{ display:'flex', alignItems:'center', gap:4, marginTop:4 }}>
+            <div style={{ width:5, height:5, borderRadius:'50%', background:'#22c55e' }}/>
+            <p style={{ fontSize:7, fontWeight:700, color:'#22c55e', letterSpacing:'0.12em', textTransform:'uppercase' }}>Active Learning Session</p>
+          </div>
+        </div>
+        <div style={{ background:'#7c3aed', borderRadius:6, padding:'4px 10px', display:'flex', alignItems:'center', gap:4 }}>
+          <div style={{ width:5, height:5, borderRadius:'50%', background:'rgba(255,255,255,0.5)' }}/>
+          <p style={{ fontSize:7, fontWeight:800, color:'white', letterSpacing:'0.10em', textTransform:'uppercase' }}>Investor Demo: Adaptive AI</p>
+        </div>
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 120px', gap:8, height:'calc(100% - 50px)' }}>
+        <div style={{ background:'#111827', borderRadius:12, padding:'12px', display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
+          <div>
+            <div style={{ display:'flex', gap:5, marginBottom:8 }}>
+              <span style={{ background:'#3b82f6', borderRadius:4, padding:'2px 6px', fontSize:6.5, fontWeight:800, color:'white', letterSpacing:'0.1em' }}>UP NEXT</span>
+              <span style={{ fontSize:6.5, color:'rgba(255,255,255,0.45)', letterSpacing:'0.08em' }}>INTRODUCTION TO JAVASCRIPT</span>
             </div>
-            <div>
-              <p style={{ fontSize: '7px', fontWeight: 500, letterSpacing: '0.16em', color: 'rgba(10,22,40,0.38)', textTransform: 'uppercase' }}>Active Space</p>
-              <p style={{ fontSize: '11.5px', fontWeight: 800, color: '#0a1628', lineHeight: 1 }}>STUDENT HUB</p>
+            <p style={{ fontSize:14, fontWeight:900, color:'white', lineHeight:1.15, marginBottom:5 }}>Function<br/>Declarations</p>
+            <p style={{ fontSize:7.5, color:'rgba(255,255,255,0.55)', lineHeight:1.45 }}>Comprehensive study of Function Declarations. Explore core concepts and practical applications.</p>
+            <div style={{ display:'flex', gap:10, marginTop:6 }}>
+              <span style={{ fontSize:7, color:'rgba(255,255,255,0.50)' }}>⏱ 60 MIN</span>
+              <span style={{ fontSize:7, color:'#fbbf24' }}>★ HIGH MASTERY IMPACT</span>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 opacity-50">
-              <svg viewBox="0 0 20 20" fill="currentColor" style={{ width: '13px', height: '13px', color: '#6b7280' }}><path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" style={{ width: '13px', height: '13px', color: '#6b7280' }}><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+          <div style={{ background:'white', borderRadius:7, padding:'5px 10px', display:'flex', alignItems:'center', gap:5, alignSelf:'flex-start' }}>
+            <p style={{ fontSize:7.5, fontWeight:800, color:'#111827', letterSpacing:'0.08em' }}>CONTINUE LEARNING →</p>
+          </div>
+        </div>
+        <div style={{ display:'flex', flexDirection:'column', gap:7 }}>
+          <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb' }}>
+            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:2 }}>Overall Progress</p>
+            <div style={{ display:'flex', alignItems:'center', gap:4 }}>
+              <p style={{ fontSize:18, fontWeight:900, color:'#0a1628', lineHeight:1 }}>22%</p>
+              <div style={{ width:14, height:14, borderRadius:'50%', background:'#228DC1', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <p style={{ fontSize:7, color:'white', fontWeight:900 }}>✓</p>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <div className="w-7 h-7 rounded-full overflow-hidden bg-[#c8a882] flex items-center justify-center">
-                <p style={{ fontSize: '8px', fontWeight: 800, color: 'white' }}>MG</p>
+          </div>
+          <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb', flex:1 }}>
+            <p style={{ fontSize:6.5, color:'#059669', letterSpacing:'0.12em', fontWeight:800, textTransform:'uppercase', marginBottom:3 }}>Academy Status</p>
+            <p style={{ fontSize:10, fontWeight:900, color:'#059669', lineHeight:1, marginBottom:3 }}>You are ahead</p>
+            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.45)', lineHeight:1.4 }}>"Excellent velocity! 3 units above weekly target."</p>
+          </div>
+          <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb' }}>
+            <p style={{ fontSize:6, color:'rgba(10,22,40,0.38)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:4 }}>Learning Activity 🔥</p>
+            {[['Weekly Streak','4 Days','#f59e0b'],['Completed','452','#228DC1'],['Time Spent','10.0h','#7c3aed']].map(([l,v,c])=>(
+              <div key={l} style={{ display:'flex', justifyContent:'space-between', marginBottom:2 }}>
+                <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)' }}>{l}</p>
+                <p style={{ fontSize:7, fontWeight:800, color:c }}>{v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>,
+
+    /* 1 My Courses */
+    <div key="courses" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
+      <p style={{ fontSize:14, fontWeight:900, color:'#0a1628', letterSpacing:'-0.01em', marginBottom:2 }}>MY ACADEMIC TRACKS</p>
+      <p style={{ fontSize:7, color:'rgba(10,22,40,0.38)', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:10 }}>Spring Semester 2026</p>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8, marginBottom:8 }}>
+        {[
+          { color:'#fbbf24', pct:14, name:'Introduction to JavaScript', prof:'Dr Abeer', skills:[['Variables & Scoping','32%'],['Syntax & Fundamentals','55%']] },
+          { color:'#22c55e', pct:30, name:'Foundations of Biology', prof:'Dr. James Wilson', skills:[['Cellular Theory','85%'],['Genetics & Inheritance','42%']] },
+        ].map(c => (
+          <div key={c.name} style={{ background:'white', borderRadius:10, padding:'10px', border:'1px solid #e5e7eb' }}>
+            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:6 }}>
+              <div style={{ width:22, height:22, borderRadius:6, background:c.color, display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <p style={{ fontSize:10, color:'white' }}>📖</p>
+              </div>
+              <div style={{ textAlign:'right' }}>
+                <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Progress</p>
+                <p style={{ fontSize:13, fontWeight:900, color:'#0a1628', lineHeight:1 }}>{c.pct}%</p>
+              </div>
+            </div>
+            <p style={{ fontSize:8.5, fontWeight:900, color:'#1e2d7d', letterSpacing:'0.04em', lineHeight:1.25, marginBottom:2, textDecoration:'underline' }}>{c.name.toUpperCase()}</p>
+            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)', marginBottom:6, letterSpacing:'0.06em' }}>{c.prof.toUpperCase()}</p>
+            <p style={{ fontSize:6, color:'rgba(10,22,40,0.35)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:4 }}>Key Outcomes Mastery</p>
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:4 }}>
+              {c.skills.map(([s,v]) => (
+                <div key={s}>
+                  <p style={{ fontSize:6, color:'rgba(10,22,40,0.38)', letterSpacing:'0.08em', textTransform:'uppercase' }}>{s}</p>
+                  <p style={{ fontSize:11, fontWeight:900, color:'#0a1628' }}>{v}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ background:'#059669', borderRadius:8, padding:'8px 12px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+        <p style={{ fontSize:8, fontWeight:700, color:'white' }}>You've completed 42% of your total curriculum this term.</p>
+        <div style={{ background:'white', borderRadius:5, padding:'3px 8px' }}>
+          <p style={{ fontSize:6.5, fontWeight:800, color:'#059669', letterSpacing:'0.08em', textTransform:'uppercase' }}>Download Transcript</p>
+        </div>
+      </div>
+    </div>,
+
+    /* 2 Schedule */
+    <div key="schedule" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:10 }}>
+        <div>
+          <p style={{ fontSize:14, fontWeight:900, color:'#0a1628', letterSpacing:'-0.01em', marginBottom:1 }}>WEEKLY PLANNER</p>
+          <p style={{ fontSize:7, color:'rgba(10,22,40,0.38)', letterSpacing:'0.12em', textTransform:'uppercase' }}>Multi-course workload optimisation</p>
+        </div>
+        <div style={{ display:'flex', gap:5, alignItems:'center' }}>
+          <div style={{ background:'white', borderRadius:6, padding:'5px 8px', border:'1px solid #e5e7eb', display:'flex', gap:4, alignItems:'center' }}>
+            <p style={{ fontSize:6.5, fontWeight:700, color:'rgba(10,22,40,0.50)', letterSpacing:'0.08em' }}>AI SUGGESTION</p>
+          </div>
+        </div>
+      </div>
+      <div style={{ background:'white', borderRadius:8, padding:'8px', border:'1px solid #e5e7eb', marginBottom:8 }}>
+        <p style={{ fontSize:7, color:'rgba(10,22,40,0.38)', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:5 }}>June 2026</p>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)', gap:3 }}>
+          {[['MON','01','6 TASKS',false],['TUE','02','7 TASKS',true],['WED','03','5 TASKS',false],['THU','04','2 TASKS',false],['FRI','05','4 TASKS',false],['SAT','06','0 TASKS',false],['SUN','07','0 TASKS',false]].map(([d,n,t,sel]) => (
+            <div key={n as string} style={{ textAlign:'center', background: sel ? '#1e2d7d' : 'transparent', borderRadius:6, padding:'4px 2px' }}>
+              <p style={{ fontSize:5.5, fontWeight:600, color: sel ? 'rgba(255,255,255,0.6)' : 'rgba(10,22,40,0.35)', letterSpacing:'0.1em' }}>{d}</p>
+              <p style={{ fontSize:12, fontWeight:900, color: sel ? 'white' : '#0a1628', lineHeight:1.1 }}>{n}</p>
+              <p style={{ fontSize:5.5, color: sel ? 'rgba(255,255,255,0.55)' : 'rgba(10,22,40,0.35)' }}>{t}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={{ background:'#fca5a5', borderRadius:7, padding:'6px 10px', display:'flex', alignItems:'center', gap:6, marginBottom:7 }}>
+        <div style={{ width:12, height:12, borderRadius:'50%', background:'#ef4444', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+          <p style={{ fontSize:7, color:'white', fontWeight:900 }}>!</p>
+        </div>
+        <div>
+          <p style={{ fontSize:6.5, fontWeight:800, color:'#7f1d1d', letterSpacing:'0.1em', textTransform:'uppercase' }}>Overload Warning</p>
+          <p style={{ fontSize:6.5, color:'#991b1b' }}>This day has 4+ intense units. We recommend shifting non-essential tasks.</p>
+        </div>
+      </div>
+      <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb' }}>
+        <div style={{ display:'flex', gap:5, marginBottom:4 }}>
+          <span style={{ background:'#1e2d7d', borderRadius:4, padding:'2px 6px', fontSize:6, fontWeight:800, color:'white', letterSpacing:'0.1em' }}>INTRO TO JAVASCRIPT</span>
+          <span style={{ background:'#e0e7ff', borderRadius:4, padding:'2px 6px', fontSize:6, fontWeight:800, color:'#3730a3', letterSpacing:'0.1em' }}>LEARNING SESSION</span>
+        </div>
+        <p style={{ fontSize:10, fontWeight:900, color:'#0a1628', marginBottom:2 }}>Function Declarations</p>
+        <p style={{ fontSize:7, color:'rgba(10,22,40,0.45)' }}>Comprehensive study of Function Declarations. Explore core concepts.</p>
+      </div>
+    </div>,
+
+    /* 3 Learning Map */
+    <div key="map" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
+      <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', marginBottom:10 }}>
+        <div style={{ display:'flex', gap:8, alignItems:'center' }}>
+          <div style={{ width:22, height:22, borderRadius:6, background:'#1e2d7d', display:'flex', alignItems:'center', justifyContent:'center' }}>
+            <p style={{ fontSize:10, color:'white' }}>🗺</p>
+          </div>
+          <div>
+            <p style={{ fontSize:12, fontWeight:900, color:'#0a1628', lineHeight:1 }}>Learning Map</p>
+            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Decision-driven progression system</p>
+          </div>
+        </div>
+        <div style={{ background:'white', borderRadius:7, padding:'5px 10px', border:'1px solid #e5e7eb', textAlign:'right' }}>
+          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Journey Progress</p>
+          <p style={{ fontSize:13, fontWeight:900, color:'#0a1628', lineHeight:1 }}>5 <span style={{ fontSize:8, fontWeight:500 }}>/ 24</span></p>
+        </div>
+      </div>
+      <div style={{ display:'flex', gap:4, marginBottom:10 }}>
+        {['All Courses','Intro to JavaScript','Foundations of Biology'].map((t,i) => (
+          <div key={t} style={{ background: i===0 ? '#1e2d7d' : 'white', borderRadius:5, padding:'3px 8px', border:'1px solid #e5e7eb' }}>
+            <p style={{ fontSize:6.5, fontWeight:i===0?800:500, color: i===0?'white':'rgba(10,22,40,0.50)', letterSpacing:'0.08em', textTransform:'uppercase' }}>{t}</p>
+          </div>
+        ))}
+      </div>
+      <div style={{ display:'flex', gap:12, alignItems:'flex-start' }}>
+        <div style={{ background:'white', borderRadius:10, padding:'10px', border:'1px solid #e5e7eb', flex:1 }}>
+          <div style={{ display:'flex', justifyContent:'space-between', marginBottom:5 }}>
+            <span style={{ fontSize:6.5, color:'#228DC1', fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase' }}>Learning Session</span>
+            <span style={{ fontSize:6.5, color:'#059669', fontWeight:800, letterSpacing:'0.1em', textTransform:'uppercase' }}>Completed</span>
+          </div>
+          <p style={{ fontSize:11, fontWeight:900, color:'#0a1628', marginBottom:4 }}>Introduction to ES6</p>
+          <p style={{ fontSize:7, color:'rgba(10,22,40,0.45)', marginBottom:5, lineHeight:1.4 }}>Comprehensive study of Introduction to ES6. Explore core concepts.</p>
+          <div style={{ display:'flex', gap:8, marginBottom:6 }}>
+            <span style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)', letterSpacing:'0.08em', textTransform:'uppercase' }}>Syntax & Fundamentals</span>
+            <span style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)' }}>⏱ 60 MIN</span>
+          </div>
+          <div style={{ background:'#111827', borderRadius:5, padding:'4px 10px', display:'inline-flex', alignItems:'center', gap:4 }}>
+            <p style={{ fontSize:7, fontWeight:800, color:'white', letterSpacing:'0.08em', textTransform:'uppercase' }}>↺ Review Concept</p>
+          </div>
+        </div>
+        <div style={{ display:'flex', flexDirection:'column', alignItems:'center', paddingTop:8 }}>
+          <div style={{ width:16, height:16, borderRadius:'50%', background:'#059669', display:'flex', alignItems:'center', justifyContent:'center', border:'2px solid white', boxShadow:'0 0 0 2px #059669' }}>
+            <p style={{ fontSize:8, color:'white', fontWeight:900 }}>✓</p>
+          </div>
+          <div style={{ width:2, height:50, background:'#059669', margin:'3px 0' }}/>
+          <div style={{ width:16, height:16, borderRadius:'50%', background:'#059669', display:'flex', alignItems:'center', justifyContent:'center', border:'2px solid white', boxShadow:'0 0 0 2px #059669' }}>
+            <p style={{ fontSize:8, color:'white', fontWeight:900 }}>✓</p>
+          </div>
+          <div style={{ width:2, height:30, background:'#d1d5db', margin:'3px 0' }}/>
+          <div style={{ width:16, height:16, borderRadius:'50%', background:'#1e2d7d', border:'2px solid white', boxShadow:'0 0 0 2px #1e2d7d' }}/>
+        </div>
+      </div>
+    </div>,
+
+    /* 4 Skill Mastery */
+    <div key="mastery" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
+      <div style={{ display:'flex', justifyContent:'space-between', marginBottom:8 }}>
+        <div>
+          <p style={{ fontSize:14, fontWeight:900, color:'#0a1628', letterSpacing:'-0.01em' }}>SKILL MASTERY</p>
+          <p style={{ fontSize:7, color:'rgba(10,22,40,0.45)', marginTop:2 }}>Real-time quantification of your academic competency.</p>
+        </div>
+        <div style={{ background:'white', borderRadius:8, padding:'5px 10px', border:'1px solid #e5e7eb', textAlign:'center' }}>
+          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Global Mastery</p>
+          <p style={{ fontSize:16, fontWeight:900, color:'#0a1628', lineHeight:1 }}>22% 🎓</p>
+        </div>
+      </div>
+      <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb', marginBottom:8, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+        <div style={{ display:'flex', gap:8, alignItems:'center' }}>
+          <div style={{ width:24, height:24, borderRadius:6, background:'#fbbf24', display:'flex', alignItems:'center', justifyContent:'center' }}>
+            <p style={{ fontSize:11 }}>📖</p>
+          </div>
+          <div>
+            <p style={{ fontSize:8, fontWeight:800, color:'#0a1628', letterSpacing:'0.04em' }}>INTRODUCTION TO JAVASCRIPT</p>
+            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)' }}>DR ABEER · SPRING 2026</p>
+          </div>
+        </div>
+        <div style={{ textAlign:'right' }}>
+          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Target Mastery</p>
+          <p style={{ fontSize:16, fontWeight:900, color:'#0a1628', lineHeight:1 }}>29%</p>
+        </div>
+      </div>
+      <div style={{ display:'flex', justifyContent:'space-between', marginBottom:5 }}>
+        <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.16em', textTransform:'uppercase', fontWeight:700 }}>Cognitive Outcomes</p>
+        <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.28)', letterSpacing:'0.1em', textTransform:'uppercase' }}>4 Skills Tracked</p>
+      </div>
+      {[['Variables & Scoping',32,'#ef4444','NEEDS ATTENTION'],['Syntax & Fundamentals',55,'#f59e0b','PRACTICING'],['Functional Programming',0,'#9ca3af','NO DATA YET']].map(([n,p,c,b]) => (
+        <div key={n as string} style={{ marginBottom:6 }}>
+          <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:2 }}>
+            <p style={{ fontSize:8, fontWeight:700, color:'#0a1628' }}>{n}</p>
+            <div style={{ display:'flex', gap:4, alignItems:'center' }}>
+              <span style={{ fontSize:6.5, fontWeight:700, color:c as string, background:`${c}15`, borderRadius:10, padding:'1px 6px', border:`1px solid ${c}30` }}>{b}</span>
+              <p style={{ fontSize:8, fontWeight:800, color:c as string }}>{p}%</p>
+            </div>
+          </div>
+          <div style={{ height:4, borderRadius:2, background:'#e5e7eb', overflow:'hidden' }}>
+            <div style={{ height:'100%', width:`${p}%`, background:`linear-gradient(90deg,${c}bb,${c})`, borderRadius:2 }}/>
+          </div>
+        </div>
+      ))}
+    </div>,
+
+    /* 5 AI Insights */
+    <div key="insights" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
+      <div style={{ display:'flex', gap:8, alignItems:'center', marginBottom:10 }}>
+        <div style={{ width:26, height:26, borderRadius:7, background:'#7c3aed', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <p style={{ fontSize:13 }}>🤖</p>
+        </div>
+        <div>
+          <p style={{ fontSize:13, fontWeight:900, color:'#0a1628' }}>AI Tutor</p>
+          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Adaptive Learning Support</p>
+        </div>
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:5, marginBottom:8 }}>
+        {[
+          ['💡','CONCEPTUAL BRIDGE','You understand theory of ES6 but struggled with Environment Setup. Practice the application.','REVIEW CONCEPT','#228DC1'],
+          ['⚠','MISCONCEPTION DETECTED','Your quiz results show a pattern of errors in Variables & Scoping. Review lexical scope.','FIX GAP','#ef4444'],
+          ['💡','PRACTICAL GAP','You have good theoretical knowledge of DNA Sequencing but need more hands-on practice.','START PRACTICE','#7c3aed'],
+        ].map(([icon,label,text,cta,color]) => (
+          <div key={label as string} style={{ background:'white', borderRadius:8, padding:'8px', border:'1px solid #e5e7eb' }}>
+            <p style={{ fontSize:8, marginBottom:2 }}>{icon}</p>
+            <p style={{ fontSize:6, fontWeight:800, color:'rgba(10,22,40,0.38)', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:4 }}>{label}</p>
+            <p style={{ fontSize:7, color:'rgba(10,22,40,0.65)', lineHeight:1.45, marginBottom:5 }}>{text}</p>
+            <p style={{ fontSize:7, fontWeight:700, color:color as string, letterSpacing:'0.06em', textTransform:'uppercase' }}>{cta} →</p>
+          </div>
+        ))}
+      </div>
+      <p style={{ fontSize:7, fontWeight:800, color:'#0a1628', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:5 }}>🔍 Identified Skill Gaps</p>
+      {[['32%','Variables & Scoping','WEAK PROFICIENCY','#ef4444'],['55%','Syntax & Fundamentals','MEDIUM PROFICIENCY','#f59e0b'],['42%','Genetics & Inheritance','MEDIUM PROFICIENCY','#f59e0b']].map(([pct,skill,level,color]) => (
+        <div key={skill as string} style={{ background:'white', borderRadius:7, padding:'5px 8px', border:'1px solid #e5e7eb', display:'flex', alignItems:'center', gap:7, marginBottom:4 }}>
+          <div style={{ width:24, height:24, borderRadius:6, background:`${color}20`, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+            <p style={{ fontSize:8, fontWeight:900, color:color as string }}>{pct}</p>
+          </div>
+          <div style={{ flex:1 }}>
+            <p style={{ fontSize:7.5, fontWeight:700, color:'#0a1628' }}>{skill}</p>
+            <p style={{ fontSize:6, color:color as string, fontWeight:700, letterSpacing:'0.08em' }}>{level}</p>
+          </div>
+          <div style={{ background:'#7c3aed', borderRadius:5, padding:'3px 8px' }}>
+            <p style={{ fontSize:6.5, fontWeight:800, color:'white', letterSpacing:'0.08em' }}>FIX THIS →</p>
+          </div>
+        </div>
+      ))}
+    </div>,
+
+    /* 6 Milestones */
+    <div key="milestones" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:10 }}>
+        <div>
+          <p style={{ fontSize:13, fontWeight:900, color:'#0a1628', letterSpacing:'-0.01em' }}>Achievements & Milestones</p>
+          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.12em', textTransform:'uppercase', marginTop:2 }}>Your Academic Legacy</p>
+        </div>
+        <div style={{ background:'white', borderRadius:8, padding:'5px 10px', border:'1px solid #e5e7eb', display:'flex', gap:12, alignItems:'center' }}>
+          <div style={{ textAlign:'center' }}>
+            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Total Badges</p>
+            <p style={{ fontSize:14, fontWeight:900, color:'#0a1628', lineHeight:1 }}>2</p>
+          </div>
+          <div style={{ textAlign:'center' }}>
+            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Points</p>
+            <p style={{ fontSize:14, fontWeight:900, color:'#059669', lineHeight:1 }}>1,240</p>
+          </div>
+        </div>
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:7, marginBottom:8 }}>
+        {[
+          { name:'JAVASCRIPT NINJA', date:'2026-04-10', desc:'Earned for exceptional performance in Introduction to JavaScript.' },
+          { name:'BIO EXPLORER', date:'2026-04-01', desc:'Earned for exceptional performance in Foundations of Biology.' },
+          { name:'UPCOMING MILESTONE', date:'', desc:'Finish Unit 4 to unlock...' },
+        ].map((m,i) => (
+          <div key={m.name} style={{ background:'white', borderRadius:9, padding:'10px', border:'1px solid #e5e7eb', textAlign:'center', opacity: i===2 ? 0.5 : 1 }}>
+            <div style={{ width:28, height:28, borderRadius:'50%', background: i===2 ? '#e5e7eb' : '#fef3c7', margin:'0 auto 4px', display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <p style={{ fontSize:14 }}>{i===2 ? '🔒' : '🏆'}</p>
+            </div>
+            <p style={{ fontSize:6.5, fontWeight:900, color: i===2 ? 'rgba(10,22,40,0.35)' : '#0a1628', letterSpacing:'0.08em', marginBottom:2 }}>{m.name}</p>
+            {m.date && <p style={{ fontSize:6, color:'rgba(10,22,40,0.35)', marginBottom:3 }}>{m.date}</p>}
+            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.45)', lineHeight:1.4 }}>{m.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div style={{ background:'#111827', borderRadius:10, padding:'10px 12px' }}>
+        <p style={{ fontSize:7.5, fontWeight:700, color:'white', marginBottom:7 }}>🚀 Your Learning Velocity</p>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:5 }}>
+          {[['📚','COURSES STARTED','3'],['🏁','MILESTONES','2'],['⭐','SKILLS MASTERED','4'],['🏆','WEEKLY RANK','#12']].map(([icon,label,val]) => (
+            <div key={label as string} style={{ background:'rgba(255,255,255,0.08)', borderRadius:7, padding:'6px', textAlign:'center' }}>
+              <p style={{ fontSize:10, marginBottom:2 }}>{icon}</p>
+              <p style={{ fontSize:5.5, color:'rgba(255,255,255,0.40)', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:2 }}>{label}</p>
+              <p style={{ fontSize:11, fontWeight:900, color:'white', lineHeight:1 }}>{val}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>,
+
+    /* 7 Demo Lecture */
+    <div key="lecture" style={{ height:'100%', overflow:'hidden', position:'relative' }}>
+      <div style={{ height:140, background:'linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.75)), url(/images/aruva-photosynthesis-realistic.png) center/cover', display:'flex', flexDirection:'column', justifyContent:'flex-end', padding:'12px 14px', position:'relative' }}>
+        <div style={{ display:'flex', gap:6, marginBottom:6 }}>
+          <span style={{ background:'#f59e0b', borderRadius:5, padding:'2px 7px', fontSize:6.5, fontWeight:800, color:'white', letterSpacing:'0.1em' }}>LECTURE 04</span>
+          <span style={{ fontSize:6.5, color:'rgba(255,255,255,0.55)' }}>⏱ 25 MIN READ</span>
+        </div>
+        <p style={{ fontSize:14, fontWeight:900, color:'white', lineHeight:1.1, letterSpacing:'-0.01em' }}>THE ENGINE OF LIFE:</p>
+        <p style={{ fontSize:14, fontWeight:900, color:'#f59e0b', lineHeight:1.1, letterSpacing:'-0.01em' }}>CELLULAR RESPIRATION</p>
+        <p style={{ fontSize:7, color:'rgba(255,255,255,0.65)', marginTop:4, lineHeight:1.45 }}>Explore the biochemical pathways that convert nutrients into universal energy currency: ATP.</p>
+      </div>
+      <div style={{ padding:'12px 14px', background:'white', height:'calc(100% - 140px)', overflow:'hidden' }}>
+        <p style={{ fontSize:9, fontWeight:900, color:'#0a1628', letterSpacing:'0.04em', marginBottom:5 }}>1. MITOCHONDRIAL FUNCTIONALITY</p>
+        <p style={{ fontSize:7.5, color:'rgba(10,22,40,0.65)', lineHeight:1.65, marginBottom:8 }}>Often referred to as the powerhouse of the cell, mitochondria are double-membrane-bound organelles found in most eukaryotic organisms. They generate most of the cell's supply of adenosine triphosphate (ATP), used as a source of chemical energy.</p>
+        <p style={{ fontSize:7.5, color:'rgba(10,22,40,0.65)', lineHeight:1.65 }}>Mitochondria are responsible for ATP production through cellular respiration. They contain their own genome and ribosomes, which are evidence of their evolutionary origin as free-living bacteria.</p>
+      </div>
+    </div>,
+  ]
+
+  const S = { fontFamily:'Inter,system-ui,-apple-system,sans-serif' }
+
+  return (
+    <div className="relative w-full max-w-[640px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)', ...S }}>
+      <style>{`@keyframes screenIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}`}</style>
+      <div className="absolute -inset-6 hidden lg:block" style={{ background:'radial-gradient(ellipse at 60% 40%,rgba(34,141,193,0.13) 0,transparent 70%)' }}/>
+      <div style={{ borderRadius:14, overflow:'hidden', boxShadow:'0 32px 80px rgba(10,22,40,0.22),0 8px 24px rgba(10,22,40,0.10)', border:'1px solid rgba(10,22,40,0.08)' }}>
+
+        {/* App top bar */}
+        <div style={{ background:'white', borderBottom:'1px solid #e5e7eb', padding:'7px 14px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+          <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+            <p style={{ fontSize:7, fontWeight:600, letterSpacing:'0.16em', color:'rgba(10,22,40,0.35)', textTransform:'uppercase' }}>Student Hub</p>
+            <div style={{ display:'flex', alignItems:'center', gap:5, background:'#f5f6fa', borderRadius:6, padding:'3px 8px', border:'1px solid #e5e7eb' }}>
+              <div style={{ width:14, height:14, borderRadius:4, background:'#2c9b6e', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <p style={{ fontSize:8, color:'white' }}>🎓</p>
+              </div>
+              <p style={{ fontSize:8, fontWeight:800, color:'#0a1628', letterSpacing:'0.04em' }}>STUDENT HUB</p>
+              <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#9ca3af" strokeWidth="1.4" strokeLinecap="round"/></svg>
+            </div>
+          </div>
+          <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+            <div style={{ display:'flex', gap:5, opacity:0.5 }}>
+              {['⚙','🌙','💬'].map(ic => <p key={ic} style={{ fontSize:10 }}>{ic}</p>)}
+            </div>
+            <div style={{ display:'flex', alignItems:'center', gap:5 }}>
+              <div style={{ width:20, height:20, borderRadius:'50%', background:'linear-gradient(135deg,#c8a882,#b08060)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <p style={{ fontSize:7, fontWeight:800, color:'white' }}>MG</p>
               </div>
               <div>
-                <p style={{ fontSize: '10px', fontWeight: 700, color: '#0a1628', lineHeight: 1 }}>Maria Garcia</p>
-                <p style={{ fontSize: '7px', color: 'rgba(10,22,40,0.38)', letterSpacing: '0.06em' }}>STUDENT HUB</p>
+                <p style={{ fontSize:8, fontWeight:700, color:'#0a1628', lineHeight:1 }}>Maria Garcia</p>
+                <p style={{ fontSize:5.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Student Hub</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Body */}
-        <div className="flex" style={{ height: '356px' }}>
+        <div style={{ display:'flex', height:370 }}>
+
           {/* Sidebar */}
-          <div className="shrink-0 bg-white border-r border-gray-100 py-2" style={{ width: '120px' }}>
-            {HERO_NAV.map(item => {
-              const active = item === 'Skill Mastery'
+          <div style={{ width:108, background:'white', borderRight:'1px solid #e5e7eb', padding:'8px 6px', flexShrink:0 }}>
+            {HERO_NAV.map((item, i) => {
+              const isAct = active === i
               return (
-                <div key={item} className="flex items-center gap-2 mx-2 px-2.5 mb-0.5 cursor-pointer transition-colors" style={{ paddingTop: '6px', paddingBottom: '6px', background: active ? '#1e2d7d' : 'transparent', borderRadius: active ? '6px' : undefined, color: active ? 'white' : 'rgba(10,22,40,0.45)' }}>
-                  <div className="shrink-0 flex items-center justify-center" style={{ width: '14px', height: '14px' }}>
-                    {active ? (
-                      <svg viewBox="0 0 14 14" style={{ width: '10px', height: '10px', fill: 'white' }}><circle cx="7" cy="7" r="5" fill="none" stroke="white" strokeWidth="1.5"/><circle cx="7" cy="7" r="2"/></svg>
-                    ) : (
-                      <div style={{ width: '7px', height: '7px', borderRadius: '2px', background: 'rgba(10,22,40,0.18)' }} />
-                    )}
-                  </div>
-                  <p style={{ fontSize: '9px', fontWeight: active ? 700 : 400, lineHeight: 1.3, letterSpacing: active ? '0.01em' : '0' }}>{item}</p>
+                <div key={item.label} onClick={() => setActive(i)}
+                  style={{ display:'flex', alignItems:'center', gap:6, padding:'6px 8px', marginBottom:2, borderRadius:6, background: isAct ? '#1e2d7d' : 'transparent', cursor:'pointer', transition:'background 0.2s ease' }}>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={isAct ? 'white' : 'rgba(10,22,40,0.35)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={item.icon}/>
+                  </svg>
+                  <p style={{ fontSize:8, fontWeight: isAct ? 700 : 400, color: isAct ? 'white' : 'rgba(10,22,40,0.45)', lineHeight:1.3, letterSpacing:'0.01em' }}>{item.label}</p>
                 </div>
               )
             })}
           </div>
 
-          {/* Main panel */}
-          <div className="flex-1 min-w-0 bg-[#f4f4f6] overflow-hidden" style={{ padding: '14px 14px 10px' }}>
-            <div className="flex items-start justify-between mb-3">
-              <div>
-                <p style={{ fontSize: '16px', fontWeight: 900, color: '#0a1628', letterSpacing: '-0.01em', lineHeight: 1 }}>SKILL MASTERY</p>
-                <p style={{ fontSize: '8.5px', color: 'rgba(10,22,40,0.45)', fontWeight: 400, marginTop: '3px', lineHeight: 1.4 }}>Real time quantification of your academic<br/>competency and cognitive growth.</p>
-              </div>
-              <div className="text-center bg-white border border-gray-200 px-3 py-1.5 shrink-0 ml-2" style={{ borderRadius: '10px', boxShadow: '0 1px 6px rgba(10,22,40,0.06)' }}>
-                <p style={{ fontSize: '6.5px', letterSpacing: '0.14em', color: 'rgba(10,22,40,0.35)', textTransform: 'uppercase', fontWeight: 700 }}>Global Mastery</p>
-                <div className="flex items-center gap-1 justify-center mt-0.5">
-                  <p style={{ fontSize: '19px', fontWeight: 900, color: '#0a1628', lineHeight: 1 }}>{mastery}%</p>
-                  <span style={{ fontSize: '14px' }}>🎓</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Course */}
-            <div className="bg-white border border-gray-200 mb-3" style={{ padding: '10px 12px', borderRadius: '10px', boxShadow: '0 1px 4px rgba(10,22,40,0.05)' }}>
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 bg-[#fbbf24] flex items-center justify-center shrink-0" style={{ borderRadius: '9px' }}>
-                  <svg viewBox="0 0 20 20" className="w-5 h-5" fill="white" aria-hidden="true"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.669 0-3.218.51-4.5 1.385V4.8z"/></svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p style={{ fontSize: '11px', fontWeight: 800, color: '#0a1628', letterSpacing: '0.03em', lineHeight: 1.2 }}>INTRODUCTION TO JAVASCRIPT</p>
-                  <p style={{ fontSize: '8.5px', color: 'rgba(10,22,40,0.40)', marginTop: '1px' }}>DR ABEER · SPRING 2026</p>
-                </div>
-                <div className="text-right shrink-0">
-                  <p style={{ fontSize: '6.5px', color: 'rgba(10,22,40,0.35)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>Target Mastery</p>
-                  <p style={{ fontSize: '22px', fontWeight: 900, color: '#0a1628', lineHeight: 1 }}>29%</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Skills */}
-            <div className="flex items-center justify-between mb-2">
-              <p style={{ fontSize: '7.5px', letterSpacing: '0.2em', color: 'rgba(10,22,40,0.35)', textTransform: 'uppercase', fontWeight: 700 }}>COGNITIVE OUTCOMES</p>
-              <p style={{ fontSize: '7.5px', letterSpacing: '0.14em', color: 'rgba(10,22,40,0.28)', textTransform: 'uppercase', fontWeight: 600 }}>4 SKILLS TRACKED</p>
-            </div>
-            <div className="space-y-2">
-              {HERO_SKILLS.map((sk, idx) => {
-                const active = activeSkill === idx
-                return (
-                  <div key={sk.name} onClick={() => setActiveSkill(idx)} className="cursor-pointer rounded-xl px-2 py-1.5" style={{ background: active ? `${sk.color}09` : 'transparent', border: active ? `1px solid ${sk.color}22` : '1px solid transparent', transition: 'background 0.35s ease, border-color 0.35s ease' }}>
-                    <div className="flex items-center justify-between mb-1">
-                      <p style={{ fontSize: '11px', fontWeight: active ? 800 : 700, color: active ? '#0a1628' : 'rgba(10,22,40,0.60)', transition: 'color 0.3s ease' }}>{sk.name}</p>
-                      <div className="flex items-center gap-1 px-2 py-0.5" style={{ background: sk.bbg, border: `1px solid ${sk.bbd}`, borderRadius: '20px', opacity: active ? 1 : 0.65, transform: active ? 'scale(1)' : 'scale(0.95)', transition: 'opacity 0.35s ease, transform 0.35s ease' }}>
-                        {sk.pct > 0 && <span style={{ fontSize: '6px', color: sk.color }}>▲</span>}
-                        <p style={{ fontSize: '7.5px', fontWeight: 700, color: sk.color, letterSpacing: '0.06em' }}>{sk.badge}</p>
-                        <svg viewBox="0 0 6 10" style={{ width: '5px', height: '9px', marginLeft: '1px' }} fill="none"><path d="M1 1l4 4-4 4" stroke="rgba(10,22,40,0.28)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-[5px] bg-gray-200 overflow-hidden" style={{ borderRadius: '3px' }}>
-                        <div style={{ height: '100%', borderRadius: '3px', width: mounted ? `${sk.pct}%` : '0%', background: `linear-gradient(90deg,${sk.color}bb,${sk.color})`, boxShadow: active && sk.pct > 0 ? `0 0 10px ${sk.color}70` : 'none', transition: `width 1.4s cubic-bezier(0.22,1,0.36,1) ${idx * 160}ms, box-shadow 0.35s ease` }} />
-                      </div>
-                      <p style={{ fontSize: '11px', fontWeight: 800, color: active ? sk.color : 'rgba(10,22,40,0.45)', minWidth: '30px', textAlign: 'right', transition: 'color 0.35s ease' }}>{sk.pct > 0 ? `${Math.round(skillProg[idx])}%` : ''}</p>
-                    </div>
-                    {sk.trend && <p style={{ fontSize: '7.5px', color: sk.color, fontWeight: 600, marginTop: '2px', opacity: active ? 0.9 : 0, maxHeight: active ? '16px' : '0px', transition: 'opacity 0.35s ease, max-height 0.35s ease', overflow: 'hidden' }}>{sk.trend}</p>}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Bloom + Insights panel */}
-          <div className="shrink-0 bg-white border-l border-gray-100 overflow-hidden" style={{ width: '178px', padding: '12px 11px' }}>
-            <p style={{ fontSize: '8px', fontWeight: 800, letterSpacing: '0.14em', color: '#0a1628', textTransform: 'uppercase', lineHeight: 1.2 }}>BLOOM TAXONOMY MASTERY</p>
-            <p style={{ fontSize: '6.5px', color: 'rgba(10,22,40,0.38)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px', marginBottom: '2px', lineHeight: 1.3 }}>Shows depth of understanding across cognitive levels</p>
-            <svg viewBox="0 0 190 176" style={{ width: '100%', display: 'block', marginBottom: '5px' }}>
-              {[25, 50, 75].map(pct => (
-                <polygon key={pct} fill="none" stroke="rgba(10,22,40,0.08)" strokeWidth="0.7"
-                  points={Array.from({ length: 6 }, (_, i) => {
-                    const a = i / 6 * Math.PI * 2 - Math.PI / 2, r = pct / 100 * 64
-                    return `${(95 + r * Math.cos(a)).toFixed(1)},${(88 + r * Math.sin(a)).toFixed(1)}`
-                  }).join(' ')} />
-              ))}
-              {Array.from({ length: 6 }, (_, i) => {
-                const a = i / 6 * Math.PI * 2 - Math.PI / 2
-                return <line key={i} x1={95} y1={88} x2={(95 + 64 * Math.cos(a)).toFixed(1)} y2={(88 + 64 * Math.sin(a)).toFixed(1)} stroke="rgba(10,22,40,0.08)" strokeWidth="0.7" />
-              })}
-              <polygon points={bloomPoly} fill="rgba(79,76,190,0.50)" stroke="rgba(79,76,190,0.90)" strokeWidth="1.6" strokeLinejoin="round" />
-              {HERO_BLOOM.map((label, i) => {
-                const a = i / 6 * Math.PI * 2 - Math.PI / 2
-                return <text key={label} x={(95 + 84 * Math.cos(a)).toFixed(1)} y={(88 + 84 * Math.sin(a)).toFixed(1)} textAnchor="middle" dominantBaseline="middle" fontSize="7.5" fill="rgba(10,22,40,0.50)" fontFamily="Inter, system-ui, sans-serif" fontWeight="500">{label}</text>
-              })}
-            </svg>
-            <div className="flex items-start gap-1.5 mb-2.5 pb-2.5 border-b border-gray-100">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444] mt-[3.5px] shrink-0" />
-              <p style={{ fontSize: '8px', color: 'rgba(10,22,40,0.52)', lineHeight: 1.35 }}>Weakest areas: <span style={{ fontWeight: 700, color: '#0a1628' }}>Create, Evaluate</span></p>
-            </div>
-            <p style={{ fontSize: '7px', fontWeight: 700, letterSpacing: '0.18em', color: 'rgba(10,22,40,0.32)', textTransform: 'uppercase', marginBottom: '6px' }}>ADAPTIVE INSIGHTS</p>
-            <div style={{ background: 'white', border: '1px solid rgba(10,22,40,0.07)', borderRadius: '8px', padding: '10px', minHeight: '88px', opacity: insightVis ? 1 : 0, transform: insightVis ? 'translateY(0)' : 'translateY(6px)', transition: 'opacity 0.38s ease, transform 0.38s cubic-bezier(0.22,1,0.36,1)' }}>
-              <div className="flex items-center gap-1.5 mb-1.5">
-                <div className="w-5 h-5 bg-[#ede9fe] flex items-center justify-center shrink-0" style={{ borderRadius: '5px' }}>
-                  <svg viewBox="0 0 20 20" style={{ width: '11px', height: '11px' }} fill="#7c3aed"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z"/></svg>
-                </div>
-                <p style={{ fontSize: '6.5px', fontWeight: 700, letterSpacing: '0.16em', color: 'rgba(10,22,40,0.38)', textTransform: 'uppercase' }}>{HERO_INSIGHTS[insightIdx].label}</p>
-              </div>
-              <p style={{ fontSize: '9px', fontWeight: 900, color: '#0a1628', letterSpacing: '0.06em', marginBottom: '5px', lineHeight: 1.2 }}>{HERO_INSIGHTS[insightIdx].title}</p>
-              <div className="flex gap-1.5">
-                <div style={{ width: '2.5px', background: '#7c3aed', borderRadius: '2px', flexShrink: 0, alignSelf: 'stretch' }} />
-                <p style={{ fontSize: '7.5px', color: 'rgba(10,22,40,0.55)', lineHeight: 1.45, fontStyle: 'italic' }}>"{HERO_INSIGHTS[insightIdx].text}"</p>
-              </div>
-            </div>
+          {/* Screen content */}
+          <div key={active} style={{ flex:1, overflow:'hidden', animation:'screenIn 0.28s cubic-bezier(0.4,0,0.2,1) both' }}>
+            {screens[active]}
           </div>
         </div>
       </div>
