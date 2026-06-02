@@ -327,29 +327,44 @@ const audiences = [
   {
     label: 'Students',
     headline: 'Guided. Not an answer engine.',
+    desc: 'A Socratic tutor that works from your actual course, not the open web.',
     points: [
-      'Tutoring aligned to your syllabus and week. Not generic web answers',
+      'Tutoring aligned to your syllabus and week',
       'Progress tracked across topics, mastery and confidence',
       'Smart planner for coursework, revision and workload',
     ],
+    color: '#228DC1',
+    soft: '#e8f4fc',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+    stat: '3× faster gap closure',
   },
   {
     label: 'Educators',
     headline: 'More insight. Less admin.',
+    desc: 'See where your class is struggling while there is still time to act.',
     points: [
-      'AI assisted quiz, rubric and assessment variant creation',
-      'See student gaps and at risk signals while the term is live',
-      'Material effectiveness data in your professor dashboard',
+      'AI-assisted quiz, rubric and assessment creation',
+      'At-risk signals while the term is live, not after',
+      'Material effectiveness data in your dashboard',
     ],
+    color: '#7c3aed',
+    soft: '#f3f0ff',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/></svg>,
+    stat: '40% less marking time',
   },
   {
     label: 'Institutions',
     headline: 'Adopt AI. Stay in control.',
+    desc: 'Governance and data residency built in from the start, not added later.',
     points: [
-      'Governance built in. Not bolted on afterwards',
-      'Cloud, hybrid or on premises deployment with full data residency',
-      'Analytics mapped to outcomes, retention and quality enhancement',
+      'Governance built in, not bolted on afterwards',
+      'Cloud, hybrid or on-premises with full data residency',
+      'Analytics mapped to outcomes, retention and QE',
     ],
+    color: '#059669',
+    soft: '#ecfdf5',
+    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+    stat: 'ISO-ready deployment',
   },
 ]
 
@@ -2347,33 +2362,61 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
         </div>
-        <div ref={ref} className="grid sm:grid-cols-3 gap-5">
+        <div ref={ref} className="grid sm:grid-cols-3 gap-6">
           {audiences.map((a, i) => (
-            <div key={a.label} className="bg-white rounded-2xl p-8 flex flex-col"
+            <div key={a.label} className="relative bg-white rounded-2xl flex flex-col overflow-hidden"
               style={{
-                borderTop: '3px solid #228DC1',
-                boxShadow: '0 2px 16px rgba(10,22,40,0.06)',
+                boxShadow: '0 4px 32px rgba(10,22,40,0.09)',
+                border: `1px solid ${a.color}22`,
                 ...reveal(inView, i * 100),
               }}>
-              {/* Label pill */}
-              <span style={{ display:'inline-block', background:'#e8f4fc', border:'1px solid #b8ddf0', color:'#228DC1', fontSize:10, fontWeight:700, letterSpacing:'0.12em', textTransform:'uppercase', padding:'3px 10px', borderRadius:20, marginBottom:16, alignSelf:'flex-start' }}>{a.label}</span>
-              {/* Headline */}
-              <h3 className="text-[#0a1628] font-bold text-[16px] leading-snug mb-6">{a.headline}</h3>
-              {/* Points */}
-              <div className="space-y-3 flex-1">
-                {a.points.map((point) => (
-                  <div key={point} className="flex items-start gap-2.5">
-                    <FontAwesomeIcon icon={faCircleCheck} style={{ width:15, height:15, color:'#228DC1', flexShrink:0, marginTop:2 }} />
-                    <p className="text-[#0a1628]/70 text-[13px] font-normal leading-relaxed">{point}</p>
+              {/* Coloured top bar */}
+              <div style={{ height: 4, background: `linear-gradient(90deg, ${a.color}, ${a.color}99)` }} />
+
+              {/* Card body */}
+              <div className="p-7 flex flex-col flex-1">
+                {/* Icon + label row */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: a.soft, color: a.color }}>
+                    {a.icon}
                   </div>
-                ))}
+                  <span style={{ fontSize:10, fontWeight:800, letterSpacing:'0.16em', textTransform:'uppercase', color: a.color }}>{a.label}</span>
+                </div>
+
+                {/* Headline */}
+                <h3 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize: 18 }}>{a.headline}</h3>
+
+                {/* Desc */}
+                <p className="text-[#0a1628]/55 text-[13px] leading-relaxed mb-6">{a.desc}</p>
+
+                {/* Points */}
+                <div className="space-y-2.5 flex-1">
+                  {a.points.map((point) => (
+                    <div key={point} className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                        style={{ background: a.color }}>
+                        <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                      <p className="text-[#0a1628]/65 text-[13px] font-normal leading-relaxed">{point}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Stat callout */}
+                <div className="mt-6 pt-5 border-t" style={{ borderColor: `${a.color}18` }}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[12px] font-bold" style={{ color: a.color }}>{a.stat}</span>
+                    <button type="button" onClick={onDemoClick}
+                      className="text-[12px] font-semibold px-4 py-2 rounded-lg transition-opacity hover:opacity-80"
+                      style={{ background: a.color, color: 'white' }}>
+                      Learn more
+                    </button>
+                  </div>
+                </div>
               </div>
-              {/* Learn more button */}
-              <button type="button" onClick={onDemoClick}
-                className="inline-flex items-center justify-center mt-8 px-5 py-2.5 rounded-lg text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
-                style={{ background:'#228DC1', alignSelf:'flex-start' }}>
-                Learn more
-              </button>
             </div>
           ))}
         </div>
