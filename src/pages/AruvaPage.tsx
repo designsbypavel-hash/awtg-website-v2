@@ -815,7 +815,7 @@ function PlatformDiagram() {
           <h2 className="font-heading text-[#0a1628] mb-3">
             Four layers. <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
           </h2>
-          <p className="text-[#0a1628]/60 text-[17px] font-normal leading-[1.7] max-w-xl mx-auto">
+          <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mx-auto">
             Not a bundle of tools. One connected system where every layer talks to the next.
           </p>
         </div>
@@ -1545,7 +1545,7 @@ function MultimodalSection() {
               <h2 style={{ fontFamily:'Roboto,system-ui,sans-serif', fontWeight:700, fontSize:36, letterSpacing:'-0.02em', lineHeight:1.12, color:'#0a1628' }}>
                 One AI. Every way <span style={{ color:'#228DC1' }}>students learn.</span>
               </h2>
-              <p style={{ fontSize:15.5, color:'rgba(10,22,40,0.58)', lineHeight:1.75, marginTop:14 }}>
+              <p style={{ fontSize:16, color:'rgba(10,22,40,0.58)', lineHeight:1.75, marginTop:14 }}>
                 Aruva speaks, writes, draws and graphs, meeting every student exactly where their understanding breaks down, in whichever format makes it click.
               </p>
             </div>
@@ -1848,7 +1848,7 @@ function BloomInsightSection() {
           <h2 className="font-heading text-[#0a1628] mb-5">
             One student.<br />Three semesters. One clear picture.
           </h2>
-          <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.75]">
+          <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75]">
             Grade climbed from 62% to 81% over three semesters. Aruva shows exactly why, and which skill gap was holding them back.
           </p>
         </div>
@@ -2128,7 +2128,7 @@ function BloomInsightSection() {
             {/* Insight strip */}
             <div className="rounded-xl p-5 border transition-colors duration-300"
               style={{ background: sem.accent + '07', borderColor: sem.accent + '20' }}>
-              <p className="text-[17px] font-semibold text-[#0a1628] mb-1.5 leading-snug">{sem.headline}</p>
+              <p className="text-[16px] font-semibold text-[#0a1628] mb-1.5 leading-snug">{sem.headline}</p>
               <p className="text-[15px] text-[#0a1628]/55 leading-relaxed">{sem.detail}</p>
             </div>
           </div>
@@ -2280,7 +2280,7 @@ function BloomInsightSection() {
 
             <div className="rounded-xl p-5 border transition-colors duration-300"
               style={{ background: dokSem.accent + '07', borderColor: dokSem.accent + '20' }}>
-              <p className="text-[17px] font-semibold text-[#0a1628] mb-1.5 leading-snug">{dokSem.headline}</p>
+              <p className="text-[16px] font-semibold text-[#0a1628] mb-1.5 leading-snug">{dokSem.headline}</p>
               <p className="text-[15px] text-[#0a1628]/55 leading-relaxed">{dokSem.detail}</p>
             </div>
           </div>
@@ -2299,7 +2299,7 @@ function BloomInsightSection() {
                 style={{ fontSize: 'clamp(32px,3vw,48px)', letterSpacing: '-0.03em' }}>
                 {item.stat}
               </p>
-              <p className="text-[#0a1628]/55 text-[15px] font-normal leading-relaxed">{item.label}</p>
+              <p className="text-[#0a1628]/55 text-[14px] font-normal leading-relaxed">{item.label}</p>
             </div>
           ))}
         </div>
@@ -2385,7 +2385,7 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
                 </div>
 
                 {/* Headline */}
-                <h3 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize: 18 }}>{a.headline}</h3>
+                <h3 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize: 20 }}>{a.headline}</h3>
 
                 {/* Desc */}
                 <p className="text-[#0a1628]/55 text-[13px] leading-relaxed mb-6">{a.desc}</p>
@@ -2525,7 +2525,7 @@ export default function AruvaPage() {
                 AI that understands<br />
                 <span style={{ color: '#228DC1' }}>how your students learn.</span>
               </h1>
-              <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-xl mb-10">
+              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
                 Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -2567,7 +2567,7 @@ export default function AruvaPage() {
               Most AI answers questions directly.<br />
               <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva develops</span> students' critical thinking.
             </h2>
-            <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.75] max-w-2xl">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
               Generic AI adds a chat interface to your institution. Aruva connects the entire academic lifecycle: syllabus, tutoring, assessment and analytics, into one <strong className="font-semibold text-[#0a1628]/80">continuous learning intelligence loop.</strong>
             </p>
           </div>
@@ -2588,7 +2588,7 @@ export default function AruvaPage() {
                     <div className="w-[18px] h-[18px] rounded-full border-2 border-gray-300 mt-0.5 shrink-0 flex items-center justify-center">
                       <div className="w-2 h-0.5 bg-gray-300" />
                     </div>
-                    <p className="text-[15px] text-[#0a1628]/45 leading-snug">{item}</p>
+                    <p className="text-[14px] text-[#0a1628]/45 leading-snug">{item}</p>
                   </div>
                 ))}
               </div>
@@ -2613,7 +2613,7 @@ export default function AruvaPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
                       </svg>
                     </span>
-                    <p className="text-[15px] text-[#0a1628]/75 leading-snug font-medium">{item}</p>
+                    <p className="text-[14px] text-[#0a1628]/75 leading-snug font-medium">{item}</p>
                   </div>
                 ))}
               </div>

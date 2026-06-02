@@ -65,7 +65,7 @@ export default function GenerativeAIPage() {
             <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
               Generative AI
             </h1>
-            <p className="text-[#0a1628]/65 text-[18px] max-w-xl font-normal leading-[1.7] mb-3">
+            <p className="text-[#0a1628]/65 text-[16px] max-w-xl font-normal leading-[1.7] mb-3">
               Most AI projects never reach production. Ours do. We build AI that works inside real organisations, connected to your systems, governed by your rules, and measured by actual outcomes.
             </p>
             <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7] max-w-xl mb-9">
@@ -146,7 +146,7 @@ export default function GenerativeAIPage() {
             {caseStudies.map((cs) => (
               <div key={cs.client} className="bg-white p-10">
                 <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#228DC1] mb-2">{cs.client}</p>
-                <h3 className="font-semibold text-[#0a1628] text-[18px] mb-4 leading-[1.3]">{cs.project}</h3>
+                <h3 className="font-semibold text-[#0a1628] text-[20px] mb-4 leading-[1.3]">{cs.project}</h3>
                 <p className="text-[#0a1628]/75 text-[14px] leading-[1.7] font-normal mb-6">{cs.outcome}</p>
                 <div className="flex flex-wrap gap-2">
                   {cs.tags.map((t) => (
@@ -190,7 +190,7 @@ export default function GenerativeAIPage() {
           <h2 className="font-heading text-[#0a1628] mb-6">
             Ready to build AI that actually works in your organisation?
           </h2>
-          <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] mb-10 font-normal max-w-xl mx-auto">
+          <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] mb-10 font-normal max-w-xl mx-auto">
             We have the products, the experience and the delivery track record. Talk to us about what you need and we will show you what is possible.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

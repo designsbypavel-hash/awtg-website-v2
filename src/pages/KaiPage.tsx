@@ -593,7 +593,7 @@ function IntegrationsSection() {
             <h2 className="font-heading text-[#0a1628] mb-5">
               Works with your stack.<br />Ready on day one.
             </h2>
-            <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] mb-8">
+            <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] mb-8">
               Kai sits alongside your existing setup. It pulls context from your CRM, picks up conversations on your support desk and responds through the channels your customers use. Nothing gets removed or replaced.
             </p>
             <div className="flex flex-col gap-3">
@@ -698,7 +698,7 @@ function SecurityComplianceSection() {
             <h2 className="font-heading text-[#0a1628] mb-5" style={{ ...reveal(leftInView, 100) }}>
               Designed for regulated<br />environments.
             </h2>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-8 max-w-xl" style={reveal(leftInView, 180)}>
+            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8 max-w-xl" style={reveal(leftInView, 180)}>
               Safe, measurable and auditable AI for teams with real governance requirements.
             </p>
 
@@ -731,7 +731,7 @@ function SecurityComplianceSection() {
                     </span>
                     <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#228DC1]">{item.badge}</span>
                   </div>
-                  <h3 className="text-[#0a1628] text-[15px] font-semibold mb-2">{item.title}</h3>
+                  <h3 className="text-[#0a1628] text-[14px] font-semibold mb-2">{item.title}</h3>
                   <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.detail}</p>
                 </div>
               ))}
@@ -1377,7 +1377,7 @@ function OmnichannelSection() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="type-label text-[#228DC1] mb-4">Omnichannel</p>
           <h2 className="font-heading text-[#0a1628] mb-5">One AI. Every channel.</h2>
-          <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">
+          <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7]">
             Kai meets customers on Telegram, your website or email — with the same intelligence, context and resolution on every channel.
           </p>
         </div>
@@ -1737,7 +1737,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               that <span style={{ color: '#228DC1' }}>resolves,</span><br />
               not just responds.
             </h1>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-xl mb-10">
+            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
               Kai connects to your systems, follows your rules and helps teams resolve work faster.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -1839,7 +1839,7 @@ export default function KaiPage() {
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Our AI agent is live<br />at enterprise scale.
               </h2>
-              <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-8">
+              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8">
                 Kai is running in production at enterprise organisations today. Real query volume, real containment rates, real CSAT improvement. Tracked from the first week, not the first quarter.
               </p>
               <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#228DC1] hover:gap-3 transition-all">
@@ -1889,7 +1889,7 @@ export default function KaiPage() {
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Escalation rate<br />drops from 40%<br />to 10%
               </h2>
-              <p className="text-[#0a1628]/65 text-[17px] font-normal leading-[1.7] mb-10">
+              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-10">
                 Kai handles the complex queries that used to demand human escalation, steadily containing more every month from day one.
               </p>
               {[
@@ -1957,7 +1957,7 @@ export default function KaiPage() {
             <h2 className="font-heading text-white mb-4">
               How Kai drives<br />efficiency
             </h2>
-            <p className="text-white/65 text-[18px] max-w-lg leading-[1.7]">
+            <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
               Three steps from setup to live AI resolution. No rip and replace required.
             </p>
           </div>
@@ -2041,7 +2041,7 @@ export default function KaiPage() {
             <h2 className="font-heading text-[#0a1628] mb-4">
               AI that fits your business.<br />Not the other way around.
             </h2>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">
+            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7]">
               Built for mixed systems, regulated teams and workflows that need more than one vendor ecosystem.
             </p>
           </div>
