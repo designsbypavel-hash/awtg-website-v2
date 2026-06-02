@@ -2725,18 +2725,22 @@ export default function AruvaPage() {
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              {/* Aruva logo wordmark */}
-              <div className="mb-7 flex items-center">
+              {/* Aruva logo wordmark — vector, 2× */}
+              <div className="mb-8">
                 <img
-                  src="/aruva-logo-wordmark.png"
+                  src="/aruva-logo-vector.svg"
                   alt="Aruva"
                   style={{
-                    width: 'clamp(128px, 10vw, 156px)',
+                    width: 'clamp(240px, 18vw, 300px)',
                     height: 'auto',
                     objectFit: 'contain',
-                    filter: 'drop-shadow(0 8px 14px rgba(13,43,107,0.14))',
+                    filter: 'drop-shadow(0 4px 16px rgba(4,40,158,0.18))',
                   }}
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
+                  onError={(e) => {
+                    const el = e.target as HTMLImageElement
+                    el.style.display = 'none'
+                  }}
+                />
               </div>
               <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.7 }}>
                 AI for Education
