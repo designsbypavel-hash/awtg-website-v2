@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck, faBolt, faShield, faChartBar, faGear, faCheck, faXmark, faComments, faArrowTrendUp, faWandSparkles, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faCircleCheck, faShield, faGear, faCheck, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
+import ProductDemoModal from '@/components/ProductDemoModal'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -78,7 +79,7 @@ function StatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
 }
 
 // -- Kai Dashboard mockup ------------------------------------------------------
-function KaiDashboard() {
+export function KaiDashboard() {
   const [activeTab,  setActiveTab]  = useState('details')
   const [activeAsst, setActiveAsst] = useState(0)
   const [visible,    setVisible]    = useState<number[]>([])
@@ -324,7 +325,7 @@ function KaiDashboard() {
                   <div className="grid grid-cols-3 gap-3">
                     {[
                       { label: 'Resolution',      val: '74%',   color: '#059669' },
-                      { label: 'Avg handle time', val: '45s',   color: '#228DC1' },
+                      { label: 'Avg handle time', val: '38 sec', color: '#228DC1' },
                       { label: 'CSAT score',      val: '4.7/5', color: '#7c3aed' },
                     ].map(s => (
                       <div key={s.label} className="bg-[#f8fafc] border border-gray-100 px-3 py-3">
@@ -590,7 +591,7 @@ function IntegrationsSection() {
           <div>
             <p className="text-[#228DC1] mb-4" style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.75 }}>Integrations</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Works with your stack.<br />MCP-ready on day one.
+              Works with your stack.<br />Ready on day one.
             </h2>
             <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] mb-8">
               Kai sits alongside your existing setup. It pulls context from your CRM, picks up conversations on your support desk and responds through the channels your customers use. Nothing gets removed or replaced.
@@ -599,7 +600,7 @@ function IntegrationsSection() {
               {[
                 { label: 'CRM, tickets, knowledge base',  value: 'reads live data'        },
                 { label: 'Email, chat, messaging, voice', value: 'acts through channels'  },
-                { label: 'API, webhooks and MCP',         value: 'connects to anything'   },
+                { label: 'API and webhooks',              value: 'connects to anything'   },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 bg-[#228DC1] rounded-full shrink-0 mt-1.5" />
@@ -756,304 +757,428 @@ function SecurityComplianceSection() {
 }
 
 // ─── Figma design tokens (node 2691:17369) ───────────────────────────────────
-const KAI_HDR_GRAD = 'linear-gradient(216.2deg,#4c97c3 0.12%,#6ac1ef 26.33%,#bef3ff 40%,#67d7e4 46.95%,#6ac1ef 59.44%)'
+const KAI_HDR_GRAD = 'linear-gradient(126deg,#4C97C3 0%,#6AC1EF 28.5%,#BEF3FF 43.36%,#67D7E4 50.91%,#6AC1EF 64.5%)'
 // const KAI_BORDER   = '#4c97c3'          // gradient border handled by wrapper padding
 const KAI_MSG_AI   = '#f4fbff'          // AI message row bg
 const KAI_MSG_USER = '#ffffff'          // User message row bg
 const KAI_HDR_TXT  = '#1a253e'
 const KAI_INPUT_BD = '#b3b3b3'
-const KAI_CHIP_CLR = '#4b94c1'          // chip border + text colour
+const KAI_ICON_DARK = '#353535'
 
-// Suggestion chips shown after last AI message
-const CHIPS = ['Track my order', 'Reset my password', 'Contact support']
-
-// ─── Conversation script ──────────────────────────────────────────────────────
-type ChatRole = 'ai' | 'user' | 'signal'
-interface LiveMsg { id: number; role: ChatRole; text: string; meta?: string }
-
-const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
-  { role: 'ai',   text: "Hi there! 👋\nHow can I help you today?" },
-  { role: 'user', text: "My order hasn't arrived. It's been 5 days." },
-  { role: 'ai',   text: "I can see order #48291. It shipped Monday and is with the courier. Delivery is due today before 6 pm.", meta: 'Order #48291 · CRM synced' },
-  { role: 'user', text: "Perfect, thank you!" },
-  { role: 'ai',   text: "You're welcome! A satisfaction survey has been sent to your email.\n\nIs there anything else I can help with?" },
-  { role: 'signal', text: 'Resolved · 38s · CSAT sent' },
+// ─── Voice script (drives the animated voice phase) ──────────────────────────
+type VoiceSpeaker = 'ai' | 'user'
+interface VoiceTurn { speaker: VoiceSpeaker; text: string }
+const VOICE_SCRIPT: VoiceTurn[] = [
+  { speaker: 'ai',   text: "Hi there! How can I help you today?" },
+  { speaker: 'user', text: "Where's my parcel? It's been 5 days." },
+  { speaker: 'ai',   text: "Found it! Order #48291 is out for delivery, arriving today before 6 PM." },
+  { speaker: 'user', text: "How far away is the driver?" },
+  { speaker: 'ai',   text: "Just 2.4 miles away. They'll be with you before 6 PM." },
+  { speaker: 'user', text: "Can I change the delivery address?" },
+  { speaker: 'ai',   text: "Yes! I've updated the address. You'll receive a confirmation shortly." },
 ]
-const HOLD_AFTER = [2000, 600, 2400, 600, 2800, 3400]
-const AI_TYP_MS  = [0,    0,   1500, 0,   1400, 0   ]
 
-// ─── Typing indicator — flat row matching Figma message layout ────────────────
-function TypingDots() {
+// ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
+type ChatRole = 'ai' | 'user' | 'signal' | 'map' | 'chips'
+const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
+  { role: 'ai',     text: "Hi there! 👋\nHow can I help you today?" },
+  { role: 'user',   text: "Where's my parcel? It's been 5 days." },
+  { role: 'ai',     text: "Found it! Order #48291 is out for delivery, arriving today before 6 PM.", meta: 'Order #48291 · GPS active' },
+  { role: 'map',    text: '' },
+  { role: 'user',   text: "How far away is the driver?" },
+  { role: 'ai',     text: "Just 2.4 miles away. They'll be with you before 6 PM. 📦" },
+  { role: 'user',   text: "Can I change the delivery address?" },
+  { role: 'ai',     text: "Yes! I've updated the address. You'll receive a confirmation shortly. ✅" },
+  { role: 'signal', text: 'Resolved · 52s · CSAT sent' },
+  { role: 'chips',  text: '' },
+]
+
+// ─── Delivery map widget ──────────────────────────────────────────────────────
+function MapWidget() {
+  // Street colour and block colours match the reference screenshot
+  const STREET  = '#f5f2ec'
+  const BLOCK   = '#ddd6c8'
+  const GREEN   = '#b8d49a'
+
   return (
-    <div style={{
-      width:'100%', background:KAI_MSG_AI,
-      padding:'12px 12px 14px',
-      display:'flex', flexDirection:'column', gap:8,
-      animation:'chatFromLeft 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both',
-    }}>
-      <span style={{ fontSize:12, fontWeight:700, color:'#000', lineHeight:1, whiteSpace:'nowrap' }}>
-        AI Assistant
-      </span>
-      <div style={{
-        display:'inline-flex', alignItems:'center', gap:6,
-        background:'rgba(255,255,255,0.85)', borderRadius:14,
-        padding:'9px 13px', alignSelf:'flex-start',
-        boxShadow:'0 1px 3px rgba(0,0,0,0.07)',
-      }}>
-        {[0,1,2].map(i => (
-          <span key={i} style={{
-            display:'block', width:7, height:7, borderRadius:'50%',
-            background:'#228DC1', opacity:0.75,
-            animation:`bounce 0.9s ease-in-out ${i*165}ms infinite`,
-          }}/>
+    <div style={{ width: '100%', lineHeight: 0 }}>
+      <svg width="100%" viewBox="0 0 360 142" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
+        {/* Base */}
+        <rect width="360" height="142" fill="#ece7dc"/>
+
+        {/* ── Vertical streets ── */}
+        {[0, 94, 188, 282, 351].map(x => (
+          <rect key={x} x={x} width="9" height="142" fill={STREET}/>
         ))}
-      </div>
+
+        {/* ── Horizontal streets ── */}
+        <rect y="0"   width="360" height="9"  fill={STREET}/>
+        <rect y="59"  width="360" height="16" fill={STREET}/>   {/* route street */}
+        <rect y="113" width="360" height="9"  fill={STREET}/>
+        <rect y="133" width="360" height="9"  fill={STREET}/>
+
+        {/* ── Row 1 blocks  (y 9–59) ── */}
+        <rect x="9"   y="9" width="85" height="50" fill={BLOCK}/>  {/* Col1 tan  */}
+        <rect x="103" y="9" width="85" height="50" fill={GREEN}/>  {/* Col2 GREEN */}
+        <rect x="197" y="9" width="85" height="50" fill={BLOCK}/>  {/* Col3 tan  */}
+        <rect x="291" y="9" width="60" height="50" fill={BLOCK}/>  {/* Col4 tan  */}
+
+        {/* ── Row 2 blocks  (y 75–113) ── */}
+        <rect x="9"   y="75" width="85" height="38" fill={GREEN}/>  {/* Col1 GREEN */}
+        <rect x="103" y="75" width="85" height="38" fill={BLOCK}/>  {/* Col2 tan  */}
+        <rect x="197" y="75" width="85" height="38" fill={BLOCK}/>  {/* Col3 tan  */}
+        <rect x="291" y="75" width="60" height="38" fill={BLOCK}/>  {/* Col4 tan  */}
+
+        {/* ── Row 3 strip  (y 122–133) ── */}
+        {[9, 103, 197, 291].map((x, i) => (
+          <rect key={i} x={x} y="122" width={i === 3 ? 60 : 85} height="11" fill={BLOCK}/>
+        ))}
+
+        {/* ── Route line ── */}
+        <line x1="38" y1="67" x2="287" y2="67"
+              stroke="#1a73e8" strokeWidth="2.5" strokeLinecap="round"/>
+
+        {/* ── Arrow chevrons along route ── */}
+        {[108, 183, 248].map(x => (
+          <polyline key={x}
+            points={`${x-6},62 ${x},67 ${x-6},72`}
+            fill="none" stroke="#1a73e8" strokeWidth="1.8"
+            strokeLinecap="round" strokeLinejoin="round" opacity="0.75"/>
+        ))}
+
+        {/* ── Current position — hollow blue ring ── */}
+        <circle cx="38" cy="67" r="9" fill="white" stroke="#1a73e8" strokeWidth="2.5"/>
+
+        {/* ── Destination — classic map pin (pointed bottom, circle top) ──
+             Tip at (287, 75), circle centre at (287, 46), radius 17        */}
+        <path
+          d="M287,75 C276,67 270,57 270,46 A17,17,0,1,1,304,46 C304,57 298,67 287,75 Z"
+          fill="#E53935"
+        />
+        <circle cx="287" cy="44" r="7" fill="white" opacity="0.92"/>
+
+        {/* ── ETA badge ── */}
+        <rect x="183" y="116" width="172" height="21" rx="4" fill="white" opacity="0.93"/>
+        <circle cx="196" cy="126.5" r="4" fill="#E53935"/>
+        <text x="204" y="131" fontSize="10.5" fill="#374151"
+              fontFamily="system-ui,sans-serif" fontWeight="500">
+          2.4 mi · ETA 6 PM
+        </text>
+      </svg>
     </div>
   )
 }
 
-// ─── Message row — Figma: full-width bands, alternating bg, label above text ──
-function MsgRow({ msg }: { msg: LiveMsg }) {
-  if (msg.role === 'signal') {
-    return (
-      <div style={{
-        display:'flex', justifyContent:'center', padding:'10px 12px',
-        animation:'signalPop 0.48s cubic-bezier(0.22,1,0.36,1) both',
-      }}>
-        <span style={{
-          display:'inline-flex', alignItems:'center', gap:5,
-          fontSize:11, fontWeight:600, color:'#059669',
-          background:'rgba(5,150,105,0.12)', borderRadius:99, padding:'4px 14px',
-        }}>
-          ✓&nbsp;{msg.text}
-        </span>
-      </div>
-    )
-  }
+// ─── Voice + Chat demo ────────────────────────────────────────────────────────
+type OrbMode   = 'listen' | 'user' | 'ai'
+type DemoPhase = 'voice' | 'chat' | 'csat' | 'csat-out'
 
-  const isAI   = msg.role === 'ai'
-  const bg     = isAI ? KAI_MSG_AI : KAI_MSG_USER
-  const label  = isAI ? 'AI Assistant' : 'You'
-  const anim   = isAI
-    ? 'chatFromLeft 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both'
-    : 'chatFromRight 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both'
-
-  return (
-    <div style={{
-      width:'100%', background:bg,
-      padding:'12px 12px 14px',
-      display:'flex', flexDirection:'column', gap:6,
-      animation:anim, wordBreak:'break-word',
-    }}>
-      {/* Label — Figma: Nunito Bold 12px #000 */}
-      <span style={{ fontSize:12, fontWeight:700, color:'#000', lineHeight:1, whiteSpace:'nowrap' }}>
-        {label}
-      </span>
-      {/* Body — Figma: Regular 16px rgba(0,0,0,0.87), adapted to 14px for 400px width */}
-      <p style={{ fontSize:14, lineHeight:1.65, color:'rgba(0,0,0,0.87)', margin:0, whiteSpace:'pre-line' }}>
-        {msg.text}
-      </p>
-      {/* Meta badge (AI only) */}
-      {msg.meta && isAI && (
-        <span style={{
-          display:'inline-flex', alignItems:'center', gap:4, alignSelf:'flex-start',
-          fontSize:10, fontWeight:600, color:'#228DC1',
-          background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px',
-        }}>
-          ⚡ {msg.meta}
-        </span>
-      )}
-    </div>
-  )
-}
-
-// ─── Main chat demo component ─────────────────────────────────────────────────
 function KaiChatDemo() {
-  const [msgs,      setMsgs]      = useState<LiveMsg[]>([])
-  const [typing,    setTyping]    = useState(false)
-  const [fading,    setFading]    = useState(false)
-  const [showChips, setShowChips] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const tids      = useRef<number[]>([])
-  const msgId     = useRef(0)
+  const [phase,   setPhase]   = useState<DemoPhase>('voice')
+  const [orbMode, setOrbMode] = useState<OrbMode>('listen')
+  const [turnIdx, setTurnIdx] = useState(-1)
+  const [words,   setWords]   = useState(0)
+  const tids = useRef<number[]>([])
 
   const sched = (fn: () => void, ms: number) => {
-    const id = window.setTimeout(fn, ms)
-    tids.current.push(id)
+    const id = window.setTimeout(fn, ms); tids.current.push(id)
   }
 
-  const runChat = () => {
-    tids.current.forEach(clearTimeout)
-    tids.current = []
-    setMsgs([])
-    setTyping(false)
-    setFading(false)
-    setShowChips(false)
+  const run = () => {
+    tids.current.forEach(clearTimeout); tids.current = []
+    setPhase('voice'); setOrbMode('listen'); setTurnIdx(-1); setWords(0)
 
-    let t = 800
-    CHAT_SCRIPT.forEach((msg, i) => {
-      const typMs = msg.role === 'ai' ? AI_TYP_MS[i] : 0
-      if (typMs > 0) {
-        sched(() => setTyping(true), t)
-        t += typMs
-        sched(() => {
-          setTyping(false)
-          setMsgs(prev => [...prev, { ...msg, id: msgId.current++ }])
-          // Show chips with the second-to-last AI message
-          if (i === CHAT_SCRIPT.length - 2) sched(() => setShowChips(true), 300)
-        }, t)
+    let t = 1800 // initial silence
+
+    VOICE_SCRIPT.forEach((turn, i) => {
+      const tokens = turn.text.split(' ')
+      const msPw   = turn.speaker === 'ai' ? 80 : 95
+
+      if (turn.speaker === 'user') {
+        sched(() => { setTurnIdx(i); setWords(0); setOrbMode('listen') }, t)
+        t += 1100                              // listening window before user speaks
+        sched(() => setOrbMode('user'), t)
       } else {
-        sched(() => setMsgs(prev => [...prev, { ...msg, id: msgId.current++ }]), t)
+        sched(() => { setTurnIdx(i); setWords(0); setOrbMode('ai') }, t)
       }
-      t += HOLD_AFTER[i]
+
+      tokens.forEach((_, j) => sched(() => setWords(j + 1), t + j * msPw))
+      t += tokens.length * msPw
+
+      sched(() => setOrbMode('listen'), t)
+      t += turn.speaker === 'ai' ? 1400 : 1100
     })
-    sched(() => setFading(true), t)
-    sched(() => runChat(), t + 600)
+
+    sched(() => setPhase('chat'), t)
+    t += 4000                              // show chat for 4s
+    sched(() => setPhase('csat'), t)       // CSAT card eases in
+    t += 4500
+    sched(() => setPhase('csat-out'), t)
+    sched(run, t + 700)
   }
 
   useEffect(() => {
-    const id = window.setTimeout(runChat, 500)
+    const id = window.setTimeout(run, 500)
     return () => { clearTimeout(id); tids.current.forEach(clearTimeout) }
   }, [])
 
-  useEffect(() => {
-    const el = scrollRef.current
-    if (!el) return
-    el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
-  }, [msgs, typing])
+  const isVoice     = phase === 'voice'
+  const isChat      = phase === 'chat' || phase === 'csat' || phase === 'csat-out'
+  const chatOpacity = phase === 'chat' || phase === 'csat' ? 1 : 0
+  const isCsat      = phase === 'csat' || phase === 'csat-out'
+  const csatOpacity = phase === 'csat' ? 1 : 0
+
+  const orbAnim =
+    orbMode === 'ai'   ? 'kaiOrbSpeak 1s ease-in-out infinite' :
+    orbMode === 'user' ? 'kaiOrbUser 1.1s ease-in-out infinite' :
+                         'kaiOrbListen 2.8s ease-in-out infinite'
+
+  const orbBg =
+    orbMode === 'user'
+      ? 'radial-gradient(circle at 36% 34%, #a8f0d4 0%, #34c78a 32%, #0d9e60 60%, #076b41 100%)'
+      : 'radial-gradient(circle at 36% 34%, #b8e4f9 0%, #55b0de 28%, #228DC1 58%, #0b5a88 100%)'
+
+  const orbGlow =
+    orbMode === 'user'
+      ? '0 0 55px rgba(34,193,141,0.85), 0 0 110px rgba(34,193,141,0.45), 0 0 170px rgba(34,193,141,0.18)'
+      : '0 0 55px rgba(34,141,193,0.90), 0 0 110px rgba(34,141,193,0.50), 0 0 170px rgba(34,141,193,0.22)'
+
+  const currentTurn       = turnIdx >= 0 ? VOICE_SCRIPT[turnIdx] : null
+  const prevTurn          = turnIdx > 0  ? VOICE_SCRIPT[turnIdx - 1] : null
+  const transcript        = currentTurn ? currentTurn.text.split(' ').slice(0, words).join(' ') : ''
+  const showListeningLabel = orbMode === 'listen' && currentTurn?.speaker === 'user' && words === 0
 
   return (
-    <div className="select-none" style={{ width:'100%', maxWidth:400 }}>
+    <div className="select-none" style={{ width: '100%', maxWidth: 420, aspectRatio: '420 / 613' }}>
+      <div style={{ width: '100%', height: '100%', padding: 7, borderRadius: 33, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
+        <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 30, overflow: 'hidden', background: KAI_HDR_GRAD }}>
 
-      {/*
-        ── Gradient border technique ──
-        CSS border can't be a gradient directly on a rounded box.
-        Solution: outer div carries the gradient as its background + padding:6px
-        so the gradient peeks through as the "border". Inner div clips content.
-      */}
-      <div style={{
-        padding:6,
-        borderRadius:36,           /* 30 (inner) + 6 (padding) */
-        background:KAI_HDR_GRAD,
-        boxShadow:'0px 4px 4px 0px rgba(0,0,0,0.25)',
-      }}>
-      <div style={{
-        position:'relative',
-        width:'100%', height:588,  /* 600 − 12 (6px top+bottom padding) */
-        borderRadius:30,
-        background:KAI_HDR_GRAD,
-        overflow:'hidden',
-      }}>
-
-        {/* ── Header ── Figma: left-20 top-16, gap-8, 40×40 logo, SemiBold 16px */}
-        <div style={{
-          position:'absolute', top:16, left:20, right:20,
-          display:'flex', alignItems:'center', gap:8,
-        }}>
+          {/* ── SHARED HEADER — always on top, never transitions ── */}
           <div style={{
-            width:40, height:40, background:'#fff', borderRadius:12, flexShrink:0,
-            display:'flex', alignItems:'center', justifyContent:'center',
+            position: 'absolute', top: 0, left: 0, right: 0, height: 73,
+            background: KAI_HDR_GRAD,
+            zIndex: 10,
+            display: 'flex', alignItems: 'center',
+            padding: '0 23px', gap: 10,
           }}>
-            <img src="/kai-logo.svg" alt="Kai" style={{ width:24, height:24, objectFit:'contain' }} />
-          </div>
-          <span style={{ flex:1, fontFamily:'Roboto,sans-serif', fontWeight:600,
-                         fontSize:16, color:KAI_HDR_TXT, lineHeight:1 }}>
-            AI Assistant
-          </span>
-          <FontAwesomeIcon icon={faGear}        style={{ width:18, height:18, color:'rgba(26,37,62,0.5)' }} />
-          <FontAwesomeIcon icon={faChevronDown} style={{ width:18, height:18, color:'rgba(26,37,62,0.5)', marginLeft:4 }} />
-        </div>
-
-        {/* ── Chat area ── Figma: top-70, rounded-30, bg white, gap-4 */}
-        <div style={{
-          position:'absolute', top:70, left:0, right:0, bottom:0,
-          background:'#fff',
-          borderRadius:30,
-          display:'flex', flexDirection:'column', gap:4,
-          overflow:'hidden',
-        }}>
-
-          {/* ── Messages scroll — bg white (alternating per row), gap 0 so rows butt up */}
-          <div
-            ref={scrollRef}
-            className="kai-chat-scroll"
-            style={{
-              flex:1, overflowY:'auto', overflowX:'hidden',
-              background:'#fff',
-              display:'flex', flexDirection:'column', gap:0,
-              opacity: fading ? 0 : 1,
-              transition: fading ? 'opacity 0.45s ease' : 'opacity 0s',
-            }}
-          >
-            {msgs.map(m => <MsgRow key={m.id} msg={m} />)}
-            {typing && <TypingDots />}
+            <div style={{ width: 40, height: 40, background: '#fff', borderRadius: 12, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src="/kai-logo.svg" alt="Kai" style={{ width: 28, height: 22, objectFit: 'contain' }} />
+            </div>
+            <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 600, fontSize: 16, color: KAI_HDR_TXT, lineHeight: 1 }}>AI Assistant</span>
+            <FontAwesomeIcon icon={faGear}        style={{ width: 18, height: 18, color: KAI_ICON_DARK, opacity: 0.72 }} />
+            <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: KAI_ICON_DARK, opacity: 0.72, marginLeft: 7 }} />
           </div>
 
-          {/* ── Suggestion chips ── Figma: gap-4, px-8 py-2, chip border #4b94c1 rounded-8 p-6, text 12px */}
-          {showChips && (
+          {/* ── VOICE VIEW ── */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(180deg, #071220 0%, #0c1b30 55%, #08152a 100%)',
+            opacity: isVoice ? 1 : 0,
+            transition: 'opacity 0.65s ease',
+            pointerEvents: isVoice ? 'auto' : 'none',
+            zIndex: 1,
+          }}>
+
+            {/* ── Main body: transcript TOP, orb BOTTOM ── */}
             <div style={{
-              position:'relative', flexShrink:0,
-              display:'flex', gap:4, alignItems:'flex-start',
-              padding:'2px 8px', overflowX:'hidden',
-              animation:'fadeIn 0.35s ease both',
+              position: 'absolute', top: 73, left: 0, right: 0, bottom: 58,
+              display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+              padding: '6px 0 14px',
             }}>
-              {CHIPS.map(chip => (
-                <div key={chip} style={{
-                  border:`1px solid ${KAI_CHIP_CLR}`, borderRadius:8,
-                  padding:'6px 8px', whiteSpace:'nowrap',
-                  background:'#fff', flexShrink:0, cursor:'pointer',
-                }}>
-                  <span style={{ fontSize:12, color:KAI_CHIP_CLR, lineHeight:'normal' }}>
-                    {chip}
+
+              {/* ── TOP: KAI VOICE label + live transcript ── */}
+              <div style={{ padding: '0 24px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.42)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>
+                    KAI VOICE
                   </span>
                 </div>
-              ))}
-              {/* Right fade-out — Figma: linear-gradient(-90deg, white 45.9%, transparent) */}
-              <div style={{
-                position:'absolute', right:0, top:0, bottom:0, width:48, pointerEvents:'none',
-                background:'linear-gradient(-90deg, #fff 45%, transparent)',
-              }} />
-            </div>
-          )}
 
-          {/* ── Input bar ── Figma node 2691:17421: border-t 0.5px #b3b3b3, px-24 py-12, items-center */}
-          <div style={{
-            borderTop:`0.5px solid ${KAI_INPUT_BD}`,
-            padding:'12px 24px',
-            display:'flex', alignItems:'center', gap:8,
-            background:'#fff', flexShrink:0,
-          }}>
-            <span style={{
-              flex:1, minWidth:0,
-              fontFamily:'Roboto,sans-serif', fontWeight:600,
-              fontSize:16, lineHeight:'normal',
-              color:'rgba(0,0,0,0.38)', userSelect:'none',
+                {/* Previous turn — dimmed */}
+                {prevTurn && (
+                  <div style={{ marginBottom: 18, opacity: 0.32 }}>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 5px',
+                      color: prevTurn.speaker === 'ai' ? 'rgba(106,193,239,0.9)' : 'rgba(255,255,255,0.7)' }}>
+                      {prevTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
+                    </p>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', lineHeight: 1.55, margin: 0 }}>
+                      {prevTurn.text}
+                    </p>
+                  </div>
+                )}
+
+                {/* Current turn — typing out */}
+                {currentTurn && (
+                  <div>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 7px',
+                      color: currentTurn.speaker === 'ai' ? 'rgba(106,193,239,1)' : 'rgba(255,255,255,0.65)' }}>
+                      {currentTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
+                    </p>
+                    {showListeningLabel
+                      ? <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.04em', margin: 0 }}>Listening…</p>
+                      : <p style={{ fontSize: 16, color: '#fff', lineHeight: 1.65, margin: 0, letterSpacing: '-0.01em' }}>{transcript}</p>
+                    }
+                  </div>
+                )}
+
+                {/* Pre-first-turn placeholder */}
+                {!currentTurn && !prevTurn && (
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.14)', margin: 0, letterSpacing: '0.06em' }}>…</p>
+                )}
+              </div>
+
+              {/* ── BOTTOM: Orb + waveform + status ── */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+                <div style={{
+                  width: 112, height: 112, borderRadius: '50%',
+                  background: orbBg, boxShadow: orbGlow,
+                  animation: orbAnim,
+                  transition: 'background 0.6s ease, box-shadow 0.6s ease',
+                }} />
+
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 26 }}>
+                  {[5,10,18,24,28,24,18,10,5].map((h, i) => {
+                    const delays = [0.12,0.06,0.22,0.04,0.16,0.08,0.20,0.02,0.14]
+                    const dur = orbMode === 'ai' ? 0.50 : orbMode === 'user' ? 0.34 : 1.8
+                    const col = orbMode === 'user' ? 'rgba(52,199,138,0.75)' : 'rgba(106,193,239,0.68)'
+                    return (
+                      <div key={i} style={{ width: 3.5, height: h, borderRadius: 2, background: col, transformOrigin: 'bottom', animation: `kaiWaveBar ${dur}s ease-in-out ${delays[i]}s infinite alternate`, transition: 'background 0.5s ease' }} />
+                    )
+                  })}
+                </div>
+
+                <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.06em', color: orbMode === 'user' ? 'rgba(52,199,138,0.75)' : 'rgba(255,255,255,0.30)', margin: 0, fontFamily: 'Roboto,sans-serif', transition: 'color 0.4s ease' }}>
+                  {orbMode === 'ai' ? 'Speaking…' : 'Listening…'}
+                </p>
+              </div>
+            </div>
+
+            {/* KAI label — bottom left */}
+            <div style={{ position: 'absolute', bottom: 66, left: 22 }}>
+              <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>KAI</span>
+            </div>
+
+            {/* Voice input bar — minimal, buttons only */}
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0,
+              background: '#fff', borderRadius: '0 0 30px 30px',
+              padding: '11px 16px 14px',
+              display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 10,
+              borderTop: '0.5px solid #e5e7eb',
             }}>
-              Type here...
-            </span>
-            <div style={{ padding:12, borderRadius:12, flexShrink:0,
-                          display:'flex', alignItems:'center', cursor:'pointer' }}>
-              <FontAwesomeIcon icon={faPaperPlane}
-                style={{ width:20, height:20, color:'rgba(0,0,0,0.38)' }} />
+              <div style={{ flex: 1 }} />
+              <div style={{
+                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                background: orbMode === 'user' ? '#228DC1' : '#f0f2f5',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'background 0.3s ease',
+              }}>
+                <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: orbMode === 'user' ? '#fff' : 'rgba(10,22,40,0.4)' }} />
+              </div>
+              <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <FontAwesomeIcon icon={faXmark} style={{ width: 14, height: 14, color: 'rgba(10,22,40,0.4)' }} />
+              </div>
             </div>
           </div>
 
-          {/* ── "Powered by" ── Figma: absolute bottom-4, ExtraLight 6px */}
+          {/* ── CHAT VIEW (full conversation revealed at once) ── */}
           <div style={{
-            position:'absolute', bottom:4, left:0, right:0,
-            display:'flex', justifyContent:'center', alignItems:'center', gap:3,
-            pointerEvents:'none',
+            position: 'absolute', inset: 0,
+            background: KAI_HDR_GRAD,
+            opacity: chatOpacity,
+            transition: 'opacity 0.65s ease',
+            pointerEvents: isChat ? 'auto' : 'none',
+            zIndex: 2,
           }}>
-            <img src="/kai-logo.svg" alt="" style={{ width:8, height:8, opacity:0.22 }} />
-            <span style={{ fontFamily:'Roboto,sans-serif', fontWeight:300,
-                           fontSize:7, color:'rgba(26,37,62,0.28)', letterSpacing:'0.03em' }}>
-              Kai · powered by AWTG
-            </span>
+            {/* Chat area — starts just below the shared header */}
+            <div style={{ position: 'absolute', top: 73, left: 0, right: 0, bottom: 0, background: '#fff', borderRadius: 30, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+              {/* All messages visible at once */}
+              <div className="kai-chat-scroll" style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+                {CHAT_SCRIPT.map((msg, i) => {
+                  if (msg.role === 'map') return <MapWidget key={i} />
+                  if (msg.role === 'signal') return (
+                    <div key={i} style={{ display: 'flex', justifyContent: 'center', padding: '10px 12px' }}>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, color: '#059669', background: 'rgba(5,150,105,0.12)', borderRadius: 99, padding: '4px 14px' }}>
+                        ✓&nbsp;{msg.text}
+                      </span>
+                    </div>
+                  )
+                  if (msg.role === 'chips') return (
+                    <div key={i} style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '6px 12px 12px' }}>
+                      {['Track my order', 'Reset my password', 'Contact support'].map(chip => (
+                        <div key={chip} style={{ border: '1px solid #228DC1', borderRadius: 8, padding: '5px 10px', fontSize: 11, color: '#228DC1', background: '#fff', cursor: 'default', whiteSpace: 'nowrap' }}>
+                          {chip}
+                        </div>
+                      ))}
+                    </div>
+                  )
+                  const isAI = msg.role === 'ai'
+                  return (
+                    <div key={i} style={{ width: '100%', background: isAI ? KAI_MSG_AI : KAI_MSG_USER, padding: '12px 12px 14px', display: 'flex', flexDirection: 'column', gap: 6, wordBreak: 'break-word' }}>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: '#000', lineHeight: 1 }}>{isAI ? 'AI Assistant' : 'You'}</span>
+                      <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(0,0,0,0.87)', margin: 0, whiteSpace: 'pre-line' }}>{msg.text}</p>
+                      {msg.meta && isAI && (
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, alignSelf: 'flex-start', fontSize: 10, fontWeight: 600, color: '#228DC1', background: 'rgba(34,141,193,0.10)', borderRadius: 4, padding: '2px 8px' }}>
+                          ⚡ {msg.meta}
+                        </span>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* CSAT rating overlay — eases in over messages at end */}
+              {isCsat && (
+                <div style={{
+                  position: 'absolute', inset: 0, zIndex: 5,
+                  background: '#f3f5f8',
+                  opacity: csatOpacity,
+                  transition: 'opacity 0.5s ease',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  padding: '0 18px',
+                }}>
+                  <div style={{
+                    background: '#fff', borderRadius: 16, padding: '22px 18px', width: '100%',
+                    boxShadow: '0 4px 24px rgba(10,22,40,0.09)',
+                    animation: phase === 'csat' ? 'csatIn 0.55s cubic-bezier(0.22,1,0.36,1) both' : 'none',
+                  }}>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: '#0a1628', textAlign: 'center', margin: '0 0 16px', lineHeight: 1.45 }}>
+                      Rate your experience to help us improve!
+                    </p>
+                    <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+                      {[{ e: '👍', l: 'Satisfied' }, { e: '👎', l: 'Dissatisfied' }].map(b => (
+                        <div key={b.l} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, padding: '10px 8px', border: '1px solid #e5e7eb', borderRadius: 10, background: '#fff', fontSize: 13, fontWeight: 600, color: '#0a1628', cursor: 'default' }}>
+                          <span style={{ fontSize: 16 }}>{b.e}</span>{b.l}
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ border: '1px solid #e5e7eb', borderRadius: 10, padding: '10px 14px', color: 'rgba(10,22,40,0.32)', fontSize: 13, fontFamily: 'Roboto,sans-serif' }}>
+                      Leave a comment (optional)
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Input bar — matches voice bar layout */}
+              <div style={{ borderTop: '0.5px solid #e5e7eb', padding: '11px 16px 14px', display: 'flex', alignItems: 'center', gap: 10, background: '#fff', flexShrink: 0 }}>
+                <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15, color: 'rgba(10,22,40,0.35)', userSelect: 'none' }}>
+                  Type here...
+                </span>
+                {/* Mic button */}
+                <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: 'rgba(10,22,40,0.4)' }} />
+                </div>
+                {/* Send button */}
+                <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#228DC1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FontAwesomeIcon icon={faPaperPlane} style={{ width: 14, height: 14, color: '#fff' }} />
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
-      </div>{/* end inner clip div */}
-      </div>{/* end gradient border wrapper */}
+      </div>
     </div>
   )
 }
@@ -1548,13 +1673,57 @@ function OmnichannelSection() {
 }
 
 // -- Hero Section --------------------------------------------------------------
-function HeroSection() {
+function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
   return (
-    <section className="relative overflow-hidden bg-[#f0f4f9] pt-32 pb-16">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 65% 20%, rgba(34,141,193,0.18) 0, transparent 55%), radial-gradient(circle at 90% 60%, rgba(144,62,142,0.14) 0, transparent 45%), radial-gradient(circle at 10% 85%, rgba(34,141,193,0.05) 0, transparent 40%)' }}
-      />
+    <section className="relative overflow-hidden pt-32 pb-16" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
+
+      {/* Diagonal dot-grid background pattern */}
+      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="kaiHeroGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <circle cx="1" cy="1" r="1" fill="rgba(34,141,193,0.35)" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#kaiHeroGrid)" />
+        </svg>
+      </div>
+
+      {/* Diagonal connecting lines */}
+      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.12 }}>
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="kaiHeroLines" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="40" x2="80" y2="40" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
+              <line x1="40" y1="0" x2="40" y2="80" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#kaiHeroLines)" />
+        </svg>
+      </div>
+
+      {/* Decorative + crosses */}
+      {[
+        { top: '18%', left: '6%' }, { top: '52%', left: '3%' },
+        { top: '72%', left: '9%' }, { top: '30%', left: '42%' },
+        { top: '62%', left: '38%' },
+      ].map((pos, i) => (
+        <div key={i} className="absolute pointer-events-none select-none text-[#228DC1]"
+          style={{ top: pos.top, left: pos.left, fontSize: 18, opacity: 0.35, fontWeight: 300, lineHeight: 1 }}>+</div>
+      ))}
+
+      {/* Decorative diamond */}
+      <div className="absolute pointer-events-none" style={{ top: '42%', left: '4.5%', opacity: 0.25 }}>
+        <svg width="14" height="14" viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" transform="rotate(45 7 7)" fill="none" stroke="#228DC1" strokeWidth="1.5"/></svg>
+      </div>
+
+      {/* Decorative dots */}
+      <div className="absolute rounded-full pointer-events-none" style={{ top: '12%', left: '7%', width: 5, height: 5, background: 'rgba(34,141,193,0.3)' }} />
+      <div className="absolute rounded-full pointer-events-none" style={{ top: '68%', left: '5%', width: 6, height: 6, background: 'rgba(144,62,142,0.35)' }} />
+
+      {/* Radial glow */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(34,141,193,0.12) 0, transparent 55%)' }} />
+
       <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
 
@@ -1572,12 +1741,12 @@ function HeroSection() {
               Kai connects to your systems, follows your rules and helps teams resolve work faster.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
+              <button type="button" onClick={onDemoClick} className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
                 Request a Demo
-              </Link>
-              <Link to="/contact" className="px-7 py-3.5 border border-gray-200 bg-white text-[#0a1628]/70 text-[13px] font-medium hover:border-[#228DC1]/50 hover:text-[#228DC1] transition-all">
+              </button>
+              <button type="button" onClick={onDemoClick} className="px-7 py-3.5 border border-gray-200 bg-white text-[#0a1628]/70 text-[13px] font-medium hover:border-[#228DC1]/50 hover:text-[#228DC1] transition-all">
                 Talk to an expert
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -1595,13 +1764,32 @@ function HeroSection() {
 // -- Main page -----------------------------------------------------------------
 export default function KaiPage() {
   const [stepsRef, stepsInView] = useInView()
-  const [capsRef, capsInView] = useInView()
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+  const openDemo = () => setIsDemoOpen(true)
+  const closeDemo = () => setIsDemoOpen(false)
 
   return (
     <>
       <ScrollProgress />
+      <ProductDemoModal
+        isOpen={isDemoOpen}
+        onClose={closeDemo}
+        productName="Kai"
+        productLabel="Enterprise AI Agent"
+        title="See Kai in action"
+        description="Share a few details and we will show how Kai can resolve customer and operational workflows across your systems, channels and governance rules."
+        logoSrc="/kai-logo-horiz.svg"
+        accentColor="#228DC1"
+        trustItems={['British Council', 'Enterprise support', 'Governed AI', 'Hybrid deployment', 'Live integrations', 'Audit-ready workflows']}
+        outcomes={[
+          'A focused demo around your support or service workflow',
+          'Recommended integrations for your CRM, helpdesk and channels',
+          'Guidance on escalation, consent and governance design',
+          'A practical pilot path with measurable resolution outcomes',
+        ]}
+      />
       {/* -- Hero -- */}
-      <HeroSection />
+      <HeroSection onDemoClick={openDemo} />
 
       {/* -- Single combined logo strip -- */}
       {(() => {
@@ -1684,7 +1872,7 @@ export default function KaiPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <StatCard prefix="+" num={22.5} suffix="%" label="Containment uplift" note="Measured in production" delay={0} />
             <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="Learner satisfaction" delay={100} />
-            <StatCard num={45} suffix="s" label="Avg handle time" note="AI-resolved queries" delay={200} />
+            <StatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
             <StatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
           </div>
         </div>
@@ -1706,7 +1894,7 @@ export default function KaiPage() {
               </p>
               {[
                 { stat: '−30pp', label: 'reduction in escalation rate' },
-                { stat: '38s',   label: 'average AI handle time' },
+                { stat: '45 sec', label: 'average resolution time' },
               ].map(item => (
                 <div key={item.stat} className="flex items-baseline gap-4 pb-4 mb-4 border-b border-gray-100 last:border-0 last:mb-0 last:pb-0">
                   <span className="font-black text-[#228DC1] shrink-0" style={{ fontSize:26, letterSpacing:'-0.03em' }}>{item.stat}</span>
@@ -1845,122 +2033,6 @@ export default function KaiPage() {
       {/* -- Security & compliance -- */}
       <SecurityComplianceSection />
 
-      {/* -- Performance Graph -- */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-16 items-center">
-
-            {/* Left: heading + qualitative outcomes */}
-            <div>
-              <p className="type-label text-[#228DC1] mb-4">Measured Outcomes</p>
-              <h2 className="font-heading text-[#0a1628] mb-5">
-                Performance<br />you can measure.
-              </h2>
-              <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-12">
-                From the first conversation, Kai tracks containment, CSAT and handle time. You get a clear picture of what is working before the end of the first week.
-              </p>
-              <div className="space-y-8">
-                {[
-                  { icon: faBolt,      label: 'Resolve at first touch',   desc: 'Kai handles routine queries from start to finish, keeping agents free for complex work.' },
-                  { icon: faChartBar, label: 'Track what matters',       desc: 'Containment, CSAT and escalation rates visible from the moment Kai goes live.' },
-                  { icon: faShield,   label: 'Governed before go-live',  desc: 'Rules, audit trails and escalation paths are configured, not bolted on later.' },
-                ].map(({ icon, label, desc }) => (
-                  <div key={label} className="flex items-start gap-4">
-                    <div className="w-9 h-9 flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: '#228DC112' }}>
-                      <FontAwesomeIcon icon={icon} className="w-4 h-4 text-[#228DC1]" />
-                    </div>
-                    <div>
-                      <p className="text-[#0a1628] font-semibold text-[14px] mb-1">{label}</p>
-                      <p className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Dashboard screenshot */}
-            <div className="border border-gray-200 shadow-[0_8px_40px_rgba(10,22,40,0.08)] overflow-hidden">
-              <div className="flex items-center gap-1.5 px-4 py-3 bg-[#f3f4f6] border-b border-gray-200">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#fc5f57]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-                <span className="ml-3 text-[11px] font-medium text-[#0a1628]/40 tracking-wide">Kai Dashboard · Live view</span>
-              </div>
-              <img
-                src="/kai-mockup.png"
-                alt="Kai dashboard"
-                className="w-full block"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* -- Animated Demo -- */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <p className="type-label text-[#228DC1] mb-4">See Kai in Action</p>
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              From first message<br />to resolved ticket.
-            </h2>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">
-              Kai reads intent, checks live systems and keeps the workflow moving.
-            </p>
-          </div>
-          <KaiDashboard />
-          <div className="mt-10 grid sm:grid-cols-3 gap-4">
-            {[
-              { label: 'System-connected', desc: 'CRM, ticketing and messaging in one flow.' },
-              { label: 'Policy-governed', desc: 'Actions follow your configured rules.' },
-              { label: 'Outcome-measured', desc: 'Containment, CSAT and escalation tracked live.' },
-            ].map((item) => (
-              <div key={item.label} className="bg-white border border-gray-200 px-8 py-6 shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
-                <p className="text-[#0a1628] font-semibold text-[14px] mb-2">{item.label}</p>
-                <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* -- Capabilities -- */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">What Kai Does</p>
-          <h2 className="font-heading text-[#0a1628] mb-12">
-            Built to act,<br />not just answer.
-          </h2>
-          <div ref={capsRef} className="grid lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
-            {[
-              {
-                icon: faComments,
-                label: 'Resolve customer issues.',
-                desc: 'Kai handles queries from first message to closed ticket, without waiting for a human.',
-              },
-              {
-                icon: faArrowTrendUp,
-                label: 'Identify leads.',
-                desc: 'Spot buying signals in every conversation and route high-intent contacts to your sales team instantly.',
-              },
-              {
-                icon: faWandSparkles,
-                label: 'Coming soon.',
-                desc: 'More capabilities are on the way. Check back shortly.',
-              },
-            ].map((cap, i) => (
-              <div key={cap.label} className="group bg-white p-8 hover:bg-[#f8fafc] transition-colors" style={reveal(capsInView, i * 120)}>
-                <div className="w-10 h-10 flex items-center justify-center mb-5" style={{ backgroundColor: '#228DC112' }}>
-                  <FontAwesomeIcon icon={cap.icon} className="w-5 h-5 text-[#228DC1]" />
-                </div>
-                <h3 className="text-[#0a1628] font-semibold text-[20px] leading-snug mb-2">{cap.label}</h3>
-                <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">{cap.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* -- What Kai Delivers -- */}
       <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
@@ -1975,23 +2047,28 @@ export default function KaiPage() {
           </div>
 
           {/* Kai capabilities table */}
-          <div className="border border-gray-200 overflow-hidden shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
+          <div className="overflow-hidden rounded-[16px] border border-[#dbe6ef] bg-white shadow-[0_18px_48px_rgba(10,22,40,0.08)]">
             {/* Header row */}
-            <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-[#0a1628]">
-              <div className="px-6 py-4 border-r border-white/10">
-                <p className="text-white/40 text-[11px] font-semibold uppercase tracking-[0.18em]">Capability</p>
+            <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-[#f3f8fc]">
+              <div className="px-7 py-8 border-r border-[#dbe6ef] flex items-center">
+                <p className="text-[#0a1628]/42 text-[11px] font-bold uppercase tracking-[0.32em]">Capability</p>
               </div>
-              <div className="px-6 py-4 border-r border-white/10 flex items-center gap-3">
-                <img
-                  src="/kai-logo.svg"
-                  alt="Kai"
-                  className="shrink-0 h-6 w-6 object-contain brightness-0 invert"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                />
-                <p className="text-[13px] font-bold text-[#228DC1]">Kai</p>
+              <div className="relative px-6 py-5 border-r border-[#247fb1]/25 bg-[#408fc1] shadow-[0_10px_28px_rgba(34,141,193,0.22)]">
+                <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/16 px-3 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-white ring-1 ring-white/20">
+                  <span className="text-[9px] leading-none">◆</span>
+                  Recommended
+                </div>
+                <div className="flex h-12 w-[78px] items-center justify-center rounded-[7px] bg-white shadow-[0_10px_22px_rgba(10,22,40,0.12)]">
+                  <img
+                    src="/kai-logo-horiz.svg"
+                    alt="Kai"
+                    className="h-9 w-[70px] object-contain"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                  />
+                </div>
               </div>
-              <div className="px-6 py-4 flex items-center">
-                <p className="text-[13px] font-semibold text-white/40">Typical AI Agent</p>
+              <div className="px-7 py-8 flex items-center">
+                <p className="text-[#0a1628]/42 text-[11px] font-bold uppercase tracking-[0.32em]">Typical AI Agent</p>
               </div>
             </div>
 
@@ -2033,33 +2110,40 @@ export default function KaiPage() {
                 competitor: false,
               },
             ].map((row, rowIdx) => (
-              <div key={row.label} className={`grid grid-cols-[1.2fr_1fr_1fr] border-t border-gray-100 ${rowIdx % 2 === 0 ? 'bg-white' : 'bg-[#fafafa]'}`}>
-                <div className="px-6 py-4 border-r border-gray-100">
-                  <p className="text-[#0a1628] text-[13px] font-semibold">{row.label}</p>
+              <div key={row.label} className={`grid grid-cols-[1.2fr_1fr_1fr] border-t border-[#edf1f5] ${rowIdx % 2 === 0 ? 'bg-white' : 'bg-[#f8fafc]'}`}>
+                <div className="px-7 py-5 border-r border-[#edf1f5] flex items-center">
+                  <p className="text-[#0a1628] text-[13px] font-bold leading-snug">{row.label}</p>
                 </div>
-                {/* Kai cell � highlighted */}
-                <div className="px-6 py-4 border-r border-gray-100 bg-[#e5f4fa]/40">
+                {/* Kai cell - highlighted */}
+                <div className="px-6 py-5 border-r border-[#bddfee] bg-[#e4f3fa] flex items-center">
                   {typeof row.kai === 'boolean' ? (
-                    <FontAwesomeIcon icon={faCheck} className="w-4 h-4 text-[#228DC1]" />
+                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#2f8fc5] text-white shadow-[0_7px_16px_rgba(34,141,193,0.26)]">
+                      <FontAwesomeIcon icon={faCheck} className="w-3.5 h-3.5" />
+                    </span>
                   ) : (
-                    <p className="text-[12px] font-medium text-[#0a1628]">{row.kai}</p>
+                    <p className="text-[13px] font-bold text-[#0c5f92] leading-relaxed">{row.kai}</p>
                   )}
                 </div>
                 {/* Competitor cell */}
-                <div className="px-6 py-4">
+                <div className="px-7 py-5 flex items-center bg-white/50">
                   {typeof row.competitor === 'boolean' ? (
                     row.competitor
                       ? <FontAwesomeIcon icon={faCheck} className="w-4 h-4 text-[#228DC1]" />
-                      : <FontAwesomeIcon icon={faXmark} className="w-4 h-4 text-gray-300" />
+                      : <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f0f3f6] text-[#cfd6de]">
+                          <FontAwesomeIcon icon={faXmark} className="w-3.5 h-3.5" />
+                        </span>
                   ) : (
-                    <p className="text-[12px] font-normal text-[#0a1628]/50">{row.competitor}</p>
+                    <p className="text-[13px] font-normal text-[#0a1628]/48 leading-relaxed">{row.competitor}</p>
                   )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 p-6 border border-[#228DC1]/20 bg-[#e5f4fa]/40 shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
+          <div className="mt-6 flex items-center gap-3 rounded-[10px] border border-[#bfe5f7] bg-[#eaf6fc] px-5 py-5 shadow-[0_8px_22px_rgba(34,141,193,0.08)]">
+            <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2f8fc5] text-white">
+              <FontAwesomeIcon icon={faCheck} className="h-3 w-3" />
+            </span>
             <p className="text-[#0a1628] text-[14px] font-medium leading-relaxed">
               <span className="text-[#228DC1] font-semibold">The Kai difference:</span>{' '}
               Configure Kai around your escalation logic, consent flows, integrations and governance model.
@@ -2078,16 +2162,24 @@ export default function KaiPage() {
               One channel. One workflow. Measure real outcomes, then scale.
             </p>
           </div>
-          <Link
-            to="/contact"
+          <button
+            type="button"
+            onClick={openDemo}
             className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1] text-[#228DC1] text-[13px] font-semibold hover:bg-[#228DC1] hover:text-white transition-all"
           >
             Request a Demo <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-          </Link>
+          </button>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection
+        title="Ready to see Kai in your workflows?"
+        subtitle="Talk to our AI delivery team about a focused pilot across your systems, channels and governance model."
+        primaryLabel="Request a Demo"
+        primaryOnClick={openDemo}
+        secondaryLabel="View Solutions"
+        secondaryHref="/solutions"
+      />
     </>
   )
 }

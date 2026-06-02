@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faShield, faArrowsRotate, faWandSparkles, faCircleCheck, faMicrophone, faPen, faImage, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import ProductDemoModal from '@/components/ProductDemoModal'
 
 // -- Hero Dashboard (Student Hub mockup) --------------------------------------
 const HERO_SKILLS = [
@@ -202,7 +202,7 @@ function AruvaHeroDashboard() {
           </div>
 
           {/* Bloom + Insights panel */}
-          <div className="shrink-0 bg-white border-l border-gray-100 overflow-y-auto" style={{ width: '178px', padding: '12px 11px' }}>
+          <div className="shrink-0 bg-white border-l border-gray-100 overflow-hidden" style={{ width: '178px', padding: '12px 11px' }}>
             <p style={{ fontSize: '8px', fontWeight: 800, letterSpacing: '0.14em', color: '#0a1628', textTransform: 'uppercase', lineHeight: 1.2 }}>BLOOM TAXONOMY MASTERY</p>
             <p style={{ fontSize: '6.5px', color: 'rgba(10,22,40,0.38)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px', marginBottom: '2px', lineHeight: 1.3 }}>Shows depth of understanding across cognitive levels</p>
             <svg viewBox="0 0 190 176" style={{ width: '100%', display: 'block', marginBottom: '5px' }}>
@@ -354,7 +354,8 @@ const audiences = [
 ]
 
 // -- Platform pillars ----------------------------------------------------------
-// -- How It Works sticky-scroll step text -------------------------------------
+
+// -- How It Works sticky step text ---------------------------------------------
 function HIWStepText({ step, index, total }: { step: { num: string; label: string; desc: string; detail: string; visual: string }; index: number; total: number }) {
   const [active, setActive] = React.useState(false)
   React.useEffect(() => {
@@ -375,19 +376,18 @@ function HIWStepText({ step, index, total }: { step: { num: string; label: strin
     <div style={{
       padding: '28px 0',
       borderBottom: index < total - 1 ? '1px solid #f0f4f8' : 'none',
-      opacity: active ? 1 : 0.35,
+      opacity: active ? 1 : 0.32,
       transform: active ? 'translateX(0)' : 'translateX(-6px)',
       transition: 'opacity 0.4s ease, transform 0.4s ease',
     }}>
-      <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
-        <span style={{ fontSize:12, fontWeight:800, color: active ? '#228DC1' : '#9ca3af', letterSpacing:'0.12em', transition:'color 0.3s' }}>{step.num}</span>
-        <div style={{ height:1, width:28, background: active ? '#228DC1' : '#e5e7eb', transition:'background 0.3s' }}/>
-        {active && <div style={{ width:6, height:6, borderRadius:'50%', background:'#228DC1', animation:'mmCursor 1.5s ease-in-out infinite' }}/>}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+        <span style={{ fontSize: 12, fontWeight: 800, color: active ? '#228DC1' : '#9ca3af', letterSpacing: '0.12em', transition: 'color 0.3s' }}>{step.num}</span>
+        <div style={{ height: 1, width: 28, background: active ? '#228DC1' : '#e5e7eb', transition: 'background 0.3s' }} />
       </div>
-      <h3 style={{ fontSize:22, fontWeight:700, color:'#0a1628', lineHeight:1.2, marginBottom:12 }}>{step.label}</h3>
-      <p style={{ fontSize:16, color:'rgba(10,22,40,0.65)', lineHeight:1.7, marginBottom:10 }}>{step.desc}</p>
+      <h3 style={{ fontSize: 22, fontWeight: 700, color: '#0a1628', lineHeight: 1.2, marginBottom: 12 }}>{step.label}</h3>
+      <p style={{ fontSize: 16, color: 'rgba(10,22,40,0.65)', lineHeight: 1.7, marginBottom: 10 }}>{step.desc}</p>
       {step.detail && (
-        <p style={{ fontSize:13, color: active ? '#228DC1' : 'rgba(10,22,40,0.38)', lineHeight:1.6, transition:'color 0.3s', fontStyle:'italic' }}>{step.detail}</p>
+        <p style={{ fontSize: 13, color: active ? '#228DC1' : 'rgba(10,22,40,0.38)', lineHeight: 1.6, transition: 'color 0.3s', fontStyle: 'italic' }}>{step.detail}</p>
       )}
     </div>
   )
@@ -446,7 +446,6 @@ function SyllabusVisual() {
         </div>
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h14M11 2l4 4-4 4" stroke="#228DC1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
         <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[14px] font-bold" style={{ background: '#228DC115', border: '1px solid #228DC130', color: '#228DC1' }}>
-          <div className="w-1.5 h-1.5 rounded-full bg-[#228DC1]" />
           Smart Syllabus
         </div>
       </div>
@@ -458,8 +457,7 @@ function SyllabusVisual() {
           { week: 'Week 4', topic: 'Competitive Advantage',  mode: 'Guided hints',  color: '#7c3aed' },
           { week: 'Week 5', topic: 'Market Segmentation',    mode: 'Open tutor',    color: '#059669' },
         ].map(row => (
-          <div key={row.week} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f8fafc] border border-gray-100">
-            <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: row.color }} />
+          <div key={row.week} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f8fafc] border border-gray-100" style={{ borderLeft: `2px solid ${row.color}` }}>
             <span className="text-[#0a1628]/35 text-[14px] font-semibold w-12 shrink-0">{row.week}</span>
             <span className="text-[#0a1628]/70 text-[14px] font-medium flex-1">{row.topic}</span>
             <span className="text-[14px] px-2 py-0.5 rounded-full font-semibold" style={{ background: row.color + '12', color: row.color, border: '1px solid ' + row.color + '25' }}>{row.mode}</span>
@@ -468,7 +466,6 @@ function SyllabusVisual() {
       </div>
       {/* Status */}
       <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#e5f4fa] border border-[#228DC1]/20">
-        <div className="w-2 h-2 rounded-full bg-[#228DC1] shrink-0" />
         <span className="text-[14px] text-[#228DC1] font-semibold">Policy layer compiled. AI is ready to teach</span>
       </div>
     </div>
@@ -476,98 +473,178 @@ function SyllabusVisual() {
 }
 
 function AlignVisual() {
+  const inputs = [
+    { label: 'Outcomes & objectives', color: '#228DC1' },
+    { label: 'Rubric rules',          color: '#7c3aed' },
+    { label: 'Approved content',      color: '#059669' },
+    { label: 'AI mode: Socratic',     color: '#d97706' },
+  ]
+  const outputs = [
+    { label: 'Policy Graph',  color: '#228DC1' },
+    { label: 'RAG Scope',     color: '#7c3aed' },
+    { label: 'Hint Stages',   color: '#059669' },
+    { label: 'Rubric Rules',  color: '#d97706' },
+  ]
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
-      <p className="text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-5">AI Policy Compilation</p>
-      <div className="flex items-stretch gap-4">
+      {/* Header */}
+      <div className="mb-5">
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1">Policy Compilation</p>
+        <p className="text-[#0a1628] font-semibold text-[15px]">Course inputs → compiled AI policy</p>
+      </div>
+
+      {/* Three-column layout: inputs | arrow | outputs */}
+      <div className="flex items-center gap-4 mb-5">
         {/* Inputs */}
-        <div className="flex flex-col gap-2 flex-1">
-          {[
-            { label: 'Outcomes',         color: '#228DC1' },
-            { label: 'Rubric rules',     color: '#7c3aed' },
-            { label: 'Approved content', color: '#059669' },
-            { label: 'AI mode',          color: '#d97706' },
-          ].map(item => (
-            <div key={item.label} className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#f8fafc] border border-gray-100">
-              <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
-              <span className="text-[#0a1628]/65 text-[14px] font-medium">{item.label}</span>
+        <div className="flex-1 space-y-2">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Course Inputs</p>
+          {inputs.map(row => (
+            <div key={row.label} className="px-3 py-2 rounded-lg bg-[#f8fafc] border border-gray-100 text-[13px] font-semibold text-[#0a1628]/70" style={{ borderLeft: `2px solid ${row.color}` }}>
+              {row.label}
             </div>
           ))}
         </div>
+
         {/* Arrow */}
-        <div className="flex flex-col items-center justify-center gap-2 shrink-0 px-2">
-          <div className="flex-1 w-px bg-gradient-to-b from-transparent to-[#228DC1]/40" />
-          <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#e5f4fa] border border-[#228DC1]/30">
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M3 8l4 5 4-5" stroke="#228DC1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </div>
-          <div className="flex-1 w-px bg-gradient-to-b from-[#228DC1]/40 to-transparent" />
+        <div className="shrink-0 flex flex-col items-center gap-1">
+          <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
+            <path d="M1 8h28M22 2l8 6-8 6" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="text-[9px] font-black uppercase tracking-[0.12em] text-[#228DC1]/70">compile</span>
         </div>
+
         {/* Outputs */}
-        <div className="flex flex-col gap-2 flex-1">
-          {[
-            { label: 'Policy Graph', color: '#228DC1' },
-            { label: 'RAG Scope',    color: '#7c3aed' },
-            { label: 'Hint Stages',  color: '#059669' },
-            { label: 'Rubric Rules', color: '#d97706' },
-          ].map(n => (
-            <div key={n.label} className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl" style={{ background: n.color + '0e', border: '1px solid ' + n.color + '25' }}>
-              <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: n.color }} />
-              <span className="text-[14px] font-semibold" style={{ color: n.color }}>{n.label}</span>
+        <div className="flex-1 space-y-2">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Policy Outputs</p>
+          {outputs.map(row => (
+            <div key={row.label} className="px-3 py-2 rounded-lg bg-[#f8fafc] border border-gray-100 text-[13px] font-semibold text-[#0a1628]/70" style={{ borderLeft: `2px solid ${row.color}` }}>
+              {row.label}
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Footer */}
+      <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#f0fdf4] border border-[#059669]/20">
+        <span className="text-[14px] text-[#059669] font-semibold">Policy layer compiled. AI ready to teach.</span>
       </div>
     </div>
   )
 }
 
 function TutorVisual() {
+  const conversations = [
+    {
+      name: 'Maria Garcia',
+      initials: 'MG',
+      style: 'Analogy-oriented',
+      accent: '#f59e0b',
+      soft: '#fff7ed',
+      border: '#fed7aa',
+      prompt: 'What does mitochondria actually do?',
+      strategy: 'Analogy-driven reinforcement',
+      response: 'Think of mitochondria as the power station of the cell. Just like a city needs electricity, the cell needs ATP to keep every process running.',
+      followUp: 'So mitochondria basically create energy for the cell?',
+      signal: 'Analogy understood',
+    },
+    {
+      name: 'Elena Rossi',
+      initials: 'ER',
+      style: 'Analytical',
+      accent: '#6d5dfc',
+      soft: '#f3f0ff',
+      border: '#d8ccff',
+      prompt: 'If oxygen drops, what changes in respiration?',
+      strategy: 'Analytical application reinforcement',
+      response: 'Mitochondria produce ATP through cellular respiration. When oxygen is limited, aerobic respiration becomes less efficient and ATP output decreases.',
+      followUp: 'So low oxygen means the cell has less usable energy?',
+      signal: 'Reasoning depth improved',
+    },
+  ]
+
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
       {/* Header */}
-      <div className="px-5 py-3 flex items-center justify-between bg-[#f8fafc] border-b border-gray-100">
-        <div className="flex items-center gap-2">
-          <div className="bg-white rounded-lg flex items-center px-2 border border-gray-200 shadow-sm" style={{ height: 26 }}>
-            <img
-              src="/aruva-logo.png"
-              alt="Aruva"
-              style={{ height: 14, width: 'auto', objectFit: 'contain' }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-            />
+      <div className="px-5 py-3 flex flex-col gap-3 bg-[#f8fafc] border-b border-gray-100">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <div className="bg-white rounded-lg flex items-center px-2 border border-gray-200 shadow-sm" style={{ height: 26 }}>
+              <img
+                src="/aruva-logo.png"
+                alt="Aruva"
+                style={{ height: 14, width: 'auto', objectFit: 'contain' }}
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+            </div>
+            <span className="text-[#0a1628]/60 text-[14px] font-semibold">Adaptive Tutor</span>
+            <span className="text-[#0a1628]/20 text-[14px]">|</span>
+            <span className="text-[#0a1628]/40 text-[14px]">Biology 101</span>
           </div>
-          <span className="text-[#0a1628]/60 text-[14px] font-semibold">Tutor</span>
-          <span className="text-[#0a1628]/20 text-[14px]">·</span>
-          <span className="text-[#0a1628]/40 text-[14px]">Week 3 · Socratic mode</span>
+          <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
         </div>
-        <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
+        <div className="grid grid-cols-2 gap-2">
+          {conversations.map((student) => (
+            <div key={student.name} className="flex items-center gap-2 rounded-xl px-3 py-2 border shadow-sm" style={{ background: student.soft, borderColor: student.border }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: student.accent }}>
+                {student.initials}
+              </div>
+              <div className="min-w-0">
+                <p className="text-[12px] font-black uppercase tracking-[0.14em] truncate" style={{ color: student.accent }}>{student.name}</p>
+                <p className="text-[12px] font-semibold text-[#0a1628]/70 truncate">{student.style}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       {/* Messages */}
-      <div className="p-5 space-y-4 bg-[#fafafa]">
-        <div className="flex justify-end">
-          <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[80%] bg-[#228DC1]">
-            <p className="text-white text-[14px] leading-relaxed">Can you solve this Porter's Five Forces analysis for me?</p>
-          </div>
-        </div>
-        <div className="flex gap-2.5 items-start">
-          <div className="rounded-md flex items-center justify-center shrink-0 bg-white border border-gray-200 shadow-sm px-2" style={{ height: 28, minWidth: 28 }}>
-            <img
-              src="/aruva-logo.png"
-              alt="Aruva"
-              style={{ height: 12, width: 'auto', objectFit: 'contain' }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-            />
-          </div>
-          <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-sm">
-            <p className="text-[#0a1628]/80 text-[14px] leading-relaxed mb-2.5">Which of the five forces has the strongest impact here? Start with your instinct.</p>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[14px] font-semibold text-[#228DC1] bg-[#e5f4fa] border border-[#228DC1]/20">
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.1-1.1m-.757-4.9a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              Porter, 2008, Ch.2
+      <div className="p-5 bg-[#fafafa]">
+        <div className="grid md:grid-cols-2 gap-4">
+          {conversations.map((student) => (
+            <div key={student.name} className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black" style={{ background: student.accent }}>
+                  {student.initials}
+                </div>
+                <div>
+                  <p className="text-[13px] font-bold text-[#0a1628] leading-none">{student.name}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mt-1" style={{ color: student.accent }}>{student.strategy}</p>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex justify-end">
+                  <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[88%]" style={{ background: student.accent }}>
+                    <p className="text-white text-[13px] leading-relaxed">{student.prompt}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2.5 items-start">
+                  <div className="rounded-md flex items-center justify-center shrink-0 bg-white border border-gray-200 shadow-sm px-2" style={{ height: 28, minWidth: 28 }}>
+                    <img
+                      src="/aruva-logo.png"
+                      alt="Aruva"
+                      style={{ height: 12, width: 'auto', objectFit: 'contain' }}
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                    />
+                  </div>
+                  <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-sm">
+                    <p className="text-[#0a1628]/80 text-[13px] leading-relaxed">{student.response}</p>
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[88%] bg-[#f8fafc] border border-gray-100">
+                    <p className="text-[#0a1628]/75 text-[13px] leading-relaxed">{student.followUp}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 px-3 py-2 rounded-xl" style={{ background: student.soft, border: `1px solid ${student.border}` }}>
+                  <span className="text-[13px] font-black shrink-0" style={{ color: student.accent }}>✓</span>
+                  <p className="text-[12px] font-black uppercase tracking-[0.08em]" style={{ color: student.accent }}>{student.signal}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#f0fdf4] border border-[#059669]/20">
-          <div className="w-1.5 h-1.5 rounded-full shrink-0 bg-[#059669]" />
-          <p className="text-[14px] font-semibold text-[#059669]">Mastery signal captured. Learning Curve updated</p>
+          ))}
         </div>
       </div>
     </div>
@@ -608,7 +685,7 @@ function AnalyticsVisual() {
         ))}
       </div>
       <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-[#fef3c7] border border-[#d97706]/20">
-        <div className="w-2 h-2 rounded-full mt-0.5 shrink-0 bg-[#d97706]" />
+        <span className="text-[13px] shrink-0 mt-0.5 font-bold" style={{ color: '#d97706' }}>▲</span>
         <div>
           <p className="text-[14px] font-semibold text-[#d97706]">3 students at risk on Buyer Power</p>
           <p className="text-[14px] text-[#d97706]/70 mt-0.5">Gap detected in Week 3. Intervene now</p>
@@ -618,39 +695,81 @@ function AnalyticsVisual() {
   )
 }
 
-
+/*
+function TutorVisualOld() {
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
+      <div className="px-5 py-3 flex items-center justify-between bg-[#f8fafc] border-b border-gray-100">
+        <div className="flex items-center gap-2">
+          <div className="bg-white rounded-lg flex items-center px-2 border border-gray-200 shadow-sm" style={{ height: 26 }}>
+            <img
+              src="/aruva-logo.png"
+              alt="Aruva"
+              style={{ height: 14, width: 'auto', objectFit: 'contain' }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          </div>
+          <span className="text-[#0a1628]/60 text-[14px] font-semibold">Tutor</span>
+          <span className="text-[#0a1628]/20 text-[14px]">·</span>
+          <span className="text-[#0a1628]/40 text-[14px]">Week 3 · Socratic mode</span>
+        </div>
+        <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
+      </div>
+      Messages
+      <div className="p-5 space-y-4 bg-[#fafafa]">
+        <div className="flex justify-end">
+          <div className="px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[80%] bg-[#228DC1]">
+            <p className="text-white text-[14px] leading-relaxed">Can you solve this Porter's Five Forces analysis for me?</p>
+          </div>
+        </div>
+        <div className="flex gap-2.5 items-start">
+          <div className="rounded-md flex items-center justify-center shrink-0 bg-white border border-gray-200 shadow-sm px-2" style={{ height: 28, minWidth: 28 }}>
+            <img
+              src="/aruva-logo.png"
+              alt="Aruva"
+              style={{ height: 12, width: 'auto', objectFit: 'contain' }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          </div>
+          <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-sm">
+            <p className="text-[#0a1628]/80 text-[14px] leading-relaxed mb-2.5">Which of the five forces has the strongest impact here? Start with your instinct.</p>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[14px] font-semibold text-[#228DC1] bg-[#e5f4fa] border border-[#228DC1]/20">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.1-1.1m-.757-4.9a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              Porter, 2008, Ch.2
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#f0fdf4] border border-[#059669]/20">
+          <div className="w-1.5 h-1.5 rounded-full shrink-0 bg-[#059669]" />
+          <p className="text-[14px] font-semibold text-[#059669]">Mastery signal captured. Learning Curve updated</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+*/
 
 
 // -- Platform architecture diagram ---------------------------------------------
 function PlatformDiagram() {
   const layers = [
-    { label: 'Smart Syllabus',          sublabel: 'How the AI knows your course',          color: '#228DC1', items: ['Outcome mapping','Teaching rules','Rubric logic','AI boundaries'] },
-    { label: 'Learning Curve AI',        sublabel: 'Each student, individually tracked',   color: '#7c3aed', items: ['Mastery tracking','Confidence signals','Workload modelling','Early risk signals'] },
-    { label: 'Governance Layer',         sublabel: 'Your institution, your rules',          color: '#059669', items: ['Role based access','Full audit trail','Data residency','Policy enforcement'] },
-    { label: 'Traceable Knowledge Layer',sublabel: 'Every answer, fully sourced',           color: '#d97706', items: ['Source provenance','Citation resolver','Attribution','AI auditability'] },
+    { label: 'Smart Syllabus',           sublabel: 'How the AI knows your course',        color: '#228DC1', items: ['Outcome mapping','Teaching rules','Rubric logic','AI boundaries'] },
+    { label: 'Learning Curve AI',         sublabel: 'Each student, individually tracked', color: '#7c3aed', items: ['Mastery tracking','Confidence signals','Workload modelling','Early risk signals'] },
+    { label: 'Governance Layer',          sublabel: 'Your institution, your rules',        color: '#059669', items: ['Role based access','Full audit trail','Data residency','Policy enforcement'] },
+    { label: 'Traceable Knowledge Layer', sublabel: 'Every answer, fully sourced',         color: '#d97706', items: ['Source provenance','Citation resolver','Attribution','AI auditability'] },
   ]
 
   const surfaces = [
-    {
-      label: 'Adaptive Tutor', desc: 'Teaches from your course, not the open web', color: '#228DC1',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>,
-    },
-    {
-      label: 'Professor Dashboard', desc: 'See where your class is, right now', color: '#7c3aed',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/></svg>,
-    },
-    {
-      label: 'Formative Assessment', desc: 'Spot the gaps while you can still close them', color: '#059669',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-    },
-    {
-      label: 'Student Planner', desc: 'Organised around what matters this week', color: '#ea580c',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>,
-    },
-    {
-      label: 'Institutional Analytics', desc: 'One view across every course you run', color: '#dc2626',
-      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>,
-    },
+    { label: 'Adaptive Tutor',         desc: 'Teaches from your course, not the open web',   color: '#228DC1',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg> },
+    { label: 'Professor Dashboard',    desc: 'See where your class is, right now',            color: '#7c3aed',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8"/></svg> },
+    { label: 'Formative Assessment',   desc: 'Spot the gaps while you can still close them', color: '#059669',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg> },
+    { label: 'Student Planner',        desc: 'Organised around what matters this week',       color: '#ea580c',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg> },
+    { label: 'Institutional Analytics',desc: 'One view across every course you run',          color: '#dc2626',
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg> },
   ]
 
   const lmsList = [
@@ -662,24 +781,30 @@ function PlatformDiagram() {
 
   const dataSources = ['SIS / Student Records','Library Systems','Assessment Tools','SSO / SAML','Email & Notifications','Attendance Data']
 
-  const topBar: React.CSSProperties = {
-    background: '#0a1628',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    padding: '7px 12px', flexShrink: 0,
-  }
-  const topBarText: React.CSSProperties = {
-    color: 'rgba(255,255,255,0.75)', fontSize: 9, fontWeight: 800,
-    letterSpacing: '0.22em', textTransform: 'uppercase', whiteSpace: 'nowrap',
-  }
+  const ZoneHeader = ({ label }: { label: string }) => (
+    <div style={{ background: '#0a1628', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+      <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' }}>{label}</span>
+    </div>
+  )
 
-  const ArrowR = () => (
-    <svg width="22" height="12" viewBox="0 0 22 12" fill="none">
-      <path d="M1 6h20M15 1l6 5-6 5" stroke="#9ca3af" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
+  const ConnectorArrow = ({ label, flip }: { label: string; flip?: boolean }) => (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+      {!flip && (
+        <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+          <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )}
+      <span style={{ fontSize: 9, fontWeight: 800, color: '#0a1628', letterSpacing: '0.14em', textTransform: 'uppercase', textAlign: 'center', lineHeight: 1.4 }}>{label}</span>
+      {flip && (
+        <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+          <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )}
+    </div>
   )
 
   return (
-    <section className="py-24" style={{ background: '#f0f4f8' }}>
+    <section className="py-24" style={{ background: '#f8fafc' }}>
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Section header */}
@@ -688,35 +813,36 @@ function PlatformDiagram() {
           <h2 className="font-heading text-[#0a1628] mb-3">
             Four layers. <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
           </h2>
-          <p className="text-[#0a1628]/55 text-[17px] font-normal leading-[1.7] max-w-xl mx-auto">
+          <p className="text-[#0a1628]/60 text-[17px] font-normal leading-[1.7] max-w-xl mx-auto">
             Not a bundle of tools. One connected system where every layer talks to the next.
           </p>
         </div>
 
-        {/* ── Main diagram: LEFT → RIGHT ── */}
-        <div className="flex items-stretch overflow-hidden border border-gray-200 shadow-sm" style={{ borderRadius: 16 }}>
+        {/* ── Main diagram ── */}
+        <div className="flex flex-col overflow-hidden shadow-[0_4px_32px_rgba(10,22,40,0.10)] border border-gray-200" style={{ borderRadius: 18 }}>
+        <div className="flex items-stretch">
 
           {/* ── ZONE 1: INTEGRATIONS ── */}
-          <div className="flex flex-col shrink-0" style={{ width: 190 }}>
-            <div style={topBar}><span style={topBarText}>Integrations</span></div>
-            <div className="flex-1 flex flex-col gap-4 px-4 py-4 bg-white border-r border-gray-100">
+          <div className="flex flex-col shrink-0" style={{ width: 196 }}>
+            <ZoneHeader label="Integrations" />
+            <div className="flex-1 flex flex-col gap-5 px-4 py-5 bg-white border-r border-gray-100">
               <div>
-                <p className="text-[9px] font-black uppercase tracking-[0.22em] text-[#0a1628]/35 mb-2">VLE / LMS</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">VLE / LMS</p>
                 <div className="flex flex-col gap-1.5">
                   {lmsList.map(lms => (
                     <span key={lms.name}
-                      className="inline-flex items-center gap-2 px-2.5 py-1.5 border bg-white text-[12px] font-semibold text-[#0a1628]"
-                      style={{ borderLeftWidth: 3, borderLeftColor: lms.color, borderTopColor: '#e5e7eb', borderRightColor: '#e5e7eb', borderBottomColor: '#e5e7eb' }}>
-                      <img src={lms.logo} alt={lms.name} className="w-3 h-3 object-contain" />{lms.name}
+                      className="inline-flex items-center gap-2 px-3 py-2 bg-white text-[12px] font-semibold text-[#0a1628]"
+                      style={{ borderLeft: `3px solid ${lms.color}`, borderTop: '1px solid #e5e7eb', borderRight: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb', borderRadius: 6 }}>
+                      <img src={lms.logo} alt={lms.name} className="w-3.5 h-3.5 object-contain" />{lms.name}
                     </span>
                   ))}
                 </div>
               </div>
               <div>
-                <p className="text-[9px] font-black uppercase tracking-[0.22em] text-[#0a1628]/35 mb-2">Data Sources</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">Data Sources</p>
                 <div className="flex flex-col gap-1.5">
                   {dataSources.map(d => (
-                    <span key={d} className="px-2.5 py-1 bg-[#f8fafc] border border-gray-200 text-[11px] font-medium text-[#0a1628]/70">
+                    <span key={d} className="px-3 py-1.5 bg-[#f1f5f9] border border-gray-200 text-[11px] font-medium text-[#0a1628]/80" style={{ borderRadius: 5 }}>
                       {d}
                     </span>
                   ))}
@@ -725,26 +851,19 @@ function PlatformDiagram() {
             </div>
           </div>
 
-          {/* ── CONNECTOR: Sync & Deploy / Read & Write ── */}
-          <div className="flex flex-col items-center justify-center gap-3 px-3 bg-[#f8fafc] border-r border-gray-100 shrink-0" style={{ width: 78 }}>
-            <div className="flex flex-col items-center gap-1.5">
-              <ArrowR />
-              <span className="text-[8px] font-black uppercase tracking-[0.14em] text-[#0a1628]/40 text-center leading-tight">Sync &amp;<br/>Deploy</span>
-            </div>
-            <div className="w-full h-px bg-gray-200" />
-            <div className="flex flex-col items-center gap-1.5">
-              <span className="text-[8px] font-black uppercase tracking-[0.14em] text-[#0a1628]/40 text-center leading-tight">Read &amp;<br/>Write</span>
-              <ArrowR />
-            </div>
+          {/* ── CONNECTOR LEFT ── */}
+          <div className="flex flex-col items-center justify-center gap-5 shrink-0 bg-[#f1f5f9] border-r border-gray-200" style={{ width: 86 }}>
+            <ConnectorArrow label={'Sync &\nDeploy'} />
+            <div style={{ width: '60%', height: 1, background: '#cbd5e1' }} />
+            <ConnectorArrow label={'Read &\nWrite'} flip />
           </div>
 
           {/* ── ZONE 2: SERVICES ── */}
           <div className="flex flex-col flex-1">
-            <div style={topBar}><span style={topBarText}>Services</span></div>
-            {/* Platform label sits above all rows */}
-            <div className="bg-white border-b border-gray-100 px-5 py-3 flex items-center justify-center gap-3">
+            <ZoneHeader label="Services" />
+            <div className="bg-[#f8fafc] border-b border-gray-100 px-5 py-2.5 flex items-center justify-center gap-3">
               <div className="h-px flex-1 bg-gray-200" />
-              <p className="font-black text-[#0a1628]/45 text-[10px] uppercase tracking-[0.22em] shrink-0">
+              <p className="font-black text-[#0a1628]/60 text-[10px] uppercase tracking-[0.2em] shrink-0 px-2">
                 Aruva Intelligent Education Platform
               </p>
               <div className="h-px flex-1 bg-gray-200" />
@@ -753,25 +872,25 @@ function PlatformDiagram() {
               {layers.map(layer => (
                 <div key={layer.label} className="flex items-stretch">
                   {/* Coloured identity block */}
-                  <div className="shrink-0 flex flex-col justify-center px-4 py-4"
-                    style={{ width: 180, background: layer.color, minHeight: 76 }}>
+                  <div className="shrink-0 flex flex-col justify-center px-5 py-4"
+                    style={{ width: 190, background: layer.color, minHeight: 82 }}>
                     <p className="text-white font-bold text-[13px] leading-snug">{layer.label}</p>
-                    <p className="text-white/75 text-[10px] font-normal leading-snug mt-1">{layer.sublabel}</p>
+                    <p className="text-white/80 text-[11px] font-normal leading-snug mt-1">{layer.sublabel}</p>
                   </div>
-                  {/* Small arrow bridge */}
-                  <div className="flex items-center justify-center shrink-0 px-2"
-                    style={{ background: layer.color + '18' }}>
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                      <path d="M1 5h12M8 1l5 4-5 4" stroke={layer.color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  {/* Arrow bridge */}
+                  <div className="flex items-center justify-center shrink-0 px-3"
+                    style={{ background: layer.color + '14' }}>
+                    <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+                      <path d="M1 6h14M11 2l6 4-6 4" stroke={layer.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
-                  {/* Chips — tinted background matching layer colour */}
-                  <div className="flex-1 flex flex-wrap items-center gap-2 px-4 py-4"
-                    style={{ background: layer.color + '0a' }}>
+                  {/* Chips */}
+                  <div className="flex-1 flex flex-wrap items-center gap-2 px-5 py-4"
+                    style={{ background: layer.color + '08' }}>
                     {layer.items.map(item => (
                       <span key={item}
-                        className="px-2.5 py-1 bg-white text-[11px] font-semibold text-[#0a1628] shadow-[0_1px_4px_rgba(10,22,40,0.06)]"
-                        style={{ border: `1px solid ${layer.color}30`, borderRadius: 6 }}>
+                        className="px-3 py-1 bg-white text-[11px] font-semibold text-[#0a1628] shadow-[0_1px_6px_rgba(10,22,40,0.07)]"
+                        style={{ border: `1px solid ${layer.color}35`, borderRadius: 6 }}>
                         {item}
                       </span>
                     ))}
@@ -781,38 +900,41 @@ function PlatformDiagram() {
             </div>
           </div>
 
-          {/* ── CONNECTOR: Aruva Platform API ── */}
-          <div className="flex flex-col items-center justify-center gap-3 px-3 bg-[#f8fafc] border-l border-gray-100 shrink-0" style={{ width: 78 }}>
-            <ArrowR />
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white border border-gray-200 shadow-sm"
-              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', whiteSpace: 'nowrap', borderRadius: 20 }}>
-              <div className="w-1.5 h-1.5 rounded-full bg-[#228DC1]" />
-              <span className="text-[8px] font-black uppercase tracking-[0.14em] text-[#0a1628]">Aruva API</span>
-              <div className="w-1.5 h-1.5 rounded-full bg-[#228DC1]" />
+          {/* ── CONNECTOR RIGHT ── */}
+          <div className="flex flex-col items-center justify-center gap-4 shrink-0 bg-[#f1f5f9] border-l border-gray-200" style={{ width: 86 }}>
+            <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+              <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <div style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ fontSize: 9, fontWeight: 800, color: '#0a1628', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Aruva API</span>
             </div>
-            <ArrowR />
+            <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+              <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
 
           {/* ── ZONE 3: USER INTERFACE ── */}
-          <div className="flex flex-col shrink-0" style={{ width: 205 }}>
-            <div style={topBar}><span style={topBarText}>User Interface</span></div>
-            <div className="flex-1 flex flex-col gap-2 p-3 bg-white">
+          <div className="flex flex-col shrink-0" style={{ width: 212 }}>
+            <ZoneHeader label="User Interface" />
+            <div className="flex-1 flex flex-col gap-2 p-3.5 bg-white">
               {surfaces.map(s => (
-                <div key={s.label} className="flex items-start gap-2.5 p-2.5 border border-gray-100 bg-white shadow-[0_1px_6px_rgba(10,22,40,0.05)]" style={{ borderRadius: 10 }}>
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: s.color + '14', color: s.color }}>
+                <div key={s.label} className="flex items-start gap-3 p-3 border border-gray-100 bg-white" style={{ borderRadius: 10, boxShadow: '0 1px 8px rgba(10,22,40,0.06)' }}>
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                    style={{ background: s.color + '15', color: s.color, border: `1px solid ${s.color}25` }}>
                     {s.icon}
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
-                    <p className="text-[10px] text-[#0a1628]/50 font-normal leading-snug mt-0.5">{s.desc}</p>
+                    <p className="text-[11px] text-[#0a1628]/55 font-normal leading-snug mt-0.5">{s.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-        </div>
+        </div>{/* end flex items-stretch */}
+
+        </div>{/* end outer flex flex-col */}
       </div>
     </section>
   )
@@ -826,19 +948,19 @@ const BLOOM_SEMS = [
     bloom:[65,55,50,42,28,52],
     cohortAvg:[63,61,58,60,59,62],
     headline:'Higher-order thinking gaps flagged early',
-    detail:'Adam recalls facts well but Evaluate and Analyse are underdeveloped. Aruva surfaces this in week 2, not at the end of term.',
+    detail:'The student recalls facts well but Evaluate and Analyse are underdeveloped. Aruva surfaces this in week 2, not at the end of term.',
     delta: null, accent:'#e11d48' },
   { id:'S2', label:'Semester 2', grade:71, gradeLabel:'C+',
     bloom:[78,72,70,66,52,74],
     cohortAvg:[67,65,63,64,62,66],
     headline:'Targeted intervention closes the evaluation gap',
-    detail:'Focused practice on Evaluate (weeks 4 to 6) drove a 24-point jump in that dimension. Overall grade improved 9%. Adam\'s biggest single semester gain.',
+    detail:'Focused practice on Evaluate (weeks 4 to 6) drove a 24-point jump in that dimension. Overall grade improved 9%. Their biggest single semester gain.',
     delta:'+9%', accent:'#d97706' },
   { id:'S3', label:'Semester 3', grade:81, gradeLabel:'B',
     bloom:[88,85,84,80,76,91],
     cohortAvg:[72,70,69,71,70,74],
     headline:'Balanced mastery across all six levels',
-    detail:'All six dimensions above 76%. Adam is now in the top quartile of his cohort, a 19-point improvement from Semester 1.',
+    detail:'All six dimensions above 76%. Now in the top quartile of the cohort, a 19-point improvement from Semester 1.',
     delta:'+19%', accent:'#059669' },
 ]
 const BLOOM_LABELS  = ['Remember','Understand','Apply','Analyse','Evaluate','Create']
@@ -849,7 +971,7 @@ const DOK_SEMS = [
   { id:'S1', label:'Semester 1', grade:62, gradeLabel:'D+',
     dok:[72, 54, 31, 38], cohortAvg:[68, 62, 55, 52],
     headline:'Strategic thinking is the ceiling',
-    detail:'Adam handles recall and surface-level skills confidently, but DOK 3 and DOK 4 tasks reveal a clear ceiling. Aruva flags this gap before the mid-term.',
+    detail:'Strong recall and surface-level skills, but DOK 3 and DOK 4 tasks reveal a clear ceiling. Aruva flags this gap before the mid-term.',
     delta: null, accent:'#e11d48' },
   { id:'S2', label:'Semester 2', grade:71, gradeLabel:'C+',
     dok:[82, 71, 58, 62], cohortAvg:[70, 65, 58, 55],
@@ -859,7 +981,7 @@ const DOK_SEMS = [
   { id:'S3', label:'Semester 3', grade:81, gradeLabel:'B',
     dok:[91, 86, 79, 83], cohortAvg:[74, 70, 66, 63],
     headline:'All four depths operating at mastery',
-    detail:'Adam is performing above 79% across all DOK levels. Extended thinking tasks that were previously a gap are now a strength. Top quartile cohort result.',
+    detail:'Performing above 79% across all DOK levels. Extended thinking tasks that were previously a gap are now a strength. Top quartile cohort result.',
     delta:'+19%', accent:'#059669' },
 ]
 const DOK_LABELS  = ['DOK 1','DOK 2','DOK 3','DOK 4']
@@ -892,169 +1014,248 @@ const MM_STEPS = [
   { label:'Check ✓', val:'4 − 10 + 6 = 0 ✓' },
 ]
 
-function MMImageDemo() {
-  const [phase, setPhase] = React.useState(0)
-  const [step, setStep] = React.useState(0)
-  const PROMPT = 'Illustrate: photosynthesis'
-  const [typed, setTyped] = React.useState(0)
+const MM_TEXT_CONVERSATIONS = [
+  {
+    name: 'Maria Garcia',
+    initials: 'MG',
+    style: 'Analogy-oriented',
+    accent: '#f59e0b',
+    soft: '#fff7ed',
+    border: '#fed7aa',
+    prompt: 'What does mitochondria actually do?',
+    response: 'Think of mitochondria as the power station of the cell. Just like a city needs electricity, the cell needs ATP to keep everything running.',
+    followUp: 'So mitochondria basically create energy for the cell?',
+    result: 'Analogy understood',
+    confidence: 92,
+  },
+  {
+    name: 'Elena Rossi',
+    initials: 'ER',
+    style: 'Analytical',
+    accent: '#7c3aed',
+    soft: '#f5f3ff',
+    border: '#ddd6fe',
+    prompt: 'If oxygen decreases, what happens to ATP?',
+    response: 'ATP production becomes less efficient because aerobic respiration depends on oxygen. The cell has less usable energy available.',
+    followUp: 'So oxygen level changes the energy output?',
+    result: 'Reasoning depth improved',
+    confidence: 94,
+  },
+]
+
+function MMTextDemo() {
+  const [active, setActive] = React.useState(0)
+  const [score, setScore] = React.useState(MM_TEXT_CONVERSATIONS[0].confidence)
+  const activeStudent = MM_TEXT_CONVERSATIONS[active]
+  const activeExample = { equation: '', topic: '', result: '', steps: [] as Array<{ label: string; val: string }> }
+  const stepCount = 0
 
   React.useEffect(() => {
-    let i = 0
-    const typeId = setInterval(() => {
-      i++; setTyped(i)
-      if (i >= PROMPT.length) {
-        clearInterval(typeId)
-        setTimeout(() => setPhase(1), 300)
-        setTimeout(() => setStep(1), 700)
-        setTimeout(() => setStep(2), 1300)
-        setTimeout(() => setStep(3), 1900)
-        setTimeout(() => setStep(4), 2500)
-        setTimeout(() => setStep(5), 3100)
-      }
-    }, 52)
-    return () => clearInterval(typeId)
+    const id = setInterval(() => {
+      setActive(prev => (prev + 1) % MM_TEXT_CONVERSATIONS.length)
+    }, 2600)
+    return () => clearInterval(id)
   }, [])
 
-  const s = (n: number) => ({ opacity: step >= n ? 1 : 0, transition:'opacity 0.5s ease' })
-  const p = (n: number, len = 300) => ({ strokeDasharray: len, strokeDashoffset: step >= n ? 0 : len, transition:'stroke-dashoffset 0.8s cubic-bezier(0.4,0,0.2,1)' })
+  React.useEffect(() => {
+    let raf: number | undefined
+    const from = score
+    const to = activeStudent.confidence
+    const start = performance.now()
+    const step = (now: number) => {
+      const pct = Math.min((now - start) / 520, 1)
+      const eased = 1 - Math.pow(1 - pct, 3)
+      setScore(Math.round(from + (to - from) * eased))
+      if (pct < 1) raf = requestAnimationFrame(step)
+    }
+    raf = requestAnimationFrame(step)
+    return () => { if (raf) cancelAnimationFrame(raf) }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active])
+
+  return (
+    <div style={{ flex:1, display:'flex', flexDirection:'column', gap:14, padding:'24px 28px' }}>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(2, minmax(0, 1fr))', gap:10 }}>
+        {MM_TEXT_CONVERSATIONS.map((student, index) => (
+          <button key={student.name} type="button" onClick={() => setActive(index)}
+            style={{ display:'flex', alignItems:'center', gap:10, textAlign:'left', padding:'10px 12px', borderRadius:14, background: active === index ? student.soft : '#f8fafc', border:`1px solid ${active === index ? student.border : '#e5e7eb'}`, boxShadow: active === index ? `0 10px 24px ${student.accent}22` : 'none', transition:'all 0.25s ease' }}>
+            <span style={{ width:34, height:34, borderRadius:10, background: active === index ? student.accent : '#e5e7eb', color: active === index ? '#fff' : '#94a3b8', display:'flex', alignItems:'center', justifyContent:'center', fontSize:11, fontWeight:900, flexShrink:0 }}>{student.initials}</span>
+            <span style={{ minWidth:0 }}>
+              <span style={{ display:'block', fontSize:11, fontWeight:900, color: active === index ? student.accent : 'rgba(10,22,40,0.42)', letterSpacing:'0.12em', textTransform:'uppercase', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{student.name}</span>
+              <span style={{ display:'block', fontSize:12, fontWeight:700, color:'rgba(10,22,40,0.62)', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{student.style}</span>
+            </span>
+          </button>
+        ))}
+      </div>
+      <div key={active} style={{ flex:1, display:'grid', gridTemplateColumns:'minmax(0, 1fr) 104px', gap:14, alignItems:'stretch' }}>
+        <div style={{ display:'flex', flexDirection:'column', gap:10, justifyContent:'center' }}>
+          <div style={{ alignSelf:'flex-end', maxWidth:'78%', padding:'10px 14px', borderRadius:'18px 18px 4px 18px', background:activeStudent.accent, boxShadow:`0 12px 22px ${activeStudent.accent}28`, opacity:0, transform:'translateY(6px)', animation:'mmCardIn 0.32s ease 0.05s forwards' }}>
+            <p style={{ color:'#fff', fontSize:13, lineHeight:1.5, fontWeight:600 }}>{activeStudent.prompt}</p>
+          </div>
+          <div style={{ display:'flex', alignItems:'flex-start', gap:10, opacity:0, transform:'translateY(6px)', animation:'mmCardIn 0.32s ease 0.25s forwards' }}>
+            <div style={{ width:30, height:30, borderRadius:10, background:'#fff', border:'1px solid #e5e7eb', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 4px 12px rgba(10,22,40,0.08)', flexShrink:0 }}>
+              <img src="/aruva-logo.png" alt="Aruva" style={{ height:12, width:'auto', objectFit:'contain' }} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
+            </div>
+            <div style={{ flex:1, padding:'13px 15px', borderRadius:'4px 18px 18px 18px', background:'#fff', border:'1px solid #eef2f7', boxShadow:'0 10px 24px rgba(10,22,40,0.06)' }}>
+              <p style={{ color:'rgba(10,22,40,0.78)', fontSize:13, lineHeight:1.55 }}>{activeStudent.response}</p>
+            </div>
+          </div>
+          <div style={{ alignSelf:'flex-end', maxWidth:'74%', padding:'10px 14px', borderRadius:'18px 18px 4px 18px', background:'#f8fafc', border:'1px solid #eef2f7', opacity:0, transform:'translateY(6px)', animation:'mmCardIn 0.32s ease 0.45s forwards' }}>
+            <p style={{ color:'rgba(10,22,40,0.74)', fontSize:13, lineHeight:1.45 }}>{activeStudent.followUp}</p>
+          </div>
+        </div>
+        <div style={{ display:'flex', flexDirection:'column', justifyContent:'center', gap:12, padding:'12px', borderRadius:14, background:activeStudent.soft, border:`1px solid ${activeStudent.border}` }}>
+          <div>
+            <p style={{ fontSize:9, color:'rgba(10,22,40,0.42)', fontWeight:900, textTransform:'uppercase', letterSpacing:'0.12em', marginBottom:4 }}>Result</p>
+            <p style={{ fontSize:13, color:activeStudent.accent, fontWeight:900, lineHeight:1.25 }}>{activeStudent.result}</p>
+          </div>
+          <div>
+            <p style={{ fontSize:22, color:activeStudent.accent, fontWeight:900, lineHeight:1 }}>{score}%</p>
+            <p style={{ fontSize:9, color:'rgba(10,22,40,0.40)', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.08em', marginTop:2 }}>confidence</p>
+          </div>
+          <div style={{ width:'100%', height:7, borderRadius:999, background:'rgba(10,22,40,0.08)', overflow:'hidden' }}>
+            <div style={{ height:'100%', width:`${score}%`, borderRadius:999, background:activeStudent.accent, transition:'width 0.18s ease' }}/>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
+  return (
+    <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'30px 36px' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:2 }}>
+        <div style={{ flex:1 }}>
+          <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:700, lineHeight:1.2 }}>Solving: {activeExample.equation}</p>
+          <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.32)', marginTop:3 }}>{activeExample.topic} · {stepCount} steps · equation updates automatically</p>
+        </div>
+        <div style={{ minWidth:78, textAlign:'right' }}>
+          <p style={{ fontSize:20, fontWeight:800, color:'#7c3aed', lineHeight:1 }}>{score}%</p>
+          <p style={{ fontSize:9, color:'rgba(10,22,40,0.36)', fontWeight:700, textTransform:'uppercase', letterSpacing:'0.08em' }}>confidence</p>
+        </div>
+      </div>
+
+      <div key={active} style={{ display:'flex', flexDirection:'column', gap:13 }}>
+        {activeExample.steps.map((s, i) => (
+          <div key={`${s.label}-${s.val}`} style={{
+            display:'flex', alignItems:'center', gap:10,
+            opacity:0, transform:'translateY(6px)',
+            animation:`mmCardIn 0.36s ease ${0.1+i*0.18}s forwards`,
+          }}>
+            <span style={{ fontSize:9, fontWeight:800, color:'#7c3aed', letterSpacing:'0.10em', textTransform:'uppercase', minWidth:50, flexShrink:0 }}>{s.label}</span>
+            <span style={{ fontSize:13, fontFamily:"'Roboto Mono','Courier New',monospace", color:'#1e1b4b', background:'rgba(124,58,237,0.07)', padding:'6px 12px', borderRadius:6, border:'1px solid rgba(124,58,237,0.16)', flex:1 }}>{s.val}</span>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display:'grid', gridTemplateColumns:'1fr auto', alignItems:'center', gap:14, marginTop:6, padding:'10px 12px', background:'linear-gradient(90deg,rgba(124,58,237,0.10),rgba(124,58,237,0.03))', border:'1px solid rgba(124,58,237,0.16)', borderRadius:10 }}>
+        <div>
+          <p style={{ fontSize:10, color:'rgba(10,22,40,0.40)', textTransform:'uppercase', letterSpacing:'0.12em', fontWeight:800, lineHeight:1 }}>Result</p>
+          <p style={{ fontSize:14, color:'#1e1b4b', fontWeight:800, lineHeight:1.2, marginTop:4 }}>{activeExample.result}</p>
+        </div>
+        <div style={{ width:74, height:8, borderRadius:999, background:'rgba(124,58,237,0.14)', overflow:'hidden' }}>
+          <div style={{ height:'100%', width:`${score}%`, borderRadius:999, background:'linear-gradient(90deg,#a78bfa,#7c3aed)', transition:'width 0.18s ease' }}/>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MMImageDemo() {
+  const PROMPT = 'Generate: photosynthesis lesson diagram'
+  const [arrows, setArrows] = React.useState(false)
+  const graphNodes = [
+    { label:'Light', x:38, y:34, color:'#f59e0b' },
+    { label:'Leaf', x:112, y:88, color:'#059669' },
+    { label:'CO2', x:214, y:48, color:'#228DC1' },
+    { label:'ATP', x:206, y:126, color:'#7c3aed' },
+    { label:'Sugar', x:122, y:146, color:'#dc2626' },
+  ]
+
+  // Image appears immediately; arrows fade in 400ms later
+  React.useEffect(() => {
+    const id = setTimeout(() => setArrows(true), 400)
+    return () => clearTimeout(id)
+  }, [])
 
   return (
     <div style={{ display:'flex', flexDirection:'column', flex:1 }}>
-      {/* Prompt bar */}
+      {/* Prompt bar — static */}
       <div style={{ borderBottom:'1px solid #e5e7eb', padding:'9px 18px', display:'flex', alignItems:'center', gap:8, background:'#fafbfc' }}>
-        <div style={{ width:7, height:7, borderRadius:'50%', background: phase>=1 ? '#059669' : '#d1d5db', transition:'background 0.4s ease', flexShrink:0 }}/>
         <span style={{ fontSize:11, color:'#374151', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:500, flex:1 }}>
-          {PROMPT.slice(0, typed)}
-          {typed < PROMPT.length && <span style={{ display:'inline-block', width:2, height:11, background:'#059669', marginLeft:1, verticalAlign:'middle', animation:'mmCursor 0.8s step-end infinite' }}/>}
+          {PROMPT}
         </span>
-        {phase >= 1 && (
-          <span style={{ fontSize:9, fontWeight:700, color:'#059669', background:'rgba(5,150,105,0.10)', padding:'3px 8px', borderRadius:10, border:'1px solid rgba(5,150,105,0.22)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Generated</span>
-        )}
+        <span style={{ fontSize:9, fontWeight:700, color:'#059669', background:'rgba(5,150,105,0.10)', padding:'3px 8px', borderRadius:10, border:'1px solid rgba(5,150,105,0.22)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Generated</span>
       </div>
 
-      {/* Photosynthesis diagram */}
-      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'10px 14px', background:'#f0fdf4' }}>
-        <svg viewBox="0 0 300 190" style={{ width:'100%', height:'auto' }} fontFamily="Roboto,sans-serif">
-          <defs>
-            <linearGradient id="sunGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#fde68a"/>
-              <stop offset="100%" stopColor="#f59e0b"/>
-            </linearGradient>
-            <linearGradient id="leafGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#86efac"/>
-              <stop offset="100%" stopColor="#16a34a"/>
-            </linearGradient>
-            <linearGradient id="cycleGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#bfdbfe"/>
-              <stop offset="100%" stopColor="#60a5fa"/>
-            </linearGradient>
-            <marker id="arrowG" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <path d="M0,0 L6,3 L0,6 Z" fill="#16a34a"/>
-            </marker>
-            <marker id="arrowB" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <path d="M0,0 L6,3 L0,6 Z" fill="#2563eb"/>
-            </marker>
-            <marker id="arrowY" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <path d="M0,0 L6,3 L0,6 Z" fill="#d97706"/>
-            </marker>
-          </defs>
+      {/* Illustration canvas */}
+      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'12px 16px', background:'#f8fafc' }}>
+        <div style={{ position:'relative', width:'100%', aspectRatio:'280 / 178', borderRadius:12, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#0f3b33' }}>
 
-          {/* Background */}
-          <rect width="300" height="190" fill="#f0fdf4" rx="8"/>
+          {/* ① Image — visible immediately */}
+          <img
+            src="/images/aruva-photosynthesis-realistic.png"
+            alt="AI-generated photosynthesis lesson diagram"
+            style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }}
+          />
+          <div style={{
+            position:'absolute', inset:0,
+            background:'linear-gradient(90deg,rgba(6,21,35,0.10),rgba(6,21,35,0.00) 38%,rgba(6,21,35,0.22)), radial-gradient(circle at 13% 16%,rgba(254,240,138,0.30),transparent 26%)',
+            pointerEvents:'none',
+          }}/>
 
-          {/* ── SUN ── */}
-          <g style={s(1)}>
-            <circle cx="38" cy="28" r="16" fill="url(#sunGrad)" style={{ filter:'drop-shadow(0 2px 6px rgba(245,158,11,0.5))' }}/>
-            {[0,45,90,135,180,225,270,315].map((a,i) => {
-              const r = a*Math.PI/180
-              return <line key={i} x1={38+Math.cos(r)*18} y1={28+Math.sin(r)*18} x2={38+Math.cos(r)*24} y2={28+Math.sin(r)*24} stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" style={{ animation:`orbFloat ${1.2+i*0.1}s ease-in-out ${i*0.1}s infinite` }}/>
+          {/* ② Arrows + graph — fade in 400ms after image */}
+          <svg viewBox="0 0 280 178" style={{ position:'absolute', inset:0, width:'100%', height:'100%', display:'block', overflow:'visible', opacity: arrows ? 1 : 0, transition:'opacity 0.5s ease' }}>
+            <defs>
+              <marker id="mmArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                <path d="M0,0 L7,3.5 L0,7 Z" fill="#fef08a"/>
+              </marker>
+            </defs>
+
+            {/* Sun rays */}
+            <circle cx="38" cy="30" r="24" fill="rgba(254,240,138,0.18)" style={{ animation:'mmSunPulse 2.8s ease-in-out infinite' }}/>
+            {[0,35,70,105,140,175,210,245,280,315].map((angle,i) => {
+              const rad = (angle * Math.PI) / 180
+              return <line key={angle} x1={38+Math.cos(rad)*25} y1={30+Math.sin(rad)*25} x2={38+Math.cos(rad)*38} y2={30+Math.sin(rad)*38}
+                stroke="#fef08a" strokeWidth="2.2" strokeLinecap="round" opacity={0.75}
+                style={{ animation:`mmSunRay 2.4s ease-in-out ${i*0.08}s infinite` }}/>
             })}
-            <text x="38" y="32" textAnchor="middle" fontSize="7.5" fontWeight="800" fill="#92400e">SUN</text>
-          </g>
 
-          {/* Light energy arrow */}
-          <g style={s(1)}>
-            <path d="M54 36 L95 70" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" markerEnd="url(#arrowY)" {...p(1,60)}/>
-            <text x="62" y="52" fontSize="6.5" fontWeight="700" fill="#b45309" transform="rotate(38,62,52)">LIGHT</text>
-          </g>
+            {/* Flow arrows */}
+            <path className="mm-photo-flow" d="M52 42 C76 57 82 77 112 85" markerEnd="url(#mmArrow)"/>
+            <path className="mm-photo-flow mm-photo-delay-1" d="M213 47 C241 55 250 80 235 101" markerEnd="url(#mmArrow)"/>
+            <path className="mm-photo-flow mm-photo-delay-2" d="M191 121 C163 152 123 156 88 135" markerEnd="url(#mmArrow)"/>
+            <path className="mm-photo-flow mm-photo-delay-3" d="M118 143 C158 172 220 158 244 128" markerEnd="url(#mmArrow)"/>
 
-          {/* ── LEAF / CHLOROPLAST ── */}
-          <g style={s(1)}>
-            <ellipse cx="105" cy="110" rx="38" ry="52" fill="url(#leafGrad)" opacity="0.25" transform="rotate(-20,105,110)"/>
-            <ellipse cx="105" cy="108" rx="22" ry="30" fill="#bbf7d0" opacity="0.7" transform="rotate(-15,105,108)"/>
-            <text x="105" y="145" textAnchor="middle" fontSize="6" fontWeight="700" fill="#166534" opacity="0.8">CHLOROPLAST</text>
-          </g>
+            {/* Molecule dots */}
+            {([[219,45,0],[234,68,0.4],[216,124,0.85],[96,138,1.1]] as [number,number,number][]).map(([x,y,d],i) => (
+              <g key={i} style={{ animation:`mmMoleculeDrift 3.4s ease-in-out ${d}s infinite` }}>
+                <circle cx={x-7} cy={y-4} r="4.2" fill="#ef4444"/>
+                <circle cx={x} cy={y} r="6.4" fill="#1f2937"/>
+                <circle cx={x+8} cy={y-4} r="4.2" fill="#ef4444"/>
+              </g>
+            ))}
 
-          {/* H2O input */}
-          <g style={s(2)}>
-            <path d="M42 155 L88 130" stroke="#3b82f6" strokeWidth="1.8" strokeDasharray="4 3" markerEnd="url(#arrowB)" {...p(2,70)}/>
-            <circle cx="32" cy="158" r="10" fill="#bfdbfe" stroke="#3b82f6" strokeWidth="1"/>
-            <text x="32" y="162" textAnchor="middle" fontSize="7" fontWeight="700" fill="#1e40af">H₂O</text>
-          </g>
+            {/* Graph edges */}
+            <path className="mm-ai-edge" d="M38 34 L112 88 L214 48 L206 126 L122 146 L112 88"/>
+            <path className="mm-ai-edge mm-ai-edge-delay" d="M38 34 L214 48 M112 88 L206 126 M122 146 L214 48" opacity="0.72"/>
 
-          {/* O2 output */}
-          <g style={s(2)}>
-            <path d="M98 80 L78 50" stroke="#059669" strokeWidth="1.8" markerEnd="url(#arrowG)" {...p(2,50)}/>
-            <circle cx="74" cy="40" r="10" fill="#d1fae5" stroke="#059669" strokeWidth="1"/>
-            <text x="74" y="44" textAnchor="middle" fontSize="7" fontWeight="700" fill="#065f46">O₂</text>
-          </g>
+            {/* Graph nodes */}
+            {graphNodes.map(node => (
+              <g key={node.label} className="mm-ai-node">
+                <circle cx={node.x} cy={node.y} r="4.4" fill={node.color}/>
+                <circle cx={node.x} cy={node.y} r="8" fill="none" stroke={node.color} strokeWidth="1" opacity="0.55"/>
+                <text x={node.x} y={node.y-12} textAnchor="middle" fontSize="7" fontWeight="800" fill="#ffffff" fontFamily="Roboto,sans-serif">{node.label}</text>
+              </g>
+            ))}
 
-          {/* ── CALVIN CYCLE ── */}
-          <g style={s(3)}>
-            <circle cx="210" cy="100" r="42" fill="url(#cycleGrad)" opacity="0.15" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="6 3"/>
-            <text x="210" y="96" textAnchor="middle" fontSize="8" fontWeight="800" fill="#1e40af">CALVIN</text>
-            <text x="210" y="107" textAnchor="middle" fontSize="8" fontWeight="800" fill="#1e40af">CYCLE</text>
-          </g>
+            {/* Labels */}
+            <text x="70" y="60" textAnchor="middle" fontSize="8" fontWeight="900" fill="#6b3f05" fontFamily="Roboto,sans-serif">LIGHT ENERGY</text>
+            <text x="229" y="32" textAnchor="middle" fontSize="8" fontWeight="900" fill="#0f172a" fontFamily="Roboto,sans-serif">CO2</text>
+            <text x="213" y="143" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">ATP</text>
+            <text x="84" y="163" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">SUGAR</text>
+          </svg>
 
-          {/* Calvin cycle rotation arrow */}
-          <g style={s(3)}>
-            <path d="M210 58 A42 42 0 1 1 168 100" fill="none" stroke="#3b82f6" strokeWidth="2" markerEnd="url(#arrowB)" {...p(3,220)}/>
-          </g>
-
-          {/* CO2 input to cycle */}
-          <g style={s(3)}>
-            <path d="M250 28 L225 65" stroke="#6b7280" strokeWidth="1.8" markerEnd="url(#arrowB)" {...p(3,55)}/>
-            <circle cx="260" cy="22" r="11" fill="#f3f4f6" stroke="#6b7280" strokeWidth="1"/>
-            <text x="260" y="26" textAnchor="middle" fontSize="7" fontWeight="700" fill="#374151">CO₂</text>
-          </g>
-
-          {/* ATP arrow from chloroplast to cycle */}
-          <g style={s(4)}>
-            <path d="M132 100 L162 100" stroke="#d97706" strokeWidth="2" markerEnd="url(#arrowY)" {...p(4,40)}/>
-            <rect x="133" y="90" width="22" height="11" rx="3" fill="#fde68a" stroke="#d97706" strokeWidth="1"/>
-            <text x="144" y="99" textAnchor="middle" fontSize="6.5" fontWeight="800" fill="#92400e">ATP</text>
-          </g>
-
-          {/* NADPH arrow */}
-          <g style={s(4)}>
-            <path d="M130 116 L162 112" stroke="#7c3aed" strokeWidth="2" markerEnd="url(#arrowB)" {...p(4,40)}/>
-            <rect x="128" y="118" width="28" height="11" rx="3" fill="#ede9fe" stroke="#7c3aed" strokeWidth="1"/>
-            <text x="142" y="127" textAnchor="middle" fontSize="6" fontWeight="800" fill="#5b21b6">NADPH</text>
-          </g>
-
-          {/* G3P → Glucose output */}
-          <g style={s(5)}>
-            <path d="M220 142 L220 165" stroke="#16a34a" strokeWidth="2" markerEnd="url(#arrowG)" {...p(5,35)}/>
-            <rect x="192" y="162" width="56" height="20" rx="5" fill="#dcfce7" stroke="#16a34a" strokeWidth="1.2"/>
-            <text x="220" y="171" textAnchor="middle" fontSize="7" fontWeight="800" fill="#166534">GLUCOSE C₆H₁₂O₆</text>
-          </g>
-
-          {/* Rubisco label */}
-          <g style={s(3)}>
-            <text x="187" y="72" textAnchor="middle" fontSize="6" fontWeight="700" fill="#1d4ed8" opacity="0.8">Rubisco</text>
-          </g>
-
-          {/* G3P label inside cycle */}
-          <g style={s(4)}>
-            <text x="248" y="122" textAnchor="middle" fontSize="6.5" fontWeight="700" fill="#1d4ed8">G3P</text>
-          </g>
-
-          {/* STARCH GRAIN small circle */}
-          <g style={s(5)}>
-            <circle cx="264" cy="162" r="9" fill="#fef3c7" stroke="#d97706" strokeWidth="1"/>
-            <text x="264" y="166" textAnchor="middle" fontSize="5.5" fontWeight="700" fill="#92400e">STARCH</text>
-          </g>
-        </svg>
+        </div>
       </div>
     </div>
   )
@@ -1082,9 +1283,16 @@ function MMGraphDemo() {
   const DEMO_DISPLAY = 'sin(x) · 2'
   const DEMO_EVAL    = 'sin(x) * 2'
   const EXAMPLES     = ['x**2 / 5', 'cos(x) + x/4', 'tan(x/2)', 'sin(x)*cos(x)']
+  const AUTO_GRAPHS  = [
+    { display:'sin(x) * 2', eval:'sin(x) * 2' },
+    { display:'x^2 / 5 - 2', eval:'x**2 / 5 - 2' },
+    { display:'cos(x) + x/4', eval:'cos(x) + x/4' },
+    { display:'sin(x) * cos(x)', eval:'sin(x)*cos(x)' },
+  ]
 
   const [userFormula, setUserFormula] = React.useState('')
   const [activeFormula, setActiveFormula] = React.useState('')
+  const [autoIndex, setAutoIndex] = React.useState(0)
   const [animKey, setAnimKey]   = React.useState(0)
   const [typed, setTyped]       = React.useState(0)
   const [demoPhase, setDemoPhase] = React.useState<'typing'|'done'>('typing')
@@ -1103,6 +1311,21 @@ function MMGraphDemo() {
     }, 70)
     return () => clearInterval(id)
   }, [])
+
+  React.useEffect(() => {
+    if (demoPhase !== 'done' || focused) return
+    const id = setInterval(() => {
+      setAutoIndex(prev => {
+        const next = (prev + 1) % AUTO_GRAPHS.length
+        setUserFormula(AUTO_GRAPHS[next].display)
+        setInputVal(AUTO_GRAPHS[next].display)
+        setActiveFormula(AUTO_GRAPHS[next].eval)
+        setAnimKey(k => k + 1)
+        return next
+      })
+    }, 1900)
+    return () => clearInterval(id)
+  }, [demoPhase, focused])
 
   function safeEval(expr: string, x: number): number | null {
     try {
@@ -1147,7 +1370,7 @@ function MMGraphDemo() {
 
   const displayLabel = demoPhase === 'typing'
     ? DEMO_DISPLAY.slice(0, typed)
-    : (userFormula || DEMO_DISPLAY)
+    : (userFormula || AUTO_GRAPHS[autoIndex].display)
 
   const path = activeFormula ? buildPath(activeFormula) : ''
 
@@ -1223,13 +1446,13 @@ function MMGraphDemo() {
 
 function MultimodalSection() {
   const [sectionRef, inView] = useInView(0.10)
-  const [active, setActive]       = React.useState(0)
+  const [active, setActive]       = React.useState(2)
   const [progress, setProgress]   = React.useState(0)
   const [cycleCount, setCycleCount] = React.useState(0)
-  const activeRef = React.useRef(0)
+  const activeRef = React.useRef(2)
   const startRef  = React.useRef(0)
   const rafRef    = React.useRef<number | undefined>(undefined)
-  const CYCLE = 4800
+  const CYCLE = 7600
 
   // RAF-driven auto-cycle — starts when section scrolls into view
   React.useEffect(() => {
@@ -1270,6 +1493,40 @@ function MultimodalSection() {
         @keyframes waveBar     { 0%,100%{transform:scaleY(0.35)} 50%{transform:scaleY(1)} }
         @keyframes voiceOrbMorph { 0%,100%{border-radius:54% 46% 38% 62%/61% 35% 65% 39%} 33%{border-radius:42% 58% 55% 45%/53% 62% 38% 47%} 66%{border-radius:61% 39% 44% 56%/39% 57% 43% 61%} }
         @keyframes orbFloat    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+        @keyframes mmGraphDash { 0%{stroke-dashoffset:70;opacity:0.28} 48%{opacity:1} 100%{stroke-dashoffset:0;opacity:0.28} }
+        @keyframes mmNodePulse { 0%,100%{transform:scale(1);opacity:0.78} 50%{transform:scale(1.22);opacity:1} }
+        @keyframes mmSunPulse  { 0%,100%{transform:scale(1);opacity:0.95} 50%{transform:scale(1.08);opacity:1} }
+        @keyframes mmSunRay    { 0%,100%{opacity:0.35;transform:scale(0.88)} 50%{opacity:0.95;transform:scale(1.08)} }
+        @keyframes mmMoleculeDrift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(6px,-5px)} }
+        .mm-photo-flow {
+          fill: none;
+          stroke: #fef08a;
+          stroke-width: 2.6;
+          stroke-linecap: round;
+          stroke-dasharray: 8 11;
+          animation: mmGraphDash 2.7s linear infinite;
+          filter: drop-shadow(0 0 5px rgba(250,204,21,0.55));
+          transition: opacity 0.45s ease 0.52s;
+        }
+        .mm-photo-delay-1 { animation-delay: 0.42s; }
+        .mm-photo-delay-2 { animation-delay: 0.84s; }
+        .mm-photo-delay-3 { animation-delay: 1.26s; }
+        .mm-ai-edge {
+          fill: none;
+          stroke: rgba(255,255,255,0.75);
+          stroke-width: 1.1;
+          stroke-linecap: round;
+          stroke-dasharray: 5 7;
+          animation: mmGraphDash 3.25s linear infinite;
+          transition: opacity 0.45s ease 0.72s;
+        }
+        .mm-ai-edge-delay { animation-delay: 1.05s; }
+        .mm-ai-node {
+          transform-box: fill-box;
+          transform-origin: center;
+          animation: mmNodePulse 2.15s ease-in-out infinite;
+          transition: opacity 0.35s ease 0.9s;
+        }
       `}</style>
       <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
 
@@ -1290,7 +1547,7 @@ function MultimodalSection() {
                 One AI. Every way <span style={{ color:'#228DC1' }}>students learn.</span>
               </h2>
               <p style={{ fontSize:15.5, color:'rgba(10,22,40,0.58)', lineHeight:1.75, marginTop:14 }}>
-                Aruva speaks, writes, draws and graphs — meeting every student exactly where their understanding breaks down, in whichever format makes it click.
+                Aruva speaks, writes, draws and graphs, meeting every student exactly where their understanding breaks down, in whichever format makes it click.
               </p>
             </div>
             {MM_MODALITIES.map((m, i) => {
@@ -1328,18 +1585,6 @@ function MultimodalSection() {
                     <p style={{ fontSize:14, fontWeight:700, color: isActive?'#0a1628':'rgba(10,22,40,0.60)', lineHeight:1.1, marginBottom:2, transition:'color 0.3s ease' }}>{m.label}</p>
                     <p style={{ fontSize:12, color: isActive?'rgba(10,22,40,0.52)':'rgba(10,22,40,0.38)', lineHeight:1.3, transition:'color 0.3s ease' }}>{m.desc}</p>
                   </div>
-                  {/* Chevron on active */}
-                  {isActive && (
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ flexShrink:0 }}>
-                      <path d="M4 2l4 4-4 4" stroke={m.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  )}
-                  {/* Auto-progress bar at bottom of active tab */}
-                  {isActive && (
-                    <div style={{ position:'absolute', bottom:0, left:0, right:0, height:2, background:m.color+'18' }}>
-                      <div style={{ height:'100%', background:m.color, width:`${progress}%`, transition:'width 0.08s linear', borderRadius:1 }}/>
-                    </div>
-                  )}
                 </button>
               )
             })}
@@ -1416,7 +1661,8 @@ function MultimodalSection() {
               )}
 
               {/* ── Text ── */}
-              {active === 1 && (
+              {active === 1 && <MMTextDemo />}
+              {false && (
                 <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'32px 36px' }}>
                   <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:600, marginBottom:4 }}>Solving: x² − 5x + 6 = 0</p>
                   {MM_STEPS.map((s, i) => (
@@ -1577,6 +1823,7 @@ function BloomInsightSection() {
   const pt   = (i: number, v: number) => ({ x: CX + (v/100)*R*Math.cos(ang(i)), y: CY + (v/100)*R*Math.sin(ang(i)) })
   const lab  = (i: number) => ({ x: CX + 128*Math.cos(ang(i)), y: CY + 128*Math.sin(ang(i)) })
   const poly = (vals: number[]) => vals.map((v,i) => `${pt(i,v).x},${pt(i,v).y}`).join(' ')
+  const masteryColor = (value: number, fallback: string) => value >= 75 ? '#059669' : fallback
 
   return (
     <section ref={sectionRef} className="py-28 bg-[#f8fafc] border-t border-gray-100">
@@ -1603,7 +1850,7 @@ function BloomInsightSection() {
             One student.<br />Three semesters. One clear picture.
           </h2>
           <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.75]">
-            Adam's grade climbed from 62% to 81% over three semesters. Aruva shows exactly why, and which skill gap was holding him back.
+            Grade climbed from 62% to 81% over three semesters. Aruva shows exactly why, and which skill gap was holding them back.
           </p>
         </div>
 
@@ -1693,6 +1940,16 @@ function BloomInsightSection() {
               <div>
                 <p className="text-[12px] font-black uppercase tracking-[0.18em] mb-1.5" style={{ color: sem.accent }}>{sem.label}</p>
                 <p className="text-[20px] font-semibold text-[#0a1628] leading-snug">{sem.headline}</p>
+                <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-gray-200 bg-[#f8fafc] px-3 py-2 shadow-[0_1px_8px_rgba(10,22,40,0.04)]">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-black text-white shadow-sm"
+                    style={{ background: `linear-gradient(135deg,${sem.accent},#fb7185)` }}>
+                    MG
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
+                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile · compared with class average</p>
+                  </div>
+                </div>
               </div>
               <div className="shrink-0 ml-4 text-right">
                 <p className="text-[40px] font-black leading-none tabular-nums" style={{ color: sem.accent }}>{sem.grade}%</p>
@@ -1715,6 +1972,25 @@ function BloomInsightSection() {
                       <stop offset="0%"   stopColor={sem.accent} stopOpacity="0.22"/>
                       <stop offset="100%" stopColor={sem.accent} stopOpacity="0.04"/>
                     </radialGradient>
+                    <linearGradient id={`rstroke-${active}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor={sem.accent}/>
+                      <stop offset="58%" stopColor="#fb7185"/>
+                      <stop offset="100%" stopColor="#fda4af"/>
+                    </linearGradient>
+                    <linearGradient id={`ravg-${active}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#f59e0b"/>
+                      <stop offset="50%" stopColor="#fb923c"/>
+                      <stop offset="100%" stopColor="#fbbf24"/>
+                    </linearGradient>
+                    <radialGradient id={`ravgFill-${active}`} cx="50%" cy="50%" r="62%">
+                      <stop offset="0%" stopColor="#fbbf24" stopOpacity="0.08"/>
+                      <stop offset="72%" stopColor="#f59e0b" stopOpacity="0.04"/>
+                      <stop offset="100%" stopColor="#fffbeb" stopOpacity="0.01"/>
+                    </radialGradient>
+                    <filter id={`ravgGlow-${active}`} x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="3.5" result="b"/>
+                      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
                   </defs>
 
                   {/* Grid rings */}
@@ -1724,7 +2000,6 @@ function BloomInsightSection() {
                       fill={pct===33 ? sem.accent+'03' : 'none'}
                       stroke={pct===100 ? 'rgba(10,22,40,0.12)' : 'rgba(10,22,40,0.06)'}
                       strokeWidth={pct===100 ? 1.5 : 1}
-                      strokeDasharray={pct===66 ? '4 4' : 'none'}
                     />
                   ))}
                   {/* Spokes */}
@@ -1733,24 +2008,38 @@ function BloomInsightSection() {
                       stroke="rgba(10,22,40,0.06)" strokeWidth="1" />
                   ))}
 
-                  {/* Cohort average — dashed grey polygon */}
-                  <polygon points={poly(sem.cohortAvg)} fill="rgba(10,22,40,0.04)"
-                    stroke="rgba(10,22,40,0.25)" strokeWidth="1.5" strokeDasharray="5 3"
-                    strokeLinejoin="round" />
+                  {/* Cohort average — amber dashed polygon */}
+                  <polygon points={poly(sem.cohortAvg)} fill={`url(#ravgFill-${active})`}
+                    stroke={`url(#ravg-${active})`} strokeWidth="2.5"
+                    strokeDasharray="7 4" strokeLinejoin="round" strokeLinecap="round"
+                    opacity="0.95" filter={`url(#ravgGlow-${active})`} />
+                  <polygon points={poly(sem.cohortAvg)} fill="none"
+                    stroke="rgba(255,255,255,0.55)" strokeWidth="0.8"
+                    strokeDasharray="7 4" strokeLinejoin="round" strokeLinecap="round"
+                    opacity="0.6" />
 
                   {/* Student filled area */}
                   <polygon points={poly(disp)} fill={`url(#rfill-${active})`} stroke="none" />
                   <polygon points={poly(disp)} fill="none"
-                    stroke={sem.accent} strokeWidth="3" strokeLinejoin="round"
+                    stroke={sem.accent} strokeWidth="8" strokeLinejoin="round"
+                    strokeLinecap="round" opacity="0.12" />
+                  <polygon points={poly(disp)} fill="none"
+                    stroke={`url(#rstroke-${active})`} strokeWidth="4" strokeLinejoin="round"
+                    strokeLinecap="round"
                     filter="url(#rglow)" />
+                  <polygon points={poly(disp)} fill="none"
+                    stroke="rgba(255,255,255,0.78)" strokeWidth="1.25" strokeLinejoin="round"
+                    strokeLinecap="round" opacity="0.72" />
 
                   {/* Pulse rings + dots */}
                   {disp.map((v,i) => (
                     <g key={i}>
-                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="13" fill={sem.accent} opacity="0"
+                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="13" fill={masteryColor(Math.round(v), sem.accent)} opacity="0"
                         style={{ animation: `pulseRing 2.4s ease ${i*0.22}s infinite` }} />
-                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="5.5"
-                        fill={sem.accent} stroke="white" strokeWidth="3" />
+                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="7.5"
+                        fill="white" stroke={masteryColor(Math.round(v), sem.accent)} strokeWidth="2.5" />
+                      <circle cx={pt(i,v).x} cy={pt(i,v).y} r="3.2"
+                        fill={masteryColor(Math.round(v), sem.accent)} />
                     </g>
                   ))}
 
@@ -1760,17 +2049,18 @@ function BloomInsightSection() {
                     const val = Math.round(disp[i])
                     const isMax = val === Math.round(Math.max(...disp))
                     const isMin = val === Math.round(Math.min(...disp))
+                    const color = masteryColor(val, isMax ? sem.accent : isMin ? '#d97706' : 'rgba(10,22,40,0.5)')
                     return (
                       <g key={label}>
                         <text x={p.x} y={p.y - 8} textAnchor="middle" dominantBaseline="middle"
                           fontSize="12.5" fontFamily="system-ui,sans-serif"
                           fontWeight={isMax ? '700' : '500'}
-                          fill={isMax ? sem.accent : isMin ? '#d97706' : 'rgba(10,22,40,0.5)'}>
+                          fill={color}>
                           {label}
                         </text>
                         <text x={p.x} y={p.y + 8} textAnchor="middle" dominantBaseline="middle"
                           fontSize="11.5" fontFamily="system-ui,sans-serif" fontWeight="700"
-                          fill={isMax ? sem.accent : isMin ? '#d97706cc' : 'rgba(10,22,40,0.3)'}>
+                          fill={val >= 75 ? '#059669cc' : isMax ? sem.accent : isMin ? '#d97706cc' : 'rgba(10,22,40,0.3)'}>
                           {val}%
                         </text>
                       </g>
@@ -1785,8 +2075,8 @@ function BloomInsightSection() {
                     <span className="text-[11px] font-semibold text-[#0a1628]/60">Maria</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <svg width="16" height="3" viewBox="0 0 16 3"><line x1="0" y1="1.5" x2="16" y2="1.5" stroke="rgba(10,22,40,0.35)" strokeWidth="1.5" strokeDasharray="4 2.5"/></svg>
-                    <span className="text-[11px] font-semibold text-[#0a1628]/45">Class avg</span>
+                    <svg width="22" height="6" viewBox="0 0 22 6"><line x1="1" y1="3" x2="21" y2="3" stroke="#f59e0b" strokeWidth="2.5" strokeDasharray="5 3" strokeLinecap="round"/></svg>
+                    <span className="text-[11px] font-semibold text-[#f59e0b]">Class avg</span>
                   </div>
                 </div>
               </div>
@@ -1796,39 +2086,39 @@ function BloomInsightSection() {
                 {BLOOM_LABELS.map((label, i) => {
                   const val   = Math.round(disp[i])
                   const isTop = Math.round(disp[i]) === Math.round(Math.max(...disp))
-                  const isLow = Math.round(disp[i]) === Math.round(Math.min(...disp))
-                  const cavg  = Math.round(sem.cohortAvg[i])
+                  const barColor = val >= 75 ? '#059669' : '#d97706'
                   return (
                     <div key={label}>
                       <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-[15px] font-semibold"
-                            style={{ color: isTop ? sem.accent : isLow ? '#d97706' : 'rgba(10,22,40,0.75)' }}>
+                            style={{ color: val >= 75 ? '#059669' : 'rgba(10,22,40,0.72)' }}>
                             {label}
                           </span>
                           <span className="text-[13px] text-[#0a1628]/35 hidden sm:inline">{BLOOM_SIMPLE[i]}</span>
                           {isTop && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md"
                             style={{ background: sem.accent + '15', color: sem.accent }}>top</span>}
-                          {isLow && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md bg-[#fef3c7] text-[#b45309]">gap</span>}
                         </div>
                         <span className="text-[16px] font-black tabular-nums shrink-0 ml-3"
-                          style={{ color: isLow ? '#d97706' : sem.accent }}>
+                          style={{ color: barColor }}>
                           {val}%
                         </span>
                       </div>
-                      <div className="relative h-[8px] bg-gray-100 rounded-full overflow-hidden">
+                      <div className="relative h-[8px] bg-gray-100 rounded-full">
                         <div className="h-full rounded-full"
                           style={{
                             width: `${val}%`,
-                            background: isLow
-                              ? 'linear-gradient(90deg,#f59e0b,#fbbf24)'
-                              : `linear-gradient(90deg,${sem.accent},${sem.accent}99)`,
-                            boxShadow: isTop ? `0 0 10px ${sem.accent}55` : 'none',
+                            background: val >= 75
+                              ? 'linear-gradient(90deg,#059669,#34d399)'
+                              : 'linear-gradient(90deg,#f59e0b,#fbbf24)',
+                            boxShadow: val >= 75 ? '0 0 10px rgba(5,150,105,0.28)' : 'none',
                             transition: 'width 0.75s cubic-bezier(0.34,1.1,0.64,1)',
                           }} />
-                        {/* Class avg marker */}
-                        <div className="absolute top-0 bottom-0 w-[2px] rounded-full"
-                          style={{ left: `${cavg}%`, background: 'rgba(10,22,40,0.30)' }} />
+                        {/* Fixed 75% threshold marker */}
+                        <div className="absolute -top-[5px] -bottom-[5px] w-[2px] rounded-full"
+                          style={{ left: '75%', background: 'linear-gradient(180deg,#6b7280,#374151)', boxShadow: '0 0 0 3px rgba(107,114,128,0.15)' }} />
+                        <div className="absolute top-1/2 w-[7px] h-[7px] rounded-full border-2 border-white bg-[#6b7280] shadow-sm"
+                          style={{ left: 'calc(75% - 3.5px)', transform: 'translateY(-50%)' }} />
                       </div>
                     </div>
                   )
@@ -1912,6 +2202,16 @@ function BloomInsightSection() {
               <div>
                 <p className="text-[12px] font-black uppercase tracking-[0.18em] mb-1.5" style={{ color: dokSem.accent }}>{dokSem.label}</p>
                 <p className="text-[20px] font-semibold text-[#0a1628] leading-snug">{dokSem.headline}</p>
+                <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-gray-200 bg-[#f8fafc] px-3 py-2 shadow-[0_1px_8px_rgba(10,22,40,0.04)]">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-black text-white shadow-sm"
+                    style={{ background: `linear-gradient(135deg,${dokSem.accent},#60a5fa)` }}>
+                    MG
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
+                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile · compared with class average</p>
+                  </div>
+                </div>
               </div>
               <div className="shrink-0 ml-4 text-right">
                 <p className="text-[40px] font-black leading-none tabular-nums" style={{ color: dokSem.accent }}>{dokSem.grade}%</p>
@@ -1937,7 +2237,6 @@ function BloomInsightSection() {
                           </span>
                           {isTop && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md"
                             style={{ background: dokSem.accent + '15', color: dokSem.accent }}>top</span>}
-                          {isLow && <span className="text-[11px] font-black uppercase tracking-wide px-2 py-0.5 rounded-md bg-[#fef3c7] text-[#b45309]">gap</span>}
                         </div>
                         <p className="text-[12px] font-medium pl-8" style={{ color: DOK_TEXT_COLORS[i] }}>{DOK_SIMPLE[i]}</p>
                       </div>
@@ -1946,7 +2245,7 @@ function BloomInsightSection() {
                         {val}%
                       </span>
                     </div>
-                    <div className="relative h-[9px] bg-gray-100 rounded-full overflow-hidden">
+                    <div className="relative h-[9px] bg-gray-100 rounded-full">
                       <div className="h-full rounded-full"
                         style={{
                           width: `${val}%`,
@@ -1957,8 +2256,10 @@ function BloomInsightSection() {
                           transition: 'width 0.75s cubic-bezier(0.34,1.1,0.64,1)',
                         }} />
                       {/* Class avg marker */}
-                      <div className="absolute top-0 bottom-0 w-[2px] rounded-full"
-                        style={{ left: `${cavg}%`, background: 'rgba(10,22,40,0.30)' }} />
+                      <div className="absolute -top-[4px] -bottom-[4px] w-[2px] rounded-full"
+                        style={{ left: `${cavg}%`, background: 'linear-gradient(180deg,#cbd5e1,#64748b)', boxShadow: '0 0 0 3px rgba(148,163,184,0.12)' }} />
+                      <div className="absolute top-1/2 w-[7px] h-[7px] rounded-full border border-white bg-[#94a3b8] shadow-sm"
+                        style={{ left: `calc(${cavg}% - 3px)`, transform: 'translateY(-50%)' }} />
                     </div>
                     <div className="flex flex-wrap gap-1 mt-2 items-center justify-between">
                       <div className="flex flex-wrap gap-1">
@@ -2039,9 +2340,7 @@ function PrinciplesSection() {
                 <FontAwesomeIcon icon={p.icon} style={{ width:18, height:18, color: p.color }} />
               </div>
               {/* Label */}
-              <p className="type-label mb-2" style={{ color: p.color }}>{p.label}</p>
-              {/* Title */}
-              <h3 className="text-[#0a1628] font-semibold text-[16px] leading-snug mb-3">{p.title}</h3>
+              <p className="type-label mb-3" style={{ color: p.color }}>{p.label}</p>
               {/* Desc */}
               <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{p.desc}</p>
             </div>
@@ -2053,13 +2352,13 @@ function PrinciplesSection() {
 }
 
 // -- Audience ------------------------------------------------------------------
-function AudienceSection() {
+function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
   const [ref, inView] = useInView(0.08)
   return (
     <section className="py-24 bg-[#f5f0e8]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="mb-14">
-          <span style={{ display:'inline-block', background:'#e8f4fc', border:'1px solid #b8ddf0', color:'#228DC1', fontSize:11, fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', padding:'4px 12px', borderRadius:20, marginBottom:16 }}>Who It's For</span>
+          <p className="type-label text-[#228DC1] mb-4">Who It's For</p>
           <h2 className="font-heading text-[#0a1628]">
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
@@ -2086,11 +2385,11 @@ function AudienceSection() {
                 ))}
               </div>
               {/* Learn more button */}
-              <Link to="/contact"
+              <button type="button" onClick={onDemoClick}
                 className="inline-flex items-center justify-center mt-8 px-5 py-2.5 rounded-lg text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
                 style={{ background:'#228DC1', alignSelf:'flex-start' }}>
                 Learn more
-              </Link>
+              </button>
             </div>
           ))}
         </div>
@@ -2101,9 +2400,30 @@ function AudienceSection() {
 
 // -- Main page -----------------------------------------------------------------
 export default function AruvaPage() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+  const openDemo = () => setIsDemoOpen(true)
+  const closeDemo = () => setIsDemoOpen(false)
+
   return (
     <>
       <ScrollProgress />
+      <ProductDemoModal
+        isOpen={isDemoOpen}
+        onClose={closeDemo}
+        productName="Aruva"
+        productLabel="AI for Education"
+        title="See Aruva in action"
+        description="Share a few details and we will show how Aruva maps student understanding, supports educators and turns course content into governed learning intelligence."
+        logoSrc="/aruva-logo-wordmark.png"
+        accentColor="#228DC1"
+        trustItems={['Higher education', 'Learning analytics', 'Governed AI', 'LMS integration', 'Bloom mapping', 'Academic support']}
+        outcomes={[
+          'A demo tailored to your courses, LMS and assessment model',
+          'A walkthrough of Bloom-level insight and student learning profiles',
+          'Guidance on governance, data residency and academic integrity',
+          'A pilot plan for 2 to 3 courses with measurable learning impact',
+        ]}
+      />
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
@@ -2159,8 +2479,16 @@ export default function AruvaPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               {/* Aruva logo wordmark */}
-              <div className="mb-5">
-                <img src="/aruva-logo.png" alt="Aruva" style={{ height: 28, objectFit: 'contain' }}
+              <div className="mb-7 flex items-center">
+                <img
+                  src="/aruva-logo-wordmark.png"
+                  alt="Aruva"
+                  style={{
+                    width: 'clamp(128px, 10vw, 156px)',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    filter: 'drop-shadow(0 8px 14px rgba(13,43,107,0.14))',
+                  }}
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
               </div>
               <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.7 }}>
@@ -2174,10 +2502,10 @@ export default function AruvaPage() {
                 Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact"
+                <button type="button" onClick={openDemo}
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
                   Request a Demo
-                </Link>
+                </button>
               </div>
             </div>
             <div className="flex items-center justify-center lg:justify-end">
@@ -2207,10 +2535,10 @@ export default function AruvaPage() {
       <section className="py-28 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-12">
-            <p className="inline-flex items-center px-3 py-1 bg-[#e5f4fa] text-[#228DC1] rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-5">Why Aruva</p>
+            <p className="type-label text-[#228DC1] mb-5">Why Aruva</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Most AI answers questions.<br />
-              <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva reveals</span> why students struggle.
+              Most AI answers questions directly.<br />
+              <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva develops</span> students' critical thinking.
             </h2>
             <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.75] max-w-2xl">
               Generic AI adds a chat interface to your institution. Aruva connects the entire academic lifecycle: syllabus, tutoring, assessment and analytics, into one <strong className="font-semibold text-[#0a1628]/80">continuous learning intelligence loop.</strong>
@@ -2276,30 +2604,29 @@ export default function AruvaPage() {
       {/* Platform Architecture */}
       <PlatformDiagram />
 
-      {/* How It Works — sticky scroll */}
+      {/* How It Works — sticky text left, scrolling visuals right */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-28 pb-0">
           <div className="mb-16">
             <p className="type-label text-[#228DC1] mb-4">How It Works</p>
-            <h2 className="font-heading text-[#0a1628] mb-4">From syllabus to <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">intelligent tutor</span> in hours</h2>
+            <h2 className="font-heading text-[#0a1628] mb-4">From <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Smart Syllabus</span> in minutes</h2>
             <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed max-w-2xl">
               Aruva transforms your existing course structure into a governed AI teaching layer. No rip-and-replace, no new workflows.
             </p>
           </div>
         </div>
 
-        {/* Sticky scroll container */}
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex gap-16 items-start">
 
-            {/* LEFT — sticky text steps */}
+            {/* LEFT — sticky step text */}
             <div className="w-[42%] shrink-0 sticky top-24 self-start pb-28">
               {howItWorksSteps.map((step, i) => (
                 <HIWStepText key={step.num} step={step} index={i} total={howItWorksSteps.length} />
               ))}
             </div>
 
-            {/* RIGHT — scrolling visuals stacked vertically */}
+            {/* RIGHT — scrolling visuals */}
             <div className="flex-1 flex flex-col gap-16 pb-28 pt-2">
               {howItWorksSteps.map((step) => {
                 const Visual = step.visual === 'syllabus' ? SyllabusVisual
@@ -2308,8 +2635,8 @@ export default function AruvaPage() {
                   : AnalyticsVisual
                 return (
                   <div key={step.num} className="hiw-visual-block" data-step={step.num}
-                    style={{ minHeight: '420px', display:'flex', alignItems:'center' }}>
-                    <div style={{ width:'100%' }}><Visual /></div>
+                    style={{ minHeight: '420px', display: 'flex', alignItems: 'center' }}>
+                    <div style={{ width: '100%' }}><Visual /></div>
                   </div>
                 )
               })}
@@ -2323,7 +2650,7 @@ export default function AruvaPage() {
       <PrinciplesSection />
 
       {/* Who it's for */}
-      <AudienceSection />
+      <AudienceSection onDemoClick={openDemo} />
 
       {/* Governance */}
       <section className="py-20 bg-white border-t border-gray-100">
@@ -2381,16 +2708,20 @@ export default function AruvaPage() {
                 ))}
               </div>
 
-              {/* 3 bottom badges */}
-              <div className="grid grid-cols-3 gap-3">
+              {/* Platform quality tags */}
+              <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden divide-x divide-gray-200 bg-white shadow-[0_1px_6px_rgba(10,22,40,0.05)]">
+                <div className="px-4 py-3 shrink-0 bg-[#f8fafc]">
+                  <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#0a1628]/40">Platform</span>
+                </div>
                 {[
-                  { tag:'AUDIT READY',   val:'Logs + trails' },
-                  { tag:'DATA CONTROL',  val:'GDPR aligned' },
-                  { tag:'DEPLOYMENT',    val:'Your choice' },
-                ].map(b => (
-                  <div key={b.tag} className="bg-[#f8fafc] rounded-xl p-4 border border-gray-100 text-center">
-                    <p className="type-label text-[#0a1628]/40 mb-1">{b.tag}</p>
-                    <p className="font-semibold text-[#0a1628] text-[13px]">{b.val}</p>
+                  { label: 'Traceable',   color: '#228DC1' },
+                  { label: 'Auditable',   color: '#7c3aed' },
+                  { label: 'Explainable', color: '#059669' },
+                  { label: 'Measurable',  color: '#d97706' },
+                  { label: 'With Logs',   color: '#e11d48' },
+                ].map(q => (
+                  <div key={q.label} className="flex-1 flex items-center justify-center px-4 py-3 hover:bg-gray-50 transition-colors cursor-default" style={{ borderTop: `2px solid ${q.color}` }}>
+                    <span className="text-[12px] font-semibold whitespace-nowrap" style={{ color: q.color }}>{q.label}</span>
                   </div>
                 ))}
               </div>
@@ -2411,11 +2742,11 @@ export default function AruvaPage() {
           <p style={{ color:'rgba(255,255,255,0.6)', fontSize:16, lineHeight:1.75, marginBottom:32 }}>
             Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution.
           </p>
-          <Link to="/contact"
+          <button type="button" onClick={openDemo}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-[14px] font-semibold hover:opacity-90 transition-opacity"
             style={{ background:'#fbbf24', color:'#0a1628' }}>
             Request a Demo
-          </Link>
+          </button>
         </div>
       </section>
 

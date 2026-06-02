@@ -93,19 +93,10 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="inline-flex items-center gap-3 mb-5">
               <img
-                src="/awtg-logo-white.png"
+                src="/awtg-logo.png"
                 alt="AWTG"
-                className="h-9 w-auto object-contain"
-                onError={(e) => {
-                  const img = e.target as HTMLImageElement
-                  img.style.display = 'none'
-                  const fallback = img.nextSibling as HTMLElement
-                  if (fallback) fallback.style.display = 'flex'
-                }}
+                className="h-14 w-auto object-contain"
               />
-              <span style={{ display:'none', alignItems:'center', gap:10 }}>
-                <img src="/awtg-logo.png" alt="AWTG" className="h-8 w-auto bg-white rounded p-1" />
-              </span>
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-6">
               An end-to-end engineering services and technology solutions provider. Creating innovations that improve communities and deliver real ROI since 2006.

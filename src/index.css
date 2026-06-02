@@ -77,6 +77,94 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes homeHeroReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes homeHeroMediaSettle {
+  0% {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.home-hero-media {
+  animation: homeHeroMediaSettle 1200ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transform-origin: center;
+}
+
+.home-hero-reveal {
+  opacity: 0;
+  animation: homeHeroReveal 780ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  will-change: opacity, transform, filter;
+}
+
+
+
+@keyframes kaiOrbListen {
+  0%, 100% { transform: scale(1.00); border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+  28%      { transform: scale(1.06); border-radius: 40% 60% 46% 54% / 56% 40% 62% 42%; }
+  60%      { transform: scale(1.10); border-radius: 60% 40% 54% 46% / 42% 62% 38% 58%; }
+}
+
+@keyframes kaiOrbUser {
+  0%   { transform: scale(1.00); border-radius: 50%; }
+  8%   { transform: scale(1.15); border-radius: 36% 64% 42% 58% / 60% 36% 64% 40%; }
+  19%  { transform: scale(0.88); border-radius: 64% 36% 58% 42% / 40% 64% 36% 60%; }
+  30%  { transform: scale(1.18); border-radius: 42% 58% 36% 64% / 64% 38% 60% 40%; }
+  41%  { transform: scale(0.87); border-radius: 58% 42% 64% 36% / 36% 62% 40% 60%; }
+  52%  { transform: scale(1.14); border-radius: 38% 62% 44% 56% / 58% 40% 66% 36%; }
+  63%  { transform: scale(0.90); border-radius: 62% 38% 36% 64% / 42% 60% 38% 64%; }
+  74%  { transform: scale(1.16); border-radius: 40% 60% 60% 40% / 64% 36% 58% 42%; }
+  85%  { transform: scale(0.89); border-radius: 60% 40% 42% 58% / 38% 64% 42% 60%; }
+  93%  { transform: scale(1.11); border-radius: 44% 56% 38% 62% / 60% 42% 64% 38%; }
+  100% { transform: scale(1.00); border-radius: 50%; }
+}
+
+@keyframes kaiOrbSpeak {
+  0%   { transform: scale(1.00); border-radius: 50%; }
+  10%  { transform: scale(1.16); border-radius: 38% 62% 40% 60% / 60% 36% 64% 38%; }
+  24%  { transform: scale(0.89); border-radius: 62% 38% 60% 40% / 38% 64% 36% 62%; }
+  38%  { transform: scale(1.19); border-radius: 40% 60% 36% 64% / 64% 38% 60% 40%; }
+  52%  { transform: scale(0.91); border-radius: 60% 40% 64% 36% / 36% 62% 40% 62%; }
+  65%  { transform: scale(1.14); border-radius: 42% 58% 38% 62% / 62% 40% 58% 42%; }
+  78%  { transform: scale(0.92); border-radius: 58% 42% 58% 42% / 42% 60% 38% 64%; }
+  90%  { transform: scale(1.12); border-radius: 38% 62% 42% 58% / 60% 40% 62% 40%; }
+  100% { transform: scale(1.00); border-radius: 50%; }
+}
+
+@keyframes kaiWaveBar {
+  from { transform: scaleY(0.28); }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes csatIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.kai-chat-scroll {
+  scrollbar-width: none;
+}
+
+.kai-chat-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -165,4 +253,15 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1;
+}
+
+/* Uniform button treatment across pages */
+:root {
+  --awtg-button-radius: 8px;
+}
+
+button,
+[role="button"],
+a[href][class*="px-"][class*="py-"] {
+  border-radius: var(--awtg-button-radius) !important;
 }
