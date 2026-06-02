@@ -551,17 +551,25 @@ function CurriculumAgnosticSection() {
               })}
             </svg>
 
-            <div className="absolute left-1/2 top-1/2 z-10 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[22px] border border-[#bfe5f7] bg-white px-4 text-center shadow-[0_18px_42px_rgba(34,141,193,0.18)]">
-              <img src="/aruva-logo-wordmark.png" alt="Aruva" className="h-7 w-auto object-contain" />
-              <span className="mt-3 rounded-full bg-[#e5f4fa] px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#228DC1]">
-                Centralised AI
-              </span>
-              <span className="mt-3 text-[12px] font-bold leading-snug text-[#0a1628]" style={{ color: activeSubject.color }}>
-                {activeSubject.name}
-              </span>
-              <span className="mt-1 text-[10px] font-medium leading-snug text-[#0a1628]/45">
-                {activeSubject.signal}
-              </span>
+            <div className="absolute left-1/2 top-1/2 z-10 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-[28px] bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_100%)] p-[1px] shadow-[0_24px_60px_rgba(34,141,193,0.28)]">
+              <div className="absolute -inset-5 -z-10 rounded-[34px] bg-[radial-gradient(circle,rgba(34,141,193,0.28),transparent_68%)]" />
+              <div className="absolute inset-x-8 top-0 h-[3px] rounded-b-full bg-[#228DC1]" />
+              <div className="flex h-full w-full flex-col items-center justify-center rounded-[27px] border border-[#bfe5f7] bg-white px-5 text-center">
+                <div className="flex h-14 w-full items-center justify-center">
+                  <img src="/aruva-logo-wordmark.png" alt="Aruva" className="h-9 w-auto object-contain" />
+                </div>
+                <span className="mt-3 rounded-full bg-[#e5f4fa] px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-[#228DC1] shadow-[inset_0_0_0_1px_rgba(34,141,193,0.12)]">
+                  Centralised AI
+                </span>
+                <div className="mt-4 w-full rounded-[14px] px-3 py-2" style={{ background: activeSubject.soft, border: `1px solid ${activeSubject.color}28` }}>
+                  <span className="block text-[13px] font-black leading-snug" style={{ color: activeSubject.color }}>
+                    {activeSubject.name}
+                  </span>
+                  <span className="mt-1 block text-[10px] font-semibold leading-snug text-[#0a1628]/48">
+                    {activeSubject.signal}
+                  </span>
+                </div>
+              </div>
             </div>
 
             <div className="absolute inset-0">
