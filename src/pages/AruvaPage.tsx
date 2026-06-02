@@ -1478,7 +1478,6 @@ function MultimodalSection() {
     setActive(i)
     setCycleCount(c => c + 1)
     startRef.current = performance.now()
-    setProgress(0)
   }
 
   const activeM = MM_MODALITIES[active]
