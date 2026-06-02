@@ -607,15 +607,12 @@ function HowItWorksSection() {
 
           {/* LEFT — active step always at top, inactive steps below */}
           <div style={reveal(inView, 100)}>
-            {[
-              howItWorksSteps[active],
-              ...howItWorksSteps.filter((_, i) => i !== active),
-            ].map((s) => {
-              const isActive = s.num === howItWorksSteps[active].num
+            {howItWorksSteps.map((s, index) => {
+              const isActive = index === active
               return (
-                <button key={s.num} onClick={() => setActive(howItWorksSteps.indexOf(s))}
+                <button key={s.num} type="button" onClick={() => setActive(index)}
                   className="hiw-step-btn w-full text-left"
-                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding: isActive ? '20px 0 22px' : '13px 0', display:'block', transition:'border-color 0.4s ease', outline:'none' }}>
+                  style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding: isActive ? '20px 0 22px' : '13px 0', display:'block', transition:'border-color 0.4s ease', outline:'none', cursor:'pointer' }}>
                   <div className="flex items-start gap-3">
                     <div style={{ width:8, height:8, borderRadius:2, marginTop: isActive ? 7 : 5, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.4s ease' }}/>
                     <div className="flex-1">
