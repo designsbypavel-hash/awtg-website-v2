@@ -12,52 +12,68 @@ type NavEntry =
 
 const navItems: NavEntry[] = [
   {
-    label: 'Products',
-    key: 'products',
-    cols: 3,
-    items: [
-      { label: 'Aruva', desc: 'AI-powered teaching and formative assessment for higher education', href: '/products/aruva' },
-      { label: 'Kai', desc: 'Enterprise AI platform for customer service and operations', href: '/products/kai' },
-      { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
+    label: 'AI for Innovation',
+    key: 'innovation',
+    groups: [
+      {
+        heading: 'Products',
+        items: [
+          { label: 'Kai', desc: 'Enterprise AI platform for customer service and operations', href: '/products/kai' },
+          { label: 'Aruva', desc: 'AI-powered teaching and formative assessment for higher education', href: '/products/aruva' },
+        ],
+      },
+      {
+        heading: 'Services',
+        items: [
+          { label: 'Generative AI', desc: 'Production-ready GenAI for enterprise workflows', href: '/solutions/generative-ai' },
+          { label: 'AI/ML Solutions', desc: 'Machine learning and intelligent automation', href: '/services/ai-ml' },
+          { label: 'Software Development', desc: 'Custom platforms and application development', href: '/services/software' },
+          { label: 'Consultancy', desc: 'Strategic technology advisory and planning', href: '/services/consultancy' },
+          { label: 'Digital Transformation', desc: 'End-to-end modernisation programmes', href: '/services/digital-transformation' },
+        ],
+      },
+      {
+        heading: 'Industries',
+        items: [
+          { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
+          { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
+          { label: 'Retail', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
+          { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
+        ],
+      },
     ],
   },
   {
-    label: 'Solutions',
-    key: 'solutions',
-    cols: 3,
-    items: [
-      { label: 'Telecoms AI', desc: 'AI-powered network intelligence and optimisation', href: '/solutions/telecoms-ai' },
-      { label: 'Generative AI', desc: 'Production-ready GenAI for enterprise workflows', href: '/solutions/generative-ai' },
-      { label: 'Private Network as a Service', desc: 'Managed 4G/5G enterprise connectivity', href: '/solutions/mobile-private-networks' },
-      { label: 'Smart Cities', desc: 'Urban IoT and digital infrastructure platforms', href: '/solutions/smart-cities' },
-      { label: 'Industry 4.0', desc: 'Connected manufacturing and logistics solutions', href: '/solutions/industry-4' },
-      { label: 'Smart Health', desc: 'Digital health connectivity and AI platforms', href: '/solutions/smart-health' },
-    ],
-  },
-  {
-    label: 'Services',
-    key: 'services',
-    cols: 3,
-    items: [
-      { label: 'Consultancy', desc: 'Strategic technology advisory and planning', href: '/services/consultancy' },
-      { label: 'Engineering', desc: 'RF, 5G and network engineering services', href: '/services/engineering' },
-      { label: 'Software Development', desc: 'Custom platforms and application development', href: '/services/software' },
-      { label: 'Digital Transformation', desc: 'End-to-end modernisation programmes', href: '/services/digital-transformation' },
-      { label: 'AI/ML Solutions', desc: 'Machine learning and intelligent automation', href: '/services/ai-ml' },
-      { label: 'IoT Platforms', desc: 'Connected device management and analytics', href: '/services/iot' },
-    ],
-  },
-  {
-    label: 'Industries',
-    key: 'industries',
-    cols: 3,
-    items: [
-      { label: 'Telecommunications', desc: 'MNOs, MVNOs and infrastructure vendors', href: '/industries/telecoms' },
-      { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
-      { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
-      { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
-      { label: 'Retail', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
-      { label: 'Defence', desc: 'Secure, mission-critical communications', href: '/industries/defence' },
+    label: 'AI for Connectivity',
+    key: 'connectivity',
+    groups: [
+      {
+        heading: 'Products',
+        items: [
+          { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
+          { label: 'SCAP', desc: 'Spectrum and capacity analysis platform for network planning', href: '/services/engineering' },
+          { label: 'Borderlands', desc: 'Edge network management and border connectivity platform', href: '/industries/telecoms' },
+        ],
+      },
+      {
+        heading: 'Solutions',
+        items: [
+          { label: 'Telecoms AI', desc: 'AI-powered network intelligence and optimisation', href: '/solutions/telecoms-ai' },
+          { label: 'Private Network as a Service', desc: 'Managed 4G/5G enterprise connectivity', href: '/solutions/mobile-private-networks' },
+          { label: 'Smart Cities', desc: 'Urban IoT and digital infrastructure platforms', href: '/solutions/smart-cities' },
+          { label: 'Industry 4.0', desc: 'Connected manufacturing and logistics solutions', href: '/solutions/industry-4' },
+          { label: 'Smart Health', desc: 'Digital health connectivity and AI platforms', href: '/solutions/smart-health' },
+          { label: 'IoT Platforms', desc: 'Connected device management and analytics', href: '/services/iot' },
+          { label: 'Engineering', desc: 'RF, 5G and network engineering services', href: '/services/engineering' },
+        ],
+      },
+      {
+        heading: 'Industries',
+        items: [
+          { label: 'Telecommunications', desc: 'MNOs, MVNOs and infrastructure vendors', href: '/industries/telecoms' },
+          { label: 'Defence', desc: 'Secure, mission-critical communications', href: '/industries/defence' },
+        ],
+      },
     ],
   },
   {
@@ -201,6 +217,12 @@ export default function Navigation() {
                 </button>
               ))}
               <Link
+                to="/insights"
+                className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
+              >
+                News
+              </Link>
+              <Link
                 to="/careers"
                 className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
               >
@@ -255,7 +277,7 @@ export default function Navigation() {
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8">
+              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
@@ -280,27 +302,27 @@ export default function Navigation() {
                   </div>
                 )}
 
-                {/* Grouped layout (About — Company + Insights side by side) */}
+                {/* Grouped mega menu */}
                 {nav.groups && (
-                  <div className={`grid gap-10 ${nav.groups.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+                  <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-24' : 'grid-cols-2 gap-16'}`}>
                     {nav.groups.map((group) => (
                       <div key={group.heading}>
-                        <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/65 mb-3 px-4">
+                        <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-[#0a1628]/55 mb-6 px-2">
                           {group.heading}
                         </p>
-                        <div className="space-y-0.5">
+                        <div className="space-y-6">
                           {group.items.map((item) => (
                             <Link
                               key={item.href}
                               to={item.href}
-                              className="group flex items-start gap-3 px-4 py-3 rounded-md border-l-2 border-transparent hover:border-[#228DC1] hover:bg-[#f0f5ff] hover:translate-x-0.5 transition-all duration-200"
+                              className="group block px-2 py-0 transition-transform duration-200 hover:translate-x-1"
                               onClick={closeDropdownNow}
                             >
                               <div>
-                                <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
+                                <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-1 tracking-[-0.01em]">
                                   {item.label}
                                 </p>
-                                <p className="text-[#0a1628]/65 text-xs font-normal leading-relaxed">
+                                <p className="text-[#0a1628]/58 text-xs font-normal leading-relaxed">
                                   {item.desc}
                                 </p>
                               </div>
@@ -354,6 +376,7 @@ export default function Navigation() {
                 )}
               </div>
             ))}
+            <Link to="/insights" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">News</Link>
             <Link to="/careers" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Careers</Link>
             <div className="pt-4 flex flex-col gap-2">
               <Link to="/contact" className="w-full py-2.5 text-center text-sm border border-[#228DC1] text-[#228DC1] hover:bg-[#228DC1] hover:text-white transition-colors rounded-lg">
