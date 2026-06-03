@@ -1284,13 +1284,6 @@ function PlatformDiagram() {
   const layerOn = [s0On, s1On, s2On, s3On]
   const uiOn    = [ui0On, ui1On, ui2On, ui3On, ui4On]
 
-  // dummy refs to satisfy existing destructuring references (unused now)
-  const [titleRef,  titleInView]  = useInView(0.3)
-  const [integRef,  integInView]  = useInView(0.25)
-  const [conn1Ref,  conn1InView]  = useInView(0.6)
-  const [servRef,   servInView]   = useInView(0.15)
-  const [conn2Ref,  conn2InView]  = useInView(0.6)
-  const [uiRef,     uiInView]     = useInView(0.2)
 
   const layers = [
     { label:'Smart Syllabus',           sub:'How the AI knows your course',        color:'#228DC1', chips:['Outcome mapping','Teaching rules','Rubric logic','AI boundaries'] },
