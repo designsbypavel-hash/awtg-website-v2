@@ -2958,78 +2958,54 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
         </div>
-        <div ref={ref} className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0">
+        {/* Hub layout: card2 connects outward to card1 and card3 */}
+        <div ref={ref} className="relative">
 
-          {/* Card 1 */}
-          <AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} />
-
-          {/* Connector: card2 ↔ card1 */}
-          <div className="flex lg:flex-col items-center justify-center shrink-0" style={{ width:72, gap:6 }}>
-            {/* ← */}
-            <div style={{
-              display:'flex', alignItems:'center', gap:6,
-              background:'linear-gradient(135deg,#ede9fe,#ddd6fe)',
-              border:'1px solid #c4b5fd',
-              borderRadius:99, padding:'7px 12px',
-              boxShadow:'0 4px 16px rgba(124,58,237,0.18)',
-            }}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M10 8H6M6 8L8.5 5.5M6 8L8.5 10.5" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span style={{ fontSize:10, fontWeight:800, color:'#7c3aed', letterSpacing:'0.08em' }}>TO</span>
-            </div>
-            {/* divider dot */}
-            <div style={{ width:4, height:4, borderRadius:'50%', background:'#c4b5fd' }}/>
-            {/* → */}
-            <div style={{
-              display:'flex', alignItems:'center', gap:6,
-              background:'linear-gradient(135deg,#7c3aed,#6d28d9)',
-              borderRadius:99, padding:'7px 12px',
-              boxShadow:'0 4px 16px rgba(124,58,237,0.35)',
-            }}>
-              <span style={{ fontSize:10, fontWeight:800, color:'white', letterSpacing:'0.08em' }}>FROM</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 8H10M10 8L7.5 5.5M10 8L7.5 10.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
+          {/* Cards row */}
+          <div className="grid lg:grid-cols-3 gap-6">
+            <AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} />
+            <AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} />
+            <AudienceCard a={audiences[2]} i={2} inView={inView} onDemoClick={onDemoClick} />
           </div>
 
-          {/* Card 2 — Educators (hub) */}
-          <AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} />
+          {/* SVG connection lines overlay — drawn from card2 outward */}
+          <svg className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none" style={{ overflow:'visible' }}>
+            <defs>
+              <marker id="mL" markerWidth="10" markerHeight="10" refX="0" refY="5" orient="auto">
+                <path d="M10 1 L1 5 L10 9" fill="none" stroke={audiences[1].color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </marker>
+              <marker id="mR" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
+                <path d="M0 1 L9 5 L0 9" fill="none" stroke={audiences[1].color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </marker>
+              {/* Reverse markers */}
+              <marker id="mRL" markerWidth="10" markerHeight="10" refX="0" refY="5" orient="auto">
+                <path d="M10 1 L1 5 L10 9" fill="none" stroke={audiences[1].color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
+              </marker>
+              <marker id="mRR" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
+                <path d="M0 1 L9 5 L0 9" fill="none" stroke={audiences[1].color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
+              </marker>
+            </defs>
 
-          {/* Connector: card2 ↔ card3 */}
-          <div className="flex lg:flex-col items-center justify-center shrink-0" style={{ width:72, gap:6 }}>
-            {/* → */}
-            <div style={{
-              display:'flex', alignItems:'center', gap:6,
-              background:'linear-gradient(135deg,#7c3aed,#6d28d9)',
-              borderRadius:99, padding:'7px 12px',
-              boxShadow:'0 4px 16px rgba(124,58,237,0.35)',
-            }}>
-              <span style={{ fontSize:10, fontWeight:800, color:'white', letterSpacing:'0.08em' }}>TO</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 8H10M10 8L7.5 5.5M10 8L7.5 10.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            {/* divider dot */}
-            <div style={{ width:4, height:4, borderRadius:'50%', background:'#c4b5fd' }}/>
-            {/* ← */}
-            <div style={{
-              display:'flex', alignItems:'center', gap:6,
-              background:'linear-gradient(135deg,#ede9fe,#ddd6fe)',
-              border:'1px solid #c4b5fd',
-              borderRadius:99, padding:'7px 12px',
-              boxShadow:'0 4px 16px rgba(124,58,237,0.18)',
-            }}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M10 8H6M6 8L8.5 5.5M6 8L8.5 10.5" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span style={{ fontSize:10, fontWeight:800, color:'#7c3aed', letterSpacing:'0.08em' }}>FROM</span>
-            </div>
-          </div>
+            {/* Line: card2 → card1 (pointing LEFT from 50% to 35%) */}
+            <line x1="49%" y1="46%" x2="35.5%" y2="46%"
+              stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"
+              markerEnd="url(#mL)"/>
+            {/* Line: card1 → card2 (reverse, dashed) */}
+            <line x1="34%" y1="54%" x2="48.5%" y2="54%"
+              stroke={audiences[1].color} strokeWidth="1.5" strokeLinecap="round"
+              strokeDasharray="6 4" opacity="0.45"
+              markerEnd="url(#mRR)"/>
 
-          {/* Card 3 */}
-          <AudienceCard a={audiences[2]} i={2} inView={inView} onDemoClick={onDemoClick} />
+            {/* Line: card2 → card3 (pointing RIGHT from 51% to 64.5%) */}
+            <line x1="51%" y1="46%" x2="64.5%" y2="46%"
+              stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"
+              markerEnd="url(#mR)"/>
+            {/* Line: card3 → card2 (reverse, dashed) */}
+            <line x1="66%" y1="54%" x2="51.5%" y2="54%"
+              stroke={audiences[1].color} strokeWidth="1.5" strokeLinecap="round"
+              strokeDasharray="6 4" opacity="0.45"
+              markerEnd="url(#mRL)"/>
+          </svg>
 
         </div>
 
