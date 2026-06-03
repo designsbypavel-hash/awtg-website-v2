@@ -6,6 +6,15 @@ import { faChevronDown, faBars, faXmark } from '@fortawesome/free-solid-svg-icon
 
 type NavItem = { label: string; desc: string; href: string }
 type NavGroup = { heading: string; items: NavItem[] }
+type FeaturedItem = { label: string; desc: string; href: string; badge?: string }
+type FeaturedPanel = {
+  eyebrow: string
+  title: string
+  desc: string
+  items: FeaturedItem[]
+  href: string
+  cta: string
+}
 type NavEntry =
   | { label: string; key: string; cols: number; items: NavItem[]; groups?: never }
   | { label: string; key: string; cols?: never; items?: never; groups: NavGroup[] }
@@ -88,6 +97,72 @@ const navItems: NavEntry[] = [
     ],
   },
 ]
+
+const featuredPanels: Record<string, FeaturedPanel> = {
+  innovation: {
+    eyebrow: 'Featured',
+    title: 'AI built around real work',
+    desc: 'Explore the two fastest routes into production AI: guided education experiences and customer-facing service intelligence.',
+    href: '/solutions/generative-ai',
+    cta: 'Explore innovation',
+    items: [
+      {
+        label: 'AI for Education',
+        desc: 'Aruva maps learning signals and guides every student through governed course intelligence.',
+        href: '/products/aruva',
+        badge: 'Aruva',
+      },
+      {
+        label: 'AI for Sales and Customer Services',
+        desc: 'Kai helps teams respond faster, govern handoffs and improve customer operations.',
+        href: '/products/kai',
+        badge: 'Kai',
+      },
+    ],
+  },
+  connectivity: {
+    eyebrow: 'Featured',
+    title: 'Network intelligence in motion',
+    desc: 'Plan, analyse and optimise connectivity with products built for real infrastructure decisions.',
+    href: '/products/icmap',
+    cta: 'View connectivity',
+    items: [
+      {
+        label: 'iCMAP',
+        desc: 'Intelligent 5G coverage mapping and network gap analysis.',
+        href: '/products/icmap',
+        badge: '5G',
+      },
+      {
+        label: 'SCAP',
+        desc: 'Spectrum and capacity analysis for network planning teams.',
+        href: '/services/engineering',
+        badge: 'RF',
+      },
+    ],
+  },
+  about: {
+    eyebrow: 'Featured',
+    title: 'Meet AWTG',
+    desc: 'See how our teams combine telecoms engineering, software and AI delivery across public and private sector programmes.',
+    href: '/about',
+    cta: 'About AWTG',
+    items: [
+      {
+        label: 'Company story',
+        desc: 'Who we are, how we work and what drives our delivery culture.',
+        href: '/about',
+        badge: 'AWTG',
+      },
+      {
+        label: 'News & thought leadership',
+        desc: 'Perspectives on AI, connectivity and digital infrastructure.',
+        href: '/insights',
+        badge: 'News',
+      },
+    ],
+  },
+}
 
 type DropdownKey = string | null
 
@@ -292,33 +367,80 @@ export default function Navigation() {
 
                 {/* Grouped mega menu */}
                 {nav.groups && (
-                  <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-24' : 'grid-cols-2 gap-16'}`}>
-                    {nav.groups.map((group) => (
-                      <div key={group.heading}>
-                        <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-[#0a1628]/55 mb-6 px-2">
-                          {group.heading}
+                  <div className="grid grid-cols-[minmax(0,1fr)_360px] gap-16 items-start">
+                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-16'}`}>
+                      {nav.groups.map((group) => (
+                        <div key={group.heading}>
+                          <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-[#0a1628]/55 mb-6 px-2">
+                            {group.heading}
+                          </p>
+                          <div className="space-y-6">
+                            {group.items.map((item) => (
+                              <Link
+                                key={item.href}
+                                to={item.href}
+                                className="group block px-2 py-0 transition-transform duration-200 hover:translate-x-1"
+                                onClick={closeDropdownNow}
+                              >
+                                <div>
+                                  <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-1 tracking-[-0.01em]">
+                                    {item.label}
+                                  </p>
+                                  <p className="text-[#0a1628]/58 text-xs font-normal leading-relaxed">
+                                    {item.desc}
+                                  </p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {featuredPanels[nav.key] && (
+                      <div className="rounded-[14px] border border-gray-200 bg-[#f8fafc] p-5 shadow-[0_12px_32px_rgba(10,22,40,0.06)]">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-3">
+                          {featuredPanels[nav.key].eyebrow}
                         </p>
-                        <div className="space-y-6">
-                          {group.items.map((item) => (
+                        <h3 className="text-[#0a1628] text-[18px] font-semibold tracking-[-0.02em] mb-2">
+                          {featuredPanels[nav.key].title}
+                        </h3>
+                        <p className="text-[#0a1628]/60 text-[12px] leading-relaxed mb-5">
+                          {featuredPanels[nav.key].desc}
+                        </p>
+                        <div className="space-y-2.5">
+                          {featuredPanels[nav.key].items.map((item, index) => (
                             <Link
                               key={item.href}
                               to={item.href}
-                              className="group block px-2 py-0 transition-transform duration-200 hover:translate-x-1"
                               onClick={closeDropdownNow}
+                              className="group block rounded-[10px] border border-gray-200 bg-white px-4 py-3 transition-all duration-200 hover:border-[#228DC1]/35 hover:shadow-[0_10px_24px_rgba(34,141,193,0.10)]"
                             >
-                              <div>
-                                <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-1 tracking-[-0.01em]">
-                                  {item.label}
-                                </p>
-                                <p className="text-[#0a1628]/58 text-xs font-normal leading-relaxed">
-                                  {item.desc}
-                                </p>
+                              <div className="flex items-start gap-3">
+                                <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e5f4fa] text-[10px] font-black text-[#228DC1]">
+                                  {item.badge ?? String(index + 1).padStart(2, '0')}
+                                </span>
+                                <span>
+                                  <span className="block text-[13px] font-semibold text-[#0a1628] group-hover:text-[#228DC1] transition-colors">
+                                    {item.label}
+                                  </span>
+                                  <span className="mt-1 block text-[11px] leading-relaxed text-[#0a1628]/55">
+                                    {item.desc}
+                                  </span>
+                                </span>
                               </div>
                             </Link>
                           ))}
                         </div>
+                        <Link
+                          to={featuredPanels[nav.key].href}
+                          onClick={closeDropdownNow}
+                          className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#228DC1] hover:text-[#1a6e99] transition-colors"
+                        >
+                          {featuredPanels[nav.key].cta} <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                        </Link>
                       </div>
-                    ))}
+                    )}
                   </div>
                 )}
 
