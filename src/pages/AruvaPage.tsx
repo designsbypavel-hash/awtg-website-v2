@@ -804,7 +804,7 @@ function PlatformDiagram() {
   )
 
   return (
-    <section className="py-24" style={{ background: '#f8fafc' }}>
+    <section className="py-24 overflow-hidden" style={{ background: '#f8fafc' }}>
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Section header */}
@@ -827,7 +827,7 @@ function PlatformDiagram() {
             <ZoneHeader label="Integrations" />
             <div className="flex-1 flex flex-col gap-5 px-4 py-5 bg-white border-r border-gray-100">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">VLE / LMS</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">VLE / LMS</p>
                 <div className="flex flex-col gap-1.5">
                   {lmsList.map(lms => (
                     <span key={lms.name}
@@ -839,10 +839,10 @@ function PlatformDiagram() {
                 </div>
               </div>
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">Data Sources</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">Data Sources</p>
                 <div className="flex flex-col gap-1.5">
                   {dataSources.map(d => (
-                    <span key={d} className="px-3 py-1.5 bg-[#f1f5f9] border border-gray-200 text-[11px] font-medium text-[#0a1628]/80" style={{ borderRadius: 5 }}>
+                    <span key={d} className="px-3 py-1.5 bg-[#f1f5f9] border border-gray-200 text-[12px] font-medium text-[#0a1628]/80" style={{ borderRadius: 5 }}>
                       {d}
                     </span>
                   ))}
@@ -874,8 +874,8 @@ function PlatformDiagram() {
                   {/* Coloured identity block */}
                   <div className="shrink-0 flex flex-col justify-center px-5 py-4"
                     style={{ width: 190, background: layer.color, minHeight: 82 }}>
-                    <p className="text-white font-bold text-[13px] leading-snug">{layer.label}</p>
-                    <p className="text-white/80 text-[11px] font-normal leading-snug mt-1">{layer.sublabel}</p>
+                    <p className="text-white font-bold text-[14px] leading-snug">{layer.label}</p>
+                    <p className="text-white/80 text-[12px] font-normal leading-snug mt-1">{layer.sublabel}</p>
                   </div>
                   {/* Arrow bridge */}
                   <div className="flex items-center justify-center shrink-0 px-3"
@@ -889,7 +889,7 @@ function PlatformDiagram() {
                     style={{ background: layer.color + '08' }}>
                     {layer.items.map(item => (
                       <span key={item}
-                        className="px-3 py-1 bg-white text-[11px] font-semibold text-[#0a1628] shadow-[0_1px_6px_rgba(10,22,40,0.07)]"
+                        className="px-3 py-1 bg-white text-[12px] font-semibold text-[#0a1628] shadow-[0_1px_6px_rgba(10,22,40,0.07)]"
                         style={{ border: `1px solid ${layer.color}35`, borderRadius: 6 }}>
                         {item}
                       </span>
@@ -924,8 +924,8 @@ function PlatformDiagram() {
                     {s.icon}
                   </div>
                   <div>
-                    <p className="text-[12px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
-                    <p className="text-[11px] text-[#0a1628]/55 font-normal leading-snug mt-0.5">{s.desc}</p>
+                    <p className="text-[13px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
+                    <p className="text-[12px] text-[#0a1628]/55 font-normal leading-snug mt-0.5">{s.desc}</p>
                   </div>
                 </div>
               ))}
