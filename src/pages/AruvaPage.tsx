@@ -1316,7 +1316,7 @@ function PlatformDiagram() {
   const lineOffset = (active: boolean, len: number) => active ? 0 : len
 
   return (
-    <section ref={sectionRef} className="bg-[#f8fafc] border-t border-gray-100" style={{ minHeight:'200vh' }}>
+    <section ref={sectionRef} className="border-t border-gray-100" style={{ minHeight:'200vh', background:'linear-gradient(160deg,#f0f7ff 0%,#f8fafc 40%,#f0fdf4 100%)' }}>
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
           <div className="grid lg:grid-cols-[420px_1fr] gap-20 items-start pt-16">
@@ -1345,11 +1345,11 @@ function PlatformDiagram() {
             </div>
 
             {/* ── RIGHT: scroll-driven architecture ── */}
-            <div className="flex flex-col gap-0 overflow-y-auto" style={{ maxHeight:'calc(100vh - 100px)' }}>
+            <div className="flex flex-col gap-0" style={{ overflow:'visible' }}>
 
               {/* 1. Integrations */}
-              <div style={on(integOn)} className="bg-white rounded-2xl border border-gray-200 p-6 shadow-[0_8px_32px_rgba(10,22,40,0.08)]">
-                <p className="type-label text-[#0a1628]/38 mb-5">Integrations</p>
+              <div style={{ ...on(integOn), background:'rgba(255,255,255,0.88)', backdropFilter:'blur(12px)', boxShadow:'0 8px 40px rgba(34,141,193,0.10), 0 2px 8px rgba(10,22,40,0.06)', border:'1px solid rgba(34,141,193,0.15)', borderRadius:20, padding:24 }}>
+                <p className="type-label text-[#228DC1]/70 mb-5">Integrations</p>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">VLE / LMS</p>
@@ -1393,18 +1393,19 @@ function PlatformDiagram() {
               </div>
 
               {/* 2. Services */}
-              <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-[0_8px_32px_rgba(10,22,40,0.08)]">
-                <div className="bg-[#0a1628] px-6 py-3 flex items-center justify-center"
-                  style={on(s0On)}>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/55">Aruva Intelligent Education Platform</p>
+              <div style={{ borderRadius:20, overflow:'hidden', border:'1px solid rgba(10,22,40,0.10)', boxShadow:'0 16px 48px rgba(10,22,40,0.12), 0 2px 8px rgba(10,22,40,0.06)' }}>
+                <div className="px-6 py-3.5 flex items-center justify-center"
+                  style={{ ...on(s0On), background:'linear-gradient(135deg,#0a1628 0%,#1a2d4a 100%)' }}>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/70">Aruva Intelligent Education Platform</p>
                 </div>
                 {layers.map((layer, i) => (
                   <div key={layer.label}
-                    className="flex items-center gap-5 px-5 py-4 bg-white border-b border-gray-100 last:border-0"
+                    className="flex items-center gap-5 px-5 py-4 border-b border-gray-100 last:border-0"
                     style={{
                       ...on(layerOn[i], i * 60),
                       borderLeft: `4px solid ${layerOn[i] ? layer.color : 'transparent'}`,
-                      transition: `${T}, border-left-color 0.3s ease ${i*60}ms`,
+                      background: layerOn[i] ? `${layer.color}06` : '#fff',
+                      transition: `${T}, border-left-color 0.3s ease ${i*60}ms, background 0.3s ease ${i*60}ms`,
                     }}>
                     <div className="shrink-0" style={{ width: 180 }}>
                       <p className="text-[13px] font-bold text-[#0a1628] leading-snug">{layer.label}</p>
@@ -1444,8 +1445,7 @@ function PlatformDiagram() {
               </div>
 
               {/* 3. User Interface */}
-              <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-[0_8px_32px_rgba(10,22,40,0.08)]"
-                style={on(ui0On)}>
+              <div style={{ ...on(ui0On), background:'rgba(255,255,255,0.88)', backdropFilter:'blur(12px)', border:'1px solid rgba(10,22,40,0.08)', borderRadius:20, padding:20, boxShadow:'0 8px 40px rgba(10,22,40,0.08)' }}>
                 <p className="type-label text-[#0a1628]/38 mb-4">User Interface</p>
                 <div className="grid grid-cols-5 gap-2">
                   {surfaces.map((s, i) => (
