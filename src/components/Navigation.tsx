@@ -18,8 +18,8 @@ const navItems: NavEntry[] = [
       {
         heading: 'Products',
         items: [
-          { label: 'Kai', desc: 'Enterprise AI platform for customer service and operations', href: '/products/kai' },
-          { label: 'Aruva', desc: 'AI-powered teaching and formative assessment for higher education', href: '/products/aruva' },
+          { label: 'AI for Sales and Customer Services', desc: 'Enterprise AI platform for customer service and operations', href: '/products/kai' },
+          { label: 'AI for Education', desc: 'AI-powered teaching and formative assessment for higher education', href: '/products/aruva' },
         ],
       },
       {
@@ -27,7 +27,9 @@ const navItems: NavEntry[] = [
         items: [
           { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
           { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
-          { label: 'Retail', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
+          { label: 'Commerce', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
+          { label: 'AI digital consultancy', desc: 'Strategic AI advisory, roadmap and transformation support', href: '/services/consultancy' },
+          { label: 'Agentic AI', desc: 'Autonomous AI agents for enterprise workflows and operations', href: '/solutions/generative-ai' },
           { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
         ],
       },
