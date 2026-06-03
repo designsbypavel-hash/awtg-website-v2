@@ -2915,7 +2915,7 @@ function AudienceCard({ a, i, inView, onDemoClick }: {
   a: typeof audiences[0]; i: number; inView: boolean; onDemoClick: () => void
 }) {
   return (
-    <div className="flex-1 relative bg-white rounded-2xl flex flex-col overflow-hidden"
+    <div className="relative bg-white rounded-2xl flex flex-col overflow-hidden h-full"
       style={{ boxShadow:'0 4px 32px rgba(10,22,40,0.09)', border:`1px solid ${a.color}22`, ...reveal(inView, i*100) }}>
       <div style={{ height:4, background:`linear-gradient(90deg,${a.color},${a.color}99)` }}/>
       <div className="p-7 flex flex-col flex-1">
@@ -2958,10 +2958,10 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
         </div>
-        <div ref={ref} className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0">
+        <div ref={ref} className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0" style={{ alignItems:'stretch' }}>
 
           {/* Card 1 */}
-          <div className="flex-1"><AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} /></div>
+          <div className="flex-1 flex flex-col"><AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} /></div>
 
           {/* Connector 1↔2 */}
           <div className="hidden lg:flex flex-col items-center justify-center gap-3 shrink-0" style={{ width:56 }}>
@@ -2980,7 +2980,7 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           </div>
 
           {/* Card 2 */}
-          <div className="flex-1"><AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} /></div>
+          <div className="flex-1 flex flex-col"><AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} /></div>
 
           {/* Connector 2↔3 */}
           <div className="hidden lg:flex flex-col items-center justify-center gap-3 shrink-0" style={{ width:56 }}>
@@ -2999,7 +2999,7 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           </div>
 
           {/* Card 3 */}
-          <div className="flex-1"><AudienceCard a={audiences[2]} i={2} inView={inView} onDemoClick={onDemoClick} /></div>
+          <div className="flex-1 flex flex-col"><AudienceCard a={audiences[2]} i={2} inView={inView} onDemoClick={onDemoClick} /></div>
 
         </div>
 
