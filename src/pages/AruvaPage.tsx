@@ -2964,34 +2964,54 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           <AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} />
 
           {/* Arrows between card1 and card2 */}
-          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-3" style={{ width:56 }}>
-            {/* ← card2 → card1 */}
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.1" stroke={audiences[1].color} strokeWidth="1.5"/>
-              <path d="M24 20H16M16 20L20 16M16 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            {/* → card1 → card2 (reverse) */}
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.06" stroke={audiences[1].color} strokeWidth="1.5" strokeDasharray="4 3"/>
-              <path d="M16 20H24M24 20L20 16M24 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-2" style={{ width:64 }}>
+            {/* ← primary */}
+            <div style={{ filter:`drop-shadow(0 4px 12px ${audiences[1].color}55)` }}>
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <defs>
+                  <linearGradient id="g1a" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#a78bfa"/>
+                    <stop offset="100%" stopColor={audiences[1].color}/>
+                  </linearGradient>
+                </defs>
+                <circle cx="26" cy="26" r="24" fill="url(#g1a)"/>
+                <path d="M30 26H22M22 26L27 21M22 26L27 31" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            {/* → reverse */}
+            <div style={{ filter:`drop-shadow(0 4px 8px ${audiences[1].color}33)` }}>
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <circle cx="26" cy="26" r="23" fill="white" stroke={audiences[1].color} strokeWidth="1.5" strokeDasharray="5 3"/>
+                <path d="M22 26H30M30 26L25 21M30 26L25 31" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
 
           {/* Card 2 — Educators (hub) */}
           <AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} />
 
           {/* Arrows between card2 and card3 */}
-          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-3" style={{ width:56 }}>
-            {/* → card2 → card3 */}
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.1" stroke={audiences[1].color} strokeWidth="1.5"/>
-              <path d="M16 20H24M24 20L20 16M24 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            {/* ← card3 → card2 (reverse) */}
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.06" stroke={audiences[1].color} strokeWidth="1.5" strokeDasharray="4 3"/>
-              <path d="M24 20H16M16 20L20 16M16 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-2" style={{ width:64 }}>
+            {/* → primary */}
+            <div style={{ filter:`drop-shadow(0 4px 12px ${audiences[1].color}55)` }}>
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <defs>
+                  <linearGradient id="g2a" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor={audiences[1].color}/>
+                    <stop offset="100%" stopColor="#a78bfa"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="26" cy="26" r="24" fill="url(#g2a)"/>
+                <path d="M22 26H30M30 26L25 21M30 26L25 31" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            {/* ← reverse */}
+            <div style={{ filter:`drop-shadow(0 4px 8px ${audiences[1].color}33)` }}>
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <circle cx="26" cy="26" r="23" fill="white" stroke={audiences[1].color} strokeWidth="1.5" strokeDasharray="5 3"/>
+                <path d="M30 26H22M22 26L27 21M22 26L27 31" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
 
           {/* Card 3 */}
