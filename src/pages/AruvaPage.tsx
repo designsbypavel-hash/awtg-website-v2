@@ -1717,16 +1717,20 @@ function AnimatedGraphPath({ d, color, animKey }: { d: string; color: string; an
 
 function MMGraphDemo() {
   const GW = 320, GH = 210, CX = 160, CY = 105, XS = 20, YS = 22
-  const DEMO_DISPLAY = 'sin(x) · 2'
-  const DEMO_EVAL    = 'sin(x) * 2'
-  const EXAMPLES     = ['x**2 / 5', 'cos(x) + x/4', 'tan(x/2)', 'sin(x)*cos(x)']
-  const AUTO_GRAPHS  = [
-    { display:'sin(x) * 2', eval:'sin(x) * 2' },
-    { display:'x^2 / 5 - 2', eval:'x**2 / 5 - 2' },
-    { display:'cos(x) + x/4', eval:'cos(x) + x/4' },
-    { display:'sin(x) * cos(x)', eval:'sin(x)*cos(x)' },
+  const DEMO_DISPLAY = 'e^(-0.18x^2) * sin(4x) + 0.35cos(7x)'
+  const DEMO_EVAL    = 'e^(-0.18*x^2) * sin(4*x) + 0.35*cos(7*x)'
+  const EXAMPLES     = [
+    { display:'e^(-0.18x^2) * sin(4x)', eval:'e^(-0.18*x^2) * sin(4*x)' },
+    { display:'ln(x^2+1) - cos(3x)', eval:'ln(x^2+1) - cos(3*x)' },
+    { display:'sin(x^2)/(1+x^2/8)', eval:'sin(x^2)/(1+x^2/8)' },
+    { display:'sqrt(abs(x)) * cos(2x)', eval:'sqrt(abs(x)) * cos(2*x)' },
   ]
-
+  const AUTO_GRAPHS  = [
+    { display:'e^(-0.18x^2) * sin(4x) + 0.35cos(7x)', eval:'e^(-0.18*x^2) * sin(4*x) + 0.35*cos(7*x)' },
+    { display:'ln(x^2+1) - cos(3x)', eval:'ln(x^2+1) - cos(3*x)' },
+    { display:'sin(x^2)/(1+x^2/8)', eval:'sin(x^2)/(1+x^2/8)' },
+    { display:'sqrt(abs(x)) * cos(2x)', eval:'sqrt(abs(x)) * cos(2*x)' },
+  ]
   const [userFormula, setUserFormula] = React.useState('')
   const [activeFormula, setActiveFormula] = React.useState('')
   const [autoIndex, setAutoIndex] = React.useState(0)
@@ -1801,8 +1805,8 @@ function MMGraphDemo() {
     setAnimKey(k => k+1)
   }
 
-  const handleExample = (ex: string) => {
-    setInputVal(ex); setUserFormula(ex); setActiveFormula(ex); setAnimKey(k => k+1)
+  const handleExample = (ex: { display: string; eval: string }) => {
+    setInputVal(ex.display); setUserFormula(ex.display); setActiveFormula(ex.eval); setAnimKey(k => k+1)
   }
 
   const displayLabel = demoPhase === 'typing'
@@ -1830,7 +1834,7 @@ function MMGraphDemo() {
               onChange={e => setInputVal(e.target.value)}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
-              placeholder={demoPhase==='typing' ? DEMO_DISPLAY.slice(0,typed) : 'try sin(x)*2…'}
+              placeholder={demoPhase==='typing' ? DEMO_DISPLAY.slice(0,typed) : 'try e^(-0.18*x^2)*sin(4*x)'}
               style={{ flex:1, border:'none', outline:'none', fontSize:13, fontFamily:"'Roboto Mono',monospace", color:'#1e1b4b', background:'transparent', minWidth:0 }}
             />
             {demoPhase==='typing' && !inputVal && (
@@ -1867,12 +1871,12 @@ function MMGraphDemo() {
         {demoPhase === 'done' && (
           <div style={{ position:'absolute', bottom:8, left:10, right:10, display:'flex', gap:5, flexWrap:'wrap' }}>
             {EXAMPLES.map(ex => (
-              <button key={ex} onClick={() => handleExample(ex)} style={{
+              <button key={ex.display} onClick={() => handleExample(ex)} style={{
                 fontSize:10, padding:'3px 9px', borderRadius:12,
                 border:'1px solid rgba(217,119,6,0.25)', background:'rgba(217,119,6,0.07)',
                 color:'#92400e', cursor:'pointer', fontFamily:"'Roboto Mono',monospace",
                 transition:'background 0.2s',
-              }}>{ex}</button>
+              }}>{ex.display}</button>
             ))}
           </div>
         )}
