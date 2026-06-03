@@ -1,0 +1,26 @@
+Usage Guidelines
+Display XL (52px)
+Used for hero banners, landing page headlines, and major marketing sections.
+Display L (44px)
+Used for primary page titles and prominent section introductions.
+H1 (36px)
+Main page heading.
+H2 (30px)
+Major content section headings.
+H3 (24px)
+Subsection headings.
+H4 (20px)
+Card titles and content group headings.
+H5 (18px)
+Smaller content headings and form section titles.
+Body Large (16px)
+Default paragraph text and primary content.
+Body Medium (14px)
+Secondary content, descriptions, and navigation items.
+Body Small (13px)
+Supporting text and metadata.
+Caption (12px)
+Helper text, labels, and captions.
+Micro Text (11px)
+Legal text, disclaimers, and non-critical information only.
+

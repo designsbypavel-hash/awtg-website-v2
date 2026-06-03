@@ -1,17 +1,17 @@
-import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
+﻿import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faShield, faArrowsRotate, faWandSparkles, faCircleCheck, faMicrophone, faPen, faImage, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import ProductDemoModal from '@/components/ProductDemoModal'
 
 // -- Hero Screen Showcase (cycles Student Hub screens) ------------------------
-const HERO_NAV = [
-  { label: 'Dashboard',    icon: 'M3 3h7v7H3zm8 0h7v7h-7zM3 11h7v7H3zm8 0h7v7h-7z' },
-  { label: 'My Courses',   icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
-  { label: 'Schedule',     icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
-  { label: 'Learning Map', icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7' },
-  { label: 'Skill Mastery',icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
-  { label: 'AI Insights',  icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
-  { label: 'Milestones',   icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
+const HERO_SCREENS = [
+  { label: 'Dashboard',    src: '/images/aruva-screens/dashboard.png',     icon: 'M3 3h7v7H3zm8 0h7v7h-7zM3 11h7v7H3zm8 0h7v7h-7z' },
+  { label: 'My Courses',   src: '/images/aruva-screens/courses.png',        icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
+  { label: 'Schedule',     src: '/images/aruva-screens/schedule.png',       icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+  { label: 'Learning Map', src: '/images/aruva-screens/learning-map.png',   icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7' },
+  { label: 'Skill Mastery',src: '/images/aruva-screens/skill-mastery.png',  icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+  { label: 'AI Insights',  src: '/images/aruva-screens/ai-insights.png',    icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+  { label: 'Milestones',   src: '/images/aruva-screens/milestones.png',     icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
 ]
 
 function AruvaHeroDashboard() {
@@ -23,451 +23,67 @@ function AruvaHeroDashboard() {
     return () => cancelAnimationFrame(raf)
   }, [])
 
+  // Auto-cycle every 3 seconds
   React.useEffect(() => {
-    const id = setInterval(() => setActive(p => (p + 1) % HERO_NAV.length), 2800)
+    const id = setInterval(() => setActive(p => (p + 1) % HERO_SCREENS.length), 3000)
     return () => clearInterval(id)
   }, [])
 
-  const screenImages = [
-    '/images/aruva-screens/dashboard.png',
-    '/images/aruva-screens/courses.png',
-    '/images/aruva-screens/schedule.png',
-    '/images/aruva-screens/learning-map.png',
-    '/images/aruva-screens/skill-mastery.png',
-    '/images/aruva-screens/dashboard.png',   // AI Insights → fallback to dashboard
-    '/images/aruva-screens/courses.png',     // Milestones → fallback to courses
-  ]
-
-  // Legacy screens array kept for fallback
-  const screens = [
-    /* 0 Dashboard */
-    <div key="dashboard" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', marginBottom:10 }}>
-        <div>
-          <p style={{ fontSize:15, fontWeight:900, color:'#0a1628', letterSpacing:'-0.02em', lineHeight:1 }}>WELCOME BACK, ALEX</p>
-          <div style={{ display:'flex', alignItems:'center', gap:4, marginTop:4 }}>
-            <div style={{ width:5, height:5, borderRadius:'50%', background:'#22c55e' }}/>
-            <p style={{ fontSize:7, fontWeight:700, color:'#22c55e', letterSpacing:'0.12em', textTransform:'uppercase' }}>Active Learning Session</p>
-          </div>
-        </div>
-        <div style={{ background:'#7c3aed', borderRadius:6, padding:'4px 10px', display:'flex', alignItems:'center', gap:4 }}>
-          <div style={{ width:5, height:5, borderRadius:'50%', background:'rgba(255,255,255,0.5)' }}/>
-          <p style={{ fontSize:7, fontWeight:800, color:'white', letterSpacing:'0.10em', textTransform:'uppercase' }}>Investor Demo: Adaptive AI</p>
-        </div>
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 120px', gap:8, height:'calc(100% - 50px)' }}>
-        <div style={{ background:'#111827', borderRadius:12, padding:'12px', display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
-          <div>
-            <div style={{ display:'flex', gap:5, marginBottom:8 }}>
-              <span style={{ background:'#3b82f6', borderRadius:4, padding:'2px 6px', fontSize:6.5, fontWeight:800, color:'white', letterSpacing:'0.1em' }}>UP NEXT</span>
-              <span style={{ fontSize:6.5, color:'rgba(255,255,255,0.45)', letterSpacing:'0.08em' }}>INTRODUCTION TO JAVASCRIPT</span>
-            </div>
-            <p style={{ fontSize:14, fontWeight:900, color:'white', lineHeight:1.15, marginBottom:5 }}>Function<br/>Declarations</p>
-            <p style={{ fontSize:7.5, color:'rgba(255,255,255,0.55)', lineHeight:1.45 }}>Comprehensive study of Function Declarations. Explore core concepts and practical applications.</p>
-            <div style={{ display:'flex', gap:10, marginTop:6 }}>
-              <span style={{ fontSize:7, color:'rgba(255,255,255,0.50)' }}>⏱ 60 MIN</span>
-              <span style={{ fontSize:7, color:'#fbbf24' }}>★ HIGH MASTERY IMPACT</span>
-            </div>
-          </div>
-          <div style={{ background:'white', borderRadius:7, padding:'5px 10px', display:'flex', alignItems:'center', gap:5, alignSelf:'flex-start' }}>
-            <p style={{ fontSize:7.5, fontWeight:800, color:'#111827', letterSpacing:'0.08em' }}>CONTINUE LEARNING →</p>
-          </div>
-        </div>
-        <div style={{ display:'flex', flexDirection:'column', gap:7 }}>
-          <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb' }}>
-            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:2 }}>Overall Progress</p>
-            <div style={{ display:'flex', alignItems:'center', gap:4 }}>
-              <p style={{ fontSize:18, fontWeight:900, color:'#0a1628', lineHeight:1 }}>22%</p>
-              <div style={{ width:14, height:14, borderRadius:'50%', background:'#228DC1', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <p style={{ fontSize:7, color:'white', fontWeight:900 }}>✓</p>
-              </div>
-            </div>
-          </div>
-          <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb', flex:1 }}>
-            <p style={{ fontSize:6.5, color:'#059669', letterSpacing:'0.12em', fontWeight:800, textTransform:'uppercase', marginBottom:3 }}>Academy Status</p>
-            <p style={{ fontSize:10, fontWeight:900, color:'#059669', lineHeight:1, marginBottom:3 }}>You are ahead</p>
-            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.45)', lineHeight:1.4 }}>"Excellent velocity! 3 units above weekly target."</p>
-          </div>
-          <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb' }}>
-            <p style={{ fontSize:6, color:'rgba(10,22,40,0.38)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:4 }}>Learning Activity 🔥</p>
-            {[['Weekly Streak','4 Days','#f59e0b'],['Completed','452','#228DC1'],['Time Spent','10.0h','#7c3aed']].map(([l,v,c])=>(
-              <div key={l} style={{ display:'flex', justifyContent:'space-between', marginBottom:2 }}>
-                <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)' }}>{l}</p>
-                <p style={{ fontSize:7, fontWeight:800, color:c }}>{v}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>,
-
-    /* 1 My Courses */
-    <div key="courses" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
-      <p style={{ fontSize:14, fontWeight:900, color:'#0a1628', letterSpacing:'-0.01em', marginBottom:2 }}>MY ACADEMIC TRACKS</p>
-      <p style={{ fontSize:7, color:'rgba(10,22,40,0.38)', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:10 }}>Spring Semester 2026</p>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8, marginBottom:8 }}>
-        {[
-          { color:'#fbbf24', pct:14, name:'Introduction to JavaScript', prof:'Dr Abeer', skills:[['Variables & Scoping','32%'],['Syntax & Fundamentals','55%']] },
-          { color:'#22c55e', pct:30, name:'Foundations of Biology', prof:'Dr. James Wilson', skills:[['Cellular Theory','85%'],['Genetics & Inheritance','42%']] },
-        ].map(c => (
-          <div key={c.name} style={{ background:'white', borderRadius:10, padding:'10px', border:'1px solid #e5e7eb' }}>
-            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:6 }}>
-              <div style={{ width:22, height:22, borderRadius:6, background:c.color, display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <p style={{ fontSize:10, color:'white' }}>📖</p>
-              </div>
-              <div style={{ textAlign:'right' }}>
-                <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Progress</p>
-                <p style={{ fontSize:13, fontWeight:900, color:'#0a1628', lineHeight:1 }}>{c.pct}%</p>
-              </div>
-            </div>
-            <p style={{ fontSize:8.5, fontWeight:900, color:'#1e2d7d', letterSpacing:'0.04em', lineHeight:1.25, marginBottom:2, textDecoration:'underline' }}>{c.name.toUpperCase()}</p>
-            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)', marginBottom:6, letterSpacing:'0.06em' }}>{c.prof.toUpperCase()}</p>
-            <p style={{ fontSize:6, color:'rgba(10,22,40,0.35)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:4 }}>Key Outcomes Mastery</p>
-            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:4 }}>
-              {c.skills.map(([s,v]) => (
-                <div key={s}>
-                  <p style={{ fontSize:6, color:'rgba(10,22,40,0.38)', letterSpacing:'0.08em', textTransform:'uppercase' }}>{s}</p>
-                  <p style={{ fontSize:11, fontWeight:900, color:'#0a1628' }}>{v}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div style={{ background:'#059669', borderRadius:8, padding:'8px 12px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-        <p style={{ fontSize:8, fontWeight:700, color:'white' }}>You've completed 42% of your total curriculum this term.</p>
-        <div style={{ background:'white', borderRadius:5, padding:'3px 8px' }}>
-          <p style={{ fontSize:6.5, fontWeight:800, color:'#059669', letterSpacing:'0.08em', textTransform:'uppercase' }}>Download Transcript</p>
-        </div>
-      </div>
-    </div>,
-
-    /* 2 Schedule */
-    <div key="schedule" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:10 }}>
-        <div>
-          <p style={{ fontSize:14, fontWeight:900, color:'#0a1628', letterSpacing:'-0.01em', marginBottom:1 }}>WEEKLY PLANNER</p>
-          <p style={{ fontSize:7, color:'rgba(10,22,40,0.38)', letterSpacing:'0.12em', textTransform:'uppercase' }}>Multi-course workload optimisation</p>
-        </div>
-        <div style={{ display:'flex', gap:5, alignItems:'center' }}>
-          <div style={{ background:'white', borderRadius:6, padding:'5px 8px', border:'1px solid #e5e7eb', display:'flex', gap:4, alignItems:'center' }}>
-            <p style={{ fontSize:6.5, fontWeight:700, color:'rgba(10,22,40,0.50)', letterSpacing:'0.08em' }}>AI SUGGESTION</p>
-          </div>
-        </div>
-      </div>
-      <div style={{ background:'white', borderRadius:8, padding:'8px', border:'1px solid #e5e7eb', marginBottom:8 }}>
-        <p style={{ fontSize:7, color:'rgba(10,22,40,0.38)', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:5 }}>June 2026</p>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)', gap:3 }}>
-          {[['MON','01','6 TASKS',false],['TUE','02','7 TASKS',true],['WED','03','5 TASKS',false],['THU','04','2 TASKS',false],['FRI','05','4 TASKS',false],['SAT','06','0 TASKS',false],['SUN','07','0 TASKS',false]].map(([d,n,t,sel]) => (
-            <div key={n as string} style={{ textAlign:'center', background: sel ? '#1e2d7d' : 'transparent', borderRadius:6, padding:'4px 2px' }}>
-              <p style={{ fontSize:5.5, fontWeight:600, color: sel ? 'rgba(255,255,255,0.6)' : 'rgba(10,22,40,0.35)', letterSpacing:'0.1em' }}>{d}</p>
-              <p style={{ fontSize:12, fontWeight:900, color: sel ? 'white' : '#0a1628', lineHeight:1.1 }}>{n}</p>
-              <p style={{ fontSize:5.5, color: sel ? 'rgba(255,255,255,0.55)' : 'rgba(10,22,40,0.35)' }}>{t}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div style={{ background:'#fca5a5', borderRadius:7, padding:'6px 10px', display:'flex', alignItems:'center', gap:6, marginBottom:7 }}>
-        <div style={{ width:12, height:12, borderRadius:'50%', background:'#ef4444', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-          <p style={{ fontSize:7, color:'white', fontWeight:900 }}>!</p>
-        </div>
-        <div>
-          <p style={{ fontSize:6.5, fontWeight:800, color:'#7f1d1d', letterSpacing:'0.1em', textTransform:'uppercase' }}>Overload Warning</p>
-          <p style={{ fontSize:6.5, color:'#991b1b' }}>This day has 4+ intense units. We recommend shifting non-essential tasks.</p>
-        </div>
-      </div>
-      <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb' }}>
-        <div style={{ display:'flex', gap:5, marginBottom:4 }}>
-          <span style={{ background:'#1e2d7d', borderRadius:4, padding:'2px 6px', fontSize:6, fontWeight:800, color:'white', letterSpacing:'0.1em' }}>INTRO TO JAVASCRIPT</span>
-          <span style={{ background:'#e0e7ff', borderRadius:4, padding:'2px 6px', fontSize:6, fontWeight:800, color:'#3730a3', letterSpacing:'0.1em' }}>LEARNING SESSION</span>
-        </div>
-        <p style={{ fontSize:10, fontWeight:900, color:'#0a1628', marginBottom:2 }}>Function Declarations</p>
-        <p style={{ fontSize:7, color:'rgba(10,22,40,0.45)' }}>Comprehensive study of Function Declarations. Explore core concepts.</p>
-      </div>
-    </div>,
-
-    /* 3 Learning Map */
-    <div key="map" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', marginBottom:10 }}>
-        <div style={{ display:'flex', gap:8, alignItems:'center' }}>
-          <div style={{ width:22, height:22, borderRadius:6, background:'#1e2d7d', display:'flex', alignItems:'center', justifyContent:'center' }}>
-            <p style={{ fontSize:10, color:'white' }}>🗺</p>
-          </div>
-          <div>
-            <p style={{ fontSize:12, fontWeight:900, color:'#0a1628', lineHeight:1 }}>Learning Map</p>
-            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Decision-driven progression system</p>
-          </div>
-        </div>
-        <div style={{ background:'white', borderRadius:7, padding:'5px 10px', border:'1px solid #e5e7eb', textAlign:'right' }}>
-          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Journey Progress</p>
-          <p style={{ fontSize:13, fontWeight:900, color:'#0a1628', lineHeight:1 }}>5 <span style={{ fontSize:8, fontWeight:500 }}>/ 24</span></p>
-        </div>
-      </div>
-      <div style={{ display:'flex', gap:4, marginBottom:10 }}>
-        {['All Courses','Intro to JavaScript','Foundations of Biology'].map((t,i) => (
-          <div key={t} style={{ background: i===0 ? '#1e2d7d' : 'white', borderRadius:5, padding:'3px 8px', border:'1px solid #e5e7eb' }}>
-            <p style={{ fontSize:6.5, fontWeight:i===0?800:500, color: i===0?'white':'rgba(10,22,40,0.50)', letterSpacing:'0.08em', textTransform:'uppercase' }}>{t}</p>
-          </div>
-        ))}
-      </div>
-      <div style={{ display:'flex', gap:12, alignItems:'flex-start' }}>
-        <div style={{ background:'white', borderRadius:10, padding:'10px', border:'1px solid #e5e7eb', flex:1 }}>
-          <div style={{ display:'flex', justifyContent:'space-between', marginBottom:5 }}>
-            <span style={{ fontSize:6.5, color:'#228DC1', fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase' }}>Learning Session</span>
-            <span style={{ fontSize:6.5, color:'#059669', fontWeight:800, letterSpacing:'0.1em', textTransform:'uppercase' }}>Completed</span>
-          </div>
-          <p style={{ fontSize:11, fontWeight:900, color:'#0a1628', marginBottom:4 }}>Introduction to ES6</p>
-          <p style={{ fontSize:7, color:'rgba(10,22,40,0.45)', marginBottom:5, lineHeight:1.4 }}>Comprehensive study of Introduction to ES6. Explore core concepts.</p>
-          <div style={{ display:'flex', gap:8, marginBottom:6 }}>
-            <span style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)', letterSpacing:'0.08em', textTransform:'uppercase' }}>Syntax & Fundamentals</span>
-            <span style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)' }}>⏱ 60 MIN</span>
-          </div>
-          <div style={{ background:'#111827', borderRadius:5, padding:'4px 10px', display:'inline-flex', alignItems:'center', gap:4 }}>
-            <p style={{ fontSize:7, fontWeight:800, color:'white', letterSpacing:'0.08em', textTransform:'uppercase' }}>↺ Review Concept</p>
-          </div>
-        </div>
-        <div style={{ display:'flex', flexDirection:'column', alignItems:'center', paddingTop:8 }}>
-          <div style={{ width:16, height:16, borderRadius:'50%', background:'#059669', display:'flex', alignItems:'center', justifyContent:'center', border:'2px solid white', boxShadow:'0 0 0 2px #059669' }}>
-            <p style={{ fontSize:8, color:'white', fontWeight:900 }}>✓</p>
-          </div>
-          <div style={{ width:2, height:50, background:'#059669', margin:'3px 0' }}/>
-          <div style={{ width:16, height:16, borderRadius:'50%', background:'#059669', display:'flex', alignItems:'center', justifyContent:'center', border:'2px solid white', boxShadow:'0 0 0 2px #059669' }}>
-            <p style={{ fontSize:8, color:'white', fontWeight:900 }}>✓</p>
-          </div>
-          <div style={{ width:2, height:30, background:'#d1d5db', margin:'3px 0' }}/>
-          <div style={{ width:16, height:16, borderRadius:'50%', background:'#1e2d7d', border:'2px solid white', boxShadow:'0 0 0 2px #1e2d7d' }}/>
-        </div>
-      </div>
-    </div>,
-
-    /* 4 Skill Mastery */
-    <div key="mastery" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', marginBottom:8 }}>
-        <div>
-          <p style={{ fontSize:14, fontWeight:900, color:'#0a1628', letterSpacing:'-0.01em' }}>SKILL MASTERY</p>
-          <p style={{ fontSize:7, color:'rgba(10,22,40,0.45)', marginTop:2 }}>Real-time quantification of your academic competency.</p>
-        </div>
-        <div style={{ background:'white', borderRadius:8, padding:'5px 10px', border:'1px solid #e5e7eb', textAlign:'center' }}>
-          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Global Mastery</p>
-          <p style={{ fontSize:16, fontWeight:900, color:'#0a1628', lineHeight:1 }}>22% 🎓</p>
-        </div>
-      </div>
-      <div style={{ background:'white', borderRadius:8, padding:'8px 10px', border:'1px solid #e5e7eb', marginBottom:8, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-        <div style={{ display:'flex', gap:8, alignItems:'center' }}>
-          <div style={{ width:24, height:24, borderRadius:6, background:'#fbbf24', display:'flex', alignItems:'center', justifyContent:'center' }}>
-            <p style={{ fontSize:11 }}>📖</p>
-          </div>
-          <div>
-            <p style={{ fontSize:8, fontWeight:800, color:'#0a1628', letterSpacing:'0.04em' }}>INTRODUCTION TO JAVASCRIPT</p>
-            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.40)' }}>DR ABEER · SPRING 2026</p>
-          </div>
-        </div>
-        <div style={{ textAlign:'right' }}>
-          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Target Mastery</p>
-          <p style={{ fontSize:16, fontWeight:900, color:'#0a1628', lineHeight:1 }}>29%</p>
-        </div>
-      </div>
-      <div style={{ display:'flex', justifyContent:'space-between', marginBottom:5 }}>
-        <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.16em', textTransform:'uppercase', fontWeight:700 }}>Cognitive Outcomes</p>
-        <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.28)', letterSpacing:'0.1em', textTransform:'uppercase' }}>4 Skills Tracked</p>
-      </div>
-      {[['Variables & Scoping',32,'#ef4444','NEEDS ATTENTION'],['Syntax & Fundamentals',55,'#f59e0b','PRACTICING'],['Functional Programming',0,'#9ca3af','NO DATA YET']].map(([n,p,c,b]) => (
-        <div key={n as string} style={{ marginBottom:6 }}>
-          <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:2 }}>
-            <p style={{ fontSize:8, fontWeight:700, color:'#0a1628' }}>{n}</p>
-            <div style={{ display:'flex', gap:4, alignItems:'center' }}>
-              <span style={{ fontSize:6.5, fontWeight:700, color:c as string, background:`${c}15`, borderRadius:10, padding:'1px 6px', border:`1px solid ${c}30` }}>{b}</span>
-              <p style={{ fontSize:8, fontWeight:800, color:c as string }}>{p}%</p>
-            </div>
-          </div>
-          <div style={{ height:4, borderRadius:2, background:'#e5e7eb', overflow:'hidden' }}>
-            <div style={{ height:'100%', width:`${p}%`, background:`linear-gradient(90deg,${c}bb,${c})`, borderRadius:2 }}/>
-          </div>
-        </div>
-      ))}
-    </div>,
-
-    /* 5 AI Insights */
-    <div key="insights" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', gap:8, alignItems:'center', marginBottom:10 }}>
-        <div style={{ width:26, height:26, borderRadius:7, background:'#7c3aed', display:'flex', alignItems:'center', justifyContent:'center' }}>
-          <p style={{ fontSize:13 }}>🤖</p>
-        </div>
-        <div>
-          <p style={{ fontSize:13, fontWeight:900, color:'#0a1628' }}>AI Tutor</p>
-          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Adaptive Learning Support</p>
-        </div>
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:5, marginBottom:8 }}>
-        {[
-          ['💡','CONCEPTUAL BRIDGE','You understand theory of ES6 but struggled with Environment Setup. Practice the application.','REVIEW CONCEPT','#228DC1'],
-          ['⚠','MISCONCEPTION DETECTED','Your quiz results show a pattern of errors in Variables & Scoping. Review lexical scope.','FIX GAP','#ef4444'],
-          ['💡','PRACTICAL GAP','You have good theoretical knowledge of DNA Sequencing but need more hands-on practice.','START PRACTICE','#7c3aed'],
-        ].map(([icon,label,text,cta,color]) => (
-          <div key={label as string} style={{ background:'white', borderRadius:8, padding:'8px', border:'1px solid #e5e7eb' }}>
-            <p style={{ fontSize:8, marginBottom:2 }}>{icon}</p>
-            <p style={{ fontSize:6, fontWeight:800, color:'rgba(10,22,40,0.38)', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:4 }}>{label}</p>
-            <p style={{ fontSize:7, color:'rgba(10,22,40,0.65)', lineHeight:1.45, marginBottom:5 }}>{text}</p>
-            <p style={{ fontSize:7, fontWeight:700, color:color as string, letterSpacing:'0.06em', textTransform:'uppercase' }}>{cta} →</p>
-          </div>
-        ))}
-      </div>
-      <p style={{ fontSize:7, fontWeight:800, color:'#0a1628', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:5 }}>🔍 Identified Skill Gaps</p>
-      {[['32%','Variables & Scoping','WEAK PROFICIENCY','#ef4444'],['55%','Syntax & Fundamentals','MEDIUM PROFICIENCY','#f59e0b'],['42%','Genetics & Inheritance','MEDIUM PROFICIENCY','#f59e0b']].map(([pct,skill,level,color]) => (
-        <div key={skill as string} style={{ background:'white', borderRadius:7, padding:'5px 8px', border:'1px solid #e5e7eb', display:'flex', alignItems:'center', gap:7, marginBottom:4 }}>
-          <div style={{ width:24, height:24, borderRadius:6, background:`${color}20`, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-            <p style={{ fontSize:8, fontWeight:900, color:color as string }}>{pct}</p>
-          </div>
-          <div style={{ flex:1 }}>
-            <p style={{ fontSize:7.5, fontWeight:700, color:'#0a1628' }}>{skill}</p>
-            <p style={{ fontSize:6, color:color as string, fontWeight:700, letterSpacing:'0.08em' }}>{level}</p>
-          </div>
-          <div style={{ background:'#7c3aed', borderRadius:5, padding:'3px 8px' }}>
-            <p style={{ fontSize:6.5, fontWeight:800, color:'white', letterSpacing:'0.08em' }}>FIX THIS →</p>
-          </div>
-        </div>
-      ))}
-    </div>,
-
-    /* 6 Milestones */
-    <div key="milestones" style={{ padding:'14px', background:'#f5f6fa', height:'100%', overflow:'hidden' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:10 }}>
-        <div>
-          <p style={{ fontSize:13, fontWeight:900, color:'#0a1628', letterSpacing:'-0.01em' }}>Achievements & Milestones</p>
-          <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.12em', textTransform:'uppercase', marginTop:2 }}>Your Academic Legacy</p>
-        </div>
-        <div style={{ background:'white', borderRadius:8, padding:'5px 10px', border:'1px solid #e5e7eb', display:'flex', gap:12, alignItems:'center' }}>
-          <div style={{ textAlign:'center' }}>
-            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Total Badges</p>
-            <p style={{ fontSize:14, fontWeight:900, color:'#0a1628', lineHeight:1 }}>2</p>
-          </div>
-          <div style={{ textAlign:'center' }}>
-            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.35)', letterSpacing:'0.1em', textTransform:'uppercase' }}>Points</p>
-            <p style={{ fontSize:14, fontWeight:900, color:'#059669', lineHeight:1 }}>1,240</p>
-          </div>
-        </div>
-      </div>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:7, marginBottom:8 }}>
-        {[
-          { name:'JAVASCRIPT NINJA', date:'2026-04-10', desc:'Earned for exceptional performance in Introduction to JavaScript.' },
-          { name:'BIO EXPLORER', date:'2026-04-01', desc:'Earned for exceptional performance in Foundations of Biology.' },
-          { name:'UPCOMING MILESTONE', date:'', desc:'Finish Unit 4 to unlock...' },
-        ].map((m,i) => (
-          <div key={m.name} style={{ background:'white', borderRadius:9, padding:'10px', border:'1px solid #e5e7eb', textAlign:'center', opacity: i===2 ? 0.5 : 1 }}>
-            <div style={{ width:28, height:28, borderRadius:'50%', background: i===2 ? '#e5e7eb' : '#fef3c7', margin:'0 auto 4px', display:'flex', alignItems:'center', justifyContent:'center' }}>
-              <p style={{ fontSize:14 }}>{i===2 ? '🔒' : '🏆'}</p>
-            </div>
-            <p style={{ fontSize:6.5, fontWeight:900, color: i===2 ? 'rgba(10,22,40,0.35)' : '#0a1628', letterSpacing:'0.08em', marginBottom:2 }}>{m.name}</p>
-            {m.date && <p style={{ fontSize:6, color:'rgba(10,22,40,0.35)', marginBottom:3 }}>{m.date}</p>}
-            <p style={{ fontSize:6.5, color:'rgba(10,22,40,0.45)', lineHeight:1.4 }}>{m.desc}</p>
-          </div>
-        ))}
-      </div>
-      <div style={{ background:'#111827', borderRadius:10, padding:'10px 12px' }}>
-        <p style={{ fontSize:7.5, fontWeight:700, color:'white', marginBottom:7 }}>🚀 Your Learning Velocity</p>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:5 }}>
-          {[['📚','COURSES STARTED','3'],['🏁','MILESTONES','2'],['⭐','SKILLS MASTERED','4'],['🏆','WEEKLY RANK','#12']].map(([icon,label,val]) => (
-            <div key={label as string} style={{ background:'rgba(255,255,255,0.08)', borderRadius:7, padding:'6px', textAlign:'center' }}>
-              <p style={{ fontSize:10, marginBottom:2 }}>{icon}</p>
-              <p style={{ fontSize:5.5, color:'rgba(255,255,255,0.40)', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:2 }}>{label}</p>
-              <p style={{ fontSize:11, fontWeight:900, color:'white', lineHeight:1 }}>{val}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>,
-
-    /* 7 Demo Lecture */
-    <div key="lecture" style={{ height:'100%', overflow:'hidden', position:'relative' }}>
-      <div style={{ height:140, background:'linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.75)), url(/images/aruva-photosynthesis-realistic.png) center/cover', display:'flex', flexDirection:'column', justifyContent:'flex-end', padding:'12px 14px', position:'relative' }}>
-        <div style={{ display:'flex', gap:6, marginBottom:6 }}>
-          <span style={{ background:'#f59e0b', borderRadius:5, padding:'2px 7px', fontSize:6.5, fontWeight:800, color:'white', letterSpacing:'0.1em' }}>LECTURE 04</span>
-          <span style={{ fontSize:6.5, color:'rgba(255,255,255,0.55)' }}>⏱ 25 MIN READ</span>
-        </div>
-        <p style={{ fontSize:14, fontWeight:900, color:'white', lineHeight:1.1, letterSpacing:'-0.01em' }}>THE ENGINE OF LIFE:</p>
-        <p style={{ fontSize:14, fontWeight:900, color:'#f59e0b', lineHeight:1.1, letterSpacing:'-0.01em' }}>CELLULAR RESPIRATION</p>
-        <p style={{ fontSize:7, color:'rgba(255,255,255,0.65)', marginTop:4, lineHeight:1.45 }}>Explore the biochemical pathways that convert nutrients into universal energy currency: ATP.</p>
-      </div>
-      <div style={{ padding:'12px 14px', background:'white', height:'calc(100% - 140px)', overflow:'hidden' }}>
-        <p style={{ fontSize:9, fontWeight:900, color:'#0a1628', letterSpacing:'0.04em', marginBottom:5 }}>1. MITOCHONDRIAL FUNCTIONALITY</p>
-        <p style={{ fontSize:7.5, color:'rgba(10,22,40,0.65)', lineHeight:1.65, marginBottom:8 }}>Often referred to as the powerhouse of the cell, mitochondria are double-membrane-bound organelles found in most eukaryotic organisms. They generate most of the cell's supply of adenosine triphosphate (ATP), used as a source of chemical energy.</p>
-        <p style={{ fontSize:7.5, color:'rgba(10,22,40,0.65)', lineHeight:1.65 }}>Mitochondria are responsible for ATP production through cellular respiration. They contain their own genome and ribosomes, which are evidence of their evolutionary origin as free-living bacteria.</p>
-      </div>
-    </div>,
-  ]
-
-  const S = { fontFamily:'Inter,system-ui,-apple-system,sans-serif' }
+  const screen = HERO_SCREENS[active]
 
   return (
-    <div className="relative w-full max-w-[640px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)', ...S }}>
-      <style>{`@keyframes screenIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}`}</style>
-      <div className="absolute -inset-6 hidden lg:block" style={{ background:'radial-gradient(ellipse at 60% 40%,rgba(34,141,193,0.13) 0,transparent 70%)' }}/>
-      <div style={{ borderRadius:14, overflow:'hidden', boxShadow:'0 32px 80px rgba(10,22,40,0.22),0 8px 24px rgba(10,22,40,0.10)', border:'1px solid rgba(10,22,40,0.08)' }}>
+    <div className="relative w-full max-w-[640px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)' }}>
+      <style>{`
+        @keyframes fadeSlide { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:translateY(0) } }
+        @keyframes progress { from { width:0% } to { width:100% } }
+      `}</style>
 
-        {/* App top bar */}
-        <div style={{ background:'white', borderBottom:'1px solid #e5e7eb', padding:'7px 14px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-          <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-            <p style={{ fontSize:7, fontWeight:600, letterSpacing:'0.16em', color:'rgba(10,22,40,0.35)', textTransform:'uppercase' }}>Student Hub</p>
-            <div style={{ display:'flex', alignItems:'center', gap:5, background:'#f5f6fa', borderRadius:6, padding:'3px 8px', border:'1px solid #e5e7eb' }}>
-              <div style={{ width:14, height:14, borderRadius:4, background:'#2c9b6e', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <p style={{ fontSize:8, color:'white' }}>🎓</p>
-              </div>
-              <p style={{ fontSize:8, fontWeight:800, color:'#0a1628', letterSpacing:'0.04em' }}>STUDENT HUB</p>
-              <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#9ca3af" strokeWidth="1.4" strokeLinecap="round"/></svg>
-            </div>
-          </div>
-          <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-            <div style={{ display:'flex', gap:5, opacity:0.5 }}>
-              {['⚙','🌙','💬'].map(ic => <p key={ic} style={{ fontSize:10 }}>{ic}</p>)}
-            </div>
-            <div style={{ display:'flex', alignItems:'center', gap:5 }}>
-              <div style={{ width:20, height:20, borderRadius:'50%', background:'linear-gradient(135deg,#c8a882,#b08060)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <p style={{ fontSize:7, fontWeight:800, color:'white' }}>MG</p>
-              </div>
-              <div>
-                <p style={{ fontSize:8, fontWeight:700, color:'#0a1628', lineHeight:1 }}>Maria Garcia</p>
-                <p style={{ fontSize:5.5, color:'rgba(10,22,40,0.38)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Student Hub</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Glow */}
+      <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background:'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.14) 0, transparent 65%)' }}/>
 
-        {/* Body */}
-        <div style={{ display:'flex', height:370 }}>
+      {/* Device frame — no border, clean shadow */}
+      <div style={{ borderRadius:16, overflow:'hidden', boxShadow:'0 40px 100px rgba(10,22,40,0.20), 0 8px 32px rgba(10,22,40,0.10)' }}>
 
-          {/* Sidebar */}
-          <div style={{ width:108, background:'white', borderRight:'1px solid #e5e7eb', padding:'8px 6px', flexShrink:0 }}>
-            {HERO_NAV.map((item, i) => {
-              const isAct = active === i
-              return (
-                <div key={item.label} onClick={() => setActive(i)}
-                  style={{ display:'flex', alignItems:'center', gap:6, padding:'6px 8px', marginBottom:2, borderRadius:6, background: isAct ? '#1e2d7d' : 'transparent', cursor:'pointer', transition:'background 0.2s ease' }}>
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={isAct ? 'white' : 'rgba(10,22,40,0.35)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d={item.icon}/>
-                  </svg>
-                  <p style={{ fontSize:8, fontWeight: isAct ? 700 : 400, color: isAct ? 'white' : 'rgba(10,22,40,0.45)', lineHeight:1.3, letterSpacing:'0.01em' }}>{item.label}</p>
-                </div>
-              )
-            })}
-          </div>
+        {/* Screenshot — fills the frame completely */}
+        <div style={{ position:'relative', background:'#f0f2f7' }}>
+          <img
+            key={active}
+            src={screen.src}
+            alt={screen.label}
+            style={{ width:'100%', height:'auto', display:'block', animation:'fadeSlide 0.45s ease both' }}
+          />
 
-          {/* Screen content — real product screenshots */}
-          <div key={active} style={{ flex:1, overflow:'hidden', animation:'screenIn 0.38s cubic-bezier(0.4,0,0.2,1) both', position:'relative', background:'#f5f6fa' }}>
-            <img
-              src={screenImages[active]}
-              alt={HERO_NAV[active]?.label}
-              style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'top left', display:'block' }}
-              onError={(e) => {
-                // Fallback to old animated mockup if image not found
-                const el = e.currentTarget
-                el.style.display = 'none'
-                const fallback = el.nextElementSibling as HTMLElement
-                if (fallback) fallback.style.display = 'block'
-              }}
+          {/* Progress bar at bottom */}
+          <div style={{ position:'absolute', bottom:0, left:0, right:0, height:2, background:'rgba(255,255,255,0.15)' }}>
+            <div
+              key={active}
+              style={{ height:'100%', background:'#228DC1', animation:'progress 3s linear forwards', borderRadius:1 }}
             />
-            <div style={{ display:'none', height:'100%' }}>{screens[active]}</div>
           </div>
         </div>
+
+        {/* Nav dots + label strip */}
+        <div style={{ background:'#0a1628', padding:'8px 16px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+          <div style={{ display:'flex', gap:6 }}>
+            {HERO_SCREENS.map((s, i) => (
+              <button
+                key={s.label}
+                onClick={() => setActive(i)}
+                style={{
+                  width: i === active ? 20 : 6,
+                  height:6, borderRadius:3,
+                  background: i === active ? '#228DC1' : 'rgba(255,255,255,0.25)',
+                  border:'none', cursor:'pointer', padding:0,
+                  transition:'all 0.3s ease',
+                }}
+              />
+            ))}
+          </div>
+          <span style={{ fontSize:9, fontWeight:700, color:'rgba(255,255,255,0.55)', letterSpacing:'0.14em', textTransform:'uppercase' }}>
+            {screen.label}
+          </span>
+        </div>
+
       </div>
     </div>
   )
@@ -543,7 +159,7 @@ function CurriculumAgnosticSection() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[0.82fr_1fr] gap-16 items-center">
 
-          {/* LEFT — text */}
+          {/* LEFT â€” text */}
           <div style={reveal(inView, 0)}>
             <p className="type-label text-[#228DC1] mb-5">Curriculum Agnostic</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
@@ -563,7 +179,7 @@ function CurriculumAgnosticSection() {
             </div>
           </div>
 
-          {/* RIGHT — orbital visual */}
+          {/* RIGHT â€” orbital visual */}
           <div className="flex items-center justify-center" style={reveal(inView, 120)}>
             <div style={{ position:'relative', width:SIZE, height:SIZE, flexShrink:0 }}>
 
@@ -597,7 +213,7 @@ function CurriculumAgnosticSection() {
                 pointerEvents:'none',
               }}/>
 
-              {/* Connection beam SVG — always points upward from center, beam appears for top card */}
+              {/* Connection beam SVG â€” always points upward from center, beam appears for top card */}
               <svg style={{ position:'absolute', inset:0, width:SIZE, height:SIZE, pointerEvents:'none' }} viewBox={`0 0 ${SIZE} ${SIZE}`}>
                 <line
                   x1={SIZE/2} y1={SIZE/2}
@@ -612,7 +228,7 @@ function CurriculumAgnosticSection() {
                   style={{ animation:'connectionPulse 2s ease-in-out infinite' }}/>
               </svg>
 
-              {/* CENTER — Aruva logo */}
+              {/* CENTER â€” Aruva logo */}
               <div style={{
                 position:'absolute',
                 top:'50%', left:'50%',
@@ -637,7 +253,7 @@ function CurriculumAgnosticSection() {
                 }}>Centralised AI</span>
               </div>
 
-              {/* ORBITING CARDS — single container rotates, cards counter-rotate + scale */}
+              {/* ORBITING CARDS â€” single container rotates, cards counter-rotate + scale */}
               <div style={{
                 position:'absolute', inset:0,
                 animation: inView ? `orbitSpin ${ORBIT_DUR}s linear infinite` : 'none',
@@ -762,7 +378,7 @@ const audiences = [
     color: '#228DC1',
     soft: '#e8f4fc',
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-    stat: '3× faster gap closure',
+    stat: '3Ã— faster gap closure',
   },
   {
     label: 'Educators',
@@ -796,7 +412,7 @@ const audiences = [
 
 // -- Platform pillars ----------------------------------------------------------
 
-// -- How It Works — accordion LEFT, visual RIGHT (Intercom-style) --------------
+// -- How It Works â€” accordion LEFT, visual RIGHT (Intercom-style) --------------
 function HowItWorksSection() {
   const [active, setActive] = React.useState(0)
   const [isPaused, setIsPaused] = React.useState(false)
@@ -837,14 +453,14 @@ function HowItWorksSection() {
           </p>
         </div>
 
-        {/* accordion LEFT + visual RIGHT — both pinned to top */}
+        {/* accordion LEFT + visual RIGHT â€” both pinned to top */}
         <div
           className="grid lg:grid-cols-[440px_1fr] gap-16 items-start"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
 
-          {/* LEFT — active step always at top, inactive steps below */}
+          {/* LEFT â€” active step always at top, inactive steps below */}
           <div style={reveal(inView, 100)}>
             {howItWorksSteps.map((s, index) => {
               const isActive = index === active
@@ -881,7 +497,7 @@ function HowItWorksSection() {
             })}
           </div>
 
-          {/* RIGHT — visual aligned to top, smooth ease-in on swap */}
+          {/* RIGHT â€” visual aligned to top, smooth ease-in on swap */}
           <div key={active} className="self-start" style={{ animation:'hiwVisual 0.45s cubic-bezier(0.4,0,0.2,1) both', ...reveal(inView, 160) }}>
             <Visual />
           </div>
@@ -989,7 +605,7 @@ function AlignVisual() {
       {/* Header */}
       <div className="mb-5">
         <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1">Policy Compilation</p>
-        <p className="text-[#0a1628] font-semibold text-[15px]">Course inputs → compiled AI policy</p>
+        <p className="text-[#0a1628] font-semibold text-[15px]">Course inputs â†’ compiled AI policy</p>
       </div>
 
       {/* Three-column layout: inputs | arrow | outputs */}
@@ -1091,12 +707,12 @@ function MasteryStoryVisual() {
 function TutorVisual() {
   const messages = [
     { role: 'student', text: "Can you just solve Porter's Five Forces for me?" },
-    { role: 'aruva',   text: "Let's build that understanding together. Which of the five forces do you think has the strongest impact here — start with your instinct." },
+    { role: 'aruva',   text: "Let's build that understanding together. Which of the five forces do you think has the strongest impact here â€” start with your instinct." },
     { role: 'student', text: "Maybe buyer power? Because there are lots of alternatives?" },
-    { role: 'aruva',   text: "Good instinct. Now think about what actually gives buyers that power — is it the number of alternatives, switching costs, or something else?" },
+    { role: 'aruva',   text: "Good instinct. Now think about what actually gives buyers that power â€” is it the number of alternatives, switching costs, or something else?" },
     { role: 'student', text: "I think it's switching costs. If it's easy to switch, buyers have more leverage." },
   ]
-  const signal = { label: 'Mastery signal captured', sub: 'Apply level · Bloom taxonomy updated', color: '#228DC1', bg: '#e8f4fc', border: '#b8ddf0' }
+  const signal = { label: 'Mastery signal captured', sub: 'Apply level Â· Bloom taxonomy updated', color: '#228DC1', bg: '#e8f4fc', border: '#b8ddf0' }
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
@@ -1108,8 +724,8 @@ function TutorVisual() {
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
           </div>
           <span className="text-[14px] font-semibold text-[#0a1628]/65">Adaptive Tutor</span>
-          <span className="text-[#0a1628]/20">·</span>
-          <span className="text-[13px] text-[#0a1628]/40">Business Strategy 101 · Week 3</span>
+          <span className="text-[#0a1628]/20">Â·</span>
+          <span className="text-[13px] text-[#0a1628]/40">Business Strategy 101 Â· Week 3</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">Socratic mode</span>
@@ -1121,11 +737,11 @@ function TutorVisual() {
         <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: '#f59e0b' }}>MG</div>
         <div>
           <p className="text-[13px] font-semibold text-[#0a1628] leading-none">Maria Garcia</p>
-          <p className="text-[11px] text-[#0a1628]/45 mt-0.5">Business Strategy 101 · Analogy-oriented learner</p>
+          <p className="text-[11px] text-[#0a1628]/45 mt-0.5">Business Strategy 101 Â· Analogy-oriented learner</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fef3c7] border border-[#d97706]/20">
           <div className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
-          <span className="text-[11px] font-semibold text-[#d97706]">Week 3 — Porter's Five Forces</span>
+          <span className="text-[11px] font-semibold text-[#d97706]">Week 3 â€” Porter's Five Forces</span>
         </div>
       </div>
 
@@ -1149,7 +765,7 @@ function TutorVisual() {
                 {i === 1 && (
                   <div className="flex items-center gap-1.5 mt-2.5 pt-2.5 border-t border-gray-100">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#228DC1" strokeWidth="2.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.1-1.1m-.757-4.9a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" strokeLinecap="round"/></svg>
-                    <span className="text-[11px] font-semibold text-[#228DC1]">Porter (2008), Ch. 2 — cited source</span>
+                    <span className="text-[11px] font-semibold text-[#228DC1]">Porter (2008), Ch. 2 â€” cited source</span>
                   </div>
                 )}
               </div>
@@ -1206,7 +822,7 @@ function AnalyticsVisual() {
         ))}
       </div>
       <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-[#fef3c7] border border-[#d97706]/20">
-        <span className="text-[13px] shrink-0 mt-0.5 font-bold" style={{ color: '#d97706' }}>▲</span>
+        <span className="text-[13px] shrink-0 mt-0.5 font-bold" style={{ color: '#d97706' }}>â–²</span>
         <div>
           <p className="text-[14px] font-semibold text-[#d97706]">3 students at risk on Buyer Power</p>
           <p className="text-[14px] text-[#d97706]/70 mt-0.5">Gap detected in Week 3. Intervene now</p>
@@ -1231,8 +847,8 @@ function TutorVisualOld() {
             />
           </div>
           <span className="text-[#0a1628]/60 text-[14px] font-semibold">Tutor</span>
-          <span className="text-[#0a1628]/20 text-[14px]">·</span>
-          <span className="text-[#0a1628]/40 text-[14px]">Week 3 · Socratic mode</span>
+          <span className="text-[#0a1628]/20 text-[14px]">Â·</span>
+          <span className="text-[#0a1628]/40 text-[14px]">Week 3 Â· Socratic mode</span>
         </div>
         <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
       </div>
@@ -1359,7 +975,7 @@ function PlatformDiagram() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
           <div className="grid lg:grid-cols-[400px_1fr] gap-24 items-center">
 
-            {/* ── LEFT: static text ── */}
+            {/* â”€â”€ LEFT: static text â”€â”€ */}
             <div className="flex flex-col gap-8">
               <div>
                 <p className="type-label text-[#228DC1] mb-5">Architecture</p>
@@ -1368,7 +984,7 @@ function PlatformDiagram() {
                   <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
                 </h2>
                 <p className="text-[#0a1628]/60 text-[16px] leading-[1.75]">
-                  Not a bundle of tools. One connected system where every layer talks to the next — from your LMS through to every student interface.
+                  Not a bundle of tools. One connected system where every layer talks to the next â€” from your LMS through to every student interface.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -1381,7 +997,7 @@ function PlatformDiagram() {
               </div>
             </div>
 
-            {/* ── RIGHT: workflow nodes ── */}
+            {/* â”€â”€ RIGHT: workflow nodes â”€â”€ */}
             <div className="flex flex-col items-stretch"
               style={{ backgroundImage:'radial-gradient(circle, #cbd5e1 1px, transparent 1px)', backgroundSize:'24px 24px', padding:'28px 28px', borderRadius:20, border:'1px solid #e2e8f0' }}>
 
@@ -1540,7 +1156,7 @@ const DOK_LABELS  = ['DOK 1','DOK 2','DOK 3','DOK 4']
 const DOK_NAMES   = ['Recall & Reproduce','Skills & Concepts','Strategic Thinking','Extended Thinking']
 const DOK_SIMPLE  = ['Recall, define, identify','Classify, infer, estimate','Analyse, hypothesise, cite evidence','Design, connect, synthesise']
 const DOK_COLORS  = ['#60a5fa','#34d399','#f59e0b','#a78bfa']
-// WCAG AA-compliant text colours (≥4.5:1 on white) — darker shade of each DOK colour
+// WCAG AA-compliant text colours (â‰¥4.5:1 on white) â€” darker shade of each DOK colour
 const DOK_TEXT_COLORS = ['#1565a8','#0a7550','#a05a00','#5b21b6']
 const DOK_KEYWORDS = [
   ['Recall','Define','State','Identify','List','Name','Quote','Measure'],
@@ -1560,10 +1176,10 @@ const MM_MODALITIES = [
 const MM_VOICE_BARS   = [0.15,0.55,1.0,0.35,0.8,0.2,0.95,0.5,0.75,0.12,1.0,0.4,0.65,0.9,0.28,0.7,0.45,0.85,0.18,0.6,1.0,0.3,0.78,0.42,0.9,0.22,0.68,0.5]
 const MM_VOICE_DELAYS = [0,0.16,0.06,0.28,0.04,0.34,0.10,0.44,0.20,0.13,0.38,0.03,0.26,0.08,0.42,0.18,0.32,0.07,0.24,0.46,0.02,0.30,0.14,0.40,0.09,0.36,0.22,0.50]
 const MM_STEPS = [
-  { label:'Given',   val:'x² − 5x + 6 = 0' },
-  { label:'Factor',  val:'(x − 2)(x − 3) = 0' },
+  { label:'Given',   val:'xÂ² âˆ’ 5x + 6 = 0' },
+  { label:'Factor',  val:'(x âˆ’ 2)(x âˆ’ 3) = 0' },
   { label:'Solve',   val:'x = 2  or  x = 3' },
-  { label:'Check ✓', val:'4 − 10 + 6 = 0 ✓' },
+  { label:'Check âœ“', val:'4 âˆ’ 10 + 6 = 0 âœ“' },
 ]
 
 const MM_TEXT_CONVERSATIONS = [
@@ -1678,7 +1294,7 @@ function MMTextDemo() {
       <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:2 }}>
         <div style={{ flex:1 }}>
           <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:700, lineHeight:1.2 }}>Solving: {activeExample.equation}</p>
-          <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.32)', marginTop:3 }}>{activeExample.topic} · {stepCount} steps · equation updates automatically</p>
+          <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.32)', marginTop:3 }}>{activeExample.topic} Â· {stepCount} steps Â· equation updates automatically</p>
         </div>
         <div style={{ minWidth:78, textAlign:'right' }}>
           <p style={{ fontSize:20, fontWeight:800, color:'#7c3aed', lineHeight:1 }}>{score}%</p>
@@ -1798,7 +1414,7 @@ function MMImageDemo() {
     </div>
   )
 }
-// Animated SVG path — remounts on key change so draw animation restarts
+// Animated SVG path â€” remounts on key change so draw animation restarts
 function AnimatedGraphPath({ d, color, animKey }: { d: string; color: string; animKey: number }) {
   const [revealed, setRevealed] = React.useState(false)
   React.useEffect(() => {
@@ -1871,7 +1487,7 @@ function MMGraphDemo() {
   function safeEval(expr: string, x: number): number | null {
     try {
       const s = expr
-        .replace(/·/g,'*').replace(/×/g,'*').replace(/÷/g,'/')
+        .replace(/Â·/g,'*').replace(/Ã—/g,'*').replace(/Ã·/g,'/')
         .replace(/\bsin\b/g,'Math.sin').replace(/\bcos\b/g,'Math.cos')
         .replace(/\btan\b/g,'Math.tan').replace(/\bsqrt\b/g,'Math.sqrt')
         .replace(/\babs\b/g,'Math.abs').replace(/\bln\b/g,'Math.log')
@@ -1946,7 +1562,7 @@ function MMGraphDemo() {
             background:'linear-gradient(135deg,#f59e0b,#d97706)',
             border:'none', color:'white', fontSize:12, fontWeight:700, cursor:'pointer', flexShrink:0,
             boxShadow:'0 2px 8px rgba(217,119,6,0.30)',
-          }}>Plot →</button>
+          }}>Plot â†’</button>
         </div>
       </form>
 
@@ -1994,7 +1610,7 @@ function MultimodalSection() {
   const rafRef    = React.useRef<number | undefined>(undefined)
   const CYCLE = 7600
 
-  // RAF-driven auto-cycle — starts when section scrolls into view
+  // RAF-driven auto-cycle â€” starts when section scrolls into view
   React.useEffect(() => {
     if (!inView) return
     startRef.current = performance.now()
@@ -2013,7 +1629,7 @@ function MultimodalSection() {
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
   }, [inView])
 
-  // Manual tab click — jumps to that modality and resets the cycle timer
+  // Manual tab click â€” jumps to that modality and resets the cycle timer
   const handleTab = (i: number) => {
     activeRef.current = i
     setActive(i)
@@ -2040,7 +1656,7 @@ function MultimodalSection() {
         {/* Two-column: left = title + tabs, right = demo */}
         <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', gap:56, alignItems:'start' }}>
 
-          {/* LEFT — title, brief, then tabs */}
+          {/* LEFT â€” title, brief, then tabs */}
           <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
 
             {/* Section header inside left column */}
@@ -2097,7 +1713,7 @@ function MultimodalSection() {
             })}
           </div>
 
-          {/* RIGHT — single large demo card, remounts on each modality change */}
+          {/* RIGHT â€” single large demo card, remounts on each modality change */}
           <div style={{
             borderRadius:20, overflow:'hidden',
             border:'1px solid #e2e8f0',
@@ -2108,7 +1724,7 @@ function MultimodalSection() {
             opacity: inView?1:0, transform: inView?'translateY(0)':'translateY(24px)',
             transition:'opacity 0.65s ease 0.15s, transform 0.65s ease 0.15s',
           }}>
-            {/* Card header — updates smoothly on tab switch */}
+            {/* Card header â€” updates smoothly on tab switch */}
             <div style={{
               padding:'14px 20px', borderBottom:'1px solid #f0f4f8',
               background:'#fafbfc', display:'flex', alignItems:'center', gap:12,
@@ -2130,13 +1746,13 @@ function MultimodalSection() {
               <div style={{ flex:1 }}/>
             </div>
 
-            {/* Demo content — key forces remount so animations restart on each cycle */}
+            {/* Demo content â€” key forces remount so animations restart on each cycle */}
             <div key={`${active}-${cycleCount}`} style={{
               flex:1, display:'flex', flexDirection:'column',
               opacity:0, animation:'mmCardIn 0.4s ease forwards',
             }}>
 
-              {/* ── Voice ── */}
+              {/* â”€â”€ Voice â”€â”€ */}
               {active === 0 && (
                 <div style={{ flex:1, display:'flex', flexDirection:'column', padding:24, background:'linear-gradient(180deg,#ffffff 0%,#f8fbfd 100%)' }}>
                   <div style={{
@@ -2232,11 +1848,11 @@ function MultimodalSection() {
                   </div>
                 </div>
               )}
-              {/* ── Text ── */}
+              {/* â”€â”€ Text â”€â”€ */}
               {active === 1 && <MMTextDemo />}
               {false && (
                 <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'32px 36px' }}>
-                  <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:600, marginBottom:4 }}>Solving: x² − 5x + 6 = 0</p>
+                  <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:600, marginBottom:4 }}>Solving: xÂ² âˆ’ 5x + 6 = 0</p>
                   {MM_STEPS.map((s, i) => (
                     <div key={s.label} style={{
                       display:'flex', alignItems:'center', gap:10,
@@ -2249,15 +1865,15 @@ function MultimodalSection() {
                   ))}
                   <div style={{ display:'flex', alignItems:'center', gap:6, marginTop:6 }}>
                     <div style={{ width:2, height:16, background:'#7c3aed', borderRadius:1, animation:'mmCursor 1s step-end infinite' }}/>
-                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.38)' }}>AI solving step by step…</span>
+                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.38)' }}>AI solving step by stepâ€¦</span>
                   </div>
                 </div>
               )}
 
-              {/* ── Image ── */}
+              {/* â”€â”€ Image â”€â”€ */}
               {active === 2 && <MMImageDemo />}
 
-              {/* ── Graph ── */}
+              {/* â”€â”€ Graph â”€â”€ */}
               {active === 3 && <MMGraphDemo />}
 
             </div>
@@ -2389,7 +2005,7 @@ function BloomInsightSection() {
   }
   const dokSem = DOK_SEMS[dokActive]
 
-  // Radar geometry — 300×300 viewBox with generous label clearance
+  // Radar geometry â€” 300Ã—300 viewBox with generous label clearance
   const CX = 150, CY = 150, R = 98
   const ang  = (i: number) => (i * 60 - 90) * Math.PI / 180
   const pt   = (i: number, v: number) => ({ x: CX + (v/100)*R*Math.cos(ang(i)), y: CY + (v/100)*R*Math.sin(ang(i)) })
@@ -2448,11 +2064,11 @@ function BloomInsightSection() {
           ))}
         </div>
 
-        {/* ── Bloom panel ── */}
+        {/* â”€â”€ Bloom panel â”€â”€ */}
         {activeTab === 0 && (
         <div className="space-y-6 tab-panel-enter">
 
-          {/* Semester journey cards — 3 equal columns */}
+          {/* Semester journey cards â€” 3 equal columns */}
           <div className="grid grid-cols-3 gap-4">
             {BLOOM_SEMS.map((s, i) => {
               const isActive = active === i
@@ -2515,7 +2131,7 @@ function BloomInsightSection() {
             })}
           </div>
 
-          {/* RIGHT — Bloom profile card */}
+          {/* RIGHT â€” Bloom profile card */}
           <div className="bg-white border border-gray-200 rounded-2xl shadow-[0_2px_20px_rgba(10,22,40,0.05)] p-8 flex flex-col">
 
             {/* Card header */}
@@ -2530,7 +2146,7 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile · compared with class average</p>
+                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile Â· compared with class average</p>
                   </div>
                 </div>
               </div>
@@ -2591,7 +2207,7 @@ function BloomInsightSection() {
                       stroke="rgba(10,22,40,0.06)" strokeWidth="1" />
                   ))}
 
-                  {/* Cohort average — amber dashed polygon */}
+                  {/* Cohort average â€” amber dashed polygon */}
                   <polygon points={poly(sem.cohortAvg)} fill={`url(#ravgFill-${active})`}
                     stroke={`url(#ravg-${active})`} strokeWidth="2.5"
                     strokeDasharray="7 4" strokeLinejoin="round" strokeLinecap="round"
@@ -2716,11 +2332,11 @@ function BloomInsightSection() {
         </div>
         )} {/* end Bloom panel */}
 
-        {/* ── DOK panel ── */}
+        {/* â”€â”€ DOK panel â”€â”€ */}
         {activeTab === 1 && (
         <div className="space-y-6 tab-panel-enter">
 
-          {/* DOK semester cards — 3 equal columns */}
+          {/* DOK semester cards â€” 3 equal columns */}
           <div className="grid grid-cols-3 gap-4">
             {DOK_SEMS.map((s, i) => {
               const isActive = dokActive === i
@@ -2777,7 +2393,7 @@ function BloomInsightSection() {
             })}
           </div>
 
-          {/* RIGHT — DOK profile card */}
+          {/* RIGHT â€” DOK profile card */}
           <div className="bg-white border border-gray-200 rounded-2xl shadow-[0_2px_20px_rgba(10,22,40,0.05)] p-8 flex flex-col">
             <div className="flex items-start justify-between mb-6">
               <div>
@@ -2790,7 +2406,7 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile · compared with class average</p>
+                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile Â· compared with class average</p>
                   </div>
                 </div>
               </div>
@@ -2986,16 +2602,16 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           {/* Card 1 */}
           <div className="flex-1 flex flex-col"><AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} /></div>
 
-          {/* Connector 1↔2 */}
+          {/* Connector 1â†”2 */}
           <div className="hidden lg:flex flex-col items-center justify-center gap-3 shrink-0" style={{ width:56 }}>
-            {/* ← card2 to card1 */}
+            {/* â† card2 to card1 */}
             <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block' }}>
               <line x1="44" y1="9" x2="12" y2="9" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
               <polyline points="18,3 6,9 18,15" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
             </svg>
             {/* divider */}
             <div style={{ width:20, height:1, background: audiences[1].color, opacity:0.2, borderRadius:1 }}/>
-            {/* → card1 to card2 */}
+            {/* â†’ card1 to card2 */}
             <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block', opacity:0.4 }}>
               <line x1="4" y1="9" x2="36" y2="9" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeDasharray="5 3"/>
               <polyline points="30,3 42,9 30,15" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
@@ -3005,16 +2621,16 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           {/* Card 2 */}
           <div className="flex-1 flex flex-col"><AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} /></div>
 
-          {/* Connector 2↔3 */}
+          {/* Connector 2â†”3 */}
           <div className="hidden lg:flex flex-col items-center justify-center gap-3 shrink-0" style={{ width:56 }}>
-            {/* → card2 to card3 */}
+            {/* â†’ card2 to card3 */}
             <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block' }}>
               <line x1="4" y1="9" x2="36" y2="9" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
               <polyline points="30,3 42,9 30,15" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
             </svg>
             {/* divider */}
             <div style={{ width:20, height:1, background: audiences[1].color, opacity:0.2, borderRadius:1 }}/>
-            {/* ← card3 to card2 */}
+            {/* â† card3 to card2 */}
             <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block', opacity:0.4 }}>
               <line x1="44" y1="9" x2="12" y2="9" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeDasharray="5 3"/>
               <polyline points="18,3 6,9 18,15" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
@@ -3111,7 +2727,7 @@ export default function AruvaPage() {
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              {/* Aruva logo — full wordmark vector */}
+              {/* Aruva logo â€” full wordmark vector */}
               <div className="mb-8">
                 <img
                   src="/aruva-logo-vector.svg"
@@ -3165,7 +2781,7 @@ export default function AruvaPage() {
       {/* Curriculum agnostic */}
       <CurriculumAgnosticSection />
 
-      {/* Bloom + DOK — Learning Intelligence */}
+      {/* Bloom + DOK â€” Learning Intelligence */}
       <BloomInsightSection />
 
       {/* Multimodal */}
