@@ -23,67 +23,30 @@ function AruvaHeroDashboard() {
     return () => cancelAnimationFrame(raf)
   }, [])
 
-  // Auto-cycle every 3 seconds
   React.useEffect(() => {
-    const id = setInterval(() => setActive(p => (p + 1) % HERO_SCREENS.length), 3000)
+    const id = setInterval(() => setActive(p => (p + 1) % HERO_SCREENS.length), 2600)
     return () => clearInterval(id)
   }, [])
 
   const screen = HERO_SCREENS[active]
 
   return (
-    <div className="relative w-full max-w-[640px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)' }}>
+    <div className="relative w-full max-w-[820px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)' }}>
       <style>{`
-        @keyframes fadeSlide { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:translateY(0) } }
-        @keyframes progress { from { width:0% } to { width:100% } }
+        @keyframes fadeSlide { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
       `}</style>
 
-      {/* Glow */}
-      <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background:'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.14) 0, transparent 65%)' }}/>
+      <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background:'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }}/>
 
-      {/* Device frame — no border, clean shadow */}
-      <div style={{ borderRadius:16, overflow:'hidden', boxShadow:'0 40px 100px rgba(10,22,40,0.20), 0 8px 32px rgba(10,22,40,0.10)' }}>
-
-        {/* Screenshot — fills the frame completely */}
-        <div style={{ position:'relative', background:'#f0f2f7' }}>
+      <div style={{ borderRadius:14, overflow:'hidden', boxShadow:'0 38px 86px rgba(10,22,40,0.20), 0 10px 30px rgba(10,22,40,0.10)', background:'transparent' }}>
+        <div style={{ position:'relative', background:'transparent' }}>
           <img
             key={active}
             src={screen.src}
             alt={screen.label}
             style={{ width:'100%', height:'auto', display:'block', animation:'fadeSlide 0.45s ease both' }}
           />
-
-          {/* Progress bar at bottom */}
-          <div style={{ position:'absolute', bottom:0, left:0, right:0, height:2, background:'rgba(255,255,255,0.15)' }}>
-            <div
-              key={active}
-              style={{ height:'100%', background:'#228DC1', animation:'progress 3s linear forwards', borderRadius:1 }}
-            />
-          </div>
         </div>
-
-        {/* Nav dots + label strip */}
-        <div style={{ background:'#0a1628', padding:'8px 16px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-          <div style={{ display:'flex', gap:6 }}>
-            {HERO_SCREENS.map((s, i) => (
-              <button
-                key={s.label}
-                onClick={() => setActive(i)}
-                style={{
-                  width: i === active ? 20 : 6,
-                  height:6, borderRadius:3,
-                  background: i === active ? '#228DC1' : 'rgba(255,255,255,0.25)',
-                  border:'none', cursor:'pointer', padding:0,
-                  transition:'all 0.3s ease',
-                }}
-              />
-            ))}
-          </div>
-          <span style={{ fontSize:9, fontWeight:700, color:'rgba(255,255,255,0.55)', letterSpacing:'0.14em', textTransform:'uppercase' }}>
-            {screen.label}
-          </span>
-        </div>
-
       </div>
     </div>
   )
