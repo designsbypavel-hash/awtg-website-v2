@@ -1658,106 +1658,46 @@ function MMTextDemo() {
 }
 
 function MMImageDemo() {
-  const PROMPT = 'Generate: photosynthesis lesson diagram'
-  const [arrows, setArrows] = React.useState(false)
-  const graphNodes = [
-    { label:'Light', x:38, y:34, color:'#f59e0b' },
-    { label:'Leaf', x:112, y:88, color:'#059669' },
-    { label:'CO2', x:214, y:48, color:'#228DC1' },
-    { label:'ATP', x:206, y:126, color:'#7c3aed' },
-    { label:'Sugar', x:122, y:146, color:'#dc2626' },
-  ]
-
-  // Image appears immediately; arrows fade in 400ms later
-  React.useEffect(() => {
-    const id = setTimeout(() => setArrows(true), 400)
-    return () => clearTimeout(id)
-  }, [])
-
   return (
-    <div style={{ display:'flex', flexDirection:'column', flex:1 }}>
-      {/* Prompt bar — static */}
-      <div style={{ borderBottom:'1px solid #e5e7eb', padding:'9px 18px', display:'flex', alignItems:'center', gap:8, background:'#fafbfc' }}>
-        <span style={{ fontSize:11, color:'#374151', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:500, flex:1 }}>
-          {PROMPT}
-        </span>
-        <span style={{ fontSize:9, fontWeight:700, color:'#059669', background:'rgba(5,150,105,0.10)', padding:'3px 8px', borderRadius:10, border:'1px solid rgba(5,150,105,0.22)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Generated</span>
+    <div style={{ display:'flex', flexDirection:'column', flex:1, background:'#ffffff' }}>
+      <div style={{ borderBottom:'1px solid #e5e7eb', padding:'14px 18px', display:'flex', flexDirection:'column', gap:10, background:'#fafbfc' }}>
+        <div style={{ alignSelf:'flex-end', maxWidth:'82%' }}>
+          <div style={{
+            background:'#f59e0b', color:'#ffffff', padding:'10px 13px',
+            borderRadius:'14px 14px 4px 14px', fontSize:12.5, fontWeight:700, lineHeight:1.45,
+            boxShadow:'0 8px 18px rgba(245,158,11,0.18)',
+          }}>
+            Generate a clear photosynthesis diagram for my biology lesson.
+          </div>
+        </div>
+
+        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', gap:12 }}>
+          <div style={{ display:'flex', alignItems:'center', gap:9, minWidth:0 }}>
+            <div style={{ width:26, height:26, borderRadius:8, background:'#ecfdf5', border:'1px solid #bbf7d0', display:'flex', alignItems:'center', justifyContent:'center', color:'#059669', fontSize:10, fontWeight:900, flexShrink:0 }}>
+              A
+            </div>
+            <span style={{ fontSize:11, color:'rgba(10,22,40,0.52)', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:600, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
+              prompt accepted: photosynthesis lesson diagram
+            </span>
+          </div>
+          <span style={{ fontSize:9, fontWeight:800, color:'#059669', background:'rgba(5,150,105,0.10)', padding:'4px 9px', borderRadius:999, border:'1px solid rgba(5,150,105,0.22)', letterSpacing:'0.07em', textTransform:'uppercase', flexShrink:0 }}>
+            Generated
+          </span>
+        </div>
       </div>
 
-      {/* Illustration canvas */}
-      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'12px 16px', background:'#f8fafc' }}>
-        <div style={{ position:'relative', width:'100%', aspectRatio:'280 / 178', borderRadius:12, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#0f3b33' }}>
-
-          {/* ① Image — visible immediately */}
+      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'14px 16px', background:'#f8fafc' }}>
+        <div style={{ width:'100%', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
           <img
             src="/images/aruva-photosynthesis-realistic.png"
-            alt="AI-generated photosynthesis lesson diagram"
-            style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }}
+            alt="Generated photosynthesis lesson diagram"
+            style={{ display:'block', width:'100%', height:'auto', aspectRatio:'280 / 178', objectFit:'cover' }}
           />
-          <div style={{
-            position:'absolute', inset:0,
-            background:'linear-gradient(90deg,rgba(6,21,35,0.10),rgba(6,21,35,0.00) 38%,rgba(6,21,35,0.22)), radial-gradient(circle at 13% 16%,rgba(254,240,138,0.30),transparent 26%)',
-            pointerEvents:'none',
-          }}/>
-
-          {/* ② Arrows + graph — fade in 400ms after image */}
-          <svg viewBox="0 0 280 178" style={{ position:'absolute', inset:0, width:'100%', height:'100%', display:'block', overflow:'visible', opacity: arrows ? 1 : 0, transition:'opacity 0.5s ease' }}>
-            <defs>
-              <marker id="mmArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-                <path d="M0,0 L7,3.5 L0,7 Z" fill="#fef08a"/>
-              </marker>
-            </defs>
-
-            {/* Sun rays */}
-            <circle cx="38" cy="30" r="24" fill="rgba(254,240,138,0.18)" style={{ animation:'mmSunPulse 2.8s ease-in-out infinite' }}/>
-            {[0,35,70,105,140,175,210,245,280,315].map((angle,i) => {
-              const rad = (angle * Math.PI) / 180
-              return <line key={angle} x1={38+Math.cos(rad)*25} y1={30+Math.sin(rad)*25} x2={38+Math.cos(rad)*38} y2={30+Math.sin(rad)*38}
-                stroke="#fef08a" strokeWidth="2.2" strokeLinecap="round" opacity={0.75}
-                style={{ animation:`mmSunRay 2.4s ease-in-out ${i*0.08}s infinite` }}/>
-            })}
-
-            {/* Flow arrows */}
-            <path className="mm-photo-flow" d="M52 42 C76 57 82 77 112 85" markerEnd="url(#mmArrow)"/>
-            <path className="mm-photo-flow mm-photo-delay-1" d="M213 47 C241 55 250 80 235 101" markerEnd="url(#mmArrow)"/>
-            <path className="mm-photo-flow mm-photo-delay-2" d="M191 121 C163 152 123 156 88 135" markerEnd="url(#mmArrow)"/>
-            <path className="mm-photo-flow mm-photo-delay-3" d="M118 143 C158 172 220 158 244 128" markerEnd="url(#mmArrow)"/>
-
-            {/* Molecule dots */}
-            {([[219,45,0],[234,68,0.4],[216,124,0.85],[96,138,1.1]] as [number,number,number][]).map(([x,y,d],i) => (
-              <g key={i} style={{ animation:`mmMoleculeDrift 3.4s ease-in-out ${d}s infinite` }}>
-                <circle cx={x-7} cy={y-4} r="4.2" fill="#ef4444"/>
-                <circle cx={x} cy={y} r="6.4" fill="#1f2937"/>
-                <circle cx={x+8} cy={y-4} r="4.2" fill="#ef4444"/>
-              </g>
-            ))}
-
-            {/* Graph edges */}
-            <path className="mm-ai-edge" d="M38 34 L112 88 L214 48 L206 126 L122 146 L112 88"/>
-            <path className="mm-ai-edge mm-ai-edge-delay" d="M38 34 L214 48 M112 88 L206 126 M122 146 L214 48" opacity="0.72"/>
-
-            {/* Graph nodes */}
-            {graphNodes.map(node => (
-              <g key={node.label} className="mm-ai-node">
-                <circle cx={node.x} cy={node.y} r="4.4" fill={node.color}/>
-                <circle cx={node.x} cy={node.y} r="8" fill="none" stroke={node.color} strokeWidth="1" opacity="0.55"/>
-                <text x={node.x} y={node.y-12} textAnchor="middle" fontSize="7" fontWeight="800" fill="#ffffff" fontFamily="Roboto,sans-serif">{node.label}</text>
-              </g>
-            ))}
-
-            {/* Labels */}
-            <text x="70" y="60" textAnchor="middle" fontSize="8" fontWeight="900" fill="#6b3f05" fontFamily="Roboto,sans-serif">LIGHT ENERGY</text>
-            <text x="229" y="32" textAnchor="middle" fontSize="8" fontWeight="900" fill="#0f172a" fontFamily="Roboto,sans-serif">CO2</text>
-            <text x="213" y="143" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">ATP</text>
-            <text x="84" y="163" textAnchor="middle" fontSize="8" fontWeight="900" fill="#ffffff" fontFamily="Roboto,sans-serif">SUGAR</text>
-          </svg>
-
         </div>
       </div>
     </div>
   )
 }
-
 // Animated SVG path — remounts on key change so draw animation restarts
 function AnimatedGraphPath({ d, color, animKey }: { d: string; color: string; animKey: number }) {
   const [revealed, setRevealed] = React.useState(false)
@@ -1988,39 +1928,6 @@ function MultimodalSection() {
         @keyframes voiceOrbMorph { 0%,100%{border-radius:54% 46% 38% 62%/61% 35% 65% 39%} 33%{border-radius:42% 58% 55% 45%/53% 62% 38% 47%} 66%{border-radius:61% 39% 44% 56%/39% 57% 43% 61%} }
         @keyframes orbFloat    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
         @keyframes mmGraphDash { 0%{stroke-dashoffset:70;opacity:0.28} 48%{opacity:1} 100%{stroke-dashoffset:0;opacity:0.28} }
-        @keyframes mmNodePulse { 0%,100%{transform:scale(1);opacity:0.78} 50%{transform:scale(1.22);opacity:1} }
-        @keyframes mmSunPulse  { 0%,100%{transform:scale(1);opacity:0.95} 50%{transform:scale(1.08);opacity:1} }
-        @keyframes mmSunRay    { 0%,100%{opacity:0.35;transform:scale(0.88)} 50%{opacity:0.95;transform:scale(1.08)} }
-        @keyframes mmMoleculeDrift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(6px,-5px)} }
-        .mm-photo-flow {
-          fill: none;
-          stroke: #fef08a;
-          stroke-width: 2.6;
-          stroke-linecap: round;
-          stroke-dasharray: 8 11;
-          animation: mmGraphDash 2.7s linear infinite;
-          filter: drop-shadow(0 0 5px rgba(250,204,21,0.55));
-          transition: opacity 0.45s ease 0.52s;
-        }
-        .mm-photo-delay-1 { animation-delay: 0.42s; }
-        .mm-photo-delay-2 { animation-delay: 0.84s; }
-        .mm-photo-delay-3 { animation-delay: 1.26s; }
-        .mm-ai-edge {
-          fill: none;
-          stroke: rgba(255,255,255,0.75);
-          stroke-width: 1.1;
-          stroke-linecap: round;
-          stroke-dasharray: 5 7;
-          animation: mmGraphDash 3.25s linear infinite;
-          transition: opacity 0.45s ease 0.72s;
-        }
-        .mm-ai-edge-delay { animation-delay: 1.05s; }
-        .mm-ai-node {
-          transform-box: fill-box;
-          transform-origin: center;
-          animation: mmNodePulse 2.15s ease-in-out infinite;
-          transition: opacity 0.35s ease 0.9s;
-        }
       `}</style>
       <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
 
@@ -3304,3 +3211,4 @@ export default function AruvaPage() {
     </>
   )
 }
+
