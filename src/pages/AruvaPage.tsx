@@ -34,8 +34,8 @@ function AruvaHeroDashboard() {
     '/images/aruva-screens/schedule.png',
     '/images/aruva-screens/learning-map.png',
     '/images/aruva-screens/skill-mastery.png',
-    '/images/aruva-screens/dashboard.png',   // AI Insights → fallback to dashboard
-    '/images/aruva-screens/courses.png',     // Milestones → fallback to courses
+    '',
+    '',
   ]
 
   // Legacy screens array kept for fallback
@@ -438,21 +438,26 @@ function AruvaHeroDashboard() {
             })}
           </div>
 
-          {/* Screen content — real product screenshots */}
+          {/* Screen content - real product screenshots where available, designed states otherwise */}
           <div key={active} style={{ flex:1, overflow:'hidden', animation:'screenIn 0.38s cubic-bezier(0.4,0,0.2,1) both', position:'relative', background:'#f5f6fa' }}>
-            <img
-              src={screenImages[active]}
-              alt={HERO_NAV[active]?.label}
-              style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'top left', display:'block' }}
-              onError={(e) => {
-                // Fallback to old animated mockup if image not found
-                const el = e.currentTarget
-                el.style.display = 'none'
-                const fallback = el.nextElementSibling as HTMLElement
-                if (fallback) fallback.style.display = 'block'
-              }}
-            />
-            <div style={{ display:'none', height:'100%' }}>{screens[active]}</div>
+            {screenImages[active] ? (
+              <>
+                <img
+                  src={screenImages[active]}
+                  alt={HERO_NAV[active]?.label}
+                  style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'top left', display:'block' }}
+                  onError={(e) => {
+                    const el = e.currentTarget
+                    el.style.display = 'none'
+                    const fallback = el.nextElementSibling as HTMLElement
+                    if (fallback) fallback.style.display = 'block'
+                  }}
+                />
+                <div style={{ display:'none', height:'100%' }}>{screens[active]}</div>
+              </>
+            ) : (
+              screens[active]
+            )}
           </div>
           {[4,5,6].includes(active) && (
             <div style={{ position:'absolute', right:12, bottom:12, width:126, borderRadius:10, background:'white', border:'1px solid #e5e7eb', boxShadow:'0 18px 44px rgba(10,22,40,0.16)', padding:'10px', animation:'screenIn 0.3s ease both' }}>
