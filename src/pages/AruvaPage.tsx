@@ -2910,6 +2910,42 @@ function PrinciplesSection() {
   )
 }
 
+// -- Audience card (shared between desktop and mobile) -------------------------
+function AudienceCard({ a, i, inView, onDemoClick }: {
+  a: typeof audiences[0]; i: number; inView: boolean; onDemoClick: () => void
+}) {
+  return (
+    <div className="flex-1 relative bg-white rounded-2xl flex flex-col overflow-hidden"
+      style={{ boxShadow:'0 4px 32px rgba(10,22,40,0.09)', border:`1px solid ${a.color}22`, ...reveal(inView, i*100) }}>
+      <div style={{ height:4, background:`linear-gradient(90deg,${a.color},${a.color}99)` }}/>
+      <div className="p-7 flex flex-col flex-1">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background:a.soft, color:a.color }}>{a.icon}</div>
+          <span style={{ fontSize:10, fontWeight:800, letterSpacing:'0.16em', textTransform:'uppercase', color:a.color }}>{a.label}</span>
+        </div>
+        <h3 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize:20 }}>{a.headline}</h3>
+        <p className="text-[#0a1628]/55 text-[13px] leading-relaxed mb-6">{a.desc}</p>
+        <div className="space-y-2.5 flex-1">
+          {a.points.map(pt => (
+            <div key={pt} className="flex items-start gap-2.5">
+              <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background:a.color }}>
+                <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </div>
+              <p className="text-[#0a1628]/65 text-[13px] font-normal leading-relaxed">{pt}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 pt-5 border-t" style={{ borderColor:`${a.color}18` }}>
+          <div className="flex items-center justify-between">
+            <span className="text-[12px] font-bold" style={{ color:a.color }}>{a.stat}</span>
+            <button type="button" onClick={onDemoClick} className="text-[12px] font-semibold px-4 py-2 rounded-lg transition-opacity hover:opacity-80" style={{ background:a.color, color:'white' }}>Learn more</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // -- Audience ------------------------------------------------------------------
 function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
   const [ref, inView] = useInView(0.08)
@@ -2922,135 +2958,47 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
         </div>
-        {/* Cards + arrows wrapper */}
-        <div ref={ref} className="relative">
+        {/* Cards with inline arrows */}
+        <div ref={ref} className="hidden lg:flex items-center gap-0">
 
-        {/* Arrow between card1 and card2 — points LEFT (card2→card1) */}
-        {/* Arrow between card2 and card3 — points RIGHT (card2→card3) */}
-        <div className="hidden lg:flex items-stretch gap-0">
-          {audiences.map((a, i) => (
-            <React.Fragment key={a.label}>
-              {/* Arrow gap: card2→card1 (pointing left) */}
-              {i === 1 && (
-                <div className="flex items-center justify-center shrink-0 z-10" style={{ width:48, ...reveal(inView, 250) }}>
-                  <svg width="48" height="56" viewBox="0 0 48 56" fill="none">
-                    <defs>
-                      <marker id="arL" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto-start-reverse">
-                        <path d="M0 4 L8 0 L8 8 Z" fill={audiences[1].color}/>
-                      </marker>
-                    </defs>
-                    {/* Left arrow: card2 → card1 */}
-                    <path d="M 44 20 C 30 20, 18 20, 4 20" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" fill="none" markerEnd="url(#arL)"/>
-                    {/* Right arrow: card2 → card3 */}
-                    <path d="M 4 36 C 18 36, 30 36, 44 36" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" fill="none" markerEnd="url(#arL)"/>
-                  </svg>
-                </div>
-              )}
-              {i === 2 && (
-                <div className="flex items-center justify-center shrink-0 z-10" style={{ width:48, ...reveal(inView, 350) }}>
-                  <svg width="48" height="56" viewBox="0 0 48 56" fill="none">
-                    <defs>
-                      <marker id="arR" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
-                        <path d="M0 0 L8 4 L0 8 Z" fill={audiences[1].color}/>
-                      </marker>
-                    </defs>
-                    <path d="M 4 28 C 18 28, 30 28, 44 28" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" fill="none" markerEnd="url(#arR)"/>
-                  </svg>
-                </div>
-              )}
-            <div className="flex-1 relative bg-white rounded-2xl flex flex-col overflow-hidden"
-              style={{
-                boxShadow: '0 4px 32px rgba(10,22,40,0.09)',
-                border: `1px solid ${a.color}22`,
-                ...reveal(inView, i * 100),
-              }}>
-              {/* Coloured top bar */}
-              <div style={{ height: 4, background: `linear-gradient(90deg, ${a.color}, ${a.color}99)` }} />
+          {/* Card 1: Students */}
+          <AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} />
 
-              {/* Card body */}
-              <div className="p-7 flex flex-col flex-1">
-                {/* Icon + label row */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: a.soft, color: a.color }}>
-                    {a.icon}
-                  </div>
-                  <span style={{ fontSize:10, fontWeight:800, letterSpacing:'0.16em', textTransform:'uppercase', color: a.color }}>{a.label}</span>
-                </div>
+          {/* Arrow: card2 → card1 (pointing LEFT ←) */}
+          <div className="shrink-0 flex flex-col items-center gap-2 px-3" style={{ width:64, ...reveal(inView, 300) }}>
+            <svg width="52" height="28" viewBox="0 0 52 28" fill="none">
+              {/* Line */}
+              <line x1="48" y1="14" x2="10" y2="14" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
+              {/* Arrowhead pointing left */}
+              <path d="M14 6 L4 14 L14 22" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
+            <span style={{ fontSize:9, fontWeight:800, color: audiences[1].color, letterSpacing:'0.12em', textTransform:'uppercase', opacity:0.7 }}>from</span>
+          </div>
 
-                {/* Headline */}
-                <h3 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize: 20 }}>{a.headline}</h3>
+          {/* Card 2: Educators (center) */}
+          <AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} />
 
-                {/* Desc */}
-                <p className="text-[#0a1628]/55 text-[13px] leading-relaxed mb-6">{a.desc}</p>
+          {/* Arrow: card2 → card3 (pointing RIGHT →) */}
+          <div className="shrink-0 flex flex-col items-center gap-2 px-3" style={{ width:64, ...reveal(inView, 400) }}>
+            <svg width="52" height="28" viewBox="0 0 52 28" fill="none">
+              {/* Line */}
+              <line x1="4" y1="14" x2="42" y2="14" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
+              {/* Arrowhead pointing right */}
+              <path d="M38 6 L48 14 L38 22" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
+            <span style={{ fontSize:9, fontWeight:800, color: audiences[1].color, letterSpacing:'0.12em', textTransform:'uppercase', opacity:0.7 }}>to</span>
+          </div>
 
-                {/* Points */}
-                <div className="space-y-2.5 flex-1">
-                  {a.points.map((point) => (
-                    <div key={point} className="flex items-start gap-2.5">
-                      <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                        style={{ background: a.color }}>
-                        <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
-                          <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <p className="text-[#0a1628]/65 text-[13px] font-normal leading-relaxed">{point}</p>
-                    </div>
-                  ))}
-                </div>
+          {/* Card 3: Institutions */}
+          <AudienceCard a={audiences[2]} i={2} inView={inView} onDemoClick={onDemoClick} />
 
-                {/* Stat callout */}
-                <div className="mt-6 pt-5 border-t" style={{ borderColor: `${a.color}18` }}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[12px] font-bold" style={{ color: a.color }}>{a.stat}</span>
-                    <button type="button" onClick={onDemoClick}
-                      className="text-[12px] font-semibold px-4 py-2 rounded-lg transition-opacity hover:opacity-80"
-                      style={{ background: a.color, color: 'white' }}>
-                      Learn more
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </React.Fragment>
-          ))}
         </div>
 
-        {/* Mobile fallback: plain 1-col stack */}
-        <div className="lg:hidden grid gap-5">
-          {audiences.map((a, i) => (
-            <div key={a.label} className="relative bg-white rounded-2xl flex flex-col overflow-hidden"
-              style={{ boxShadow:'0 4px 32px rgba(10,22,40,0.09)', border:`1px solid ${a.color}22`, ...reveal(inView, i*100) }}>
-              <div style={{ height:4, background:`linear-gradient(90deg,${a.color},${a.color}99)` }}/>
-              <div className="p-7 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background:a.soft, color:a.color }}>{a.icon}</div>
-                  <span style={{ fontSize:10, fontWeight:800, letterSpacing:'0.16em', textTransform:'uppercase', color:a.color }}>{a.label}</span>
-                </div>
-                <h3 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize:20 }}>{a.headline}</h3>
-                <p className="text-[#0a1628]/55 text-[13px] leading-relaxed mb-6">{a.desc}</p>
-                <div className="space-y-2.5 flex-1">
-                  {a.points.map(pt => (
-                    <div key={pt} className="flex items-start gap-2.5">
-                      <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background:a.color }}>
-                        <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                      </div>
-                      <p className="text-[#0a1628]/65 text-[13px] font-normal leading-relaxed">{pt}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 pt-5 border-t" style={{ borderColor:`${a.color}18` }}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[12px] font-bold" style={{ color:a.color }}>{a.stat}</span>
-                    <button type="button" onClick={onDemoClick} className="text-[12px] font-semibold px-4 py-2 rounded-lg" style={{ background:a.color, color:'white' }}>Learn more</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Mobile: stacked */}
+        <div className="lg:hidden grid gap-5" ref={ref}>
+          {audiences.map((a,i) => <AudienceCard key={a.label} a={a} i={i} inView={inView} onDemoClick={onDemoClick}/>)}
         </div>
 
-        </div>{/* end cards + arrows wrapper */}
       </div>
     </section>
   )
