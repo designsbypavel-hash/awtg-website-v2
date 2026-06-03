@@ -2337,19 +2337,23 @@ function BloomInsightSection() {
 
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-        {/* Header */}
-        <div className="max-w-3xl mb-10" style={{ animation: 'fadeUp 0.6s ease both' }}>
-          <p className="type-label text-[#228DC1] mb-4">Learning Intelligence</p>
-          <h2 className="font-heading text-[#0a1628] mb-5">
-            One student journey. Three semesters.<br />One clear progression picture.
-          </h2>
-          <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75]">
-            Grade climbed from 62% to 81% over three semesters. Aruva shows exactly why, and which skill gap was holding them back.
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-[0.72fr_1.48fr] gap-14 xl:gap-18 items-start mb-16">
+          {/* Left narrative */}
+          <div className="lg:sticky lg:top-28" style={{ animation: 'fadeUp 0.6s ease both' }}>
+            <p className="type-label text-[#228DC1] mb-4">Learning Intelligence</p>
+            <h2 className="font-heading text-[#0a1628] mb-5">
+              One student journey. Three semesters.<br />One clear progression picture.
+            </h2>
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75]">
+              Grade climbed from 62% to 81% over three semesters. Aruva shows exactly why, and which skill gap was holding them back.
+            </p>
+          </div>
+
+          {/* Right dashboard */}
+          <div className="min-w-0">
 
         {/* Tab switcher */}
-        <div className="flex gap-1 mb-10 bg-white border border-gray-200 rounded-xl p-1 w-fit shadow-sm">
+        <div className="flex gap-1 mb-8 bg-white border border-gray-200 rounded-xl p-1 w-fit shadow-sm">
           {[
             { label: "Bloom's Taxonomy" },
             { label: 'Depth of Knowledge' },
@@ -2368,16 +2372,16 @@ function BloomInsightSection() {
 
         {/* ── Bloom panel ── */}
         {activeTab === 0 && (
-        <div className="grid lg:grid-cols-[300px_1fr] gap-6 mb-16 items-stretch tab-panel-enter">
+        <div className="space-y-6 tab-panel-enter">
 
           {/* LEFT — semester journey cards */}
-          <div className="flex flex-col gap-3">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
             {BLOOM_SEMS.map((s, i) => (
               <button key={s.id} onClick={() => pick(i)}
-                className="text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
+                className="min-h-[154px] text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
                 style={active === i
-                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 6px 24px ${s.accent}14`, padding: '20px 20px 18px' }
-                  : { background:'rgba(255,255,255,0.5)', borderColor:'rgba(10,22,40,0.07)', padding: '18px 20px' }
+                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 10px 28px ${s.accent}14`, padding: '18px 18px 16px' }
+                  : { background:'rgba(255,255,255,0.68)', borderColor:'rgba(10,22,40,0.07)', padding: '18px' }
                 }>
                 <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full transition-all duration-300"
                   style={{ background: active === i ? s.accent : 'transparent' }} />
@@ -2388,13 +2392,13 @@ function BloomInsightSection() {
                         style={{ color: active === i ? s.accent : 'rgba(10,22,40,0.3)' }}>
                         {s.id} · {s.label}
                       </p>
-                      <p className="text-[16px] font-semibold text-[#0a1628] leading-snug"
+                      <p className="text-[14px] font-semibold text-[#0a1628] leading-snug"
                         style={{ opacity: active === i ? 1 : 0.5 }}>
                         {s.headline.split(' ').slice(0,3).join(' ')}…
                       </p>
                     </div>
                     <div className="text-right shrink-0 ml-3">
-                      <p className="text-[28px] font-black leading-none tabular-nums"
+                      <p className="text-[26px] font-black leading-none tabular-nums"
                         style={{ color: active === i ? s.accent : 'rgba(10,22,40,0.35)' }}>
                         {s.grade}%
                       </p>
@@ -2419,7 +2423,7 @@ function BloomInsightSection() {
                 )}
               </button>
             ))}
-            <div className="mt-1 rounded-xl bg-white border border-gray-200 px-5 py-4">
+            <div className="min-h-[154px] rounded-2xl bg-white border border-gray-200 px-5 py-5 flex items-end">
               <p className="text-[13px] font-semibold text-[#0a1628]/50 leading-relaxed">
                 Evaluate was the bottleneck in S1. Targeted support in S2 drove the breakthrough.
               </p>
@@ -2629,16 +2633,16 @@ function BloomInsightSection() {
 
         {/* ── DOK panel ── */}
         {activeTab === 1 && (
-        <div className="grid lg:grid-cols-[300px_1fr] gap-6 mb-16 items-stretch tab-panel-enter">
+        <div className="space-y-6 tab-panel-enter">
 
           {/* LEFT — DOK semester cards */}
-          <div className="flex flex-col gap-3">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
             {DOK_SEMS.map((s, i) => (
               <button key={s.id} onClick={() => pickDok(i)}
-                className="text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
+                className="min-h-[154px] text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
                 style={dokActive === i
-                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 6px 24px ${s.accent}14`, padding: '20px 20px 18px' }
-                  : { background:'rgba(255,255,255,0.5)', borderColor:'rgba(10,22,40,0.07)', padding: '18px 20px' }
+                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 10px 28px ${s.accent}14`, padding: '18px 18px 16px' }
+                  : { background:'rgba(255,255,255,0.68)', borderColor:'rgba(10,22,40,0.07)', padding: '18px' }
                 }>
                 <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full transition-all duration-300"
                   style={{ background: dokActive === i ? s.accent : 'transparent' }} />
@@ -2649,13 +2653,13 @@ function BloomInsightSection() {
                         style={{ color: dokActive === i ? s.accent : 'rgba(10,22,40,0.3)' }}>
                         {s.id} · {s.label}
                       </p>
-                      <p className="text-[16px] font-semibold text-[#0a1628] leading-snug"
+                      <p className="text-[14px] font-semibold text-[#0a1628] leading-snug"
                         style={{ opacity: dokActive === i ? 1 : 0.5 }}>
                         {s.headline.split(' ').slice(0,3).join(' ')}…
                       </p>
                     </div>
                     <div className="text-right shrink-0 ml-3">
-                      <p className="text-[28px] font-black leading-none tabular-nums"
+                      <p className="text-[26px] font-black leading-none tabular-nums"
                         style={{ color: dokActive === i ? s.accent : 'rgba(10,22,40,0.35)' }}>
                         {s.grade}%
                       </p>
@@ -2680,7 +2684,7 @@ function BloomInsightSection() {
                 )}
               </button>
             ))}
-            <div className="mt-1 rounded-xl bg-white border border-gray-200 px-5 py-4">
+            <div className="min-h-[154px] rounded-2xl bg-white border border-gray-200 px-5 py-5 flex items-end">
               <p className="text-[13px] font-semibold text-[#0a1628]/50 leading-relaxed">
                 DOK 3 was the ceiling in S1. Structured reasoning tasks in S2 unlocked the breakthrough.
               </p>
@@ -2776,6 +2780,9 @@ function BloomInsightSection() {
           </div>
         </div>
         )} {/* end DOK panel */}
+
+          </div>
+        </div>
 
         {/* Stats strip */}
         <div className="grid sm:grid-cols-3 gap-px bg-gray-200 border border-gray-200 rounded-2xl overflow-hidden">
