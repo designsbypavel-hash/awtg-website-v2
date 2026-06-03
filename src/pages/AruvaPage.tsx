@@ -783,7 +783,7 @@ function HowItWorksSection() {
     if (!inView || isPaused) return
     const id = window.setInterval(() => {
       setActive(prev => (prev + 1) % howItWorksSteps.length)
-    }, 5200)
+    }, 4000)
     return () => window.clearInterval(id)
   }, [inView, isPaused])
 
@@ -830,7 +830,6 @@ function HowItWorksSection() {
                   className="hiw-step-btn w-full text-left"
                   style={{ borderTop:`2px solid ${isActive ? '#228DC1' : '#e5e7eb'}`, padding: isActive ? '20px 0 22px' : '13px 0', display:'block', transition:'border-color 0.4s ease', outline:'none', cursor:'pointer' }}>
                   <div className="flex items-start gap-3">
-                    <div style={{ width:8, height:8, borderRadius:2, marginTop: isActive ? 7 : 5, flexShrink:0, background: isActive ? '#228DC1' : '#d1d5db', transition:'background 0.4s ease' }}/>
                     <div className="flex-1">
                       <p style={{ fontSize: isActive ? 17 : 14, fontWeight: isActive ? 700 : 500, color: isActive ? '#0a1628' : 'rgba(10,22,40,0.38)', lineHeight:1.25, marginBottom: isActive ? 10 : 0, transition:'all 0.4s ease' }}>
                         {index + 1}. {s.label}
@@ -846,7 +845,7 @@ function HowItWorksSection() {
                                 height:'100%',
                                 background:'#228DC1',
                                 transformOrigin:'left',
-                                animation: isPaused ? 'none' : 'hiwProgress 5.2s linear forwards',
+                                animation: isPaused ? 'none' : 'hiwProgress 4s linear forwards',
                               }}
                             />
                           </div>
