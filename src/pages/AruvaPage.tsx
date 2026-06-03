@@ -1251,45 +1251,31 @@ function TutorVisualOld() {
 
 // -- Platform architecture diagram ---------------------------------------------
 function PlatformDiagram() {
-  const sectionRef = React.useRef<HTMLDivElement>(null)
-  const [prog, setProg] = React.useState(0)
+  const [vis, setVis] = React.useState<Record<string,boolean>>({})
+  const refs = React.useRef<Record<string, HTMLDivElement|null>>({})
 
   React.useEffect(() => {
-    const el = sectionRef.current
-    if (!el) return
-    const onScroll = () => {
-      const rect = el.getBoundingClientRect()
-      const vh = window.innerHeight
-      const p = (vh - rect.top) / (rect.height + vh)
-      setProg(Math.max(0, Math.min(1, p)))
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) setVis(v => ({ ...v, [e.target.id]: true }))
+      })
+    }, { threshold: 0.2 })
+    Object.values(refs.current).forEach(el => { if (el) obs.observe(el) })
+    return () => obs.disconnect()
   }, [])
 
-  const integOn = prog > 0.06
-  const conn1On = prog > 0.18
-  const s0On    = prog > 0.24
-  const s1On    = prog > 0.32
-  const s2On    = prog > 0.40
-  const s3On    = prog > 0.48
-  const conn2On = prog > 0.58
-  const ui0On   = prog > 0.65
-  const ui1On   = prog > 0.70
-  const ui2On   = prog > 0.75
-  const ui3On   = prog > 0.80
-  const ui4On   = prog > 0.85
-
-  const layerOn = [s0On, s1On, s2On, s3On]
-  const uiOn    = [ui0On, ui1On, ui2On, ui3On, ui4On]
-
+  const observe = (id: string) => (el: HTMLDivElement|null) => { refs.current[id] = el }
+  const fade = (id: string, delay = 0): React.CSSProperties => ({
+    opacity: vis[id] ? 1 : 0,
+    transform: vis[id] ? 'translateY(0)' : 'translateY(24px)',
+    transition: `opacity 0.55s ease ${delay}ms, transform 0.55s ease ${delay}ms`,
+  })
 
   const layers = [
     { label:'Smart Syllabus',           sub:'How the AI knows your course',        color:'#228DC1', chips:['Outcome mapping','Teaching rules','Rubric logic','AI boundaries'] },
-    { label:'Learning Curve AI',         sub:'Each student, individually tracked', color:'#7c3aed', chips:['Mastery tracking','Confidence signals','Workload modelling','Early risk signals'] },
-    { label:'Governance Layer',          sub:'Your institution, your rules',        color:'#059669', chips:['Role based access','Full audit trail','Data residency','Policy enforcement'] },
-    { label:'Traceable Knowledge Layer', sub:'Every answer, fully sourced',         color:'#d97706', chips:['Source provenance','Citation resolver','Attribution','AI auditability'] },
+    { label:'Learning Curve AI',        sub:'Each student, individually tracked',  color:'#7c3aed', chips:['Mastery tracking','Confidence signals','Workload modelling','Early risk signals'] },
+    { label:'Governance Layer',         sub:'Your institution, your rules',         color:'#059669', chips:['Role based access','Full audit trail','Data residency','Policy enforcement'] },
+    { label:'Traceable Knowledge Layer',sub:'Every answer, fully sourced',          color:'#d97706', chips:['Source provenance','Citation resolver','Attribution','AI auditability'] },
   ]
   const lms = [
     { name:'Canvas',      color:'#E66000', logo:'/logos/canvas.svg' },
@@ -1299,174 +1285,111 @@ function PlatformDiagram() {
   ]
   const dataSrc = ['SIS / Student Records','Library Systems','Assessment Tools','SSO / SAML','Email & Notifications','Attendance Data']
   const surfaces = [
-    { label:'Adaptive Tutor',          desc:'Teaches from your course, not the open web',   color:'#228DC1' },
-    { label:'Professor Dashboard',     desc:'See where your class is, right now',            color:'#7c3aed' },
-    { label:'Formative Assessment',    desc:'Spot the gaps while you can still close them',  color:'#059669' },
-    { label:'Student Planner',         desc:'Organised around what matters this week',       color:'#ea580c' },
-    { label:'Institutional Analytics', desc:'One view across every course you run',          color:'#dc2626' },
+    { label:'Adaptive Tutor',          desc:'Teaches from your course, not the open web',  color:'#228DC1' },
+    { label:'Professor Dashboard',     desc:'See where your class is, right now',           color:'#7c3aed' },
+    { label:'Formative Assessment',    desc:'Spot the gaps while you can still close them', color:'#059669' },
+    { label:'Student Planner',         desc:'Organised around what matters this week',      color:'#ea580c' },
+    { label:'Institutional Analytics', desc:'One view across every course you run',         color:'#dc2626' },
   ]
 
-  const T = 'opacity 0.45s cubic-bezier(0.4,0,0.2,1), transform 0.45s cubic-bezier(0.4,0,0.2,1)'
-  const on  = (active: boolean, delay = 0): React.CSSProperties => ({
-    opacity:   active ? 1 : 0,
-    transform: active ? 'translateY(0)' : 'translateY(14px)',
-    transition: T,
-    transitionDelay: `${delay}ms`,
-  })
-  const lineOffset = (active: boolean, len: number) => active ? 0 : len
+  const Connector = ({ label, id }: { label?: string; id: string }) => (
+    <div id={id} ref={observe(id)} className="flex flex-col items-center gap-2 py-2" style={fade(id)}>
+      <div style={{ width:2, height:28, background:'linear-gradient(180deg,#228DC1,#228DC1)', borderRadius:1 }} />
+      {label && (
+        <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] text-[#228DC1]"
+          style={{ background:'#e5f4fa', border:'1px solid rgba(34,141,193,0.25)' }}>{label}</span>
+      )}
+      {label && <div style={{ width:2, height:20, background:'#228DC1', borderRadius:1 }} />}
+      <svg width="12" height="7" viewBox="0 0 12 7"><path d="M1 1l5 5 5-5" stroke="#228DC1" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    </div>
+  )
 
   return (
-    <section ref={sectionRef} className="border-t border-gray-100" style={{ minHeight:'200vh', background:'linear-gradient(160deg,#f0f7ff 0%,#f8fafc 40%,#f0fdf4 100%)' }}>
-      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
-          <div className="grid lg:grid-cols-[420px_1fr] gap-20 items-start pt-16">
+    <section className="py-24 border-t border-gray-100" style={{ background:'#f8fafc' }}>
+      <div className="max-w-3xl mx-auto px-6">
 
-            {/* ── LEFT: static text ── */}
-            <div className="flex flex-col gap-8 pt-4">
-              <div>
-                <p className="type-label text-[#228DC1] mb-5">Architecture</p>
-                <h2 className="font-heading text-[#0a1628] mb-5">
-                  Four layers.<br/>
-                  <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
-                </h2>
-                <p className="text-[#0a1628]/60 text-[16px] leading-[1.75]">
-                  Not a bundle of tools. One connected system where every layer talks to the next — from your LMS through to every student interface.
-                </p>
-              </div>
-              {/* Layer legend */}
-              <div className="flex flex-col gap-3">
-                {layers.map(l => (
-                  <div key={l.label} className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-sm shrink-0" style={{ background: l.color }} />
-                    <span className="text-[14px] font-semibold text-[#0a1628]/70">{l.label}</span>
+        {/* Header */}
+        <div id="pd-header" ref={observe('pd-header')} className="text-center mb-14" style={fade('pd-header')}>
+          <p className="type-label text-[#228DC1] mb-4">Architecture</p>
+          <h2 className="font-heading text-[#0a1628] mb-4">
+            Four layers. <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
+          </h2>
+          <p className="text-[#0a1628]/55 text-[16px] leading-relaxed max-w-lg mx-auto">
+            Not a bundle of tools — one connected system where every layer talks to the next.
+          </p>
+        </div>
+
+        {/* 1. Integrations */}
+        <div id="pd-integ" ref={observe('pd-integ')} style={{ ...fade('pd-integ'), background:'#fff', border:'1px solid #e2e8f0', borderRadius:16, padding:24, boxShadow:'0 4px 24px rgba(10,22,40,0.07)' }}>
+          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#228DC1] mb-5">Integrations</p>
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#0a1628]/35 mb-3">VLE / LMS</p>
+              <div className="flex flex-wrap gap-2">
+                {lms.map(l => (
+                  <div key={l.name} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white"
+                    style={{ border:`1.5px solid ${l.color}40` }}>
+                    <img src={l.logo} alt={l.name} className="w-4 h-4 object-contain" />
+                    <span className="text-[13px] font-semibold" style={{ color: l.color }}>{l.name}</span>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* ── RIGHT: scroll-driven architecture ── */}
-            <div className="flex flex-col gap-0" style={{ overflow:'visible' }}>
-
-              {/* 1. Integrations */}
-              <div style={{ ...on(integOn), background:'rgba(255,255,255,0.88)', backdropFilter:'blur(12px)', boxShadow:'0 8px 40px rgba(34,141,193,0.10), 0 2px 8px rgba(10,22,40,0.06)', border:'1px solid rgba(34,141,193,0.15)', borderRadius:20, padding:24 }}>
-                <p className="type-label text-[#228DC1]/70 mb-5">Integrations</p>
-                <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">VLE / LMS</p>
-                    <div className="flex flex-wrap gap-2">
-                      {lms.map(l => (
-                        <div key={l.name} className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg"
-                          style={{ background: l.color+'0c', border:`1px solid ${l.color}30` }}>
-                          <img src={l.logo} alt={l.name} className="w-3 h-3 object-contain" />
-                          <span className="text-[12px] font-semibold" style={{ color: l.color }}>{l.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">Data Sources</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {dataSrc.map(d => (
-                        <span key={d} className="px-2.5 py-1 rounded-lg bg-[#f1f5f9] border border-gray-200 text-[11px] font-medium text-[#0a1628]/60">{d}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Connector 1 */}
-              <div className="flex flex-col items-center py-3 gap-1.5">
-                <div className="flex items-center gap-2" style={on(conn1On)}>
-                  {['Sync & Deploy','Read & Write'].map(lb => (
-                    <span key={lb} className="px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-[0.12em] text-[#228DC1]"
-                      style={{ background:'#e5f4fa', border:'1px solid rgba(34,141,193,0.25)' }}>{lb}</span>
-                  ))}
-                </div>
-                <svg width="2" height="28" style={{ overflow:'visible' }}>
-                  <line x1="1" y1="0" x2="1" y2="28" stroke="#228DC1" strokeWidth="2"
-                    strokeDasharray="28" strokeDashoffset={lineOffset(conn1On, 28)}
-                    style={{ transition:'stroke-dashoffset 0.5s ease 0.15s' }} />
-                </svg>
-                <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: conn1On?1:0, transition:'opacity 0.3s ease 0.45s' }}>
-                  <path d="M0 0L5 6L10 0" fill="none" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-
-              {/* 2. Services */}
-              <div style={{ borderRadius:20, overflow:'hidden', border:'1px solid rgba(10,22,40,0.10)', boxShadow:'0 16px 48px rgba(10,22,40,0.12), 0 2px 8px rgba(10,22,40,0.06)' }}>
-                <div className="px-6 py-3.5 flex items-center justify-center"
-                  style={{ ...on(s0On), background:'linear-gradient(135deg,#0a1628 0%,#1a2d4a 100%)' }}>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/70">Aruva Intelligent Education Platform</p>
-                </div>
-                {layers.map((layer, i) => (
-                  <div key={layer.label}
-                    className="flex items-center gap-5 px-5 py-4 border-b border-gray-100 last:border-0"
-                    style={{
-                      ...on(layerOn[i], i * 60),
-                      borderLeft: `4px solid ${layerOn[i] ? layer.color : 'transparent'}`,
-                      background: layerOn[i] ? `${layer.color}06` : '#fff',
-                      transition: `${T}, border-left-color 0.3s ease ${i*60}ms, background 0.3s ease ${i*60}ms`,
-                    }}>
-                    <div className="shrink-0" style={{ width: 180 }}>
-                      <p className="text-[13px] font-bold text-[#0a1628] leading-snug">{layer.label}</p>
-                      <p className="text-[12px] text-[#0a1628]/42 mt-0.5">{layer.sub}</p>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 flex-1">
-                      {layer.chips.map(chip => (
-                        <span key={chip} className="px-2 py-0.5 rounded-md text-[11px] font-semibold"
-                          style={{ background: layer.color+'12', border:`1px solid ${layer.color}30`, color: '#0a1628' }}>
-                          {chip}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#0a1628]/35 mb-3">Data Sources</p>
+              <div className="flex flex-wrap gap-1.5">
+                {dataSrc.map(d => (
+                  <span key={d} className="px-2.5 py-1 rounded-md text-[12px] font-medium text-[#0a1628]/65"
+                    style={{ background:'#f1f5f9', border:'1px solid #e2e8f0' }}>{d}</span>
                 ))}
               </div>
-
-              {/* Connector 2: Aruva API */}
-              <div className="flex flex-col items-center py-3 gap-1.5">
-                <svg width="2" height="16" style={{ overflow:'visible' }}>
-                  <line x1="1" y1="0" x2="1" y2="16" stroke="#228DC1" strokeWidth="2"
-                    strokeDasharray="16" strokeDashoffset={lineOffset(conn2On, 16)}
-                    style={{ transition:'stroke-dashoffset 0.4s ease' }} />
-                </svg>
-                <div className="px-5 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.2em] text-white bg-[#0a1628]"
-                  style={{ opacity: conn2On?1:0, transform: conn2On?'scale(1)':'scale(0.9)', transition:'opacity 0.35s ease 0.2s, transform 0.35s ease 0.2s' }}>
-                  Aruva API
-                </div>
-                <svg width="2" height="16" style={{ overflow:'visible' }}>
-                  <line x1="1" y1="0" x2="1" y2="16" stroke="#228DC1" strokeWidth="2"
-                    strokeDasharray="16" strokeDashoffset={lineOffset(conn2On, 16)}
-                    style={{ transition:'stroke-dashoffset 0.4s ease 0.3s' }} />
-                </svg>
-                <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: conn2On?1:0, transition:'opacity 0.3s ease 0.45s' }}>
-                  <path d="M0 0L5 6L10 0" fill="none" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-
-              {/* 3. User Interface */}
-              <div style={{ ...on(ui0On), background:'rgba(255,255,255,0.88)', backdropFilter:'blur(12px)', border:'1px solid rgba(10,22,40,0.08)', borderRadius:20, padding:20, boxShadow:'0 8px 40px rgba(10,22,40,0.08)' }}>
-                <p className="type-label text-[#0a1628]/38 mb-4">User Interface</p>
-                <div className="grid grid-cols-5 gap-2">
-                  {surfaces.map((s, i) => (
-                    <div key={s.label} className="rounded-xl p-3"
-                      style={{
-                        borderTop: `3px solid ${uiOn[i] ? s.color : '#e5e7eb'}`,
-                        background: uiOn[i] ? s.color+'0a' : '#f8fafc',
-                        opacity: uiOn[i] ? 1 : 0.35,
-                        transform: uiOn[i] ? 'translateY(0)' : 'translateY(8px)',
-                        transition: `opacity 0.4s ease ${i*60}ms, transform 0.4s ease ${i*60}ms, background 0.3s ease, border-top-color 0.3s ease`,
-                      }}>
-                      <p className="text-[12px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
-                      <p className="text-[11px] text-[#0a1628]/45 mt-1 leading-snug">{s.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
+
+        <Connector id="pd-c1" label="Sync & Deploy" />
+
+        {/* 2. Platform */}
+        <div id="pd-platform" ref={observe('pd-platform')} style={{ ...fade('pd-platform'), borderRadius:16, overflow:'hidden', border:'1px solid #e2e8f0', boxShadow:'0 4px 24px rgba(10,22,40,0.07)' }}>
+          <div style={{ background:'#0a1628', padding:'12px 24px', textAlign:'center' }}>
+            <p className="text-[11px] font-black uppercase tracking-[0.26em] text-white/60">Aruva Intelligent Education Platform</p>
+          </div>
+          {layers.map((layer, i) => (
+            <div key={layer.label} id={`pd-layer-${i}`} ref={observe(`pd-layer-${i}`)}
+              className="flex items-center gap-5 px-6 py-4 border-b border-gray-100 last:border-0 bg-white"
+              style={{ ...fade(`pd-layer-${i}`, i * 80), borderLeft:`4px solid ${layer.color}` }}>
+              <div style={{ minWidth:175 }}>
+                <p className="text-[14px] font-bold text-[#0a1628]">{layer.label}</p>
+                <p className="text-[12px] text-[#0a1628]/45 mt-0.5">{layer.sub}</p>
+              </div>
+              <div className="flex flex-wrap gap-1.5 flex-1">
+                {layer.chips.map(chip => (
+                  <span key={chip} className="px-2.5 py-1 rounded-md text-[12px] font-medium"
+                    style={{ background: layer.color+'10', border:`1px solid ${layer.color}30`, color:'#0a1628' }}>
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <Connector id="pd-c2" label="Aruva API" />
+
+        {/* 3. User Interface */}
+        <div id="pd-ui" ref={observe('pd-ui')} style={{ ...fade('pd-ui'), background:'#fff', border:'1px solid #e2e8f0', borderRadius:16, padding:24, boxShadow:'0 4px 24px rgba(10,22,40,0.07)' }}>
+          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0a1628]/40 mb-5">User Interface</p>
+          <div className="grid grid-cols-5 gap-3">
+            {surfaces.map((s, i) => (
+              <div key={s.label} id={`pd-ui-${i}`} ref={observe(`pd-ui-${i}`)}
+                className="rounded-xl p-3" style={{ ...fade(`pd-ui-${i}`, i * 70), borderTop:`3px solid ${s.color}`, background: s.color+'08' }}>
+                <p className="text-[12px] font-bold text-[#0a1628] leading-snug mb-1">{s.label}</p>
+                <p className="text-[11px] text-[#0a1628]/45 leading-snug">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   )
