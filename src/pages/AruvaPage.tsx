@@ -1313,16 +1313,32 @@ function PlatformDiagram() {
     transition: T,
     transitionDelay: `${delay}ms`,
   })
-  const lineOffset = (active: boolean, len: number) => active ? 0 : len
+  // Workflow node connector
+  const NodeConnector = ({ active, label }: { active: boolean; label?: string }) => (
+    <div className="flex flex-col items-center gap-0" style={{ padding:'4px 0' }}>
+      <div style={{ width:2, height:20, background: active ? '#94a3b8' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
+      {label && (
+        <>
+          <div style={{ padding:'4px 10px', borderRadius:6, background: active ? '#f8fafc' : '#f1f5f9', border:`1px solid ${active ? '#cbd5e1' : '#e2e8f0'}`, transition:'all 0.3s ease' }}>
+            <span style={{ fontSize:10, fontWeight:700, color: active ? '#64748b' : '#94a3b8', letterSpacing:'0.1em', textTransform:'uppercase' }}>{label}</span>
+          </div>
+          <div style={{ width:2, height:20, background: active ? '#94a3b8' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
+        </>
+      )}
+      <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: active ? 1 : 0.2, transition:'opacity 0.4s ease' }}>
+        <path d="M1 1l4 4 4-4" stroke="#64748b" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </div>
+  )
 
   return (
-    <section ref={sectionRef} className="border-t border-gray-100" style={{ minHeight:'200vh', background:'linear-gradient(160deg,#f0f7ff 0%,#f8fafc 40%,#f0fdf4 100%)' }}>
+    <section ref={sectionRef} className="border-t border-gray-100 bg-[#f8fafc]" style={{ minHeight:'220vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
-          <div className="grid lg:grid-cols-[420px_1fr] gap-20 items-start pt-16">
+          <div className="grid lg:grid-cols-[400px_1fr] gap-24 items-center">
 
             {/* ── LEFT: static text ── */}
-            <div className="flex flex-col gap-8 pt-4">
+            <div className="flex flex-col gap-8">
               <div>
                 <p className="type-label text-[#228DC1] mb-5">Architecture</p>
                 <h2 className="font-heading text-[#0a1628] mb-5">
@@ -1333,88 +1349,81 @@ function PlatformDiagram() {
                   Not a bundle of tools. One connected system where every layer talks to the next — from your LMS through to every student interface.
                 </p>
               </div>
-              {/* Layer legend */}
               <div className="flex flex-col gap-3">
                 {layers.map(l => (
                   <div key={l.label} className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-sm shrink-0" style={{ background: l.color }} />
+                    <div className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ background: l.color }} />
                     <span className="text-[14px] font-semibold text-[#0a1628]/70">{l.label}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* ── RIGHT: scroll-driven architecture ── */}
-            <div className="flex flex-col gap-0" style={{ overflow:'visible' }}>
+            {/* ── RIGHT: workflow nodes ── */}
+            <div className="flex flex-col items-stretch"
+              style={{ backgroundImage:'radial-gradient(circle, #cbd5e1 1px, transparent 1px)', backgroundSize:'24px 24px', padding:'28px 28px', borderRadius:20, border:'1px solid #e2e8f0' }}>
 
-              {/* 1. Integrations */}
-              <div style={{ ...on(integOn), background:'rgba(255,255,255,0.88)', backdropFilter:'blur(12px)', boxShadow:'0 8px 40px rgba(34,141,193,0.10), 0 2px 8px rgba(10,22,40,0.06)', border:'1px solid rgba(34,141,193,0.15)', borderRadius:20, padding:24 }}>
-                <p className="type-label text-[#228DC1]/70 mb-5">Integrations</p>
-                <div className="grid grid-cols-2 gap-6">
+              {/* Node 1: Integrations */}
+              <div style={{ ...on(integOn), background:'#fff', border:'1px solid #e2e8f0', borderRadius:12, padding:'16px 20px', boxShadow:'0 2px 12px rgba(10,22,40,0.06)' }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div style={{ width:28, height:28, borderRadius:8, background:'#eff6ff', border:'1px solid #bfdbfe', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">VLE / LMS</p>
-                    <div className="flex flex-wrap gap-2">
+                    <p style={{ fontSize:13, fontWeight:700, color:'#0a1628', lineHeight:1.2 }}>Integrations</p>
+                    <p style={{ fontSize:11, color:'#64748b', marginTop:1 }}>Your existing tools connect here</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p style={{ fontSize:10, fontWeight:800, color:'#94a3b8', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>VLE / LMS</p>
+                    <div className="flex flex-wrap gap-1.5">
                       {lms.map(l => (
-                        <div key={l.name} className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg"
-                          style={{ background: l.color+'0c', border:`1px solid ${l.color}30` }}>
-                          <img src={l.logo} alt={l.name} className="w-3 h-3 object-contain" />
-                          <span className="text-[12px] font-semibold" style={{ color: l.color }}>{l.name}</span>
+                        <div key={l.name} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white"
+                          style={{ border:`1.5px solid ${l.color}35` }}>
+                          <img src={l.logo} alt={l.name} className="w-3.5 h-3.5 object-contain" />
+                          <span style={{ fontSize:12, fontWeight:600, color: l.color }}>{l.name}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">Data Sources</p>
+                    <p style={{ fontSize:10, fontWeight:800, color:'#94a3b8', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>Data Sources</p>
                     <div className="flex flex-wrap gap-1.5">
                       {dataSrc.map(d => (
-                        <span key={d} className="px-2.5 py-1 rounded-lg bg-[#f1f5f9] border border-gray-200 text-[11px] font-medium text-[#0a1628]/60">{d}</span>
+                        <span key={d} style={{ padding:'3px 10px', borderRadius:6, background:'#f8fafc', border:'1px solid #e2e8f0', fontSize:11, fontWeight:500, color:'#475569' }}>{d}</span>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Connector 1 */}
-              <div className="flex flex-col items-center py-3 gap-1.5">
-                <div className="flex items-center gap-2" style={on(conn1On)}>
-                  {['Sync & Deploy','Read & Write'].map(lb => (
-                    <span key={lb} className="px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-[0.12em] text-[#228DC1]"
-                      style={{ background:'#e5f4fa', border:'1px solid rgba(34,141,193,0.25)' }}>{lb}</span>
-                  ))}
-                </div>
-                <svg width="2" height="28" style={{ overflow:'visible' }}>
-                  <line x1="1" y1="0" x2="1" y2="28" stroke="#228DC1" strokeWidth="2"
-                    strokeDasharray="28" strokeDashoffset={lineOffset(conn1On, 28)}
-                    style={{ transition:'stroke-dashoffset 0.5s ease 0.15s' }} />
-                </svg>
-                <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: conn1On?1:0, transition:'opacity 0.3s ease 0.45s' }}>
-                  <path d="M0 0L5 6L10 0" fill="none" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
+              <NodeConnector active={conn1On} label="Sync & Deploy" />
 
-              {/* 2. Services */}
-              <div style={{ borderRadius:20, overflow:'hidden', border:'1px solid rgba(10,22,40,0.10)', boxShadow:'0 16px 48px rgba(10,22,40,0.12), 0 2px 8px rgba(10,22,40,0.06)' }}>
-                <div className="px-6 py-3.5 flex items-center justify-center"
-                  style={{ ...on(s0On), background:'linear-gradient(135deg,#0a1628 0%,#1a2d4a 100%)' }}>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/70">Aruva Intelligent Education Platform</p>
+              {/* Node 2: Platform layers */}
+              <div style={{ background:'#fff', border:'1px solid #e2e8f0', borderRadius:12, overflow:'hidden', boxShadow:'0 2px 12px rgba(10,22,40,0.06)' }}>
+                <div style={{ ...on(s0On), background:'#0f172a', padding:'10px 20px', display:'flex', alignItems:'center', gap:8 }}>
+                  <div style={{ width:6, height:6, borderRadius:'50%', background:'#22d3ee' }} />
+                  <p style={{ fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.65)', letterSpacing:'0.2em', textTransform:'uppercase' }}>Aruva Intelligent Education Platform</p>
                 </div>
                 {layers.map((layer, i) => (
                   <div key={layer.label}
-                    className="flex items-center gap-5 px-5 py-4 border-b border-gray-100 last:border-0"
                     style={{
-                      ...on(layerOn[i], i * 60),
-                      borderLeft: `4px solid ${layerOn[i] ? layer.color : 'transparent'}`,
-                      background: layerOn[i] ? `${layer.color}06` : '#fff',
-                      transition: `${T}, border-left-color 0.3s ease ${i*60}ms, background 0.3s ease ${i*60}ms`,
+                      ...on(layerOn[i], i * 70),
+                      display:'flex', alignItems:'center', gap:16,
+                      padding:'14px 20px',
+                      borderBottom: i < layers.length - 1 ? '1px solid #f1f5f9' : 'none',
+                      borderLeft: `3px solid ${layerOn[i] ? layer.color : '#e2e8f0'}`,
+                      background: layerOn[i] ? `${layer.color}05` : '#fff',
+                      transition: `${T}, border-left-color 0.35s ease ${i*70}ms, background 0.35s ease ${i*70}ms`,
                     }}>
-                    <div className="shrink-0" style={{ width: 180 }}>
-                      <p className="text-[13px] font-bold text-[#0a1628] leading-snug">{layer.label}</p>
-                      <p className="text-[12px] text-[#0a1628]/42 mt-0.5">{layer.sub}</p>
+                    <div style={{ width:160, flexShrink:0 }}>
+                      <p style={{ fontSize:13, fontWeight:700, color:'#0a1628', lineHeight:1.25 }}>{layer.label}</p>
+                      <p style={{ fontSize:11, color:'#94a3b8', marginTop:2 }}>{layer.sub}</p>
                     </div>
-                    <div className="flex flex-wrap gap-1.5 flex-1">
+                    <div style={{ display:'flex', flexWrap:'wrap', gap:6, flex:1 }}>
                       {layer.chips.map(chip => (
-                        <span key={chip} className="px-2 py-0.5 rounded-md text-[11px] font-semibold"
-                          style={{ background: layer.color+'12', border:`1px solid ${layer.color}30`, color: '#0a1628' }}>
+                        <span key={chip} style={{ padding:'3px 10px', borderRadius:6, fontSize:11, fontWeight:600, background: layer.color+'10', border:`1px solid ${layer.color}28`, color:'#334155' }}>
                           {chip}
                         </span>
                       ))}
@@ -1423,42 +1432,31 @@ function PlatformDiagram() {
                 ))}
               </div>
 
-              {/* Connector 2: Aruva API */}
-              <div className="flex flex-col items-center py-3 gap-1.5">
-                <svg width="2" height="16" style={{ overflow:'visible' }}>
-                  <line x1="1" y1="0" x2="1" y2="16" stroke="#228DC1" strokeWidth="2"
-                    strokeDasharray="16" strokeDashoffset={lineOffset(conn2On, 16)}
-                    style={{ transition:'stroke-dashoffset 0.4s ease' }} />
-                </svg>
-                <div className="px-5 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.2em] text-white bg-[#0a1628]"
-                  style={{ opacity: conn2On?1:0, transform: conn2On?'scale(1)':'scale(0.9)', transition:'opacity 0.35s ease 0.2s, transform 0.35s ease 0.2s' }}>
-                  Aruva API
-                </div>
-                <svg width="2" height="16" style={{ overflow:'visible' }}>
-                  <line x1="1" y1="0" x2="1" y2="16" stroke="#228DC1" strokeWidth="2"
-                    strokeDasharray="16" strokeDashoffset={lineOffset(conn2On, 16)}
-                    style={{ transition:'stroke-dashoffset 0.4s ease 0.3s' }} />
-                </svg>
-                <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: conn2On?1:0, transition:'opacity 0.3s ease 0.45s' }}>
-                  <path d="M0 0L5 6L10 0" fill="none" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
+              <NodeConnector active={conn2On} label="Aruva API" />
 
-              {/* 3. User Interface */}
-              <div style={{ ...on(ui0On), background:'rgba(255,255,255,0.88)', backdropFilter:'blur(12px)', border:'1px solid rgba(10,22,40,0.08)', borderRadius:20, padding:20, boxShadow:'0 8px 40px rgba(10,22,40,0.08)' }}>
-                <p className="type-label text-[#0a1628]/38 mb-4">User Interface</p>
-                <div className="grid grid-cols-5 gap-2">
+              {/* Node 3: User Interface */}
+              <div style={{ ...on(ui0On), background:'#fff', border:'1px solid #e2e8f0', borderRadius:12, padding:'16px 20px', boxShadow:'0 2px 12px rgba(10,22,40,0.06)' }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div style={{ width:28, height:28, borderRadius:8, background:'#f0fdf4', border:'1px solid #bbf7d0', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#22c55e" strokeWidth="2"/><path d="M8 21h8M12 17v4" stroke="#22c55e" strokeWidth="2" strokeLinecap="round"/></svg>
+                  </div>
+                  <div>
+                    <p style={{ fontSize:13, fontWeight:700, color:'#0a1628', lineHeight:1.2 }}>User Interface</p>
+                    <p style={{ fontSize:11, color:'#64748b', marginTop:1 }}>Five surfaces, one platform</p>
+                  </div>
+                </div>
+                <div style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)', gap:8 }}>
                   {surfaces.map((s, i) => (
-                    <div key={s.label} className="rounded-xl p-3"
+                    <div key={s.label}
                       style={{
-                        borderTop: `3px solid ${uiOn[i] ? s.color : '#e5e7eb'}`,
-                        background: uiOn[i] ? s.color+'0a' : '#f8fafc',
-                        opacity: uiOn[i] ? 1 : 0.35,
-                        transform: uiOn[i] ? 'translateY(0)' : 'translateY(8px)',
-                        transition: `opacity 0.4s ease ${i*60}ms, transform 0.4s ease ${i*60}ms, background 0.3s ease, border-top-color 0.3s ease`,
+                        padding:'10px 10px', borderRadius:10, borderTop:`2.5px solid ${uiOn[i] ? s.color : '#e2e8f0'}`,
+                        background: uiOn[i] ? s.color+'08' : '#f8fafc',
+                        opacity: uiOn[i] ? 1 : 0.4,
+                        transform: uiOn[i] ? 'translateY(0)' : 'translateY(6px)',
+                        transition:`opacity 0.4s ease ${i*60}ms, transform 0.4s ease ${i*60}ms, background 0.3s ease, border-top-color 0.3s ease`,
                       }}>
-                      <p className="text-[12px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
-                      <p className="text-[11px] text-[#0a1628]/45 mt-1 leading-snug">{s.desc}</p>
+                      <p style={{ fontSize:12, fontWeight:700, color:'#0f172a', lineHeight:1.3 }}>{s.label}</p>
+                      <p style={{ fontSize:10.5, color:'#94a3b8', marginTop:3, lineHeight:1.4 }}>{s.desc}</p>
                     </div>
                   ))}
                 </div>
