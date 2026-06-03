@@ -2923,35 +2923,39 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           </h2>
         </div>
         {/* Cards + arrows wrapper */}
-        <div ref={ref} className="relative" style={{ paddingTop:72, paddingBottom:72 }}>
+        <div ref={ref} className="relative" style={{ paddingTop:80, paddingBottom:80 }}>
 
-          {/* Arrow 1: Students → Educators — full arch ABOVE the cards */}
+          {/* Arrow 1: Card1(Students) → Card2(Educators) — arches ABOVE, left→right */}
+          {/* Spans from center of card1 to center of card2: left=8%, right=58% */}
           <div className="hidden lg:block absolute pointer-events-none"
-            style={{ top:0, left:'8%', width:'42%', height:72, ...reveal(inView, 300) }}>
-            <svg viewBox="0 0 300 72" fill="none" preserveAspectRatio="none" style={{ width:'100%', height:'100%', overflow:'visible' }}>
+            style={{ top:0, left:'8%', width:'50%', height:80, ...reveal(inView, 400) }}>
+            <svg viewBox="0 0 400 80" fill="none" style={{ width:'100%', height:'100%', overflow:'visible' }}>
               <defs>
-                <marker id="a1head" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
-                  <path d="M0 0 L10 5 L0 10 Z" fill={audiences[0].color}/>
+                <marker id="ah1" markerWidth="9" markerHeight="9" refX="0" refY="4.5" orient="auto">
+                  <path d="M0 0 L9 4.5 L0 9 Z" fill={audiences[0].color}/>
                 </marker>
               </defs>
-              <path d="M 10 68 C 10 8, 290 8, 290 68"
+              {/* Starts bottom-left (card1 top area), arches up, ends bottom-right (card2 top area) */}
+              <path d="M 20 76 C 20 6, 380 6, 380 76"
                 stroke={audiences[0].color} strokeWidth="2.5" strokeLinecap="round"
-                fill="none" markerEnd="url(#a1head)"/>
+                fill="none" markerEnd="url(#ah1)"/>
             </svg>
           </div>
 
-          {/* Arrow 2: Educators → Institutions — full arch BELOW the cards */}
+          {/* Arrow 2: Card2(Educators) → Card3(Institutions) — arches BELOW, left→right */}
+          {/* Spans from center of card2 to center of card3: left=42%, right=92% */}
           <div className="hidden lg:block absolute pointer-events-none"
-            style={{ bottom:0, left:'50%', width:'42%', height:72, ...reveal(inView, 500) }}>
-            <svg viewBox="0 0 300 72" fill="none" preserveAspectRatio="none" style={{ width:'100%', height:'100%', overflow:'visible' }}>
+            style={{ bottom:0, left:'42%', width:'50%', height:80, ...reveal(inView, 550) }}>
+            <svg viewBox="0 0 400 80" fill="none" style={{ width:'100%', height:'100%', overflow:'visible' }}>
               <defs>
-                <marker id="a2head" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
-                  <path d="M0 0 L10 5 L0 10 Z" fill={audiences[1].color}/>
+                <marker id="ah2" markerWidth="9" markerHeight="9" refX="0" refY="4.5" orient="auto">
+                  <path d="M0 0 L9 4.5 L0 9 Z" fill={audiences[1].color}/>
                 </marker>
               </defs>
-              <path d="M 10 4 C 10 64, 290 64, 290 4"
+              {/* Starts top-left (card2 bottom area), arches down, ends top-right (card3 bottom area) */}
+              <path d="M 20 4 C 20 74, 380 74, 380 4"
                 stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"
-                fill="none" markerEnd="url(#a2head)"/>
+                fill="none" markerEnd="url(#ah2)"/>
             </svg>
           </div>
 
