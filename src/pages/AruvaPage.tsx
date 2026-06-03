@@ -1251,6 +1251,40 @@ function TutorVisualOld() {
 
 // -- Platform architecture diagram ---------------------------------------------
 function PlatformDiagram() {
+  const sectionRef = React.useRef<HTMLDivElement>(null)
+  const [prog, setProg] = React.useState(0)
+
+  React.useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect()
+      const vh = window.innerHeight
+      const p = (vh - rect.top) / (rect.height + vh)
+      setProg(Math.max(0, Math.min(1, p)))
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const integOn = prog > 0.06
+  const conn1On = prog > 0.18
+  const s0On    = prog > 0.24
+  const s1On    = prog > 0.32
+  const s2On    = prog > 0.40
+  const s3On    = prog > 0.48
+  const conn2On = prog > 0.58
+  const ui0On   = prog > 0.65
+  const ui1On   = prog > 0.70
+  const ui2On   = prog > 0.75
+  const ui3On   = prog > 0.80
+  const ui4On   = prog > 0.85
+
+  const layerOn = [s0On, s1On, s2On, s3On]
+  const uiOn    = [ui0On, ui1On, ui2On, ui3On, ui4On]
+
+  // dummy refs to satisfy existing destructuring references (unused now)
   const [titleRef,  titleInView]  = useInView(0.3)
   const [integRef,  integInView]  = useInView(0.25)
   const [conn1Ref,  conn1InView]  = useInView(0.6)
@@ -1279,160 +1313,167 @@ function PlatformDiagram() {
     { label:'Institutional Analytics', desc:'One view across every course you run',          color:'#dc2626' },
   ]
 
+  const T = 'opacity 0.45s cubic-bezier(0.4,0,0.2,1), transform 0.45s cubic-bezier(0.4,0,0.2,1)'
+  const on  = (active: boolean, delay = 0): React.CSSProperties => ({
+    opacity:   active ? 1 : 0,
+    transform: active ? 'translateY(0)' : 'translateY(14px)',
+    transition: T,
+    transitionDelay: `${delay}ms`,
+  })
+  const lineOffset = (active: boolean, len: number) => active ? 0 : len
+
   return (
-    <section className="py-28 bg-[#f8fafc] border-t border-gray-100">
-      <style>{`
-        @keyframes lineGrow { from { stroke-dashoffset: 48 } to { stroke-dashoffset: 0 } }
-      `}</style>
-      <div className="max-w-4xl mx-auto px-8 lg:px-12">
+    <section ref={sectionRef} className="bg-[#f8fafc] border-t border-gray-100" style={{ minHeight:'200vh' }}>
+      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
+          <div className="grid lg:grid-cols-[420px_1fr] gap-20 items-start pt-16">
 
-        {/* Header */}
-        <div ref={titleRef} className="text-center mb-16" style={reveal(titleInView, 0)}>
-          <p className="type-label text-[#228DC1] mb-5">Architecture</p>
-          <h2 className="font-heading text-[#0a1628] mb-4">
-            Four layers. <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
-          </h2>
-          <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] max-w-xl mx-auto">
-            Not a bundle of tools. One connected system where every layer talks to the next.
-          </p>
-        </div>
-
-        {/* ── Stage 1: Integrations ── */}
-        <div ref={integRef} className="bg-white rounded-2xl border border-gray-200 p-8 shadow-[0_4px_24px_rgba(10,22,40,0.06)]"
-          style={reveal(integInView, 0)}>
-          <p className="type-label text-[#0a1628]/40 mb-6">Integrations</p>
-          <div className="grid sm:grid-cols-2 gap-8">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-3">VLE / LMS</p>
-              <div className="flex flex-wrap gap-2">
-                {lms.map(l => (
-                  <div key={l.name} className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border"
-                    style={{ background: l.color + '09', borderColor: l.color + '30' }}>
-                    <img src={l.logo} alt={l.name} className="w-3.5 h-3.5 object-contain shrink-0" />
-                    <span className="text-[13px] font-semibold" style={{ color: l.color }}>{l.name}</span>
+            {/* ── LEFT: static text ── */}
+            <div className="flex flex-col gap-8 pt-4">
+              <div>
+                <p className="type-label text-[#228DC1] mb-5">Architecture</p>
+                <h2 className="font-heading text-[#0a1628] mb-5">
+                  Four layers.<br/>
+                  <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
+                </h2>
+                <p className="text-[#0a1628]/60 text-[16px] leading-[1.75]">
+                  Not a bundle of tools. One connected system where every layer talks to the next — from your LMS through to every student interface.
+                </p>
+              </div>
+              {/* Layer legend */}
+              <div className="flex flex-col gap-3">
+                {layers.map(l => (
+                  <div key={l.label} className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-sm shrink-0" style={{ background: l.color }} />
+                    <span className="text-[14px] font-semibold text-[#0a1628]/70">{l.label}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-3">Data Sources</p>
-              <div className="flex flex-wrap gap-2">
-                {dataSrc.map(d => (
-                  <span key={d} className="px-3 py-1.5 rounded-lg bg-[#f1f5f9] border border-gray-200 text-[12px] font-medium text-[#0a1628]/65">{d}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
 
-        {/* ── Connector 1 ── */}
-        <div ref={conn1Ref} className="flex flex-col items-center py-4 gap-2">
-          <div className="flex items-center gap-3">
-            {['Sync & Deploy','Read & Write'].map(label => (
-              <span key={label} className="px-3 py-1 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase text-[#228DC1]"
-                style={{ background:'#e5f4fa', border:'1px solid rgba(34,141,193,0.22)',
-                  opacity: conn1InView ? 1 : 0, transform: conn1InView ? 'translateY(0)' : 'translateY(6px)',
-                  transition:'opacity 0.4s ease, transform 0.4s ease' }}>
-                {label}
-              </span>
-            ))}
-          </div>
-          <svg width="2" height="32" overflow="visible">
-            <line x1="1" y1="0" x2="1" y2="32"
-              stroke="#228DC1" strokeWidth="2" strokeDasharray="5 4"
-              strokeDashoffset={conn1InView ? 0 : 45}
-              style={{ transition:'stroke-dashoffset 0.7s ease 0.2s' }} />
-          </svg>
-          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"
-            style={{ opacity: conn1InView ? 1 : 0, transition:'opacity 0.3s ease 0.6s' }}>
-            <path d="M6 8L0 0H12L6 8Z" fill="#228DC1"/>
-          </svg>
-        </div>
+            {/* ── RIGHT: scroll-driven architecture ── */}
+            <div className="flex flex-col gap-0 overflow-y-auto" style={{ maxHeight:'calc(100vh - 100px)' }}>
 
-        {/* ── Stage 2: Services ── */}
-        <div ref={servRef} className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.06)]"
-          style={reveal(servInView, 0)}>
-          <div className="bg-[#0a1628] px-8 py-3.5 flex items-center justify-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/65">Aruva Intelligent Education Platform</p>
-          </div>
-          <div className="divide-y divide-gray-100">
-            {layers.map((layer, i) => (
-              <div key={layer.label} className="flex items-center gap-6 px-8 py-5"
-                style={{
-                  opacity: servInView ? 1 : 0,
-                  transform: servInView ? 'translateX(0)' : 'translateX(-20px)',
-                  transition: `opacity 0.5s ease ${0.08*i}s, transform 0.5s ease ${0.08*i}s`,
-                }}>
-                {/* Left bar + label */}
-                <div className="flex items-center gap-3 shrink-0" style={{ width: 220 }}>
-                  <div className="w-[3px] rounded-full self-stretch" style={{ background: layer.color, minHeight: 48 }} />
+              {/* 1. Integrations */}
+              <div style={on(integOn)} className="bg-white rounded-2xl border border-gray-200 p-6 shadow-[0_8px_32px_rgba(10,22,40,0.08)]">
+                <p className="type-label text-[#0a1628]/38 mb-5">Integrations</p>
+                <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <p className="text-[14px] font-bold text-[#0a1628] leading-snug">{layer.label}</p>
-                    <p className="text-[12px] text-[#0a1628]/45 mt-0.5">{layer.sub}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">VLE / LMS</p>
+                    <div className="flex flex-wrap gap-2">
+                      {lms.map(l => (
+                        <div key={l.name} className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg"
+                          style={{ background: l.color+'0c', border:`1px solid ${l.color}30` }}>
+                          <img src={l.logo} alt={l.name} className="w-3 h-3 object-contain" />
+                          <span className="text-[12px] font-semibold" style={{ color: l.color }}>{l.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">Data Sources</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {dataSrc.map(d => (
+                        <span key={d} className="px-2.5 py-1 rounded-lg bg-[#f1f5f9] border border-gray-200 text-[11px] font-medium text-[#0a1628]/60">{d}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                {/* Chips */}
-                <div className="flex flex-wrap gap-1.5 flex-1">
-                  {layer.chips.map(chip => (
-                    <span key={chip} className="px-2.5 py-1 rounded-lg text-[11px] font-semibold text-[#0a1628]"
-                      style={{ background: layer.color + '0a', border: `1px solid ${layer.color}28` }}>
-                      {chip}
-                    </span>
+              </div>
+
+              {/* Connector 1 */}
+              <div className="flex flex-col items-center py-3 gap-1.5">
+                <div className="flex items-center gap-2" style={on(conn1On)}>
+                  {['Sync & Deploy','Read & Write'].map(lb => (
+                    <span key={lb} className="px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-[0.12em] text-[#228DC1]"
+                      style={{ background:'#e5f4fa', border:'1px solid rgba(34,141,193,0.25)' }}>{lb}</span>
+                  ))}
+                </div>
+                <svg width="2" height="28" style={{ overflow:'visible' }}>
+                  <line x1="1" y1="0" x2="1" y2="28" stroke="#228DC1" strokeWidth="2"
+                    strokeDasharray="28" strokeDashoffset={lineOffset(conn1On, 28)}
+                    style={{ transition:'stroke-dashoffset 0.5s ease 0.15s' }} />
+                </svg>
+                <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: conn1On?1:0, transition:'opacity 0.3s ease 0.45s' }}>
+                  <path d="M0 0L5 6L10 0" fill="none" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+
+              {/* 2. Services */}
+              <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-[0_8px_32px_rgba(10,22,40,0.08)]">
+                <div className="bg-[#0a1628] px-6 py-3 flex items-center justify-center"
+                  style={on(s0On)}>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/55">Aruva Intelligent Education Platform</p>
+                </div>
+                {layers.map((layer, i) => (
+                  <div key={layer.label}
+                    className="flex items-center gap-5 px-5 py-4 bg-white border-b border-gray-100 last:border-0"
+                    style={{
+                      ...on(layerOn[i], i * 60),
+                      borderLeft: `4px solid ${layerOn[i] ? layer.color : 'transparent'}`,
+                      transition: `${T}, border-left-color 0.3s ease ${i*60}ms`,
+                    }}>
+                    <div className="shrink-0" style={{ width: 180 }}>
+                      <p className="text-[13px] font-bold text-[#0a1628] leading-snug">{layer.label}</p>
+                      <p className="text-[11px] text-[#0a1628]/42 mt-0.5">{layer.sub}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 flex-1">
+                      {layer.chips.map(chip => (
+                        <span key={chip} className="px-2 py-0.5 rounded-md text-[10px] font-semibold"
+                          style={{ background: layer.color+'12', border:`1px solid ${layer.color}30`, color: '#0a1628' }}>
+                          {chip}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Connector 2: Aruva API */}
+              <div className="flex flex-col items-center py-3 gap-1.5">
+                <svg width="2" height="16" style={{ overflow:'visible' }}>
+                  <line x1="1" y1="0" x2="1" y2="16" stroke="#228DC1" strokeWidth="2"
+                    strokeDasharray="16" strokeDashoffset={lineOffset(conn2On, 16)}
+                    style={{ transition:'stroke-dashoffset 0.4s ease' }} />
+                </svg>
+                <div className="px-5 py-1.5 rounded-md text-[10px] font-black uppercase tracking-[0.2em] text-white bg-[#0a1628]"
+                  style={{ opacity: conn2On?1:0, transform: conn2On?'scale(1)':'scale(0.9)', transition:'opacity 0.35s ease 0.2s, transform 0.35s ease 0.2s' }}>
+                  Aruva API
+                </div>
+                <svg width="2" height="16" style={{ overflow:'visible' }}>
+                  <line x1="1" y1="0" x2="1" y2="16" stroke="#228DC1" strokeWidth="2"
+                    strokeDasharray="16" strokeDashoffset={lineOffset(conn2On, 16)}
+                    style={{ transition:'stroke-dashoffset 0.4s ease 0.3s' }} />
+                </svg>
+                <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: conn2On?1:0, transition:'opacity 0.3s ease 0.45s' }}>
+                  <path d="M0 0L5 6L10 0" fill="none" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+
+              {/* 3. User Interface */}
+              <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-[0_8px_32px_rgba(10,22,40,0.08)]"
+                style={on(ui0On)}>
+                <p className="type-label text-[#0a1628]/38 mb-4">User Interface</p>
+                <div className="grid grid-cols-5 gap-2">
+                  {surfaces.map((s, i) => (
+                    <div key={s.label} className="rounded-xl p-3"
+                      style={{
+                        borderTop: `3px solid ${uiOn[i] ? s.color : '#e5e7eb'}`,
+                        background: uiOn[i] ? s.color+'0a' : '#f8fafc',
+                        opacity: uiOn[i] ? 1 : 0.35,
+                        transform: uiOn[i] ? 'translateY(0)' : 'translateY(8px)',
+                        transition: `opacity 0.4s ease ${i*60}ms, transform 0.4s ease ${i*60}ms, background 0.3s ease, border-top-color 0.3s ease`,
+                      }}>
+                      <p className="text-[11px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
+                      <p className="text-[10px] text-[#0a1628]/45 mt-1 leading-snug">{s.desc}</p>
+                    </div>
                   ))}
                 </div>
               </div>
-            ))}
+
+            </div>
           </div>
         </div>
-
-        {/* ── Connector 2: Aruva API ── */}
-        <div ref={conn2Ref} className="flex flex-col items-center py-4 gap-2">
-          <svg width="2" height="20" overflow="visible">
-            <line x1="1" y1="0" x2="1" y2="20"
-              stroke="#228DC1" strokeWidth="2" strokeDasharray="5 4"
-              strokeDashoffset={conn2InView ? 0 : 28}
-              style={{ transition:'stroke-dashoffset 0.5s ease' }} />
-          </svg>
-          <span className="px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-[0.18em] text-white bg-[#0a1628]"
-            style={{ opacity: conn2InView ? 1 : 0, transition:'opacity 0.4s ease 0.3s' }}>
-            Aruva API
-          </span>
-          <svg width="2" height="20" overflow="visible">
-            <line x1="1" y1="0" x2="1" y2="20"
-              stroke="#228DC1" strokeWidth="2" strokeDasharray="5 4"
-              strokeDashoffset={conn2InView ? 0 : 28}
-              style={{ transition:'stroke-dashoffset 0.5s ease 0.35s' }} />
-          </svg>
-          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"
-            style={{ opacity: conn2InView ? 1 : 0, transition:'opacity 0.3s ease 0.55s' }}>
-            <path d="M6 8L0 0H12L6 8Z" fill="#228DC1"/>
-          </svg>
-        </div>
-
-        {/* ── Stage 3: User Interface ── */}
-        <div ref={uiRef} className="bg-white rounded-2xl border border-gray-200 p-8 shadow-[0_4px_24px_rgba(10,22,40,0.06)]"
-          style={reveal(uiInView, 0)}>
-          <p className="type-label text-[#0a1628]/40 mb-6">User Interface</p>
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
-            {surfaces.map((s, i) => (
-              <div key={s.label} className="rounded-xl border border-gray-100 p-4"
-                style={{
-                  borderTop: `3px solid ${s.color}`,
-                  opacity: uiInView ? 1 : 0,
-                  transform: uiInView ? 'translateY(0)' : 'translateY(16px)',
-                  transition: `opacity 0.4s ease ${0.07*i}s, transform 0.4s ease ${0.07*i}s`,
-                }}>
-                <div className="w-7 h-7 rounded-lg mb-3 flex items-center justify-center"
-                  style={{ background: s.color + '12', border: `1px solid ${s.color}20` }}>
-                  <div className="w-2.5 h-2.5 rounded-sm" style={{ background: s.color }} />
-                </div>
-                <p className="text-[13px] font-bold text-[#0a1628] leading-snug mb-1">{s.label}</p>
-                <p className="text-[11px] text-[#0a1628]/50 leading-snug">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   )
