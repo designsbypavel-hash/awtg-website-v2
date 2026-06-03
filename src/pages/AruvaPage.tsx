@@ -2958,54 +2958,48 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
         </div>
-        {/* Hub layout: card2 connects outward to card1 and card3 */}
-        <div ref={ref} className="relative">
+        <div ref={ref} className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0">
 
-          {/* Cards row */}
-          <div className="grid lg:grid-cols-3 gap-6">
-            <AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} />
-            <AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} />
-            <AudienceCard a={audiences[2]} i={2} inView={inView} onDemoClick={onDemoClick} />
+          {/* Card 1 */}
+          <div className="flex-1"><AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} /></div>
+
+          {/* Connector 1↔2 */}
+          <div className="hidden lg:flex flex-col items-center justify-center gap-3 shrink-0" style={{ width:56 }}>
+            {/* ← card2 to card1 */}
+            <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block' }}>
+              <line x1="44" y1="9" x2="12" y2="9" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
+              <polyline points="18,3 6,9 18,15" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
+            {/* divider */}
+            <div style={{ width:20, height:1, background: audiences[1].color, opacity:0.2, borderRadius:1 }}/>
+            {/* → card1 to card2 */}
+            <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block', opacity:0.4 }}>
+              <line x1="4" y1="9" x2="36" y2="9" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeDasharray="5 3"/>
+              <polyline points="30,3 42,9 30,15" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
           </div>
 
-          {/* SVG connection lines overlay — drawn from card2 outward */}
-          <svg className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none" style={{ overflow:'visible' }}>
-            <defs>
-              <marker id="mL" markerWidth="10" markerHeight="10" refX="0" refY="5" orient="auto">
-                <path d="M10 1 L1 5 L10 9" fill="none" stroke={audiences[1].color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-              </marker>
-              <marker id="mR" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
-                <path d="M0 1 L9 5 L0 9" fill="none" stroke={audiences[1].color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-              </marker>
-              {/* Reverse markers */}
-              <marker id="mRL" markerWidth="10" markerHeight="10" refX="0" refY="5" orient="auto">
-                <path d="M10 1 L1 5 L10 9" fill="none" stroke={audiences[1].color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
-              </marker>
-              <marker id="mRR" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
-                <path d="M0 1 L9 5 L0 9" fill="none" stroke={audiences[1].color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
-              </marker>
-            </defs>
+          {/* Card 2 */}
+          <div className="flex-1"><AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} /></div>
 
-            {/* Line: card2 → card1 (pointing LEFT from 50% to 35%) */}
-            <line x1="49%" y1="46%" x2="35.5%" y2="46%"
-              stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"
-              markerEnd="url(#mL)"/>
-            {/* Line: card1 → card2 (reverse, dashed) */}
-            <line x1="34%" y1="54%" x2="48.5%" y2="54%"
-              stroke={audiences[1].color} strokeWidth="1.5" strokeLinecap="round"
-              strokeDasharray="6 4" opacity="0.45"
-              markerEnd="url(#mRR)"/>
+          {/* Connector 2↔3 */}
+          <div className="hidden lg:flex flex-col items-center justify-center gap-3 shrink-0" style={{ width:56 }}>
+            {/* → card2 to card3 */}
+            <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block' }}>
+              <line x1="4" y1="9" x2="36" y2="9" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
+              <polyline points="30,3 42,9 30,15" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
+            {/* divider */}
+            <div style={{ width:20, height:1, background: audiences[1].color, opacity:0.2, borderRadius:1 }}/>
+            {/* ← card3 to card2 */}
+            <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block', opacity:0.4 }}>
+              <line x1="44" y1="9" x2="12" y2="9" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeDasharray="5 3"/>
+              <polyline points="18,3 6,9 18,15" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
+          </div>
 
-            {/* Line: card2 → card3 (pointing RIGHT from 51% to 64.5%) */}
-            <line x1="51%" y1="46%" x2="64.5%" y2="46%"
-              stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"
-              markerEnd="url(#mR)"/>
-            {/* Line: card3 → card2 (reverse, dashed) */}
-            <line x1="66%" y1="54%" x2="51.5%" y2="54%"
-              stroke={audiences[1].color} strokeWidth="1.5" strokeLinecap="round"
-              strokeDasharray="6 4" opacity="0.45"
-              markerEnd="url(#mRL)"/>
-          </svg>
+          {/* Card 3 */}
+          <div className="flex-1"><AudienceCard a={audiences[2]} i={2} inView={inView} onDemoClick={onDemoClick} /></div>
 
         </div>
 
