@@ -1929,11 +1929,11 @@ export default function KaiPage() {
         </div>
       </section>
 
-      {/* -- Omnichannel (Telegram / KAI / Gmail) -- */}
-      <OmnichannelSection />
-
       {/* -- Integrations -- */}
       <IntegrationsSection />
+
+      {/* -- Omnichannel (Telegram / KAI / Gmail) -- */}
+      <OmnichannelSection />
 
       {/* -- How Kai Works -- */}
       <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2240 40%, #0a3352 70%, #0a1628 100%)' }}>
