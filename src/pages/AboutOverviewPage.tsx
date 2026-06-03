@@ -197,7 +197,7 @@ function TimelineSection() {
                 >
                   <p
                     className="font-semibold leading-[1.3] mb-2"
-                    style={{ fontSize: '15px', color: '#0a1628' }}
+                    style={{ fontSize: '16px', color: '#0a1628' }}
                   >
                     {m.event}
                   </p>
@@ -227,7 +227,7 @@ export default function AboutOverviewPage() {
           <h1 className="font-serif-display text-[#0a1628] mb-6">
             Over Two Decades of Telecoms Excellence
           </h1>
-          <p className="text-[#0a1628]/65 text-[18px] max-w-2xl font-normal leading-[1.7]">
+          <p className="text-[#0a1628]/65 text-[16px] max-w-2xl font-normal leading-[1.7]">
             AWTG is an Advanced Wireless Technology Group, a UK-based specialist in private networks, telecoms AI and smart infrastructure for enterprises and governments worldwide.
           </p>
         </div>
@@ -241,7 +241,7 @@ export default function AboutOverviewPage() {
             <h2 className="font-heading text-[#0a1628] mb-6">
               Connectivity that transforms organisations
             </h2>
-            <p className="text-[#0a1628]/65 leading-[1.7] font-normal text-[18px] mb-4">
+            <p className="text-[#0a1628]/65 leading-[1.7] font-normal text-[16px] mb-4">
               We exist to make cutting-edge wireless technology accessible, reliable and transformative for organisations that depend on connectivity. From a single-site private 5G deployment to a national smart city programme, we bring the expertise and commitment to deliver.
             </p>
             <p className="text-[#0a1628]/65 leading-[1.7] font-normal">
@@ -272,7 +272,7 @@ export default function AboutOverviewPage() {
                 to={link.href}
                 className="group bg-white p-8 hover:border-[#228DC1]/30 hover:bg-[#f7f8fa] transition-colors"
               >
-                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2 group-hover:text-[#228DC1] transition-colors">{link.label}</h3>
+                <h3 className="font-card-heading text-[#0a1628] text-[14px] mb-2 group-hover:text-[#228DC1] transition-colors">{link.label}</h3>
                 <p className="text-[#0a1628]/60 text-[14px] font-normal">{link.desc}</p>
               </Link>
             ))}
@@ -310,7 +310,7 @@ export default function AboutOverviewPage() {
                     <span className="type-label text-[#228DC1]">{post.tag}</span>
                     <span className="text-[#0a1628]/65 text-xs font-normal">{post.date}</span>
                   </div>
-                  <h3 className="font-card-heading text-[#0a1628] text-[15px] leading-[1.3] mb-3 group-hover:text-[#228DC1] transition-colors">
+                  <h3 className="font-card-heading text-[#0a1628] text-[14px] leading-[1.3] mb-3 group-hover:text-[#228DC1] transition-colors">
                     {post.title}
                   </h3>
                   <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">

@@ -275,7 +275,7 @@ function AIProofPoints() {
               British Council.<br />
               <span className="italic text-[#228DC1]">AI handling learner support at scale.</span>
             </h2>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-xl mb-8">
+            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-8">
               We deployed Kai directly into British Council English Online. Customer satisfaction is up. Escalations are down. It's live, not a demo.
             </p>
             <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all">
@@ -313,7 +313,7 @@ export function OurSolutions() {
               <span className="italic text-[#228DC1]">technology supercycle.</span>
             </h2>
           </div>
-          <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] font-normal">
+          <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] font-normal">
             Whether you're a mobile operator, enterprise CIO, or public sector leader, AWTG delivers the connectivity, intelligence, and software your organisation needs to lead.
           </p>
         </div>
@@ -409,7 +409,7 @@ function Industries() {
               Powering transformation<br />across every sector.
             </h2>
           </div>
-          <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] font-normal">
+          <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] font-normal">
             From mobile operators to government bodies, AWTG delivers technology built specifically for your world. Select your sector to explore.
           </p>
         </div>

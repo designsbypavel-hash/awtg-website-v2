@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck, faShield, faGear, faCheck, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faCircleCheck, faShield, faGear, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 
@@ -593,7 +593,7 @@ function IntegrationsSection() {
             <h2 className="font-heading text-[#0a1628] mb-5">
               Works with your stack.<br />Ready on day one.
             </h2>
-            <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] mb-8">
+            <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] mb-8">
               Kai sits alongside your existing setup. It pulls context from your CRM, picks up conversations on your support desk and responds through the channels your customers use. Nothing gets removed or replaced.
             </p>
             <div className="flex flex-col gap-3">
@@ -698,7 +698,7 @@ function SecurityComplianceSection() {
             <h2 className="font-heading text-[#0a1628] mb-5" style={{ ...reveal(leftInView, 100) }}>
               Designed for regulated<br />environments.
             </h2>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-8 max-w-xl" style={reveal(leftInView, 180)}>
+            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8 max-w-xl" style={reveal(leftInView, 180)}>
               Safe, measurable and auditable AI for teams with real governance requirements.
             </p>
 
@@ -731,7 +731,7 @@ function SecurityComplianceSection() {
                     </span>
                     <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#228DC1]">{item.badge}</span>
                   </div>
-                  <h3 className="text-[#0a1628] text-[15px] font-semibold mb-2">{item.title}</h3>
+                  <h3 className="text-[#0a1628] text-[14px] font-semibold mb-2">{item.title}</h3>
                   <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.detail}</p>
                 </div>
               ))}
@@ -1377,7 +1377,7 @@ function OmnichannelSection() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="type-label text-[#228DC1] mb-4">Omnichannel</p>
           <h2 className="font-heading text-[#0a1628] mb-5">One AI. Every channel.</h2>
-          <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">
+          <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7]">
             Kai meets customers on Telegram, your website or email — with the same intelligence, context and resolution on every channel.
           </p>
         </div>
@@ -1737,7 +1737,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               that <span style={{ color: '#228DC1' }}>resolves,</span><br />
               not just responds.
             </h1>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-xl mb-10">
+            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
               Kai connects to your systems, follows your rules and helps teams resolve work faster.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -1839,7 +1839,7 @@ export default function KaiPage() {
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Our AI agent is live<br />at enterprise scale.
               </h2>
-              <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] mb-8">
+              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8">
                 Kai is running in production at enterprise organisations today. Real query volume, real containment rates, real CSAT improvement. Tracked from the first week, not the first quarter.
               </p>
               <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#228DC1] hover:gap-3 transition-all">
@@ -1889,7 +1889,7 @@ export default function KaiPage() {
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Escalation rate<br />drops from 40%<br />to 10%
               </h2>
-              <p className="text-[#0a1628]/65 text-[17px] font-normal leading-[1.7] mb-10">
+              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-10">
                 Kai handles the complex queries that used to demand human escalation, steadily containing more every month from day one.
               </p>
               {[
@@ -1957,7 +1957,7 @@ export default function KaiPage() {
             <h2 className="font-heading text-white mb-4">
               How Kai drives<br />efficiency
             </h2>
-            <p className="text-white/65 text-[18px] max-w-lg leading-[1.7]">
+            <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
               Three steps from setup to live AI resolution. No rip and replace required.
             </p>
           </div>
@@ -2033,126 +2033,6 @@ export default function KaiPage() {
       {/* -- Security & compliance -- */}
       <SecurityComplianceSection />
 
-      {/* -- What Kai Delivers -- */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <p className="type-label text-[#228DC1] mb-4">What Kai Delivers</p>
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              AI that fits your business.<br />Not the other way around.
-            </h2>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7]">
-              Built for mixed systems, regulated teams and workflows that need more than one vendor ecosystem.
-            </p>
-          </div>
-
-          {/* Kai capabilities table */}
-          <div className="overflow-hidden rounded-[16px] border border-[#dbe6ef] bg-white shadow-[0_18px_48px_rgba(10,22,40,0.08)]">
-            {/* Header row */}
-            <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-[#f3f8fc]">
-              <div className="px-7 py-8 border-r border-[#dbe6ef] flex items-center">
-                <p className="text-[#0a1628]/42 text-[11px] font-bold uppercase tracking-[0.32em]">Capability</p>
-              </div>
-              <div className="relative px-6 py-5 border-r border-[#247fb1]/25 bg-[#408fc1] shadow-[0_10px_28px_rgba(34,141,193,0.22)]">
-                <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/16 px-3 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-white ring-1 ring-white/20">
-                  <span className="text-[9px] leading-none">◆</span>
-                  Recommended
-                </div>
-                <div className="flex h-12 w-[78px] items-center justify-center rounded-[7px] bg-white shadow-[0_10px_22px_rgba(10,22,40,0.12)]">
-                  <img
-                    src="/kai-logo-horiz.svg"
-                    alt="Kai"
-                    className="h-9 w-[70px] object-contain"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                  />
-                </div>
-              </div>
-              <div className="px-7 py-8 flex items-center">
-                <p className="text-[#0a1628]/42 text-[11px] font-bold uppercase tracking-[0.32em]">Typical AI Agent</p>
-              </div>
-            </div>
-
-            {/* Data rows */}
-            {[
-              {
-                label: 'Best fit',
-                kai: 'Mixed systems, regulated teams',
-                competitor: 'Single-platform teams',
-              },
-              {
-                label: 'Ecosystem',
-                kai: 'Vendor-flexible, integration-led',
-                competitor: 'Vendor-locked, single stack',
-              },
-              {
-                label: 'Custom governance',
-                kai: 'Consent, escalation, audit',
-                competitor: 'Limited or paid add-on',
-              },
-              {
-                label: 'Delivery model',
-                kai: 'Product + delivery support',
-                competitor: 'SaaS only',
-              },
-              {
-                label: 'Regulated sectors',
-                kai: true,
-                competitor: false,
-              },
-              {
-                label: 'On-prem / hybrid deploy',
-                kai: true,
-                competitor: false,
-              },
-              {
-                label: 'ISO 42001 AI certification',
-                kai: true,
-                competitor: false,
-              },
-            ].map((row, rowIdx) => (
-              <div key={row.label} className={`grid grid-cols-[1.2fr_1fr_1fr] border-t border-[#edf1f5] ${rowIdx % 2 === 0 ? 'bg-white' : 'bg-[#f8fafc]'}`}>
-                <div className="px-7 py-5 border-r border-[#edf1f5] flex items-center">
-                  <p className="text-[#0a1628] text-[13px] font-bold leading-snug">{row.label}</p>
-                </div>
-                {/* Kai cell - highlighted */}
-                <div className="px-6 py-5 border-r border-[#bddfee] bg-[#e4f3fa] flex items-center">
-                  {typeof row.kai === 'boolean' ? (
-                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#2f8fc5] text-white shadow-[0_7px_16px_rgba(34,141,193,0.26)]">
-                      <FontAwesomeIcon icon={faCheck} className="w-3.5 h-3.5" />
-                    </span>
-                  ) : (
-                    <p className="text-[13px] font-bold text-[#0c5f92] leading-relaxed">{row.kai}</p>
-                  )}
-                </div>
-                {/* Competitor cell */}
-                <div className="px-7 py-5 flex items-center bg-white/50">
-                  {typeof row.competitor === 'boolean' ? (
-                    row.competitor
-                      ? <FontAwesomeIcon icon={faCheck} className="w-4 h-4 text-[#228DC1]" />
-                      : <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#f0f3f6] text-[#cfd6de]">
-                          <FontAwesomeIcon icon={faXmark} className="w-3.5 h-3.5" />
-                        </span>
-                  ) : (
-                    <p className="text-[13px] font-normal text-[#0a1628]/48 leading-relaxed">{row.competitor}</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 flex items-center gap-3 rounded-[10px] border border-[#bfe5f7] bg-[#eaf6fc] px-5 py-5 shadow-[0_8px_22px_rgba(34,141,193,0.08)]">
-            <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2f8fc5] text-white">
-              <FontAwesomeIcon icon={faCheck} className="h-3 w-3" />
-            </span>
-            <p className="text-[#0a1628] text-[14px] font-medium leading-relaxed">
-              <span className="text-[#228DC1] font-semibold">The Kai difference:</span>{' '}
-              Configure Kai around your escalation logic, consent flows, integrations and governance model.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
       {/* -- Pilot CTA -- */}
       <section className="py-16 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
@@ -2183,3 +2063,4 @@ export default function KaiPage() {
     </>
   )
 }
+

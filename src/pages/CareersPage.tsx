@@ -28,7 +28,7 @@ export default function CareersPage() {
           <h1 className="font-serif-display text-[#0a1628] mb-6 max-w-3xl leading-[1.1]">
             Shape the Future of Connectivity
           </h1>
-          <p className="text-[#0a1628]/60 text-[18px] max-w-2xl">
+          <p className="text-[#0a1628]/60 text-[16px] max-w-2xl">
             Join a team of world-class engineers, consultants and innovators solving the world's most complex connectivity challenges.
           </p>
         </div>

@@ -23,6 +23,18 @@ const companySizes = [
   '5,000+ employees',
 ]
 
+const industryDomains = [
+  'Education',
+  'Public sector',
+  'Customer service',
+  'Telecommunications',
+  'Healthcare',
+  'Financial services',
+  'Retail',
+  'Technology',
+  'Other',
+]
+
 export default function ProductDemoModal({
   isOpen,
   onClose,
@@ -35,6 +47,8 @@ export default function ProductDemoModal({
   trustItems,
   outcomes,
 }: ProductDemoModalProps) {
+  const isAruva = productName.toLowerCase() === 'aruva'
+
   useEffect(() => {
     if (!isOpen) return
 
@@ -82,16 +96,27 @@ export default function ProductDemoModal({
             </button>
 
             <div className="relative">
-              <div className="mb-8 inline-flex items-center gap-3 rounded-[12px] border border-gray-200 bg-white px-4 py-3 shadow-[0_8px_24px_rgba(10,22,40,0.06)]">
-                <img
-                  src={logoSrc}
-                  alt={productName}
-                  className="max-h-8 w-auto max-w-[116px] object-contain"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                />
-                <span className="h-7 w-px bg-gray-200" />
-                <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#0a1628]/45">{productLabel}</span>
-              </div>
+              {isAruva ? (
+                <div className="mb-7">
+                  <img
+                    src={logoSrc}
+                    alt={productName}
+                    className="h-auto w-[150px] max-w-[42vw] object-contain"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                  />
+                </div>
+              ) : (
+                <div className="mb-8 inline-flex items-center gap-3 rounded-[12px] border border-gray-200 bg-white px-4 py-3 shadow-[0_8px_24px_rgba(10,22,40,0.06)]">
+                  <img
+                    src={logoSrc}
+                    alt={productName}
+                    className="max-h-8 w-auto max-w-[116px] object-contain"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                  />
+                    <span className="h-7 w-px bg-gray-200" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#0a1628]/45">{productLabel}</span>
+                </div>
+              )}
 
               <h2 className="font-serif-display text-[#0a1628] leading-[1.04] mb-5" style={{ fontSize: 'clamp(34px, 4vw, 54px)' }}>
                 {title}
@@ -163,6 +188,16 @@ export default function ProductDemoModal({
                   <option value="">Select number of employees</option>
                   {companySizes.map((size) => (
                     <option key={size} value={size}>{size}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/75">Industry domain *</span>
+                <select className="h-[52px] w-full rounded-[7px] border border-gray-300 bg-white px-4 text-[15px] text-[#0a1628]/65 outline-none transition-colors focus:border-[#228DC1] focus:ring-4 focus:ring-[#228DC1]/10">
+                  <option value="">Select industry domain</option>
+                  {industryDomains.map((domain) => (
+                    <option key={domain} value={domain}>{domain}</option>
                   ))}
                 </select>
               </label>

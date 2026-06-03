@@ -13,7 +13,7 @@ export default function ContactPage() {
           <h1 className="font-serif-display text-[#0a1628] leading-tight mb-6">
             Let&apos;s Start a Conversation
           </h1>
-          <p className="text-[#0a1628]/65 text-[18px] max-w-xl font-normal leading-[1.7]">
+          <p className="text-[#0a1628]/65 text-[16px] max-w-xl font-normal leading-[1.7]">
             Whether you have a project in mind or just want to explore what&apos;s possible, our experts are ready to help.
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function ContactPage() {
             <h2 className="font-serif-display text-[#0a1628] mb-8">Send Us a Message</h2>
             {submitted ? (
               <div className="p-8 bg-[#f0f5ff] border border-[#228DC1]/20 text-[#0a1628]">
-                <p className="font-semibold text-[18px] mb-2">Thank you for getting in touch.</p>
+                <p className="font-semibold text-[16px] mb-2">Thank you for getting in touch.</p>
                 <p className="text-[#0a1628]/75 font-normal">A member of our team will respond within 2 business hours.</p>
               </div>
             ) : (

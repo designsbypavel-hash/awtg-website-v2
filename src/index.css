@@ -203,22 +203,24 @@
   }
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   TYPE SYSTEM — Intercom-inspired scale (Roboto)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   AWTG TYPE SCALE — applied consistently across every page
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Display XL  52px  .font-serif-display   Hero banners, landing headlines
+   Display L   44px  .font-heading         Primary page / section titles
+   H1          36px  .font-h1              Main page heading
+   H2          30px  .font-h2              Major content section headings
+   H3          24px  .font-h3              Subsection headings
+   H4          20px  .font-h4              Card titles, content group headings
+   H5          18px  .font-h5              Smaller headings, form section titles
+   Body Lg     16px  (base / .text-body)   Default paragraph text
+   Body Md     14px  .text-body-md         Secondary content, descriptions, nav
+   Body Sm     13px  .text-body-sm         Supporting text, metadata
+   Caption     12px  .text-caption         Helper text, labels, captions
+   Micro       11px  .type-label           Legal, disclaimers (UPPERCASE only)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-   52px  Hero H1        — page-level title, weight 700
-   40px  Section H2     — main section headings, weight 600
-   28px  Sub-section H3 — section-level sub-headings, weight 600
-   24px  Card heading   — card/feature group titles, weight 600
-   20px  Item heading   — smaller named items, weight 600
-   16px  Body           — paragraphs, line-height 1.7
-   14px  Secondary      — supporting body, muted
-   12px  Meta/caption   — notes, stat footnotes
-   11px  Label/eyebrow  — UPPERCASE tracking (minimum)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
-/* Hero H1 */
+/* Display XL — 52px */
 .font-serif-display {
   font-family: 'Roboto', system-ui, sans-serif !important;
   font-weight: 700 !important;
@@ -227,16 +229,44 @@
   line-height: 1.05;
 }
 
-/* Section H2 */
+/* Display L — 44px  (primary section headings) */
 .font-heading {
   font-family: 'Roboto', system-ui, sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 40px;
+  font-weight: 700 !important;
+  font-size: 44px;
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
-/* Card / feature headings */
+/* H1 — 36px */
+.font-h1 {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* H2 — 30px */
+.font-h2 {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* H3 — 24px */
+.font-h3 {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+/* H4 — 20px  (card / feature titles) */
+.font-h4,
 .font-card-heading {
   font-family: 'Roboto', system-ui, sans-serif;
   font-weight: 600;
@@ -245,7 +275,27 @@
   line-height: 1.3;
 }
 
-/* Eyebrow labels */
+/* H5 — 18px */
+.font-h5 {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+/* Body Large — 16px (set on <body>; use this class when overriding) */
+.text-body { font-size: 16px; line-height: 1.7; }
+
+/* Body Medium — 14px */
+.text-body-md { font-size: 14px; line-height: 1.6; }
+
+/* Body Small — 13px */
+.text-body-sm { font-size: 13px; line-height: 1.55; }
+
+/* Caption — 12px */
+.text-caption { font-size: 12px; line-height: 1.5; }
+
+/* Micro / Eyebrow — 11px UPPERCASE only */
 .type-label {
   font-family: 'Roboto', system-ui, sans-serif;
   font-size: 11px;

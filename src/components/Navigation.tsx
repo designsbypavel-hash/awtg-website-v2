@@ -2,62 +2,76 @@
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import heroImage from '@/assets/hero.png'
 
 
 type NavItem = { label: string; desc: string; href: string }
 type NavGroup = { heading: string; items: NavItem[] }
+type FeaturedItem = { label: string; desc: string; href: string; badge?: string; image: string; imageFit?: 'cover' | 'contain' }
+type FeaturedPanel = {
+  eyebrow: string
+  title: string
+  desc: string
+  items: FeaturedItem[]
+  href: string
+  cta: string
+}
 type NavEntry =
   | { label: string; key: string; cols: number; items: NavItem[]; groups?: never }
   | { label: string; key: string; cols?: never; items?: never; groups: NavGroup[] }
 
 const navItems: NavEntry[] = [
   {
-    label: 'Products',
-    key: 'products',
-    cols: 3,
-    items: [
-      { label: 'Aruva', desc: 'AI-powered teaching and formative assessment for higher education', href: '/products/aruva' },
-      { label: 'Kai', desc: 'Enterprise AI platform for customer service and operations', href: '/products/kai' },
-      { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
+    label: 'AI for Innovation',
+    key: 'innovation',
+    groups: [
+      {
+        heading: 'Products',
+        items: [
+          { label: 'AI for Sales and Customer Services', desc: 'Enterprise AI platform for customer service and operations', href: '/products/kai' },
+          { label: 'AI for Education', desc: 'AI-powered teaching and formative assessment for higher education', href: '/products/aruva' },
+        ],
+      },
+      {
+        heading: 'Industries',
+        items: [
+          { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
+          { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
+          { label: 'Commerce', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
+          { label: 'AI digital consultancy', desc: 'Strategic AI advisory, roadmap and transformation support', href: '/services/consultancy' },
+          { label: 'Agentic AI', desc: 'Autonomous AI agents for enterprise workflows and operations', href: '/solutions/generative-ai' },
+          { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
+        ],
+      },
     ],
   },
   {
-    label: 'Solutions',
-    key: 'solutions',
-    cols: 3,
-    items: [
-      { label: 'Telecoms AI', desc: 'AI-powered network intelligence and optimisation', href: '/solutions/telecoms-ai' },
-      { label: 'Generative AI', desc: 'Production-ready GenAI for enterprise workflows', href: '/solutions/generative-ai' },
-      { label: 'Private Network as a Service', desc: 'Managed 4G/5G enterprise connectivity', href: '/solutions/mobile-private-networks' },
-      { label: 'Smart Cities', desc: 'Urban IoT and digital infrastructure platforms', href: '/solutions/smart-cities' },
-      { label: 'Industry 4.0', desc: 'Connected manufacturing and logistics solutions', href: '/solutions/industry-4' },
-      { label: 'Smart Health', desc: 'Digital health connectivity and AI platforms', href: '/solutions/smart-health' },
-    ],
-  },
-  {
-    label: 'Services',
-    key: 'services',
-    cols: 3,
-    items: [
-      { label: 'Consultancy', desc: 'Strategic technology advisory and planning', href: '/services/consultancy' },
-      { label: 'Engineering', desc: 'RF, 5G and network engineering services', href: '/services/engineering' },
-      { label: 'Software Development', desc: 'Custom platforms and application development', href: '/services/software' },
-      { label: 'Digital Transformation', desc: 'End-to-end modernisation programmes', href: '/services/digital-transformation' },
-      { label: 'AI/ML Solutions', desc: 'Machine learning and intelligent automation', href: '/services/ai-ml' },
-      { label: 'IoT Platforms', desc: 'Connected device management and analytics', href: '/services/iot' },
-    ],
-  },
-  {
-    label: 'Industries',
-    key: 'industries',
-    cols: 3,
-    items: [
-      { label: 'Telecommunications', desc: 'MNOs, MVNOs and infrastructure vendors', href: '/industries/telecoms' },
-      { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
-      { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
-      { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
-      { label: 'Retail', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
-      { label: 'Defence', desc: 'Secure, mission-critical communications', href: '/industries/defence' },
+    label: 'AI for Connectivity',
+    key: 'connectivity',
+    groups: [
+      {
+        heading: 'Products',
+        items: [
+          { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
+          { label: 'SCAP', desc: 'Spectrum and capacity analysis platform for network planning', href: '/services/engineering' },
+          { label: 'iDAMS', desc: 'Intelligent data and asset management system', href: '/services/iot' },
+          { label: 'Smart City', desc: 'Connected urban infrastructure and digital services platform', href: '/solutions/smart-cities' },
+        ],
+      },
+      {
+        heading: 'Industries',
+        items: [
+          { label: 'Health', desc: 'Digital health connectivity and infrastructure', href: '/industries/health-tech' },
+          { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
+          { label: 'Defence', desc: 'Secure, mission-critical communications', href: '/industries/defence' },
+          { label: 'Space & Defence', desc: 'Secure connectivity for space and defence programmes', href: '/industries/defence' },
+          { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
+          { label: 'Government', desc: 'Public service connectivity and digital infrastructure', href: '/industries/public-sector' },
+          { label: 'Commerce', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
+          { label: 'Manufacturing', desc: 'Connected manufacturing and logistics solutions', href: '/solutions/industry-4' },
+          { label: 'Engineering', desc: 'RF, 5G and network engineering services', href: '/services/engineering' },
+        ],
+      },
     ],
   },
   {
@@ -85,6 +99,84 @@ const navItems: NavEntry[] = [
   },
 ]
 
+const featuredPanels: Record<string, FeaturedPanel> = {
+  innovation: {
+    eyebrow: 'Featured',
+    title: 'AI built around real work',
+    desc: 'Explore the two fastest routes into production AI: guided education experiences and customer-facing service intelligence.',
+    href: '/solutions/generative-ai',
+    cta: 'Explore innovation',
+    items: [
+      {
+        label: 'AI for Education',
+        desc: 'Aruva maps learning signals and guides every student through governed course intelligence.',
+        href: '/products/aruva',
+        badge: 'Aruva',
+        image: '/images/aruva-photosynthesis-realistic.png',
+        imageFit: 'cover',
+      },
+      {
+        label: 'AI for Sales and Customer Services',
+        desc: 'Kai helps teams respond faster, govern handoffs and improve customer operations.',
+        href: '/products/kai',
+        badge: 'Kai',
+        image: '/kai-mockup.png',
+        imageFit: 'cover',
+      },
+    ],
+  },
+  connectivity: {
+    eyebrow: 'Featured',
+    title: 'Network intelligence in motion',
+    desc: 'Plan, analyse and optimise connectivity with products built for real infrastructure decisions.',
+    href: '/products/icmap',
+    cta: 'View connectivity',
+    items: [
+      {
+        label: 'iCMAP',
+        desc: 'Intelligent 5G coverage mapping and network gap analysis.',
+        href: '/products/icmap',
+        badge: '5G',
+        image: heroImage,
+        imageFit: 'contain',
+      },
+      {
+        label: 'SCAP',
+        desc: 'Spectrum and capacity analysis for network planning teams.',
+        href: '/services/engineering',
+        badge: 'RF',
+        image: heroImage,
+        imageFit: 'contain',
+      },
+    ],
+  },
+  about: {
+    eyebrow: 'Featured',
+    title: 'Meet AWTG',
+    desc: 'See how our teams combine telecoms engineering, software and AI delivery across public and private sector programmes.',
+    href: '/about',
+    cta: 'About AWTG',
+    items: [
+      {
+        label: 'Company story',
+        desc: 'Who we are, how we work and what drives our delivery culture.',
+        href: '/about',
+        badge: 'AWTG',
+        image: '/team/person-0.png',
+        imageFit: 'cover',
+      },
+      {
+        label: 'News & thought leadership',
+        desc: 'Perspectives on AI, connectivity and digital infrastructure.',
+        href: '/insights',
+        badge: 'News',
+        image: '/team/person-5.png',
+        imageFit: 'cover',
+      },
+    ],
+  },
+}
+
 type DropdownKey = string | null
 
 export default function Navigation() {
@@ -92,7 +184,9 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<DropdownKey>(null)
   const [mobileExpanded, setMobileExpanded] = useState<DropdownKey>(null)
+  const [featuredIndex, setFeaturedIndex] = useState(0)
   const closeTimer = useRef<number | null>(null)
+  const lastFeaturedByKey = useRef<Record<string, number>>({})
   const location = useLocation()
 
   const openDropdown = (key: string) => {
@@ -100,7 +194,17 @@ export default function Navigation() {
       window.clearTimeout(closeTimer.current)
       closeTimer.current = null
     }
-    setActiveDropdown(key)
+    setActiveDropdown((current) => {
+      if (current !== key) {
+        const panel = featuredPanels[key]
+        if (panel?.items.length) {
+          const next = ((lastFeaturedByKey.current[key] ?? -1) + 1) % panel.items.length
+          lastFeaturedByKey.current[key] = next
+          setFeaturedIndex(next)
+        }
+      }
+      return key
+    })
   }
 
   const closeDropdownSoon = () => {
@@ -201,6 +305,12 @@ export default function Navigation() {
                 </button>
               ))}
               <Link
+                to="/insights"
+                className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
+              >
+                News
+              </Link>
+              <Link
                 to="/careers"
                 className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
               >
@@ -249,13 +359,13 @@ export default function Navigation() {
               id={`dropdown-${nav.key}`}
               role="region"
               aria-label={`${nav.key} submenu`}
-              className="absolute left-0 right-0 bg-white border-b border-gray-200 shadow-[0_18px_45px_rgba(10,22,40,0.08)] animate-[navDrop_180ms_ease-out]"
+              className="absolute left-0 right-0 bg-white border-b border-gray-200 shadow-[0_24px_70px_rgba(10,22,40,0.10)] animate-[navDrop_180ms_ease-out]"
               onMouseEnter={() => openDropdown(nav.key)}
               onMouseLeave={closeDropdownSoon}
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8">
+              <div className="max-w-[1760px] mx-auto px-8 lg:px-12 xl:px-14 2xl:px-16 py-14">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
@@ -280,35 +390,86 @@ export default function Navigation() {
                   </div>
                 )}
 
-                {/* Grouped layout (About — Company + Insights side by side) */}
+                {/* Grouped mega menu */}
                 {nav.groups && (
-                  <div className={`grid gap-10 ${nav.groups.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
-                    {nav.groups.map((group) => (
-                      <div key={group.heading}>
-                        <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/65 mb-3 px-4">
-                          {group.heading}
-                        </p>
-                        <div className="space-y-0.5">
-                          {group.items.map((item) => (
-                            <Link
-                              key={item.href}
-                              to={item.href}
-                              className="group flex items-start gap-3 px-4 py-3 rounded-md border-l-2 border-transparent hover:border-[#228DC1] hover:bg-[#f0f5ff] hover:translate-x-0.5 transition-all duration-200"
-                              onClick={closeDropdownNow}
-                            >
-                              <div>
-                                <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
-                                  {item.label}
-                                </p>
-                                <p className="text-[#0a1628]/65 text-xs font-normal leading-relaxed">
-                                  {item.desc}
-                                </p>
-                              </div>
-                            </Link>
-                          ))}
+                  <div className="grid grid-cols-[minmax(0,1fr)_560px] gap-20 xl:gap-28 items-start">
+                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-20 xl:gap-28'}`}>
+                      {nav.groups.map((group) => (
+                        <div key={group.heading}>
+                          <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-[#0a1628]/45 mb-8 px-2">
+                            {group.heading}
+                          </p>
+                          <div className="space-y-7">
+                            {group.items.map((item) => (
+                              <Link
+                                key={item.href}
+                                to={item.href}
+                                className="group block px-2 py-0 transition-transform duration-200 hover:translate-x-1"
+                                onMouseEnter={() => {
+                                  const panel = featuredPanels[nav.key]
+                                  const match = panel?.items.findIndex((featured) => featured.href === item.href || featured.label === item.label) ?? -1
+                                  if (match >= 0) setFeaturedIndex(match)
+                                }}
+                                onClick={closeDropdownNow}
+                              >
+                                <div>
+                                  <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-1 tracking-[-0.01em]">
+                                    {item.label}
+                                  </p>
+                                  <p className="text-[#0a1628]/58 text-xs font-normal leading-relaxed">
+                                    {item.desc}
+                                  </p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+
+                    {featuredPanels[nav.key] && (() => {
+                      const panel = featuredPanels[nav.key]
+                      const item = panel.items[featuredIndex % panel.items.length]
+                      return (
+                        <div className="pt-1">
+                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-5">
+                            {panel.eyebrow}
+                          </p>
+                          <Link
+                            key={`${nav.key}-${item.href}`}
+                            to={item.href}
+                            onClick={closeDropdownNow}
+                            className="group block"
+                          >
+                            <div className="relative h-[272px] overflow-hidden rounded-[10px] bg-[#f5f8fb] border border-gray-200 shadow-[0_22px_60px_rgba(10,22,40,0.12)]">
+                              <img
+                                src={item.image}
+                                alt=""
+                                className={`h-full w-full ${item.imageFit === 'contain' ? 'object-contain p-10' : 'object-cover'}`}
+                              />
+                              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(10,22,40,0.10)_100%)]" />
+                              <div className="absolute left-7 top-7 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]">
+                                {item.badge}
+                              </div>
+                              <span className="absolute bottom-6 right-7 text-[#0a1628] transition-transform duration-200 group-hover:translate-x-1">→</span>
+                            </div>
+                            <h3 className="mt-7 text-[#0a1628] text-[16px] font-semibold tracking-[-0.01em]">
+                              {item.label}
+                            </h3>
+                            <p className="mt-2 max-w-[500px] text-[#0a1628]/62 text-[13px] leading-relaxed">
+                              {item.desc}
+                            </p>
+                          </Link>
+                          <Link
+                            to={panel.href}
+                            onClick={closeDropdownNow}
+                            className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#228DC1] hover:text-[#0a1628] transition-colors"
+                          >
+                            {panel.cta} <span className="ml-2">→</span>
+                          </Link>
+                        </div>
+                      )
+                    })()}
                   </div>
                 )}
 
@@ -354,6 +515,7 @@ export default function Navigation() {
                 )}
               </div>
             ))}
+            <Link to="/insights" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">News</Link>
             <Link to="/careers" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Careers</Link>
             <div className="pt-4 flex flex-col gap-2">
               <Link to="/contact" className="w-full py-2.5 text-center text-sm border border-[#228DC1] text-[#228DC1] hover:bg-[#228DC1] hover:text-white transition-colors rounded-lg">

@@ -41,7 +41,7 @@ export default function ServiceDetailPage({
               {title}
             </h1>
             {/* L4 — body */}
-            <p className="text-[#0a1628]/65 text-[18px] max-w-xl font-normal leading-[1.7] mb-9">{hero}</p>
+            <p className="text-[#0a1628]/65 text-[16px] max-w-xl font-normal leading-[1.7] mb-9">{hero}</p>
             <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-colors">
               Request a Demo <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
             </Link>
@@ -80,7 +80,7 @@ export default function ServiceDetailPage({
               {overviewTitle}
             </h2>
             {/* L4 — body */}
-            <p className="text-[#0a1628]/65 leading-[1.7] font-normal text-[18px]">{overview}</p>
+            <p className="text-[#0a1628]/65 leading-[1.7] font-normal text-[16px]">{overview}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {capabilities.map((capability) => (
@@ -110,7 +110,7 @@ export default function ServiceDetailPage({
               <div key={step.title} className="bg-white border border-gray-100 p-7">
                 <p className="type-label text-[#228DC1] mb-8">0{index + 1}</p>
                 {/* L3 — card heading */}
-                <h3 className="font-card-heading text-[#0a1628] text-[18px] mb-3">{step.title}</h3>
+                <h3 className="font-card-heading text-[#0a1628] text-[20px] mb-3">{step.title}</h3>
                 {/* L4 — body */}
                 <p className="text-[#0a1628]/65 text-[14px] leading-[1.7] font-normal">{step.desc}</p>
               </div>
@@ -127,13 +127,13 @@ export default function ServiceDetailPage({
             <h2 className="font-heading text-[#0a1628] mb-6">
               {proofTitle}
             </h2>
-            <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] font-normal">{proof}</p>
+            <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] font-normal">{proof}</p>
           </div>
           <div className="border border-gray-100 p-7 bg-white/[0.03]">
             <p className="type-label text-[#0a1628]/60 mb-6">Related pages</p>
             <div className="space-y-3">
               {related.map((link) => (
-                <Link key={link.href} to={link.href} className="flex items-center justify-between border-b border-gray-100 pb-3 text-[#0a1628]/70 hover:text-white font-normal text-[15px] transition-colors">
+                <Link key={link.href} to={link.href} className="flex items-center justify-between border-b border-gray-100 pb-3 text-[#0a1628]/70 hover:text-white font-normal text-[14px] transition-colors">
                   {link.label}
                   <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
                 </Link>
