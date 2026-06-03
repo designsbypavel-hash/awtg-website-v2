@@ -171,6 +171,7 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<DropdownKey>(null)
   const [mobileExpanded, setMobileExpanded] = useState<DropdownKey>(null)
+  const [featuredIndex, setFeaturedIndex] = useState(0)
   const closeTimer = useRef<number | null>(null)
   const location = useLocation()
 
@@ -209,6 +210,17 @@ export default function Navigation() {
     closeDropdownNow()
     setMobileExpanded(null)
   }, [location])
+
+  useEffect(() => {
+    setFeaturedIndex(0)
+    const panel = activeDropdown ? featuredPanels[activeDropdown] : null
+    if (!panel || panel.items.length < 2) return
+
+    const id = window.setInterval(() => {
+      setFeaturedIndex((index) => (index + 1) % panel.items.length)
+    }, 3200)
+    return () => window.clearInterval(id)
+  }, [activeDropdown])
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -340,7 +352,7 @@ export default function Navigation() {
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10">
+              <div className="max-w-7xl mx-auto px-6 lg:px-14 py-12">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
@@ -367,8 +379,8 @@ export default function Navigation() {
 
                 {/* Grouped mega menu */}
                 {nav.groups && (
-                  <div className="grid grid-cols-[minmax(0,1fr)_360px] gap-16 items-start">
-                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-16'}`}>
+                  <div className="grid grid-cols-[minmax(0,1fr)_430px] gap-24 items-start">
+                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-24'}`}>
                       {nav.groups.map((group) => (
                         <div key={group.heading}>
                           <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-[#0a1628]/55 mb-6 px-2">
@@ -397,50 +409,61 @@ export default function Navigation() {
                       ))}
                     </div>
 
-                    {featuredPanels[nav.key] && (
-                      <div className="rounded-[14px] border border-gray-200 bg-[#f8fafc] p-5 shadow-[0_12px_32px_rgba(10,22,40,0.06)]">
-                        <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-3">
-                          {featuredPanels[nav.key].eyebrow}
-                        </p>
-                        <h3 className="text-[#0a1628] text-[18px] font-semibold tracking-[-0.02em] mb-2">
-                          {featuredPanels[nav.key].title}
-                        </h3>
-                        <p className="text-[#0a1628]/60 text-[12px] leading-relaxed mb-5">
-                          {featuredPanels[nav.key].desc}
-                        </p>
-                        <div className="space-y-2.5">
-                          {featuredPanels[nav.key].items.map((item, index) => (
-                            <Link
-                              key={item.href}
-                              to={item.href}
-                              onClick={closeDropdownNow}
-                              className="group block rounded-[10px] border border-gray-200 bg-white px-4 py-3 transition-all duration-200 hover:border-[#228DC1]/35 hover:shadow-[0_10px_24px_rgba(34,141,193,0.10)]"
-                            >
-                              <div className="flex items-start gap-3">
-                                <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e5f4fa] text-[10px] font-black text-[#228DC1]">
-                                  {item.badge ?? String(index + 1).padStart(2, '0')}
+                    {featuredPanels[nav.key] && (() => {
+                      const panel = featuredPanels[nav.key]
+                      const item = panel.items[featuredIndex % panel.items.length]
+                      return (
+                        <div className="pt-1">
+                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-5">
+                            {panel.eyebrow}
+                          </p>
+                          <Link
+                            key={`${nav.key}-${item.href}`}
+                            to={item.href}
+                            onClick={closeDropdownNow}
+                            className="group block"
+                          >
+                            <div className="relative h-[210px] overflow-hidden rounded-[14px] border border-gray-200 bg-[#f8fafc] shadow-[0_18px_50px_rgba(10,22,40,0.10)]">
+                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(34,141,193,0.18),transparent_34%),linear-gradient(135deg,#ffffff_0%,#eef7fb_100%)]" />
+                              <div className="absolute left-8 right-8 top-8 flex items-center justify-between">
+                                <span className="text-[12px] font-black uppercase tracking-[0.18em] text-[#228DC1]">
+                                  {item.badge}
                                 </span>
-                                <span>
-                                  <span className="block text-[13px] font-semibold text-[#0a1628] group-hover:text-[#228DC1] transition-colors">
-                                    {item.label}
-                                  </span>
-                                  <span className="mt-1 block text-[11px] leading-relaxed text-[#0a1628]/55">
-                                    {item.desc}
-                                  </span>
-                                </span>
+                                <span className="h-8 w-8 rounded-full border border-[#228DC1]/25 bg-white/80" />
                               </div>
-                            </Link>
-                          ))}
+                              <div className="absolute left-8 right-8 top-[92px] space-y-5">
+                                {[0, 1, 2].map((line) => (
+                                  <div key={line} className="flex items-center gap-5">
+                                    <span className="h-2 w-2 rounded-full bg-[#228DC1]" />
+                                    <span className="h-px flex-1 bg-[#0a1628]/12" />
+                                    <span className="h-7 w-7 rounded-full bg-white shadow-[0_6px_18px_rgba(10,22,40,0.08)]" />
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="absolute bottom-6 left-8 right-8 flex items-end justify-between">
+                                <span className="max-w-[250px] text-[24px] font-semibold leading-tight tracking-[-0.03em] text-[#0a1628]">
+                                  {item.label}
+                                </span>
+                                <span className="text-[#228DC1] transition-transform duration-200 group-hover:translate-x-1">→</span>
+                              </div>
+                            </div>
+                            <h3 className="mt-6 text-[#0a1628] text-[18px] font-semibold tracking-[-0.02em]">
+                              {item.label}
+                            </h3>
+                            <p className="mt-2 text-[#0a1628]/62 text-[13px] leading-relaxed">
+                              {item.desc}
+                            </p>
+                          </Link>
+                          <Link
+                            to={panel.href}
+                            onClick={closeDropdownNow}
+                            className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#228DC1] hover:text-[#1a6e99] transition-colors"
+                          >
+                            {panel.cta} <span className="ml-2">→</span>
+                          </Link>
                         </div>
-                        <Link
-                          to={featuredPanels[nav.key].href}
-                          onClick={closeDropdownNow}
-                          className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#228DC1] hover:text-[#1a6e99] transition-colors"
-                        >
-                          {featuredPanels[nav.key].cta} <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
-                        </Link>
-                      </div>
-                    )}
+                      )
+                    })()}
                   </div>
                 )}
 
