@@ -1658,10 +1658,21 @@ function MMTextDemo() {
 }
 
 function MMImageDemo() {
+  const [stage, setStage] = React.useState(0)
+
+  React.useEffect(() => {
+    const timers = [
+      window.setTimeout(() => setStage(1), 650),
+      window.setTimeout(() => setStage(2), 1350),
+      window.setTimeout(() => setStage(3), 2400),
+    ]
+    return () => timers.forEach(window.clearTimeout)
+  }, [])
+
   return (
     <div style={{ display:'flex', flexDirection:'column', flex:1, background:'#ffffff' }}>
       <div style={{ borderBottom:'1px solid #e5e7eb', padding:'14px 18px', display:'flex', flexDirection:'column', gap:10, background:'#fafbfc' }}>
-        <div style={{ alignSelf:'flex-end', maxWidth:'82%' }}>
+        <div style={{ alignSelf:'flex-end', maxWidth:'82%', opacity:0, animation:'mmCardIn 0.34s ease forwards' }}>
           <div style={{
             background:'#f59e0b', color:'#ffffff', padding:'10px 13px',
             borderRadius:'14px 14px 4px 14px', fontSize:12.5, fontWeight:700, lineHeight:1.45,
@@ -1671,28 +1682,62 @@ function MMImageDemo() {
           </div>
         </div>
 
-        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', gap:12 }}>
+        <div style={{
+          display:'flex', alignItems:'center', justifyContent:'space-between', gap:12,
+          opacity: stage >= 1 ? 1 : 0, transform: stage >= 1 ? 'translateY(0)' : 'translateY(6px)',
+          transition:'opacity 0.32s ease, transform 0.32s ease',
+        }}>
           <div style={{ display:'flex', alignItems:'center', gap:9, minWidth:0 }}>
             <div style={{ width:26, height:26, borderRadius:8, background:'#ecfdf5', border:'1px solid #bbf7d0', display:'flex', alignItems:'center', justifyContent:'center', color:'#059669', fontSize:10, fontWeight:900, flexShrink:0 }}>
               A
             </div>
             <span style={{ fontSize:11, color:'rgba(10,22,40,0.52)', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:600, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
-              prompt accepted: photosynthesis lesson diagram
+              {stage >= 2 ? 'generating output: photosynthesis lesson diagram' : 'prompt accepted: photosynthesis lesson diagram'}
             </span>
           </div>
-          <span style={{ fontSize:9, fontWeight:800, color:'#059669', background:'rgba(5,150,105,0.10)', padding:'4px 9px', borderRadius:999, border:'1px solid rgba(5,150,105,0.22)', letterSpacing:'0.07em', textTransform:'uppercase', flexShrink:0 }}>
-            Generated
+          <span style={{
+            fontSize:9, fontWeight:800,
+            color: stage >= 3 ? '#059669' : '#d97706',
+            background: stage >= 3 ? 'rgba(5,150,105,0.10)' : 'rgba(245,158,11,0.10)',
+            padding:'4px 9px', borderRadius:999,
+            border: stage >= 3 ? '1px solid rgba(5,150,105,0.22)' : '1px solid rgba(245,158,11,0.24)',
+            letterSpacing:'0.07em', textTransform:'uppercase', flexShrink:0,
+          }}>
+            {stage >= 3 ? 'Generated' : 'Generating'}
           </span>
         </div>
       </div>
 
       <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'14px 16px', background:'#f8fafc' }}>
-        <div style={{ width:'100%', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
+        <div style={{ position:'relative', width:'100%', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
           <img
             src="/images/aruva-photosynthesis-realistic.png"
             alt="Generated photosynthesis lesson diagram"
-            style={{ display:'block', width:'100%', height:'auto', aspectRatio:'280 / 178', objectFit:'cover' }}
+            style={{
+              display:'block', width:'100%', height:'auto', aspectRatio:'280 / 178', objectFit:'cover',
+              opacity: stage >= 3 ? 1 : 0.22,
+              filter: stage >= 3 ? 'none' : 'saturate(0.7) blur(1.2px)',
+              transform: stage >= 3 ? 'scale(1)' : 'scale(1.01)',
+              transition:'opacity 0.55s ease, filter 0.55s ease, transform 0.55s ease',
+            }}
           />
+          {stage < 3 && (
+            <div style={{
+              position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',
+              background:'linear-gradient(180deg,rgba(248,250,252,0.76),rgba(255,255,255,0.62))',
+            }}>
+              <div style={{ display:'flex', gap:6, marginBottom:12 }}>
+                {[0,1,2].map(i => (
+                  <span key={i} style={{
+                    width:8, height:8, borderRadius:'50%', background:'#059669',
+                    animation:`waveBar ${0.7 + i * 0.12}s ease-in-out ${i * 0.12}s infinite`,
+                  }} />
+                ))}
+              </div>
+              <p style={{ fontSize:12, fontWeight:800, color:'#0a1628', marginBottom:4 }}>Generating image...</p>
+              <p style={{ fontSize:11, color:'rgba(10,22,40,0.48)' }}>Aruva is turning the chat input into a visual lesson diagram.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
