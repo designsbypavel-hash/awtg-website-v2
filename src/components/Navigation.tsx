@@ -23,16 +23,6 @@ const navItems: NavEntry[] = [
         ],
       },
       {
-        heading: 'Services',
-        items: [
-          { label: 'Generative AI', desc: 'Production-ready GenAI for enterprise workflows', href: '/solutions/generative-ai' },
-          { label: 'AI/ML Solutions', desc: 'Machine learning and intelligent automation', href: '/services/ai-ml' },
-          { label: 'Software Development', desc: 'Custom platforms and application development', href: '/services/software' },
-          { label: 'Consultancy', desc: 'Strategic technology advisory and planning', href: '/services/consultancy' },
-          { label: 'Digital Transformation', desc: 'End-to-end modernisation programmes', href: '/services/digital-transformation' },
-        ],
-      },
-      {
         heading: 'Industries',
         items: [
           { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
@@ -53,18 +43,6 @@ const navItems: NavEntry[] = [
           { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
           { label: 'SCAP', desc: 'Spectrum and capacity analysis platform for network planning', href: '/services/engineering' },
           { label: 'Borderlands', desc: 'Edge network management and border connectivity platform', href: '/industries/telecoms' },
-        ],
-      },
-      {
-        heading: 'Solutions',
-        items: [
-          { label: 'Telecoms AI', desc: 'AI-powered network intelligence and optimisation', href: '/solutions/telecoms-ai' },
-          { label: 'Private Network as a Service', desc: 'Managed 4G/5G enterprise connectivity', href: '/solutions/mobile-private-networks' },
-          { label: 'Smart Cities', desc: 'Urban IoT and digital infrastructure platforms', href: '/solutions/smart-cities' },
-          { label: 'Industry 4.0', desc: 'Connected manufacturing and logistics solutions', href: '/solutions/industry-4' },
-          { label: 'Smart Health', desc: 'Digital health connectivity and AI platforms', href: '/solutions/smart-health' },
-          { label: 'IoT Platforms', desc: 'Connected device management and analytics', href: '/services/iot' },
-          { label: 'Engineering', desc: 'RF, 5G and network engineering services', href: '/services/engineering' },
         ],
       },
       {
