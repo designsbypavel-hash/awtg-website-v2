@@ -2958,45 +2958,37 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
         </div>
-        {/* Cards with inline arrows */}
-        <div ref={ref} className="hidden lg:flex items-center gap-0">
+        <div ref={ref} className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0">
 
-          {/* Card 1: Students */}
+          {/* Card 1 */}
           <AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} />
 
-          {/* Arrow: card2 → card1 (pointing LEFT ←) */}
-          <div className="shrink-0 flex flex-col items-center gap-2 px-3" style={{ width:64, ...reveal(inView, 300) }}>
-            <svg width="52" height="28" viewBox="0 0 52 28" fill="none">
-              {/* Line */}
-              <line x1="48" y1="14" x2="10" y2="14" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
-              {/* Arrowhead pointing left */}
-              <path d="M14 6 L4 14 L14 22" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          {/* Arrow ← card2 to card1 */}
+          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-1" style={{ width:56 }}>
+            <div style={{ width:2, height:32, background: audiences[1].color, borderRadius:2, display:'none' }} className="lg:block"/>
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.1" stroke={audiences[1].color} strokeWidth="1.5"/>
+              <path d="M24 20H16M16 20L20 16M16 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <span style={{ fontSize:9, fontWeight:800, color: audiences[1].color, letterSpacing:'0.12em', textTransform:'uppercase', opacity:0.7 }}>from</span>
+            <div style={{ width:2, height:32, background: audiences[1].color, borderRadius:2, display:'none' }} className="lg:block"/>
           </div>
 
-          {/* Card 2: Educators (center) */}
+          {/* Card 2 — Educators (hub) */}
           <AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} />
 
-          {/* Arrow: card2 → card3 (pointing RIGHT →) */}
-          <div className="shrink-0 flex flex-col items-center gap-2 px-3" style={{ width:64, ...reveal(inView, 400) }}>
-            <svg width="52" height="28" viewBox="0 0 52 28" fill="none">
-              {/* Line */}
-              <line x1="4" y1="14" x2="42" y2="14" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
-              {/* Arrowhead pointing right */}
-              <path d="M38 6 L48 14 L38 22" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          {/* Arrow → card2 to card3 */}
+          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-1" style={{ width:56 }}>
+            <div style={{ width:2, height:32, background: audiences[1].color, borderRadius:2, display:'none' }} className="lg:block"/>
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.1" stroke={audiences[1].color} strokeWidth="1.5"/>
+              <path d="M16 20H24M24 20L20 16M24 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <span style={{ fontSize:9, fontWeight:800, color: audiences[1].color, letterSpacing:'0.12em', textTransform:'uppercase', opacity:0.7 }}>to</span>
+            <div style={{ width:2, height:32, background: audiences[1].color, borderRadius:2, display:'none' }} className="lg:block"/>
           </div>
 
-          {/* Card 3: Institutions */}
+          {/* Card 3 */}
           <AudienceCard a={audiences[2]} i={2} inView={inView} onDemoClick={onDemoClick} />
 
-        </div>
-
-        {/* Mobile: stacked */}
-        <div className="lg:hidden grid gap-5" ref={ref}>
-          {audiences.map((a,i) => <AudienceCard key={a.label} a={a} i={i} inView={inView} onDemoClick={onDemoClick}/>)}
         </div>
 
       </div>
