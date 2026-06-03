@@ -1932,6 +1932,8 @@ function MultimodalSection() {
         @keyframes voiceOrbMorph { 0%,100%{border-radius:54% 46% 38% 62%/61% 35% 65% 39%} 33%{border-radius:42% 58% 55% 45%/53% 62% 38% 47%} 66%{border-radius:61% 39% 44% 56%/39% 57% 43% 61%} }
         @keyframes orbFloat    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
         @keyframes mmGraphDash { 0%{stroke-dashoffset:70;opacity:0.28} 48%{opacity:1} 100%{stroke-dashoffset:0;opacity:0.28} }
+        @keyframes transcriptReveal { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes aruvaVoiceBlob { 0%,100%{border-radius:48% 52% 45% 55%/58% 43% 57% 42%;transform:scale(1)} 35%{border-radius:58% 42% 52% 48%/45% 60% 40% 55%;transform:scale(1.04)} 70%{border-radius:43% 57% 59% 41%/52% 44% 56% 48%;transform:scale(0.97)} }
       `}</style>
       <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
 
@@ -2051,86 +2053,85 @@ function MultimodalSection() {
                       </div>
                       <div>
                         <p style={{ fontSize:13, fontWeight:800, color:'#0a1628', lineHeight:1 }}>Aruva Voice Tutor</p>
-                        <p style={{ fontSize:11, color:'rgba(10,22,40,0.46)', marginTop:4 }}>Business Strategy 101 - live spoken guidance</p>
+                        <p style={{ fontSize:11, color:'rgba(10,22,40,0.46)', marginTop:4 }}>Listening, transcribing and responding</p>
                       </div>
                     </div>
                     <div style={{
-                      padding:'6px 10px', borderRadius:999, background:'rgba(5,150,105,0.09)',
-                      border:'1px solid rgba(5,150,105,0.18)', color:'#059669',
+                      padding:'6px 10px', borderRadius:999, background:'rgba(34,141,193,0.08)',
+                      border:'1px solid rgba(34,141,193,0.18)', color:'#228DC1',
                       fontSize:10, fontWeight:900, letterSpacing:'0.13em', textTransform:'uppercase',
                     }}>
-                      Socratic mode
+                      AI listening
                     </div>
                   </div>
 
-                  <div style={{ flex:1, display:'flex', flexDirection:'column', gap:14, minHeight:0 }}>
-                    <div style={{ alignSelf:'flex-end', maxWidth:'78%', opacity:0, animation:'mmCardIn 0.34s ease 0.05s forwards' }}>
-                      <div style={{
-                        background:'#f59e0b', color:'#fff', padding:'12px 15px', borderRadius:'16px 16px 4px 16px',
-                        boxShadow:'0 10px 22px rgba(245,158,11,0.22)', fontSize:13, fontWeight:700, lineHeight:1.45,
-                      }}>
-                        Can you explain Porter's Five Forces without just giving me the answer?
+                  <div style={{ flex:1, display:'grid', gridTemplateColumns:'1fr 220px', gap:22, minHeight:0, alignItems:'stretch' }}>
+                    <div style={{ display:'flex', flexDirection:'column', gap:13, minWidth:0 }}>
+                      <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.05s forwards' }}>
+                        <p style={{ fontSize:10, fontWeight:900, color:'#228DC1', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>Student transcript</p>
+                        <div style={{
+                          background:'#fff7ed', border:'1px solid rgba(245,158,11,0.22)', color:'#0a1628',
+                          padding:'12px 14px', borderRadius:'14px 14px 4px 14px', fontSize:13,
+                          fontWeight:700, lineHeight:1.45, boxShadow:'0 9px 20px rgba(245,158,11,0.12)',
+                        }}>
+                          "Can you explain Porter's Five Forces without giving me the answer?"
+                        </div>
                       </div>
-                    </div>
 
-                    <div style={{ alignSelf:'flex-start', maxWidth:'86%', opacity:0, animation:'mmCardIn 0.34s ease 0.22s forwards' }}>
-                      <div style={{ display:'flex', gap:10, alignItems:'flex-start' }}>
+                      <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.45s forwards' }}>
+                        <p style={{ fontSize:10, fontWeight:900, color:'#059669', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>AI responding</p>
                         <div style={{
-                          width:32, height:32, borderRadius:10, background:'#eef7fb', border:'1px solid #d8edf7',
-                          display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, color:'#228DC1',
-                          fontSize:10, fontWeight:900,
-                        }}>A</div>
-                        <div style={{
-                          background:'#ffffff', border:'1px solid #e6edf3', borderRadius:'16px 16px 16px 4px',
+                          background:'#ffffff', border:'1px solid #e6edf3', borderRadius:'14px 14px 14px 4px',
                           padding:'13px 15px', boxShadow:'0 8px 22px rgba(10,22,40,0.06)',
                           fontSize:13, color:'rgba(10,22,40,0.76)', lineHeight:1.55,
                         }}>
-                          Start with the buyer. What would give customers power in this market: lots of alternatives, low switching cost, or something else?
-                          <div style={{
-                            marginTop:10, paddingTop:10, borderTop:'1px solid #eef2f6',
-                            color:'#228DC1', fontSize:11, fontWeight:700,
-                          }}>
-                            Porter (2008), Ch. 2 - cited source
+                          Start with buyer power. What would give customers leverage here: many alternatives, low switching cost, or something else?
+                          <div style={{ marginTop:10, paddingTop:10, borderTop:'1px solid #eef2f6', color:'#228DC1', fontSize:11, fontWeight:800 }}>
+                            Cited source: Porter (2008), Ch. 2
                           </div>
+                        </div>
+                      </div>
+
+                      <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.82s forwards' }}>
+                        <p style={{ fontSize:10, fontWeight:900, color:'#d97706', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>Student reply transcript</p>
+                        <div style={{
+                          background:'#f59e0b', color:'#ffffff', padding:'12px 14px', borderRadius:'14px 14px 4px 14px',
+                          boxShadow:'0 10px 22px rgba(245,158,11,0.18)', fontSize:13, fontWeight:700, lineHeight:1.45,
+                        }}>
+                          "Switching costs. If it's easy to switch, buyers have more leverage."
                         </div>
                       </div>
                     </div>
 
-                    <div style={{ alignSelf:'flex-end', maxWidth:'74%', opacity:0, animation:'mmCardIn 0.34s ease 0.39s forwards' }}>
-                      <div style={{
-                        background:'#f59e0b', color:'#fff', padding:'12px 15px', borderRadius:'16px 16px 4px 16px',
-                        boxShadow:'0 10px 22px rgba(245,158,11,0.18)', fontSize:13, fontWeight:700, lineHeight:1.45,
-                      }}>
-                        Switching costs. If it's easy to switch, buyers have more leverage.
-                      </div>
-                    </div>
-
                     <div style={{
-                      marginTop:'auto', borderRadius:16, border:'1px solid rgba(34,141,193,0.18)',
-                      background:'rgba(34,141,193,0.07)', padding:'13px 15px', display:'flex',
-                      alignItems:'center', justifyContent:'space-between', gap:16,
-                      opacity:0, animation:'mmCardIn 0.34s ease 0.56s forwards',
+                      borderRadius:18, border:'1px solid rgba(34,141,193,0.16)', background:'linear-gradient(180deg,#eef8fd,#ffffff)',
+                      display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding:18,
+                      boxShadow:'inset 0 0 0 1px rgba(255,255,255,0.75)', overflow:'hidden',
                     }}>
-                      <div>
-                        <p style={{ fontSize:12, fontWeight:800, color:'#0a1628', marginBottom:4 }}>Aruva is listening</p>
-                        <p style={{ fontSize:11, color:'rgba(10,22,40,0.48)' }}>Voice answer captured as a mastery signal</p>
-                      </div>
-                      <div style={{ display:'flex', alignItems:'center', gap:2.5, height:34, flexShrink:0 }}>
-                        {MM_VOICE_BARS.slice(0, 18).map((h, i) => (
+                      <div style={{
+                        width:98, height:98, background:'radial-gradient(circle at 34% 32%,#c9f3ff 0%,#65c4ef 34%,#228DC1 72%)',
+                        boxShadow:'0 0 0 20px rgba(34,141,193,0.06), 0 0 46px rgba(34,141,193,0.28)',
+                        animation:'aruvaVoiceBlob 2.6s ease-in-out infinite', marginBottom:24,
+                      }} />
+                      <div style={{ display:'flex', alignItems:'center', gap:3, height:44, marginBottom:14 }}>
+                        {MM_VOICE_BARS.slice(0, 20).map((h, i) => (
                           <div key={i} style={{
-                            width:3, borderRadius:4,
-                            height:`${Math.max(22, h*44)}px`,
-                            background:'linear-gradient(180deg,#7dd3fc,#228DC1)',
+                            width:3.2, borderRadius:4,
+                            height:`${Math.max(11, h*50)}px`,
+                            background:i % 3 === 0 ? '#228DC1' : i % 3 === 1 ? '#65c4ef' : '#059669',
                             transformOrigin:'center',
-                            animation:`waveBar ${0.42+h*0.62}s ease-in-out ${MM_VOICE_DELAYS[i]}s infinite`,
+                            animation:`waveBar ${0.44+h*0.66}s ease-in-out ${MM_VOICE_DELAYS[i]}s infinite`,
                           }}/>
                         ))}
+                      </div>
+                      <div style={{ textAlign:'center' }}>
+                        <p style={{ fontSize:12, fontWeight:900, color:'#0a1628', marginBottom:4 }}>Listening...</p>
+                        <p style={{ fontSize:11, color:'rgba(10,22,40,0.48)', lineHeight:1.45 }}>Transcript updates as the student speaks.</p>
                       </div>
                     </div>
                   </div>
                 </div>
               )}
-
               {/* ── Text ── */}
               {active === 1 && <MMTextDemo />}
               {false && (
@@ -3215,4 +3216,5 @@ export default function AruvaPage() {
     </>
   )
 }
+
 
