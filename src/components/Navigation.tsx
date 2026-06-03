@@ -186,6 +186,7 @@ export default function Navigation() {
   const [mobileExpanded, setMobileExpanded] = useState<DropdownKey>(null)
   const [featuredIndex, setFeaturedIndex] = useState(0)
   const closeTimer = useRef<number | null>(null)
+  const lastFeaturedByKey = useRef<Record<string, number>>({})
   const location = useLocation()
 
   const openDropdown = (key: string) => {
@@ -193,7 +194,17 @@ export default function Navigation() {
       window.clearTimeout(closeTimer.current)
       closeTimer.current = null
     }
-    setActiveDropdown(key)
+    setActiveDropdown((current) => {
+      if (current !== key) {
+        const panel = featuredPanels[key]
+        if (panel?.items.length) {
+          const next = ((lastFeaturedByKey.current[key] ?? -1) + 1) % panel.items.length
+          lastFeaturedByKey.current[key] = next
+          setFeaturedIndex(next)
+        }
+      }
+      return key
+    })
   }
 
   const closeDropdownSoon = () => {
@@ -223,17 +234,6 @@ export default function Navigation() {
     closeDropdownNow()
     setMobileExpanded(null)
   }, [location])
-
-  useEffect(() => {
-    setFeaturedIndex(0)
-    const panel = activeDropdown ? featuredPanels[activeDropdown] : null
-    if (!panel || panel.items.length < 2) return
-
-    const id = window.setInterval(() => {
-      setFeaturedIndex((index) => (index + 1) % panel.items.length)
-    }, 3200)
-    return () => window.clearInterval(id)
-  }, [activeDropdown])
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -359,13 +359,13 @@ export default function Navigation() {
               id={`dropdown-${nav.key}`}
               role="region"
               aria-label={`${nav.key} submenu`}
-              className="absolute left-0 right-0 bg-[#101010] border-b border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.28)] animate-[navDrop_180ms_ease-out]"
+              className="absolute left-0 right-0 bg-white border-b border-gray-200 shadow-[0_24px_70px_rgba(10,22,40,0.10)] animate-[navDrop_180ms_ease-out]"
               onMouseEnter={() => openDropdown(nav.key)}
               onMouseLeave={closeDropdownSoon}
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="max-w-[1480px] mx-auto px-8 lg:px-16 xl:px-24 py-14">
+              <div className="max-w-[1760px] mx-auto px-8 lg:px-12 xl:px-14 2xl:px-16 py-14">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
@@ -392,11 +392,11 @@ export default function Navigation() {
 
                 {/* Grouped mega menu */}
                 {nav.groups && (
-                  <div className="grid grid-cols-[minmax(0,1fr)_520px] gap-28 items-start">
-                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-28'}`}>
+                  <div className="grid grid-cols-[minmax(0,1fr)_560px] gap-20 xl:gap-28 items-start">
+                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-20 xl:gap-28'}`}>
                       {nav.groups.map((group) => (
                         <div key={group.heading}>
-                          <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-white/45 mb-8 px-2">
+                          <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-[#0a1628]/45 mb-8 px-2">
                             {group.heading}
                           </p>
                           <div className="space-y-7">
@@ -405,13 +405,18 @@ export default function Navigation() {
                                 key={item.href}
                                 to={item.href}
                                 className="group block px-2 py-0 transition-transform duration-200 hover:translate-x-1"
+                                onMouseEnter={() => {
+                                  const panel = featuredPanels[nav.key]
+                                  const match = panel?.items.findIndex((featured) => featured.href === item.href || featured.label === item.label) ?? -1
+                                  if (match >= 0) setFeaturedIndex(match)
+                                }}
                                 onClick={closeDropdownNow}
                               >
                                 <div>
-                                  <p className="text-white text-[14px] font-semibold group-hover:text-[#78c7ee] transition-colors duration-150 mb-1 tracking-[-0.01em]">
+                                  <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-1 tracking-[-0.01em]">
                                     {item.label}
                                   </p>
-                                  <p className="text-white/55 text-xs font-normal leading-relaxed">
+                                  <p className="text-[#0a1628]/58 text-xs font-normal leading-relaxed">
                                     {item.desc}
                                   </p>
                                 </div>
@@ -427,7 +432,7 @@ export default function Navigation() {
                       const item = panel.items[featuredIndex % panel.items.length]
                       return (
                         <div className="pt-1">
-                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#78c7ee] mb-5">
+                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-5">
                             {panel.eyebrow}
                           </p>
                           <Link
@@ -436,29 +441,29 @@ export default function Navigation() {
                             onClick={closeDropdownNow}
                             className="group block"
                           >
-                            <div className="relative h-[270px] overflow-hidden rounded-[10px] bg-white shadow-[0_22px_70px_rgba(0,0,0,0.38)]">
+                            <div className="relative h-[272px] overflow-hidden rounded-[10px] bg-[#f5f8fb] border border-gray-200 shadow-[0_22px_60px_rgba(10,22,40,0.12)]">
                               <img
                                 src={item.image}
                                 alt=""
                                 className={`h-full w-full ${item.imageFit === 'contain' ? 'object-contain p-10' : 'object-cover'}`}
                               />
-                              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02)_0%,rgba(0,0,0,0.18)_100%)]" />
+                              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(10,22,40,0.10)_100%)]" />
                               <div className="absolute left-7 top-7 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]">
                                 {item.badge}
                               </div>
                               <span className="absolute bottom-6 right-7 text-[#0a1628] transition-transform duration-200 group-hover:translate-x-1">→</span>
                             </div>
-                            <h3 className="mt-7 text-white text-[16px] font-semibold tracking-[-0.01em]">
+                            <h3 className="mt-7 text-[#0a1628] text-[16px] font-semibold tracking-[-0.01em]">
                               {item.label}
                             </h3>
-                            <p className="mt-2 max-w-[470px] text-white/68 text-[13px] leading-relaxed">
+                            <p className="mt-2 max-w-[500px] text-[#0a1628]/62 text-[13px] leading-relaxed">
                               {item.desc}
                             </p>
                           </Link>
                           <Link
                             to={panel.href}
                             onClick={closeDropdownNow}
-                            className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#78c7ee] hover:text-white transition-colors"
+                            className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#228DC1] hover:text-[#0a1628] transition-colors"
                           >
                             {panel.cta} <span className="ml-2">→</span>
                           </Link>
