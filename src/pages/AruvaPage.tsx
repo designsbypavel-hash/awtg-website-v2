@@ -3139,70 +3139,6 @@ export default function AruvaPage() {
         </div>
       </div>
 
-      {/* Why Aruva */}
-      <section className="py-28 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-12">
-            <p className="type-label text-[#228DC1] mb-5">Why Aruva</p>
-            <h2 className="font-heading text-[#0a1628] mb-5">
-              Most AI answers questions directly.<br />
-              <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva develops</span> students' critical thinking.
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
-              Generic AI adds a chat interface to your institution. Aruva connects the entire academic lifecycle: syllabus, tutoring, assessment and analytics, into one <strong className="font-semibold text-[#0a1628]/80">continuous learning intelligence loop.</strong>
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-5">
-            {/* Generic AI column */}
-            <div className="border border-gray-200 rounded-2xl p-8 bg-gray-50/80">
-              <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/30 mb-6">Generic AI platforms</p>
-              <div className="space-y-4">
-                {[
-                  'Answers student questions from the open web',
-                  'No awareness of your syllabus, rubric or course week',
-                  'End of term grade is the only signal of progress',
-                  'Learning gaps surface after the exam, too late to act',
-                  'No control over how the AI behaves in your courses',
-                  'No critical thinking scaffolding, one-size-fits-all responses for every student',
-                ].map(item => (
-                  <div key={item} className="flex items-start gap-3.5">
-                    <div className="w-[18px] h-[18px] rounded-full border-2 border-gray-300 mt-0.5 shrink-0 flex items-center justify-center">
-                      <div className="w-2 h-0.5 bg-gray-300" />
-                    </div>
-                    <p className="text-[14px] text-[#0a1628]/45 leading-snug">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* Aruva column */}
-            <div className="border border-[#228DC1]/30 rounded-2xl p-8 bg-[#faf7f2] shadow-[0_8px_40px_rgba(34,141,193,0.10)]">
-              <div className="flex mb-6">
-                <span className="inline-flex items-center px-3 py-1 bg-[#228DC1] text-white rounded-full text-[11px] font-bold uppercase tracking-[0.18em]">Aruva</span>
-              </div>
-              <div className="space-y-4">
-                {[
-                  'Every response guided by your syllabus, rubric and course week',
-                  "Bloom's taxonomy mapped to each student interaction, automatically",
-                  'Individual learning profiles rebuilt in real time, every session',
-                  'Gap detection during the term so educators can intervene',
-                  'Professor sets AI tone, depth, approved content and behaviour',
-                  'Critical thinking scaffolded at every level with 100% personalisation, every student gets a uniquely adapted learning path',
-                ].map(item => (
-                  <div key={item} className="flex items-start gap-3.5">
-                    <span className="w-5 h-5 rounded-full flex items-center justify-center bg-[#228DC1] shrink-0 mt-0.5">
-                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth="2.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
-                      </svg>
-                    </span>
-                    <p className="text-[14px] text-[#0a1628]/75 leading-snug font-medium">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Curriculum agnostic */}
       <CurriculumAgnosticSection />
 
@@ -3223,6 +3159,48 @@ export default function AruvaPage() {
 
       {/* Who it's for */}
       <AudienceSection onDemoClick={openDemo} />
+
+      {/* Why Aruva */}
+      <section className="py-28 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="mb-12">
+            <p className="type-label text-[#228DC1] mb-5">Why Aruva</p>
+            <h2 className="font-heading text-[#0a1628] mb-5">
+              Most AI answers questions directly.<br />
+              <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva develops</span> students' critical thinking.
+            </h2>
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
+              Generic AI adds a chat interface to your institution. Aruva connects the entire academic lifecycle: syllabus, tutoring, assessment and analytics, into one <strong className="font-semibold text-[#0a1628]/80">continuous learning intelligence loop.</strong>
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-5">
+            <div className="border border-gray-200 rounded-2xl p-8 bg-gray-50/80">
+              <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/30 mb-6">Generic AI platforms</p>
+              <div className="space-y-4">
+                {['Answers student questions from the open web','No awareness of your syllabus, rubric or course week','End of term grade is the only signal of progress','Learning gaps surface after the exam, too late to act','No control over how the AI behaves in your courses','No critical thinking scaffolding, one-size-fits-all responses for every student'].map(item => (
+                  <div key={item} className="flex items-start gap-3.5">
+                    <div className="w-[18px] h-[18px] rounded-full border-2 border-gray-300 mt-0.5 shrink-0 flex items-center justify-center"><div className="w-2 h-0.5 bg-gray-300" /></div>
+                    <p className="text-[14px] text-[#0a1628]/45 leading-snug">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="border border-[#228DC1]/30 rounded-2xl p-8 bg-[#faf7f2] shadow-[0_8px_40px_rgba(34,141,193,0.10)]">
+              <div className="flex mb-6"><span className="inline-flex items-center px-3 py-1 bg-[#228DC1] text-white rounded-full text-[11px] font-bold uppercase tracking-[0.18em]">Aruva</span></div>
+              <div className="space-y-4">
+                {['Every response guided by your syllabus, rubric and course week',"Bloom's taxonomy mapped to each student interaction, automatically",'Individual learning profiles rebuilt in real time, every session','Gap detection during the term so educators can intervene','Professor sets AI tone, depth, approved content and behaviour','Critical thinking scaffolded at every level with 100% personalisation, every student gets a uniquely adapted learning path'].map(item => (
+                  <div key={item} className="flex items-start gap-3.5">
+                    <span className="w-5 h-5 rounded-full flex items-center justify-center bg-[#228DC1] shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" /></svg>
+                    </span>
+                    <p className="text-[14px] text-[#0a1628]/75 leading-snug font-medium">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Governance */}
       <section className="py-20 bg-white border-t border-gray-100">
