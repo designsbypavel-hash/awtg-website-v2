@@ -377,29 +377,12 @@ function AruvaHeroDashboard() {
       </div>
     </div>,
 
-    /* 7 Demo Lecture */
-    <div key="lecture" style={{ height:'100%', overflow:'hidden', position:'relative' }}>
-      <div style={{ height:140, background:'linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.75)), url(/images/aruva-photosynthesis-realistic.png) center/cover', display:'flex', flexDirection:'column', justifyContent:'flex-end', padding:'12px 14px', position:'relative' }}>
-        <div style={{ display:'flex', gap:6, marginBottom:6 }}>
-          <span style={{ background:'#f59e0b', borderRadius:5, padding:'2px 7px', fontSize:6.5, fontWeight:800, color:'white', letterSpacing:'0.1em' }}>LECTURE 04</span>
-          <span style={{ fontSize:6.5, color:'rgba(255,255,255,0.55)' }}>⏱ 25 MIN READ</span>
-        </div>
-        <p style={{ fontSize:14, fontWeight:900, color:'white', lineHeight:1.1, letterSpacing:'-0.01em' }}>THE ENGINE OF LIFE:</p>
-        <p style={{ fontSize:14, fontWeight:900, color:'#f59e0b', lineHeight:1.1, letterSpacing:'-0.01em' }}>CELLULAR RESPIRATION</p>
-        <p style={{ fontSize:7, color:'rgba(255,255,255,0.65)', marginTop:4, lineHeight:1.45 }}>Explore the biochemical pathways that convert nutrients into universal energy currency: ATP.</p>
-      </div>
-      <div style={{ padding:'12px 14px', background:'white', height:'calc(100% - 140px)', overflow:'hidden' }}>
-        <p style={{ fontSize:9, fontWeight:900, color:'#0a1628', letterSpacing:'0.04em', marginBottom:5 }}>1. MITOCHONDRIAL FUNCTIONALITY</p>
-        <p style={{ fontSize:7.5, color:'rgba(10,22,40,0.65)', lineHeight:1.65, marginBottom:8 }}>Often referred to as the powerhouse of the cell, mitochondria are double-membrane-bound organelles found in most eukaryotic organisms. They generate most of the cell's supply of adenosine triphosphate (ATP), used as a source of chemical energy.</p>
-        <p style={{ fontSize:7.5, color:'rgba(10,22,40,0.65)', lineHeight:1.65 }}>Mitochondria are responsible for ATP production through cellular respiration. They contain their own genome and ribosomes, which are evidence of their evolutionary origin as free-living bacteria.</p>
-      </div>
-    </div>,
   ]
 
   const S = { fontFamily:'Inter,system-ui,-apple-system,sans-serif' }
 
   return (
-    <div className="relative w-full max-w-[640px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)', ...S }}>
+    <div className="relative w-full max-w-[720px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)', ...S }}>
       <style>{`@keyframes screenIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}`}</style>
       <div className="absolute -inset-6 hidden lg:block" style={{ background:'radial-gradient(ellipse at 60% 40%,rgba(34,141,193,0.13) 0,transparent 70%)' }}/>
       <div style={{ borderRadius:14, overflow:'hidden', boxShadow:'0 32px 80px rgba(10,22,40,0.22),0 8px 24px rgba(10,22,40,0.10)', border:'1px solid rgba(10,22,40,0.08)' }}>
@@ -410,15 +393,19 @@ function AruvaHeroDashboard() {
             <p style={{ fontSize:7, fontWeight:600, letterSpacing:'0.16em', color:'rgba(10,22,40,0.35)', textTransform:'uppercase' }}>Student Hub</p>
             <div style={{ display:'flex', alignItems:'center', gap:5, background:'#f5f6fa', borderRadius:6, padding:'3px 8px', border:'1px solid #e5e7eb' }}>
               <div style={{ width:14, height:14, borderRadius:4, background:'#2c9b6e', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <p style={{ fontSize:8, color:'white' }}>🎓</p>
+                <div style={{ width:7, height:7, borderRadius:2, background:'white' }} />
               </div>
               <p style={{ fontSize:8, fontWeight:800, color:'#0a1628', letterSpacing:'0.04em' }}>STUDENT HUB</p>
               <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#9ca3af" strokeWidth="1.4" strokeLinecap="round"/></svg>
             </div>
           </div>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-            <div style={{ display:'flex', gap:5, opacity:0.5 }}>
-              {['⚙','🌙','💬'].map(ic => <p key={ic} style={{ fontSize:10 }}>{ic}</p>)}
+            <div style={{ display:'flex', gap:4, opacity:0.55 }}>
+              {['settings','night','screen'].map((ic, idx) => (
+                <div key={ic} style={{ width:15, height:15, borderRadius:5, border:'1px solid #d1d5db', background: idx === 1 ? '#eef2ff' : '#fff', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                  <span style={{ width:idx === 1 ? 6 : 7, height:idx === 2 ? 5 : 7, borderRadius:idx === 2 ? 1 : '50%', border:idx === 2 ? '1px solid #6b7280' : 'none', background:idx === 2 ? 'transparent' : '#6b7280' }} />
+                </div>
+              ))}
             </div>
             <div style={{ display:'flex', alignItems:'center', gap:5 }}>
               <div style={{ width:20, height:20, borderRadius:'50%', background:'linear-gradient(135deg,#c8a882,#b08060)', display:'flex', alignItems:'center', justifyContent:'center' }}>
@@ -433,7 +420,7 @@ function AruvaHeroDashboard() {
         </div>
 
         {/* Body */}
-        <div style={{ display:'flex', height:370 }}>
+        <div style={{ display:'flex', height:410, position:'relative' }}>
 
           {/* Sidebar */}
           <div style={{ width:108, background:'white', borderRight:'1px solid #e5e7eb', padding:'8px 6px', flexShrink:0 }}>
@@ -467,6 +454,23 @@ function AruvaHeroDashboard() {
             />
             <div style={{ display:'none', height:'100%' }}>{screens[active]}</div>
           </div>
+          {[4,5,6].includes(active) && (
+            <div style={{ position:'absolute', right:12, bottom:12, width:126, borderRadius:10, background:'white', border:'1px solid #e5e7eb', boxShadow:'0 18px 44px rgba(10,22,40,0.16)', padding:'10px', animation:'screenIn 0.3s ease both' }}>
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:8 }}>
+                <p style={{ fontSize:6.5, fontWeight:900, color:'#1e2d7d', letterSpacing:'0.12em', textTransform:'uppercase' }}>AI Guidance</p>
+                <span style={{ fontSize:8, color:'rgba(10,22,40,0.25)' }}>x</span>
+              </div>
+              <div style={{ background:'#f8fafc', borderRadius:7, padding:'7px', marginBottom:7 }}>
+                <p style={{ fontSize:5.5, color:'rgba(10,22,40,0.42)', letterSpacing:'0.08em', textTransform:'uppercase', marginBottom:2 }}>Active Session</p>
+                <p style={{ fontSize:7, fontWeight:800, color:'#0a1628' }}>{active === 4 ? 'Introduction to JavaScript' : active === 5 ? 'Variables & Scoping' : 'The Cell Theory'}</p>
+              </div>
+              <div style={{ background:'#eef2ff', border:'1px solid #dbe4ff', borderRadius:7, padding:'7px' }}>
+                <p style={{ fontSize:6.5, color:'#1e2d7d', lineHeight:1.45, fontWeight:700 }}>
+                  I'm ready to guide you through this task. Open the session card for a step-by-step walkthrough.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
