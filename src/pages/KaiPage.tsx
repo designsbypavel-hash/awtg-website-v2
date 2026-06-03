@@ -1835,7 +1835,7 @@ export default function KaiPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-20 items-center mb-14">
             <div className="max-w-xl">
-              <p className="type-label text-[#228DC1] mb-5">Live in Production</p>
+              <p className="type-label text-[#228DC1] mb-5">No Waiting Required</p>
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Our AI agent is live<br />at enterprise scale.
               </h2>
