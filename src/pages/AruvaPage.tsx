@@ -2397,60 +2397,67 @@ function BloomInsightSection() {
         {activeTab === 0 && (
         <div className="space-y-6 tab-panel-enter">
 
-          {/* LEFT — semester journey cards */}
-          <div className="grid sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_1.18fr] gap-4">
-            {BLOOM_SEMS.map((s, i) => (
-              <button key={s.id} onClick={() => pick(i)}
-                className="min-h-[166px] text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
-                style={active === i
-                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 12px 30px ${s.accent}12`, padding: '20px' }
-                  : { background:'rgba(255,255,255,0.78)', borderColor:'rgba(10,22,40,0.08)', padding: '20px' }
-                }>
-                <div className="absolute left-0 right-0 top-0 h-[3px] transition-all duration-300"
-                  style={{ background: active === i ? s.accent : 'transparent' }} />
-                <div className="h-full flex flex-col justify-between gap-4">
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.16em] whitespace-nowrap mb-1"
-                        style={{ color: active === i ? s.accent : 'rgba(10,22,40,0.3)' }}>
-                        {s.label}
-                      </p>
-                      <p className="text-[14px] font-semibold text-[#0a1628] leading-[1.35]"
-                        style={{ opacity: active === i ? 1 : 0.5 }}>
-                        {s.headline}
-                      </p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <p className="text-[28px] font-black leading-none tabular-nums"
-                        style={{ color: active === i ? s.accent : 'rgba(10,22,40,0.35)' }}>
+          {/* Semester journey cards — 3 equal columns */}
+          <div className="grid grid-cols-3 gap-4">
+            {BLOOM_SEMS.map((s, i) => {
+              const isActive = active === i
+              return (
+                <button key={s.id} onClick={() => pick(i)}
+                  className="text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
+                  style={{
+                    padding: '20px',
+                    background: isActive ? '#fff' : 'rgba(255,255,255,0.78)',
+                    borderColor: isActive ? s.accent + '40' : 'rgba(10,22,40,0.08)',
+                    boxShadow: isActive ? `0 12px 30px ${s.accent}14` : 'none',
+                  }}>
+                  {/* Top accent bar */}
+                  <div className="absolute left-0 right-0 top-0 h-[3px] transition-all duration-300"
+                    style={{ background: isActive ? s.accent : 'transparent' }} />
+
+                  {/* Semester label + grade on same row */}
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-[10px] font-black uppercase tracking-[0.18em]"
+                      style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.32)' }}>
+                      {s.label}
+                    </p>
+                    <div className="text-right">
+                      <span className="text-[26px] font-black leading-none tabular-nums"
+                        style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.30)' }}>
                         {s.grade}%
-                      </p>
-                      <p className="text-[12px] font-bold mt-1"
-                        style={{ color: active === i ? s.accent : 'rgba(10,22,40,0.25)' }}>
+                      </span>
+                      <span className="text-[11px] font-bold ml-1.5"
+                        style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.22)' }}>
                         {s.gradeLabel}
-                      </p>
+                      </span>
                     </div>
                   </div>
-                  <div className="h-[5px] bg-gray-100 rounded-full overflow-hidden mb-2.5">
+
+                  {/* Progress bar */}
+                  <div className="h-[5px] bg-gray-100 rounded-full overflow-hidden mb-3">
                     <div className="h-full rounded-full transition-all duration-700"
-                      style={{ width: `${s.grade}%`, background: active === i ? s.accent : 'rgba(10,22,40,0.14)' }} />
+                      style={{ width: `${s.grade}%`, background: isActive ? s.accent : 'rgba(10,22,40,0.12)' }} />
                   </div>
+
+                  {/* Headline */}
+                  <p className="text-[13px] font-semibold leading-snug mb-3"
+                    style={{ color: isActive ? '#0a1628' : 'rgba(10,22,40,0.42)' }}>
+                    {s.headline}
+                  </p>
+
+                  {/* Delta */}
                   {s.delta
-                    ? <p className="text-[13px] font-bold" style={{ color: s.accent }}>{s.delta} from baseline</p>
-                    : <p className="text-[13px] text-[#0a1628]/30">Baseline</p>}
-                </div>
-                {active === i && (
-                  <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{ background: s.accent + '10' }}>
-                    <div className="h-full" style={{ width: `${timerPct}%`, background: s.accent + '45', transition:'none' }} />
-                  </div>
-                )}
-              </button>
-            ))}
-            <div className="min-h-[166px] rounded-2xl bg-white border border-gray-200 px-6 py-6 flex items-center">
-              <p className="text-[13px] font-semibold text-[#0a1628]/55 leading-relaxed">
-                Evaluate was the early bottleneck. Targeted support in the next semester drove the breakthrough.
-              </p>
-            </div>
+                    ? <p className="text-[12px] font-bold" style={{ color: s.accent }}>{s.delta} from S1</p>
+                    : <p className="text-[12px] font-medium text-[#0a1628]/30">Baseline</p>}
+
+                  {/* Timer bar at bottom */}
+                  {isActive && (
+                    <div className="absolute bottom-0 left-0 right-0 h-[2px]">
+                      <div className="h-full" style={{ width: `${timerPct}%`, background: s.accent + '50', transition:'none' }} />
+                    </div>
+                  )}
+                </button>
+              )
+            })}
           </div>
 
           {/* RIGHT — Bloom profile card */}
@@ -2658,60 +2665,61 @@ function BloomInsightSection() {
         {activeTab === 1 && (
         <div className="space-y-6 tab-panel-enter">
 
-          {/* LEFT — DOK semester cards */}
-          <div className="grid sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_1.18fr] gap-4">
-            {DOK_SEMS.map((s, i) => (
-              <button key={s.id} onClick={() => pickDok(i)}
-                className="min-h-[166px] text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
-                style={dokActive === i
-                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 12px 30px ${s.accent}12`, padding: '20px' }
-                  : { background:'rgba(255,255,255,0.78)', borderColor:'rgba(10,22,40,0.08)', padding: '20px' }
-                }>
-                <div className="absolute left-0 right-0 top-0 h-[3px] transition-all duration-300"
-                  style={{ background: dokActive === i ? s.accent : 'transparent' }} />
-                <div className="h-full flex flex-col justify-between gap-4">
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.16em] whitespace-nowrap mb-1"
-                        style={{ color: dokActive === i ? s.accent : 'rgba(10,22,40,0.3)' }}>
-                        {s.label}
-                      </p>
-                      <p className="text-[14px] font-semibold text-[#0a1628] leading-[1.35]"
-                        style={{ opacity: dokActive === i ? 1 : 0.5 }}>
-                        {s.headline}
-                      </p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <p className="text-[28px] font-black leading-none tabular-nums"
-                        style={{ color: dokActive === i ? s.accent : 'rgba(10,22,40,0.35)' }}>
+          {/* DOK semester cards — 3 equal columns */}
+          <div className="grid grid-cols-3 gap-4">
+            {DOK_SEMS.map((s, i) => {
+              const isActive = dokActive === i
+              return (
+                <button key={s.id} onClick={() => pickDok(i)}
+                  className="text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
+                  style={{
+                    padding: '20px',
+                    background: isActive ? '#fff' : 'rgba(255,255,255,0.78)',
+                    borderColor: isActive ? s.accent + '40' : 'rgba(10,22,40,0.08)',
+                    boxShadow: isActive ? `0 12px 30px ${s.accent}14` : 'none',
+                  }}>
+                  <div className="absolute left-0 right-0 top-0 h-[3px] transition-all duration-300"
+                    style={{ background: isActive ? s.accent : 'transparent' }} />
+
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-[10px] font-black uppercase tracking-[0.18em]"
+                      style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.32)' }}>
+                      {s.label}
+                    </p>
+                    <div className="text-right">
+                      <span className="text-[26px] font-black leading-none tabular-nums"
+                        style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.30)' }}>
                         {s.grade}%
-                      </p>
-                      <p className="text-[12px] font-bold mt-1"
-                        style={{ color: dokActive === i ? s.accent : 'rgba(10,22,40,0.25)' }}>
+                      </span>
+                      <span className="text-[11px] font-bold ml-1.5"
+                        style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.22)' }}>
                         {s.gradeLabel}
-                      </p>
+                      </span>
                     </div>
                   </div>
-                  <div className="h-[5px] bg-gray-100 rounded-full overflow-hidden mb-2.5">
+
+                  <div className="h-[5px] bg-gray-100 rounded-full overflow-hidden mb-3">
                     <div className="h-full rounded-full transition-all duration-700"
-                      style={{ width: `${s.grade}%`, background: dokActive === i ? s.accent : 'rgba(10,22,40,0.14)' }} />
+                      style={{ width: `${s.grade}%`, background: isActive ? s.accent : 'rgba(10,22,40,0.12)' }} />
                   </div>
+
+                  <p className="text-[13px] font-semibold leading-snug mb-3"
+                    style={{ color: isActive ? '#0a1628' : 'rgba(10,22,40,0.42)' }}>
+                    {s.headline}
+                  </p>
+
                   {s.delta
-                    ? <p className="text-[13px] font-bold" style={{ color: s.accent }}>{s.delta} from baseline</p>
-                    : <p className="text-[13px] text-[#0a1628]/30">Baseline</p>}
-                </div>
-                {dokActive === i && (
-                  <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{ background: s.accent + '10' }}>
-                    <div className="h-full" style={{ width: `${dokTimerPct}%`, background: s.accent + '45', transition:'none' }} />
-                  </div>
-                )}
-              </button>
-            ))}
-            <div className="min-h-[166px] rounded-2xl bg-white border border-gray-200 px-6 py-6 flex items-center">
-              <p className="text-[13px] font-semibold text-[#0a1628]/55 leading-relaxed">
-                Strategic thinking was the early ceiling. Structured reasoning tasks unlocked the breakthrough.
-              </p>
-            </div>
+                    ? <p className="text-[12px] font-bold" style={{ color: s.accent }}>{s.delta} from S1</p>
+                    : <p className="text-[12px] font-medium text-[#0a1628]/30">Baseline</p>}
+
+                  {isActive && (
+                    <div className="absolute bottom-0 left-0 right-0 h-[2px]">
+                      <div className="h-full" style={{ width: `${dokTimerPct}%`, background: s.accent + '50', transition:'none' }} />
+                    </div>
+                  )}
+                </button>
+              )
+            })}
           </div>
 
           {/* RIGHT — DOK profile card */}
