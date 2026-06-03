@@ -2,11 +2,12 @@
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import heroImage from '@/assets/hero.png'
 
 
 type NavItem = { label: string; desc: string; href: string }
 type NavGroup = { heading: string; items: NavItem[] }
-type FeaturedItem = { label: string; desc: string; href: string; badge?: string }
+type FeaturedItem = { label: string; desc: string; href: string; badge?: string; image: string; imageFit?: 'cover' | 'contain' }
 type FeaturedPanel = {
   eyebrow: string
   title: string
@@ -111,12 +112,16 @@ const featuredPanels: Record<string, FeaturedPanel> = {
         desc: 'Aruva maps learning signals and guides every student through governed course intelligence.',
         href: '/products/aruva',
         badge: 'Aruva',
+        image: '/images/aruva-photosynthesis-realistic.png',
+        imageFit: 'cover',
       },
       {
         label: 'AI for Sales and Customer Services',
         desc: 'Kai helps teams respond faster, govern handoffs and improve customer operations.',
         href: '/products/kai',
         badge: 'Kai',
+        image: '/kai-mockup.png',
+        imageFit: 'cover',
       },
     ],
   },
@@ -132,12 +137,16 @@ const featuredPanels: Record<string, FeaturedPanel> = {
         desc: 'Intelligent 5G coverage mapping and network gap analysis.',
         href: '/products/icmap',
         badge: '5G',
+        image: heroImage,
+        imageFit: 'contain',
       },
       {
         label: 'SCAP',
         desc: 'Spectrum and capacity analysis for network planning teams.',
         href: '/services/engineering',
         badge: 'RF',
+        image: heroImage,
+        imageFit: 'contain',
       },
     ],
   },
@@ -153,12 +162,16 @@ const featuredPanels: Record<string, FeaturedPanel> = {
         desc: 'Who we are, how we work and what drives our delivery culture.',
         href: '/about',
         badge: 'AWTG',
+        image: '/team/person-0.png',
+        imageFit: 'cover',
       },
       {
         label: 'News & thought leadership',
         desc: 'Perspectives on AI, connectivity and digital infrastructure.',
         href: '/insights',
         badge: 'News',
+        image: '/team/person-5.png',
+        imageFit: 'cover',
       },
     ],
   },
@@ -346,13 +359,13 @@ export default function Navigation() {
               id={`dropdown-${nav.key}`}
               role="region"
               aria-label={`${nav.key} submenu`}
-              className="absolute left-0 right-0 bg-white border-b border-gray-200 shadow-[0_18px_45px_rgba(10,22,40,0.08)] animate-[navDrop_180ms_ease-out]"
+              className="absolute left-0 right-0 bg-[#101010] border-b border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.28)] animate-[navDrop_180ms_ease-out]"
               onMouseEnter={() => openDropdown(nav.key)}
               onMouseLeave={closeDropdownSoon}
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="max-w-7xl mx-auto px-6 lg:px-14 py-12">
+              <div className="max-w-[1480px] mx-auto px-8 lg:px-16 xl:px-24 py-14">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
@@ -379,14 +392,14 @@ export default function Navigation() {
 
                 {/* Grouped mega menu */}
                 {nav.groups && (
-                  <div className="grid grid-cols-[minmax(0,1fr)_430px] gap-24 items-start">
-                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-24'}`}>
+                  <div className="grid grid-cols-[minmax(0,1fr)_520px] gap-28 items-start">
+                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-28'}`}>
                       {nav.groups.map((group) => (
                         <div key={group.heading}>
-                          <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-[#0a1628]/55 mb-6 px-2">
+                          <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-white/45 mb-8 px-2">
                             {group.heading}
                           </p>
-                          <div className="space-y-6">
+                          <div className="space-y-7">
                             {group.items.map((item) => (
                               <Link
                                 key={item.href}
@@ -395,10 +408,10 @@ export default function Navigation() {
                                 onClick={closeDropdownNow}
                               >
                                 <div>
-                                  <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-1 tracking-[-0.01em]">
+                                  <p className="text-white text-[14px] font-semibold group-hover:text-[#78c7ee] transition-colors duration-150 mb-1 tracking-[-0.01em]">
                                     {item.label}
                                   </p>
-                                  <p className="text-[#0a1628]/58 text-xs font-normal leading-relaxed">
+                                  <p className="text-white/55 text-xs font-normal leading-relaxed">
                                     {item.desc}
                                   </p>
                                 </div>
@@ -414,7 +427,7 @@ export default function Navigation() {
                       const item = panel.items[featuredIndex % panel.items.length]
                       return (
                         <div className="pt-1">
-                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-5">
+                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#78c7ee] mb-5">
                             {panel.eyebrow}
                           </p>
                           <Link
@@ -423,41 +436,29 @@ export default function Navigation() {
                             onClick={closeDropdownNow}
                             className="group block"
                           >
-                            <div className="relative h-[210px] overflow-hidden rounded-[14px] border border-gray-200 bg-[#f8fafc] shadow-[0_18px_50px_rgba(10,22,40,0.10)]">
-                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(34,141,193,0.18),transparent_34%),linear-gradient(135deg,#ffffff_0%,#eef7fb_100%)]" />
-                              <div className="absolute left-8 right-8 top-8 flex items-center justify-between">
-                                <span className="text-[12px] font-black uppercase tracking-[0.18em] text-[#228DC1]">
-                                  {item.badge}
-                                </span>
-                                <span className="h-8 w-8 rounded-full border border-[#228DC1]/25 bg-white/80" />
+                            <div className="relative h-[270px] overflow-hidden rounded-[10px] bg-white shadow-[0_22px_70px_rgba(0,0,0,0.38)]">
+                              <img
+                                src={item.image}
+                                alt=""
+                                className={`h-full w-full ${item.imageFit === 'contain' ? 'object-contain p-10' : 'object-cover'}`}
+                              />
+                              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02)_0%,rgba(0,0,0,0.18)_100%)]" />
+                              <div className="absolute left-7 top-7 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]">
+                                {item.badge}
                               </div>
-                              <div className="absolute left-8 right-8 top-[92px] space-y-5">
-                                {[0, 1, 2].map((line) => (
-                                  <div key={line} className="flex items-center gap-5">
-                                    <span className="h-2 w-2 rounded-full bg-[#228DC1]" />
-                                    <span className="h-px flex-1 bg-[#0a1628]/12" />
-                                    <span className="h-7 w-7 rounded-full bg-white shadow-[0_6px_18px_rgba(10,22,40,0.08)]" />
-                                  </div>
-                                ))}
-                              </div>
-                              <div className="absolute bottom-6 left-8 right-8 flex items-end justify-between">
-                                <span className="max-w-[250px] text-[24px] font-semibold leading-tight tracking-[-0.03em] text-[#0a1628]">
-                                  {item.label}
-                                </span>
-                                <span className="text-[#228DC1] transition-transform duration-200 group-hover:translate-x-1">→</span>
-                              </div>
+                              <span className="absolute bottom-6 right-7 text-[#0a1628] transition-transform duration-200 group-hover:translate-x-1">→</span>
                             </div>
-                            <h3 className="mt-6 text-[#0a1628] text-[18px] font-semibold tracking-[-0.02em]">
+                            <h3 className="mt-7 text-white text-[16px] font-semibold tracking-[-0.01em]">
                               {item.label}
                             </h3>
-                            <p className="mt-2 text-[#0a1628]/62 text-[13px] leading-relaxed">
+                            <p className="mt-2 max-w-[470px] text-white/68 text-[13px] leading-relaxed">
                               {item.desc}
                             </p>
                           </Link>
                           <Link
                             to={panel.href}
                             onClick={closeDropdownNow}
-                            className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#228DC1] hover:text-[#1a6e99] transition-colors"
+                            className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#78c7ee] hover:text-white transition-colors"
                           >
                             {panel.cta} <span className="ml-2">→</span>
                           </Link>
