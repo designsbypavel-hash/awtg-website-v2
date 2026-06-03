@@ -2923,41 +2923,42 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           </h2>
         </div>
         {/* Cards + arrows wrapper */}
-        <div ref={ref} className="relative" style={{ paddingTop:88, paddingBottom:88 }}>
+        <div ref={ref} className="relative">
 
-          {/* Full-width SVG arrow zone — ABOVE the cards (card1→card2) */}
-          <div className="hidden lg:block absolute pointer-events-none" style={{ top:0, left:0, right:0, height:88, ...reveal(inView, 400) }}>
-            <svg viewBox="0 0 1000 88" preserveAspectRatio="none" style={{ width:'100%', height:'100%' }}>
-              <defs>
-                <marker id="ah1" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-                  <path d="M0 0 L10 5 L0 10 Z" fill={audiences[0].color} opacity="0.9"/>
-                </marker>
-              </defs>
-              {/* card1 center ≈ x=167, card2 center ≈ x=500 */}
-              <path d="M 167 84 C 167 8, 500 8, 500 84"
-                stroke={audiences[0].color} strokeWidth="2.5" strokeLinecap="round"
-                fill="none" markerEnd="url(#ah1)" opacity="0.85"/>
-            </svg>
-          </div>
-
-          {/* Full-width SVG arrow zone — BELOW the cards (card2→card3) */}
-          <div className="hidden lg:block absolute pointer-events-none" style={{ bottom:0, left:0, right:0, height:88, ...reveal(inView, 560) }}>
-            <svg viewBox="0 0 1000 88" preserveAspectRatio="none" style={{ width:'100%', height:'100%' }}>
-              <defs>
-                <marker id="ah2" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-                  <path d="M0 0 L10 5 L0 10 Z" fill={audiences[1].color} opacity="0.9"/>
-                </marker>
-              </defs>
-              {/* card2 center ≈ x=500, card3 center ≈ x=833 */}
-              <path d="M 500 4 C 500 80, 833 80, 833 4"
-                stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"
-                fill="none" markerEnd="url(#ah2)" opacity="0.85"/>
-            </svg>
-          </div>
-
-        <div className="grid sm:grid-cols-3 gap-6">
+        {/* Arrow between card1 and card2 — points LEFT (card2→card1) */}
+        {/* Arrow between card2 and card3 — points RIGHT (card2→card3) */}
+        <div className="hidden lg:flex items-stretch gap-0">
           {audiences.map((a, i) => (
-            <div key={a.label} className="relative bg-white rounded-2xl flex flex-col overflow-hidden"
+            <React.Fragment key={a.label}>
+              {/* Arrow gap: card2→card1 (pointing left) */}
+              {i === 1 && (
+                <div className="flex items-center justify-center shrink-0 z-10" style={{ width:48, ...reveal(inView, 250) }}>
+                  <svg width="48" height="56" viewBox="0 0 48 56" fill="none">
+                    <defs>
+                      <marker id="arL" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto-start-reverse">
+                        <path d="M0 4 L8 0 L8 8 Z" fill={audiences[1].color}/>
+                      </marker>
+                    </defs>
+                    {/* Left arrow: card2 → card1 */}
+                    <path d="M 44 20 C 30 20, 18 20, 4 20" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" fill="none" markerEnd="url(#arL)"/>
+                    {/* Right arrow: card2 → card3 */}
+                    <path d="M 4 36 C 18 36, 30 36, 44 36" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" fill="none" markerEnd="url(#arL)"/>
+                  </svg>
+                </div>
+              )}
+              {i === 2 && (
+                <div className="flex items-center justify-center shrink-0 z-10" style={{ width:48, ...reveal(inView, 350) }}>
+                  <svg width="48" height="56" viewBox="0 0 48 56" fill="none">
+                    <defs>
+                      <marker id="arR" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+                        <path d="M0 0 L8 4 L0 8 Z" fill={audiences[1].color}/>
+                      </marker>
+                    </defs>
+                    <path d="M 4 28 C 18 28, 30 28, 44 28" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" fill="none" markerEnd="url(#arR)"/>
+                  </svg>
+                </div>
+              )}
+            <div className="flex-1 relative bg-white rounded-2xl flex flex-col overflow-hidden"
               style={{
                 boxShadow: '0 4px 32px rgba(10,22,40,0.09)',
                 border: `1px solid ${a.color}22`,
@@ -3011,8 +3012,44 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
                 </div>
               </div>
             </div>
+            </React.Fragment>
           ))}
         </div>
+
+        {/* Mobile fallback: plain 1-col stack */}
+        <div className="lg:hidden grid gap-5">
+          {audiences.map((a, i) => (
+            <div key={a.label} className="relative bg-white rounded-2xl flex flex-col overflow-hidden"
+              style={{ boxShadow:'0 4px 32px rgba(10,22,40,0.09)', border:`1px solid ${a.color}22`, ...reveal(inView, i*100) }}>
+              <div style={{ height:4, background:`linear-gradient(90deg,${a.color},${a.color}99)` }}/>
+              <div className="p-7 flex flex-col flex-1">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background:a.soft, color:a.color }}>{a.icon}</div>
+                  <span style={{ fontSize:10, fontWeight:800, letterSpacing:'0.16em', textTransform:'uppercase', color:a.color }}>{a.label}</span>
+                </div>
+                <h3 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize:20 }}>{a.headline}</h3>
+                <p className="text-[#0a1628]/55 text-[13px] leading-relaxed mb-6">{a.desc}</p>
+                <div className="space-y-2.5 flex-1">
+                  {a.points.map(pt => (
+                    <div key={pt} className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background:a.color }}>
+                        <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      </div>
+                      <p className="text-[#0a1628]/65 text-[13px] font-normal leading-relaxed">{pt}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 pt-5 border-t" style={{ borderColor:`${a.color}18` }}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[12px] font-bold" style={{ color:a.color }}>{a.stat}</span>
+                    <button type="button" onClick={onDemoClick} className="text-[12px] font-semibold px-4 py-2 rounded-lg" style={{ background:a.color, color:'white' }}>Learn more</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         </div>{/* end cards + arrows wrapper */}
       </div>
     </section>
