@@ -2922,7 +2922,26 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
         </div>
-        <div ref={ref} className="grid sm:grid-cols-3 gap-6">
+        {/* Cards + arrows wrapper */}
+        <div ref={ref} className="relative">
+
+          {/* Arrow 1: Students → Educators (curves over the top) */}
+          <div className="hidden lg:block absolute z-10" style={{ top:-38, left:'calc(33.33% - 32px)', width:'calc(33.33% + 64px)' }}>
+            <svg viewBox="0 0 200 54" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width:'100%', height:54, ...reveal(inView, 200) }}>
+              <path d="M10 44 C10 10, 190 10, 190 44" stroke={audiences[0].color} strokeWidth="2.5" strokeLinecap="round" fill="none" strokeDasharray="4 0"/>
+              <polygon points="186,38 196,46 182,50" fill={audiences[0].color}/>
+            </svg>
+          </div>
+
+          {/* Arrow 2: Educators → Institutions (curves under the bottom) */}
+          <div className="hidden lg:block absolute z-10" style={{ bottom:-38, left:'calc(33.33% + 32px)', width:'calc(33.33% + 64px)' }}>
+            <svg viewBox="0 0 200 54" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width:'100%', height:54, ...reveal(inView, 350) }}>
+              <path d="M10 10 C10 44, 190 44, 190 10" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+              <polygon points="186,16 196,8 182,4" fill={audiences[1].color}/>
+            </svg>
+          </div>
+
+        <div className="grid sm:grid-cols-3 gap-6">
           {audiences.map((a, i) => (
             <div key={a.label} className="relative bg-white rounded-2xl flex flex-col overflow-hidden"
               style={{
@@ -2980,6 +2999,7 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             </div>
           ))}
         </div>
+        </div>{/* end cards + arrows wrapper */}
       </div>
     </section>
   )
