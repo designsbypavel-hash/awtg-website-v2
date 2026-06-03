@@ -2922,36 +2922,36 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
         </div>
-        {/* Cards + arrows wrapper — extra vertical padding for arrows */}
-        <div ref={ref} className="relative" style={{ paddingTop:64, paddingBottom:64 }}>
+        {/* Cards + arrows wrapper */}
+        <div ref={ref} className="relative" style={{ paddingTop:72, paddingBottom:72 }}>
 
-          {/* Arrow 1: Students → Educators — arches over the top */}
-          <div className="hidden lg:block absolute z-10 pointer-events-none"
-            style={{ top:0, left:'25%', width:'25%', ...reveal(inView, 300) }}>
-            <svg viewBox="0 0 160 68" fill="none" style={{ width:'100%', overflow:'visible' }}>
+          {/* Arrow 1: Students → Educators — full arch ABOVE the cards */}
+          <div className="hidden lg:block absolute pointer-events-none"
+            style={{ top:0, left:'8%', width:'42%', height:72, ...reveal(inView, 300) }}>
+            <svg viewBox="0 0 300 72" fill="none" preserveAspectRatio="none" style={{ width:'100%', height:'100%', overflow:'visible' }}>
               <defs>
-                <marker id="arr1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                  <path d="M0 0 L8 4 L0 8 Z" fill={audiences[0].color}/>
+                <marker id="a1head" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 Z" fill={audiences[0].color}/>
                 </marker>
               </defs>
-              <path d="M8 60 C8 10, 152 10, 152 60"
+              <path d="M 10 68 C 10 8, 290 8, 290 68"
                 stroke={audiences[0].color} strokeWidth="2.5" strokeLinecap="round"
-                fill="none" markerEnd="url(#arr1)"/>
+                fill="none" markerEnd="url(#a1head)"/>
             </svg>
           </div>
 
-          {/* Arrow 2: Educators → Institutions — arches under the bottom */}
-          <div className="hidden lg:block absolute z-10 pointer-events-none"
-            style={{ bottom:0, left:'50%', width:'25%', ...reveal(inView, 450) }}>
-            <svg viewBox="0 0 160 68" fill="none" style={{ width:'100%', overflow:'visible' }}>
+          {/* Arrow 2: Educators → Institutions — full arch BELOW the cards */}
+          <div className="hidden lg:block absolute pointer-events-none"
+            style={{ bottom:0, left:'50%', width:'42%', height:72, ...reveal(inView, 500) }}>
+            <svg viewBox="0 0 300 72" fill="none" preserveAspectRatio="none" style={{ width:'100%', height:'100%', overflow:'visible' }}>
               <defs>
-                <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                  <path d="M0 0 L8 4 L0 8 Z" fill={audiences[1].color}/>
+                <marker id="a2head" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 Z" fill={audiences[1].color}/>
                 </marker>
               </defs>
-              <path d="M8 8 C8 58, 152 58, 152 8"
+              <path d="M 10 4 C 10 64, 290 64, 290 4"
                 stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"
-                fill="none" markerEnd="url(#arr2)"/>
+                fill="none" markerEnd="url(#a2head)"/>
             </svg>
           </div>
 
