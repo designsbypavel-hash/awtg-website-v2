@@ -2375,45 +2375,45 @@ function BloomInsightSection() {
         <div className="space-y-6 tab-panel-enter">
 
           {/* LEFT — semester journey cards */}
-          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_1.18fr] gap-4">
             {BLOOM_SEMS.map((s, i) => (
               <button key={s.id} onClick={() => pick(i)}
-                className="min-h-[154px] text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
+                className="min-h-[166px] text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
                 style={active === i
-                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 10px 28px ${s.accent}14`, padding: '18px 18px 16px' }
-                  : { background:'rgba(255,255,255,0.68)', borderColor:'rgba(10,22,40,0.07)', padding: '18px' }
+                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 12px 30px ${s.accent}12`, padding: '20px' }
+                  : { background:'rgba(255,255,255,0.78)', borderColor:'rgba(10,22,40,0.08)', padding: '20px' }
                 }>
-                <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full transition-all duration-300"
+                <div className="absolute left-0 right-0 top-0 h-[3px] transition-all duration-300"
                   style={{ background: active === i ? s.accent : 'transparent' }} />
-                <div className="pl-3">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="h-full flex flex-col justify-between gap-4">
+                  <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.18em] mb-1"
+                      <p className="text-[11px] font-black uppercase tracking-[0.16em] whitespace-nowrap mb-1"
                         style={{ color: active === i ? s.accent : 'rgba(10,22,40,0.3)' }}>
-                        {s.id} · {s.label}
+                        {s.label}
                       </p>
-                      <p className="text-[14px] font-semibold text-[#0a1628] leading-snug"
+                      <p className="text-[14px] font-semibold text-[#0a1628] leading-[1.35]"
                         style={{ opacity: active === i ? 1 : 0.5 }}>
-                        {s.headline.split(' ').slice(0,3).join(' ')}…
+                        {s.headline}
                       </p>
                     </div>
-                    <div className="text-right shrink-0 ml-3">
-                      <p className="text-[26px] font-black leading-none tabular-nums"
+                    <div className="text-right shrink-0">
+                      <p className="text-[28px] font-black leading-none tabular-nums"
                         style={{ color: active === i ? s.accent : 'rgba(10,22,40,0.35)' }}>
                         {s.grade}%
                       </p>
-                      <p className="text-[13px] font-bold mt-0.5"
+                      <p className="text-[12px] font-bold mt-1"
                         style={{ color: active === i ? s.accent : 'rgba(10,22,40,0.25)' }}>
                         {s.gradeLabel}
                       </p>
                     </div>
                   </div>
-                  <div className="h-[5px] bg-gray-100 rounded-full overflow-hidden mb-2">
+                  <div className="h-[5px] bg-gray-100 rounded-full overflow-hidden mb-2.5">
                     <div className="h-full rounded-full transition-all duration-700"
-                      style={{ width: `${s.grade}%`, background: active === i ? s.accent : 'rgba(10,22,40,0.12)' }} />
+                      style={{ width: `${s.grade}%`, background: active === i ? s.accent : 'rgba(10,22,40,0.14)' }} />
                   </div>
                   {s.delta
-                    ? <p className="text-[13px] font-bold" style={{ color: s.accent }}>{s.delta} from S1</p>
+                    ? <p className="text-[13px] font-bold" style={{ color: s.accent }}>{s.delta} from baseline</p>
                     : <p className="text-[13px] text-[#0a1628]/30">Baseline</p>}
                 </div>
                 {active === i && (
@@ -2423,9 +2423,9 @@ function BloomInsightSection() {
                 )}
               </button>
             ))}
-            <div className="min-h-[154px] rounded-2xl bg-white border border-gray-200 px-5 py-5 flex items-end">
-              <p className="text-[13px] font-semibold text-[#0a1628]/50 leading-relaxed">
-                Evaluate was the bottleneck in S1. Targeted support in S2 drove the breakthrough.
+            <div className="min-h-[166px] rounded-2xl bg-white border border-gray-200 px-6 py-6 flex items-center">
+              <p className="text-[13px] font-semibold text-[#0a1628]/55 leading-relaxed">
+                Evaluate was the early bottleneck. Targeted support in the next semester drove the breakthrough.
               </p>
             </div>
           </div>
@@ -2636,45 +2636,45 @@ function BloomInsightSection() {
         <div className="space-y-6 tab-panel-enter">
 
           {/* LEFT — DOK semester cards */}
-          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))_1.18fr] gap-4">
             {DOK_SEMS.map((s, i) => (
               <button key={s.id} onClick={() => pickDok(i)}
-                className="min-h-[154px] text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
+                className="min-h-[166px] text-left rounded-2xl border transition-all duration-300 relative overflow-hidden"
                 style={dokActive === i
-                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 10px 28px ${s.accent}14`, padding: '18px 18px 16px' }
-                  : { background:'rgba(255,255,255,0.68)', borderColor:'rgba(10,22,40,0.07)', padding: '18px' }
+                  ? { background:'#fff', borderColor: s.accent + '35', boxShadow: `0 12px 30px ${s.accent}12`, padding: '20px' }
+                  : { background:'rgba(255,255,255,0.78)', borderColor:'rgba(10,22,40,0.08)', padding: '20px' }
                 }>
-                <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full transition-all duration-300"
+                <div className="absolute left-0 right-0 top-0 h-[3px] transition-all duration-300"
                   style={{ background: dokActive === i ? s.accent : 'transparent' }} />
-                <div className="pl-3">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="h-full flex flex-col justify-between gap-4">
+                  <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.18em] mb-1"
+                      <p className="text-[11px] font-black uppercase tracking-[0.16em] whitespace-nowrap mb-1"
                         style={{ color: dokActive === i ? s.accent : 'rgba(10,22,40,0.3)' }}>
-                        {s.id} · {s.label}
+                        {s.label}
                       </p>
-                      <p className="text-[14px] font-semibold text-[#0a1628] leading-snug"
+                      <p className="text-[14px] font-semibold text-[#0a1628] leading-[1.35]"
                         style={{ opacity: dokActive === i ? 1 : 0.5 }}>
-                        {s.headline.split(' ').slice(0,3).join(' ')}…
+                        {s.headline}
                       </p>
                     </div>
-                    <div className="text-right shrink-0 ml-3">
-                      <p className="text-[26px] font-black leading-none tabular-nums"
+                    <div className="text-right shrink-0">
+                      <p className="text-[28px] font-black leading-none tabular-nums"
                         style={{ color: dokActive === i ? s.accent : 'rgba(10,22,40,0.35)' }}>
                         {s.grade}%
                       </p>
-                      <p className="text-[13px] font-bold mt-0.5"
+                      <p className="text-[12px] font-bold mt-1"
                         style={{ color: dokActive === i ? s.accent : 'rgba(10,22,40,0.25)' }}>
                         {s.gradeLabel}
                       </p>
                     </div>
                   </div>
-                  <div className="h-[5px] bg-gray-100 rounded-full overflow-hidden mb-2">
+                  <div className="h-[5px] bg-gray-100 rounded-full overflow-hidden mb-2.5">
                     <div className="h-full rounded-full transition-all duration-700"
-                      style={{ width: `${s.grade}%`, background: dokActive === i ? s.accent : 'rgba(10,22,40,0.12)' }} />
+                      style={{ width: `${s.grade}%`, background: dokActive === i ? s.accent : 'rgba(10,22,40,0.14)' }} />
                   </div>
                   {s.delta
-                    ? <p className="text-[13px] font-bold" style={{ color: s.accent }}>{s.delta} from S1</p>
+                    ? <p className="text-[13px] font-bold" style={{ color: s.accent }}>{s.delta} from baseline</p>
                     : <p className="text-[13px] text-[#0a1628]/30">Baseline</p>}
                 </div>
                 {dokActive === i && (
@@ -2684,9 +2684,9 @@ function BloomInsightSection() {
                 )}
               </button>
             ))}
-            <div className="min-h-[154px] rounded-2xl bg-white border border-gray-200 px-5 py-5 flex items-end">
-              <p className="text-[13px] font-semibold text-[#0a1628]/50 leading-relaxed">
-                DOK 3 was the ceiling in S1. Structured reasoning tasks in S2 unlocked the breakthrough.
+            <div className="min-h-[166px] rounded-2xl bg-white border border-gray-200 px-6 py-6 flex items-center">
+              <p className="text-[13px] font-semibold text-[#0a1628]/55 leading-relaxed">
+                Strategic thinking was the early ceiling. Structured reasoning tasks unlocked the breakthrough.
               </p>
             </div>
           </div>
