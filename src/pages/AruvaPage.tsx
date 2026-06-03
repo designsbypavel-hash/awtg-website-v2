@@ -3219,14 +3219,11 @@ export default function AruvaPage() {
               </p>
               {/* Dark card */}
               <div className="rounded-2xl p-8" style={{ background:'#0a1628' }}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ background:'rgba(255,255,255,0.1)' }}>
-                  <FontAwesomeIcon icon={faShield} style={{ width:18, height:18, color:'#fbbf24' }} />
-                </div>
-                <p className="type-label mb-3" style={{ color:'rgba(255,255,255,0.45)' }}>Governance Built In</p>
-                <h3 className="font-bold text-white mb-3" style={{ fontSize:22, lineHeight:1.25 }}>
+                <p className="type-label mb-4" style={{ color:'rgba(255,255,255,0.45)' }}>Governance Built In</p>
+                <h3 className="font-bold text-white mb-4" style={{ fontSize:22, lineHeight:1.3 }}>
                   Designed for institutions with real compliance requirements
                 </h3>
-                <p style={{ fontSize:13, color:'rgba(255,255,255,0.55)', lineHeight:1.7 }}>
+                <p style={{ fontSize:14, color:'rgba(255,255,255,0.55)', lineHeight:1.75 }}>
                   Audit trails, role based access and data residency are core to how Aruva is architected.
                 </p>
               </div>
