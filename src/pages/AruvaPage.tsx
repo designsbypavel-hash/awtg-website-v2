@@ -2963,26 +2963,33 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           {/* Card 1 */}
           <AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} />
 
-          {/* Arrows between card1 and card2 */}
-          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-2" style={{ width:64 }}>
-            {/* ← primary */}
-            <div style={{ filter:`drop-shadow(0 4px 12px ${audiences[1].color}55)` }}>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                <defs>
-                  <linearGradient id="g1a" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#a78bfa"/>
-                    <stop offset="100%" stopColor={audiences[1].color}/>
-                  </linearGradient>
-                </defs>
-                <circle cx="26" cy="26" r="24" fill="url(#g1a)"/>
-                <path d="M30 26H22M22 26L27 21M22 26L27 31" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          {/* Connector: card2 ↔ card1 */}
+          <div className="flex lg:flex-col items-center justify-center shrink-0" style={{ width:72, gap:6 }}>
+            {/* ← */}
+            <div style={{
+              display:'flex', alignItems:'center', gap:6,
+              background:'linear-gradient(135deg,#ede9fe,#ddd6fe)',
+              border:'1px solid #c4b5fd',
+              borderRadius:99, padding:'7px 12px',
+              boxShadow:'0 4px 16px rgba(124,58,237,0.18)',
+            }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 8H6M6 8L8.5 5.5M6 8L8.5 10.5" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
+              <span style={{ fontSize:10, fontWeight:800, color:'#7c3aed', letterSpacing:'0.08em' }}>TO</span>
             </div>
-            {/* → reverse */}
-            <div style={{ filter:`drop-shadow(0 4px 8px ${audiences[1].color}33)` }}>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                <circle cx="26" cy="26" r="23" fill="white" stroke={audiences[1].color} strokeWidth="1.5" strokeDasharray="5 3"/>
-                <path d="M22 26H30M30 26L25 21M30 26L25 31" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            {/* divider dot */}
+            <div style={{ width:4, height:4, borderRadius:'50%', background:'#c4b5fd' }}/>
+            {/* → */}
+            <div style={{
+              display:'flex', alignItems:'center', gap:6,
+              background:'linear-gradient(135deg,#7c3aed,#6d28d9)',
+              borderRadius:99, padding:'7px 12px',
+              boxShadow:'0 4px 16px rgba(124,58,237,0.35)',
+            }}>
+              <span style={{ fontSize:10, fontWeight:800, color:'white', letterSpacing:'0.08em' }}>FROM</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 8H10M10 8L7.5 5.5M10 8L7.5 10.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
           </div>
@@ -2990,27 +2997,34 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           {/* Card 2 — Educators (hub) */}
           <AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} />
 
-          {/* Arrows between card2 and card3 */}
-          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-2" style={{ width:64 }}>
-            {/* → primary */}
-            <div style={{ filter:`drop-shadow(0 4px 12px ${audiences[1].color}55)` }}>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                <defs>
-                  <linearGradient id="g2a" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor={audiences[1].color}/>
-                    <stop offset="100%" stopColor="#a78bfa"/>
-                  </linearGradient>
-                </defs>
-                <circle cx="26" cy="26" r="24" fill="url(#g2a)"/>
-                <path d="M22 26H30M30 26L25 21M30 26L25 31" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          {/* Connector: card2 ↔ card3 */}
+          <div className="flex lg:flex-col items-center justify-center shrink-0" style={{ width:72, gap:6 }}>
+            {/* → */}
+            <div style={{
+              display:'flex', alignItems:'center', gap:6,
+              background:'linear-gradient(135deg,#7c3aed,#6d28d9)',
+              borderRadius:99, padding:'7px 12px',
+              boxShadow:'0 4px 16px rgba(124,58,237,0.35)',
+            }}>
+              <span style={{ fontSize:10, fontWeight:800, color:'white', letterSpacing:'0.08em' }}>TO</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 8H10M10 8L7.5 5.5M10 8L7.5 10.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            {/* ← reverse */}
-            <div style={{ filter:`drop-shadow(0 4px 8px ${audiences[1].color}33)` }}>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                <circle cx="26" cy="26" r="23" fill="white" stroke={audiences[1].color} strokeWidth="1.5" strokeDasharray="5 3"/>
-                <path d="M30 26H22M22 26L27 21M22 26L27 31" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            {/* divider dot */}
+            <div style={{ width:4, height:4, borderRadius:'50%', background:'#c4b5fd' }}/>
+            {/* ← */}
+            <div style={{
+              display:'flex', alignItems:'center', gap:6,
+              background:'linear-gradient(135deg,#ede9fe,#ddd6fe)',
+              border:'1px solid #c4b5fd',
+              borderRadius:99, padding:'7px 12px',
+              boxShadow:'0 4px 16px rgba(124,58,237,0.18)',
+            }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 8H6M6 8L8.5 5.5M6 8L8.5 10.5" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
+              <span style={{ fontSize:10, fontWeight:800, color:'#7c3aed', letterSpacing:'0.08em' }}>FROM</span>
             </div>
           </div>
 
