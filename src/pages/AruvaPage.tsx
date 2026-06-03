@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faShield, faArrowsRotate, faWandSparkles, faCircleCheck, faMicrophone, faPen, faImage, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import ProductDemoModal from '@/components/ProductDemoModal'
 
-// -- Hero Screen Showcase (cycles Student Hub screens) ------------------------
+// -- Hero Screen Showcase -----------------------------------------------------
 const HERO_NAV = [
   { label: 'Dashboard',    icon: 'M3 3h7v7H3zm8 0h7v7h-7zM3 11h7v7H3zm8 0h7v7h-7z' },
   { label: 'My Courses',   icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
@@ -17,16 +17,10 @@ const HERO_NAV = [
 function AruvaHeroDashboard() {
   const [active,  setActive]  = React.useState(0)
   const [entered, setEntered] = React.useState(false)
-  const availableScreenCount = 5
 
   React.useEffect(() => {
     const raf = requestAnimationFrame(() => setTimeout(() => setEntered(true), 80))
     return () => cancelAnimationFrame(raf)
-  }, [])
-
-  React.useEffect(() => {
-    const id = setInterval(() => setActive(p => (p + 1) % availableScreenCount), 2800)
-    return () => clearInterval(id)
   }, [])
 
   const screenImages = [
@@ -381,13 +375,57 @@ function AruvaHeroDashboard() {
   ]
 
   const S = { fontFamily:'Inter,system-ui,-apple-system,sans-serif' }
+  const navHotspots = [43, 79, 115, 151, 187, 223, 259]
+
+  const fallbackScreen = (
+    <div style={{ display:'flex', width:'100%', height:'100%', background:'#f8fafc', ...S }}>
+      <div style={{ width:'102px', background:'#fff', borderRight:'1px solid #e5e7eb', padding:'15px 10px', flexShrink:0 }}>
+        <p style={{ fontSize:6, fontWeight:800, letterSpacing:'0.34em', color:'#9ca3af', margin:'0 0 18px 0' }}>STUDENT HUB</p>
+        {HERO_NAV.map((item, i) => {
+          const isActive = i === active
+          return (
+            <button key={item.label} type="button" onClick={() => setActive(i)} style={{ width:'100%', height:25, display:'flex', alignItems:'center', gap:7, border:0, borderRadius:7, background:isActive ? '#1e2d7d' : 'transparent', color:isActive ? '#fff' : '#667085', padding:'0 8px', marginBottom:6, cursor:'pointer', boxShadow:isActive ? '0 10px 22px rgba(30,45,125,0.22)' : 'none' }}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={item.icon}/></svg>
+              <span style={{ fontSize:6.8, fontWeight:isActive ? 800 : 600, whiteSpace:'nowrap' }}>{item.label}</span>
+            </button>
+          )
+        })}
+      </div>
+      <div style={{ flex:1, minWidth:0 }}>
+        <div style={{ height:38, background:'#fff', borderBottom:'1px solid #edf0f5', display:'flex', alignItems:'center', justifyContent:'space-between', padding:'0 18px' }}>
+          <div style={{ display:'inline-flex', alignItems:'center', gap:8, border:'1px solid #e5e7eb', borderRadius:14, padding:'5px 12px', background:'#fff', boxShadow:'0 6px 18px rgba(10,22,40,0.05)' }}>
+            <div style={{ width:18, height:18, borderRadius:'50%', background:'#e8f8f1', display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <div style={{ width:9, height:9, borderRadius:2, background:'#10a36f' }} />
+            </div>
+            <div>
+              <p style={{ fontSize:5.5, fontWeight:800, letterSpacing:'0.18em', color:'#98a2b3', margin:0 }}>ACTIVE SPACE</p>
+              <p style={{ fontSize:7.2, fontWeight:900, color:'#0a1628', margin:0 }}>STUDENT HUB</p>
+            </div>
+          </div>
+          <div style={{ display:'flex', alignItems:'center', gap:9 }}>
+            <div style={{ display:'flex', gap:4 }}>
+              {[0,1,2].map(i => <span key={i} style={{ width:15, height:15, borderRadius:5, border:'1px solid #e5e7eb', background:'#fff' }} />)}
+            </div>
+            <div style={{ textAlign:'right' }}>
+              <p style={{ fontSize:7.2, fontWeight:900, color:'#0a1628', margin:0 }}>Maria Garcia</p>
+              <p style={{ fontSize:5.5, fontWeight:700, letterSpacing:'0.14em', color:'#98a2b3', margin:0 }}>STUDENT HUB</p>
+            </div>
+            <div style={{ width:22, height:22, borderRadius:'50%', background:'linear-gradient(135deg,#c8a882,#9f6f4a)' }} />
+          </div>
+        </div>
+        <div style={{ height:'calc(100% - 38px)', overflow:'hidden' }}>
+          {screens[active]}
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <div className="relative w-full max-w-[760px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)', ...S }}>
       <style>{`@keyframes screenIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}`}</style>
       <div className="absolute -inset-6 hidden lg:block" style={{ background:'radial-gradient(ellipse at 60% 40%,rgba(34,141,193,0.14) 0,transparent 70%)' }}/>
       <div style={{ position:'relative', borderRadius:14, overflow:'hidden', boxShadow:'0 32px 80px rgba(10,22,40,0.22),0 8px 24px rgba(10,22,40,0.10)', border:'1px solid rgba(10,22,40,0.08)', background:'#f5f6fa', aspectRatio:'760 / 500' }}>
-        <div key={active} style={{ width:'100%', height:'100%', animation:'screenIn 0.38s cubic-bezier(0.4,0,0.2,1) both' }}>
+        <div key={active} style={{ width:'100%', height:'100%', animation:'screenIn 0.34s cubic-bezier(0.4,0,0.2,1) both' }}>
           {screenImages[active] ? (
             <img
               src={screenImages[active]}
@@ -395,11 +433,18 @@ function AruvaHeroDashboard() {
               style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center', display:'block' }}
             />
           ) : (
-            <div style={{ height:'100%', padding:28, background:'#f5f6fa' }}>
-              {screens[active]}
-            </div>
+            fallbackScreen
           )}
         </div>
+        {HERO_NAV.map((item, i) => (
+          <button
+            key={item.label}
+            type="button"
+            aria-label={`Show ${item.label}`}
+            onClick={() => setActive(i)}
+            style={{ position:'absolute', left:10, top:navHotspots[i], width:78, height:25, border:0, background:'transparent', cursor:'pointer' }}
+          />
+        ))}
       </div>
     </div>
   )
