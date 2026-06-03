@@ -2963,27 +2963,35 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           {/* Card 1 */}
           <AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} />
 
-          {/* Arrow ← card2 to card1 */}
-          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-1" style={{ width:56 }}>
-            <div style={{ width:2, height:32, background: audiences[1].color, borderRadius:2, display:'none' }} className="lg:block"/>
+          {/* Arrows between card1 and card2 */}
+          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-3" style={{ width:56 }}>
+            {/* ← card2 → card1 */}
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
               <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.1" stroke={audiences[1].color} strokeWidth="1.5"/>
               <path d="M24 20H16M16 20L20 16M16 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <div style={{ width:2, height:32, background: audiences[1].color, borderRadius:2, display:'none' }} className="lg:block"/>
+            {/* → card1 → card2 (reverse) */}
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.06" stroke={audiences[1].color} strokeWidth="1.5" strokeDasharray="4 3"/>
+              <path d="M16 20H24M24 20L20 16M24 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
 
           {/* Card 2 — Educators (hub) */}
           <AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} />
 
-          {/* Arrow → card2 to card3 */}
-          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-1" style={{ width:56 }}>
-            <div style={{ width:2, height:32, background: audiences[1].color, borderRadius:2, display:'none' }} className="lg:block"/>
+          {/* Arrows between card2 and card3 */}
+          <div className="flex lg:flex-col items-center justify-center shrink-0 gap-3" style={{ width:56 }}>
+            {/* → card2 → card3 */}
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
               <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.1" stroke={audiences[1].color} strokeWidth="1.5"/>
               <path d="M16 20H24M24 20L20 16M24 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <div style={{ width:2, height:32, background: audiences[1].color, borderRadius:2, display:'none' }} className="lg:block"/>
+            {/* ← card3 → card2 (reverse) */}
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="18" fill={audiences[1].color} fillOpacity="0.06" stroke={audiences[1].color} strokeWidth="1.5" strokeDasharray="4 3"/>
+              <path d="M24 20H16M16 20L20 16M16 20L20 24" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
 
           {/* Card 3 */}
