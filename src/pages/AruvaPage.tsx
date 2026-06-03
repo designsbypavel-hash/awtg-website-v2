@@ -1316,106 +1316,60 @@ function PlatformDiagram() {
   const lineOffset = (active: boolean, len: number) => active ? 0 : len
 
   return (
-    <section className="py-24 overflow-hidden" style={{ background: '#f8fafc' }}>
-      <div className="max-w-6xl mx-auto px-8 lg:px-12">
+    <section ref={sectionRef} className="bg-[#f8fafc] border-t border-gray-100" style={{ minHeight:'200vh' }}>
+      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
+          <div className="grid lg:grid-cols-[420px_1fr] gap-20 items-start pt-16">
 
             {/* ── LEFT: static text ── */}
             <div className="flex flex-col gap-8 pt-4">
               <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">VLE / LMS</p>
-                <div className="flex flex-col gap-1.5">
-                  {lmsList.map(lms => (
-                    <span key={lms.name}
-                      className="inline-flex items-center gap-2 px-3 py-2 bg-white text-[12px] font-semibold text-[#0a1628]"
-                      style={{ borderLeft: `3px solid ${lms.color}`, borderTop: '1px solid #e5e7eb', borderRight: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb', borderRadius: 6 }}>
-                      <img src={lms.logo} alt={lms.name} className="w-3.5 h-3.5 object-contain" />{lms.name}
-                    </span>
-                  ))}
-                </div>
+                <p className="type-label text-[#228DC1] mb-5">Architecture</p>
+                <h2 className="font-heading text-[#0a1628] mb-5">
+                  Four layers.<br/>
+                  <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
+                </h2>
+                <p className="text-[#0a1628]/60 text-[16px] leading-[1.75]">
+                  Not a bundle of tools. One connected system where every layer talks to the next — from your LMS through to every student interface.
+                </p>
               </div>
-              <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0a1628]/55 mb-2.5">Data Sources</p>
-                <div className="flex flex-col gap-1.5">
-                  {dataSources.map(d => (
-                    <span key={d} className="px-3 py-1.5 bg-[#f1f5f9] border border-gray-200 text-[12px] font-medium text-[#0a1628]/80" style={{ borderRadius: 5 }}>
-                      {d}
-                    </span>
-                  ))}
-                </div>
+              {/* Layer legend */}
+              <div className="flex flex-col gap-3">
+                {layers.map(l => (
+                  <div key={l.label} className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-sm shrink-0" style={{ background: l.color }} />
+                    <span className="text-[14px] font-semibold text-[#0a1628]/70">{l.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* ── RIGHT: scroll-driven architecture ── */}
             <div className="flex flex-col gap-0 overflow-y-auto" style={{ maxHeight:'calc(100vh - 100px)' }}>
 
-          {/* ── ZONE 2: SERVICES ── */}
-          <div className="flex flex-col flex-1">
-            <ZoneHeader label="Services" />
-            <div className="bg-[#f8fafc] border-b border-gray-100 px-5 py-2.5 flex items-center justify-center gap-3">
-              <div className="h-px flex-1 bg-gray-200" />
-              <p className="font-black text-[#0a1628]/60 text-[10px] uppercase tracking-[0.2em] shrink-0 px-2">
-                Aruva Intelligent Education Platform
-              </p>
-              <div className="h-px flex-1 bg-gray-200" />
-            </div>
-            <div className="flex-1 divide-y divide-gray-100">
-              {layers.map(layer => (
-                <div key={layer.label} className="flex items-stretch">
-                  {/* Coloured identity block */}
-                  <div className="shrink-0 flex flex-col justify-center px-5 py-4"
-                    style={{ width: 190, background: layer.color, minHeight: 82 }}>
-                    <p className="text-white font-bold text-[14px] leading-snug">{layer.label}</p>
-                    <p className="text-white/80 text-[12px] font-normal leading-snug mt-1">{layer.sublabel}</p>
-                  </div>
-                  {/* Arrow bridge */}
-                  <div className="flex items-center justify-center shrink-0 px-3"
-                    style={{ background: layer.color + '14' }}>
-                    <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
-                      <path d="M1 6h14M11 2l6 4-6 4" stroke={layer.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  {/* Chips */}
-                  <div className="flex-1 flex flex-wrap items-center gap-2 px-5 py-4"
-                    style={{ background: layer.color + '08' }}>
-                    {layer.items.map(item => (
-                      <span key={item}
-                        className="px-3 py-1 bg-white text-[12px] font-semibold text-[#0a1628] shadow-[0_1px_6px_rgba(10,22,40,0.07)]"
-                        style={{ border: `1px solid ${layer.color}35`, borderRadius: 6 }}>
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ── CONNECTOR RIGHT ── */}
-          <div className="flex flex-col items-center justify-center gap-4 shrink-0 bg-[#f1f5f9] border-l border-gray-200" style={{ width: 86 }}>
-            <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
-              <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <div style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ fontSize: 9, fontWeight: 800, color: '#0a1628', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Aruva API</span>
-            </div>
-            <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
-              <path d="M1 7h24M19 2l7 5-7 5" stroke="#228DC1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-
-          {/* ── ZONE 3: USER INTERFACE ── */}
-          <div className="flex flex-col shrink-0" style={{ width: 212 }}>
-            <ZoneHeader label="User Interface" />
-            <div className="flex-1 flex flex-col gap-2 p-3.5 bg-white">
-              {surfaces.map(s => (
-                <div key={s.label} className="flex items-start gap-3 p-3 border border-gray-100 bg-white" style={{ borderRadius: 10, boxShadow: '0 1px 8px rgba(10,22,40,0.06)' }}>
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: s.color + '15', color: s.color, border: `1px solid ${s.color}25` }}>
-                    {s.icon}
+              {/* 1. Integrations */}
+              <div style={on(integOn)} className="bg-white rounded-2xl border border-gray-200 p-6 shadow-[0_8px_32px_rgba(10,22,40,0.08)]">
+                <p className="type-label text-[#0a1628]/38 mb-5">Integrations</p>
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">VLE / LMS</p>
+                    <div className="flex flex-wrap gap-2">
+                      {lms.map(l => (
+                        <div key={l.name} className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg"
+                          style={{ background: l.color+'0c', border:`1px solid ${l.color}30` }}>
+                          <img src={l.logo} alt={l.name} className="w-3 h-3 object-contain" />
+                          <span className="text-[12px] font-semibold" style={{ color: l.color }}>{l.name}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                   <div>
-                    <p className="text-[13px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
-                    <p className="text-[12px] text-[#0a1628]/55 font-normal leading-snug mt-0.5">{s.desc}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/32 mb-3">Data Sources</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {dataSrc.map(d => (
+                        <span key={d} className="px-2.5 py-1 rounded-lg bg-[#f1f5f9] border border-gray-200 text-[11px] font-medium text-[#0a1628]/60">{d}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1454,11 +1408,11 @@ function PlatformDiagram() {
                     }}>
                     <div className="shrink-0" style={{ width: 180 }}>
                       <p className="text-[13px] font-bold text-[#0a1628] leading-snug">{layer.label}</p>
-                      <p className="text-[11px] text-[#0a1628]/42 mt-0.5">{layer.sub}</p>
+                      <p className="text-[12px] text-[#0a1628]/42 mt-0.5">{layer.sub}</p>
                     </div>
                     <div className="flex flex-wrap gap-1.5 flex-1">
                       {layer.chips.map(chip => (
-                        <span key={chip} className="px-2 py-0.5 rounded-md text-[10px] font-semibold"
+                        <span key={chip} className="px-2 py-0.5 rounded-md text-[11px] font-semibold"
                           style={{ background: layer.color+'12', border:`1px solid ${layer.color}30`, color: '#0a1628' }}>
                           {chip}
                         </span>
@@ -1503,8 +1457,8 @@ function PlatformDiagram() {
                         transform: uiOn[i] ? 'translateY(0)' : 'translateY(8px)',
                         transition: `opacity 0.4s ease ${i*60}ms, transform 0.4s ease ${i*60}ms, background 0.3s ease, border-top-color 0.3s ease`,
                       }}>
-                      <p className="text-[11px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
-                      <p className="text-[10px] text-[#0a1628]/45 mt-1 leading-snug">{s.desc}</p>
+                      <p className="text-[12px] font-bold text-[#0a1628] leading-snug">{s.label}</p>
+                      <p className="text-[11px] text-[#0a1628]/45 mt-1 leading-snug">{s.desc}</p>
                     </div>
                   ))}
                 </div>
