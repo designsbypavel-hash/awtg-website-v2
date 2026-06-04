@@ -2706,7 +2706,7 @@ export default function AruvaPage() {
               </div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
                 AI that understands<br />
-                <span style={{ color: '#228DC1' }}>how your students learn.</span>
+                <span style={{ color: '#0a1628' }}>how your students learn.</span>
               </h1>
               <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
                 Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam.
