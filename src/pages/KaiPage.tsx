@@ -1744,9 +1744,6 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               <button type="button" onClick={onDemoClick} className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
                 Request a Demo
               </button>
-              <button type="button" onClick={onDemoClick} className="px-7 py-3.5 border border-gray-200 bg-white text-[#0a1628]/70 text-[13px] font-medium hover:border-[#228DC1]/50 hover:text-[#228DC1] transition-all">
-                Talk to an expert
-              </button>
             </div>
           </div>
 
