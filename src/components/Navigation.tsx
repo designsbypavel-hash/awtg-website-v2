@@ -22,7 +22,7 @@ type NavEntry =
 
 const navItems: NavEntry[] = [
   {
-    label: 'AI for Innovation',
+    label: 'AI',
     key: 'innovation',
     groups: [
       {
@@ -46,7 +46,7 @@ const navItems: NavEntry[] = [
     ],
   },
   {
-    label: 'AI for Connectivity',
+    label: 'Solutions',
     key: 'connectivity',
     groups: [
       {
