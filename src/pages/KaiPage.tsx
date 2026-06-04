@@ -879,6 +879,7 @@ function KaiChatDemo() {
   const [turnIdx, setTurnIdx] = useState(-1)
   const [words,   setWords]   = useState(0)
   const tids = useRef<number[]>([])
+  const spokenTurnRef = useRef('')
 
   const sched = (fn: () => void, ms: number) => {
     const id = window.setTimeout(fn, ms); tids.current.push(id)
@@ -919,7 +920,11 @@ function KaiChatDemo() {
 
   useEffect(() => {
     const id = window.setTimeout(run, 500)
-    return () => { clearTimeout(id); tids.current.forEach(clearTimeout) }
+    return () => {
+      clearTimeout(id)
+      tids.current.forEach(clearTimeout)
+      window.speechSynthesis?.cancel()
+    }
   }, [])
 
   const isVoice     = phase === 'voice'
@@ -947,6 +952,34 @@ function KaiChatDemo() {
   const prevTurn          = turnIdx > 0  ? VOICE_SCRIPT[turnIdx - 1] : null
   const transcript        = currentTurn ? currentTurn.text.split(' ').slice(0, words).join(' ') : ''
   const showListeningLabel = orbMode === 'listen' && currentTurn?.speaker === 'user' && words === 0
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
+
+    const isKaiSpeaking = phase === 'voice' && orbMode === 'ai' && currentTurn?.speaker === 'ai'
+    if (!isKaiSpeaking || !currentTurn) {
+      window.speechSynthesis.cancel()
+      return
+    }
+
+    const spokenKey = `${turnIdx}:${currentTurn.text}`
+    if (spokenTurnRef.current === spokenKey) return
+    spokenTurnRef.current = spokenKey
+
+    const utterance = new SpeechSynthesisUtterance(currentTurn.text)
+    utterance.rate = 0.96
+    utterance.pitch = 1.02
+    utterance.volume = 0.75
+
+    const voices = window.speechSynthesis.getVoices()
+    const preferredVoice = voices.find(voice =>
+      /female|aria|samantha|zira|google uk english female/i.test(`${voice.name} ${voice.voiceURI}`)
+    ) || voices.find(voice => /^en[-_]/i.test(voice.lang))
+    if (preferredVoice) utterance.voice = preferredVoice
+
+    window.speechSynthesis.cancel()
+    window.speechSynthesis.speak(utterance)
+  }, [phase, orbMode, currentTurn, turnIdx])
 
   return (
     <div className="select-none" style={{ width: '100%', maxWidth: 420, aspectRatio: '420 / 613' }}>
