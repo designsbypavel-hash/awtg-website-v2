@@ -124,7 +124,7 @@ const tickerLogos = [
   { id: 'mobily',     src: '/logos/partners/Mobily.png',                  alt: 'Mobily' },
   { id: 'nao',        src: '/logos/partners/NAO.png',                     alt: 'National Audit Office' },
   { id: 'nokia',      src: '/logos/partners/Nokia.png',                   alt: 'Nokia' },
-  { id: 'o2',         src: '/logos/partners/O2.png',                      alt: 'O2' },
+  { id: 'o2',         src: '/logos/partners/O2.png',                      alt: 'O2', small: true },
   { id: 'oracle',     src: '/logos/partners/Oracle.png',                  alt: 'Oracle' },
   { id: 'qinetiq',    src: '/logos/partners/Qinetic.png',                 alt: 'QinetiQ' },
   { id: 'quickline',  src: '/logos/partners/Quickline Broadband.png',     alt: 'Quickline Broadband' },
@@ -217,9 +217,9 @@ function Hero() {
               {[...tickerLogos, ...tickerLogos].map((logo, i) => (
                 <div
                   key={`${logo.id}-${i}`}
-                  className="flex items-center justify-center px-10 py-4 shrink-0"
+                  className="flex items-center justify-center px-10 py-6 shrink-0"
                 >
-                  <img src={logo.src} alt={logo.alt} className="h-14 w-auto max-w-[160px] object-contain" />
+                  <img src={logo.src} alt={logo.alt} className={`w-auto max-w-[160px] object-contain ${'small' in logo && logo.small ? 'h-8' : 'h-16'}`} />
                 </div>
               ))}
             </div>
