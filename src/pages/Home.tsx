@@ -232,7 +232,7 @@ function Hero() {
               to="/about/partnerships"
               className="text-[#0a1628]/60 hover:text-[#0a1628] text-[14px] font-medium tracking-widest uppercase whitespace-nowrap transition-colors"
             >
-              Our Partners ?
+              Our Partners
             </Link>
           </div>
         </div>
