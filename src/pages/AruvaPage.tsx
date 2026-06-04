@@ -1293,12 +1293,21 @@ function MMTextDemo() {
 
 function MMImageDemo() {
   const [stage, setStage] = React.useState(0)
+  const revealWidth = stage >= 4 ? 100 : stage >= 3 ? 66.666 : stage >= 2 ? 33.333 : 0
+  const imageStatus = stage >= 4
+    ? 'complete image generated'
+    : stage >= 2
+      ? `rendering image tile ${stage - 1}/3`
+      : stage >= 1
+        ? 'prompt accepted: photosynthesis lesson diagram'
+        : 'waiting for student prompt'
 
   React.useEffect(() => {
     const timers = [
-      window.setTimeout(() => setStage(1), 650),
-      window.setTimeout(() => setStage(2), 1350),
-      window.setTimeout(() => setStage(3), 2400),
+      window.setTimeout(() => setStage(1), 520),
+      window.setTimeout(() => setStage(2), 1180),
+      window.setTimeout(() => setStage(3), 1980),
+      window.setTimeout(() => setStage(4), 2920),
     ]
     return () => timers.forEach(window.clearTimeout)
   }, [])
@@ -1326,18 +1335,18 @@ function MMImageDemo() {
               A
             </div>
             <span style={{ fontSize:11, color:'rgba(10,22,40,0.52)', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:600, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
-              {stage >= 2 ? 'generating output: photosynthesis lesson diagram' : 'prompt accepted: photosynthesis lesson diagram'}
+              {imageStatus}
             </span>
           </div>
           <span style={{
             fontSize:9, fontWeight:800,
-            color: stage >= 3 ? '#059669' : '#d97706',
-            background: stage >= 3 ? 'rgba(5,150,105,0.10)' : 'rgba(245,158,11,0.10)',
+            color: stage >= 4 ? '#059669' : '#d97706',
+            background: stage >= 4 ? 'rgba(5,150,105,0.10)' : 'rgba(245,158,11,0.10)',
             padding:'4px 9px', borderRadius:999,
-            border: stage >= 3 ? '1px solid rgba(5,150,105,0.22)' : '1px solid rgba(245,158,11,0.24)',
+            border: stage >= 4 ? '1px solid rgba(5,150,105,0.22)' : '1px solid rgba(245,158,11,0.24)',
             letterSpacing:'0.07em', textTransform:'uppercase', flexShrink:0,
           }}>
-            {stage >= 3 ? 'Generated' : 'Generating'}
+            {stage >= 4 ? 'Generated' : 'Generating'}
           </span>
         </div>
       </div>
@@ -1349,27 +1358,84 @@ function MMImageDemo() {
             alt="Generated photosynthesis lesson diagram"
             style={{
               display:'block', width:'100%', height:'auto', aspectRatio:'280 / 178', objectFit:'cover',
-              opacity: stage >= 3 ? 1 : 0.22,
-              filter: stage >= 3 ? 'none' : 'saturate(0.7) blur(1.2px)',
-              transform: stage >= 3 ? 'scale(1)' : 'scale(1.01)',
+              opacity:0.18,
+              filter:'saturate(0.45) blur(2px)',
+              transform:'scale(1.01)',
+            }}
+          />
+          <div style={{
+            position:'absolute', inset:0, width:`${revealWidth}%`, overflow:'hidden',
+            transition:'width 0.72s cubic-bezier(0.22,1,0.36,1)',
+            boxShadow: revealWidth > 0 && revealWidth < 100 ? '12px 0 24px rgba(5,150,105,0.10)' : 'none',
+          }}>
+            <img
+              src="/images/aruva-photosynthesis-realistic.png"
+              alt=""
+              aria-hidden="true"
+              style={{
+                display:'block', width:`calc(100% * ${100 / Math.max(revealWidth, 1)})`, height:'100%',
+                aspectRatio:'280 / 178', objectFit:'cover',
+                opacity: revealWidth > 0 ? 1 : 0,
+                filter: stage >= 4 ? 'none' : 'saturate(1.05) contrast(1.02)',
+                transform: stage >= 4 ? 'scale(1)' : 'scale(1.006)',
               transition:'opacity 0.55s ease, filter 0.55s ease, transform 0.55s ease',
             }}
           />
-          {stage < 3 && (
+          </div>
+
+          {[0, 1, 2].map(i => (
+            <div key={i} style={{
+              position:'absolute', top:0, bottom:0, left:`${i * 33.333}%`, width:'33.333%',
+              borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.38)' : 'none',
+              borderRight: i < 2 ? '1px solid rgba(10,22,40,0.08)' : 'none',
+              background: stage >= i + 2 ? 'transparent' : 'linear-gradient(135deg,rgba(248,250,252,0.62),rgba(236,253,245,0.45))',
+              opacity: stage >= 4 ? 0 : 1,
+              transition:'opacity 0.45s ease, background 0.45s ease',
+              pointerEvents:'none',
+            }} />
+          ))}
+
+          {revealWidth > 0 && revealWidth < 100 && (
             <div style={{
-              position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',
-              background:'linear-gradient(180deg,rgba(248,250,252,0.76),rgba(255,255,255,0.62))',
+              position:'absolute', top:0, bottom:0, left:`calc(${revealWidth}% - 1px)`, width:2,
+              background:'linear-gradient(180deg,rgba(255,255,255,0),#ffffff,rgba(255,255,255,0))',
+              boxShadow:'0 0 18px rgba(255,255,255,0.95), 0 0 28px rgba(5,150,105,0.40)',
+              pointerEvents:'none',
+            }} />
+          )}
+
+          {stage < 4 && (
+            <div style={{
+              position:'absolute', left:16, bottom:14, display:'flex', alignItems:'center', gap:10,
+              background:'rgba(255,255,255,0.88)', border:'1px solid rgba(226,232,240,0.95)',
+              borderRadius:999, padding:'8px 12px', boxShadow:'0 8px 24px rgba(10,22,40,0.12)',
             }}>
-              <div style={{ display:'flex', gap:6, marginBottom:12 }}>
+              <div style={{ display:'flex', gap:4 }}>
                 {[0,1,2].map(i => (
                   <span key={i} style={{
-                    width:8, height:8, borderRadius:'50%', background:'#059669',
+                    width:5, height:18, borderRadius:5, background:'#059669',
                     animation:`waveBar ${0.7 + i * 0.12}s ease-in-out ${i * 0.12}s infinite`,
                   }} />
                 ))}
               </div>
-              <p style={{ fontSize:12, fontWeight:800, color:'#0a1628', marginBottom:4 }}>Generating image...</p>
-              <p style={{ fontSize:11, color:'rgba(10,22,40,0.48)' }}>Aruva is turning the chat input into a visual lesson diagram.</p>
+              <div>
+                <p style={{ fontSize:11, fontWeight:900, color:'#0a1628', lineHeight:1 }}>
+                  {stage >= 2 ? `Generating ${Math.round(revealWidth)}%` : 'Preparing canvas'}
+                </p>
+                <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.48)', lineHeight:1.25, marginTop:3 }}>Rendering visual lesson diagram</p>
+              </div>
+            </div>
+          )}
+
+          {stage >= 4 && (
+            <div style={{
+              position:'absolute', right:14, bottom:14,
+              background:'rgba(5,150,105,0.92)', color:'#ffffff', borderRadius:999,
+              padding:'7px 11px', fontSize:10, fontWeight:900, letterSpacing:'0.08em', textTransform:'uppercase',
+              boxShadow:'0 10px 22px rgba(5,150,105,0.24)',
+              opacity:0, animation:'mmCardIn 0.32s ease 0.12s forwards',
+            }}>
+              Complete image generated
             </div>
           )}
         </div>
