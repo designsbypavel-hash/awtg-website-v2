@@ -1571,6 +1571,7 @@ function MultimodalSection() {
   const activeRef = React.useRef(2)
   const startRef  = React.useRef(0)
   const rafRef    = React.useRef<number | undefined>(undefined)
+  const pauseRef  = React.useRef(false)
   const CYCLE = 7600
 
   // RAF-driven auto-cycle â€” starts when section scrolls into view
@@ -1578,6 +1579,11 @@ function MultimodalSection() {
     if (!inView) return
     startRef.current = performance.now()
     const tick = (now: number) => {
+      if (pauseRef.current) {
+        startRef.current = now
+        rafRef.current = requestAnimationFrame(tick)
+        return
+      }
       const elapsed = now - startRef.current
       if (elapsed >= CYCLE) {
         const next = (activeRef.current + 1) % 4
@@ -1597,6 +1603,21 @@ function MultimodalSection() {
     activeRef.current = i
     setActive(i)
     setCycleCount(c => c + 1)
+    startRef.current = performance.now()
+  }
+
+  const holdTab = (i: number) => {
+    pauseRef.current = true
+    if (activeRef.current !== i) {
+      activeRef.current = i
+      setActive(i)
+      setCycleCount(c => c + 1)
+    }
+    startRef.current = performance.now()
+  }
+
+  const releaseTab = () => {
+    pauseRef.current = false
     startRef.current = performance.now()
   }
 
@@ -1639,7 +1660,7 @@ function MultimodalSection() {
             {MM_MODALITIES.map((m, i) => {
               const isActive = active === i
               return (
-                <button key={m.label} onClick={() => handleTab(i)} style={{
+                <button key={m.label} onClick={() => handleTab(i)} onMouseEnter={() => holdTab(i)} onMouseLeave={releaseTab} onFocus={() => holdTab(i)} onBlur={releaseTab} style={{
                   display:'flex', alignItems:'center', gap:14, padding:'15px 16px 15px 20px',
                   borderRadius:12,
                   border:`1.5px solid ${isActive ? m.color+'40' : '#e2e8f0'}`,
