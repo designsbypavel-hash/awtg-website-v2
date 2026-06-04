@@ -1743,7 +1743,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
             </div>
             <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
               Enterprise AI<br />
-              that <span style={{ color: '#228DC1' }}>resolves,</span><br />
+              that <span style={{ color: '#0a1628' }}>resolves,</span><br />
               not just responds.
             </h1>
             <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
