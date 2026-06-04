@@ -438,7 +438,7 @@ export default function IcmapPage() {
             CoverageMap is a powerful geospatial analytics platform designed to help telecom operators, regulators, local authorities, infrastructure providers, and enterprises visualise, analyse, and optimise network coverage, connectivity, and digital infrastructure.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link to="/contact" className="px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a6e99] transition-colors">
+            <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
               Request a Demo
             </Link>
           </div>
