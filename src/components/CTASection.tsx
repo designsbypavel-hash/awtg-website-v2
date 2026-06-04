@@ -6,9 +6,6 @@ interface CTASectionProps {
   primaryLabel?: string
   primaryHref?: string
   primaryOnClick?: () => void
-  secondaryLabel?: string
-  secondaryHref?: string
-  secondaryOnClick?: () => void
 }
 
 export default function CTASection({
@@ -17,9 +14,6 @@ export default function CTASection({
   primaryLabel = "Get in Touch",
   primaryHref = "/contact",
   primaryOnClick,
-  secondaryLabel = "View Our Solutions",
-  secondaryHref = "/solutions",
-  secondaryOnClick,
 }: CTASectionProps) {
   return (
     <section className="py-24 bg-[#f8fafc]">
@@ -41,22 +35,6 @@ export default function CTASection({
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white font-semibold hover:bg-[#1a6e99] transition-colors"
             >
               {primaryLabel}
-            </Link>
-          )}
-          {secondaryOnClick ? (
-            <button
-              type="button"
-              onClick={secondaryOnClick}
-              className="inline-flex items-center gap-2 px-8 py-4 border border-gray-200 text-[#0a1628]/70 font-semibold hover:border-[#228DC1]/40 hover:bg-[#228DC1]/8 hover:text-[#228DC1] transition-colors"
-            >
-              {secondaryLabel}
-            </button>
-          ) : (
-            <Link
-              to={secondaryHref}
-              className="inline-flex items-center gap-2 px-8 py-4 border border-gray-200 text-[#0a1628]/70 font-semibold hover:border-[#228DC1]/40 hover:bg-[#228DC1]/8 hover:text-[#228DC1] transition-colors"
-            >
-              {secondaryLabel}
             </Link>
           )}
         </div>
