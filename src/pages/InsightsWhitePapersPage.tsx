@@ -93,8 +93,6 @@ export default function InsightsWhitePapersPage() {
         subtitle="Our strategy team produces bespoke research and market analysis for clients. Get in touch to discuss your requirements."
         primaryLabel="Get in Touch"
         primaryHref="/contact"
-        secondaryLabel="View Case Studies"
-        secondaryHref="/insights/case-studies"
       />
     </>
   )

@@ -53,8 +53,6 @@ export default function AboutCertificationsPage() {
         subtitle="Our accreditations mean you can trust AWTG to deliver to the highest standards of quality, security and performance."
         primaryLabel="Get in Touch"
         primaryHref="/contact"
-        secondaryLabel="Learn About AWTG"
-        secondaryHref="/about"
       />
     </>
   )

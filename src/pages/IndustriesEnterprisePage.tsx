@@ -88,8 +88,6 @@ export default function IndustriesEnterprisePage() {
         subtitle="Talk to our team about private wireless, AI and IoT solutions designed for your operational environment."
         primaryLabel="Get in Touch"
         primaryHref="/contact"
-        secondaryLabel="View Our Solutions"
-        secondaryHref="/solutions"
       />
     </>
   )

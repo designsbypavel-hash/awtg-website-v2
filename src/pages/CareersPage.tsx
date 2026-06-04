@@ -76,7 +76,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <CTASection title="Don't See Your Role?" subtitle="We're always interested in hearing from talented people. Send us your CV and tell us how you can contribute." primaryLabel="Send Speculative Application" primaryHref="/contact" secondaryLabel="Learn About AWTG" secondaryHref="/about" />
+      <CTASection title="Don't See Your Role?" subtitle="We're always interested in hearing from talented people. Send us your CV and tell us how you can contribute." primaryLabel="Send Speculative Application" primaryHref="/contact" />
     </>
   )
 }

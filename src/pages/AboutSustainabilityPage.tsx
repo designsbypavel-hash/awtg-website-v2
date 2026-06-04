@@ -118,8 +118,6 @@ export default function AboutSustainabilityPage() {
         subtitle="Learn how our solutions can help reduce your organisation's carbon footprint while delivering the performance your business needs."
         primaryLabel="Get in Touch"
         primaryHref="/contact"
-        secondaryLabel="View Our Solutions"
-        secondaryHref="/solutions"
       />
     </>
   )

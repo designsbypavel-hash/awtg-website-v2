@@ -155,8 +155,6 @@ export default function InsightsCaseStudiesPage() {
         subtitle="Tell us about your challenge and we will share the most relevant experience from across our project portfolio."
         primaryLabel="Get in Touch"
         primaryHref="/contact"
-        secondaryLabel="Read White Papers"
-        secondaryHref="/insights/white-papers"
       />
     </>
   )
