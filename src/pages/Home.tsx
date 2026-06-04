@@ -216,7 +216,7 @@ function Hero() {
               {[...tickerLogos, ...tickerLogos].map((logo, i) => (
                 <div
                   key={`${logo.id}-${i}`}
-                  className="flex items-center justify-center px-8 shrink-0"
+                  className="flex items-center justify-center px-8 py-5 shrink-0"
                 >
                   <img
                     src={logo.src}
