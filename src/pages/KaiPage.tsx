@@ -894,7 +894,11 @@ function KaiChatDemo() {
 
     VOICE_SCRIPT.forEach((turn, i) => {
       const tokens = turn.text.split(' ')
-      const msPw   = turn.speaker === 'ai' ? 185 : 95
+      const msPw   = turn.speaker === 'ai' ? 155 : 95
+      const revealMs = tokens.length * msPw
+      const speechMs = turn.speaker === 'ai'
+        ? Math.max(3600, turn.text.length * 82)
+        : revealMs
 
       if (turn.speaker === 'user') {
         sched(() => { setTurnIdx(i); setWords(0); setOrbMode('listen') }, t)
@@ -905,10 +909,10 @@ function KaiChatDemo() {
       }
 
       tokens.forEach((_, j) => sched(() => setWords(j + 1), t + j * msPw))
-      t += tokens.length * msPw
+      t += Math.max(revealMs, speechMs)
 
       sched(() => setOrbMode('listen'), t)
-      t += turn.speaker === 'ai' ? 1000 : 1100
+      t += turn.speaker === 'ai' ? 450 : 1100
     })
 
     sched(() => setPhase('chat'), t)
