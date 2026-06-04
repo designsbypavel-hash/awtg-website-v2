@@ -1729,7 +1729,18 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
 
           {/* Left: copy */}
           <div>
-
+            <div className="mb-6">
+              <img
+                src="/kai-logo-hero.svg"
+                alt="Kai"
+                style={{
+                  width: 'clamp(100px, 10vw, 130px)',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
+              />
+            </div>
             <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
               Enterprise AI<br />
               that <span style={{ color: '#228DC1' }}>resolves,</span><br />
