@@ -62,7 +62,6 @@ const navItems: NavEntry[] = [
         items: [
           { label: 'Health', desc: 'Digital health connectivity and infrastructure', href: '/industries/health-tech' },
           { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
-          { label: 'Defence', desc: 'Secure, mission-critical communications', href: '/industries/defence' },
           { label: 'Space & Defence', desc: 'Secure connectivity for space and defence programmes', href: '/industries/defence' },
           { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
           { label: 'Government', desc: 'Public service connectivity and digital infrastructure', href: '/industries/public-sector' },
