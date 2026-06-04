@@ -119,7 +119,7 @@ const featuredPanels: Record<string, FeaturedPanel> = {
         desc: 'Kai helps teams respond faster, govern handoffs and improve customer operations.',
         href: '/products/kai',
         badge: 'Kai',
-        image: '/kai-mockup.png',
+        image: '/kai-featured.jpg',
         imageFit: 'cover',
       },
     ],
