@@ -2038,24 +2038,6 @@ export default function KaiPage() {
       {/* -- Security & compliance -- */}
       <SecurityComplianceSection />
 
-      {/* -- Pilot CTA -- */}
-      <section className="py-16 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
-          <div>
-            <p className="text-[#0a1628] font-semibold text-[16px] mb-1">Start with a focused pilot.</p>
-            <p className="text-[#0a1628]/65 text-[16px] font-normal">
-              One channel. One workflow. Measure real outcomes, then scale.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={openDemo}
-            className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1] text-[#228DC1] text-[13px] font-semibold hover:bg-[#228DC1] hover:text-white transition-all"
-          >
-            Request a Demo <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-          </button>
-        </div>
-      </section>
 
       <CTASection
         title="Ready to see Kai in your workflows?"
