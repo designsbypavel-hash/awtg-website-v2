@@ -1997,7 +1997,7 @@ export default function KaiPage() {
               {[
                 { stat: '−30pp', label: 'reduction in escalation rate' },
                 { stat: '45 sec', label: 'average resolution time' },
-              ].map(item => (
+              ].filter(item => item.label !== 'reduction in escalation rate').map(item => (
                 <div key={item.stat} className="flex items-baseline gap-4 pb-4 mb-4 border-b border-gray-100 last:border-0 last:mb-0 last:pb-0">
                   <span className="font-black text-[#228DC1] shrink-0" style={{ fontSize:26, letterSpacing:'-0.03em' }}>{item.stat}</span>
                   <span className="text-[#0a1628]/55 text-[14px]">{item.label}</span>
