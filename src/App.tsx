@@ -17,7 +17,6 @@ import {
 } from './pages/UtilityPages'
 
 // Solutions
-import SolutionsPage from './pages/SolutionsPage'
 import MobilePrivateNetworksPage from './pages/MobilePrivateNetworksPage'
 import TelecomsAIPage from './pages/TelecomsAIPage'
 import GenerativeAIPage from './pages/GenerativeAIPage'
@@ -84,7 +83,6 @@ export default function App() {
         <Route path="products/icmap" element={<IcmapPage />} />
 
         {/* Solutions */}
-        <Route path="solutions" element={<SolutionsPage />} />
         <Route path="solutions/mobile-private-networks" element={<MobilePrivateNetworksPage />} />
         <Route path="solutions/telecoms-ai" element={<TelecomsAIPage />} />
         <Route path="solutions/generative-ai" element={<GenerativeAIPage />} />

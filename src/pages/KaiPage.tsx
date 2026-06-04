@@ -2044,8 +2044,6 @@ export default function KaiPage() {
         subtitle="Talk to our AI delivery team about a focused pilot across your systems, channels and governance model."
         primaryLabel="Request a Demo"
         primaryOnClick={openDemo}
-        secondaryLabel="View Solutions"
-        secondaryHref="/solutions"
       />
     </>
   )
