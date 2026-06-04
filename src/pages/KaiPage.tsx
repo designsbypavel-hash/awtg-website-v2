@@ -1729,9 +1729,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
 
           {/* Left: copy */}
           <div>
-            <p className="font-black text-[#228DC1] mb-3" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.6 }}>
-              Kai · Enterprise AI Agent
-            </p>
+
             <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
               Enterprise AI<br />
               that <span style={{ color: '#228DC1' }}>resolves,</span><br />
