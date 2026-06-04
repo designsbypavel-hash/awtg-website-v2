@@ -39,7 +39,6 @@ const navItems: NavEntry[] = [
           { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
           { label: 'Commerce', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
           { label: 'Digital Transformation', desc: 'Strategic AI advisory, roadmap and transformation support', href: '/services/consultancy' },
-          { label: 'Digital Transformation', desc: 'Autonomous AI agents for enterprise workflows and operations', href: '/solutions/generative-ai' },
           { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
         ],
       },
