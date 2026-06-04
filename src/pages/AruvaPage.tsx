@@ -2385,13 +2385,14 @@ function BloomInsightSection() {
         </div>
 
         {/* Stats strip */}
-        <div className="grid sm:grid-cols-3 gap-px bg-gray-200 border border-gray-200 rounded-2xl overflow-hidden">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200 rounded-2xl overflow-hidden">
           {[
-            { stat: '71%',   label: 'of students who feel unsure want clearer guidance on where to improve' },
-            { stat: '68%',   label: 'of academics want earlier visibility into where learning is breaking down' },
-            { stat: '62.5%', label: 'of students wanted clearer support before receiving their final grade' },
+            { stat: '99.9%', label: 'platform availability' },
+            { stat: '≥95%',  label: 'grounded answers include citations' },
+            { stat: '100%',  label: 'auditable AI + admin action' },
+            { stat: '0%',    label: 'customer data used to train public models' },
           ].map((item) => (
-            <div key={item.stat} className="bg-white px-8 py-10 hover:bg-[#faf7f2] transition-colors">
+            <div key={item.stat} className="bg-white px-8 py-10 hover:bg-[#faf7f2] transition-colors flex flex-col justify-center min-h-[170px]">
               <p className="font-heading text-[#228DC1] mb-2"
                 style={{ fontSize: 'clamp(32px,3vw,48px)', letterSpacing: '-0.03em' }}>
                 {item.stat}
