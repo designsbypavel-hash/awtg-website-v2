@@ -192,15 +192,6 @@ export default function ProductDemoModal({
                 </select>
               </label>
 
-              <label className="block">
-                <span className="mb-2 block text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/75">Industry domain *</span>
-                <select className="h-[52px] w-full rounded-[7px] border border-gray-300 bg-white px-4 text-[15px] text-[#0a1628]/65 outline-none transition-colors focus:border-[#228DC1] focus:ring-4 focus:ring-[#228DC1]/10">
-                  <option value="">Select industry domain</option>
-                  {industryDomains.map((domain) => (
-                    <option key={domain} value={domain}>{domain}</option>
-                  ))}
-                </select>
-              </label>
 
               <label className="block">
                 <span className="mb-2 block text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/75">What would you like to explore?</span>
