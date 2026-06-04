@@ -111,7 +111,7 @@ const featuredPanels: Record<string, FeaturedPanel> = {
         desc: 'Aruva maps learning signals and guides every student through governed course intelligence.',
         href: '/products/aruva',
         badge: 'Aruva',
-        image: '/images/aruva-photosynthesis-realistic.png',
+        image: '/education-featured.png',
         imageFit: 'cover',
       },
       {
