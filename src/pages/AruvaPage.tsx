@@ -1994,15 +1994,15 @@ function BloomInsightSection() {
 
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-        <div className="grid lg:grid-cols-[0.68fr_1.52fr] gap-10 xl:gap-12 items-start mb-16">
+        <div className="grid lg:grid-cols-[440px_minmax(0,1fr)] gap-12 xl:gap-16 items-start mb-16">
           {/* Left narrative */}
           <div className="lg:sticky lg:top-28" style={{ animation: 'fadeUp 0.6s ease both' }}>
             <p className="type-label text-[#228DC1] mb-4">Learning Intelligence</p>
-            <h2 className="font-heading text-[#0a1628] mb-8">
+            <h2 className="font-heading text-[#0a1628] mb-9 max-w-[420px]">
               One student journey. Three semesters.<br />One clear progression picture.
             </h2>
 
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-[420px]">
               {(activeTab === 0 ? BLOOM_SEMS : DOK_SEMS).map((s, i) => {
                 const isBloom = activeTab === 0
                 const isActive = isBloom ? active === i : dokActive === i
@@ -2062,7 +2062,7 @@ function BloomInsightSection() {
           </div>
 
           {/* Right dashboard */}
-          <div className="min-w-0">
+          <div className="min-w-0 lg:pt-9">
 
         {/* Tab switcher */}
         <div className="flex gap-1 mb-8 bg-white border border-gray-200 rounded-xl p-1 w-fit shadow-sm">
