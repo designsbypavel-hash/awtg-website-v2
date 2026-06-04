@@ -622,7 +622,7 @@ function IntegrationsSection() {
                   key={item.label}
                   className={`relative flex flex-col items-center justify-center gap-2 p-3 min-h-[100px] transition-all duration-300 select-none ${
                     item.isKai
-                      ? 'z-10'
+                      ? 'z-10 [&_span]:hidden'
                       : isAdjacent
                         ? 'bg-[#f9fcff] border border-[#228DC1]/18 hover:border-[#228DC1]/40 hover:shadow-sm cursor-default'
                         : isCorner
@@ -667,12 +667,8 @@ function IntegrationsSection() {
                   ) : (
                     <>
                       <img src={item.logo ?? undefined} alt={item.label}
-                        className="w-7 h-7 object-contain"
+                        className="w-8 h-8 object-contain"
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
-                      <div className="text-center">
-                        <p className="text-[#0a1628]/70 text-[10px] font-semibold leading-tight">{item.label}</p>
-                        <p className="text-[#0a1628]/35 text-[9px] leading-tight mt-0.5">{item.category}</p>
-                      </div>
                     </>
                   )}
                 </div>
