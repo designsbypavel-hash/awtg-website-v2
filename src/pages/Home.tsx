@@ -887,10 +887,7 @@ function ContactCTA() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-colors">
-                Talk to an Expert <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-              </Link>
-              <Link to="/solutions" className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white/70 text-sm font-medium hover:border-white/40 hover:text-white transition-all">
-                Explore Solutions
+                Talk to an Expert
               </Link>
             </div>
           </div>
@@ -906,7 +903,7 @@ function ContactCTA() {
             </div>
             <div className="border-t border-white/10 pt-6">
               <p className="text-[14px] font-semibold uppercase tracking-widest text-white/30 mb-2">Offices</p>
-              <p className="text-white/70 font-medium">London · Lisbon · Stockholm · Singapore</p>
+              <p className="text-white/70 font-medium">London</p>
             </div>
           </div>
         </div>
