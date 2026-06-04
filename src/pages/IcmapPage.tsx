@@ -430,9 +430,6 @@ export default function IcmapPage() {
           style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
 
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="font-black text-[#228DC1] mb-4" style={{ fontSize: '13px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.6 }}>
-            CoverageMap · Intelligent Telecom Coverage Mapping & Network Insight Platform
-          </p>
           <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6 max-w-4xl">
             Coverage intelligence<br />
             that drives decisions.
@@ -443,9 +440,6 @@ export default function IcmapPage() {
           <div className="flex flex-wrap gap-4">
             <Link to="/contact" className="px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a6e99] transition-colors">
               Request a Demo
-            </Link>
-            <Link to="/contact" className="px-7 py-3.5 border border-gray-200 text-[#0a1628]/70 text-[14px] font-medium hover:border-[#228DC1]/50 hover:text-[#228DC1] transition-all">
-              Talk to an expert
             </Link>
           </div>
 
