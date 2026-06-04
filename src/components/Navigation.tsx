@@ -54,7 +54,6 @@ const navItems: NavEntry[] = [
           { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
           { label: 'SCAP', desc: 'Spectrum and capacity analysis platform for network planning', href: '/services/engineering' },
           { label: 'iDAMS', desc: 'Intelligent data and asset management system', href: '/services/iot' },
-          { label: 'Smart City', desc: 'Connected urban infrastructure and digital services platform', href: '/solutions/smart-cities' },
         ],
       },
       {
