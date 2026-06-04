@@ -1825,7 +1825,7 @@ export default function KaiPage() {
                     <img
                       src={item.src}
                       alt={item.alt}
-                      className="h-9 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity duration-300 grayscale hover:grayscale-0"
+                      className="h-9 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                       style={{ maxWidth: '200px' }}
                     />
                   </div>
