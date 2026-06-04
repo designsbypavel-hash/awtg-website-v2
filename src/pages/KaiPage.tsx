@@ -794,6 +794,34 @@ const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
 ]
 
 // ─── Delivery map widget ──────────────────────────────────────────────────────
+const formatKaiSpeech = (text: string) =>
+  text
+    .replace(/#(\d+)/g, 'order number $1')
+    .replace(/\b6 PM\b/g, 'six P M')
+    .replace(/\b2\.4 miles\b/g, 'two point four miles')
+    .replace(/! /g, '. ')
+    .replace(/\. /g, '. ... ')
+
+const pickHumanLikeVoice = (voices: SpeechSynthesisVoice[]) => {
+  const scored = voices
+    .filter(voice => /^en[-_]/i.test(voice.lang))
+    .map(voice => {
+      const haystack = `${voice.name} ${voice.voiceURI} ${voice.lang}`
+      let score = 0
+      if (/natural|neural|online|premium/i.test(haystack)) score += 80
+      if (/microsoft/i.test(haystack)) score += 35
+      if (/google/i.test(haystack)) score += 25
+      if (/aria|jenny|samantha|zira|sonia|serena|daniel|libby/i.test(haystack)) score += 20
+      if (/en[-_]GB/i.test(voice.lang)) score += 12
+      if (/en[-_]US/i.test(voice.lang)) score += 8
+      if (/compact|eloquence|robot|novelty/i.test(haystack)) score -= 80
+      return { voice, score }
+    })
+    .sort((a, b) => b.score - a.score)
+
+  return scored[0]?.voice
+}
+
 function MapWidget() {
   // Street colour and block colours match the reference screenshot
   const STREET  = '#f5f2ec'
@@ -897,7 +925,7 @@ function KaiChatDemo() {
       const msPw   = turn.speaker === 'ai' ? 155 : 95
       const revealMs = tokens.length * msPw
       const speechMs = turn.speaker === 'ai'
-        ? Math.max(3600, turn.text.length * 82)
+        ? Math.max(4300, formatKaiSpeech(turn.text).length * 92)
         : revealMs
 
       if (turn.speaker === 'user') {
@@ -980,19 +1008,14 @@ function KaiChatDemo() {
     if (spokenTurnRef.current === spokenKey) return
     spokenTurnRef.current = spokenKey
 
-    const utterance = new SpeechSynthesisUtterance(currentTurn.text)
-    utterance.rate = 0.88
-    utterance.pitch = 1
+    const utterance = new SpeechSynthesisUtterance(formatKaiSpeech(currentTurn.text))
+    utterance.lang = 'en-GB'
+    utterance.rate = 0.9
+    utterance.pitch = 0.96
     utterance.volume = 1
 
     const voices = speechVoices.length ? speechVoices : window.speechSynthesis.getVoices()
-    const preferredVoice = voices.find(voice =>
-      /natural|neural|online|premium|aria|jenny|samantha|zira|google uk english female|google us english/i.test(`${voice.name} ${voice.voiceURI}`)
-    ) || voices.find(voice =>
-      /^en[-_]GB/i.test(voice.lang)
-    ) || voices.find(voice =>
-      /^en[-_]US/i.test(voice.lang)
-    ) || voices.find(voice => /^en[-_]/i.test(voice.lang))
+    const preferredVoice = pickHumanLikeVoice(voices)
     if (preferredVoice) utterance.voice = preferredVoice
 
     window.speechSynthesis.cancel()
