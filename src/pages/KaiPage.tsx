@@ -1731,10 +1731,10 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
           <div>
             <div className="mb-6">
               <img
-                src="/kai-logo-hero.svg"
+                src="/kai-logo-horiz-hero.svg"
                 alt="Kai"
                 style={{
-                  width: 'clamp(100px, 10vw, 130px)',
+                  width: 'clamp(220px, 18vw, 300px)',
                   height: 'auto',
                   objectFit: 'contain',
                   display: 'block',
