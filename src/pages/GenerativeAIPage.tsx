@@ -1,6 +1,7 @@
 ﻿import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { KaiDashboard } from './KaiPage'
 
 const products = [
   {
@@ -98,6 +99,32 @@ export default function GenerativeAIPage() {
           <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">2016</p><p className="text-[#0a1628]/65 text-[14px] font-normal uppercase tracking-[0.18em]">AI products shipping since</p></div>
           <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">3</p><p className="text-[#0a1628]/65 text-[14px] font-normal uppercase tracking-[0.18em]">Production AI products</p></div>
           <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">Enterprise</p><p className="text-[#0a1628]/65 text-[14px] font-normal uppercase tracking-[0.18em]">Governed, secure deployment</p></div>
+        </div>
+      </section>
+
+      {/* FEATURED – Kai */}
+      <section className="py-20 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <p className="type-label text-[#228DC1] mb-8">Featured</p>
+          <div className="bg-white border border-gray-100 overflow-hidden shadow-[0_2px_24px_rgba(10,22,40,0.06)]">
+            {/* Dashboard mockup */}
+            <div className="p-6 bg-[#f8fafc] border-b border-gray-100">
+              <KaiDashboard />
+            </div>
+            {/* Card body */}
+            <div className="px-8 py-8">
+              <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/35 mb-2">KAI</p>
+              <h3 className="font-semibold text-[#0a1628] text-[22px] leading-[1.3] mb-3">
+                AI for Sales and Customer Services
+              </h3>
+              <p className="text-[#0a1628]/65 text-[15px] leading-[1.7] font-normal mb-5 max-w-2xl">
+                Kai helps teams respond faster, govern handoffs and improve customer operations.
+              </p>
+              <Link to="/solutions/kai" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all">
+                Explore innovation <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
