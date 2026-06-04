@@ -101,56 +101,62 @@ function LogoSamsung() {
   )
 }
 
-// Logos for ticker (pairs for seamless loop)
-const tickerLogos = [
-  { id: 'barnsley',   src: '/logos/partners/Barnsley.png',                alt: 'Barnsley Metropolitan Borough Council' },
-  { id: 'boldyn',     src: '/logos/partners/Boldyn.png',                  alt: 'Boldyn Networks' },
-  { id: 'cambridge',  src: '/logos/partners/Cambridgershire.png',         alt: 'Cambridgeshire County Council' },
-  { id: 'catapult',   src: '/logos/partners/Catapult.png',                alt: 'Digital Catapult' },
-  { id: 'commonwealth',src: '/logos/partners/Commonwealth.png',           alt: 'The Commonwealth' },
-  { id: 'commscope',  src: '/logos/partners/Commscope.png',               alt: 'CommScope' },
-  { id: 'crown',      src: '/logos/partners/Crown Commercial Sercice.png',alt: 'Crown Commercial Service' },
-  { id: 'culham',     src: '/logos/partners/Culham.png',                  alt: 'Culham Science Centre' },
-  { id: 'cyber',      src: '/logos/partners/Cyber.png',                   alt: 'Cyber Essentials' },
-  { id: 'de',         src: '/logos/partners/DE.png',                      alt: 'Department for the Economy' },
-  { id: 'dundee',     src: '/logos/partners/Dundee.png',                  alt: 'Dundee City Council' },
-  { id: 'ealing',     src: '/logos/partners/Ealing.png',                  alt: 'Ealing Council' },
-  { id: 'fresh',      src: '/logos/partners/Fresh.png',                   alt: 'FreshWave' },
-  { id: 'gamma',      src: '/logos/partners/Gamma.png',                   alt: 'Gamma' },
-  { id: 'homeoffice', src: '/logos/partners/Home Office.png',             alt: 'Home Office' },
-  { id: 'huawei',     src: '/logos/partners/Huwawei.png',                 alt: 'Huawei' },
-  { id: 'kings',      src: '/logos/partners/Kings COllege.png',           alt: "King's College London" },
-  { id: 'liverpool',  src: '/logos/partners/Liverpool.png',               alt: 'Liverpool City Region' },
-  { id: 'mobily',     src: '/logos/partners/Mobily.png',                  alt: 'Mobily' },
-  { id: 'nao',        src: '/logos/partners/NAO.png',                     alt: 'National Audit Office' },
-  { id: 'nokia',      src: '/logos/partners/Nokia.png',                   alt: 'Nokia' },
-  { id: 'o2',         src: '/logos/partners/O2.png',                      alt: 'O2', small: true },
-  { id: 'oracle',     src: '/logos/partners/Oracle.png',                  alt: 'Oracle' },
-  { id: 'qinetiq',    src: '/logos/partners/Qinetic.png',                 alt: 'QinetiQ' },
-  { id: 'quickline',  src: '/logos/partners/Quickline Broadband.png',     alt: 'Quickline Broadband' },
-  { id: 'renesas',    src: '/logos/partners/Renesas.png',                 alt: 'Renesas' },
-  { id: 'kingston',   src: '/logos/partners/Royal Thames.png',            alt: 'Royal Borough of Kingston upon Thames' },
-  { id: 'ruckus',     src: '/logos/partners/Ruckus.png',                  alt: 'Ruckus' },
-  { id: 'scotland5g', src: '/logos/partners/Scotland 5G.png',             alt: 'The Scotland 5G Centre' },
-  { id: 'stc',        src: '/logos/partners/STC.png',                     alt: 'STC' },
-  { id: 'strathclyde',src: '/logos/partners/Straighclyde.png',            alt: 'University of Strathclyde' },
-  { id: 'surrey',     src: '/logos/partners/Surrey.png',                  alt: 'University of Surrey' },
-  { id: 'tot',        src: '/logos/partners/TOT.png',                     alt: 'TOT' },
-  { id: 'uktin',      src: '/logos/partners/UK Tel.png',                  alt: 'UK Telecoms Innovation Network' },
-  { id: 'virginO2',   src: '/logos/partners/Virgin 02.png',               alt: 'Virgin Media O2' },
-  { id: 'vodafone',   src: '/logos/partners/Vodafone.png',                alt: 'Vodafone' },
-  { id: 'vodxone',    src: '/logos/partners/VOdafonexone.png',            alt: 'Vodafone Xone' },
-  { id: 'westlondon', src: '/logos/partners/West London.png',             alt: 'West London Alliance' },
-  { id: 'wifi',       src: '/logos/partners/Wifi.png',                    alt: 'Wi-Fi Powered by The Cloud' },
-  { id: 'ww5g',       src: '/logos/partners/WW 5G.png',                   alt: 'WM 5G' },
-  { id: 'cisco',      src: '/logos/partners/Communication.png',           alt: 'Cisco' },
-  { id: 'cpi',        src: '/logos/partners/CPI.png',                     alt: 'CPI' },
-  { id: 'glasgow',    src: '/logos/partners/Frame 565.png',               alt: 'University of Glasgow' },
-  { id: 'symca',      src: '/logos/partners/Frame 566.png',               alt: 'South Yorkshire MCA' },
-  { id: 'cityguilds', src: '/logos/partners/Frame 567.png',               alt: 'City & Guilds' },
-  { id: 'limerick',   src: '/logos/partners/Frame 568.png',               alt: 'Limerick Youth Service' },
-  { id: 'youthwork',  src: '/logos/partners/Youth Work.png',              alt: 'Youth Work Ireland' },
+// size: 'lg' = h-24 (default), 'md' = h-16 (coat-of-arms/complex), 'sm' = h-10 (circular logos)
+const tickerLogos: { id: string; src: string; alt: string; size?: 'lg' | 'md' | 'sm' }[] = [
+  { id: 'barnsley',    src: '/logos/partners/Barnsley.png',                alt: 'Barnsley Metropolitan Borough Council', size: 'md' },
+  { id: 'boldyn',      src: '/logos/partners/Boldyn.png',                  alt: 'Boldyn Networks' },
+  { id: 'cambridge',   src: '/logos/partners/Cambridgershire.png',         alt: 'Cambridgeshire County Council' },
+  { id: 'catapult',    src: '/logos/partners/Catapult.png',                alt: 'Digital Catapult', size: 'md' },
+  { id: 'commonwealth',src: '/logos/partners/Commonwealth.png',            alt: 'The Commonwealth', size: 'md' },
+  { id: 'commscope',   src: '/logos/partners/Commscope.png',               alt: 'CommScope' },
+  { id: 'crown',       src: '/logos/partners/Crown Commercial Sercice.png',alt: 'Crown Commercial Service', size: 'md' },
+  { id: 'culham',      src: '/logos/partners/Culham.png',                  alt: 'Culham Science Centre', size: 'md' },
+  { id: 'cyber',       src: '/logos/partners/Cyber.png',                   alt: 'Cyber Essentials', size: 'md' },
+  { id: 'de',          src: '/logos/partners/DE.png',                      alt: 'Department for the Economy' },
+  { id: 'dundee',      src: '/logos/partners/Dundee.png',                  alt: 'Dundee City Council', size: 'md' },
+  { id: 'ealing',      src: '/logos/partners/Ealing.png',                  alt: 'Ealing Council', size: 'md' },
+  { id: 'fresh',       src: '/logos/partners/Fresh.png',                   alt: 'FreshWave' },
+  { id: 'gamma',       src: '/logos/partners/Gamma.png',                   alt: 'Gamma' },
+  { id: 'homeoffice',  src: '/logos/partners/Home Office.png',             alt: 'Home Office', size: 'md' },
+  { id: 'huawei',      src: '/logos/partners/Huwawei.png',                 alt: 'Huawei' },
+  { id: 'kings',       src: '/logos/partners/Kings COllege.png',           alt: "King's College London", size: 'md' },
+  { id: 'liverpool',   src: '/logos/partners/Liverpool.png',               alt: 'Liverpool City Region', size: 'md' },
+  { id: 'mobily',      src: '/logos/partners/Mobily.png',                  alt: 'Mobily', size: 'md' },
+  { id: 'nao',         src: '/logos/partners/NAO.png',                     alt: 'National Audit Office', size: 'md' },
+  { id: 'nokia',       src: '/logos/partners/Nokia.png',                   alt: 'Nokia' },
+  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2', size: 'sm' },
+  { id: 'oracle',      src: '/logos/partners/Oracle.png',                  alt: 'Oracle' },
+  { id: 'qinetiq',     src: '/logos/partners/Qinetic.png',                 alt: 'QinetiQ' },
+  { id: 'quickline',   src: '/logos/partners/Quickline Broadband.png',     alt: 'Quickline Broadband' },
+  { id: 'renesas',     src: '/logos/partners/Renesas.png',                 alt: 'Renesas' },
+  { id: 'kingston',    src: '/logos/partners/Royal Thames.png',            alt: 'Royal Borough of Kingston upon Thames', size: 'md' },
+  { id: 'ruckus',      src: '/logos/partners/Ruckus.png',                  alt: 'Ruckus', size: 'md' },
+  { id: 'scotland5g',  src: '/logos/partners/Scotland 5G.png',             alt: 'The Scotland 5G Centre', size: 'md' },
+  { id: 'stc',         src: '/logos/partners/STC.png',                     alt: 'STC', size: 'md' },
+  { id: 'strathclyde', src: '/logos/partners/Straighclyde.png',            alt: 'University of Strathclyde', size: 'md' },
+  { id: 'surrey',      src: '/logos/partners/Surrey.png',                  alt: 'University of Surrey', size: 'sm' },
+  { id: 'tot',         src: '/logos/partners/TOT.png',                     alt: 'TOT', size: 'sm' },
+  { id: 'uktin',       src: '/logos/partners/UK Tel.png',                  alt: 'UK Telecoms Innovation Network', size: 'md' },
+  { id: 'virginO2',    src: '/logos/partners/Virgin 02.png',               alt: 'Virgin Media O2' },
+  { id: 'vodafone',    src: '/logos/partners/Vodafone.png',                alt: 'Vodafone' },
+  { id: 'vodxone',     src: '/logos/partners/VOdafonexone.png',            alt: 'Vodafone Xone', size: 'md' },
+  { id: 'westlondon',  src: '/logos/partners/West London.png',             alt: 'West London Alliance', size: 'md' },
+  { id: 'wifi',        src: '/logos/partners/Wifi.png',                    alt: 'Wi-Fi Powered by The Cloud', size: 'md' },
+  { id: 'ww5g',        src: '/logos/partners/WW 5G.png',                   alt: 'WM 5G', size: 'sm' },
+  { id: 'cisco',       src: '/logos/partners/Communication.png',           alt: 'Cisco' },
+  { id: 'cpi',         src: '/logos/partners/CPI.png',                     alt: 'CPI', size: 'md' },
+  { id: 'glasgow',     src: '/logos/partners/Frame 565.png',               alt: 'University of Glasgow', size: 'md' },
+  { id: 'symca',       src: '/logos/partners/Frame 566.png',               alt: 'South Yorkshire MCA', size: 'md' },
+  { id: 'cityguilds',  src: '/logos/partners/Frame 567.png',               alt: 'City & Guilds', size: 'md' },
+  { id: 'limerick',    src: '/logos/partners/Frame 568.png',               alt: 'Limerick Youth Service', size: 'sm' },
+  { id: 'youthwork',   src: '/logos/partners/Youth Work.png',              alt: 'Youth Work Ireland', size: 'sm' },
 ]
+
+const logoSizeClass: Record<string, string> = {
+  lg: 'h-24 max-w-[200px]',
+  md: 'h-16 max-w-[170px]',
+  sm: 'h-10 max-w-[100px]',
+}
 
 // --- HERO (Harvey-inspired) --------------------------------------------------
 
@@ -219,7 +225,7 @@ function Hero() {
                   key={`${logo.id}-${i}`}
                   className="flex items-center justify-center px-10 py-6 shrink-0"
                 >
-                  <img src={logo.src} alt={logo.alt} className={`w-auto max-w-[160px] object-contain ${'small' in logo && logo.small ? 'h-8' : 'h-16'}`} />
+                  <img src={logo.src} alt={logo.alt} className={`w-auto object-contain ${logoSizeClass[logo.size ?? 'lg']}`} />
                 </div>
               ))}
             </div>
