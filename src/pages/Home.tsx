@@ -221,7 +221,7 @@ function Hero() {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    style={{ height: '52px', width: '140px', objectFit: 'contain', objectPosition: 'center' }}
+                    style={{ height: '172px', width: '220px', objectFit: 'contain', objectPosition: 'center' }}
                   />
                 </div>
               ))}
