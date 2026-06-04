@@ -880,6 +880,7 @@ function KaiChatDemo() {
   const [words,   setWords]   = useState(0)
   const tids = useRef<number[]>([])
   const spokenTurnRef = useRef('')
+  const [speechVoices, setSpeechVoices] = useState<SpeechSynthesisVoice[]>([])
 
   const sched = (fn: () => void, ms: number) => {
     const id = window.setTimeout(fn, ms); tids.current.push(id)
@@ -893,7 +894,7 @@ function KaiChatDemo() {
 
     VOICE_SCRIPT.forEach((turn, i) => {
       const tokens = turn.text.split(' ')
-      const msPw   = turn.speaker === 'ai' ? 80 : 95
+      const msPw   = turn.speaker === 'ai' ? 185 : 95
 
       if (turn.speaker === 'user') {
         sched(() => { setTurnIdx(i); setWords(0); setOrbMode('listen') }, t)
@@ -907,7 +908,7 @@ function KaiChatDemo() {
       t += tokens.length * msPw
 
       sched(() => setOrbMode('listen'), t)
-      t += turn.speaker === 'ai' ? 1400 : 1100
+      t += turn.speaker === 'ai' ? 1000 : 1100
     })
 
     sched(() => setPhase('chat'), t)
@@ -925,6 +926,15 @@ function KaiChatDemo() {
       tids.current.forEach(clearTimeout)
       window.speechSynthesis?.cancel()
     }
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
+
+    const loadVoices = () => setSpeechVoices(window.speechSynthesis.getVoices())
+    loadVoices()
+    window.speechSynthesis.addEventListener?.('voiceschanged', loadVoices)
+    return () => window.speechSynthesis.removeEventListener?.('voiceschanged', loadVoices)
   }, [])
 
   const isVoice     = phase === 'voice'
@@ -956,8 +966,8 @@ function KaiChatDemo() {
   useEffect(() => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
 
-    const isKaiSpeaking = phase === 'voice' && orbMode === 'ai' && currentTurn?.speaker === 'ai'
-    if (!isKaiSpeaking || !currentTurn) {
+    const shouldStopSpeech = phase !== 'voice' || !currentTurn || currentTurn.speaker !== 'ai'
+    if (shouldStopSpeech) {
       window.speechSynthesis.cancel()
       return
     }
@@ -967,19 +977,23 @@ function KaiChatDemo() {
     spokenTurnRef.current = spokenKey
 
     const utterance = new SpeechSynthesisUtterance(currentTurn.text)
-    utterance.rate = 0.96
-    utterance.pitch = 1.02
-    utterance.volume = 0.75
+    utterance.rate = 0.88
+    utterance.pitch = 1
+    utterance.volume = 1
 
-    const voices = window.speechSynthesis.getVoices()
+    const voices = speechVoices.length ? speechVoices : window.speechSynthesis.getVoices()
     const preferredVoice = voices.find(voice =>
-      /female|aria|samantha|zira|google uk english female/i.test(`${voice.name} ${voice.voiceURI}`)
+      /natural|neural|online|premium|aria|jenny|samantha|zira|google uk english female|google us english/i.test(`${voice.name} ${voice.voiceURI}`)
+    ) || voices.find(voice =>
+      /^en[-_]GB/i.test(voice.lang)
+    ) || voices.find(voice =>
+      /^en[-_]US/i.test(voice.lang)
     ) || voices.find(voice => /^en[-_]/i.test(voice.lang))
     if (preferredVoice) utterance.voice = preferredVoice
 
     window.speechSynthesis.cancel()
     window.speechSynthesis.speak(utterance)
-  }, [phase, orbMode, currentTurn, turnIdx])
+  }, [phase, currentTurn, turnIdx, speechVoices])
 
   return (
     <div className="select-none" style={{ width: '100%', maxWidth: 420, aspectRatio: '420 / 613' }}>
