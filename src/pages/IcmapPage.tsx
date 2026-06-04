@@ -434,8 +434,7 @@ export default function IcmapPage() {
             CoverageMap · Intelligent Telecom Coverage Mapping & Network Insight Platform
           </p>
           <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6 max-w-4xl">
-            See every gap.<br />
-            <span style={{ color: '#228DC1' }}>Coverage intelligence</span><br />
+            Coverage intelligence<br />
             that drives decisions.
           </h1>
           <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-2xl mb-10">
@@ -450,12 +449,6 @@ export default function IcmapPage() {
             </Link>
           </div>
 
-          <div className="mt-14 pt-10 border-t border-gray-100 flex flex-wrap items-center gap-3">
-            <p className="text-[#0a1628]/60 text-[14px] font-semibold uppercase tracking-[0.2em] mr-2">Network generations</p>
-            {['2G', '3G', '4G', '5G'].map((gen) => (
-              <span key={gen} className="border border-gray-100 bg-[#0a1628]/4 px-3 py-1.5 text-[#0a1628]/60 text-[14px] font-bold tracking-wider">{gen}</span>
-            ))}
-          </div>
         </div>
       </section>
 
