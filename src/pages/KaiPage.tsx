@@ -1781,10 +1781,9 @@ export default function KaiPage() {
         isOpen={isDemoOpen}
         onClose={closeDemo}
         productName="Kai"
-        productLabel="Enterprise AI Agent"
         title="See Kai in action"
         description="Share a few details and we will show how Kai can resolve customer and operational workflows across your systems, channels and governance rules."
-        logoSrc="/kai-logo-horiz.svg"
+        logoSrc="/kai-logo-horiz-hero.svg"
         accentColor="#228DC1"
         trustItems={['British Council', 'Enterprise support', 'Governed AI', 'Hybrid deployment', 'Live integrations', 'Audit-ready workflows']}
         outcomes={[

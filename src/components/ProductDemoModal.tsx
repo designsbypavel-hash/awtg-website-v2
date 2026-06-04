@@ -6,7 +6,6 @@ type ProductDemoModalProps = {
   isOpen: boolean
   onClose: () => void
   productName: string
-  productLabel: string
   title: string
   description: string
   logoSrc: string
@@ -23,23 +22,11 @@ const companySizes = [
   '5,000+ employees',
 ]
 
-const industryDomains = [
-  'Education',
-  'Public sector',
-  'Customer service',
-  'Telecommunications',
-  'Healthcare',
-  'Financial services',
-  'Retail',
-  'Technology',
-  'Other',
-]
 
 export default function ProductDemoModal({
   isOpen,
   onClose,
   productName,
-  productLabel,
   title,
   description,
   logoSrc,
@@ -47,8 +34,6 @@ export default function ProductDemoModal({
   trustItems,
   outcomes,
 }: ProductDemoModalProps) {
-  const isAruva = productName.toLowerCase() === 'aruva'
-
   useEffect(() => {
     if (!isOpen) return
 
@@ -96,27 +81,14 @@ export default function ProductDemoModal({
             </button>
 
             <div className="relative">
-              {isAruva ? (
-                <div className="mb-7">
-                  <img
-                    src={logoSrc}
-                    alt={productName}
-                    className="h-auto w-[150px] max-w-[42vw] object-contain"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                  />
-                </div>
-              ) : (
-                <div className="mb-8 inline-flex items-center gap-3 rounded-[12px] border border-gray-200 bg-white px-4 py-3 shadow-[0_8px_24px_rgba(10,22,40,0.06)]">
-                  <img
-                    src={logoSrc}
-                    alt={productName}
-                    className="max-h-8 w-auto max-w-[116px] object-contain"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                  />
-                    <span className="h-7 w-px bg-gray-200" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#0a1628]/45">{productLabel}</span>
-                </div>
-              )}
+              <div className="mb-7">
+                <img
+                  src={logoSrc}
+                  alt={productName}
+                  className="h-auto w-[150px] max-w-[42vw] object-contain"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                />
+              </div>
 
               <h2 className="font-serif-display text-[#0a1628] leading-[1.04] mb-5" style={{ fontSize: 'clamp(34px, 4vw, 54px)' }}>
                 {title}
