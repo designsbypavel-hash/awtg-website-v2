@@ -778,6 +778,13 @@ const VOICE_SCRIPT: VoiceTurn[] = [
   { speaker: 'ai',   text: "Yes! I've updated the address. You'll receive a confirmation shortly." },
 ]
 
+const KAI_VOICE_AUDIO: Record<number, string> = {
+  0: '/audio/kai-voice-greeting.mp3',
+  2: '/audio/kai-voice-delivery.mp3',
+  4: '/audio/kai-voice-distance.mp3',
+  6: '/audio/kai-voice-address.mp3',
+}
+
 // ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
 type ChatRole = 'ai' | 'user' | 'signal' | 'map' | 'chips'
 const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
@@ -908,6 +915,7 @@ function KaiChatDemo() {
   const [words,   setWords]   = useState(0)
   const tids = useRef<number[]>([])
   const spokenTurnRef = useRef('')
+  const audioRef = useRef<HTMLAudioElement | null>(null)
   const [speechVoices, setSpeechVoices] = useState<SpeechSynthesisVoice[]>([])
 
   const sched = (fn: () => void, ms: number) => {
@@ -956,6 +964,7 @@ function KaiChatDemo() {
     return () => {
       clearTimeout(id)
       tids.current.forEach(clearTimeout)
+      audioRef.current?.pause()
       window.speechSynthesis?.cancel()
     }
   }, [])
@@ -1000,6 +1009,7 @@ function KaiChatDemo() {
 
     const shouldStopSpeech = phase !== 'voice' || !currentTurn || currentTurn.speaker !== 'ai'
     if (shouldStopSpeech) {
+      audioRef.current?.pause()
       window.speechSynthesis.cancel()
       return
     }
@@ -1017,6 +1027,19 @@ function KaiChatDemo() {
     const voices = speechVoices.length ? speechVoices : window.speechSynthesis.getVoices()
     const preferredVoice = pickHumanLikeVoice(voices)
     if (preferredVoice) utterance.voice = preferredVoice
+
+    const audioSrc = KAI_VOICE_AUDIO[turnIdx]
+    if (audioSrc) {
+      audioRef.current?.pause()
+      const audio = new Audio(audioSrc)
+      audio.volume = 0.92
+      audioRef.current = audio
+      audio.play().catch(() => {
+        window.speechSynthesis.cancel()
+        window.speechSynthesis.speak(utterance)
+      })
+      return
+    }
 
     window.speechSynthesis.cancel()
     window.speechSynthesis.speak(utterance)
