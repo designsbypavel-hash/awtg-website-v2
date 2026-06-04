@@ -1958,7 +1958,7 @@ export default function KaiPage() {
                     250k+
                   </p>
                   <p className="text-white/75 text-[14px] font-medium leading-relaxed">
-                    learners supported each month across enterprise deployments.
+                    users supported each month across enterprise deployments.
                   </p>
                 </div>
                 <div className="border-t border-gray-100 bg-[#fafafa] px-8 py-5">
@@ -1973,7 +1973,7 @@ export default function KaiPage() {
           {/* Metrics row � same section */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <StatCard prefix="+" num={22.5} suffix="%" label="Containment uplift" note="Measured in production" delay={0} />
-            <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="Learner satisfaction" delay={100} />
+            <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction" delay={100} />
             <StatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
             <StatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
           </div>
