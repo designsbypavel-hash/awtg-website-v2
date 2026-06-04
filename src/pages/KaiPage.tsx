@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck, faShield, faGear, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faCircleCheck, faGear, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 
@@ -699,10 +699,7 @@ function SecurityComplianceSection() {
             </p>
 
             <div className="bg-[#0a1628] text-white p-8 shadow-[0_16px_50px_rgba(10,22,40,0.12)]" style={reveal(leftInView, 280)}>
-              <div className="w-11 h-11 flex items-center justify-center bg-white/10 mb-6">
-                <FontAwesomeIcon icon={faShield} className="w-5 h-5 text-[#6cc4ea]" />
-              </div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 mb-2">Governance proof</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
               <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 AI Management System certified</p>
               <p className="text-white/58 text-sm font-normal leading-relaxed">
                 Governance, access control and auditability are built in from day one.
@@ -721,12 +718,7 @@ function SecurityComplianceSection() {
                 { badge: 'AI governance', title: 'Auditable AI', detail: 'Rules for access, consent and escalation.' },
               ].map((item, i) => (
                 <div key={item.badge} className="group bg-white border border-gray-200 p-6 shadow-[0_1px_8px_rgba(10,22,40,0.03)] hover:shadow-[0_16px_40px_rgba(10,22,40,0.07)] hover:-translate-y-0.5 transition-all" style={reveal(gridInView, i * 80)}>
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="w-8 h-8 flex items-center justify-center bg-[#e5f4fa] text-[#228DC1]">
-                      <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4" />
-                    </span>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#228DC1]">{item.badge}</span>
-                  </div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#228DC1] mb-5">{item.badge}</p>
                   <h3 className="text-[#0a1628] text-[14px] font-semibold mb-2">{item.title}</h3>
                   <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.detail}</p>
                 </div>
