@@ -1800,13 +1800,13 @@ export default function KaiPage() {
       {/* -- Single combined logo strip -- */}
       {(() => {
         const items = [
-          { src: '/logos/clients/kaiser-permanente.svg', alt: 'Kaiser Permanente' },
-          { src: '/logos/clients/cambridgeshire.svg',    alt: 'Cambridgeshire County Council' },
-          { src: '/logos/britishcouncil.svg',            alt: 'British Council' },
-          { src: '/logos/clients/borderlands.svg',       alt: 'Borderlands 5G Innovation Region' },
-          { src: '/logos/clients/west-berkshire.svg',    alt: 'West Berkshire Council' },
-          { src: '/logos/clients/retail-hub.svg',        alt: 'Retail Hub' },
-          { src: '/logos/clients/tvra.svg',              alt: 'TVRA Rural Action' },
+          { src: '/logos/clients/kai-kp.svg',              alt: 'Kaiser Permanente' },
+          { src: '/logos/clients/kai-cambridge.svg',       alt: 'Cambridgeshire County Council' },
+          { src: '/logos/clients/kai-british-council.svg', alt: 'British Council' },
+          { src: '/logos/clients/kai-borderlands.svg',     alt: 'Borderlands 5G Innovation Region' },
+          { src: '/logos/clients/kai-frame1.svg',          alt: 'West Berkshire Council' },
+          { src: '/logos/clients/kai-frame3.svg',          alt: 'Retail Hub' },
+          { src: '/logos/clients/kai-frame2.svg',          alt: 'TVRA Rural Action' },
         ]
         const all = [...items, ...items]
         return (
