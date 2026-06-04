@@ -45,7 +45,7 @@ const navItems: NavEntry[] = [
     ],
   },
   {
-    label: 'Solutions',
+    label: 'Connectivity',
     key: 'connectivity',
     groups: [
       {
