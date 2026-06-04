@@ -1,7 +1,6 @@
 ﻿import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
-import { KaiDashboard } from './KaiPage'
 
 const products = [
   {
@@ -107,9 +106,67 @@ export default function GenerativeAIPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <p className="type-label text-[#228DC1] mb-8">Featured</p>
           <div className="bg-white border border-gray-100 overflow-hidden shadow-[0_2px_24px_rgba(10,22,40,0.06)]">
-            {/* Dashboard mockup */}
-            <div className="p-6 bg-[#f8fafc] border-b border-gray-100">
-              <KaiDashboard />
+            {/* Code editor mockup */}
+            <div className="border-b border-gray-100 overflow-hidden bg-white" style={{ fontFamily: "'SF Mono', 'Fira Code', 'Consolas', monospace" }}>
+              {/* Window chrome */}
+              <div className="flex items-center gap-1.5 px-4 py-3 bg-[#f0f0f0] border-b border-gray-200">
+                <span className="w-3 h-3 rounded-full bg-[#fc5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="flex-1 text-center text-[12px] text-[#666] font-medium tracking-tight">AI Agent Composer - Retail Hub</span>
+              </div>
+              {/* Editor body */}
+              <div className="flex bg-[#fafafa]" style={{ minHeight: 340 }}>
+                {/* Sidebar icons */}
+                <div className="flex flex-col items-center gap-4 px-3 py-5 bg-[#f3f3f3] border-r border-gray-200">
+                  {['M3 12h18M3 6h18M3 18h18', 'M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18', 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4', 'M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7', 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z', 'M13 10V3L4 14h7v7l9-11h-7z', 'M4 6h16M4 10h16M4 14h16M4 18h16'].map((d, i) => (
+                    <svg key={i} className="w-4 h-4 text-[#888]" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d={d} /></svg>
+                  ))}
+                </div>
+                {/* Code area */}
+                <div className="flex-1 p-4 text-[11.5px] leading-[1.75] overflow-hidden select-none">
+                  {[
+                    { ln: 1,  tokens: [{ t: '• Core System Config', c: '#888' }] },
+                    { ln: 2,  tokens: [{ t: 'SUPERVISOR', c: '#0e7490' }, { t: ': ', c: '#444' }, { t: 'Retail_Manager', c: '#1a1a1a' }] },
+                    { ln: 3,  tokens: [{ t: 'GOAL', c: '#0e7490' }, { t: ': ', c: '#444' }, { t: '"Enhance the end-to-end retail customer e…"', c: '#b45309' }] },
+                    { ln: 4,  tokens: [{ t: 'PERSONA', c: '#0e7490' }, { t: ': |', c: '#444' }] },
+                    { ln: 5,  tokens: [{ t: '  ', c: '#444' }, { t: '"Helpful, approachable, and product-aware…"', c: '#b45309' }] },
+                    { ln: 6,  tokens: [] },
+                    { ln: 7,  tokens: [{ t: '• Capability Modules', c: '#888' }] },
+                    { ln: 8,  tokens: [{ t: 'CAPABILITIES', c: '#0e7490' }, { t: ':', c: '#444' }] },
+                    { ln: 9,  tokens: [{ t: '  ', c: '#444' }, { t: 'order_lookup', c: '#b45309' }, { t: ':', c: '#444' }] },
+                    { ln: 10, tokens: [{ t: '    { service: Order_Service, parameters: { or…', c: '#555' }] },
+                    { ln: 11, tokens: [{ t: '  ', c: '#444' }, { t: 'inventory_status', c: '#b45309' }, { t: ':', c: '#444' }] },
+                    { ln: 12, tokens: [{ t: '    { service: Inventory_Service, parameters: {…', c: '#555' }] },
+                    { ln: 13, tokens: [{ t: '  ', c: '#444' }, { t: 'recommendation_engine', c: '#b45309' }, { t: ':', c: '#444' }] },
+                    { ln: 14, tokens: [{ t: '    { service: Reco_Service, parameters: { user…', c: '#555' }] },
+                    { ln: 15, tokens: [] },
+                    { ln: 16, tokens: [{ t: '• Typed Tool Definitions', c: '#888' }] },
+                    { ln: 17, tokens: [{ t: 'TOOLS', c: '#0e7490' }, { t: ':', c: '#444' }] },
+                    { ln: 18, tokens: [{ t: '  ', c: '#444' }, { t: 'Apply_discount', c: '#b45309' }, { t: ' (code: string, cart_id: string…', c: '#555' }] },
+                    { ln: 19, tokens: [{ t: '    description: ', c: '#555' }, { t: '"Apply a valid coupon code to…"', c: '#b45309' }] },
+                    { ln: 20, tokens: [{ t: '  ', c: '#444' }, { t: 'Create_order', c: '#b45309' }, { t: ' (items: [{sku: string, quantity…', c: '#555' }] },
+                    { ln: 21, tokens: [{ t: '    description: ', c: '#555' }, { t: '"Process a new order."', c: '#b45309' }, { t: ' }', c: '#555' }] },
+                    { ln: 22, tokens: [{ t: '  ', c: '#444' }, { t: 'Initiate_return', c: '#b45309' }, { t: ' (order_id: string, reason: st…', c: '#555' }] },
+                    { ln: 23, tokens: [{ t: '    description: ', c: '#555' }, { t: '"Process a customer return req…"', c: '#b45309' }] },
+                    { ln: 24, tokens: [{ t: '  ', c: '#444' }, { t: 'Update_inventory', c: '#b45309' }, { t: ' (sku: string, change: intege…', c: '#555' }] },
+                    { ln: 25, tokens: [] },
+                    { ln: 26, tokens: [{ t: '• Agent Behavior Logic', c: '#888' }] },
+                    { ln: 27, tokens: [{ t: 'rules', c: '#0e7490' }, { t: ':', c: '#444' }] },
+                    { ln: 28, tokens: [{ t: '  - if capability.order_lookup fails:', c: '#555' }] },
+                    { ln: 29, tokens: [{ t: '      escalate to: ', c: '#555' }, { t: 'SUPERVISOR', c: '#0e7490' }] },
+                  ].map(row => (
+                    <div key={row.ln} className="flex">
+                      <span className="w-8 shrink-0 text-right pr-3 text-[#bbb] select-none">{row.ln}</span>
+                      <span>
+                        {row.tokens.map((tok, i) => (
+                          <span key={i} style={{ color: tok.c }}>{tok.t}</span>
+                        ))}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
             {/* Card body */}
             <div className="px-8 py-8">
