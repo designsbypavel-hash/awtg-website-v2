@@ -1886,7 +1886,7 @@ export default function KaiPage() {
         const items = [
           { src: '/logos/clients/kai-kp.svg',              alt: 'Kaiser Permanente' },
           { src: '/logos/clients/kai-cambridge.svg',       alt: 'Cambridgeshire County Council' },
-          { src: '/logos/clients/kai-cumberland.svg',      alt: 'Cumberland Council' },
+          { src: '/logos/clients/kai-cumberland.svg',      alt: 'Cumberland Council', height: 56 },
           { src: '/logos/clients/kai-british-council.svg', alt: 'British Council' },
           { src: '/logos/clients/kai-borderlands.svg',     alt: 'Borderlands 5G Innovation Region' },
           { src: '/logos/clients/kai-frame1.svg',          alt: 'West Berkshire Council' },
@@ -1910,8 +1910,8 @@ export default function KaiPage() {
                     <img
                       src={item.src}
                       alt={item.alt}
-                      className="h-9 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                      style={{ maxWidth: '200px' }}
+                      className="w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                      style={{ height: item.height ?? 36, maxWidth: '200px' }}
                     />
                   </div>
                 ))}
