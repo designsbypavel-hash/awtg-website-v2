@@ -400,26 +400,51 @@ const steps = [
 ]
 
 // -- Hero animated demo --------------------------------------------------------
-// Coverage quality labels matching coveragemap.visitborderlands.co.uk
-const VB_ZONES = [
-  { id: 'vg', label: 'Very Good', color: '#22c55e', signal: '-72 dBm',  pop: '15,600',
-    path: 'M180,90 L260,75 L310,105 L295,165 L225,182 L155,162 L145,112 Z' },
-  { id: 'g',  label: 'Good',      color: '#84cc16', signal: '-85 dBm',  pop: '28,400',
-    path: 'M105,42 L285,30 L365,82 L372,198 L305,242 L138,245 L72,196 L62,92 Z' },
-  { id: 'f',  label: 'Fair',      color: '#f59e0b', signal: '-95 dBm',  pop: '8,100',
-    path: 'M42,8 L340,2 L430,60 L438,272 L355,320 L88,322 L25,265 L18,58 Z' },
-  { id: 'fr', label: 'Fringe',    color: '#f97316', signal: '-108 dBm', pop: '2,400',
-    path: 'M8,0 L420,0 L480,48 L485,352 L400,382 L68,382 L4,342 L0,50 Z' },
+// Scattered, independent coverage patches — not concentric, not overlapping
+// Each has a tooltip anchor (tx, ty) for the popup
+const HERO_PATCHES = [
+  // Very Good — dense urban cores
+  { id:'vg1', label:'Very Good', color:'#16a34a', signal:'-68 dBm', pop:'12,400',
+    path:'M158,104 L188,96 L202,112 L196,134 L170,140 L148,126 Z', tx:155, ty:88 },
+  { id:'vg2', label:'Very Good', color:'#16a34a', signal:'-71 dBm', pop:'9,800',
+    path:'M228,136 L254,128 L266,145 L258,165 L234,171 L218,156 Z', tx:226, ty:120 },
+  // Good — wider suburban coverage
+  { id:'g1', label:'Good', color:'#65a30d', signal:'-82 dBm', pop:'22,100',
+    path:'M108,70 L162,60 L182,78 L176,108 L148,116 L108,105 L95,86 Z', tx:106, ty:54 },
+  { id:'g2', label:'Good', color:'#65a30d', signal:'-86 dBm', pop:'18,300',
+    path:'M278,148 L314,140 L326,160 L318,182 L290,188 L268,172 Z', tx:276, ty:132 },
+  { id:'g3', label:'Good', color:'#65a30d', signal:'-88 dBm', pop:'8,600',
+    path:'M88,182 L122,174 L136,192 L128,214 L100,220 L78,204 Z', tx:86, ty:166 },
+  // Fair — rural areas with partial coverage
+  { id:'f1', label:'Fair', color:'#ca8a04', signal:'-96 dBm', pop:'5,400',
+    path:'M34,118 L76,108 L88,128 L78,152 L46,158 L26,140 Z', tx:32, ty:102 },
+  { id:'f2', label:'Fair', color:'#ca8a04', signal:'-98 dBm', pop:'4,200',
+    path:'M316,92 L350,84 L364,104 L354,128 L322,132 L304,114 Z', tx:314, ty:76 },
+  { id:'f3', label:'Fair', color:'#ca8a04', signal:'-94 dBm', pop:'6,100',
+    path:'M196,220 L228,212 L242,230 L234,254 L206,260 L188,242 Z', tx:194, ty:204 },
+  // Fringe — edge of coverage, remote rural
+  { id:'fr1', label:'Fringe', color:'#ea580c', signal:'-108 dBm', pop:'1,200',
+    path:'M18,56 L48,48 L60,68 L50,90 L22,94 L8,74 Z', tx:16, ty:40 },
+  { id:'fr2', label:'Fringe', color:'#ea580c', signal:'-110 dBm', pop:'800',
+    path:'M338,228 L364,222 L374,244 L364,264 L338,268 L322,248 Z', tx:336, ty:212 },
+  { id:'fr3', label:'Fringe', color:'#ea580c', signal:'-106 dBm', pop:'1,600',
+    path:'M128,260 L158,254 L170,272 L160,292 L130,296 L112,278 Z', tx:126, ty:244 },
 ]
-const VB_LAYERS = ['All', '5G', '4G', 'Gaps'] as const
+
+// Unique quality levels for legend
+const LEGEND_LEVELS = [
+  { label: 'Very Good', color: '#16a34a' },
+  { label: 'Good',      color: '#65a30d' },
+  { label: 'Fair',      color: '#ca8a04' },
+  { label: 'Fringe',    color: '#ea580c' },
+]
+
+const HERO_LAYERS = ['All', '5G', '4G', 'Gaps'] as const
 
 function IcmapHeroDemo() {
   const [layerIdx, setLayerIdx] = useState(0)
-  const [zoneIdx,  setZoneIdx]  = useState(0)
-  const [scanX,    setScanX]    = useState(0)
+  const [patchIdx, setPatchIdx] = useState(0)
   const [entered,  setEntered]  = useState(false)
-  const animRef = useRef<number>(0)
-  const scanRef = useRef<number>(0)
 
   useEffect(() => {
     const raf = requestAnimationFrame(() => setTimeout(() => setEntered(true), 100))
@@ -427,26 +452,20 @@ function IcmapHeroDemo() {
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setLayerIdx(p => (p + 1) % VB_LAYERS.length), 2500)
+    const id = setInterval(() => setLayerIdx(p => (p + 1) % HERO_LAYERS.length), 2600)
     return () => clearInterval(id)
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setZoneIdx(p => (p + 1) % VB_ZONES.length), 2200)
+    const id = setInterval(() => setPatchIdx(p => (p + 1) % HERO_PATCHES.length), 1800)
     return () => clearInterval(id)
   }, [])
 
-  useEffect(() => {
-    const tick = () => {
-      scanRef.current = (scanRef.current + 1.2) % 102
-      setScanX(scanRef.current)
-      animRef.current = requestAnimationFrame(tick)
-    }
-    animRef.current = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(animRef.current)
-  }, [])
+  const active = HERO_PATCHES[patchIdx]
 
-  const zone = VB_ZONES[zoneIdx]
+  // Tooltip position — keep it inside the SVG bounds
+  const tx = Math.min(active.tx, 230)
+  const ty = Math.max(active.ty, 10)
 
   return (
     <div style={{
@@ -462,175 +481,180 @@ function IcmapHeroDemo() {
         background: '#fff',
       }}>
 
-        {/* Browser chrome — light gray like a real browser */}
-        <div style={{ background: '#e4e4e4', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
+        {/* Browser chrome */}
+        <div style={{ background: '#e4e4e4', padding: '7px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
           <div style={{ display: 'flex', gap: 5 }}>
             <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#fc5f57' }} />
             <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
             <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
           </div>
-          {/* URL bar */}
           <div style={{
             flex: 1, background: '#fff', borderRadius: 5, padding: '3px 10px',
-            fontSize: 10, color: '#444', fontFamily: 'sans-serif',
-            border: '1px solid rgba(0,0,0,0.14)', display: 'flex', alignItems: 'center', gap: 5,
+            fontSize: 10, color: '#555', fontFamily: 'sans-serif',
+            border: '1px solid rgba(0,0,0,0.12)', display: 'flex', alignItems: 'center', gap: 5,
           }}>
-            <svg width="9" height="9" viewBox="0 0 16 16" fill="none">
-              <path d="M8 1a7 7 0 100 14A7 7 0 008 1z" stroke="#999" strokeWidth="1.2" fill="none"/>
-              <path d="M8 4.5V8l2.5 2" stroke="#999" strokeWidth="1.2" strokeLinecap="round"/>
+            <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
+              <circle cx="6" cy="6" r="5" stroke="#aaa" strokeWidth="1.2"/>
+              <path d="M6 3v3l2 1.5" stroke="#aaa" strokeWidth="1.2" strokeLinecap="round"/>
             </svg>
-            <span style={{ color: '#555' }}>coveragemap.visitborderlands.co.uk</span>
+            app.icmap.awtg.co.uk/coverage
           </div>
         </div>
 
-        {/* App: sidebar + map */}
-        <div style={{ display: 'flex', height: 320 }}>
+        {/* App body */}
+        <div style={{ display: 'flex', height: 322 }}>
 
-          {/* Left sidebar — white panel */}
+          {/* Sidebar */}
           <div style={{
-            width: 122, background: '#fff', borderRight: '1px solid #e8e8e8',
-            display: 'flex', flexDirection: 'column', padding: '10px 8px', gap: 8,
-            flexShrink: 0,
+            width: 118, background: '#fff', borderRight: '1px solid #ebebeb',
+            display: 'flex', flexDirection: 'column', padding: '10px 9px', gap: 9, flexShrink: 0,
           }}>
-            {/* Logo */}
+
+            {/* iCMAP brand */}
             <div style={{ paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
-              <div style={{ fontSize: 7, fontWeight: 800, color: '#1a1a2e', letterSpacing: '0.08em', lineHeight: 1.1, fontFamily: 'sans-serif' }}>
-                VISIT
+              <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <div style={{ width: 18, height: 18, borderRadius: 4, background: '#228DC1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                    <circle cx="6" cy="6" r="5" stroke="#fff" strokeWidth="1.2"/>
+                    <circle cx="6" cy="6" r="2" fill="#fff"/>
+                  </svg>
+                </div>
+                <span style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif', letterSpacing: '-0.01em' }}>iCMAP</span>
               </div>
-              <div style={{ fontSize: 10, fontWeight: 800, color: '#228DC1', letterSpacing: '0.04em', lineHeight: 1.1, fontFamily: 'sans-serif' }}>
-                BORDERLANDS
-              </div>
-              <div style={{ fontSize: 7, color: '#999', marginTop: 2, fontFamily: 'sans-serif' }}>Coverage Map</div>
+              <div style={{ fontSize: 7, color: '#aaa', marginTop: 3, fontFamily: 'sans-serif' }}>Coverage Intelligence</div>
             </div>
 
             {/* Layers */}
             <div>
-              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#999', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
-              {VB_LAYERS.map((l, i) => (
-                <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4, padding: '2px 4px', borderRadius: 3, background: layerIdx === i ? '#f0f7ff' : 'transparent', transition: 'background 0.3s' }}>
+              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
+              {HERO_LAYERS.map((l, i) => (
+                <div key={l} style={{
+                  display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4,
+                  padding: '3px 5px', borderRadius: 4,
+                  background: layerIdx === i ? '#f0f7ff' : 'transparent',
+                  transition: 'background 0.35s',
+                }}>
                   <div style={{
                     width: 11, height: 11, borderRadius: '50%', flexShrink: 0,
                     background: layerIdx === i ? '#228DC1' : '#fff',
-                    border: `1.5px solid ${layerIdx === i ? '#228DC1' : '#ccc'}`,
-                    transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    border: `1.5px solid ${layerIdx === i ? '#228DC1' : '#d0d0d0'}`,
+                    transition: 'all 0.3s',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
                     {layerIdx === i && <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#fff' }} />}
                   </div>
-                  <span style={{ fontSize: 9, color: layerIdx === i ? '#228DC1' : '#555', fontFamily: 'sans-serif', fontWeight: layerIdx === i ? 600 : 400, transition: 'color 0.3s' }}>{l}</span>
+                  <span style={{ fontSize: 9, fontFamily: 'sans-serif', fontWeight: layerIdx === i ? 600 : 400, color: layerIdx === i ? '#228DC1' : '#666', transition: 'color 0.3s' }}>{l}</span>
                 </div>
               ))}
             </div>
 
             {/* Legend */}
             <div style={{ flex: 1 }}>
-              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#999', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
-              {VB_ZONES.map(z => (
-                <div key={z.id} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 5, opacity: zone.id === z.id ? 1 : 0.5, transition: 'opacity 0.4s' }}>
-                  <div style={{ width: 14, height: 9, borderRadius: 2, background: z.color, opacity: 0.75, border: `1px solid ${z.color}`, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, color: '#333', fontFamily: 'sans-serif' }}>{z.label}</span>
-                </div>
-              ))}
+              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
+              {LEGEND_LEVELS.map(lv => {
+                const isActiveLevel = active.color === lv.color
+                return (
+                  <div key={lv.label} style={{
+                    display: 'flex', alignItems: 'center', gap: 5, marginBottom: 5,
+                    opacity: isActiveLevel ? 1 : 0.55,
+                    transition: 'opacity 0.4s',
+                  }}>
+                    <div style={{ width: 14, height: 9, borderRadius: 2, background: lv.color, flexShrink: 0 }} />
+                    <span style={{ fontSize: 9, color: '#333', fontFamily: 'sans-serif', fontWeight: isActiveLevel ? 600 : 400 }}>{lv.label}</span>
+                  </div>
+                )
+              })}
             </div>
 
-            {/* Zone info card */}
-            <div style={{ background: '#f8fafc', borderRadius: 5, padding: '5px 6px', border: '1px solid #e8e8e8', transition: 'all 0.4s' }}>
-              <div style={{ fontSize: 7, color: '#aaa', fontFamily: 'sans-serif', marginBottom: 2 }}>Selected zone</div>
-              <div style={{ fontSize: 10, fontWeight: 700, color: zone.color, fontFamily: 'sans-serif', transition: 'color 0.4s' }}>{zone.label}</div>
-              <div style={{ fontSize: 8, color: '#666', fontFamily: 'sans-serif', marginTop: 1 }}>{zone.signal}</div>
-              <div style={{ fontSize: 8, color: '#666', fontFamily: 'sans-serif' }}>{zone.pop} residents</div>
+            {/* Zone card */}
+            <div style={{
+              background: '#f8fafc', borderRadius: 5, padding: '5px 6px',
+              border: `1px solid ${active.color}40`, transition: 'border-color 0.4s',
+            }}>
+              <div style={{ fontSize: 7, color: '#aaa', fontFamily: 'sans-serif', marginBottom: 2 }}>Active zone</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: active.color, fontFamily: 'sans-serif', transition: 'color 0.4s' }}>{active.label}</div>
+              <div style={{ fontSize: 8, color: '#777', fontFamily: 'sans-serif', marginTop: 1 }}>{active.signal}</div>
+              <div style={{ fontSize: 8, color: '#777', fontFamily: 'sans-serif' }}>{active.pop} residents</div>
             </div>
           </div>
 
-          {/* Map — CartoDB Light style */}
+          {/* Map */}
           <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-            <svg viewBox="0 0 378 320" style={{ width: '100%', height: '100%', display: 'block' }}>
-              {/* CartoDB Light cream background */}
-              <rect width="378" height="320" fill="#f5f0e8" />
+            <svg viewBox="0 0 382 322" style={{ width: '100%', height: '100%', display: 'block' }}>
+              {/* CartoDB Light basemap */}
+              <rect width="382" height="322" fill="#f5f0e8" />
 
-              {/* Terrain hints */}
-              <ellipse cx="75"  cy="75"  rx="95" ry="55" fill="#ede8de" opacity="0.55" />
-              <ellipse cx="308" cy="60"  rx="85" ry="48" fill="#ede8de" opacity="0.50" />
-              <ellipse cx="185" cy="255" rx="115" ry="52" fill="#ede8de" opacity="0.50" />
-              <ellipse cx="345" cy="245" rx="65"  ry="48" fill="#ede8de" opacity="0.40" />
+              {/* Terrain */}
+              <ellipse cx="70"  cy="70"  rx="88" ry="52" fill="#ede8de" opacity="0.5" />
+              <ellipse cx="310" cy="58"  rx="80" ry="45" fill="#ede8de" opacity="0.45" />
+              <ellipse cx="185" cy="258" rx="110" ry="50" fill="#ede8de" opacity="0.45" />
+              <ellipse cx="348" cy="248" rx="60"  ry="45" fill="#ede8de" opacity="0.38" />
 
-              {/* Water — River Tweed */}
-              <path d="M0,142 Q55,132 98,150 Q148,168 198,158 Q258,145 308,163 Q338,173 378,158" fill="none" stroke="#9bc4d8" strokeWidth={3.5} opacity={0.65} />
-              <path d="M148,0 Q153,62 163,122 Q168,152 198,158" fill="none" stroke="#9bc4d8" strokeWidth={1.8} opacity={0.5} />
-              <path d="M258,0 Q253,52 245,102 Q240,142 238,158" fill="none" stroke="#9bc4d8" strokeWidth={1.5} opacity={0.45} />
+              {/* River */}
+              <path d="M0,144 Q52,134 96,152 Q146,170 196,160 Q256,147 306,165 Q336,175 382,160" fill="none" stroke="#9bc4d8" strokeWidth={3} opacity={0.6} />
+              <path d="M146,0 Q151,64 161,124 Q166,154 196,160" fill="none" stroke="#9bc4d8" strokeWidth={1.6} opacity={0.45} />
+              <path d="M256,0 Q251,54 244,104 Q239,144 238,160" fill="none" stroke="#9bc4d8" strokeWidth={1.4} opacity={0.42} />
 
-              {/* Major roads */}
-              <path d="M0,102 Q78,97 158,112 Q238,128 308,118 Q348,112 378,120" fill="none" stroke="#d8ccc0" strokeWidth={2.5} />
-              <path d="M0,102 Q78,97 158,112 Q238,128 308,118 Q348,112 378,120" fill="none" stroke="#ebe4d8" strokeWidth={1} />
-              <path d="M188,0 L184,82 L177,162 L174,222 L172,320" fill="none" stroke="#d8ccc0" strokeWidth={2} />
-              <path d="M188,0 L184,82 L177,162 L174,222 L172,320" fill="none" stroke="#ebe4d8" strokeWidth={0.8} />
-              <path d="M0,222 Q78,217 128,202 Q178,190 238,197 Q298,205 378,195" fill="none" stroke="#d8ccc0" strokeWidth={1.5} />
+              {/* Roads */}
+              <path d="M0,104 Q76,99 156,114 Q236,130 306,120 Q346,114 382,122" fill="none" stroke="#d8ccc0" strokeWidth={2.2} />
+              <path d="M0,104 Q76,99 156,114 Q236,130 306,120 Q346,114 382,122" fill="none" stroke="#ebe4d8" strokeWidth={0.9} />
+              <path d="M190,0 L186,84 L179,164 L176,224 L174,322" fill="none" stroke="#d8ccc0" strokeWidth={1.8} />
+              <path d="M190,0 L186,84 L179,164 L176,224 L174,322" fill="none" stroke="#ebe4d8" strokeWidth={0.7} />
+              <path d="M0,224 Q76,219 126,204 Q176,192 236,199 Q296,207 382,197" fill="none" stroke="#d8ccc0" strokeWidth={1.3} />
+              <path d="M76,0 Q81,64 91,124 Q96,157 96,152" fill="none" stroke="#e0d8cc" strokeWidth={0.9} opacity={0.6} />
+              <path d="M286,44 Q281,94 266,134 Q256,164 245,159" fill="none" stroke="#e0d8cc" strokeWidth={0.9} opacity={0.6} />
 
-              {/* Minor roads */}
-              <path d="M78,0 Q83,62 93,122 Q98,155 98,150" fill="none" stroke="#e0d8cc" strokeWidth={1} opacity={0.6} />
-              <path d="M288,42 Q283,92 268,132 Q258,162 246,157" fill="none" stroke="#e0d8cc" strokeWidth={1} opacity={0.6} />
+              {/* All coverage patches — scattered, non-overlapping */}
+              {HERO_PATCHES.map(p => (
+                <path key={p.id} d={p.path}
+                  fill={p.color}
+                  opacity={active.id === p.id ? 0.65 : 0.38}
+                  stroke={p.color}
+                  strokeWidth={active.id === p.id ? 1.8 : 0.6}
+                  strokeOpacity={active.id === p.id ? 0.85 : 0.35}
+                  style={{ transition: 'opacity 0.45s ease, stroke-width 0.3s ease' }}
+                />
+              ))}
 
-              {/* Coverage zones — outermost first */}
-              {[...VB_ZONES].reverse().map((z, ri) => {
-                const zi = VB_ZONES.length - 1 - ri
-                const isActive = zi === zoneIdx
-                return (
-                  <g key={z.id} transform="scale(0.781, 0.840)">
-                    <path d={z.path}
-                      fill={z.color}
-                      opacity={isActive ? 0.50 : (0.28 - ri * 0.04)}
-                      stroke={z.color}
-                      strokeWidth={isActive ? 2.5 : 0.8}
-                      strokeOpacity={isActive ? 0.7 : 0.25}
-                      style={{ transition: 'opacity 0.5s ease' }}
-                    />
-                  </g>
-                )
-              })}
-
-              {/* Scan line */}
-              <line x1={scanX * 3.78} y1={0} x2={scanX * 3.78} y2={320}
-                stroke="rgba(34,141,193,0.45)" strokeWidth={1}
-                style={{ filter: 'drop-shadow(0 0 3px rgba(34,141,193,0.6))' }} />
-
-              {/* Town markers */}
+              {/* Town dots — on top of coverage patches */}
               {[
-                { x: 183, y: 120, name: 'Peebles' },
-                { x: 240, y: 150, name: 'Galashiels' },
-                { x: 108, y: 193, name: 'Hawick' },
-                { x: 298, y: 168, name: 'Kelso' },
+                { x: 172, y: 118, name: 'Town A' },
+                { x: 243, y: 148, name: 'Town B' },
+                { x: 104, y: 196, name: 'Town C' },
+                { x: 300, y: 166, name: 'Town D' },
               ].map(t => (
                 <g key={t.name}>
                   <circle cx={t.x} cy={t.y} r={3.5} fill="#fff" stroke="#888" strokeWidth={0.8} />
-                  <circle cx={t.x} cy={t.y} r={2}   fill="#555" />
-                  <rect x={t.x + 5} y={t.y - 7} width={t.name.length * 4.5} height={10} rx={2} fill="rgba(255,255,255,0.88)" />
-                  <text x={t.x + 7} y={t.y + 1.5} fontSize={7} fill="#333" fontFamily="sans-serif">{t.name}</text>
+                  <circle cx={t.x} cy={t.y} r={2} fill="#555" />
                 </g>
               ))}
 
-              {/* Active zone popup */}
-              <rect x={100} y={60} width={152} height={44} rx={5} fill="rgba(255,255,255,0.95)" stroke={zone.color} strokeWidth={1.5} />
-              <rect x={100} y={60} width={3}   height={44} rx={2} fill={zone.color} />
-              <text x={110} y={76}  fontSize={7}  fill="#aaa"      fontFamily="sans-serif">COVERAGE</text>
-              <text x={110} y={89}  fontSize={10} fill="#1a1a2e"   fontFamily="sans-serif" fontWeight="700">{zone.label}</text>
-              <text x={110} y={100} fontSize={7}  fill={zone.color} fontFamily="sans-serif">{zone.signal} · {zone.pop} residents</text>
+              {/* Tooltip anchored near active patch */}
+              <g style={{ transition: 'opacity 0.4s ease' }} key={active.id}>
+                <line x1={active.tx + 6} y1={active.ty + 4} x2={active.tx + 18} y2={active.ty + 4} stroke={active.color} strokeWidth={1} opacity={0.5} />
+                <rect x={tx + 16} y={ty - 6} width={132} height={38} rx={4} fill="rgba(255,255,255,0.97)" stroke={active.color} strokeWidth={1.2} />
+                <rect x={tx + 16} y={ty - 6} width={3} height={38} rx={1.5} fill={active.color} />
+                <text x={tx + 24} y={ty + 7}  fontSize={7}  fill="#aaa"         fontFamily="sans-serif">COVERAGE ZONE</text>
+                <text x={tx + 24} y={ty + 19} fontSize={10} fill="#1a1a2e"      fontFamily="sans-serif" fontWeight="700">{active.label}</text>
+                <text x={tx + 24} y={ty + 29} fontSize={7}  fill={active.color} fontFamily="sans-serif">{active.signal} · {active.pop}</text>
+              </g>
 
               {/* Zoom controls */}
-              <rect x={346} y={8}  width={24} height={44} rx={4} fill="rgba(255,255,255,0.9)" stroke="#ddd" strokeWidth={0.8} />
-              <text x={358} y={26} fontSize={14} fill="#555" fontFamily="sans-serif" textAnchor="middle">+</text>
-              <line x1={347} y1={33} x2={369} y2={33} stroke="#ddd" strokeWidth={0.8} />
-              <text x={358} y={47} fontSize={14} fill="#555" fontFamily="sans-serif" textAnchor="middle">−</text>
+              <rect x={350} y={8}  width={24} height={46} rx={4} fill="rgba(255,255,255,0.92)" stroke="#ddd" strokeWidth={0.8} />
+              <text x={362} y={27} fontSize={15} fill="#666" fontFamily="sans-serif" textAnchor="middle">+</text>
+              <line x1={351} y1={34} x2={373} y2={34} stroke="#ddd" strokeWidth={0.8} />
+              <text x={362} y={49} fontSize={15} fill="#666" fontFamily="sans-serif" textAnchor="middle">−</text>
             </svg>
 
-            {/* Attribution bar */}
+            {/* Map footer */}
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0,
-              background: 'rgba(255,255,255,0.85)',
-              padding: '3px 8px',
+              background: 'rgba(255,255,255,0.88)', padding: '3px 8px',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              backdropFilter: 'blur(4px)',
               borderTop: '1px solid rgba(0,0,0,0.06)',
+              backdropFilter: 'blur(4px)',
             }}>
-              <span style={{ fontSize: 7, color: '#aaa', fontFamily: 'sans-serif' }}>© OpenStreetMap contributors · CartoDB</span>
+              <span style={{ fontSize: 7, color: '#bbb', fontFamily: 'sans-serif' }}>© OpenStreetMap · CartoDB Light</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#22c55e' }} />
                 <span style={{ fontSize: 7, color: '#22c55e', fontFamily: 'sans-serif', fontWeight: 600 }}>LIVE</span>
