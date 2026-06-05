@@ -1619,8 +1619,8 @@ function OmnichannelSection() {
 
   // ─── Channel icon box ────────────────────────────────────────────────
   const ChIcon = ({
-    color, bg, children, glow = false,
-  }: { color:string; bg:string; children:React.ReactNode; glow?:boolean }) => (
+    children,
+  }: { color?:string; bg?:string; glow?:boolean; children:React.ReactNode }) => (
     <div style={{
       width:44, height:44, borderRadius:12, flexShrink:0,
       background: 'transparent',
