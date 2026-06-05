@@ -399,51 +399,56 @@ const steps = [
   },
 ]
 
-// -- Hero animated demo --------------------------------------------------------
-// Scattered, independent coverage patches — not concentric, not overlapping
-// Each has a tooltip anchor (tx, ty) for the popup
-const HERO_PATCHES = [
-  // Very Good — dense urban cores
-  { id:'vg1', label:'Very Good', color:'#16a34a', signal:'-68 dBm', pop:'12,400',
-    path:'M158,104 L188,96 L202,112 L196,134 L170,140 L148,126 Z', tx:155, ty:88 },
-  { id:'vg2', label:'Very Good', color:'#16a34a', signal:'-71 dBm', pop:'9,800',
-    path:'M228,136 L254,128 L266,145 L258,165 L234,171 L218,156 Z', tx:226, ty:120 },
-  // Good — wider suburban coverage
-  { id:'g1', label:'Good', color:'#65a30d', signal:'-82 dBm', pop:'22,100',
-    path:'M108,70 L162,60 L182,78 L176,108 L148,116 L108,105 L95,86 Z', tx:106, ty:54 },
-  { id:'g2', label:'Good', color:'#65a30d', signal:'-86 dBm', pop:'18,300',
-    path:'M278,148 L314,140 L326,160 L318,182 L290,188 L268,172 Z', tx:276, ty:132 },
-  { id:'g3', label:'Good', color:'#65a30d', signal:'-88 dBm', pop:'8,600',
-    path:'M88,182 L122,174 L136,192 L128,214 L100,220 L78,204 Z', tx:86, ty:166 },
-  // Fair — rural areas with partial coverage
-  { id:'f1', label:'Fair', color:'#ca8a04', signal:'-96 dBm', pop:'5,400',
-    path:'M34,118 L76,108 L88,128 L78,152 L46,158 L26,140 Z', tx:32, ty:102 },
-  { id:'f2', label:'Fair', color:'#ca8a04', signal:'-98 dBm', pop:'4,200',
-    path:'M316,92 L350,84 L364,104 L354,128 L322,132 L304,114 Z', tx:314, ty:76 },
-  { id:'f3', label:'Fair', color:'#ca8a04', signal:'-94 dBm', pop:'6,100',
-    path:'M196,220 L228,212 L242,230 L234,254 L206,260 L188,242 Z', tx:194, ty:204 },
-  // Fringe — edge of coverage, remote rural
-  { id:'fr1', label:'Fringe', color:'#ea580c', signal:'-108 dBm', pop:'1,200',
-    path:'M18,56 L48,48 L60,68 L50,90 L22,94 L8,74 Z', tx:16, ty:40 },
-  { id:'fr2', label:'Fringe', color:'#ea580c', signal:'-110 dBm', pop:'800',
-    path:'M338,228 L364,222 L374,244 L364,264 L338,268 L322,248 Z', tx:336, ty:212 },
-  { id:'fr3', label:'Fringe', color:'#ea580c', signal:'-106 dBm', pop:'1,600',
-    path:'M128,260 L158,254 L170,272 L160,292 L130,296 L112,278 Z', tx:126, ty:244 },
-]
+const HERO_LAYERS = ['All', 'Very Good', 'Good', 'Fair', 'Fringe'] as const
 
-// Unique quality levels for legend
-const LEGEND_LEVELS = [
-  { label: 'Very Good', color: '#16a34a' },
-  { label: 'Good',      color: '#65a30d' },
-  { label: 'Fair',      color: '#ca8a04' },
-  { label: 'Fringe',    color: '#ea580c' },
-]
+const HERO_QUALITY_LEVELS = [
+  { label: 'Very Good', fill: '#72b879', stroke: '#4f9d62', signal: '-72 dBm' },
+  { label: 'Good', fill: '#a8c76f', stroke: '#83aa4d', signal: '-84 dBm' },
+  { label: 'Fair', fill: '#d6a23a', stroke: '#b98219', signal: '-94 dBm' },
+  { label: 'Fringe', fill: '#e99a78', stroke: '#d97855', signal: '-108 dBm' },
+] as const
 
-const HERO_LAYERS = ['All', '5G', '4G', 'Gaps'] as const
+// Non-interactive hero Leaflet map — real tiles, real zone data
+function HeroCoverageMap({ activeId }: { activeId: string }) {
+  return (
+    <MapContainer
+      style={{ height: '100%', width: '100%' }}
+      center={[53.480, -2.240]}
+      zoom={10}
+      scrollWheelZoom={false}
+      zoomControl={false}
+      attributionControl={false}
+      dragging={false}
+      doubleClickZoom={false}
+      keyboard={false}
+      boxZoom={false}
+    >
+      <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
+      <MapFit />
+      {coverageZones.map((zone, index) => {
+        const quality = HERO_QUALITY_LEVELS[index % HERO_QUALITY_LEVELS.length]
+        const isActive = zone.id === activeId
+        return (
+          <Polygon
+            key={zone.id}
+            positions={zone.positions}
+            pathOptions={{
+              fillColor: quality.fill,
+              fillOpacity: isActive ? 0.72 : 0.40,
+              color: quality.stroke,
+              weight: isActive ? 2.8 : 0.9,
+              opacity: isActive ? 1 : 0.62,
+            }}
+          />
+        )
+      })}
+    </MapContainer>
+  )
+}
 
 function IcmapHeroDemo() {
   const [layerIdx, setLayerIdx] = useState(0)
-  const [patchIdx, setPatchIdx] = useState(0)
+  const [zoneIdx,  setZoneIdx]  = useState(0)
   const [entered,  setEntered]  = useState(false)
 
   useEffect(() => {
@@ -457,15 +462,12 @@ function IcmapHeroDemo() {
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setPatchIdx(p => (p + 1) % HERO_PATCHES.length), 1800)
+    const id = setInterval(() => setZoneIdx(p => (p + 1) % coverageZones.length), 2000)
     return () => clearInterval(id)
   }, [])
 
-  const active = HERO_PATCHES[patchIdx]
-
-  // Tooltip position — keep it inside the SVG bounds
-  const tx = Math.min(active.tx, 230)
-  const ty = Math.max(active.ty, 10)
+  const activeZone = coverageZones[zoneIdx]
+  const activeQuality = HERO_QUALITY_LEVELS[zoneIdx % HERO_QUALITY_LEVELS.length]
 
   return (
     <div style={{
@@ -501,7 +503,7 @@ function IcmapHeroDemo() {
           </div>
         </div>
 
-        {/* App body */}
+        {/* App: sidebar + map */}
         <div style={{ display: 'flex', height: 322 }}>
 
           {/* Sidebar */}
@@ -509,17 +511,16 @@ function IcmapHeroDemo() {
             width: 118, background: '#fff', borderRight: '1px solid #ebebeb',
             display: 'flex', flexDirection: 'column', padding: '10px 9px', gap: 9, flexShrink: 0,
           }}>
-
             {/* iCMAP brand */}
             <div style={{ paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                 <div style={{ width: 18, height: 18, borderRadius: 4, background: '#228DC1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
                     <circle cx="6" cy="6" r="5" stroke="#fff" strokeWidth="1.2"/>
                     <circle cx="6" cy="6" r="2" fill="#fff"/>
                   </svg>
                 </div>
-                <span style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif', letterSpacing: '-0.01em' }}>iCMAP</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>iCMAP</span>
               </div>
               <div style={{ fontSize: 7, color: '#aaa', marginTop: 3, fontFamily: 'sans-serif' }}>Coverage Intelligence</div>
             </div>
@@ -528,19 +529,8 @@ function IcmapHeroDemo() {
             <div>
               <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
               {HERO_LAYERS.map((l, i) => (
-                <div key={l} style={{
-                  display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4,
-                  padding: '3px 5px', borderRadius: 4,
-                  background: layerIdx === i ? '#f0f7ff' : 'transparent',
-                  transition: 'background 0.35s',
-                }}>
-                  <div style={{
-                    width: 11, height: 11, borderRadius: '50%', flexShrink: 0,
-                    background: layerIdx === i ? '#228DC1' : '#fff',
-                    border: `1.5px solid ${layerIdx === i ? '#228DC1' : '#d0d0d0'}`,
-                    transition: 'all 0.3s',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
+                <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4, padding: '3px 5px', borderRadius: 4, background: layerIdx === i ? '#f0f7ff' : 'transparent', transition: 'background 0.35s' }}>
+                  <div style={{ width: 11, height: 11, borderRadius: '50%', flexShrink: 0, background: layerIdx === i ? '#228DC1' : '#fff', border: `1.5px solid ${layerIdx === i ? '#228DC1' : '#d0d0d0'}`, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {layerIdx === i && <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#fff' }} />}
                   </div>
                   <span style={{ fontSize: 9, fontFamily: 'sans-serif', fontWeight: layerIdx === i ? 600 : 400, color: layerIdx === i ? '#228DC1' : '#666', transition: 'color 0.3s' }}>{l}</span>
@@ -548,113 +538,50 @@ function IcmapHeroDemo() {
               ))}
             </div>
 
-            {/* Legend */}
+            {/* Legend — from zoneStyle */}
             <div style={{ flex: 1 }}>
               <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
-              {LEGEND_LEVELS.map(lv => {
-                const isActiveLevel = active.color === lv.color
+              {HERO_QUALITY_LEVELS.map((quality, index) => {
+                const isActive = zoneIdx % HERO_QUALITY_LEVELS.length === index
                 return (
-                  <div key={lv.label} style={{
-                    display: 'flex', alignItems: 'center', gap: 5, marginBottom: 5,
-                    opacity: isActiveLevel ? 1 : 0.55,
-                    transition: 'opacity 0.4s',
-                  }}>
-                    <div style={{ width: 14, height: 9, borderRadius: 2, background: lv.color, flexShrink: 0 }} />
-                    <span style={{ fontSize: 9, color: '#333', fontFamily: 'sans-serif', fontWeight: isActiveLevel ? 600 : 400 }}>{lv.label}</span>
+                  <div key={quality.label} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 5, opacity: isActive ? 1 : 0.52, transition: 'opacity 0.4s' }}>
+                    <div style={{ width: 14, height: 9, borderRadius: 2, background: quality.fill, flexShrink: 0 }} />
+                    <span style={{ fontSize: 9, color: '#333', fontFamily: 'sans-serif', fontWeight: isActive ? 600 : 400 }}>{quality.label}</span>
                   </div>
                 )
               })}
             </div>
 
-            {/* Zone card */}
-            <div style={{
-              background: '#f8fafc', borderRadius: 5, padding: '5px 6px',
-              border: `1px solid ${active.color}40`, transition: 'border-color 0.4s',
-            }}>
-              <div style={{ fontSize: 7, color: '#aaa', fontFamily: 'sans-serif', marginBottom: 2 }}>Active zone</div>
-              <div style={{ fontSize: 10, fontWeight: 700, color: active.color, fontFamily: 'sans-serif', transition: 'color 0.4s' }}>{active.label}</div>
-              <div style={{ fontSize: 8, color: '#777', fontFamily: 'sans-serif', marginTop: 1 }}>{active.signal}</div>
-              <div style={{ fontSize: 8, color: '#777', fontFamily: 'sans-serif' }}>{active.pop} residents</div>
+            {/* Active zone card */}
+            <div style={{ background: '#f8fafc', borderRadius: 5, padding: '5px 7px', border: `1px solid ${activeQuality.fill}66`, transition: 'border-color 0.4s' }}>
+              <div style={{ fontSize: 7, color: '#aaa', fontFamily: 'sans-serif', marginBottom: 2, textTransform: 'uppercase' }}>Coverage zone</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>{activeQuality.label}</div>
+              <div style={{ fontSize: 8, color: activeQuality.stroke, fontFamily: 'sans-serif', marginTop: 1, fontWeight: 600 }}>{activeQuality.signal}</div>
+              <div style={{ fontSize: 8, color: '#777', fontFamily: 'sans-serif' }}>{activeZone.population}</div>
             </div>
           </div>
 
-          {/* Map */}
+          {/* Real Leaflet map */}
           <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-            <svg viewBox="0 0 382 322" style={{ width: '100%', height: '100%', display: 'block' }}>
-              {/* CartoDB Light basemap */}
-              <rect width="382" height="322" fill="#f5f0e8" />
+            <HeroCoverageMap activeId={activeZone.id} />
 
-              {/* Terrain */}
-              <ellipse cx="70"  cy="70"  rx="88" ry="52" fill="#ede8de" opacity="0.5" />
-              <ellipse cx="310" cy="58"  rx="80" ry="45" fill="#ede8de" opacity="0.45" />
-              <ellipse cx="185" cy="258" rx="110" ry="50" fill="#ede8de" opacity="0.45" />
-              <ellipse cx="348" cy="248" rx="60"  ry="45" fill="#ede8de" opacity="0.38" />
-
-              {/* River */}
-              <path d="M0,144 Q52,134 96,152 Q146,170 196,160 Q256,147 306,165 Q336,175 382,160" fill="none" stroke="#9bc4d8" strokeWidth={3} opacity={0.6} />
-              <path d="M146,0 Q151,64 161,124 Q166,154 196,160" fill="none" stroke="#9bc4d8" strokeWidth={1.6} opacity={0.45} />
-              <path d="M256,0 Q251,54 244,104 Q239,144 238,160" fill="none" stroke="#9bc4d8" strokeWidth={1.4} opacity={0.42} />
-
-              {/* Roads */}
-              <path d="M0,104 Q76,99 156,114 Q236,130 306,120 Q346,114 382,122" fill="none" stroke="#d8ccc0" strokeWidth={2.2} />
-              <path d="M0,104 Q76,99 156,114 Q236,130 306,120 Q346,114 382,122" fill="none" stroke="#ebe4d8" strokeWidth={0.9} />
-              <path d="M190,0 L186,84 L179,164 L176,224 L174,322" fill="none" stroke="#d8ccc0" strokeWidth={1.8} />
-              <path d="M190,0 L186,84 L179,164 L176,224 L174,322" fill="none" stroke="#ebe4d8" strokeWidth={0.7} />
-              <path d="M0,224 Q76,219 126,204 Q176,192 236,199 Q296,207 382,197" fill="none" stroke="#d8ccc0" strokeWidth={1.3} />
-              <path d="M76,0 Q81,64 91,124 Q96,157 96,152" fill="none" stroke="#e0d8cc" strokeWidth={0.9} opacity={0.6} />
-              <path d="M286,44 Q281,94 266,134 Q256,164 245,159" fill="none" stroke="#e0d8cc" strokeWidth={0.9} opacity={0.6} />
-
-              {/* All coverage patches — scattered, non-overlapping */}
-              {HERO_PATCHES.map(p => (
-                <path key={p.id} d={p.path}
-                  fill={p.color}
-                  opacity={active.id === p.id ? 0.65 : 0.38}
-                  stroke={p.color}
-                  strokeWidth={active.id === p.id ? 1.8 : 0.6}
-                  strokeOpacity={active.id === p.id ? 0.85 : 0.35}
-                  style={{ transition: 'opacity 0.45s ease, stroke-width 0.3s ease' }}
-                />
-              ))}
-
-              {/* Town dots — on top of coverage patches */}
-              {[
-                { x: 172, y: 118, name: 'Town A' },
-                { x: 243, y: 148, name: 'Town B' },
-                { x: 104, y: 196, name: 'Town C' },
-                { x: 300, y: 166, name: 'Town D' },
-              ].map(t => (
-                <g key={t.name}>
-                  <circle cx={t.x} cy={t.y} r={3.5} fill="#fff" stroke="#888" strokeWidth={0.8} />
-                  <circle cx={t.x} cy={t.y} r={2} fill="#555" />
-                </g>
-              ))}
-
-              {/* Tooltip anchored near active patch */}
-              <g style={{ transition: 'opacity 0.4s ease' }} key={active.id}>
-                <line x1={active.tx + 6} y1={active.ty + 4} x2={active.tx + 18} y2={active.ty + 4} stroke={active.color} strokeWidth={1} opacity={0.5} />
-                <rect x={tx + 16} y={ty - 6} width={132} height={38} rx={4} fill="rgba(255,255,255,0.97)" stroke={active.color} strokeWidth={1.2} />
-                <rect x={tx + 16} y={ty - 6} width={3} height={38} rx={1.5} fill={active.color} />
-                <text x={tx + 24} y={ty + 7}  fontSize={7}  fill="#aaa"         fontFamily="sans-serif">COVERAGE ZONE</text>
-                <text x={tx + 24} y={ty + 19} fontSize={10} fill="#1a1a2e"      fontFamily="sans-serif" fontWeight="700">{active.label}</text>
-                <text x={tx + 24} y={ty + 29} fontSize={7}  fill={active.color} fontFamily="sans-serif">{active.signal} · {active.pop}</text>
-              </g>
-
-              {/* Zoom controls */}
-              <rect x={350} y={8}  width={24} height={46} rx={4} fill="rgba(255,255,255,0.92)" stroke="#ddd" strokeWidth={0.8} />
-              <text x={362} y={27} fontSize={15} fill="#666" fontFamily="sans-serif" textAnchor="middle">+</text>
-              <line x1={351} y1={34} x2={373} y2={34} stroke="#ddd" strokeWidth={0.8} />
-              <text x={362} y={49} fontSize={15} fill="#666" fontFamily="sans-serif" textAnchor="middle">−</text>
-            </svg>
-
-            {/* Map footer */}
             <div style={{
-              position: 'absolute', bottom: 0, left: 0, right: 0,
-              background: 'rgba(255,255,255,0.88)', padding: '3px 8px',
+              position: 'absolute', top: 10, right: 10, zIndex: 1000,
+              background: 'rgba(255,255,255,0.92)', border: '1px solid rgba(0,0,0,0.12)',
+              borderRadius: 4, overflow: 'hidden', boxShadow: '0 2px 8px rgba(10,22,40,0.08)',
+            }}>
+              <div style={{ width: 24, height: 23, display: 'grid', placeItems: 'center', fontSize: 14, color: '#555', fontFamily: 'sans-serif', borderBottom: '1px solid #ddd' }}>+</div>
+              <div style={{ width: 24, height: 23, display: 'grid', placeItems: 'center', fontSize: 14, color: '#555', fontFamily: 'sans-serif' }}>-</div>
+            </div>
+
+            {/* Attribution overlay */}
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 1000,
+              background: 'rgba(255,255,255,0.85)', padding: '3px 8px',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               borderTop: '1px solid rgba(0,0,0,0.06)',
-              backdropFilter: 'blur(4px)',
             }}>
-              <span style={{ fontSize: 7, color: '#bbb', fontFamily: 'sans-serif' }}>© OpenStreetMap · CartoDB Light</span>
+              <span style={{ fontSize: 7, color: '#bbb', fontFamily: 'sans-serif' }}>OpenStreetMap - CartoDB Light</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#22c55e' }} />
                 <span style={{ fontSize: 7, color: '#22c55e', fontFamily: 'sans-serif', fontWeight: 600 }}>LIVE</span>
