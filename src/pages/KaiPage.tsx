@@ -1827,12 +1827,12 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               />
             </div>
             <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
-              Enterprise AI<br />
-              that <span style={{ color: '#0a1628' }}>resolves,</span><br />
-              not just responds.
+              Customer Enterprise<br />
+              Service that <span style={{ color: '#0a1628' }}>resolves,</span><br />
+              no just responds.
             </h1>
             <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
-              Kai connects to your systems, follows your rules and helps teams resolve work faster.
+              Kai resolves customer requests, qualifies leads, triggers workflows, and improves every customer interaction.
             </p>
             <div className="flex flex-wrap gap-4">
               <button type="button" onClick={onDemoClick} className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
@@ -1926,7 +1926,7 @@ export default function KaiPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
           <div className="max-w-3xl mb-14">
             <div className="max-w-xl">
-              <p className="type-label text-[#228DC1] mb-5">No Waiting Required</p>
+              <p className="type-label text-[#228DC1] mb-5">Global reach. Measurable customer outcomes.</p>
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Our AI agent is live<br />at enterprise scale.
               </h2>
@@ -1941,12 +1941,7 @@ export default function KaiPage() {
 
           {/* Metrics row � same section */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="bg-white border border-gray-200 border-l-4 border-l-[#228DC1] p-8 shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/45 mb-4">Production reach</p>
-              <p className="font-black text-[#228DC1] leading-none mb-4" style={{ fontSize:34, letterSpacing:'-0.04em' }}>250k+</p>
-              <p className="text-[#0a1628] text-[13px] font-semibold leading-relaxed mb-3">users supported each month across enterprise deployments.</p>
-              <p className="text-[#0a1628]/55 text-[12px] font-normal leading-relaxed">Built for real operational pressure, not a showcase demo.</p>
-            </div>
+            <StatCard num={250} suffix="k+" label="Production reach" note="Users supported each month" delay={0} />
             <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction" delay={100} />
             <StatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
             <StatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
