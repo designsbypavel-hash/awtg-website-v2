@@ -43,6 +43,24 @@ const reveal = (inView: boolean, delay = 0): CSSProperties => ({
   transition: `opacity 0.65s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
 })
 
+const integrationLogos = {
+  appleMail: new URL('../assets/Integration/Apple Mail.svg', import.meta.url).href,
+  doc: new URL('../assets/Integration/Doc.svg', import.meta.url).href,
+  gmail: new URL('../assets/Integration/Gmail.svg', import.meta.url).href,
+  hubspot: new URL('../assets/Integration/Hubspot.svg', import.meta.url).href,
+  jira: new URL('../assets/Integration/Jira.svg', import.meta.url).href,
+  outlook: new URL('../assets/Integration/Outlook.svg', import.meta.url).href,
+  protonMail: new URL('../assets/Integration/Proton Mail.svg', import.meta.url).href,
+  salesforce: new URL('../assets/Integration/Salesforce.svg', import.meta.url).href,
+  sap: new URL('../assets/Integration/SAP.svg', import.meta.url).href,
+  teams: new URL('../assets/Integration/Teams.svg', import.meta.url).href,
+  telegram: new URL('../assets/Integration/Telegram.svg', import.meta.url).href,
+  whatsapp: new URL('../assets/Integration/Whatsapp.svg', import.meta.url).href,
+  yahooMail: new URL('../assets/Integration/Yahoo Mail.svg', import.meta.url).href,
+  zoho: new URL('../assets/Integration/Zoho.svg', import.meta.url).href,
+  kaiHoriz: new URL('../assets/KAI Page Icons/logo horiz.svg', import.meta.url).href,
+}
+
 function ScrollProgress() {
   const [pct, setPct] = useState(0)
   useEffect(() => {
@@ -74,6 +92,182 @@ function StatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
       </p>
       <p className="text-[#0a1628] text-[13px] font-semibold mb-0.5">{label}</p>
       <p className="text-[#0a1628]/60 text-[10px] font-normal">{note}</p>
+    </div>
+  )
+}
+
+function GlobalReachMap() {
+  const nodes = [
+    { id: 'nyc', label: 'New York', x: 228, y: 142, delay: '0s' },
+    { id: 'lon', label: 'London', x: 282, y: 113, delay: '0.7s' },
+    { id: 'dub', label: 'Dubai', x: 339, y: 170, delay: '1.4s' },
+    { id: 'sin', label: 'Singapore', x: 383, y: 205, delay: '2.1s' },
+    { id: 'syd', label: 'Sydney', x: 326, y: 238, delay: '2.8s' },
+  ]
+
+  return (
+    <div className="relative overflow-hidden bg-transparent">
+      <style>{`
+        @keyframes kaiGlobeLand {
+          from { transform: translateX(-276px); }
+          to { transform: translateX(0); }
+        }
+        @keyframes kaiGlobeSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes kaiGlobeSignal {
+          0% { stroke-dashoffset: 260; opacity: 0; }
+          18% { opacity: 0.96; }
+          78% { opacity: 0.78; }
+          100% { stroke-dashoffset: 0; opacity: 0; }
+        }
+        @keyframes kaiGlobePulse {
+          0%, 100% { transform: scale(0.82); opacity: 0.9; }
+          50% { transform: scale(1.62); opacity: 0.12; }
+        }
+        @keyframes kaiSatelliteDrift {
+          0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.42; }
+          50% { transform: translate3d(8px, -5px, 0); opacity: 0.9; }
+        }
+        .kai-globe-land {
+          animation: kaiGlobeLand 18s linear infinite;
+        }
+        .kai-globe-orbit {
+          animation: kaiGlobeSpin 17s linear infinite;
+          transform-box: view-box;
+          transform-origin: 280px 160px;
+        }
+        .kai-globe-orbit-slow {
+          animation-duration: 26s;
+          animation-direction: reverse;
+        }
+        .kai-globe-signal {
+          stroke-dasharray: 260;
+          stroke-dashoffset: 260;
+          animation: kaiGlobeSignal 4.8s ease-in-out infinite;
+        }
+        .kai-globe-signal-2 { animation-delay: 1.25s; }
+        .kai-globe-signal-3 { animation-delay: 2.5s; }
+        .kai-globe-node-pulse {
+          transform-box: fill-box;
+          transform-origin: center;
+          animation: kaiGlobePulse 2.7s ease-in-out infinite;
+        }
+        .kai-globe-satellite {
+          animation: kaiSatelliteDrift 4.5s ease-in-out infinite;
+        }
+      `}</style>
+      <svg viewBox="0 0 560 320" role="img" aria-label="Kai global network shown as a revolving world globe with live connections" className="block h-full min-h-[300px] w-full">
+        <defs>
+          <radialGradient id="kaiSpaceGlow" cx="50%" cy="47%" r="70%">
+            <stop offset="0%" stopColor="#123a5a" />
+            <stop offset="58%" stopColor="#071423" />
+            <stop offset="100%" stopColor="#050b13" />
+          </radialGradient>
+          <radialGradient id="kaiGlobeWater" cx="36%" cy="30%" r="72%">
+            <stop offset="0%" stopColor="#dff7ff" />
+            <stop offset="19%" stopColor="#7ed7f4" />
+            <stop offset="48%" stopColor="#228DC1" />
+            <stop offset="77%" stopColor="#0d4d7a" />
+            <stop offset="100%" stopColor="#061a32" />
+          </radialGradient>
+          <radialGradient id="kaiGlobeAtmosphere" cx="35%" cy="28%" r="68%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.85)" />
+            <stop offset="44%" stopColor="rgba(92,205,246,0.2)" />
+            <stop offset="74%" stopColor="rgba(34,141,193,0.08)" />
+            <stop offset="100%" stopColor="rgba(34,141,193,0)" />
+          </radialGradient>
+          <linearGradient id="kaiLandFill" x1="0%" x2="100%" y1="0%" y2="100%">
+            <stop offset="0%" stopColor="#d6f6e8" />
+            <stop offset="45%" stopColor="#63b99e" />
+            <stop offset="100%" stopColor="#1d735f" />
+          </linearGradient>
+          <linearGradient id="kaiSignalStroke" x1="170" x2="430" y1="80" y2="240" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#9cecff" stopOpacity="0" />
+            <stop offset="35%" stopColor="#9cecff" />
+            <stop offset="100%" stopColor="#228DC1" stopOpacity="0" />
+          </linearGradient>
+          <filter id="kaiGlobeShadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="20" stdDeviation="20" floodColor="#000814" floodOpacity="0.58" />
+          </filter>
+          <filter id="kaiNodeGlow" x="-90%" y="-90%" width="280%" height="280%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <clipPath id="kaiGlobeClip">
+            <circle cx="280" cy="160" r="112" />
+          </clipPath>
+          <mask id="kaiGlobeFade">
+            <rect width="560" height="320" fill="black" />
+            <circle cx="280" cy="160" r="112" fill="white" />
+            <ellipse cx="336" cy="160" rx="72" ry="114" fill="rgba(0,0,0,0.36)" />
+          </mask>
+        </defs>
+
+        <rect width="560" height="320" fill="transparent" />
+        <ellipse cx="280" cy="277" rx="128" ry="20" fill="#0a1628" opacity="0.08" />
+
+        <g filter="url(#kaiGlobeShadow)">
+          <circle cx="280" cy="160" r="116" fill="#4dc9ee" opacity="0.18" />
+          <circle cx="280" cy="160" r="112" fill="url(#kaiGlobeWater)" />
+
+          <g clipPath="url(#kaiGlobeClip)">
+            <rect x="168" y="48" width="224" height="224" fill="url(#kaiGlobeWater)" />
+            <g opacity="0.18" stroke="#d8f8ff" strokeWidth="0.75" fill="none">
+              <ellipse cx="280" cy="160" rx="36" ry="112" />
+              <ellipse cx="280" cy="160" rx="72" ry="112" />
+              <path d="M168 160h224" />
+              <path d="M181 120c54 20 110 21 166 0" />
+              <path d="M181 200c54-20 110-21 166 0" />
+            </g>
+
+            <g className="kai-globe-land" fill="url(#kaiLandFill)" stroke="#b5f0d9" strokeWidth="0.8" opacity="0.92">
+              <path d="M192 93c21-12 54-8 72 11 8 9 12 20 9 30-14 6-30 4-41-4-12-9-19-4-34-7-18-4-27-19-6-30Z" />
+              <path d="M266 91c28-16 66-12 94 11 17 15 27 34 18 48-24 7-44-6-64-16-16-8-35-8-46-23-4-5-6-12-2-20Z" />
+              <path d="M336 151c22 1 44 15 53 35 10 22 1 44-19 52-26-8-42-25-48-51-4-17 0-30 14-36Z" />
+              <path d="M238 158c24 5 41 20 44 42 3 21-8 38-24 47-20-8-30-27-30-53 0-17 3-29 10-36Z" />
+              <path d="M116 102c31-17 76-12 103 11 14 12 19 27 10 41-26 8-51-4-74-16-22-12-43-12-61-21 3-7 8-12 22-15Z" />
+              <path d="M110 176c30-9 66 2 84 27 10 14 10 31-1 44-29-3-58-18-77-41-8-10-10-19-6-30Z" />
+              <path d="M469 95c30-12 64 0 80 24 8 13 9 27 2 41-25 6-54-2-78-20-18-13-27-29-4-45Z" />
+              <path d="M447 181c35-7 70 9 82 36 6 15 4 31-6 43-34-5-65-22-82-50-5-9-4-16 6-29Z" />
+              <path d="M560 93c21-12 54-8 72 11 8 9 12 20 9 30-14 6-30 4-41-4-12-9-19-4-34-7-18-4-27-19-6-30Z" />
+              <path d="M634 91c28-16 66-12 94 11 17 15 27 34 18 48-24 7-44-6-64-16-16-8-35-8-46-23-4-5-6-12-2-20Z" />
+              <path d="M704 151c22 1 44 15 53 35 10 22 1 44-19 52-26-8-42-25-48-51-4-17 0-30 14-36Z" />
+              <path d="M606 158c24 5 41 20 44 42 3 21-8 38-24 47-20-8-30-27-30-53 0-17 3-29 10-36Z" />
+            </g>
+
+            <rect x="168" y="48" width="224" height="224" fill="url(#kaiGlobeAtmosphere)" />
+            <ellipse cx="342" cy="160" rx="80" ry="116" fill="#020711" opacity="0.32" />
+          </g>
+
+          <circle cx="280" cy="160" r="112" fill="none" stroke="#a6edff" strokeWidth="1.2" opacity="0.65" />
+          <circle cx="280" cy="160" r="119" fill="none" stroke="#6cdcff" strokeWidth="1" opacity="0.18" />
+        </g>
+
+        <g className="kai-globe-orbit" fill="none" stroke="#79e7ff" strokeWidth="1.1" opacity="0.36">
+          <ellipse cx="280" cy="160" rx="158" ry="48" />
+        </g>
+        <g className="kai-globe-orbit kai-globe-orbit-slow" fill="none" stroke="#ffffff" strokeWidth="0.9" opacity="0.18">
+          <ellipse cx="280" cy="160" rx="154" ry="76" transform="rotate(-18 280 160)" />
+        </g>
+
+        <path className="kai-globe-signal" d="M228 142 C258 86 324 83 383 205" fill="none" stroke="url(#kaiSignalStroke)" strokeWidth="3" strokeLinecap="round" />
+        <path className="kai-globe-signal kai-globe-signal-2" d="M282 113 C360 100 405 139 326 238" fill="none" stroke="url(#kaiSignalStroke)" strokeWidth="3" strokeLinecap="round" />
+        <path className="kai-globe-signal kai-globe-signal-3" d="M228 142 C276 226 330 236 339 170" fill="none" stroke="url(#kaiSignalStroke)" strokeWidth="3" strokeLinecap="round" />
+
+        {nodes.map((node) => (
+          <g key={node.id} filter="url(#kaiNodeGlow)">
+            <circle className="kai-globe-node-pulse" cx={node.x} cy={node.y} r="13" fill="#6fe7ff" opacity="0.26" style={{ animationDelay: node.delay }} />
+            <circle cx={node.x} cy={node.y} r="5.5" fill="#e9fbff" stroke="#228DC1" strokeWidth="2" />
+            <circle cx={node.x} cy={node.y} r="2" fill="#061a32" />
+          </g>
+        ))}
+
+      </svg>
     </div>
   )
 }
@@ -562,21 +756,21 @@ function IntegrationsSection() {
   // 5 � 3 grid = 15 slots; Kai sits at index 7 (row 1, col 2 � dead centre)
   type Item = { label: string; category: string; logo: string | null; isKai?: true }
   const items: Item[] = [
-    { label: 'HubSpot',      category: 'CRM',        logo: '/logos/hubspot.svg' },
-    { label: 'Salesforce',   category: 'CRM',        logo: '/logos/salesforce.svg' },
-    { label: 'Zendesk',      category: 'Support',    logo: '/logos/zendesk.svg' },
-    { label: 'Yahoo Mail',   category: 'Email',      logo: '/logos/yahoo-mail.svg' },
-    { label: 'Apple Mail',   category: 'Email',      logo: '/logos/apple-mail.svg' },
-    { label: 'Proton Mail',  category: 'Email',      logo: '/logos/proton-mail.svg' },
-    { label: 'WhatsApp',     category: 'Messaging',  logo: '/logos/whatsapp.svg' },
+    { label: 'HubSpot',      category: 'CRM',        logo: integrationLogos.hubspot },
+    { label: 'Salesforce',   category: 'CRM',        logo: integrationLogos.salesforce },
+    { label: 'Proton Mail',  category: 'Email',      logo: integrationLogos.protonMail },
+    { label: 'Yahoo Mail',   category: 'Email',      logo: integrationLogos.yahooMail },
+    { label: 'Apple Mail',   category: 'Email',      logo: integrationLogos.appleMail },
+    { label: 'Docs',         category: 'Knowledge',  logo: integrationLogos.doc },
+    { label: 'WhatsApp',     category: 'Messaging',  logo: integrationLogos.whatsapp },
     { label: 'Kai',          category: 'AI Agent',   logo: '/kai-logo.svg',         isKai: true },
-    { label: 'Slack',        category: 'Messaging',  logo: '/logos/slack.svg' },
-    { label: 'Teams',        category: 'Messaging',  logo: '/logos/teams.svg' },
-    { label: 'Jira',         category: 'Ticketing',  logo: '/logos/jira.svg' },
-    { label: 'Gmail',        category: 'Email',      logo: '/logos/gmail.svg' },
-    { label: 'Outlook',      category: 'Email',      logo: '/logos/outlook.svg' },
-    { label: 'SAP',          category: 'ERP',        logo: '/logos/sap.svg' },
-    { label: 'Zoho',         category: 'CRM',        logo: '/logos/zoho.svg' },
+    { label: 'Telegram',     category: 'Messaging',  logo: integrationLogos.telegram },
+    { label: 'Teams',        category: 'Messaging',  logo: integrationLogos.teams },
+    { label: 'Jira',         category: 'Ticketing',  logo: integrationLogos.jira },
+    { label: 'Gmail',        category: 'Email',      logo: integrationLogos.gmail },
+    { label: 'Outlook',      category: 'Email',      logo: integrationLogos.outlook },
+    { label: 'SAP',          category: 'ERP',        logo: integrationLogos.sap },
+    { label: 'Zoho',         category: 'CRM',        logo: integrationLogos.zoho },
   ]
 
   // Manhattan distance from center card (row 1, col 2 in a 5-col grid)
@@ -591,10 +785,10 @@ function IntegrationsSection() {
           <div>
             <p className="text-[#228DC1] mb-4" style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.75 }}>Integrations</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Works with your stack.<br />Ready on day one.
+              Connects to your stack. Works from day one.
             </h2>
             <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] mb-8">
-              Kai sits alongside your existing setup. It pulls context from your CRM, picks up conversations on your support desk and responds through the channels your customers use. Nothing gets removed or replaced.
+              Kai connects to your existing CRM, ticketing, messaging, knowledge, and workflow tools, giving your AI agent the context it needs to resolve queries, route requests, qualify leads, and trigger actions without replacing your current systems.
             </p>
             <div className="flex flex-col gap-3">
               {[
@@ -667,7 +861,7 @@ function IntegrationsSection() {
                   ) : (
                     <>
                       <img src={item.logo ?? undefined} alt={item.label}
-                        className="w-8 h-8 object-contain"
+                        className="w-10 h-10 object-contain"
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
                     </>
                   )}
@@ -1319,7 +1513,7 @@ function EscalationChart() {
       ].map(({ pct, y }) => (
         <g key={pct}>
           <line x1="54" y1={y} x2="548" y2={y} stroke="#ddd" strokeDasharray="5,4" strokeWidth="1"/>
-          <text x="46" y={y+4} textAnchor="end" fontSize="11" fill="#aab8c2" fontFamily="Roboto,sans-serif">{pct}%</text>
+          <text x="46" y={y+4} textAnchor="end" fontSize="11" fill="#526779" fontWeight="600" fontFamily="Roboto,sans-serif">{pct}%</text>
         </g>
       ))}
 
@@ -1359,7 +1553,7 @@ function EscalationChart() {
               fill="#1a6e99" fontFamily="Roboto,sans-serif">{pt.pct}</text>
           )}
           {/* X-axis date label */}
-          <text x={pt.x} y="256" textAnchor="end" fontSize="9" fill="#9aabb9"
+          <text x={pt.x} y="256" textAnchor="end" fontSize="9" fill="#526779" fontWeight="600"
             fontFamily="Roboto,sans-serif" transform={`rotate(-60,${pt.x},256)`}>{pt.lbl}</text>
           {/* Wide invisible hit area for easy hover */}
           <circle cx={pt.x} cy={pt.y} r="20" fill="transparent"/>
@@ -1429,12 +1623,10 @@ function OmnichannelSection() {
   }: { color:string; bg:string; children:React.ReactNode; glow?:boolean }) => (
     <div style={{
       width:44, height:44, borderRadius:12, flexShrink:0,
-      background: bg,
-      border: `1.5px solid ${color}30`,
+      background: 'transparent',
+      border: '1px solid rgba(10,22,40,0.12)',
       display:'flex', alignItems:'center', justifyContent:'center',
-      boxShadow: glow
-        ? `0 0 0 5px ${color}18, 0 4px 16px ${color}28`
-        : '0 2px 8px rgba(0,0,0,0.07)',
+      boxShadow: 'none',
     }}>
       {children}
     </div>
@@ -1478,14 +1670,15 @@ function OmnichannelSection() {
             {/* Left: WhatsApp · Telegram · Teams */}
             <div className="flex justify-center items-center gap-2">
               <ChIcon color="#25D366" bg="rgba(37,211,102,0.10)">
-                <img src="/logos/whatsapp.svg" alt="WhatsApp" style={{ width:24, height:24 }}
+                <img src={integrationLogos.whatsapp} alt="WhatsApp" style={{ width:24, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
               <ChIcon color="#229ED9" bg="rgba(34,158,217,0.10)">
-                <TgPath size={22} fill="#229ED9" />
+                <img src={integrationLogos.telegram} alt="Telegram" style={{ width:24, height:24, objectFit:'contain' }}
+                  onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
               <ChIcon color="#6264A7" bg="rgba(98,100,167,0.10)">
-                <img src="/logos/teams.svg" alt="Teams" style={{ width:24, height:24 }}
+                <img src={integrationLogos.teams} alt="Teams" style={{ width:24, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
             </div>
@@ -1493,23 +1686,23 @@ function OmnichannelSection() {
             {/* Centre: KAI (glowing) */}
             <div className="flex justify-center items-center">
               <ChIcon color="#228DC1" bg="rgba(34,141,193,0.10)" glow>
-                <img src="/kai-logo.svg" alt="Kai" style={{ width:26, height:26 }}
+                <img src={integrationLogos.kaiHoriz} alt="Kai" style={{ width:36, height:18, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
             </div>
 
-            {/* Right: Gmail · Outlook · Slack */}
+            {/* Right: Gmail · Outlook · Telegram */}
             <div className="flex justify-center items-center gap-2">
               <ChIcon color="#EA4335" bg="rgba(234,67,53,0.10)">
-                <img src="/logos/gmail.svg" alt="Gmail" style={{ width:24, height:24 }}
+                <img src={integrationLogos.gmail} alt="Gmail" style={{ width:24, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
               <ChIcon color="#0078D4" bg="rgba(0,120,212,0.10)">
-                <img src="/logos/outlook.svg" alt="Outlook" style={{ width:24, height:24 }}
+                <img src={integrationLogos.outlook} alt="Outlook" style={{ width:24, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
-              <ChIcon color="#4A154B" bg="rgba(74,21,75,0.10)">
-                <img src="/logos/slack.svg" alt="Slack" style={{ width:24, height:24 }}
+              <ChIcon color="#229ED9" bg="rgba(34,158,217,0.10)">
+                <img src={integrationLogos.telegram} alt="Telegram" style={{ width:24, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
             </div>
@@ -1745,8 +1938,8 @@ function OmnichannelSection() {
             MOBILE: channel pills + KAI widget
         ══════════════════════════════════════════════════════════════════════ */}
         <div className="lg:hidden flex flex-wrap justify-center gap-2 mb-10">
-          {['WhatsApp','Telegram','Teams','Web Chat','Gmail','Outlook','Slack'].map(ch => (
-            <span key={ch} className="text-[11px] font-semibold text-[#228DC1] bg-white border border-[#228DC1]/20 px-3 py-1.5 rounded-full shadow-sm">
+          {['WhatsApp','Telegram','Teams','Web Chat','Gmail','Outlook','Telegram'].map((ch, i) => (
+            <span key={`${ch}-${i}`} className="text-[11px] font-semibold text-[#228DC1] bg-white border border-[#228DC1]/20 px-3 py-1.5 rounded-full shadow-sm">
               {ch}
             </span>
           ))}
@@ -1924,7 +2117,7 @@ export default function KaiPage() {
       {/* -- Live in production -- */}
       <section className="bg-[#f8fafc] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="max-w-3xl mb-14">
+          <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-10 lg:gap-16 items-center mb-14">
             <div className="max-w-xl">
               <p className="type-label text-[#228DC1] mb-5">Global reach. Measurable customer outcomes.</p>
               <h2 className="font-heading text-[#0a1628] mb-5">
@@ -1937,6 +2130,7 @@ export default function KaiPage() {
                 Read the case study <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
               </Link>
             </div>
+            <GlobalReachMap />
           </div>
 
           {/* Metrics row � same section */}
@@ -1956,17 +2150,13 @@ export default function KaiPage() {
 
             {/* Left: copy */}
             <div className="lg:pt-2">
-              <p className="type-label text-[#228DC1] mb-5">Resolution Impact</p>
+              <p className="type-label text-[#228DC1] mb-5">Fewer escalations. Faster resolutions.</p>
               <h2 className="font-heading text-[#0a1628] mb-5">
-                Escalation rate<br />drops from 40%<br />to 10%
+                Escalation rate reduced from 40% to 10% on average for all our users
               </h2>
               <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8">
                 Kai handles the complex queries that used to demand human escalation, steadily containing more every month from day one.
               </p>
-              <div className="inline-flex items-baseline gap-4 border border-gray-200 bg-[#fafaf7] px-5 py-4">
-                <span className="font-black text-[#228DC1] shrink-0" style={{ fontSize:28, letterSpacing:'-0.03em' }}>30pp</span>
-                <span className="text-[#0a1628]/55 text-[13px] uppercase tracking-[0.12em] font-semibold">reduction in escalation rate</span>
-              </div>
             </div>
 
             {/* Right: chart card — Intercom-style */}
@@ -1974,7 +2164,7 @@ export default function KaiPage() {
               {/* Card header */}
               <div style={{ padding:'18px 20px 10px' }}>
                 <p className="type-label" style={{ color:'rgba(10,22,40,0.4)', letterSpacing:'0.14em' }}>
-                  KAI'S ESCALATION RATE REDUCES EVERY MONTH
+                  Escalation rate reduction over time
                 </p>
               </div>
 
@@ -1983,12 +2173,6 @@ export default function KaiPage() {
                 <EscalationChart />
               </div>
 
-              {/* Card footer note */}
-              <div style={{ borderTop:'1px solid #e4e8ed', padding:'10px 20px' }}>
-                <p style={{ fontSize:11, color:'rgba(10,22,40,0.38)', fontFamily:'Roboto,sans-serif' }}>
-                  Based on enterprise production deployment data · measured monthly
-                </p>
-              </div>
             </div>
 
           </div>
