@@ -712,7 +712,7 @@ function SecurityComplianceSection() {
               {[
                 { badge: 'Encryption', title: 'Protected data paths', detail: 'TLS in transit. AES-256 at rest.' },
                 { badge: 'Access', title: 'Least-privilege control', detail: 'Roles, MFA, permissions and audit trails.' },
-                { badge: 'Testing', title: 'Verified posture', detail: 'CREST-aligned testing and TLS 1.3 checks.' },
+                { badge: 'Testing', title: 'Penetration-tested posture', detail: 'CREST-aligned penetration testing and TLS 1.3 checks.' },
                 { badge: 'Residency', title: 'Data control', detail: 'GDPR-aligned with UK residency options.' },
                 { badge: 'Deployment', title: 'Flexible deployment', detail: 'Cloud, hybrid or on-premises.' },
                 { badge: 'AI governance', title: 'Auditable AI', detail: 'Rules for access, consent and escalation.' },
