@@ -123,7 +123,7 @@ const tickerLogos = [
   { id: 'mobily',      src: '/logos/partners/Mobily.png',                  alt: 'Mobily' },
   { id: 'nao',         src: '/logos/partners/NAO.png',                     alt: 'National Audit Office' },
   { id: 'nokia',       src: '/logos/partners/Nokia.png',                   alt: 'Nokia' },
-  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2' },
+  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2', height: '112px' },
   { id: 'oracle',      src: '/logos/partners/Oracle.png',                  alt: 'Oracle' },
   { id: 'qinetiq',     src: '/logos/partners/Qinetic.png',                 alt: 'QinetiQ' },
   { id: 'quickline',   src: '/logos/partners/Quickline Broadband.png',     alt: 'Quickline Broadband' },
@@ -221,7 +221,7 @@ function Hero() {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    style={{ height: '172px', width: '220px', objectFit: 'contain', objectPosition: 'center' }}
+                    style={{ height: logo.height ?? '172px', width: '220px', objectFit: 'contain', objectPosition: 'center' }}
                   />
                 </div>
               ))}
@@ -312,7 +312,7 @@ function AIProofPoints() {
             <p className="type-label text-[#228DC1] mb-6">Live in Production</p>
             <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-4">
               British Council.<br />
-              <span className="italic text-[#228DC1]">AI handling learner support at scale.</span>
+              <span className="text-[#228DC1]">AI handling learner support at scale.</span>
             </h2>
             <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-8">
               We deployed Kai directly into British Council English Online. Customer satisfaction is up. Escalations are down. It's live, not a demo.
@@ -349,7 +349,7 @@ export function OurSolutions() {
             <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Our Solutions</p>
             <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
               Advancing connectivity for the{' '}
-              <span className="italic text-[#228DC1]">technology supercycle.</span>
+              <span className="text-[#228DC1]">technology supercycle.</span>
             </h2>
           </div>
           <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] font-normal">
@@ -403,9 +403,9 @@ export function Vision() {
         <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-10">AWTG Vision</p>
         <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
           The next wave of connectivity will{' '}
-          <span className="italic text-[#228DC1]">transform businesses</span>
+          <span className="text-[#228DC1]">transform businesses</span>
           {', '}unlock new network value, and{' '}
-          <span className="italic text-[#228DC1]">empower communities</span>{' '}
+          <span className="text-[#228DC1]">empower communities</span>{' '}
           worldwide.
         </h2>
         <div className="mt-10 w-10 h-0.5 bg-[#228DC1] mx-auto" />
@@ -544,7 +544,7 @@ export function TechSolutions() {
           </span>
           <h2 className="font-serif-display text-[#0a1628]">
             AI-Powered Technology{' '}
-            <span className="italic text-[#228DC1]">Solutions</span>
+            <span className="text-[#228DC1]">Solutions</span>
           </h2>
         </div>
         <div className="flex flex-wrap justify-center gap-2 mb-14">
@@ -651,7 +651,7 @@ export function PNaaS() {
             </span>
             <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
               Transforming the future of connectivity{' '}
-              <span className="italic text-[#228DC1]">and beyond.</span>
+              <span className="text-[#228DC1]">and beyond.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-10 font-normal">
               AWTG's Private Network as a Service delivers enterprise-grade 4G/5G connectivity, fully managed, infinitely scalable, built around your operations.
@@ -880,7 +880,7 @@ function ContactCTA() {
           <div>
             <h2 className="font-serif-display text-white leading-[1.1] mb-4">
               Ready to build<br />
-              <span className="italic text-[#228DC1]">something that matters?</span>
+              <span className="text-[#228DC1]">something that matters?</span>
             </h2>
             <p className="text-white/55 text-[16px] font-normal leading-[1.7] mb-10">
               No pitch. No jargon. Just honest advice from engineers who've done it before.
