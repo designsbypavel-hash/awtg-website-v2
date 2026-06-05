@@ -1,54 +1,66 @@
 import { Link, useLocation } from 'react-router-dom'
 
-const LABELS: Record<string, string> = {
-  kai:                        'Kai',
-  aruva:                      'Aruva',
-  icmap:                      'ICMAP',
-  products:                   'Products',
-  solutions:                  'Solutions',
-  'mobile-private-networks':  'Mobile Private Networks',
-  'telecoms-ai':              'Telecoms AI',
-  'generative-ai':            'Generative AI',
-  'smart-cities':             'Smart Cities',
-  'industry-4':               'Industry 4.0',
-  'smart-health':             'Smart Health',
-  services:                   'Services',
-  consultancy:                'Consultancy',
-  engineering:                'Engineering',
-  software:                   'Software',
-  'digital-transformation':   'Digital Transformation',
-  iot:                        'IoT',
-  'ai-ml':                    'AI & ML',
-  industries:                 'Industries',
-  enterprise:                 'Enterprise',
-  telecoms:                   'Telecoms',
-  'public-sector':            'Public Sector',
-  'health-tech':              'Health Tech',
-  education:                  'Education',
-  retail:                     'Retail',
-  defence:                    'Defence',
-  about:                      'About',
-  overview:                   'Overview',
-  partnerships:               'Partnerships',
-  innovation:                 'Innovation',
-  leadership:                 'Leadership',
-  certifications:             'Certifications',
-  sustainability:             'Sustainability',
-  insights:                   'Insights',
-  blog:                       'Blog',
-  'case-studies':             'Case Studies',
-  'white-papers':             'White Papers',
-  contact:                    'Contact',
-  careers:                    'Careers',
-  privacy:                    'Privacy Policy',
-  terms:                      'Terms of Service',
-  cookies:                    'Cookie Policy',
-  ibecome:                    'I Become',
-  iyouth:                     'I Youth',
+// Labels keyed by full path (takes priority) or by single segment.
+// Full-path keys let us use exact nav labels even when the same segment
+// appears under different sections with different names.
+const PATH_LABELS: Record<string, string> = {
+  // ── Products (AI section) ──────────────────────────────────────────
+  '/products/kai':                       'AI for Sales and Customer Services',
+  '/products/aruva':                     'AI for Education',
+  // ── Products (Connectivity section) ───────────────────────────────
+  '/products/icmap':                     'iCMAP',
+  // ── Services ──────────────────────────────────────────────────────
+  '/services/consultancy':               'Digital Transformation',
+  '/services/engineering':               'Engineering',
+  '/services/software':                  'Software Development',
+  '/services/digital-transformation':    'Digital Transformation',
+  '/services/iot':                       'IoT',
+  '/services/ai-ml':                     'AI & ML',
+  // ── Solutions ─────────────────────────────────────────────────────
+  '/solutions/mobile-private-networks':  'Mobile Private Networks',
+  '/solutions/telecoms-ai':             'Telecoms AI',
+  '/solutions/generative-ai':           'Generative AI',
+  '/solutions/smart-cities':            'Smart Cities',
+  '/solutions/industry-4':             'Manufacturing',
+  '/solutions/smart-health':           'Smart Health',
+  // ── Industries ────────────────────────────────────────────────────
+  '/industries/enterprise':             'Enterprise',
+  '/industries/telecoms':              'Telecoms',
+  '/industries/public-sector':         'Public Sector',
+  '/industries/health-tech':           'Health Tech',
+  '/industries/education':             'Education',
+  '/industries/retail':                'Commerce',
+  '/industries/defence':               'Space & Defence',
+  // ── About ─────────────────────────────────────────────────────────
+  '/about':                            'Overview',
+  '/about/overview':                   'Overview',
+  '/about/leadership':                 'Leadership',
+  '/about/certifications':             'Certifications',
+  '/about/sustainability':             'Sustainability',
+  '/about/partnerships':               'Partnerships',
+  '/about/innovation':                 'Innovation',
+  // ── Insights ──────────────────────────────────────────────────────
+  '/insights':                         'Insights',
+  '/insights/blog':                    'Blog',
+  '/insights/case-studies':            'Case Studies',
+  '/insights/white-papers':            'White Papers',
 }
 
-function toLabel(segment: string) {
-  return LABELS[segment] ?? segment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+// Segment-level fallbacks for parent crumbs (e.g. "products", "services")
+const SEGMENT_LABELS: Record<string, string> = {
+  products:   'Products',
+  solutions:  'Solutions',
+  services:   'Services',
+  industries: 'Industries',
+  about:      'About',
+  insights:   'Insights',
+  contact:    'Contact',
+  careers:    'Careers',
+  privacy:    'Privacy Policy',
+  terms:      'Terms of Service',
+  cookies:    'Cookie Policy',
+  ibecome:    'I Become',
+  iyouth:     'I Youth',
 }
 
 export default function Breadcrumb() {
@@ -57,11 +69,16 @@ export default function Breadcrumb() {
   if (pathname === '/') return null
 
   const segments = pathname.split('/').filter(Boolean)
-  const crumbs = segments.map((seg, i) => ({
-    name: toLabel(seg),
-    path: '/' + segments.slice(0, i + 1).join('/'),
-    isLast: i === segments.length - 1,
-  }))
+
+  // Build crumbs — prefer full-path label, then segment label, then auto-capitalise
+  const crumbs = segments.map((seg, i) => {
+    const fullPath = '/' + segments.slice(0, i + 1).join('/')
+    const name =
+      PATH_LABELS[fullPath] ??
+      SEGMENT_LABELS[seg] ??
+      seg.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+    return { name, path: fullPath, isLast: i === segments.length - 1 }
+  })
 
   return (
     <>
