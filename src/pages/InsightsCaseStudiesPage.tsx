@@ -28,9 +28,9 @@ const tagAccent: Record<string, string> = {
 const featured = {
   slug: 'itrustric-open-ran-security',
   tag: 'Open RAN Security',
-  title: 'iTRUSTRIC – Securing Open RAN with AWTG's Advanced Solution',
+  title: "iTRUSTRIC – Securing Open RAN with AWTG’s Advanced Solution",
   date: 'October 7, 2024',
-  excerpt: 'Open RAN's disaggregated architecture creates powerful flexibility and new security exposure. iTRUSTRIC is AWTG's purpose-built platform to secure data flows, improve network visibility and ensure compliance across multi-vendor Open RAN deployments.',
+  excerpt: "Open RAN’s disaggregated architecture creates powerful flexibility and new security exposure. iTRUSTRIC is AWTG’s purpose-built platform to secure data flows, improve network visibility and ensure compliance across multi-vendor Open RAN deployments.",
   sector: 'Telecommunications',
   stats: [
     { value: 'Real-time', label: 'Threat monitoring' },
@@ -50,16 +50,16 @@ const studies = [
   {
     slug: 'tot-service-assurance',
     tag: 'Network Economics',
-    title: 'AWTG's Service Assurance and Service Creation Platform',
+    title: "AWTG’s Service Assurance and Service Creation Platform",
     date: 'April 20, 2020',
-    excerpt: 'A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.',
+    excerpt: "A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG’s iSASCP platform.",
   },
   {
     slug: 'central-london-benchmarking',
     tag: 'Mobile Networks',
     title: 'Central London Benchmarking',
     date: 'May 6, 2018',
-    excerpt: 'Multidimensional benchmarking across four major UK operators, comparing 3G, EE's newly launched LTE and carrier-grade outdoor Wi-Fi in Central London.',
+    excerpt: "Multidimensional benchmarking across four major UK operators, comparing 3G, EE’s newly launched LTE and carrier-grade outdoor Wi-Fi in Central London.",
   },
   {
     slug: 'data-offloading-wifi',
@@ -73,21 +73,21 @@ const studies = [
     tag: 'Performance Testing',
     title: 'AKT – Stability Testing – Scenario',
     date: 'September 1, 2013',
-    excerpt: 'Multi-day network stability assessment using AWTG's Broadband Tester agents to measure user-perceived speed, reliability and quality of experience.',
+    excerpt: "Multi-day network stability assessment using AWTG’s Broadband Tester agents to measure user-perceived speed, reliability and quality of experience.",
   },
   {
     slug: 'rich-communications-suite',
     tag: 'Mobile Services',
     title: 'Rich Communications Suite',
     date: 'June 23, 2012',
-    excerpt: 'AWTG's analysis of the GSMA RCS-e initiative — how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.',
+    excerpt: "AWTG’s analysis of the GSMA RCS-e initiative — how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
   },
   {
     slug: 'small-cell-site-acquisition',
     tag: 'Site Acquisition',
     title: 'Site Acquisition Proposition for Small Cell/3G Data Offload',
     date: 'June 23, 2012',
-    excerpt: 'A site acquisition proposition for small cell deployment in high-density urban areas, drawing on AWTG's experience building outdoor small cell networks for O2.',
+    excerpt: "A site acquisition proposition for small cell deployment in high-density urban areas, drawing on AWTG’s experience building outdoor small cell networks for O2.",
   },
 ]
 
