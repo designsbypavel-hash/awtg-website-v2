@@ -2254,11 +2254,6 @@ export default function KaiPage() {
                   background: 'linear-gradient(135deg, rgba(34,141,193,0.10) 0%, transparent 60%)',
                 }} />
 
-                {/* Pill */}
-                <span className="inline-block text-[10px] font-bold tracking-[0.22em] text-[#228DC1] bg-[#228DC1]/15 border border-[#228DC1]/30 px-3 py-1 rounded-full mb-6">
-                  {step.pill}
-                </span>
-
                 {/* Step number */}
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-white/20 font-black" style={{ fontSize: '48px', lineHeight: 1, letterSpacing: '-0.04em' }}>{step.num}</span>
