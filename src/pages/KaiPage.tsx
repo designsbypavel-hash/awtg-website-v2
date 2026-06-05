@@ -1924,7 +1924,7 @@ export default function KaiPage() {
       {/* -- Live in production -- */}
       <section className="bg-[#f8fafc] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-20 items-center mb-14">
+          <div className="max-w-3xl mb-14">
             <div className="max-w-xl">
               <p className="type-label text-[#228DC1] mb-5">No Waiting Required</p>
               <h2 className="font-heading text-[#0a1628] mb-5">
@@ -1937,31 +1937,16 @@ export default function KaiPage() {
                 Read the case study <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
               </Link>
             </div>
-
-            <div className="relative">
-              <div className="absolute -inset-5 bg-white/60 border border-white hidden lg:block" />
-              <div className="relative bg-white border border-gray-200 shadow-[0_16px_50px_rgba(10,22,40,0.07)]">
-                <div className="p-8 bg-[#0a1628] text-white">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/45 mb-8">Production reach</p>
-                  <p className="font-black leading-none mb-3" style={{ fontSize: 'clamp(46px, 5vw, 72px)', letterSpacing: '-0.04em' }}>
-                    250k+
-                  </p>
-                  <p className="text-white/75 text-[14px] font-medium leading-relaxed">
-                    users supported each month across enterprise deployments.
-                  </p>
-                </div>
-                <div className="border-t border-gray-100 bg-[#fafafa] px-8 py-5">
-                  <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">
-                    Built for real operational pressure, not a showcase demo.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Metrics row � same section */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <StatCard prefix="+" num={22.5} suffix="%" label="Containment uplift" note="Measured in production" delay={0} />
+            <div className="bg-white border border-gray-200 border-l-4 border-l-[#228DC1] p-8 shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/45 mb-4">Production reach</p>
+              <p className="font-black text-[#228DC1] leading-none mb-4" style={{ fontSize:34, letterSpacing:'-0.04em' }}>250k+</p>
+              <p className="text-[#0a1628] text-[13px] font-semibold leading-relaxed mb-3">users supported each month across enterprise deployments.</p>
+              <p className="text-[#0a1628]/55 text-[12px] font-normal leading-relaxed">Built for real operational pressure, not a showcase demo.</p>
+            </div>
             <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction" delay={100} />
             <StatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
             <StatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
@@ -1972,7 +1957,7 @@ export default function KaiPage() {
       {/* -- Escalation Rate Chart -- */}
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="grid lg:grid-cols-[1fr_1.65fr] gap-14 lg:gap-20 items-start">
+          <div className="grid lg:grid-cols-[0.95fr_1.65fr] gap-10 lg:gap-16 items-center">
 
             {/* Left: copy */}
             <div className="lg:pt-2">
@@ -1980,18 +1965,13 @@ export default function KaiPage() {
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Escalation rate<br />drops from 40%<br />to 10%
               </h2>
-              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-10">
+              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8">
                 Kai handles the complex queries that used to demand human escalation, steadily containing more every month from day one.
               </p>
-              {[
-                { stat: '−30pp', label: 'reduction in escalation rate' },
-                { stat: '45 sec', label: 'average resolution time' },
-              ].filter(item => item.label !== 'reduction in escalation rate').map(item => (
-                <div key={item.stat} className="flex items-baseline gap-4 pb-4 mb-4 border-b border-gray-100 last:border-0 last:mb-0 last:pb-0">
-                  <span className="font-black text-[#228DC1] shrink-0" style={{ fontSize:26, letterSpacing:'-0.03em' }}>{item.stat}</span>
-                  <span className="text-[#0a1628]/55 text-[14px]">{item.label}</span>
-                </div>
-              ))}
+              <div className="inline-flex items-baseline gap-4 border border-gray-200 bg-[#fafaf7] px-5 py-4">
+                <span className="font-black text-[#228DC1] shrink-0" style={{ fontSize:28, letterSpacing:'-0.03em' }}>30pp</span>
+                <span className="text-[#0a1628]/55 text-[13px] uppercase tracking-[0.12em] font-semibold">reduction in escalation rate</span>
+              </div>
             </div>
 
             {/* Right: chart card — Intercom-style */}
