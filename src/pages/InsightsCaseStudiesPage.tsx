@@ -1,84 +1,93 @@
-﻿import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
-// -- Featured clients — hero treatment --------------------------------------
-const featured = [
-  {
-    client: 'October 7, 2024',
-    tag: 'Open RAN Security',
-    outcome: 'iTRUSTRIC - Securing Open RAN with AWTG’s Advanced Solution',
-    desc: 'AWTG addresses Open RAN security with iTRUSTRIC, a solution designed to protect data flows, improve network visibility and support compliance across Open RAN environments.',
-    deliverable: 'Open RAN security and assurance',
-    sector: 'Telecommunications',
-    href: 'https://www.awtg.co.uk/itrustric-securing-open-ran-with-awtgs-advanced-solution',
-  },
-]
+const tagColour: Record<string, string> = {
+  'Open RAN Security': 'bg-[#228DC1]/10 text-[#228DC1]',
+  'Network Economics': 'bg-emerald-50 text-emerald-700',
+  'Public Sector': 'bg-violet-50 text-violet-700',
+  'Mobile Networks': 'bg-sky-50 text-sky-700',
+  'Capacity Planning': 'bg-amber-50 text-amber-700',
+  'Performance Testing': 'bg-orange-50 text-orange-700',
+  'Mobile Services': 'bg-indigo-50 text-indigo-700',
+  'Site Acquisition': 'bg-slate-100 text-slate-700',
+}
 
-// -- Supporting case studies -------------------------------------------------
-const supporting = [
+const tagAccent: Record<string, string> = {
+  'Open RAN Security': 'bg-[#228DC1]',
+  'Network Economics': 'bg-emerald-500',
+  'Public Sector': 'bg-violet-500',
+  'Mobile Networks': 'bg-sky-500',
+  'Capacity Planning': 'bg-amber-400',
+  'Performance Testing': 'bg-orange-400',
+  'Mobile Services': 'bg-indigo-500',
+  'Site Acquisition': 'bg-slate-400',
+}
+
+const featured = {
+  slug: 'itrustric-open-ran-security',
+  tag: 'Open RAN Security',
+  title: 'iTRUSTRIC – Securing Open RAN with AWTG's Advanced Solution',
+  date: 'October 7, 2024',
+  excerpt: 'Open RAN's disaggregated architecture creates powerful flexibility and new security exposure. iTRUSTRIC is AWTG's purpose-built platform to secure data flows, improve network visibility and ensure compliance across multi-vendor Open RAN deployments.',
+  sector: 'Telecommunications',
+  stats: [
+    { value: 'Real-time', label: 'Threat monitoring' },
+    { value: 'O-RAN', label: 'Standards compliant' },
+    { value: 'Multi-vendor', label: 'Architecture support' },
+  ],
+}
+
+const studies = [
   {
-    client: 'September 17, 2021',
+    slug: 'high-street-recovery',
+    tag: 'Public Sector',
     title: 'Connectivity, Software and Services for High Street Recovery',
-    sector: 'Public Sector',
-    stat: '2021',
-    statLabel: 'Published',
-    desc: 'A local authority focused case study on high street recovery, place-making strategies, reuse of buildings, public realm improvements, business support and active travel plans.',
-    href: 'https://www.awtg.co.uk/connectivity-software-and-services-for-high-street-recovery-2',
+    date: 'September 17, 2021',
+    excerpt: 'How AWTG delivered digital infrastructure and connectivity underpinning local authority high street recovery programmes across retail and leisure sectors.',
   },
   {
-    client: 'April 20, 2020',
-    title: 'AWTG’s Service Assurance and Service Creation Platform',
-    sector: 'Network Economics',
-    stat: '2020',
-    statLabel: 'Published',
-    desc: 'A GSMA validated case study with TOT on AWTG’s Integrated Service Assurance and Service Creation Platform, operational savings, new service creation and network economics.',
-    href: 'https://www.awtg.co.uk/awtgs-service-assurance-and-service-creation-platform',
+    slug: 'tot-service-assurance',
+    tag: 'Network Economics',
+    title: 'AWTG's Service Assurance and Service Creation Platform',
+    date: 'April 20, 2020',
+    excerpt: 'A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.',
   },
   {
-    client: 'May 6, 2018',
+    slug: 'central-london-benchmarking',
+    tag: 'Mobile Networks',
     title: 'Central London Benchmarking',
-    sector: 'Mobile Networks',
-    stat: '2018',
-    statLabel: 'Published',
-    desc: 'A pilot mobile service benchmarking trial in Central London, covering multidimensional analysis across major mobile network operators, 3G voice, data and emerging services.',
-    href: 'https://www.awtg.co.uk/central-london-benchmarking',
+    date: 'May 6, 2018',
+    excerpt: 'Multidimensional benchmarking across four major UK operators, comparing 3G, EE's newly launched LTE and carrier-grade outdoor Wi-Fi in Central London.',
   },
   {
-    client: 'September 2, 2013',
-    title: 'Data Offloading with WiFi enabled devices',
-    sector: 'Capacity Planning',
-    stat: '2013',
-    statLabel: 'Published',
-    desc: 'A study of WiFi enabled devices, carrier-class WiFi, mobile data pressure and seamless offloading between WiFi and traditional mobile access technologies.',
-    href: 'https://www.awtg.co.uk/data-offloading-with-wifi-enabled-devices',
+    slug: 'data-offloading-wifi',
+    tag: 'Capacity Planning',
+    title: 'Data Offloading with WiFi Enabled Devices',
+    date: 'September 2, 2013',
+    excerpt: 'A laboratory demonstration of seamless cellular-to-WiFi offloading for dual-mode devices, examining the technical and commercial case for operator-managed offload.',
   },
   {
-    client: 'September 1, 2013',
-    title: 'AKT - Stability Testing - Scenario',
-    sector: 'Performance Testing',
-    stat: '2013',
-    statLabel: 'Published',
-    desc: 'A network stability test scenario measuring user experience over several days, using broadband tester agents to estimate speed, reliability and quality of experience.',
-    href: 'https://www.awtg.co.uk/akt-stability-testing-scenario',
+    slug: 'akt-stability-testing',
+    tag: 'Performance Testing',
+    title: 'AKT – Stability Testing – Scenario',
+    date: 'September 1, 2013',
+    excerpt: 'Multi-day network stability assessment using AWTG's Broadband Tester agents to measure user-perceived speed, reliability and quality of experience.',
   },
   {
-    client: 'June 23, 2012',
+    slug: 'rich-communications-suite',
+    tag: 'Mobile Services',
     title: 'Rich Communications Suite',
-    sector: 'Mobile Services',
-    stat: '2012',
-    statLabel: 'Published',
-    desc: 'A case study explaining the GSMA RCS-e initiative and its relevance for mobile network operators delivering richer voice, data, video and messaging services.',
-    href: 'https://www.awtg.co.uk/rich-communications-suite',
+    date: 'June 23, 2012',
+    excerpt: 'AWTG's analysis of the GSMA RCS-e initiative — how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.',
   },
   {
-    client: 'June 23, 2012',
+    slug: 'small-cell-site-acquisition',
+    tag: 'Site Acquisition',
     title: 'Site Acquisition Proposition for Small Cell/3G Data Offload',
-    sector: 'Site Acquisition',
-    stat: '2012',
-    statLabel: 'Published',
-    desc: 'A proposition for small cells and 3G data offload in high-density locations where mobile data growth creates pressure on operator network capacity.',
-    href: 'https://www.awtg.co.uk/site-acquisition-proposition-for-small-cell-3g-data-offload',
+    date: 'June 23, 2012',
+    excerpt: 'A site acquisition proposition for small cell deployment in high-density urban areas, drawing on AWTG's experience building outdoor small cell networks for O2.',
   },
 ]
 
@@ -86,92 +95,92 @@ export default function InsightsCaseStudiesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
+      <section className="pt-32 pb-16 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <p className="type-label text-[#228DC1] mb-4">Insights</p>
-          <h1 className="font-serif-display text-[#0a1628] mb-6">
-            Case Studies
-          </h1>
+          <h1 className="font-serif-display text-[#0a1628] mb-6">Case Studies</h1>
           <p className="text-[#0a1628]/70 text-[16px] max-w-xl font-normal leading-[1.7]">
-            The complete AWTG case-study library, aligned with the source content and linked back to each original study.
+            Real projects, measurable outcomes. Eight case studies spanning Open RAN security, network economics, mobile benchmarking and urban connectivity.
           </p>
         </div>
       </section>
 
       {/* Featured */}
-      <section className="bg-[#f8fafc] border-t border-gray-100 pb-0">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 pb-0">
-          <div className="grid gap-px bg-[#0a1628]/5">
-            {featured.map((f, i) => (
-              <a
-                key={f.outcome}
-                href={f.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-[#f8fafc] p-10 flex flex-col justify-between hover:bg-[#0f2347] transition-colors"
-              >
+      <section className="bg-[#f8fafc] pb-0 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <Link
+            to={`/insights/case-studies/${featured.slug}`}
+            className="group block bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
+          >
+            <div className="grid lg:grid-cols-[1fr_360px]">
+              {/* Left: content */}
+              <div className="p-10 lg:p-14 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <p className="type-label text-[#228DC1]">{f.tag}</p>
-                    <span className="type-label text-[#0a1628]/60 group-hover:text-white/45">0{i + 1}</span>
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[featured.tag]}`}>
+                      {featured.tag}
+                    </span>
+                    <span className="text-[#0a1628]/40 text-xs">{featured.date}</span>
                   </div>
-                  {/* Client name — the hero */}
-                  <p className="font-black text-[#0a1628] group-hover:text-white mb-2 transition-colors" style={{ fontSize: '32px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-                    {f.client}
-                  </p>
-                  {/* Scannable outcome */}
-                  <p className="text-[#228DC1] font-semibold text-[16px] leading-[1.3] mb-5">
-                    {f.outcome}
-                  </p>
-                  <p className="text-[#0a1628]/60 group-hover:text-white/62 text-[14px] font-normal leading-[1.7] transition-colors">
-                    {f.desc}
+                  <h2 className="font-serif-display text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-5" style={{ fontSize: 'clamp(22px, 2.5vw, 32px)', lineHeight: 1.15 }}>
+                    {featured.title}
+                  </h2>
+                  <p className="text-[#0a1628]/65 text-[15px] font-normal leading-[1.75] max-w-lg">
+                    {featured.excerpt}
                   </p>
                 </div>
-                <div className="mt-8 flex items-center justify-between border-t border-gray-100 group-hover:border-white/12 pt-6 transition-colors">
-                  <span className="text-[#0a1628]/65 group-hover:text-white/55 text-xs font-normal transition-colors">{f.deliverable}</span>
-                  <span className="type-label text-[#228DC1] group-hover:text-white transition-colors flex items-center gap-2">
-                    Read case study <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
-                  </span>
+                <div className="mt-10 flex items-center gap-2 text-[#228DC1] text-sm font-semibold">
+                  Read case study <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </a>
-            ))}
-          </div>
+              </div>
+              {/* Right: stats panel */}
+              <div className="bg-[#0a1628] p-10 lg:p-14 flex flex-col justify-between">
+                <p className="type-label text-white/40 mb-8">Key outcomes</p>
+                <div className="space-y-8">
+                  {featured.stats.map((s, i) => (
+                    <div key={i} className={i < featured.stats.length - 1 ? 'pb-8 border-b border-white/10' : ''}>
+                      <p className="font-black text-white" style={{ fontSize: 'clamp(20px, 2vw, 28px)', letterSpacing: '-0.02em' }}>{s.value}</p>
+                      <p className="type-label text-white/50 mt-1">{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
-      {/* Supporting case studies */}
+      {/* Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#0a1628]/60 mb-10">More projects</p>
-          <div className="space-y-px bg-gray-100 border border-gray-100">
-            {supporting.map(cs => (
-              <a
-                key={cs.title}
-                href={cs.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white grid lg:grid-cols-[1fr_auto] gap-8 p-8 hover:bg-[#f7f8fa] transition-colors"
+          <p className="type-label text-[#0a1628]/50 mb-10">All case studies</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {studies.map(cs => (
+              <Link
+                key={cs.slug}
+                to={`/insights/case-studies/${cs.slug}`}
+                className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all flex flex-col overflow-hidden"
               >
-                <div className="grid lg:grid-cols-[200px_1fr] gap-6">
-                  {/* Client name — prominent */}
-                  <div>
-                    <p className="font-bold text-[#0a1628] text-[16px] leading-[1.3] mb-1">{cs.client}</p>
-                    <span className="type-label text-[#228DC1]">{cs.sector}</span>
+                {/* Colour accent bar */}
+                <div className={`h-1 w-full ${tagAccent[cs.tag] ?? 'bg-[#228DC1]'}`} />
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${tagColour[cs.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+                      {cs.tag}
+                    </span>
+                    <span className="text-[#0a1628]/40 text-[11px]">{cs.date.split(' ').pop()}</span>
                   </div>
-                  <div>
-                    <h2 className="font-card-heading text-[#0a1628] text-[14px] mb-2">{cs.title}</h2>
-                    <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">{cs.desc}</p>
+                  <h3 className="text-[#0a1628] font-semibold text-[15px] leading-[1.35] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">
+                    {cs.title}
+                  </h3>
+                  <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-6">
+                    {cs.excerpt}
+                  </p>
+                  <div className="flex items-center gap-2 text-[#228DC1] text-[12px] font-semibold mt-auto">
+                    Read case study <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
-                {/* Stat */}
-                <div className="flex flex-col justify-center items-end min-w-[100px]">
-                  <p className="font-black text-[#228DC1]" style={{ fontSize: 'clamp(22px, 2.5vw, 32px)', letterSpacing: '-0.02em' }}>{cs.stat}</p>
-                  <p className="type-label text-[#0a1628]/60 text-right mt-1">{cs.statLabel}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-[12px] font-semibold text-[#228DC1]">
-                    Read <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
-                  </span>
-                </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -186,4 +195,3 @@ export default function InsightsCaseStudiesPage() {
     </>
   )
 }
-
