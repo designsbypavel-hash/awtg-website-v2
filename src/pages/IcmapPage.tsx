@@ -686,15 +686,15 @@ export default function IcmapPage() {
               Every zone. Every generation. On a real map.
             </h2>
             <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7]">
-              iCMAP overlays your network coverage data directly onto live geographic maps. Filter by generation, click any zone for signal strength and population data, and instantly see where the gaps are.
+              iCMAP brings live coverage, signal strength, population, and infrastructure data into one interactive map. Teams can filter by network generation, inspect local performance, identify weak zones, and prioritise improvements using AI powered scoring.
             </p>
           </div>
           <CoverageMap />
           <div className="mt-10 grid sm:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
             {[
-              { label: 'Real geography',   desc: 'Coverage zones plotted on actual maps with street-level context, not abstract diagrams.' },
-              { label: 'Layer filtering',  desc: 'Isolate any generation or show only gap zones to focus planning and regulatory reporting.' },
-              { label: 'Zone intelligence', desc: 'Signal strength, population count and operator data on every zone, instantly on click.' },
+              { label: 'Multi-generation visibility', desc: 'Compare 2G, 3G, 4G and 5G coverage in one operational view.' },
+              { label: 'Urban, rural and remote terrain', desc: 'Understand performance across dense cities, rural communities and hard-to-reach locations.' },
+              { label: 'Coverage clarity', desc: 'Know where coverage works, where it fails, and where to act next.' },
             ].map((item) => (
               <div key={item.label} className="bg-white px-8 py-6">
                 <p className="text-[#0a1628] font-semibold text-[14px] mb-2">{item.label}</p>
