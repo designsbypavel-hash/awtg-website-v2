@@ -282,49 +282,49 @@ const capabilities = [
   {
     icon: faMap,
     label: 'Interactive Coverage Mapping',
-    desc: 'Visualise mobile, broadband, Wi-Fi, IoT, and private network coverage through intuitive GIS-based maps and dashboards.',
+    desc: 'Explore live and historical coverage across mobile, broadband, Wi-Fi, IoT and private networks.',
     color: '#228DC1',
   },
   {
     icon: faGlobe,
     label: 'Multi-Network Analytics',
-    desc: 'Compare multiple operators, technologies, and frequency bands across different geographic areas.',
+    desc: 'Compare operators, technologies, frequency bands and network generations across any geography.',
     color: '#7c3aed',
   },
   {
     icon: faTowerBroadcast,
     label: 'Signal & Performance Insights',
-    desc: 'Analyse signal strength, quality, latency, throughput, and user experience metrics in real time.',
+    desc: 'Track signal strength, quality, latency, throughput and service experience in one view.',
     color: '#059669',
   },
   {
     icon: faBullseye,
     label: 'Coverage Gap Identification',
-    desc: 'Identify underserved locations and prioritise infrastructure investment opportunities with AI-powered gap detection.',
+    desc: 'Find underserved zones and rank improvements using AI powered severity and impact scoring.',
     color: '#d97706',
   },
   {
     icon: faLayerGroup,
     label: 'Infrastructure & Asset Visualisation',
-    desc: 'Map towers, antennas, fibre assets, small cells, IoT gateways, and connectivity infrastructure on a single platform.',
+    desc: 'Map towers, antennas, fibre, small cells, IoT gateways and connected assets together.',
     color: '#dc2626',
   },
   {
     icon: faChartBar,
     label: 'Geospatial Intelligence & Layers',
-    desc: 'Overlay demographic, transport, venue, council boundary, and environmental datasets for deeper connectivity insight.',
+    desc: 'Overlay population, terrain, transport, venue, boundary and environmental datasets.',
     color: '#0891b2',
   },
   {
     icon: faMap,
     label: 'Custom Dashboards & Reporting',
-    desc: 'Generate executive dashboards, operational reports, and stakeholder visualisations formatted for any audience.',
+    desc: 'Create operational dashboards, executive reports and stakeholder-ready coverage views.',
     color: '#228DC1',
   },
   {
     icon: faGlobe,
     label: 'API & Data Integration',
-    desc: 'Integrate telecom datasets, GIS layers, crowdsourced measurements, and external data sources through secure APIs.',
+    desc: 'Connect telecom datasets, GIS layers, crowdsourced measurements and external data sources.',
     color: '#7c3aed',
   },
 ]
@@ -332,36 +332,43 @@ const capabilities = [
 // -- Use cases -----------------------------------------------------------------
 const useCases = [
   {
-    label: 'Mobile Network Operators',
-    headline: 'Optimise coverage. Justify investment.',
-    desc: 'CoverageMap gives MNOs a real-time, AI-augmented view of their entire network footprint. Identify where coverage underperforms, model expansion scenarios and build the evidence base for capital investment decisions.',
+    label: 'Network operators',
+    headline: 'Plan, benchmark and optimise live networks.',
+    desc: 'Give engineering and planning teams a single map for coverage quality, weak zones and investment priorities.',
     points: [
-      'Live coverage and quality monitoring across all sites',
-      'Gap analysis with population and revenue impact scoring',
-      'Scenario modelling for new site placement and technology upgrades',
-      'Cross-generation performance comparison on a single map',
+      'Compare 2G, 3G, 4G and 5G performance',
+      'Score gaps by severity, population and terrain',
+      'Support upgrade and deployment planning',
     ],
   },
   {
-    label: 'Regulators & Government',
-    headline: 'Enforce coverage commitments with evidence.',
-    desc: 'CoverageMap provides regulators and government agencies with independent, verifiable coverage data to track operator commitments, benchmark against licence obligations and close the digital divide.',
+    label: 'Regulators and local authorities',
+    headline: 'Turn coverage evidence into public action.',
+    desc: 'Track commitments, understand digital exclusion and build a defensible view of where connectivity fails.',
     points: [
-      'Independent verification of operator coverage claims',
-      'National coverage benchmarking and gap reporting',
-      'Subsidy allocation modelling and digital inclusion tracking',
-      'Audit-ready data exports for regulatory submissions',
+      'Visualise underserved communities',
+      'Prioritise public investment programmes',
+      'Create audit-ready reporting views',
     ],
   },
   {
-    label: 'Smart Cities & Infrastructure',
-    headline: 'Power next-generation connectivity programmes.',
-    desc: 'From smart city initiatives to transport corridors and private 5G deployments, CoverageMap delivers the geospatial intelligence needed to plan, deploy and optimise modern connectivity infrastructure.',
+    label: 'Smart infrastructure teams',
+    headline: 'Accelerate connected-place programmes.',
+    desc: 'Plan connectivity across transport corridors, towns, campuses and infrastructure programmes with geospatial context.',
     points: [
-      'Transport, venue and campus connectivity analysis',
-      'Private 5G and IoT network coverage planning',
-      'Urban and rural infrastructure mapping',
-      'Digital inclusion programme reporting and evidence base',
+      'Overlay terrain, transport and asset layers',
+      'Support smart city and IoT rollout',
+      'Model urban, rural and remote coverage',
+    ],
+  },
+  {
+    label: 'Enterprise estates',
+    headline: 'Manage private and operational networks.',
+    desc: 'Help organisations understand site-level performance across offices, venues, campuses and operational environments.',
+    points: [
+      'Monitor private wireless and Wi-Fi coverage',
+      'Identify local performance issues faster',
+      'Inform resilience and capacity decisions',
     ],
   },
 ]
@@ -371,30 +378,30 @@ const useCases = [
 const steps = [
   {
     num: '01',
-    label: 'Ingest your network data',
-    desc: 'iCMAP ingests live and historical data from your network infrastructure, drive test datasets, crowdsourced measurements and third-party sources.',
-    detail: 'Supports OSS/BSS feeds, drive test formats, open data and custom API inputs.',
+    label: 'Connect network data',
+    desc: 'Bring live, historical and field data into one coverage workspace.',
+    detail: 'OSS/BSS feeds, drive tests, crowdsourced measurements and open data.',
     color: '#228DC1',
   },
   {
     num: '02',
-    label: 'AI processes and maps coverage',
-    desc: 'Machine learning models normalise, validate and correlate incoming data against geographic and demographic layers. Coverage is rendered as accurate, high-resolution maps updated in real time.',
-    detail: 'Shape files, heat maps and bin-level granularity available simultaneously.',
+    label: 'Map coverage in context',
+    desc: 'Layer signal, geography, population and infrastructure data together.',
+    detail: 'Heat maps, shape files and granular local views stay aligned.',
     color: '#7c3aed',
   },
   {
     num: '03',
-    label: 'Identify gaps and opportunities',
-    desc: 'AI-driven gap detection surfaces underserved areas, calculates affected population, cross-references terrain and infrastructure data, and ranks expansion opportunities.',
-    detail: 'Prioritisation engine weights by population density, terrain cost and strategic value.',
+    label: 'Score weak zones',
+    desc: 'Surface underserved areas and rank them by severity and impact.',
+    detail: 'AI scoring combines coverage quality, terrain and population need.',
     color: '#059669',
   },
   {
     num: '04',
-    label: 'Report, plan and act',
-    desc: 'Generate reports for internal planning, regulator submission or public accountability. Export to your existing planning tools or use iCMAP\'s built-in investment modelling.',
-    detail: 'Outputs compatible with leading network planning and GIS platforms.',
+    label: 'Plan the next action',
+    desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
+    detail: 'Export-ready outputs for planning, regulation and GIS workflows.',
     color: '#d97706',
   },
 ]
@@ -711,22 +718,22 @@ export default function IcmapPage() {
           <div className="mb-20">
             <p className="type-label text-[#228DC1] mb-4">How It Works</p>
             <h2 className="font-heading text-[#0a1628] mb-4">
-              From raw network data to actionable coverage intelligence
+              From raw network data to coverage decisions
             </h2>
             <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-2xl">
-              iCMAP ingests data from multiple sources, maps it in real time and uses AI to identify where action is needed and where investment will have the greatest impact.
+              iCMAP brings live and historical network data into one intelligent map, helping teams identify weak coverage, prioritise action, and plan investment where it will have the greatest impact.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
             {steps.map((step) => (
-              <div key={step.num} className="bg-white p-8 hover:bg-[#f7f9ff] transition-colors">
-                <div className="flex items-center gap-3 mb-6">
+              <div key={step.num} className="bg-white p-8 min-h-[250px] hover:bg-[#f7f9ff] transition-colors">
+                <div className="flex items-center gap-3 mb-7">
                   <span className="font-black text-[14px] tabular-nums" style={{ color: step.color, letterSpacing: '0.05em' }}>{step.num}</span>
                   <div className="h-px flex-1 bg-gray-100" />
                 </div>
-                <h3 className="text-[#0a1628] font-semibold text-[16px] leading-[1.3] mb-3">{step.label}</h3>
-                <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7] mb-4">{step.desc}</p>
-                <p className="text-[#0a1628]/65 text-[14px] font-normal italic">{step.detail}</p>
+                <h3 className="text-[#0a1628] font-semibold text-[17px] leading-[1.25] mb-3">{step.label}</h3>
+                <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.65] mb-5">{step.desc}</p>
+                <p className="text-[#0a1628]/45 text-[12px] font-semibold uppercase tracking-[0.12em] leading-[1.6]">{step.detail}</p>
               </div>
             ))}
           </div>
@@ -734,25 +741,25 @@ export default function IcmapPage() {
       </section>
 
       {/* -- Capabilities -- */}
-      <section className="py-28 bg-white">
+      <section className="py-28 bg-[#0a1628] border-t border-[#0d2442]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-16">
+          <div className="mb-14">
             <p className="type-label text-[#228DC1] mb-4">Capabilities</p>
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              Built for every layer of network intelligence
+            <h2 className="font-heading text-white mb-5">
+              Coverage intelligence across every operational layer
             </h2>
-            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-2xl">
-              From live coverage visualisation to regulatory reporting, iCMAP gives operators, regulators and governments a single platform for the entire coverage intelligence lifecycle.
+            <p className="text-white/62 text-[16px] font-normal leading-[1.75] max-w-2xl">
+              iCMAP combines mapping, analytics, infrastructure visibility and reporting into one secure platform for modern connectivity programmes.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
             {capabilities.map((cap) => (
-              <div key={cap.label} className="bg-white p-8 hover:bg-[#f7f9ff] transition-colors">
-                <div className="w-10 h-10 flex items-center justify-center mb-5" style={{ backgroundColor: '#228DC112' }}>
-                  <FontAwesomeIcon icon={cap.icon} className="w-5 h-5 text-[#228DC1]" />
+              <div key={cap.label} className="bg-[#0d1c31] p-7 min-h-[230px] hover:bg-[#10243d] transition-colors">
+                <div className="w-9 h-9 flex items-center justify-center mb-6" style={{ backgroundColor: `${cap.color}24` }}>
+                  <FontAwesomeIcon icon={cap.icon} className="w-4 h-4" style={{ color: cap.color }} />
                 </div>
-                <h3 className="text-[#0a1628] font-semibold text-[16px] leading-[1.3] mb-3">{cap.label}</h3>
-                <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">{cap.desc}</p>
+                <h3 className="text-white font-semibold text-[15px] leading-[1.3] mb-3">{cap.label}</h3>
+                <p className="text-white/56 text-[13px] font-normal leading-[1.7]">{cap.desc}</p>
               </div>
             ))}
           </div>
@@ -762,23 +769,26 @@ export default function IcmapPage() {
       {/* -- Who it's for -- */}
       <section className="py-28 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-16">
+          <div className="mb-14">
             <p className="type-label text-[#228DC1] mb-4">Who It's For</p>
-            <h2 className="font-heading text-[#0a1628]">
-              Operators, regulators, governments and smart city programmes
+            <h2 className="font-heading text-[#0a1628] mb-5">
+              Designed for modern connectivity programmes
             </h2>
+            <p className="text-[#0a1628]/62 text-[16px] font-normal leading-[1.75] max-w-2xl">
+              From national coverage obligations to private network estates, iCMAP helps teams see the same evidence and decide where to act next.
+            </p>
           </div>
-          <div className="grid lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
             {useCases.map((uc) => (
-              <div key={uc.label} className="bg-white p-10">
-                <p className="type-label text-[#228DC1] mb-4">{uc.label}</p>
-                <h3 className="text-[#0a1628] font-semibold text-[18px] leading-[1.3] mb-4">{uc.headline}</h3>
-                <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7] mb-8">{uc.desc}</p>
-                <div className="space-y-3">
+              <div key={uc.label} className="bg-white p-8 min-h-[350px] flex flex-col">
+                <p className="type-label text-[#228DC1] mb-5">{uc.label}</p>
+                <h3 className="text-[#0a1628] font-semibold text-[18px] leading-[1.25] mb-4">{uc.headline}</h3>
+                <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7] mb-7">{uc.desc}</p>
+                <div className="space-y-3 mt-auto pt-6 border-t border-gray-100">
                   {uc.points.map((point) => (
                     <div key={point} className="flex items-start gap-3">
                       <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#228DC1] shrink-0 mt-0.5" />
-                      <p className="text-[#0a1628]/75 text-[14px] font-normal">{point}</p>
+                      <p className="text-[#0a1628]/72 text-[13px] font-normal leading-snug">{point}</p>
                     </div>
                   ))}
                 </div>
