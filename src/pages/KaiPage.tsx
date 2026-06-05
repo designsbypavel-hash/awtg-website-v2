@@ -2205,10 +2205,10 @@ export default function KaiPage() {
           <div className="mb-16">
             <p className="text-[#228DC1] mb-4 font-bold uppercase tracking-[0.28em]" style={{ fontSize: '11px' }}>How It Works</p>
             <h2 className="font-heading text-white mb-4">
-              How Kai drives<br />efficiency
+              Kai Connect Customers
             </h2>
             <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
-              Three steps from setup to live AI resolution. No rip and replace required.
+              Kai meets customers across web, email, chat, and messaging channels - delivering the same intelligence, context, and resolution wherever the conversation starts.
             </p>
           </div>
 
