@@ -1711,7 +1711,7 @@ function OmnichannelSection() {
               </ChIcon>
             </div>
 
-            {/* Right: Gmail · Outlook · Outlook */}
+            {/* Right: Gmail · Outlook · Apple Mail */}
             <div className="flex justify-center items-center gap-2">
               <ChIcon color="#EA4335" bg="rgba(234,67,53,0.10)">
                 <img src={integrationLogos.gmail} alt="Gmail" style={{ width:24, height:24, objectFit:'contain' }}
@@ -1721,8 +1721,8 @@ function OmnichannelSection() {
                 <img src={integrationLogos.outlook} alt="Outlook" style={{ width:24, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
-              <ChIcon color="#0078D4" bg="rgba(0,120,212,0.10)">
-                <img src={integrationLogos.outlook} alt="Outlook" style={{ width:24, height:24, objectFit:'contain' }}
+              <ChIcon color="#209CF5" bg="rgba(32,156,245,0.10)">
+                <img src={integrationLogos.appleMail} alt="Apple Mail" style={{ width:24, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
             </div>
