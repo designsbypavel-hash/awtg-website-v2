@@ -2247,25 +2247,44 @@ export default function KaiPage() {
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   boxShadow: '0 4px 32px rgba(0,0,0,0.2)',
+                  transition: 'border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1)',
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.borderColor = 'rgba(139,92,246,0.55)';
+                  el.style.boxShadow = '0 16px 56px rgba(124,58,237,0.28), 0 4px 32px rgba(0,0,0,0.15)';
+                  el.style.transform = 'translateY(-4px)';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.borderColor = 'rgba(255,255,255,0.12)';
+                  el.style.boxShadow = '0 4px 32px rgba(0,0,0,0.2)';
+                  el.style.transform = 'translateY(0)';
                 }}
               >
-                {/* Hover glow */}
+                {/* Hover purple gradient */}
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{
-                  background: 'linear-gradient(135deg, rgba(34,141,193,0.10) 0%, transparent 60%)',
+                  background: 'linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(109,40,217,0.06) 60%, transparent 100%)',
                 }} />
 
                 {/* Step number */}
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="text-white/20 font-black" style={{ fontSize: '48px', lineHeight: 1, letterSpacing: '-0.04em' }}>{step.num}</span>
+                  <span
+                    className="font-black text-white/20 group-hover:text-violet-400 transition-colors duration-300"
+                    style={{ fontSize: '48px', lineHeight: 1, letterSpacing: '-0.04em' }}
+                  >{step.num}</span>
                 </div>
 
-                <h3 className="text-white font-semibold text-[20px] leading-snug mb-3">{step.label}</h3>
+                <h3 className="text-white group-hover:text-violet-200 font-semibold text-[20px] leading-snug mb-3 transition-colors duration-300">{step.label}</h3>
                 <p className="text-white/55 text-[16px] font-normal leading-relaxed">{step.desc}</p>
 
                 {/* Icon bottom-right */}
                 <div className="mt-6 flex justify-end">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(34,141,193,0.15)', border: '1px solid rgba(34,141,193,0.25)' }}>
-                    <FontAwesomeIcon icon={step.icon} className="w-4 h-4 text-[#228DC1]" />
+                  <div
+                    className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:border-violet-500/40"
+                    style={{ background: 'rgba(34,141,193,0.15)', border: '1px solid rgba(34,141,193,0.25)' }}
+                  >
+                    <FontAwesomeIcon icon={step.icon} className="w-4 h-4 text-[#228DC1] group-hover:text-violet-400 transition-colors duration-300" />
                   </div>
                 </div>
               </div>
