@@ -400,23 +400,25 @@ const steps = [
 ]
 
 // -- Hero animated demo --------------------------------------------------------
-const ICMAP_ZONES = [
-  { id: 'core',   label: 'City Centre',    quality: 'Very Good', signal: '-72 dBm', pop: '28,400', color: '#0284c7',
-    path: 'M210,100 L280,82 L320,118 L308,178 L238,196 L168,174 L158,122 Z' },
-  { id: 'inner',  label: 'Inner Suburbs',  quality: 'Good',      signal: '-85 dBm', pop: '15,600', color: '#059669',
-    path: 'M128,52 L295,38 L372,88 L382,204 L318,248 L148,252 L82,208 L72,102 Z' },
-  { id: 'outer',  label: 'Greater Region', quality: 'Fair',      signal: '-95 dBm', pop: '8,100',  color: '#d97706',
-    path: 'M62,16 L355,8 L438,62 L446,272 L366,324 L102,328 L32,268 L24,64 Z' },
-  { id: 'fringe', label: 'Fringe Zone',    quality: 'Fringe',    signal: '-105 dBm', pop: '2,400', color: '#dc2626',
-    path: 'M18,0 L420,0 L478,44 L484,344 L402,376 L72,376 L8,336 L0,46 Z' },
+// Coverage quality labels matching coveragemap.visitborderlands.co.uk
+const VB_ZONES = [
+  { id: 'vg', label: 'Very Good', color: '#22c55e', signal: '-72 dBm',  pop: '15,600',
+    path: 'M180,90 L260,75 L310,105 L295,165 L225,182 L155,162 L145,112 Z' },
+  { id: 'g',  label: 'Good',      color: '#84cc16', signal: '-85 dBm',  pop: '28,400',
+    path: 'M105,42 L285,30 L365,82 L372,198 L305,242 L138,245 L72,196 L62,92 Z' },
+  { id: 'f',  label: 'Fair',      color: '#f59e0b', signal: '-95 dBm',  pop: '8,100',
+    path: 'M42,8 L340,2 L430,60 L438,272 L355,320 L88,322 L25,265 L18,58 Z' },
+  { id: 'fr', label: 'Fringe',    color: '#f97316', signal: '-108 dBm', pop: '2,400',
+    path: 'M8,0 L420,0 L480,48 L485,352 L400,382 L68,382 L4,342 L0,50 Z' },
 ]
-const ICMAP_LAYERS = ['5G', '4G', 'Gaps', 'All'] as const
+const VB_LAYERS = ['All', '5G', '4G', 'Gaps'] as const
 
 function IcmapHeroDemo() {
-  const [layerIdx, setLayerIdx]   = useState(0)
-  const [zoneIdx,  setZoneIdx]    = useState(0)
-  const [scanX,    setScanX]      = useState(0)
-  const [entered,  setEntered]    = useState(false)
+  const [layerIdx, setLayerIdx] = useState(0)
+  const [zoneIdx,  setZoneIdx]  = useState(0)
+  const [scanX,    setScanX]    = useState(0)
+  const [entered,  setEntered]  = useState(false)
+  const animRef = useRef<number>(0)
   const scanRef = useRef<number>(0)
 
   useEffect(() => {
@@ -425,186 +427,217 @@ function IcmapHeroDemo() {
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setLayerIdx(p => (p + 1) % ICMAP_LAYERS.length), 2400)
+    const id = setInterval(() => setLayerIdx(p => (p + 1) % VB_LAYERS.length), 2500)
     return () => clearInterval(id)
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setZoneIdx(p => (p + 1) % ICMAP_ZONES.length), 2000)
+    const id = setInterval(() => setZoneIdx(p => (p + 1) % VB_ZONES.length), 2200)
     return () => clearInterval(id)
   }, [])
 
   useEffect(() => {
     const tick = () => {
-      scanRef.current = (scanRef.current + 1.8) % 102
+      scanRef.current = (scanRef.current + 1.2) % 102
       setScanX(scanRef.current)
-      requestAnimationFrame(tick)
+      animRef.current = requestAnimationFrame(tick)
     }
-    const id = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(id)
+    animRef.current = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(animRef.current)
   }, [])
 
-  const zone = ICMAP_ZONES[zoneIdx]
-  const qualityColors: Record<string, string> = { 'Very Good': '#0284c7', Good: '#059669', Fair: '#d97706', Fringe: '#dc2626' }
+  const zone = VB_ZONES[zoneIdx]
 
   return (
     <div style={{
-      width: '100%', maxWidth: 490,
+      width: '100%', maxWidth: 500,
       opacity: entered ? 1 : 0,
       transform: entered ? 'translateY(0)' : 'translateY(28px)',
       transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
     }}>
       <div style={{
-        borderRadius: 14, overflow: 'hidden',
-        boxShadow: '0 36px 80px rgba(10,22,40,0.22), 0 8px 28px rgba(10,22,40,0.12)',
+        borderRadius: 12, overflow: 'hidden',
+        boxShadow: '0 32px 72px rgba(10,22,40,0.20), 0 6px 24px rgba(10,22,40,0.10)',
+        border: '1px solid rgba(0,0,0,0.1)',
         background: '#fff',
-        border: '1px solid rgba(10,22,40,0.08)',
       }}>
 
-        {/* Window chrome */}
-        <div style={{ background: '#0a1628', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 8 }}>
+        {/* Browser chrome — light gray like a real browser */}
+        <div style={{ background: '#e4e4e4', padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
           <div style={{ display: 'flex', gap: 5 }}>
             <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#fc5f57' }} />
             <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
             <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
           </div>
-          <span style={{ marginLeft: 6, color: 'rgba(255,255,255,0.45)', fontSize: 11, fontFamily: 'monospace', letterSpacing: '0.04em' }}>
-            iCMAP — Coverage Intelligence
-          </span>
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5 }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
-            <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)', fontFamily: 'sans-serif' }}>LIVE</span>
+          {/* URL bar */}
+          <div style={{
+            flex: 1, background: '#fff', borderRadius: 5, padding: '3px 10px',
+            fontSize: 10, color: '#444', fontFamily: 'sans-serif',
+            border: '1px solid rgba(0,0,0,0.14)', display: 'flex', alignItems: 'center', gap: 5,
+          }}>
+            <svg width="9" height="9" viewBox="0 0 16 16" fill="none">
+              <path d="M8 1a7 7 0 100 14A7 7 0 008 1z" stroke="#999" strokeWidth="1.2" fill="none"/>
+              <path d="M8 4.5V8l2.5 2" stroke="#999" strokeWidth="1.2" strokeLinecap="round"/>
+            </svg>
+            <span style={{ color: '#555' }}>coveragemap.visitborderlands.co.uk</span>
           </div>
         </div>
 
-        {/* Layer tabs */}
-        <div style={{ background: '#0f1f3d', padding: '7px 12px', display: 'flex', gap: 5 }}>
-          {ICMAP_LAYERS.map((l, i) => (
-            <div key={l} style={{
-              padding: '3px 11px', borderRadius: 5, fontSize: 11, fontWeight: 600, cursor: 'pointer',
-              background: layerIdx === i ? '#228DC1' : 'rgba(255,255,255,0.07)',
-              color: layerIdx === i ? '#fff' : 'rgba(255,255,255,0.38)',
-              transition: 'background 0.35s ease, color 0.35s ease',
-            }}>{l}</div>
-          ))}
-          <div style={{ marginLeft: 'auto', fontSize: 9, color: 'rgba(255,255,255,0.3)', alignSelf: 'center', fontFamily: 'sans-serif' }}>
-            Manchester, UK
+        {/* App: sidebar + map */}
+        <div style={{ display: 'flex', height: 320 }}>
+
+          {/* Left sidebar — white panel */}
+          <div style={{
+            width: 122, background: '#fff', borderRight: '1px solid #e8e8e8',
+            display: 'flex', flexDirection: 'column', padding: '10px 8px', gap: 8,
+            flexShrink: 0,
+          }}>
+            {/* Logo */}
+            <div style={{ paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
+              <div style={{ fontSize: 7, fontWeight: 800, color: '#1a1a2e', letterSpacing: '0.08em', lineHeight: 1.1, fontFamily: 'sans-serif' }}>
+                VISIT
+              </div>
+              <div style={{ fontSize: 10, fontWeight: 800, color: '#228DC1', letterSpacing: '0.04em', lineHeight: 1.1, fontFamily: 'sans-serif' }}>
+                BORDERLANDS
+              </div>
+              <div style={{ fontSize: 7, color: '#999', marginTop: 2, fontFamily: 'sans-serif' }}>Coverage Map</div>
+            </div>
+
+            {/* Layers */}
+            <div>
+              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#999', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
+              {VB_LAYERS.map((l, i) => (
+                <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4, padding: '2px 4px', borderRadius: 3, background: layerIdx === i ? '#f0f7ff' : 'transparent', transition: 'background 0.3s' }}>
+                  <div style={{
+                    width: 11, height: 11, borderRadius: '50%', flexShrink: 0,
+                    background: layerIdx === i ? '#228DC1' : '#fff',
+                    border: `1.5px solid ${layerIdx === i ? '#228DC1' : '#ccc'}`,
+                    transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    {layerIdx === i && <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#fff' }} />}
+                  </div>
+                  <span style={{ fontSize: 9, color: layerIdx === i ? '#228DC1' : '#555', fontFamily: 'sans-serif', fontWeight: layerIdx === i ? 600 : 400, transition: 'color 0.3s' }}>{l}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Legend */}
+            <div style={{ flex: 1 }}>
+              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#999', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
+              {VB_ZONES.map(z => (
+                <div key={z.id} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 5, opacity: zone.id === z.id ? 1 : 0.5, transition: 'opacity 0.4s' }}>
+                  <div style={{ width: 14, height: 9, borderRadius: 2, background: z.color, opacity: 0.75, border: `1px solid ${z.color}`, flexShrink: 0 }} />
+                  <span style={{ fontSize: 9, color: '#333', fontFamily: 'sans-serif' }}>{z.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Zone info card */}
+            <div style={{ background: '#f8fafc', borderRadius: 5, padding: '5px 6px', border: '1px solid #e8e8e8', transition: 'all 0.4s' }}>
+              <div style={{ fontSize: 7, color: '#aaa', fontFamily: 'sans-serif', marginBottom: 2 }}>Selected zone</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: zone.color, fontFamily: 'sans-serif', transition: 'color 0.4s' }}>{zone.label}</div>
+              <div style={{ fontSize: 8, color: '#666', fontFamily: 'sans-serif', marginTop: 1 }}>{zone.signal}</div>
+              <div style={{ fontSize: 8, color: '#666', fontFamily: 'sans-serif' }}>{zone.pop} residents</div>
+            </div>
           </div>
-        </div>
 
-        {/* Map + sidebar */}
-        <div style={{ display: 'flex', background: '#e8eef4' }}>
+          {/* Map — CartoDB Light style */}
+          <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+            <svg viewBox="0 0 378 320" style={{ width: '100%', height: '100%', display: 'block' }}>
+              {/* CartoDB Light cream background */}
+              <rect width="378" height="320" fill="#f5f0e8" />
 
-          {/* SVG map */}
-          <div style={{ flex: 1, position: 'relative' }}>
-            <svg viewBox="0 0 484 380" style={{ width: '100%', height: 'auto', display: 'block' }}>
-              {/* Basemap background */}
-              <rect width="484" height="380" fill="#dce4ed" />
-              {/* Road grid hint */}
-              {[60,120,180,240,300,360,420].map(x => <line key={`v${x}`} x1={x} y1={0} x2={x} y2={380} stroke="rgba(255,255,255,0.35)" strokeWidth={0.6}/>)}
-              {[50,100,150,200,250,300,350].map(y => <line key={`h${y}`} x1={0} y1={y} x2={484} y2={y} stroke="rgba(255,255,255,0.35)" strokeWidth={0.6}/>)}
+              {/* Terrain hints */}
+              <ellipse cx="75"  cy="75"  rx="95" ry="55" fill="#ede8de" opacity="0.55" />
+              <ellipse cx="308" cy="60"  rx="85" ry="48" fill="#ede8de" opacity="0.50" />
+              <ellipse cx="185" cy="255" rx="115" ry="52" fill="#ede8de" opacity="0.50" />
+              <ellipse cx="345" cy="245" rx="65"  ry="48" fill="#ede8de" opacity="0.40" />
+
+              {/* Water — River Tweed */}
+              <path d="M0,142 Q55,132 98,150 Q148,168 198,158 Q258,145 308,163 Q338,173 378,158" fill="none" stroke="#9bc4d8" strokeWidth={3.5} opacity={0.65} />
+              <path d="M148,0 Q153,62 163,122 Q168,152 198,158" fill="none" stroke="#9bc4d8" strokeWidth={1.8} opacity={0.5} />
+              <path d="M258,0 Q253,52 245,102 Q240,142 238,158" fill="none" stroke="#9bc4d8" strokeWidth={1.5} opacity={0.45} />
+
+              {/* Major roads */}
+              <path d="M0,102 Q78,97 158,112 Q238,128 308,118 Q348,112 378,120" fill="none" stroke="#d8ccc0" strokeWidth={2.5} />
+              <path d="M0,102 Q78,97 158,112 Q238,128 308,118 Q348,112 378,120" fill="none" stroke="#ebe4d8" strokeWidth={1} />
+              <path d="M188,0 L184,82 L177,162 L174,222 L172,320" fill="none" stroke="#d8ccc0" strokeWidth={2} />
+              <path d="M188,0 L184,82 L177,162 L174,222 L172,320" fill="none" stroke="#ebe4d8" strokeWidth={0.8} />
+              <path d="M0,222 Q78,217 128,202 Q178,190 238,197 Q298,205 378,195" fill="none" stroke="#d8ccc0" strokeWidth={1.5} />
+
+              {/* Minor roads */}
+              <path d="M78,0 Q83,62 93,122 Q98,155 98,150" fill="none" stroke="#e0d8cc" strokeWidth={1} opacity={0.6} />
+              <path d="M288,42 Q283,92 268,132 Q258,162 246,157" fill="none" stroke="#e0d8cc" strokeWidth={1} opacity={0.6} />
 
               {/* Coverage zones — outermost first */}
-              {[...ICMAP_ZONES].reverse().map((z, ri) => {
-                const zi = ICMAP_ZONES.length - 1 - ri
+              {[...VB_ZONES].reverse().map((z, ri) => {
+                const zi = VB_ZONES.length - 1 - ri
                 const isActive = zi === zoneIdx
                 return (
-                  <path key={z.id} d={z.path}
-                    fill={z.color}
-                    opacity={isActive ? 0.72 : (0.52 - ri * 0.07)}
-                    stroke={isActive ? '#fff' : 'rgba(255,255,255,0.25)'}
-                    strokeWidth={isActive ? 2 : 0.8}
-                    style={{ transition: 'opacity 0.5s ease, stroke-width 0.3s ease' }}
-                  />
+                  <g key={z.id} transform="scale(0.781, 0.840)">
+                    <path d={z.path}
+                      fill={z.color}
+                      opacity={isActive ? 0.50 : (0.28 - ri * 0.04)}
+                      stroke={z.color}
+                      strokeWidth={isActive ? 2.5 : 0.8}
+                      strokeOpacity={isActive ? 0.7 : 0.25}
+                      style={{ transition: 'opacity 0.5s ease' }}
+                    />
+                  </g>
                 )
               })}
 
               {/* Scan line */}
-              <line x1={scanX * 4.84} y1={0} x2={scanX * 4.84} y2={380}
-                stroke="rgba(34,141,193,0.65)" strokeWidth={1.5}
-                style={{ filter: 'drop-shadow(0 0 5px rgba(34,141,193,0.9))' }} />
+              <line x1={scanX * 3.78} y1={0} x2={scanX * 3.78} y2={320}
+                stroke="rgba(34,141,193,0.45)" strokeWidth={1}
+                style={{ filter: 'drop-shadow(0 0 3px rgba(34,141,193,0.6))' }} />
 
-              {/* Zone centre marker */}
-              <circle cx={240} cy={140} r={18} fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth={1.5}
-                style={{ animation: 'icmapPulse 2s ease-in-out infinite' }} />
-              <circle cx={240} cy={140} r={8} fill="rgba(255,255,255,0.9)"
-                style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
-              <circle cx={240} cy={140} r={4} fill={qualityColors[zone.quality] ?? '#228DC1'} />
+              {/* Town markers */}
+              {[
+                { x: 183, y: 120, name: 'Peebles' },
+                { x: 240, y: 150, name: 'Galashiels' },
+                { x: 108, y: 193, name: 'Hawick' },
+                { x: 298, y: 168, name: 'Kelso' },
+              ].map(t => (
+                <g key={t.name}>
+                  <circle cx={t.x} cy={t.y} r={3.5} fill="#fff" stroke="#888" strokeWidth={0.8} />
+                  <circle cx={t.x} cy={t.y} r={2}   fill="#555" />
+                  <rect x={t.x + 5} y={t.y - 7} width={t.name.length * 4.5} height={10} rx={2} fill="rgba(255,255,255,0.88)" />
+                  <text x={t.x + 7} y={t.y + 1.5} fontSize={7} fill="#333" fontFamily="sans-serif">{t.name}</text>
+                </g>
+              ))}
 
-              {/* Zone tooltip */}
-              <g style={{ transition: 'opacity 0.4s ease' }}>
-                <rect x={148} y={192} width={188} height={58} rx={6} fill="rgba(10,22,40,0.88)" />
-                <rect x={148} y={192} width={4} height={58} rx={2} fill={qualityColors[zone.quality] ?? '#228DC1'} />
-                <text x={160} y={210} fontSize={10} fill="rgba(255,255,255,0.5)" fontFamily="sans-serif">ZONE ANALYSIS</text>
-                <text x={160} y={225} fontSize={12} fill="#fff" fontFamily="sans-serif" fontWeight="700">{zone.label}</text>
-                <text x={160} y={240} fontSize={10} fill={qualityColors[zone.quality] ?? '#228DC1'} fontFamily="sans-serif">
-                  {zone.signal} · {zone.quality} · {zone.pop} residents
-                </text>
-              </g>
+              {/* Active zone popup */}
+              <rect x={100} y={60} width={152} height={44} rx={5} fill="rgba(255,255,255,0.95)" stroke={zone.color} strokeWidth={1.5} />
+              <rect x={100} y={60} width={3}   height={44} rx={2} fill={zone.color} />
+              <text x={110} y={76}  fontSize={7}  fill="#aaa"      fontFamily="sans-serif">COVERAGE</text>
+              <text x={110} y={89}  fontSize={10} fill="#1a1a2e"   fontFamily="sans-serif" fontWeight="700">{zone.label}</text>
+              <text x={110} y={100} fontSize={7}  fill={zone.color} fontFamily="sans-serif">{zone.signal} · {zone.pop} residents</text>
+
+              {/* Zoom controls */}
+              <rect x={346} y={8}  width={24} height={44} rx={4} fill="rgba(255,255,255,0.9)" stroke="#ddd" strokeWidth={0.8} />
+              <text x={358} y={26} fontSize={14} fill="#555" fontFamily="sans-serif" textAnchor="middle">+</text>
+              <line x1={347} y1={33} x2={369} y2={33} stroke="#ddd" strokeWidth={0.8} />
+              <text x={358} y={47} fontSize={14} fill="#555" fontFamily="sans-serif" textAnchor="middle">−</text>
             </svg>
 
-            <style>{`
-              @keyframes icmapPulse {
-                0%, 100% { opacity: 0.4; r: 18px; }
-                50% { opacity: 0.9; r: 24px; }
-              }
-            `}</style>
-          </div>
-
-          {/* Sidebar */}
-          <div style={{ width: 126, background: '#fff', borderLeft: '1px solid #e2e8f0', padding: '10px 10px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-
-            {/* Quality legend */}
-            <div>
-              <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(10,22,40,0.35)', textTransform: 'uppercase', marginBottom: 7 }}>Signal Quality</p>
-              {[
-                { label: 'Very Good', color: '#0284c7', w: '88%' },
-                { label: 'Good',      color: '#059669', w: '68%' },
-                { label: 'Fair',      color: '#d97706', w: '44%' },
-                { label: 'Fringe',    color: '#dc2626', w: '22%' },
-              ].map(q => (
-                <div key={q.label} style={{ marginBottom: 6 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 2 }}>
-                    <div style={{ width: 7, height: 7, borderRadius: 2, background: q.color, flexShrink: 0 }} />
-                    <span style={{ fontSize: 9, color: 'rgba(10,22,40,0.55)', fontFamily: 'sans-serif' }}>{q.label}</span>
-                  </div>
-                  <div style={{ height: 3, background: '#f0f4f8', borderRadius: 99 }}>
-                    <div style={{ height: '100%', width: q.w, background: q.color, borderRadius: 99 }} />
-                  </div>
-                </div>
-              ))}
+            {/* Attribution bar */}
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0,
+              background: 'rgba(255,255,255,0.85)',
+              padding: '3px 8px',
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              backdropFilter: 'blur(4px)',
+              borderTop: '1px solid rgba(0,0,0,0.06)',
+            }}>
+              <span style={{ fontSize: 7, color: '#aaa', fontFamily: 'sans-serif' }}>© OpenStreetMap contributors · CartoDB</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#22c55e' }} />
+                <span style={{ fontSize: 7, color: '#22c55e', fontFamily: 'sans-serif', fontWeight: 600 }}>LIVE</span>
+              </div>
             </div>
-
-            {/* Divider */}
-            <div style={{ height: 1, background: '#e2e8f0' }} />
-
-            {/* Live stats */}
-            <div>
-              <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(10,22,40,0.35)', textTransform: 'uppercase', marginBottom: 7 }}>Live Stats</p>
-              {[
-                { label: 'Population',  value: zone.pop },
-                { label: 'Signal',      value: zone.signal },
-                { label: 'Quality',     value: zone.quality },
-                { label: 'Operators',   value: '3 active' },
-              ].map(s => (
-                <div key={s.label} style={{ marginBottom: 6 }}>
-                  <div style={{ fontSize: 9, color: 'rgba(10,22,40,0.38)', fontFamily: 'sans-serif' }}>{s.label}</div>
-                  <div style={{ fontSize: 11, fontWeight: 600, color: '#0a1628', fontFamily: 'sans-serif', transition: 'color 0.3s' }}>{s.value}</div>
-                </div>
-              ))}
-            </div>
-
           </div>
         </div>
-
-        {/* Status bar */}
-        <div style={{ background: '#0a1628', padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
-          <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.45)', fontFamily: 'sans-serif', transition: 'opacity 0.4s' }}>
-            Analysing · {zone.label} · {zone.signal} · AI gap detection active
-          </span>
-        </div>
-
       </div>
     </div>
   )
