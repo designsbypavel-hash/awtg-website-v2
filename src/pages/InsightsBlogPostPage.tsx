@@ -394,7 +394,7 @@ export default function InsightsBlogPostPage() {
           <div className="flex items-center gap-4 mb-8">
             <Link
               to="/insights/blog"
-              className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-white text-xs font-medium uppercase tracking-[0.12em] transition-colors"
+              className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#228DC1] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
               <FontAwesomeIcon icon={faArrowLeft} className="w-3.5 h-3.5" /> Blog
             </Link>
