@@ -635,11 +635,11 @@ export default function IcmapPage() {
                 />
               </div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
-                Coverage intelligence<br />
+                iCMAP intelligence<br />
                 that drives decisions.
               </h1>
               <p className="text-[#0a1628]/65 text-[17px] font-normal leading-[1.7] max-w-xl mb-10">
-                CoverageMap is a powerful geospatial analytics platform designed to help telecom operators, regulators, local authorities, and enterprises visualise, analyse, and optimise network coverage.
+                iCMAP helps organisations monitor, manage, and optimise complex connectivity environments - giving teams real time visibility, faster issue detection, and better control across network operations.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
@@ -662,10 +662,10 @@ export default function IcmapPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/6 border border-white/6">
             {[
-              { stat: 'Real-time', label: 'Coverage data updates',    note: 'Continuous ingestion' },
-              { stat: '4',        label: 'Network generations mapped', note: '2G through 5G' },
-              { stat: 'AI',       label: 'Gap detection and scoring',  note: 'ML-powered prioritisation' },
-              { stat: 'Global',   label: 'Geographic deployment',      note: 'Any region or terrain' },
+              { stat: 'Filter',    label: 'by 2G, 3G, 4G, and 5G',            note: 'Compare every generation' },
+              { stat: 'Overlay',   label: 'population and terrain data',      note: 'Add operational context' },
+              { stat: 'Score',     label: 'gaps by severity and impact',      note: 'Quantify what matters most' },
+              { stat: 'Prioritise', label: 'investment and deployment decisions', note: 'Move from insight to action' },
             ].map((item) => (
               <div key={item.label} className="bg-white px-8 py-8">
                 <p className="font-black text-[#0a1628] leading-none mb-2" style={{ fontSize: 'clamp(22px, 2.5vw, 36px)', letterSpacing: '-0.02em' }}>{item.stat}</p>
