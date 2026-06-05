@@ -43,6 +43,9 @@ const reveal = (inView: boolean, delay = 0): CSSProperties => ({
   transition: `opacity 0.65s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
 })
 
+const certISO42001 = new URL('../assets/cert-iso42001.svg', import.meta.url).href
+const certCREST    = new URL('../assets/cert-crest.svg',    import.meta.url).href
+
 const integrationLogos = {
   appleMail: new URL('../assets/Integration/Apple Mail.svg', import.meta.url).href,
   doc: new URL('../assets/Integration/Doc.svg', import.meta.url).href,
@@ -895,9 +898,26 @@ function SecurityComplianceSection() {
             <div className="bg-[#0a1628] text-white p-8 shadow-[0_16px_50px_rgba(10,22,40,0.12)]" style={reveal(leftInView, 280)}>
               <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
               <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 AI Management System certified</p>
-              <p className="text-white/58 text-sm font-normal leading-relaxed">
+              <p className="text-white/58 text-sm font-normal leading-relaxed mb-6">
                 Governance, access control and auditability are built in from day one.
               </p>
+              {/* Certification badges */}
+              <div className="flex items-center gap-4 pt-5 border-t border-white/10">
+                <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+                  <img src={certISO42001} alt="ISO 42001" style={{ width: 36, height: 36, objectFit: 'contain' }} />
+                  <div>
+                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.12em] leading-none mb-0.5">Certified</p>
+                    <p className="text-[11px] font-semibold text-white/80 leading-none">ISO 42001</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+                  <img src={certCREST} alt="CREST" style={{ width: 36, height: 36, objectFit: 'contain' }} />
+                  <div>
+                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.12em] leading-none mb-0.5">Certified</p>
+                    <p className="text-[11px] font-semibold text-white/80 leading-none">CREST</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
