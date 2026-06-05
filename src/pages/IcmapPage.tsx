@@ -366,23 +366,6 @@ const useCases = [
   },
 ]
 
-// -- Target audiences ----------------------------------------------------------
-const audiences = [
-  'Telecom Operators', 'Mobile Network Providers', 'Local Authorities & Councils',
-  'Smart City Programmes', 'Infrastructure Providers', 'Transport Operators',
-  'Utilities & Industrial Sites', 'Private 5G Deployments', 'Rural Connectivity Initiatives',
-  'Digital Inclusion Programmes',
-]
-
-// -- Why choose ----------------------------------------------------------------
-const whyChoose = [
-  { label: 'Improve Network Planning', desc: 'Make informed infrastructure and investment decisions using real-world data.' },
-  { label: 'Visualise Connectivity Clearly', desc: 'Transform complex telecom datasets into intuitive interactive maps and dashboards.' },
-  { label: 'Support Digital Inclusion', desc: 'Identify coverage gaps and underserved communities more effectively.' },
-  { label: 'Accelerate Smart Infrastructure', desc: 'Support smart city, transport, industrial, and rural connectivity initiatives.' },
-  { label: 'Scalable & Flexible', desc: 'Deployable for local, regional, national, and enterprise-scale environments.' },
-  { label: 'Secure & Cloud-Ready', desc: 'Designed for secure cloud hosting, API integration, and enterprise deployment.' },
-]
 
 // -- How it works -------------------------------------------------------------
 const steps = [
@@ -577,56 +560,11 @@ export default function IcmapPage() {
         </div>
       </section>
 
-      {/* -- Designed for Modern Connectivity Programmes -- */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
-            <div>
-              <p className="type-label text-[#228DC1] mb-4">Designed For</p>
-              <h2 className="font-heading text-[#0a1628] mb-5">
-                Modern connectivity programmes
-              </h2>
-              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7]">
-                CoverageMap supports telecom operators, government organisations, smart city initiatives, and infrastructure projects in delivering better digital connectivity and data-driven network planning.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {audiences.map((a) => (
-                <div key={a} className="flex items-center gap-3 bg-[#f8fafc] border border-gray-100 px-4 py-3">
-                  <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#228DC1] shrink-0" />
-                  <span className="text-[#0a1628]/75 text-[14px] font-normal">{a}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* -- Why Choose CoverageMap -- */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">Why Choose CoverageMap</p>
-          <h2 className="font-heading text-[#0a1628] mb-12">
-            Built for real impact, not just visualisation
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
-            {whyChoose.map((item) => (
-              <div key={item.label} className="bg-white p-8 hover:bg-[#f7f9ff] transition-colors">
-                <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#228DC1] mb-4" />
-                <h3 className="text-[#0a1628] font-semibold text-[16px] leading-[1.3] mb-2">{item.label}</h3>
-                <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* -- Why iCMAP -- */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <p className="type-label text-[#228DC1] mb-6">Future-Ready Connectivity Intelligence</p>
               <h2 className="font-heading text-[#0a1628] mb-6">
                 Coverage decisions are too important to be made without data
               </h2>
