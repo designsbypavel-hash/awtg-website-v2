@@ -621,7 +621,19 @@ export default function IcmapPage() {
 
             {/* Left: copy */}
             <div>
-              <p className="type-label text-[#228DC1] mb-5">Coverage Intelligence</p>
+              <div className="mb-7">
+                <img
+                  src="/icmap-logo.svg"
+                  alt="iCMAP"
+                  style={{
+                    width: 'clamp(240px, 20vw, 330px)',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block',
+                  }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                />
+              </div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
                 Coverage intelligence<br />
                 that drives decisions.
