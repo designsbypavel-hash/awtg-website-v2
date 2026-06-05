@@ -6,64 +6,72 @@ import CTASection from '@/components/CTASection'
 // ── Featured clients — hero treatment ──────────────────────────────────────
 const featured = [
   {
-    client: 'British Council',
-    tag: 'Enterprise AI: Live in Production',
-    outcome: 'AI handling learner support at scale. Customer satisfaction up. Escalations down.',
-    desc: 'British Council English Online needed to handle a high volume of learner enquiries without scaling their support team. AWTG deployed Kai, our enterprise AI platform, directly into their systems. It now handles the bulk of interactions in production, reduces escalations, and tracks satisfaction in real time.',
-    deliverable: 'Kai: Enterprise AI Platform',
-    sector: 'AI / Enterprise',
+    client: 'iTRUSTRIC',
+    tag: 'Open RAN Security',
+    outcome: 'Securing Open RAN with AWTG’s advanced solution.',
+    desc: 'In the rapidly evolving world of telecommunications, Open RAN introduces new security and visibility challenges. AWTG developed iTRUSTRIC to enhance Open RAN integrity, protect data flows, improve network visibility and support compliance across modern network environments.',
+    deliverable: 'iTRUSTRIC: Open RAN security and assurance',
+    sector: 'Telecommunications / October 2024',
   },
 ]
 
 // ── Supporting case studies ─────────────────────────────────────────────────
 const supporting = [
   {
-    client: 'Major UK Port Operator',
-    title: 'Private 5G across 500 hectares of port estate',
-    sector: 'Logistics',
-    stat: '40%',
-    statLabel: 'Productivity gain',
-    desc: 'Campus-wide private 5G enabling autonomous vehicle coordination, real-time cargo tracking and digital twin integration across quayside and warehouse operations.',
-  },
-  {
-    client: 'Large NHS Acute Trust',
-    title: 'Digital ward transformation across 1,200 beds',
-    sector: 'Health Tech',
-    stat: '60%',
-    statLabel: 'Reduction in admin time',
-    desc: 'Ward-level private network and IoT monitoring replacing paper-based observation rounds with continuous real-time vital signs data for nursing and clinical teams.',
-  },
-  {
-    client: 'Bristol City Council',
-    title: 'AI-controlled traffic management across 42 routes',
+    client: 'High Street Recovery',
+    title: 'Connectivity, software and services for high street recovery',
     sector: 'Public Sector',
-    stat: '25%',
-    statLabel: 'Congestion reduction',
-    desc: 'End-to-end smart traffic management system with AI signal optimisation, IoT environmental sensors and a city operations dashboard reducing journey times city-wide.',
+    stat: 'Sep 2021',
+    statLabel: 'Published',
+    desc: 'AWTG supported town and city centre recovery through connectivity, software and digital services designed around local authority place-making strategies and changing retail conditions.',
   },
   {
-    client: 'Tier-1 UK Mobile Network Operator',
-    title: 'AI network operations across 12,000 cell sites',
-    sector: 'Telecoms',
-    stat: '35%',
-    statLabel: 'OPEX reduction',
-    desc: 'AI-driven network operations centre with automated fault correlation, predictive maintenance and capacity forecasting across a national mobile network.',
+    client: 'TOT and GSMA',
+    title: 'AWTG’s Service Assurance and Service Creation Platform',
+    sector: 'Network Economics',
+    stat: 'Apr 2020',
+    statLabel: 'Published',
+    desc: 'A GSMA-validated case study with TOT explored AWTG’s integrated service assurance and service creation platform, focusing on operational efficiency and service management opportunities.',
   },
   {
-    client: 'UK Ministry of Defence',
-    title: 'SC-cleared private LTE for defence training estate',
-    sector: 'Defence',
-    stat: '100%',
-    statLabel: 'Mission-critical uptime',
-    desc: 'Air-gapped private LTE network for a UK MoD training facility, meeting the highest security, resilience and latency requirements for mission-critical communications.',
+    client: 'Central London Benchmarking',
+    title: 'Multidimensional mobile service benchmarking',
+    sector: 'Mobile Networks',
+    stat: 'May 2018',
+    statLabel: 'Published',
+    desc: 'AWTG carried out a pilot benchmarking trial in Central London, assessing mobile network performance across voice, data and emerging service capabilities.',
   },
   {
-    client: 'National Retail Group',
-    title: 'IoT and analytics platform across 280 stores',
-    sector: 'Retail',
-    stat: '18%',
-    statLabel: 'Shrinkage reduction',
-    desc: 'IoT sensor network and real-time analytics platform delivering stock visibility, footfall analytics and loss prevention insights across a national retail estate.',
+    client: 'Data Offloading',
+    title: 'Wi-Fi enabled devices and mobile data offload',
+    sector: 'Capacity Planning',
+    stat: 'Sep 2013',
+    statLabel: 'Published',
+    desc: 'The study examined how dual-mode smartphones, tablets and laptops could use Wi-Fi data offloading to reduce pressure on mobile networks and improve user experience.',
+  },
+  {
+    client: 'AKT',
+    title: 'Network stability testing scenario',
+    sector: 'Performance Testing',
+    stat: 'Sep 2013',
+    statLabel: 'Published',
+    desc: 'AWTG measured network stability and user experience over time using a defined hardware setup, estimating speed and reliability from a simulated user perspective.',
+  },
+  {
+    client: 'Rich Communications Suite',
+    title: 'RCS-e relevance for mobile network operators',
+    sector: 'Mobile Services',
+    stat: 'Jun 2012',
+    statLabel: 'Published',
+    desc: 'The paper explained the rationale behind the GSMA RCS-e initiative and its relevance for operators delivering richer voice, data, video and messaging experiences.',
+  },
+  {
+    client: 'Small Cell and 3G Data Offload',
+    title: 'Site acquisition proposition for overloaded urban networks',
+    sector: 'Site Acquisition',
+    stat: 'Jun 2012',
+    statLabel: 'Published',
+    desc: 'AWTG explored how small cells and data offload could help operators address capacity pressure in dense environments such as urban centres, transport hubs and public locations.',
   },
 ]
 
@@ -78,7 +86,7 @@ export default function InsightsCaseStudiesPage() {
             Case Studies
           </h1>
           <p className="text-[#0a1628]/70 text-[16px] max-w-xl font-normal leading-[1.7]">
-            Real outcomes delivered for real clients. AI, private networks, smart infrastructure and digital transformation. Built, deployed and measured.
+            Real project examples from AWTG’s work across telecoms security, service assurance, network benchmarking, data offload and mobile service innovation.
           </p>
         </div>
       </section>

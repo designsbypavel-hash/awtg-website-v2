@@ -803,32 +803,32 @@ export function Partners() {
 
 const articles = [
   {
-    tag: 'Industry Insight', tagColor: 'text-[#228DC1]',
-    date: 'Apr 2025', readTime: '6 min read',
-    title: 'The Future of Tourism Connectivity: How Smart Cities Are Redefining the Visitor Experience',
+    tag: 'Blog', tagColor: 'text-[#228DC1]',
+    date: 'Oct 2025', readTime: '5 min read',
+    title: 'From Wi-Fi to Private 5G: The Evolution of Tourism Connectivity',
     img: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80&auto=format&fit=crop',
-    href: '/insights/blog',
+    href: '/insights/blog/wifi-to-private-5g-tourism-connectivity',
   },
   {
-    tag: 'Technical Brief', tagColor: 'text-[#7c3aed]',
-    date: 'Mar 2025', readTime: '7 min read',
-    title: 'Private Networks in Defence: Why Mission-Critical Communications Demand Dedicated Infrastructure',
+    tag: 'Smart Cities', tagColor: 'text-[#7c3aed]',
+    date: 'Sep 2025', readTime: '6 min read',
+    title: 'Designing Invisible Infrastructure: How Cities Are Rethinking Connectivity',
     img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80&auto=format&fit=crop',
-    href: '/insights/blog',
+    href: '/insights/blog/designing-invisible-infrastructure-cities-connectivity',
   },
   {
-    tag: 'Case Study', tagColor: 'text-[#0891b2]',
-    date: 'Feb 2025', readTime: '5 min read',
-    title: "Closing the Digital Divide: AWTG's Approach to Rural Connectivity and Community Transformation",
+    tag: '5G', tagColor: 'text-[#0891b2]',
+    date: 'Sep 2025', readTime: '6 min read',
+    title: '5G-Connected Ports: The Gateway to Smarter Trade',
     img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80&auto=format&fit=crop',
-    href: '/insights/case-studies',
+    href: '/insights/blog/5g-connected-ports-smarter-trade',
   },
   {
-    tag: 'Research', tagColor: 'text-[#059669]',
-    date: 'Jan 2025', readTime: '9 min read',
-    title: 'Enterprise AI Adoption: Overcoming Challenges and Accelerating Path to ROI',
+    tag: 'Rail', tagColor: 'text-[#059669]',
+    date: 'Sep 2025', readTime: '7 min read',
+    title: 'Public-Private Partnerships: Accelerating Rural Rail Digital Transformation',
     img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop',
-    href: '/insights/white-papers',
+    href: '/insights/blog/public-private-partnerships-rural-rail-digital-transformation',
   },
 ]
 

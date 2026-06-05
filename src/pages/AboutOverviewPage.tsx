@@ -6,25 +6,25 @@ import CTASection from '@/components/CTASection'
 
 const latestInsights = [
   {
-    tag: 'Case Study',
-    title: 'How AWTG Deployed a Private 5G Network for a Major UK Port',
-    excerpt: 'From ageing Wi-Fi to a full 5G NR deployment supporting autonomous cranes, real-time cargo tracking, and a live digital twin.',
-    date: 'March 2025',
-    slug: 'private-5g-uk-port',
+    tag: 'Private 5G',
+    title: 'From Wi-Fi to Private 5G: The Evolution of Tourism Connectivity',
+    excerpt: 'How destinations can move from public Wi-Fi to secure, high-capacity private 5G experiences.',
+    date: 'October 20, 2025',
+    slug: 'wifi-to-private-5g-tourism-connectivity',
   },
   {
-    tag: 'AI',
-    title: 'The Rise of AI-Driven Network Operations: What to Expect in 2025',
-    excerpt: 'From self-healing networks to predictive maintenance, AI is fundamentally changing how telecoms organisations operate.',
-    date: 'February 2025',
-    slug: 'ai-network-operations-2025',
+    tag: 'Smart Cities',
+    title: 'Designing Invisible Infrastructure: How Cities Are Rethinking Connectivity',
+    excerpt: 'How cities balance 5G infrastructure, urban aesthetics, heritage settings and public acceptance.',
+    date: 'September 22, 2025',
+    slug: 'designing-invisible-infrastructure-cities-connectivity',
   },
   {
     tag: '5G',
-    title: 'Understanding Open RAN: Opportunities and Challenges for Enterprises',
-    excerpt: 'Open RAN is reshaping the vendor landscape. We explore what it means for enterprise private network deployments.',
-    date: 'January 2025',
-    slug: 'open-ran-enterprises',
+    title: '5G-Connected Ports: The Gateway to Smarter Trade',
+    excerpt: 'Why ports are becoming connected, data-driven environments powered by advanced 5G infrastructure.',
+    date: 'September 15, 2025',
+    slug: '5g-connected-ports-smarter-trade',
   },
 ]
 

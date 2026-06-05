@@ -21,6 +21,150 @@ type Section = {
 }
 
 const posts: Record<string, Post> = {
+  'wifi-to-private-5g-tourism-connectivity': {
+    title: 'From Wi-Fi to Private 5G: The Evolution of Tourism Connectivity',
+    date: 'October 20, 2025',
+    readTime: '5 min',
+    tag: 'Private 5G',
+    author: 'AWTG Manager',
+    role: 'Connectivity Insight',
+    excerpt: 'How destinations can move from convenient public Wi-Fi to secure, high-capacity private 5G experiences for visitors, venues and operators.',
+    content: [
+      { type: 'paragraph', text: 'Tourism destinations increasingly depend on reliable digital infrastructure. Visitors expect mobile ticketing, digital guides, real-time travel information and rich location-based services to work without friction.' },
+      { type: 'paragraph', text: 'Private 5G gives venues, transport corridors and destination operators a stronger connectivity layer than public Wi-Fi alone. It can support secure operations, higher capacity, better coverage control and new visitor experiences across busy or complex environments.' },
+      { type: 'heading', text: 'Why the shift matters' },
+      { type: 'bullets', items: ['More reliable visitor connectivity in high-footfall locations', 'Secure operational networks for venues and local partners', 'Better support for AR, wayfinding and real-time service updates', 'A scalable foundation for connected tourism programmes'] },
+    ],
+  },
+
+  'designing-invisible-infrastructure-cities-connectivity': {
+    title: 'Designing Invisible Infrastructure: How Cities Are Rethinking Connectivity',
+    date: 'September 22, 2025',
+    readTime: '6 min',
+    tag: 'Smart Cities',
+    author: 'Ian Vernon',
+    role: 'Urban Connectivity',
+    excerpt: 'A look at how cities are balancing 5G infrastructure, urban aesthetics, heritage settings and public acceptance.',
+    content: [
+      { type: 'paragraph', text: 'As 5G becomes essential urban infrastructure, cities need deployment models that improve connectivity without overwhelming the public realm. Aesthetics, heritage, planning constraints and public confidence all matter.' },
+      { type: 'paragraph', text: 'The best infrastructure programmes make connectivity feel almost invisible. Small cells, street furniture integration and careful site planning can help cities expand network capacity while protecting the character of public spaces.' },
+      { type: 'heading', text: 'What cities are solving for' },
+      { type: 'bullets', items: ['Better coverage in dense urban areas', 'Lower visual impact from network equipment', 'Planning approaches that respect heritage and local identity', 'Public acceptance alongside technical performance'] },
+    ],
+  },
+
+  '5g-connected-ports-smarter-trade': {
+    title: '5G-Connected Ports: The Gateway to Smarter Trade',
+    date: 'September 15, 2025',
+    readTime: '6 min',
+    tag: '5G',
+    author: 'David Mintah',
+    role: 'Private Networks',
+    excerpt: 'Ports are becoming connected, data-driven environments where 5G can support safer, faster and more efficient operations.',
+    content: [
+      { type: 'paragraph', text: 'Ports are critical trade environments where operational efficiency, security and sustainability are under constant pressure. Reliable connectivity is now part of the core infrastructure needed to modernise them.' },
+      { type: 'paragraph', text: '5G can support smart port use cases such as real-time asset tracking, connected equipment, autonomous operations, safety monitoring and data-rich decision making across complex port estates.' },
+      { type: 'heading', text: 'Where 5G supports smarter trade' },
+      { type: 'bullets', items: ['Connected cargo and asset visibility', 'Low-latency support for operational systems', 'Improved safety and situational awareness', 'A scalable platform for automation and digital twins'] },
+    ],
+  },
+
+  'public-private-partnerships-rural-rail-digital-transformation': {
+    title: 'Public-Private Partnerships: Accelerating Rural Rail Digital Transformation',
+    date: 'September 9, 2025',
+    readTime: '7 min',
+    tag: 'Rail',
+    author: 'Ian Vernon',
+    role: 'Digital Infrastructure',
+    excerpt: 'How public-sector coordination, national funding and private-sector delivery can close connectivity gaps across rural rail corridors.',
+    content: [
+      { type: 'paragraph', text: 'Rural rail connectivity is often overlooked in traditional broadband and mobile infrastructure planning. Yet rail corridors connect communities, education, employment and tourism.' },
+      { type: 'paragraph', text: 'Public-private partnerships can bring the right mix of funding, local coordination and delivery expertise to these environments, turning rural rail corridors into connected digital routes.' },
+      { type: 'heading', text: 'Why partnership matters' },
+      { type: 'bullets', items: ['Shared delivery across public and private stakeholders', 'Better connectivity for passengers and communities', 'Support for rail operations, tourism and local growth', 'Evidence-led deployment across hard-to-serve routes'] },
+    ],
+  },
+
+  'private-networks-defense-secure-reliable-future-proof': {
+    title: 'The Rise of Private Networks in Defense: A Secure, Reliable, and Future-Proof Solution',
+    date: 'June 27, 2025',
+    readTime: '6 min',
+    tag: 'Private Networks',
+    author: 'AWTG Manager',
+    role: 'Secure Connectivity',
+    excerpt: 'Why defence organisations need resilient private network infrastructure for mobile, connected and data-intensive operations.',
+    content: [
+      { type: 'paragraph', text: 'Defence environments are becoming more connected, mobile and data-driven. Secure communications, resilient infrastructure and controlled data flows are essential to operational readiness.' },
+      { type: 'paragraph', text: 'Private networks give defence organisations a dedicated connectivity layer that can be designed for security, reliability, mobility and future mission requirements.' },
+      { type: 'heading', text: 'Core advantages' },
+      { type: 'bullets', items: ['Dedicated network control and security posture', 'Reliable communications for operational environments', 'Support for connected assets, sensors and command systems', 'A future-ready foundation for mission data'] },
+    ],
+  },
+
+  'future-tourism-5g-connectivity-trains-travellers': {
+    title: 'The Future of Tourism: How 5G Connectivity on Trains will Benefit Travellers',
+    date: 'June 9, 2025',
+    readTime: '5 min',
+    tag: 'Transport',
+    author: 'AWTG Manager',
+    role: 'Transport Connectivity',
+    excerpt: '5G on rail can support richer passenger services, safer journeys and better digital experiences for tourists on the move.',
+    content: [
+      { type: 'paragraph', text: 'Tourism journeys increasingly begin before visitors arrive at their destination. Reliable rail connectivity can support planning, information, entertainment and safety throughout the journey.' },
+      { type: 'paragraph', text: '5G-enabled rail corridors can improve passenger experience while giving operators and local partners better tools for service delivery, disruption updates and destination engagement.' },
+      { type: 'heading', text: 'Traveller benefits' },
+      { type: 'bullets', items: ['More reliable onboard digital services', 'Better access to travel and destination information', 'Support for rich media, wayfinding and local content', 'Improved connectivity across rural and regional corridors'] },
+    ],
+  },
+
+  'data-centres-future-connectivity-5g-innovation': {
+    title: 'Data Centres and the Future of Connectivity: How AWTG is Leading the Way in 5G Innovation',
+    date: 'May 30, 2025',
+    readTime: '6 min',
+    tag: 'Infrastructure',
+    author: 'David Mintah',
+    role: '5G Infrastructure',
+    excerpt: 'As organisations adopt more data-intensive applications, data centres are becoming a critical part of private 5G deployment strategy.',
+    content: [
+      { type: 'paragraph', text: '5G is reshaping how organisations connect, process and act on data. As use cases become more real time and data intensive, the infrastructure behind the network becomes mission critical.' },
+      { type: 'paragraph', text: 'Edge and on-site data centre capability can support private mobile network deployments by keeping processing close to operational systems, improving latency, resilience and data control.' },
+      { type: 'heading', text: 'Why data centres matter' },
+      { type: 'bullets', items: ['Local processing for low-latency applications', 'More resilient private network architectures', 'Better control of operational data', 'Scalable foundations for connected assets and AI workloads'] },
+    ],
+  },
+
+  'awtg-ai-innovation-human-expertise': {
+    title: 'AWTG: Pioneering Innovation with AI while Upholding the Value of Human Expertise',
+    date: 'April 16, 2025',
+    readTime: '5 min',
+    tag: 'AI',
+    author: 'AWTG Manager',
+    role: 'AI Innovation',
+    excerpt: 'How AWTG approaches AI as a practical innovation tool while keeping human expertise central to technology delivery.',
+    content: [
+      { type: 'paragraph', text: 'AI is changing what is possible across connectivity, operations and customer experience. The most valuable deployments are not about replacing expertise, but amplifying it.' },
+      { type: 'paragraph', text: 'AWTG focuses on practical AI that supports real teams: surfacing insight, accelerating decisions, improving service delivery and helping organisations work with complex infrastructure more confidently.' },
+      { type: 'heading', text: 'A practical approach to AI' },
+      { type: 'bullets', items: ['AI used to support expert teams and operational outcomes', 'Human judgment kept central to high-stakes decisions', 'Measured pilots before production rollout', 'Innovation grounded in real infrastructure delivery'] },
+    ],
+  },
+
+  'future-education-on-the-move-5g-trains-universities': {
+    title: 'The Future of Education on the Move: How 5G Connectivity on Trains will Benefit Universities',
+    date: 'April 7, 2025',
+    readTime: '6 min',
+    tag: 'Education',
+    author: 'AWTG Manager',
+    role: 'Connected Education',
+    excerpt: 'How private 5G, Wi-Fi and IoT across rail corridors can support connected learning and education beyond the campus.',
+    content: [
+      { type: 'paragraph', text: 'Education is no longer confined to campus. Students, educators and institutions increasingly rely on digital access while travelling, commuting and working across distributed environments.' },
+      { type: 'paragraph', text: 'Rail connectivity programmes can help universities extend learning, collaboration and support beyond fixed locations, especially where regional routes connect education centres and communities.' },
+      { type: 'heading', text: 'Education on connected routes' },
+      { type: 'bullets', items: ['Better access to learning platforms while travelling', 'Support for regional campuses and commuter students', 'Connected services across rail and community corridors', 'A foundation for future education and transport partnerships'] },
+    ],
+  },
+
   'ai-network-operations-2025': {
     title: 'The Rise of AI-Driven Network Operations: What to Expect in 2025',
     date: 'February 2025',
@@ -195,6 +339,12 @@ const posts: Record<string, Post> = {
 }
 
 const allPosts = [
+  { slug: 'wifi-to-private-5g-tourism-connectivity', tag: 'Private 5G', title: 'From Wi-Fi to Private 5G: The Evolution of Tourism Connectivity', date: 'October 20, 2025' },
+  { slug: 'designing-invisible-infrastructure-cities-connectivity', tag: 'Smart Cities', title: 'Designing Invisible Infrastructure: How Cities Are Rethinking Connectivity', date: 'September 22, 2025' },
+  { slug: '5g-connected-ports-smarter-trade', tag: '5G', title: '5G-Connected Ports: The Gateway to Smarter Trade', date: 'September 15, 2025' },
+  { slug: 'public-private-partnerships-rural-rail-digital-transformation', tag: 'Rail', title: 'Public-Private Partnerships: Accelerating Rural Rail Digital Transformation', date: 'September 9, 2025' },
+  { slug: 'private-networks-defense-secure-reliable-future-proof', tag: 'Private Networks', title: 'The Rise of Private Networks in Defense: A Secure, Reliable, and Future-Proof Solution', date: 'June 27, 2025' },
+  { slug: 'future-tourism-5g-connectivity-trains-travellers', tag: 'Transport', title: 'The Future of Tourism: How 5G Connectivity on Trains will Benefit Travellers', date: 'June 9, 2025' },
   { slug: 'ai-network-operations-2025', tag: 'AI', title: 'The Rise of AI-Driven Network Operations: What to Expect in 2025', date: 'February 2025' },
   { slug: 'private-5g-uk-port', tag: 'Case Study', title: 'How AWTG Deployed a Private 5G Network for a Major UK Port', date: 'March 2025' },
   { slug: 'open-ran-enterprises', tag: '5G', title: 'Understanding Open RAN: Opportunities and Challenges for Enterprises', date: 'January 2025' },
@@ -208,7 +358,13 @@ const tagColour: Record<string, string> = {
   'AI': 'bg-[#228DC1]/10 text-[#228DC1]',
   '5G': 'bg-[#0a1628]/8 text-[#0a1628]',
   'Case Study': 'bg-emerald-50 text-emerald-700',
+  'Private 5G': 'bg-emerald-50 text-emerald-700',
   'Private Networks': 'bg-violet-50 text-violet-700',
+  'Smart Cities': 'bg-sky-50 text-sky-700',
+  'Rail': 'bg-amber-50 text-amber-700',
+  'Transport': 'bg-orange-50 text-orange-700',
+  'Infrastructure': 'bg-slate-100 text-slate-700',
+  'Education': 'bg-indigo-50 text-indigo-700',
   'Spectrum': 'bg-amber-50 text-amber-700',
 }
 
