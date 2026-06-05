@@ -265,7 +265,7 @@ export default function Navigation() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${navBg}`}
+        className={`fixed top-0 left-0 right-0 z-[2000] transition-colors duration-200 ${navBg}`}
         onMouseLeave={closeDropdownSoon}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -526,7 +526,7 @@ export default function Navigation() {
       {/* Backdrop overlay when dropdown is open */}
       {activeDropdown && (
         <div
-          className="fixed inset-0 z-40 bg-black/5 transition-opacity duration-200"
+          className="fixed inset-0 z-[1900] bg-black/5 transition-opacity duration-200"
           style={{ top: '64px' }}
           onMouseEnter={closeDropdownSoon}
         />

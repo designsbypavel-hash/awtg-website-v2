@@ -174,9 +174,9 @@ function CoverageMap() {
       {/* Map + side panel */}
       <div className="flex divide-x divide-gray-100">
         {/* Leaflet map */}
-        <div className="flex-1" style={{ minHeight: '360px' }}>
+        <div className="flex-1 relative z-0" style={{ minHeight: '360px' }}>
           <MapContainer
-            style={{ height: '360px', width: '100%' }}
+            style={{ height: '360px', width: '100%', zIndex: 0 }}
             center={[53.480, -2.240]}
             zoom={11}
             scrollWheelZoom={false}
@@ -378,6 +378,7 @@ const useCases = [
 const steps = [
   {
     num: '01',
+    icon: faLayerGroup,
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
     detail: 'OSS/BSS feeds, drive tests, crowdsourced measurements and open data.',
@@ -385,6 +386,7 @@ const steps = [
   },
   {
     num: '02',
+    icon: faMap,
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
     detail: 'Heat maps, shape files and granular local views stay aligned.',
@@ -392,6 +394,7 @@ const steps = [
   },
   {
     num: '03',
+    icon: faBullseye,
     label: 'Score weak zones',
     desc: 'Surface underserved areas and rank them by severity and impact.',
     detail: 'AI scoring combines coverage quality, terrain and population need.',
@@ -399,6 +402,7 @@ const steps = [
   },
   {
     num: '04',
+    icon: faChartBar,
     label: 'Plan the next action',
     desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
     detail: 'Export-ready outputs for planning, regulation and GIS workflows.',
@@ -569,7 +573,7 @@ function IcmapHeroDemo() {
           </div>
 
           {/* Real Leaflet map */}
-          <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+          <div style={{ flex: 1, position: 'relative', overflow: 'hidden', zIndex: 0 }}>
             <HeroCoverageMap activeId={activeZone.id} />
 
             <div style={{
@@ -715,7 +719,7 @@ export default function IcmapPage() {
       {/* -- How it works -- */}
       <section className="py-28 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-20">
+          <div className="mb-16">
             <p className="type-label text-[#228DC1] mb-4">How It Works</p>
             <h2 className="font-heading text-[#0a1628] mb-4">
               From raw network data to coverage decisions
@@ -724,18 +728,38 @@ export default function IcmapPage() {
               iCMAP brings live and historical network data into one intelligent map, helping teams identify weak coverage, prioritise action, and plan investment where it will have the greatest impact.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
-            {steps.map((step) => (
-              <div key={step.num} className="bg-white p-8 min-h-[250px] hover:bg-[#f7f9ff] transition-colors">
-                <div className="flex items-center gap-3 mb-7">
-                  <span className="font-black text-[14px] tabular-nums" style={{ color: step.color, letterSpacing: '0.05em' }}>{step.num}</span>
-                  <div className="h-px flex-1 bg-gray-100" />
+          <div className="relative">
+            <div className="hidden lg:block absolute left-[12%] right-[12%] top-[34px] h-px bg-gradient-to-r from-[#228DC1]/25 via-[#7c3aed]/25 to-[#d97706]/25" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {steps.map((step) => (
+                <div
+                  key={step.num}
+                  className="relative bg-white border border-gray-200 p-7 min-h-[310px] flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(10,22,40,0.10)]"
+                  style={{ borderRadius: 8 }}
+                >
+                  <div className="flex items-center justify-between mb-8">
+                    <div
+                      className="w-16 h-16 flex items-center justify-center border border-white shadow-[0_10px_28px_rgba(10,22,40,0.08)]"
+                      style={{ backgroundColor: `${step.color}14`, borderRadius: 8 }}
+                    >
+                      <FontAwesomeIcon icon={step.icon} className="w-6 h-6" style={{ color: step.color }} />
+                    </div>
+                    <span
+                      className="text-[12px] font-black tracking-[0.16em] tabular-nums"
+                      style={{ color: step.color }}
+                    >
+                      {step.num}
+                    </span>
+                  </div>
+                  <div className="h-1 w-12 mb-7" style={{ backgroundColor: step.color, borderRadius: 2 }} />
+                  <h3 className="text-[#0a1628] font-semibold text-[18px] leading-[1.2] mb-4">{step.label}</h3>
+                  <p className="text-[#0a1628]/64 text-[14px] font-normal leading-[1.7] mb-8">{step.desc}</p>
+                  <div className="mt-auto pt-5 border-t border-gray-100">
+                    <p className="text-[#0a1628]/46 text-[12px] font-semibold uppercase tracking-[0.12em] leading-[1.65]">{step.detail}</p>
+                  </div>
                 </div>
-                <h3 className="text-[#0a1628] font-semibold text-[17px] leading-[1.25] mb-3">{step.label}</h3>
-                <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.65] mb-5">{step.desc}</p>
-                <p className="text-[#0a1628]/45 text-[12px] font-semibold uppercase tracking-[0.12em] leading-[1.6]">{step.detail}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
