@@ -82,7 +82,7 @@ export default function Breadcrumbs() {
       className="fixed left-0 right-0 z-[1500] bg-white border-b border-gray-100"
       style={{ top: '64px' }}
     >
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <ol className="flex items-center flex-wrap gap-1 py-2.5">
           <li>
             <Link
