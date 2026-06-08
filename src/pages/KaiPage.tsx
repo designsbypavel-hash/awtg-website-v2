@@ -2052,6 +2052,9 @@ export default function KaiPage() {
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Global reach. Measurable customer outcomes.
               </h2>
+              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
+                Our AI agent is live<br />at enterprise scale.
+              </p>
             </div>
             <GlobalReachMap />
           </div>
