@@ -1612,7 +1612,7 @@ function OmnichannelSection() {
     children,
   }: { color?:string; bg?:string; glow?:boolean; children:React.ReactNode }) => (
     <div style={{
-      width:44, height:44, borderRadius:12, flexShrink:0,
+      width:52, height:52, borderRadius:14, flexShrink:0,
       background: 'transparent',
       border: '1px solid rgba(10,22,40,0.12)',
       display:'flex', alignItems:'center', justifyContent:'center',
@@ -1660,15 +1660,15 @@ function OmnichannelSection() {
             {/* Left: WhatsApp · Telegram · Teams */}
             <div className="flex justify-center items-center gap-2">
               <ChIcon color="#25D366" bg="rgba(37,211,102,0.10)">
-                <img src={integrationLogos.whatsapp} alt="WhatsApp" style={{ width:24, height:24, objectFit:'contain' }}
+                <img src={integrationLogos.whatsapp} alt="WhatsApp" style={{ width:32, height:32, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
               <ChIcon color="#229ED9" bg="rgba(34,158,217,0.10)">
-                <img src={integrationLogos.telegram} alt="Telegram" style={{ width:24, height:24, objectFit:'contain' }}
+                <img src={integrationLogos.telegram} alt="Telegram" style={{ width:32, height:32, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
               <ChIcon color="#6264A7" bg="rgba(98,100,167,0.10)">
-                <img src={integrationLogos.teams} alt="Teams" style={{ width:24, height:24, objectFit:'contain' }}
+                <img src={integrationLogos.teams} alt="Teams" style={{ width:32, height:32, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
             </div>
@@ -1676,7 +1676,7 @@ function OmnichannelSection() {
             {/* Centre: KAI (glowing) */}
             <div className="flex justify-center items-center">
               <ChIcon color="#228DC1" bg="rgba(34,141,193,0.10)" glow>
-                <img src={integrationLogos.kaiHoriz} alt="Kai" style={{ width:36, height:18, objectFit:'contain' }}
+                <img src={integrationLogos.kaiHoriz} alt="Kai" style={{ width:46, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
             </div>
@@ -1684,15 +1684,15 @@ function OmnichannelSection() {
             {/* Right: Gmail · Outlook · Apple Mail */}
             <div className="flex justify-center items-center gap-2">
               <ChIcon color="#EA4335" bg="rgba(234,67,53,0.10)">
-                <img src={integrationLogos.gmail} alt="Gmail" style={{ width:24, height:24, objectFit:'contain' }}
+                <img src={integrationLogos.gmail} alt="Gmail" style={{ width:32, height:32, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
               <ChIcon color="#0078D4" bg="rgba(0,120,212,0.10)">
-                <img src={integrationLogos.outlook} alt="Outlook" style={{ width:24, height:24, objectFit:'contain' }}
+                <img src={integrationLogos.outlook} alt="Outlook" style={{ width:32, height:32, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
               <ChIcon color="#209CF5" bg="rgba(32,156,245,0.10)">
-                <img src={integrationLogos.appleMail} alt="Apple Mail" style={{ width:24, height:24, objectFit:'contain' }}
+                <img src={integrationLogos.appleMail} alt="Apple Mail" style={{ width:32, height:32, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
               </ChIcon>
             </div>
