@@ -646,7 +646,7 @@ export default function IcmapPage() {
                 />
               </div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
-                iCMAP intelligence<br />
+                Coverage Map intelligence<br />
                 that drives decisions.
               </h1>
               <p className="text-[#0a1628]/60 text-[17px] font-normal leading-[1.7] max-w-xl mb-10">
