@@ -955,25 +955,28 @@ function SecurityComplianceSection() {
             </p>
 
             <div className="bg-[#0a1628] text-white p-8 shadow-[0_16px_50px_rgba(10,22,40,0.12)]" style={reveal(leftInView, 280)}>
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
-              <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 AI Management System certified</p>
-              <p className="text-white/58 text-sm font-normal leading-relaxed mb-6">
-                Governance, access control and auditability are built in from day one.
-              </p>
-              {/* Certification badges */}
-              <div className="flex items-center gap-4 pt-5 border-t border-white/10">
-                <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2">
-                  <img src={certISO42001} alt="ISO 42001" style={{ width: 36, height: 36, objectFit: 'contain' }} />
-                  <div>
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.12em] leading-none mb-0.5">Certified</p>
-                    <p className="text-[11px] font-semibold text-white/80 leading-none">ISO 42001</p>
-                  </div>
+              <div className="grid gap-7 xl:grid-cols-[1fr_0.86fr] xl:items-center">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
+                  <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 AI Management System certified</p>
+                  <p className="text-white/58 text-sm font-normal leading-relaxed">
+                    Governance, access control and auditability are built in from day one.
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2">
-                  <img src={certCREST} alt="CREST" style={{ width: 36, height: 36, objectFit: 'contain' }} />
-                  <div>
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.12em] leading-none mb-0.5">Certified</p>
-                    <p className="text-[11px] font-semibold text-white/80 leading-none">CREST</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="flex min-h-[132px] flex-col items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.055] px-4 py-5 text-center">
+                    <img src={certISO42001} alt="ISO 42001" style={{ width: 58, height: 58, objectFit: 'contain' }} />
+                    <div>
+                      <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.12em] leading-none mb-1">Certified</p>
+                      <p className="text-[12px] font-semibold text-white/85 leading-tight">ISO 42001</p>
+                    </div>
+                  </div>
+                  <div className="flex min-h-[132px] flex-col items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.055] px-4 py-5 text-center">
+                    <img src={certCREST} alt="CREST" style={{ width: 58, height: 58, objectFit: 'contain' }} />
+                    <div>
+                      <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.12em] leading-none mb-1">Certified</p>
+                      <p className="text-[12px] font-semibold text-white/85 leading-tight">CREST</p>
+                    </div>
                   </div>
                 </div>
               </div>
