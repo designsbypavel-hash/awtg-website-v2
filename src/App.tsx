@@ -53,7 +53,7 @@ import AboutCertificationsPage from './pages/AboutCertificationsPage'
 import AboutSustainabilityPage from './pages/AboutSustainabilityPage'
 
 // Insights
-import InsightsPage from './pages/InsightsPage'
+import InsightsNewsPage from './pages/InsightsNewsPage'
 import InsightsBlogPage from './pages/InsightsBlogPage'
 import InsightsCaseStudiesPage from './pages/InsightsCaseStudiesPage'
 import InsightsWhitePapersPage from './pages/InsightsWhitePapersPage'
@@ -119,7 +119,8 @@ export default function App() {
         <Route path="about/sustainability" element={<AboutSustainabilityPage />} />
 
         {/* Insights */}
-        <Route path="insights" element={<InsightsPage />} />
+        <Route path="insights" element={<InsightsNewsPage />} />
+        <Route path="insights/news" element={<InsightsNewsPage />} />
         <Route path="insights/blog" element={<InsightsBlogPage />} />
         <Route path="insights/case-studies" element={<InsightsCaseStudiesPage />} />
         <Route path="insights/white-papers" element={<InsightsWhitePapersPage />} />
