@@ -558,6 +558,37 @@ const categories = ['All', ...Array.from(new Set(newsItems.map((item) => item.ca
 const featured = newsItems[0]
 const spotlight = newsItems.slice(1, 4)
 
+const newsVideoUrlsBySlug: Record<string, string> = {
+  [createNewsSlug('The Future of Learning is Here: Inside Aruva, AWTG Educational AI Platform')]: 'https://www.youtube.com/embed/L20VwApk4q4?feature=oembed',
+  [createNewsSlug("AWTG's AI Journey: From Innovation to Expansion")]: 'https://www.youtube.com/embed/BAvyHUxvlfM?feature=oembed',
+  [createNewsSlug("Innovator's Table Episode 5: Matt Moayedi, AWTG Director of Engineering")]: 'https://www.youtube.com/embed/jd4rkMayo_U?feature=oembed',
+  [createNewsSlug("Innovator's Table Episode 4: Peter Najm, AWTG AI Product Manager")]: 'https://www.youtube.com/embed/bupY1MLSTBw?feature=oembed',
+  [createNewsSlug('Digital Transformation in Motion Across the Borderlands Region')]: 'https://www.youtube.com/embed/wCm4Joz-fsk?feature=oembed',
+  [createNewsSlug('AWTG Demonstrates 5G Excellence at Millbrook Proving Ground')]: 'https://www.youtube.com/embed/Td8h9IA6d_k?feature=oembed',
+  [createNewsSlug('AWTG Showcases 5G and AI Innovations in TechForge Media Interview at IoT Tech Expo 2025')]: 'https://www.youtube.com/embed/OzSouZ-tWp8?feature=oembed',
+  [createNewsSlug('AWTG at Connected Britain 2025: Showcasing Innovation, Collaboration, and the Future of Connectivity')]: 'https://www.youtube.com/embed/mvU4CO9D_LU?feature=oembed',
+  [createNewsSlug('AWTG Launches 5G Open RAN Lab')]: 'https://www.youtube.com/embed/-_4iIZ-KgPw?feature=oembed',
+  [createNewsSlug("AWTG's AI with New Features Help Businesses Thrive")]: 'https://www.youtube.com/embed/HmfT7lvOSsY?feature=oembed',
+  [createNewsSlug('AWTG is Delighted to be Part of CORE Project at Cambridge Tech Week')]: 'https://www.youtube.com/embed/qbIXZ3XAVuM?feature=oembed',
+}
+
+const newsSourceUrlsBySlug: Record<string, string> = {
+  [createNewsSlug('The Future of Learning is Here: Inside Aruva, AWTG Educational AI Platform')]: 'https://www.awtg.co.uk/the-future-of-learning-is-here-inside-aruva-awtg-educational-ai-platform',
+  [createNewsSlug("AWTG's AI Journey: From Innovation to Expansion")]: 'https://www.awtg.co.uk/awtg-ai-journey-from-innovation-to-expansion',
+  [createNewsSlug("Innovator's Table Episode 5: Matt Moayedi, AWTG Director of Engineering")]: 'https://www.awtg.co.uk/innovators-table-episode-5-matt-moayedi-awtg-director-of-engineering',
+  [createNewsSlug("Innovator's Table Episode 4: Peter Najm, AWTG AI Product Manager")]: 'https://www.awtg.co.uk/innovators-table-episode-4-peter-najm-awtg-ai-product-manager',
+  [createNewsSlug('Digital Transformation in Motion Across the Borderlands Region')]: 'https://www.awtg.co.uk/digital-transformation-in-motion-across-the-borderlands-region',
+  [createNewsSlug('AWTG Demonstrates 5G Excellence at Millbrook Proving Ground')]: 'https://www.awtg.co.uk/awtg-demonstrates-5g-excellence-at-millbrook-proving-ground',
+  [createNewsSlug('AWTG Showcases 5G and AI Innovations in TechForge Media Interview at IoT Tech Expo 2025')]: 'https://www.awtg.co.uk/awtg-techforge-media-interview-iot-tech-expo-2025',
+  [createNewsSlug('AWTG at Connected Britain 2025: Showcasing Innovation, Collaboration, and the Future of Connectivity')]: 'https://www.awtg.co.uk/awtg-at-connected-britain-2025-showcasing-innovation-collaboration-and-the-future-of-connectivity',
+  [createNewsSlug('AWTG Launches 5G Open RAN Lab')]: 'https://www.awtg.co.uk/awtg-5g-open-ran-lab',
+  [createNewsSlug("AWTG's AI with New Features Help Businesses Thrive")]: 'https://www.awtg.co.uk/awtg-ai-businesses-thrive',
+  [createNewsSlug('AWTG is Delighted to be Part of CORE Project at Cambridge Tech Week')]: 'https://www.awtg.co.uk/awtg-core-cambridge-tech-week',
+}
+
+export const getNewsVideoUrl = (item: NewsItem) => item.youtubeEmbedUrl ?? newsVideoUrlsBySlug[createNewsSlug(item.title)]
+export const getNewsSourceUrl = (item: NewsItem) => item.sourceUrl ?? newsSourceUrlsBySlug[createNewsSlug(item.title)]
+
 export default function InsightsNewsPage() {
   const [activeCategory, setActiveCategory] = useState('All')
 
@@ -676,7 +707,7 @@ export default function InsightsNewsPage() {
                 <div className="h-36 bg-[#eef5f9] relative overflow-hidden border-b border-gray-100">
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,141,193,0.18),rgba(10,22,40,0.04))]" />
                   <div className="absolute left-6 top-6 h-11 w-11 bg-white flex items-center justify-center text-[#228DC1]">
-                    <FontAwesomeIcon icon={item.youtubeEmbedUrl ? faPlay : faNewspaper} className="w-5 h-5" />
+                    <FontAwesomeIcon icon={getNewsVideoUrl(item) ? faPlay : faNewspaper} className="w-5 h-5" />
                   </div>
                   <p className="absolute right-6 bottom-5 font-mono text-[13px] text-[#0a1628]/35">
                     {String(index + 1).padStart(2, '0')}
@@ -696,7 +727,7 @@ export default function InsightsNewsPage() {
                     {cleanText(item.excerpt)}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
-                    {item.youtubeEmbedUrl ? 'Watch story' : 'Read story'} <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                    {getNewsVideoUrl(item) ? 'Watch story' : 'Read story'} <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </Link>

@@ -6,6 +6,8 @@ import {
   cleanText,
   createNewsSlug,
   getNewsHref,
+  getNewsSourceUrl,
+  getNewsVideoUrl,
   newsItems,
 } from './InsightsNewsPage'
 
@@ -27,6 +29,8 @@ const getYouTubeWatchUrl = (embedUrl: string) => {
 export default function InsightsNewsDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const item = newsItems.find((newsItem) => createNewsSlug(newsItem.title) === slug)
+  const sourceUrl = item ? getNewsSourceUrl(item) : undefined
+  const youtubeEmbedUrl = item ? getNewsVideoUrl(item) : undefined
   const related = newsItems
     .filter((newsItem) => newsItem.category === item?.category && createNewsSlug(newsItem.title) !== slug)
     .slice(0, 3)
@@ -80,12 +84,12 @@ export default function InsightsNewsDetailPage() {
 
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-8 lg:px-12">
-          {item.youtubeEmbedUrl && (
+          {youtubeEmbedUrl && (
             <div className="mb-12">
               <div className="aspect-video bg-[#0a1628] border border-gray-100">
                 <iframe
                   className="h-full w-full"
-                  src={item.youtubeEmbedUrl}
+                  src={youtubeEmbedUrl}
                   title={cleanText(item.title)}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -93,16 +97,16 @@ export default function InsightsNewsDetailPage() {
               </div>
               <div className="mt-5 flex flex-wrap gap-3">
                 <a
-                  href={getYouTubeWatchUrl(item.youtubeEmbedUrl)}
+                  href={getYouTubeWatchUrl(youtubeEmbedUrl)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all"
                 >
                   <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5" /> Watch on YouTube
                 </a>
-                {item.sourceUrl && (
+                {sourceUrl && (
                   <a
-                    href={item.sourceUrl}
+                    href={sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 text-[#0a1628] text-sm font-medium hover:border-[#228DC1] hover:text-[#228DC1] transition-all"
@@ -120,10 +124,10 @@ export default function InsightsNewsDetailPage() {
             </p>
           ))}
 
-          {!item.youtubeEmbedUrl && item.sourceUrl && (
+          {!youtubeEmbedUrl && sourceUrl && (
             <div className="mb-12">
               <a
-                href={item.sourceUrl}
+                href={sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#228DC1] text-[#228DC1] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-all"
