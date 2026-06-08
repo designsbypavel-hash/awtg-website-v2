@@ -2156,7 +2156,7 @@ export default function KaiPage() {
                 Global reach. Measurable customer outcomes.
               </h2>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-                Our AI agent is live<br />at enterprise scale.
+                Our AI agent is live at enterprise scale.
               </p>
             </div>
             <GlobalReachMap />
