@@ -295,7 +295,7 @@ export default function CareerRoleDetailPage() {
               </div>
             </div>
             <Link
-              to="/contact"
+              to={`/careers/${role.slug}/apply`}
               className="shrink-0 inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
             >
               Apply for This Role <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
@@ -345,12 +345,10 @@ export default function CareerRoleDetailPage() {
                 <p className="type-label text-[#228DC1] mb-3">Ready to apply?</p>
                 <h3 className="font-h4 text-[#0a1628] mb-3">Send us your application</h3>
                 <p className="text-[#0a1628]/60 text-[14px] leading-[1.75] mb-6">
-                  Send your CV and a short covering note to{' '}
-                  <a href="mailto:info@awtg.co.uk" className="text-[#228DC1] hover:underline">info@awtg.co.uk</a>{' '}
-                  or use the button below to get in touch directly.
+                  Complete your application in a few minutes. Upload your CV, add a covering note, and our team will be in touch.
                 </p>
                 <Link
-                  to="/contact"
+                  to={`/careers/${role.slug}/apply`}
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                 >
                   Apply Now <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
@@ -384,7 +382,7 @@ export default function CareerRoleDetailPage() {
                 </div>
                 <div className="mt-8 pt-6 border-t border-gray-100">
                   <Link
-                    to="/contact"
+                    to={`/careers/${role.slug}/apply`}
                     className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                   >
                     Apply for This Role <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />

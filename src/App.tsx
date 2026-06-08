@@ -16,6 +16,7 @@ import {
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import CookiePolicyPage from './pages/CookiePolicyPage'
 import CareerRoleDetailPage from './pages/CareerRoleDetailPage'
+import CareerApplyPage from './pages/CareerApplyPage'
 
 // Solutions
 import MobilePrivateNetworksPage from './pages/MobilePrivateNetworksPage'
@@ -74,6 +75,7 @@ export default function App() {
         <Route path="contact" element={<ContactPage />} />
         <Route path="careers" element={<CareersPage />} />
         <Route path="careers/:slug" element={<CareerRoleDetailPage />} />
+        <Route path="careers/:slug/apply" element={<CareerApplyPage />} />
         <Route path="ibecome" element={<IBecomePage />} />
         <Route path="iyouth" element={<IYouthPage />} />
         <Route path="privacy" element={<PrivacyPolicyPage />} />
