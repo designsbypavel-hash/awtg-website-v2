@@ -177,7 +177,7 @@ export default function AboutSustainabilityPage() {
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#228DC1]/6 rounded-full blur-[60px]" />
               <div className="relative">
                 <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.15em] mb-6">Baseline Year 2019</p>
-                <h3 className="text-[#0a1628] text-[20px] font-semibold mb-3">Baseline Emission Footprint</h3>
+                <h3 className="font-h4 text-[#0a1628] mb-3">Baseline Emission Footprint</h3>
                 <p className="text-[#0a1628]/55 text-[14px] leading-[1.8] mb-8">
                   Baseline emissions are a record of greenhouse gases produced prior to any reduction strategies.
                   The 2019 baseline was affected by the start of the Covid-19 pandemic.
@@ -198,7 +198,7 @@ export default function AboutSustainabilityPage() {
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#228DC1]/8 rounded-full blur-[60px]" />
               <div className="relative">
                 <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.15em] mb-6">Reporting Year 2024</p>
-                <h3 className="text-[#0a1628] text-[20px] font-semibold mb-3">Current Emission Reporting</h3>
+                <h3 className="font-h4 text-[#0a1628] mb-3">Current Emission Reporting</h3>
                 <p className="text-[#0a1628]/55 text-[14px] leading-[1.8] mb-8">
                   2022 and 2023 represent more realistic post-pandemic emissions. AWTG has grown steadily
                   while maintaining emissions per person below the sector average.
@@ -227,7 +227,7 @@ export default function AboutSustainabilityPage() {
                 <div className="h-[3px]" style={{ background: accent }} />
                 <div className="p-7">
                   <p className="text-[10px] font-bold uppercase tracking-[0.18em] mb-2" style={{ color: accent }}>{label}</p>
-                  <h3 className="text-[#0a1628] text-[17px] font-semibold mb-5">{title}</h3>
+                  <h3 className="font-h5 text-[#0a1628] mb-5">{title}</h3>
                   <BulletList items={items} />
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function AboutSustainabilityPage() {
           {/* Declaration */}
           <div className="bg-[#f8fafc] border-l-[3px] border-[#228DC1] pl-8 pr-8 py-8 max-w-4xl">
             <p className="text-[#228DC1] text-[10px] font-bold uppercase tracking-[0.18em] mb-4">Declaration and Sign Off</p>
-            <h3 className="text-[#0a1628] text-[17px] font-semibold mb-5">Carbon Reduction Plan Compliance</h3>
+            <h3 className="font-h5 text-[#0a1628] mb-5">Carbon Reduction Plan Compliance</h3>
             <p className="text-[#0a1628]/65 text-[15px] leading-[1.85] mb-4">
               This Carbon Reduction Plan has been completed in accordance with PPN 06/21 and associated guidance and reporting standard for Carbon Reduction Plans. Emissions have been reported and recorded in accordance with the GHG Reporting Protocol corporate standard and uses the appropriate Government emission conversion factors for greenhouse gas company reporting.
             </p>
@@ -287,7 +287,7 @@ export default function AboutSustainabilityPage() {
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <h3 className="text-[#0a1628] font-semibold text-[17px] mb-4 leading-[1.35]">{section.title}</h3>
+                  <h3 className="font-h5 text-[#0a1628] mb-4">{section.title}</h3>
                   <div className="h-px bg-gray-100 mb-5" />
                   <BulletList items={section.items} />
                 </div>

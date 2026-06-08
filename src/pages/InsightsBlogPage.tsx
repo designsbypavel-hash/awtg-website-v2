@@ -114,7 +114,7 @@ export default function InsightsBlogPage() {
       {/* Hero */}
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Insights</p>
+          <p className="type-label text-[#228DC1] mb-4">Insights</p>
           <h1
             className="font-serif-display text-[#0a1628] leading-[1.1] mb-6"
            
@@ -151,10 +151,7 @@ export default function InsightsBlogPage() {
                       {featured.tag}
                     </span>
                   </div>
-                  <h2
-                    className="font-serif-display text-[#0a1628] leading-[1.1] mb-5 group-hover:text-[#228DC1] transition-colors"
-                    style={{ fontSize: 'clamp(22px, 2.5vw, 32px)' }}
-                  >
+                  <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#228DC1] transition-colors">
                     {featured.title}
                   </h2>
                   <p className="text-[#0a1628]/75 text-[16px] font-normal leading-[1.7] max-w-lg">
@@ -176,7 +173,7 @@ export default function InsightsBlogPage() {
                 <div className="absolute inset-0 opacity-10"
                   style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #228DC1 0%, transparent 60%)' }}
                 />
-                <p className="font-serif-display text-[#0a1628]/60 text-center px-8 italic" style={{ fontSize: 'clamp(16px, 2vw, 22px)' }}>
+                <p className="font-h5 text-[#0a1628]/60 text-center px-8 italic">
                   "{featured.excerpt.split('.')[0]}."
                 </p>
               </div>
@@ -206,7 +203,7 @@ export default function InsightsBlogPage() {
                       <span className={`text-[14px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-3 inline-block ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                         {post.tag}
                       </span>
-                      <h2 className="text-[#0a1628] font-semibold leading-[1.3] mb-2 group-hover:text-[#228DC1] transition-colors" style={{ fontSize: 'clamp(15px, 1.5vw, 18px)' }}>
+                      <h2 className="font-h5 text-[#0a1628] mb-2 group-hover:text-[#228DC1] transition-colors">
                         {post.title}
                       </h2>
                       <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">
@@ -241,8 +238,8 @@ export default function InsightsBlogPage() {
       <section className="py-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div>
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-3">Work with AWTG</p>
-            <h2 className="font-serif-display text-[#0a1628]" style={{ fontSize: '24px', lineHeight: 1.1 }}>
+            <p className="type-label text-[#228DC1] mb-3">Work with AWTG</p>
+            <h2 className="font-h3 text-[#0a1628]">
               Ready to talk about<br />your network?
             </h2>
           </div>

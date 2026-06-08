@@ -87,7 +87,7 @@ export default function AboutOverviewPage() {
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
               <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Delivery footprint</p>
-              <p className="font-serif-display text-[#0a1628] text-[28px] leading-[1.1]">45,000+</p>
+              <p className="font-h2 text-[#0a1628]">45,000+</p>
               <p className="text-[#0a1628]/65 text-sm leading-relaxed mt-2">RAN sites delivered globally.</p>
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function AboutOverviewPage() {
           ].map((item) => (
             <div key={item.title} className="bg-white p-7">
               <FontAwesomeIcon icon={item.icon} className="w-5 h-5 text-[#228DC1] mb-5" />
-              <h2 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{item.title}</h2>
+              <h2 className="font-h5 text-[#0a1628] mb-2">{item.title}</h2>
               <p className="text-[#0a1628]/65 text-[14px] leading-[1.7] font-normal">{item.text}</p>
             </div>
           ))}
@@ -117,10 +117,10 @@ export default function AboutOverviewPage() {
               <article key={section.label} className="grid lg:grid-cols-[320px_minmax(0,1fr)] gap-8 lg:gap-14 py-12 border-b border-gray-100 last:border-b-0">
                 <div>
                   <p className="type-label text-[#228DC1] mb-3">{String(index + 1).padStart(2, '0')}</p>
-                  <h2 className="font-card-heading text-[#0a1628] text-[18px]">{section.label}</h2>
+                  <h2 className="font-h5 text-[#0a1628]">{section.label}</h2>
                 </div>
                 <div>
-                  <p className="font-serif-display text-[#0a1628] leading-[1.2] mb-6" style={{ fontSize: 'clamp(22px, 2.4vw, 34px)' }}>
+                  <p className="font-h2 text-[#0a1628] mb-6">
                     {section.title}
                   </p>
                   <div className="space-y-5">

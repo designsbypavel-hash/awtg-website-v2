@@ -48,12 +48,12 @@ function PersonCard({ person, large = false }: { person: Person; large?: boolean
           <img src={person.photo} alt={person.name} className="h-full w-full object-cover object-top" loading="lazy" />
         ) : (
           <div className="h-full w-full flex items-center justify-center bg-[#0a1628] text-white">
-            <span className="font-serif-display text-[42px]">{initials(person.name)}</span>
+            <span className="font-h2">{initials(person.name)}</span>
           </div>
         )}
       </div>
       <div className={large ? 'p-6' : 'p-5'}>
-        <h2 className="text-[#0a1628] text-[16px] font-semibold leading-[1.3] mb-2 group-hover:text-[#228DC1] transition-colors">
+        <h2 className="font-h5 text-[#0a1628] mb-2 group-hover:text-[#228DC1] transition-colors">
           {person.name}
         </h2>
         <p className="text-[#0a1628]/62 text-[13px] font-semibold uppercase tracking-[0.12em] leading-[1.5]">
@@ -123,7 +123,7 @@ export default function AboutLeadershipPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <p className="type-label text-[#228DC1] mb-4">Talk to AWTG</p>
-            <h2 className="font-serif-display text-[#0a1628] leading-tight">Ready to explore what AWTG can do for you?</h2>
+            <h2 className="font-h2 text-[#0a1628]">Ready to explore what AWTG can do for you?</h2>
           </div>
           <Link to="/contact" className="shrink-0 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all inline-flex items-center gap-2">
             Contact Us <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />

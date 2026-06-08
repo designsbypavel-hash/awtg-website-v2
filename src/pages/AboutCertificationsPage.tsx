@@ -97,7 +97,7 @@ export default function AboutCertificationsPage() {
               {group.items.map((item) => (
                 <article key={item.name} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
                   <FontAwesomeIcon icon={group.label === 'ISO & Cyber Security' ? faShieldHalved : faCertificate} className="w-5 h-5 text-[#228DC1] mb-5" />
-                  <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-3">{item.name}</h3>
+                  <h3 className="font-h5 text-[#0a1628] mb-3">{item.name}</h3>
                   <p className="text-[#0a1628]/65 text-[14px] leading-[1.75] font-normal">{item.desc}</p>
                 </article>
               ))}

@@ -150,7 +150,7 @@ export default function InsightsWhitePapersPage() {
     <>
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Whitepapers</p>
+          <p className="type-label text-[#228DC1] mb-4">Whitepapers</p>
           <div className="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-10 lg:gap-16 items-end">
             <div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
@@ -162,7 +162,7 @@ export default function InsightsWhitePapersPage() {
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
               <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Resource library</p>
-              <p className="font-serif-display text-[#0a1628] text-[28px] leading-[1.1]">{whitePapers.length}</p>
+              <p className="font-h2 text-[#0a1628]">{whitePapers.length}</p>
               <p className="text-[#0a1628]/65 text-sm leading-relaxed mt-2">downloadable PDF white papers available.</p>
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function InsightsWhitePapersPage() {
                   {featuredPaper.topic}
                 </span>
               </div>
-              <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-5 group-hover:text-[#228DC1] transition-colors" style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>
+              <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#228DC1] transition-colors">
                 {featuredPaper.title}
               </h2>
               <p className="text-[#0a1628]/70 text-[16px] font-normal leading-[1.8] max-w-2xl mb-9">
@@ -197,7 +197,7 @@ export default function InsightsWhitePapersPage() {
               <div>
                 <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#7ac4e0] mb-8" />
                 <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#7ac4e0] mb-5">AWTG Research</p>
-                <p className="font-serif-display text-white leading-[1.15]" style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}>
+                <p className="font-h3 text-white">
                   Open RAN transformation, security and deployment insight.
                 </p>
               </div>
@@ -219,7 +219,7 @@ export default function InsightsWhitePapersPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
               <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/55 mb-3">All Whitepapers</p>
-              <h2 className="font-serif-display text-[#0a1628] leading-[1.1]" style={{ fontSize: 'clamp(26px, 3vw, 42px)' }}>
+              <h2 className="font-h2 text-[#0a1628]">
                 {activeTopic === 'All' ? 'Research for real infrastructure decisions.' : activeTopic}
               </h2>
             </div>
@@ -245,7 +245,7 @@ export default function InsightsWhitePapersPage() {
                     </span>
                     <span className="text-[#0a1628]/50 text-xs">{paper.date}</span>
                   </div>
-                  <h3 className="text-[#0a1628] text-[16px] font-semibold leading-[1.35] mb-3 group-hover:text-[#228DC1] transition-colors">
+                  <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">
                     {paper.title}
                   </h3>
                   <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">

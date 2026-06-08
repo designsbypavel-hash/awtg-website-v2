@@ -178,7 +178,7 @@ function Hero() {
 
         {/* Headline */}
         <h1
-          className="home-hero-reveal text-white text-[42px] md:text-[52px] font-normal leading-[1.08] tracking-normal mb-6"
+          className="home-hero-reveal font-serif-display text-white mb-6"
         >
           Helping organisations<br />
           put AI to work.
@@ -310,7 +310,7 @@ function AIProofPoints() {
         <div className="grid lg:grid-cols-[1fr_auto] gap-16 items-center">
           <div>
             <p className="type-label text-[#228DC1] mb-6">Live in Production</p>
-            <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-4">
+            <h2 className="font-heading text-[#0a1628] mb-4">
               British Council.<br />
               <span className="text-[#228DC1]">AI handling learner support at scale.</span>
             </h2>
@@ -329,7 +329,7 @@ function AIProofPoints() {
               { stat: 'Enterprise', label: 'Grade governance' },
             ].map((item) => (
               <div key={item.label} className="bg-white px-8 py-7 text-center">
-                <p className="font-serif-display text-[#0a1628] mb-1" style={{ fontSize: 'clamp(18px, 2vw, 26px)' }}>{item.stat}</p>
+                <p className="font-h3 text-[#0a1628] mb-1">{item.stat}</p>
                 <p className="type-label text-[#0a1628]/60">{item.label}</p>
               </div>
             ))}
@@ -346,8 +346,8 @@ export function OurSolutions() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 items-end mb-16">
           <div>
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Our Solutions</p>
-            <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
+            <p className="type-label text-[#228DC1] mb-4">Our Solutions</p>
+            <h2 className="font-heading text-[#0a1628]">
               Advancing connectivity for the{' '}
               <span className="text-[#228DC1]">technology supercycle.</span>
             </h2>
@@ -363,7 +363,7 @@ export function OurSolutions() {
             {panel.flip ? (
               <>
                 <div className="p-12 lg:p-16 flex flex-col justify-center">
-                  <h3 className="text-[24px] font-semibold text-[#0a1628] leading-[1.3] mb-4">{panel.title}</h3>
+                  <h3 className="font-h3 text-[#0a1628] mb-4">{panel.title}</h3>
                   <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-6 font-normal">{panel.desc}</p>
                   <Link to={panel.href} className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all">
                     {panel.link} <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
@@ -379,7 +379,7 @@ export function OurSolutions() {
                   <img src={panel.img} alt={panel.title} className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div className="p-12 lg:p-16 flex flex-col justify-center">
-                  <h3 className="text-[24px] font-semibold text-[#0a1628] leading-[1.3] mb-4">{panel.title}</h3>
+                  <h3 className="font-h3 text-[#0a1628] mb-4">{panel.title}</h3>
                   <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-6 font-normal">{panel.desc}</p>
                   <Link to={panel.href} className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all">
                     {panel.link} <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
@@ -443,8 +443,8 @@ function Industries() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12 mb-14">
         <div className="grid lg:grid-cols-2 gap-12 items-end">
           <div>
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Your Industry</p>
-            <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
+            <p className="type-label text-[#228DC1] mb-4">Your Industry</p>
+            <h2 className="font-heading text-[#0a1628]">
               Powering transformation<br />across every sector.
             </h2>
           </div>
@@ -459,7 +459,7 @@ function Industries() {
             <img src={card.img} alt={card.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#050a12]/85 via-[#050a12]/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-              <h3 className="text-white font-semibold text-[20px] mb-2 leading-[1.3]">{card.title}</h3>
+              <h3 className="font-h4 text-white mb-2">{card.title}</h3>
               <span className="inline-flex items-center gap-1.5 text-sm text-[#0a1628]/60 group-hover:text-white transition-colors font-medium">
                 {card.sub} <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
               </span>
@@ -542,7 +542,7 @@ export function TechSolutions() {
           <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-5">
             Technology Solutions
           </span>
-          <h2 className="font-serif-display text-[#0a1628]">
+          <h2 className="font-heading text-[#0a1628]">
             AI-Powered Technology{' '}
             <span className="text-[#228DC1]">Solutions</span>
           </h2>
@@ -567,7 +567,7 @@ export function TechSolutions() {
             <img src={tab.img} alt={tab.title} className="w-full h-full object-cover opacity-50 mix-blend-luminosity" loading="lazy" />
           </div>
           <div className="bg-white p-12 lg:p-16 flex flex-col justify-center">
-            <h3 className="font-serif-display text-[#0a1628] mb-4" style={{ fontSize: '24px', lineHeight: 1.1 }}>{tab.title}</h3>
+            <h3 className="font-h3 text-[#0a1628] mb-4">{tab.title}</h3>
             <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-7 font-normal">{tab.desc}</p>
             <ul className="space-y-3 mb-8">
               {tab.features.map((f) => (
@@ -596,7 +596,7 @@ function WhyAWTG() {
         <div className="grid lg:grid-cols-2 gap-12 items-end mb-14">
           <div>
             <p className="type-label text-[#228DC1] mb-4">Why AWTG</p>
-            <h2 className="font-serif-display text-[#0a1628] leading-[1.08] max-w-3xl">
+            <h2 className="font-heading text-[#0a1628] max-w-3xl">
               The experience to deliver, and the team to stay with you.
             </h2>
           </div>
@@ -612,7 +612,7 @@ function WhyAWTG() {
             { value: '8', label: 'Sectors', sub: 'Public & private' },
           ].map((s) => (
             <div key={s.label} className="bg-white p-7 md:p-8">
-              <p className="font-serif-display text-[#0a1628] mb-1" style={{ fontSize: 'clamp(32px, 3.5vw, 48px)' }}>{s.value}</p>
+              <p className="font-heading text-[#0a1628] mb-1">{s.value}</p>
               <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#228DC1] mb-1">{s.label}</p>
               <p className="text-[14px] text-[#0a1628]/65 font-normal">{s.sub}</p>
             </div>
@@ -649,7 +649,7 @@ export function PNaaS() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/60 mb-8">
               PNaaS, Private Network as a Service
             </span>
-            <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
+            <h2 className="font-heading text-[#0a1628] mb-6">
               Transforming the future of connectivity{' '}
               <span className="text-[#228DC1]">and beyond.</span>
             </h2>
@@ -734,9 +734,9 @@ function ClientVoices() {
             </div>
           </div>
           <div>
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-8">Client Voices</p>
+            <p className="type-label text-[#228DC1] mb-8">Client Voices</p>
             <div className="text-[#228DC1]/60 font-serif-display text-7xl leading-none mb-4">"</div>
-            <blockquote className="font-serif-display text-[#0a1628] leading-snug mb-8" style={{ fontSize: 'clamp(20px, 2.2vw, 28px)' }}>
+            <blockquote className="font-h2 text-[#0a1628] mb-8">
               {t.quote}
             </blockquote>
             <p className="text-[#0a1628] font-semibold text-sm">{t.name}</p>

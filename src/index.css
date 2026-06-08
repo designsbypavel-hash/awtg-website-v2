@@ -230,52 +230,52 @@
    Micro       11px  .type-label           Legal, disclaimers (UPPERCASE only)
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* Display XL — 52px */
+/* Display XL — 52px desktop → 32px mobile */
 .font-serif-display {
   font-family: 'Roboto', system-ui, sans-serif !important;
   font-weight: 700 !important;
-  font-size: 52px;
+  font-size: clamp(32px, 4.5vw, 52px);
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
 
-/* Display L — 44px  (primary section headings) */
+/* Display L — 44px desktop → 28px mobile */
 .font-heading {
   font-family: 'Roboto', system-ui, sans-serif !important;
   font-weight: 700 !important;
-  font-size: 44px;
+  font-size: clamp(28px, 3.5vw, 44px);
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
-/* H1 — 36px */
+/* H1 — 36px desktop → 26px mobile */
 .font-h1 {
   font-family: 'Roboto', system-ui, sans-serif;
   font-weight: 700;
-  font-size: 36px;
+  font-size: clamp(26px, 3vw, 36px);
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
 
-/* H2 — 30px */
+/* H2 — 30px desktop → 22px mobile */
 .font-h2 {
   font-family: 'Roboto', system-ui, sans-serif;
   font-weight: 600;
-  font-size: 30px;
+  font-size: clamp(22px, 2.5vw, 30px);
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
 
-/* H3 — 24px */
+/* H3 — 24px desktop → 19px mobile */
 .font-h3 {
   font-family: 'Roboto', system-ui, sans-serif;
   font-weight: 600;
-  font-size: 24px;
+  font-size: clamp(19px, 2vw, 24px);
   letter-spacing: -0.01em;
   line-height: 1.25;
 }
 
-/* H4 — 20px  (card / feature titles) */
+/* H4 — 20px (card / feature titles) */
 .font-h4,
 .font-card-heading {
   font-family: 'Roboto', system-ui, sans-serif;
@@ -293,7 +293,7 @@
   line-height: 1.35;
 }
 
-/* Body Large — 16px (set on <body>; use this class when overriding) */
+/* Body Large — 16px */
 .text-body { font-size: 16px; line-height: 1.7; }
 
 /* Body Medium — 14px */

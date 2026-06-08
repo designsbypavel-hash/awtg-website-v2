@@ -136,7 +136,7 @@ export default function InsightsCaseStudiesPage() {
                     </span>
                     <span className="text-[#0a1628]/40 text-xs">{featured.date}</span>
                   </div>
-                  <h2 className="font-serif-display text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-5" style={{ fontSize: 'clamp(22px, 2.5vw, 32px)', lineHeight: 1.15 }}>
+                  <h2 className="font-h2 text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-5">
                     {featured.title}
                   </h2>
                   <p className="text-[#0a1628]/65 text-[15px] font-normal leading-[1.75] max-w-lg">
@@ -153,7 +153,7 @@ export default function InsightsCaseStudiesPage() {
                 <div className="space-y-8">
                   {featured.stats.map((s, i) => (
                     <div key={i} className={i < featured.stats.length - 1 ? 'pb-8 border-b border-white/10' : ''}>
-                      <p className="font-black text-white" style={{ fontSize: 'clamp(20px, 2vw, 28px)', letterSpacing: '-0.02em' }}>{s.value}</p>
+                      <p className="font-h4 font-black text-white" style={{ letterSpacing: '-0.02em' }}>{s.value}</p>
                       <p className="type-label text-white/50 mt-1">{s.label}</p>
                     </div>
                   ))}
@@ -184,7 +184,7 @@ export default function InsightsCaseStudiesPage() {
                     </span>
                     <span className="text-[#0a1628]/40 text-[11px]">{cs.date.split(' ').pop()}</span>
                   </div>
-                  <h3 className="text-[#0a1628] font-semibold text-[15px] leading-[1.35] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">
+                  <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">
                     {cs.title}
                   </h3>
                   <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-6">

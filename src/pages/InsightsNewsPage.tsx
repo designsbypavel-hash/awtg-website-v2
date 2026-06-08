@@ -594,7 +594,7 @@ export default function InsightsNewsPage() {
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
               <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Coverage</p>
-              <p className="font-serif-display text-[#0a1628] text-[28px] leading-[1.1]">{newsItems.length}</p>
+              <p className="font-h2 text-[#0a1628]">{newsItems.length}</p>
               <p className="text-[#0a1628]/65 text-sm leading-relaxed mt-2">news updates from the AWTG newsroom archive.</p>
             </div>
           </div>
@@ -612,7 +612,7 @@ export default function InsightsNewsPage() {
                   {featured.category}
                 </span>
               </div>
-              <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-5 group-hover:text-[#228DC1] transition-colors" style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>
+              <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#228DC1] transition-colors">
                 {cleanText(featured.title)}
               </h2>
               <p className="text-[#0a1628]/70 text-[16px] font-normal leading-[1.8] max-w-2xl mb-9">
@@ -634,7 +634,7 @@ export default function InsightsNewsPage() {
                   {spotlight.map((item) => (
                     <Link key={item.title} to={getNewsHref(item)} className="group block border-t border-[#228DC1]/15 pt-5">
                       <p className="text-[#0a1628]/45 text-xs mb-2">{item.date}</p>
-                      <h3 className="text-[#0a1628] text-[15px] font-semibold leading-[1.35] group-hover:text-[#228DC1] transition-colors">{cleanText(item.title)}</h3>
+                      <h3 className="font-h5 text-[#0a1628] group-hover:text-[#228DC1] transition-colors">{cleanText(item.title)}</h3>
                     </Link>
                   ))}
                 </div>
@@ -658,8 +658,8 @@ export default function InsightsNewsPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/55 mb-3">All News</p>
-              <h2 className="font-serif-display text-[#0a1628] leading-[1.1]" style={{ fontSize: 'clamp(26px, 3vw, 42px)' }}>
+              <p className="type-label text-[#0a1628]/55 mb-3">All News</p>
+              <h2 className="font-h2 text-[#0a1628]">
                 {activeCategory === 'All' ? 'Media coverage and announcements.' : activeCategory}
               </h2>
             </div>
@@ -685,7 +685,7 @@ export default function InsightsNewsPage() {
                     </span>
                     <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
                   </div>
-                  <h3 className="text-[#0a1628] text-[16px] font-semibold leading-[1.35] mb-3 group-hover:text-[#228DC1] transition-colors">
+                  <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">
                     {cleanText(item.title)}
                   </h3>
                   <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">
@@ -704,8 +704,8 @@ export default function InsightsNewsPage() {
       <section className="py-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Talk to AWTG</p>
-            <h2 className="font-serif-display text-[#0a1628] leading-tight">
+            <p className="type-label text-[#228DC1] mb-4">Talk to AWTG</p>
+            <h2 className="font-h2 text-[#0a1628]">
               Don’t see what<br />you’re looking for?
             </h2>
             <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-4 max-w-xl">

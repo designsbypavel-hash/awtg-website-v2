@@ -43,7 +43,7 @@ export default function CareersPage() {
                 <div className="w-11 h-11 bg-[#228DC1]/8 flex items-center justify-center mb-6">
                   <FontAwesomeIcon icon={v.icon} className="w-5 h-5 text-[#228DC1]" />
                 </div>
-                <h3 className="font-semibold text-[#0a1628] mb-2 text-[14px]">{v.title}</h3>
+                <h3 className="font-h5 text-[#0a1628] mb-2">{v.title}</h3>
                 <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">{v.desc}</p>
               </div>
             ))}
@@ -60,7 +60,7 @@ export default function CareersPage() {
               <li key={role.title} role="listitem" className="bg-white p-6 border border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-[#228DC1]/40 hover:shadow-md transition-all">
                 <div>
                   <div className="text-[14px] font-semibold text-[#228DC1] uppercase tracking-wider mb-1">{role.dept}</div>
-                  <h3 className="font-semibold text-[#0a1628] text-[20px]">{role.title}</h3>
+                  <h3 className="font-h4 text-[#0a1628]">{role.title}</h3>
                   <div className="flex items-center gap-4 mt-2 text-[14px] text-[#0a1628]/60">
                     <span className="flex items-center gap-1"><FontAwesomeIcon icon={faLocationDot} className="w-3 h-3" /> {role.location}</span>
                     <span className="flex items-center gap-1"><FontAwesomeIcon icon={faBriefcase} className="w-3 h-3" /> {role.type}</span>
