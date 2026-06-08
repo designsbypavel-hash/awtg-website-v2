@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faArrowRight, faCalendarDays, faExternalLinkAlt, faPlay } from '@fortawesome/free-solid-svg-icons'
 import {
   categoryColours,
   cleanText,
@@ -17,6 +17,11 @@ const getArticleBody = (item: (typeof newsItems)[number]) => {
     `This update is part of AWTG's wider ${category} activity, covering the programmes, partnerships, product developments and public-sector work that shape the company's technology portfolio.`,
     `AWTG continues to bring together telecoms engineering, AI, software delivery and systems integration expertise across projects involving 5G, Open RAN, private networks, digital infrastructure and intelligent platforms.`,
   ]
+}
+
+const getYouTubeWatchUrl = (embedUrl: string) => {
+  const match = embedUrl.match(/\/embed\/([^?]+)/)
+  return match ? `https://www.youtube.com/watch?v=${match[1]}` : embedUrl
 }
 
 export default function InsightsNewsDetailPage() {
@@ -75,11 +80,58 @@ export default function InsightsNewsDetailPage() {
 
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-8 lg:px-12">
+          {item.youtubeEmbedUrl && (
+            <div className="mb-12">
+              <div className="aspect-video bg-[#0a1628] border border-gray-100">
+                <iframe
+                  className="h-full w-full"
+                  src={item.youtubeEmbedUrl}
+                  title={cleanText(item.title)}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a
+                  href={getYouTubeWatchUrl(item.youtubeEmbedUrl)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all"
+                >
+                  <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5" /> Watch on YouTube
+                </a>
+                {item.sourceUrl && (
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 text-[#0a1628] text-sm font-medium hover:border-[#228DC1] hover:text-[#228DC1] transition-all"
+                  >
+                    Original AWTG story <FontAwesomeIcon icon={faExternalLinkAlt} className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
+
           {getArticleBody(item).map((paragraph) => (
             <p key={paragraph} className="text-[#0a1628]/70 leading-[1.85] text-[16px] font-normal mb-7">
               {paragraph}
             </p>
           ))}
+
+          {!item.youtubeEmbedUrl && item.sourceUrl && (
+            <div className="mb-12">
+              <a
+                href={item.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#228DC1] text-[#228DC1] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-all"
+              >
+                View original AWTG story <FontAwesomeIcon icon={faExternalLinkAlt} className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          )}
 
           <div className="my-12 border-l-2 border-[#228DC1] pl-8 py-1">
             <p className="font-serif-display text-[#0a1628] leading-snug italic" style={{ fontSize: 'clamp(18px, 2vw, 24px)' }}>

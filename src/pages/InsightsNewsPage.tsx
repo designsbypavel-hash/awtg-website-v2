@@ -1,13 +1,15 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCalendarDays, faNewspaper } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faCalendarDays, faNewspaper, faPlay } from '@fortawesome/free-solid-svg-icons'
 
 type NewsItem = {
   title: string
   date: string
   category: string
   excerpt: string
+  sourceUrl?: string
+  youtubeEmbedUrl?: string
 }
 
 export type { NewsItem }
@@ -36,18 +38,23 @@ export const newsItems: NewsItem[] = [
     date: 'May 4, 2026',
     category: 'Artificial Intelligence',
     excerpt: 'Shaping the future of education with Aruva, AWTG’s AI-powered platform designed to connect institutions, educators and learners through smarter collaboration and digital-first learning.',
+    sourceUrl: 'https://www.awtg.co.uk/the-future-of-learning-is-here-inside-aruva-awtg-educational-ai-platform',
+    youtubeEmbedUrl: 'https://www.youtube.com/embed/L20VwApk4q4?feature=oembed',
   },
   {
     title: 'AWTG’s AI Journey: From Innovation to Expansion',
     date: 'April 29, 2026',
     category: 'Artificial Intelligence',
     excerpt: 'From early innovation to where AWTG is today, the company’s AI journey continues to push the boundaries of what is possible with technology, clarity and real-world impact.',
+    sourceUrl: 'https://www.awtg.co.uk/awtg-ai-journey-from-innovation-to-expansion',
+    youtubeEmbedUrl: 'https://www.youtube.com/embed/BAvyHUxvlfM?feature=oembed',
   },
   {
     title: 'AWTG and Lime Microsystems Announce Strategic Partnership to Deliver AI/ML-Powered Software-Defined Radio Solutions',
     date: 'April 20, 2026',
     category: 'Innovation',
     excerpt: 'AWTG and Lime Microsystems announced a strategic partnership bringing artificial intelligence and machine learning capabilities to LimeSDR software-defined radio platforms.',
+    sourceUrl: 'https://www.awtg.co.uk/awtg-lime-microsystems-announce-strategic-partnership-to-deliver-ai-ml%e2%80%91powered-software%e2%80%91defined-radio-solutions',
   },
   {
     title: 'AWTG Appointed to Crown Commercial Service Technology Services 4 Framework',
@@ -60,12 +67,16 @@ export const newsItems: NewsItem[] = [
     date: 'December 16, 2025',
     category: 'Engineering',
     excerpt: 'Matt Moayedi shares how AWTG builds flexible, future-ready digital infrastructure across sectors from smart cities and public networks to edge computing and AI.',
+    sourceUrl: 'https://www.awtg.co.uk/innovators-table-episode-5-matt-moayedi-awtg-director-of-engineering',
+    youtubeEmbedUrl: 'https://www.youtube.com/embed/jd4rkMayo_U?feature=oembed',
   },
   {
     title: 'Innovator’s Table Episode 4: Peter Najm, AWTG AI Product Manager',
     date: 'December 8, 2025',
     category: 'Artificial Intelligence',
     excerpt: 'Peter Najm discusses how AWTG uses AI to drive efficiency, automation and transparency across customer service, smart cities and other operational settings.',
+    sourceUrl: 'https://www.awtg.co.uk/innovators-table-episode-4-peter-najm-awtg-ai-product-manager',
+    youtubeEmbedUrl: 'https://www.youtube.com/embed/bupY1MLSTBw?feature=oembed',
   },
   {
     title: 'AWTG is Ready to Showcase AI-Centric Innovation at Telecom Review Leaders’ Summit 2025',
@@ -665,7 +676,7 @@ export default function InsightsNewsPage() {
                 <div className="h-36 bg-[#eef5f9] relative overflow-hidden border-b border-gray-100">
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,141,193,0.18),rgba(10,22,40,0.04))]" />
                   <div className="absolute left-6 top-6 h-11 w-11 bg-white flex items-center justify-center text-[#228DC1]">
-                    <FontAwesomeIcon icon={faNewspaper} className="w-5 h-5" />
+                    <FontAwesomeIcon icon={item.youtubeEmbedUrl ? faPlay : faNewspaper} className="w-5 h-5" />
                   </div>
                   <p className="absolute right-6 bottom-5 font-mono text-[13px] text-[#0a1628]/35">
                     {String(index + 1).padStart(2, '0')}
@@ -685,7 +696,7 @@ export default function InsightsNewsPage() {
                     {cleanText(item.excerpt)}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
-                    Read story <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                    {item.youtubeEmbedUrl ? 'Watch story' : 'Read story'} <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </Link>
