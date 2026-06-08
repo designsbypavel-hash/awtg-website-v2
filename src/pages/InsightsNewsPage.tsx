@@ -628,19 +628,19 @@ export default function InsightsNewsPage() {
                 </span>
               </div>
             </Link>
-            <div className="lg:col-span-2 bg-[#0a1628] text-white p-8 lg:p-10 flex flex-col justify-between min-h-[360px]">
+            <div className="lg:col-span-2 bg-[#f0f7fc] border border-[#228DC1]/15 p-8 lg:p-10 flex flex-col justify-between min-h-[360px]">
               <div>
-                <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#7ac4e0] mb-7">Latest briefings</p>
+                <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#228DC1] mb-7">Latest briefings</p>
                 <div className="space-y-6">
                   {spotlight.map((item) => (
-                    <Link key={item.title} to={getNewsHref(item)} className="group block border-t border-white/10 pt-5">
-                      <p className="text-white/55 text-xs mb-2">{item.date}</p>
-                      <h3 className="text-white text-[15px] font-semibold leading-[1.35] group-hover:text-[#7ac4e0] transition-colors">{cleanText(item.title)}</h3>
+                    <Link key={item.title} to={getNewsHref(item)} className="group block border-t border-[#228DC1]/15 pt-5">
+                      <p className="text-[#0a1628]/45 text-xs mb-2">{item.date}</p>
+                      <h3 className="text-[#0a1628] text-[15px] font-semibold leading-[1.35] group-hover:text-[#228DC1] transition-colors">{cleanText(item.title)}</h3>
                     </Link>
                   ))}
                 </div>
               </div>
-              <Link to="/contact" className="mt-10 inline-flex items-center gap-2 text-[#7ac4e0] text-sm font-semibold hover:text-white transition-colors">
+              <Link to="/contact" className="mt-10 inline-flex items-center gap-2 text-[#228DC1] text-sm font-semibold hover:text-[#1a7fa8] transition-colors">
                 Media enquiries <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
               </Link>
             </div>
