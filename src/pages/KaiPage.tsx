@@ -897,13 +897,16 @@ function IntegrationsSection() {
             </p>
             <div className="flex flex-col gap-3">
               {[
-                { label: 'CRM, tickets, knowledge base',  value: 'reads live data'        },
-                { label: 'Email, chat, messaging, voice', value: 'acts through channels'  },
-                { label: 'API and webhooks',              value: 'connects to anything'   },
+                { label: 'Customer context', value: 'CRM, tickets, knowledge bases, and account history' },
+                { label: 'Omnichannel support', value: 'Web chat, email, WhatsApp, Teams, Slack, and voice' },
+                { label: 'Actions and automation', value: 'APIs, workflows, handovers, and ticket creation' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 bg-[#228DC1] rounded-full shrink-0 mt-1.5" />
-                  <span className="text-[#0a1628]/60 text-[13px] font-medium">{item.label} <span className="text-[#0a1628]/40 font-normal">({item.value})</span></span>
+                  <div className="grid gap-1">
+                    <span className="text-[#0a1628] text-[13px] font-semibold leading-tight">{item.label}</span>
+                    <span className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{item.value}</span>
+                  </div>
                 </div>
               ))}
             </div>
