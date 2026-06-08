@@ -6,15 +6,16 @@ import Home from './pages/Home'
 import ContactPage from './pages/ContactPage'
 import CareersPage from './pages/CareersPage'
 import {
-  CookiesPage,
   IBecomePage,
   InnovationPage,
   IYouthPage,
   PartnershipsPage,
-  PrivacyPage,
   ServicesOverviewPage,
   TermsPage,
 } from './pages/UtilityPages'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import CookiePolicyPage from './pages/CookiePolicyPage'
+import CareerRoleDetailPage from './pages/CareerRoleDetailPage'
 
 // Solutions
 import MobilePrivateNetworksPage from './pages/MobilePrivateNetworksPage'
@@ -72,11 +73,12 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="careers" element={<CareersPage />} />
+        <Route path="careers/:slug" element={<CareerRoleDetailPage />} />
         <Route path="ibecome" element={<IBecomePage />} />
         <Route path="iyouth" element={<IYouthPage />} />
-        <Route path="privacy" element={<PrivacyPage />} />
+        <Route path="privacy" element={<PrivacyPolicyPage />} />
         <Route path="terms" element={<TermsPage />} />
-        <Route path="cookies" element={<CookiesPage />} />
+        <Route path="cookies" element={<CookiePolicyPage />} />
 
         {/* Products */}
         <Route path="kai" element={<KaiPage />} />

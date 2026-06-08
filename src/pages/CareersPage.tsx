@@ -8,15 +8,7 @@ import {
   faHouseChimney, faHandshake, faPeopleGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-
-const openRoles = [
-  { title: 'Senior RF Engineer', location: 'London, UK', type: 'Full-time', dept: 'Engineering' },
-  { title: 'DevOps Engineer, Network Automation', location: 'Remote (UK)', type: 'Full-time', dept: 'Engineering' },
-  { title: '5G Solutions Architect', location: 'Remote (UK)', type: 'Full-time', dept: 'Pre-Sales' },
-  { title: 'AI/ML Engineer, Telecoms', location: 'London, UK', type: 'Full-time', dept: 'AI & Data' },
-  { title: 'Project Manager, Private Networks', location: 'Manchester, UK', type: 'Full-time', dept: 'Delivery' },
-  { title: 'Business Development Manager', location: 'London, UK', type: 'Full-time', dept: 'Commercial' },
-]
+import { roles as openRoles, getRoleHref } from './CareerRoleDetailPage'
 
 const values: { icon: IconDefinition; title: string; desc: string }[] = [
   { icon: faLightbulb, title: 'Innovation at the core', desc: 'We are at the frontier of 5G, Open RAN and AI — working on real-world deployments that push the boundaries of what networks can do.' },
@@ -207,10 +199,10 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <Link
-                    to="/contact"
+                    to={getRoleHref(role.slug)}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-2.5 border border-[#228DC1] text-[#228DC1] text-[13px] font-semibold hover:bg-[#228DC1] hover:text-white transition-all"
                   >
-                    Apply Now <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                    View Role <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </li>
