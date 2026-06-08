@@ -247,7 +247,7 @@ export default function Navigation() {
     : 'bg-transparent'
 
   const linkCls = scrolled || activeDropdown || !isHome
-    ? 'text-[#0a1628]/65 hover:text-[#0a1628]'
+    ? 'text-[#0a1628]/60 hover:text-[#0a1628]'
     : 'text-white/80 hover:text-white'
 
   // Close dropdowns on Escape key
@@ -378,7 +378,7 @@ export default function Navigation() {
                           <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
                             {item.label}
                           </p>
-                          <p className="text-[#0a1628]/65 text-xs font-normal leading-relaxed">
+                          <p className="text-[#0a1628]/60 text-xs font-normal leading-relaxed">
                             {item.desc}
                           </p>
                         </div>
@@ -499,7 +499,7 @@ export default function Navigation() {
                     ))}
                     {nav.groups && nav.groups.map((group) => (
                       <div key={group.heading}>
-                        <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/65 mb-2 mt-3">{group.heading}</p>
+                        <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/60 mb-2 mt-3">{group.heading}</p>
                         {group.items.map((item) => (
                           <Link key={item.href} to={item.href} className="block py-1">
                             <p className="text-sm text-[#0a1628] font-normal">{item.label}</p>

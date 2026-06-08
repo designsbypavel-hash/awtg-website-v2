@@ -51,14 +51,14 @@ export default function IndustriesEnterprisePage() {
           <h2 className="font-heading text-[#0a1628] mb-4">
             Solutions for enterprise connectivity
           </h2>
-          <p className="text-[#0a1628]/65 mb-14 max-w-2xl font-normal text-[18px] leading-[1.7]">
+          <p className="text-[#0a1628]/60 mb-14 max-w-2xl font-normal text-[18px] leading-[1.7]">
             AWTG designs and deploys the wireless and AI infrastructure that enterprise organisations need to operate securely, efficiently and at scale.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
             {solutions.map(s => (
               <div key={s.title} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
                 <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{s.title}</h3>
-                <p className="text-[#0a1628]/65 text-sm font-normal leading-relaxed">{s.desc}</p>
+                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>

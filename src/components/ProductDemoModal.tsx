@@ -93,7 +93,7 @@ export default function ProductDemoModal({
               <h2 className="font-serif-display text-[#0a1628] leading-[1.04] mb-5" style={{ fontSize: 'clamp(34px, 4vw, 54px)' }}>
                 {title}
               </h2>
-              <p className="max-w-xl text-[17px] font-normal leading-[1.7] text-[#0a1628]/65">
+              <p className="max-w-xl text-[17px] font-normal leading-[1.7] text-[#0a1628]/60">
                 {description}
               </p>
 
@@ -156,7 +156,7 @@ export default function ProductDemoModal({
 
               <label className="block">
                 <span className="mb-2 block text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/75">Company size *</span>
-                <select className="h-[52px] w-full rounded-[7px] border border-gray-300 bg-white px-4 text-[15px] text-[#0a1628]/65 outline-none transition-colors focus:border-[#228DC1] focus:ring-4 focus:ring-[#228DC1]/10">
+                <select className="h-[52px] w-full rounded-[7px] border border-gray-300 bg-white px-4 text-[15px] text-[#0a1628]/60 outline-none transition-colors focus:border-[#228DC1] focus:ring-4 focus:ring-[#228DC1]/10">
                   <option value="">Select number of employees</option>
                   {companySizes.map((size) => (
                     <option key={size} value={size}>{size}</option>

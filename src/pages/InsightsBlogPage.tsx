@@ -121,7 +121,7 @@ export default function InsightsBlogPage() {
           >
             Blog
           </h1>
-          <p className="text-[#0a1628]/65 text-[18px] font-normal max-w-xl leading-[1.7]">
+          <p className="text-[#0a1628]/60 text-[18px] font-normal max-w-xl leading-[1.7]">
             Expert perspectives on telecoms, AI, private networks, and the infrastructure decisions that define the next decade.
           </p>
         </div>
@@ -145,7 +145,7 @@ export default function InsightsBlogPage() {
               <div className="lg:col-span-3 p-10 lg:p-14 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[14px] font-semibold uppercase tracking-[0.15em] text-[#0a1628]/65">Featured</span>
+                    <span className="text-[14px] font-semibold uppercase tracking-[0.15em] text-[#0a1628]/60">Featured</span>
                     <span className="w-8 h-px bg-gray-200" />
                     <span className={`text-[14px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[featured.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                       {featured.tag}
@@ -205,14 +205,14 @@ export default function InsightsBlogPage() {
                       <h2 className="font-h5 text-[#0a1628] mb-2 group-hover:text-[#228DC1] transition-colors">
                         {post.title}
                       </h2>
-                      <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">
+                      <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
                         {post.excerpt}
                       </p>
                     </div>
                   </div>
                   <div className="flex lg:flex-col lg:items-end gap-4 lg:gap-2">
-                    <span className="text-[#0a1628]/65 text-xs">{post.date}</span>
-                    <span className="text-[#0a1628]/65 text-xs flex items-center gap-1.5">
+                    <span className="text-[#0a1628]/60 text-xs">{post.date}</span>
+                    <span className="text-[#0a1628]/60 text-xs flex items-center gap-1.5">
                       <FontAwesomeIcon icon={faClock} className="w-3 h-3" /> {post.readTime} read
                     </span>
                     <span className="text-[#228DC1] text-xs font-semibold uppercase tracking-[0.1em] flex items-center gap-1 group-hover:gap-2 transition-all ml-auto">

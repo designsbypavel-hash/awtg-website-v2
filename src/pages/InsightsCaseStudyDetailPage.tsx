@@ -415,7 +415,7 @@ export default function InsightsCaseStudyDetailPage() {
                   {block.stats.map((s, j) => (
                     <div key={j} className={`px-6 py-6 ${j < block.stats!.length - 1 ? 'border-r border-gray-100' : ''}`}>
                       <p className="font-serif-display text-[#0a1628]" style={{ fontSize: '24px', lineHeight: 1.1 }}>{s.value}</p>
-                      <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7] mt-1">{s.label}</p>
+                      <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7] mt-1">{s.label}</p>
                     </div>
                   ))}
                 </div>

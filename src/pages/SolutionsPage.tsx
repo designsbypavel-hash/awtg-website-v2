@@ -87,7 +87,7 @@ export default function SolutionsPage() {
             built for the{' '}
             <span className="italic text-[#228DC1]">AI era.</span>
           </h1>
-          <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] max-w-xl font-normal">
+          <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] max-w-xl font-normal">
             From private 5G networks to enterprise AI deployment, AWTG delivers end-to-end technology solutions for UK enterprises and public sector, built to perform.
           </p>
         </div>

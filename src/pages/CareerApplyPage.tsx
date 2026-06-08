@@ -175,7 +175,7 @@ export default function CareerApplyPage() {
               </div>
               <p className="type-label text-[#228DC1] mb-4">Application Received</p>
               <h1 className="font-h2 text-[#0a1628] mb-5">Thank you, {form.firstName}.</h1>
-              <p className="text-[#0a1628]/65 text-[16px] leading-[1.8] mb-8">
+              <p className="text-[#0a1628]/60 text-[16px] leading-[1.8] mb-8">
                 We've received your application for <strong className="text-[#0a1628]">{role.title}</strong>. Our team will review it and get back to you within 5 business days.
               </p>
               <div className="bg-white border border-gray-100 p-6 mb-8 space-y-2">

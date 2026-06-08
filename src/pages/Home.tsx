@@ -313,7 +313,7 @@ function AIProofPoints() {
               British Council.<br />
               <span className="text-[#228DC1]">AI handling learner support at scale.</span>
             </h2>
-            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-8">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-8">
               We deployed Kai directly into British Council English Online. Customer satisfaction is up. Escalations are down. It's live, not a demo.
             </p>
             <Link to="/contact" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
@@ -351,7 +351,7 @@ export function OurSolutions() {
               <span className="text-[#228DC1]">technology supercycle.</span>
             </h2>
           </div>
-          <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] font-normal">
+          <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] font-normal">
             Whether you're a mobile operator, enterprise CIO, or public sector leader, AWTG delivers the connectivity, intelligence, and software your organisation needs to lead.
           </p>
         </div>
@@ -447,7 +447,7 @@ function Industries() {
               Powering transformation<br />across every sector.
             </h2>
           </div>
-          <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] font-normal">
+          <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] font-normal">
             From mobile operators to government bodies, AWTG delivers technology built specifically for your world. Select your sector to explore.
           </p>
         </div>
@@ -613,7 +613,7 @@ function WhyAWTG() {
             <div key={s.label} className="bg-white p-7 md:p-8">
               <p className="font-heading text-[#0a1628] mb-1">{s.value}</p>
               <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#228DC1] mb-1">{s.label}</p>
-              <p className="text-[14px] text-[#0a1628]/65 font-normal">{s.sub}</p>
+              <p className="text-[14px] text-[#0a1628]/60 font-normal">{s.sub}</p>
             </div>
           ))}
         </div>
@@ -783,7 +783,7 @@ export function Partners() {
   return (
     <section className="py-20 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <p className="text-center text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/65 mb-12">
+        <p className="text-center text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-12">
           Trusted by Industry Leaders & Public Sector Bodies
         </p>
         <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12">

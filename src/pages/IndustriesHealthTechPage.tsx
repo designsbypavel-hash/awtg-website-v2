@@ -32,15 +32,15 @@ export default function IndustriesHealthTechPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-12 grid grid-cols-3 gap-8 text-center">
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">20+</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">NHS Trusts</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">NHS Trusts</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">DSPT</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Compliant</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Compliant</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">99.99%</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Uptime SLA</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Uptime SLA</p>
           </div>
         </div>
       </section>

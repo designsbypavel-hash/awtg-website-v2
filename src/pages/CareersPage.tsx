@@ -57,7 +57,7 @@ export default function CareersPage() {
               <h1 className="font-serif-display text-[#0a1628] leading-[1.05] mb-6">
                 Be at the Forefront<br />of Connectivity<br />Innovation
               </h1>
-              <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.75] max-w-lg mb-10">
+              <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.75] max-w-lg mb-10">
                 Join a team of world-class engineers, researchers and innovators deploying 5G, Open RAN and AI solutions that connect communities and enterprises worldwide.
               </p>
               <div className="flex flex-wrap items-center gap-4">

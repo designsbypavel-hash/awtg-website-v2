@@ -81,14 +81,14 @@ export default function AboutOverviewPage() {
               <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
                 AWTG delivers innovative platforms, solutions and services for enterprises, cities and communities.
               </h1>
-              <p className="text-[#0a1628]/65 text-[18px] max-w-2xl font-normal leading-[1.7]">
+              <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.7]">
                 AWTG is an end-to-end engineering services and technology solutions provider operating across digital technology markets.
               </p>
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
               <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Delivery footprint</p>
               <p className="font-h2 text-[#0a1628]">45,000+</p>
-              <p className="text-[#0a1628]/65 text-sm leading-relaxed mt-2">RAN sites delivered globally.</p>
+              <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-2">RAN sites delivered globally.</p>
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function AboutOverviewPage() {
             <div key={item.title} className="bg-white p-7">
               <FontAwesomeIcon icon={item.icon} className="w-5 h-5 text-[#228DC1] mb-5" />
               <h2 className="font-h5 text-[#0a1628] mb-2">{item.title}</h2>
-              <p className="text-[#0a1628]/65 text-[14px] leading-[1.7] font-normal">{item.text}</p>
+              <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal">{item.text}</p>
             </div>
           ))}
         </div>

@@ -122,7 +122,7 @@
           >
             "AWTG is a company serious enough that it doesn't need to perform seriousness."
           </blockquote>
-          <p className="text-[#0a1628]/65 mt-6 text-sm font-normal max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[#0a1628]/60 mt-6 text-sm font-normal max-w-2xl mx-auto leading-relaxed">
             Harvey doesn't use colour to signal prestige. The restraint is the prestige. Nokia doesn't soften its headlines. The boldness is the confidence. Ericsson doesn't illustrate its claims. The data is the proof.
           </p>
         </div>
@@ -152,7 +152,7 @@
                   </span>
                 </div>
                 <div className="lg:col-span-2">
-                  <p className="text-[#0a1628]/65 leading-relaxed font-normal text-[15px]">
+                  <p className="text-[#0a1628]/60 leading-relaxed font-normal text-[15px]">
                     {d.rationale}
                   </p>
                 </div>

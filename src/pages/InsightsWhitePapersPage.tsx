@@ -156,14 +156,14 @@ export default function InsightsWhitePapersPage() {
               <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
                 Technical research and practical frameworks from AWTG.
               </h1>
-              <p className="text-[#0a1628]/65 text-[18px] max-w-2xl font-normal leading-[1.7]">
+              <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.7]">
                 Explore white papers across Open RAN, private networks, public services, AI infrastructure, 5G strategy, rail, small cells and future networks.
               </p>
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
               <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Resource library</p>
               <p className="font-h2 text-[#0a1628]">{whitePapers.length}</p>
-              <p className="text-[#0a1628]/65 text-sm leading-relaxed mt-2">downloadable PDF white papers available.</p>
+              <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-2">downloadable PDF white papers available.</p>
             </div>
           </div>
         </div>
@@ -247,7 +247,7 @@ export default function InsightsWhitePapersPage() {
                   <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">
                     {paper.title}
                   </h3>
-                  <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">
+                  <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
                     {paper.desc}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">

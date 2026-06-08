@@ -25,7 +25,7 @@ export default function HeroSection() {
             Connecting the <span className="text-[#228DC1]">Future</span> of Enterprise Networks
           </h1>
 
-          <p className="text-[16px] text-[#0a1628]/65 leading-[1.7] mb-10 max-w-2xl">
+          <p className="text-[16px] text-[#0a1628]/60 leading-[1.7] mb-10 max-w-2xl">
             AWTG delivers cutting-edge 5G, AI, and private network solutions that empower businesses and governments to thrive in an increasingly connected world.
           </p>
 

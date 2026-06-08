@@ -13,7 +13,7 @@ export default function ContactPage() {
           <h1 className="font-h1 text-[#0a1628] mb-6">
             Let&apos;s Start a Conversation
           </h1>
-          <p className="text-[#0a1628]/65 text-[16px] max-w-xl font-normal leading-[1.7]">
+          <p className="text-[#0a1628]/60 text-[16px] max-w-xl font-normal leading-[1.75]">
             Whether you have a project in mind or just want to explore what&apos;s possible, our experts are ready to help.
           </p>
         </div>
@@ -38,25 +38,25 @@ export default function ContactPage() {
               >
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="c-first" className="block text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-2">First Name *</label>
-                    <input id="c-first" required className="w-full border border-gray-200 px-4 py-3 text-sm text-[#0a1628] focus:outline-2 focus:outline-[#228DC1] bg-white" placeholder="Jane" />
+                    <label htmlFor="c-first" className="form-label">First Name *</label>
+                    <input id="c-first" required className="form-input" placeholder="Jane" />
                   </div>
                   <div>
-                    <label htmlFor="c-last" className="block text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-2">Last Name *</label>
-                    <input id="c-last" required className="w-full border border-gray-200 px-4 py-3 text-sm text-[#0a1628] focus:outline-2 focus:outline-[#228DC1] bg-white" placeholder="Smith" />
+                    <label htmlFor="c-last" className="form-label">Last Name *</label>
+                    <input id="c-last" required className="form-input" placeholder="Smith" />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="c-email" className="block text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-2">Work Email *</label>
-                  <input id="c-email" type="email" required className="w-full border border-gray-200 px-4 py-3 text-sm text-[#0a1628] focus:outline-2 focus:outline-[#228DC1] bg-white" placeholder="jane@company.com" />
+                  <label htmlFor="c-email" className="form-label">Work Email *</label>
+                  <input id="c-email" type="email" required className="form-input" placeholder="jane@company.com" />
                 </div>
                 <div>
-                  <label htmlFor="c-org" className="block text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-2">Organisation *</label>
-                  <input id="c-org" required className="w-full border border-gray-200 px-4 py-3 text-sm text-[#0a1628] focus:outline-2 focus:outline-[#228DC1] bg-white" placeholder="Company name" />
+                  <label htmlFor="c-org" className="form-label">Organisation *</label>
+                  <input id="c-org" required className="form-input" placeholder="Company name" />
                 </div>
                 <div>
-                  <label htmlFor="c-interest" className="block text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-2">Area of Interest</label>
-                  <select id="c-interest" className="w-full border border-gray-200 px-4 py-3 text-sm text-[#0a1628] focus:outline-2 focus:outline-[#228DC1] bg-white">
+                  <label htmlFor="c-interest" className="form-label">Area of Interest</label>
+                  <select id="c-interest" className="form-input">
                     <option value="">Select a topic</option>
                     <option>Products and Services</option>
                     <option>Solutions</option>
@@ -65,10 +65,10 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="c-message" className="block text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-2">Message *</label>
-                  <textarea id="c-message" required rows={5} className="w-full border border-gray-200 px-4 py-3 text-sm text-[#0a1628] focus:outline-2 focus:outline-[#228DC1] bg-white resize-none" placeholder="Tell us about your project or question..." />
+                  <label htmlFor="c-message" className="form-label">Message *</label>
+                  <textarea id="c-message" required rows={5} className="form-input resize-none" placeholder="Tell us about your project or question..." />
                 </div>
-                <button type="submit" className="px-8 py-3.5 bg-[#228DC1] text-white text-[14px] font-medium tracking-wide hover:bg-[#1a6e99] transition-colors">
+                <button type="submit" className="btn btn-primary">
                   Send Message
                 </button>
               </form>
@@ -82,7 +82,7 @@ export default function ContactPage() {
               <div className="flex gap-4">
                 <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 text-[#228DC1] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-1">Email</p>
+                  <p className="form-label mb-1">Email</p>
                   <a href="mailto:info@awtg.co.uk" className="text-[#0a1628] font-medium hover:text-[#228DC1] transition-colors">info@awtg.co.uk</a>
                   <p className="text-[14px] text-[#0a1628]/60 mt-0.5 font-normal">Typically reply within 2 hours</p>
                 </div>
@@ -90,7 +90,7 @@ export default function ContactPage() {
               <div className="flex gap-4">
                 <FontAwesomeIcon icon={faPhone} className="w-5 h-5 text-[#228DC1] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-1">Phone</p>
+                  <p className="form-label mb-1">Phone</p>
                   <a href="tel:+442046027050" className="text-[#0a1628] font-semibold hover:text-[#228DC1] transition-colors">+44 (0) 20 4602 7050</a>
                   <p className="text-[14px] text-[#0a1628]/60 mt-0.5 font-normal">Mon to Fri, 8:30am to 6:00pm GMT</p>
                 </div>
@@ -98,7 +98,7 @@ export default function ContactPage() {
               <div className="flex gap-4">
                 <FontAwesomeIcon icon={faLocationDot} className="w-5 h-5 text-[#228DC1] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-1">Head Office</p>
+                  <p className="form-label mb-1">Head Office</p>
                   <p className="text-[#0a1628] font-medium">8 Canham Mews, Canham Road</p>
                   <p className="text-[14px] text-[#0a1628]/60 mt-0.5 font-normal">London, W3 7SR, United Kingdom</p>
                 </div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
               <div className="flex gap-4">
                 <FontAwesomeIcon icon={faClock} className="w-5 h-5 text-[#228DC1] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-1">Response Time</p>
+                  <p className="form-label mb-1">Response Time</p>
                   <p className="text-[#0a1628] font-medium">Within 2 business hours</p>
                   <p className="text-[14px] text-[#0a1628]/60 mt-0.5 font-normal">For urgent matters, please call</p>
                 </div>

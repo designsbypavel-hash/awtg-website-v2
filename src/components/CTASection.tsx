@@ -17,22 +17,22 @@ export default function CTASection({
 }: CTASectionProps) {
   return (
     <section className="py-24 bg-[#f8fafc]">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div className="max-w-4xl mx-auto px-8 lg:px-12 text-center">
         <h2 className="font-heading text-[#0a1628] mb-6">{title}</h2>
-        <p className="text-[#0a1628]/65 text-[18px] mb-10 max-w-2xl mx-auto font-normal leading-[1.7]">{subtitle}</p>
+        <p className="text-[#0a1628]/60 text-[17px] mb-10 max-w-2xl mx-auto font-normal leading-[1.75]">{subtitle}</p>
         <div className="flex flex-wrap justify-center gap-4">
           {primaryOnClick ? (
             <button
               type="button"
               onClick={primaryOnClick}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white font-semibold hover:bg-[#1a6e99] transition-colors"
+              className="btn btn-primary"
             >
               {primaryLabel}
             </button>
           ) : (
             <Link
               to={primaryHref}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white font-semibold hover:bg-[#1a6e99] transition-colors"
+              className="btn btn-primary"
             >
               {primaryLabel}
             </Link>

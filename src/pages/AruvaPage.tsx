@@ -129,7 +129,7 @@ function CurriculumAgnosticSection() {
               One central Aruva layer.<br />
               <span className="text-[#228DC1]">Every subject can use it.</span>
             </h2>
-            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.75] max-w-xl">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-xl">
               Aruva stays centralised while the curriculum changes around it. Geography, Physics, Biology, Psychology, Maths, Economics, Chemistry and History all connect to the same governed learning intelligence layer.
             </p>
             <div className="mt-8 grid sm:grid-cols-2 gap-3 max-w-xl">
@@ -411,7 +411,7 @@ function HowItWorksSection() {
           <h2 className="font-heading text-[#0a1628] mb-4">
             A learning story, guided by <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva</span>
           </h2>
-          <p className="text-[#0a1628]/65 text-[16px] font-normal leading-relaxed max-w-2xl">
+          <p className="text-[#0a1628]/60 text-[16px] font-normal leading-relaxed max-w-2xl">
             Start with a student question. Aruva guides the answer, captures the learning signal, adapts the next step and gives educators the evidence while learning is still happening.
           </p>
         </div>
@@ -686,7 +686,7 @@ function TutorVisual() {
             <img src="/aruva-logo.png" alt="Aruva" style={{ height: 14, width: 'auto', objectFit: 'contain' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
           </div>
-          <span className="text-[14px] font-semibold text-[#0a1628]/65">Adaptive Tutor</span>
+          <span className="text-[14px] font-semibold text-[#0a1628]/60">Adaptive Tutor</span>
           <span className="text-[#0a1628]/20">Â·</span>
           <span className="text-[13px] text-[#0a1628]/40">Business Strategy 101 Â· Week 3</span>
         </div>
@@ -2538,7 +2538,7 @@ function AudienceCard({ a, i, inView, onDemoClick }: {
               <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background:a.color }}>
                 <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
-              <p className="text-[#0a1628]/65 text-[13px] font-normal leading-relaxed">{pt}</p>
+              <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{pt}</p>
             </div>
           ))}
         </div>
@@ -2742,7 +2742,7 @@ export default function AruvaPage() {
                 AI that understands<br />
                 <span style={{ color: '#0a1628' }}>how your students learn.</span>
               </h1>
-              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
+              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
                 Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -2768,7 +2768,7 @@ export default function AruvaPage() {
             'IT and Data Governance','Student Experience Teams','Russell Group Universities',
             'Teaching and Learning Teams','Academic Quality Officers','Professors and Lecturers',
           ].map((item, i) => (
-            <span key={i} className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/65 flex items-center gap-10">
+            <span key={i} className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/60 flex items-center gap-10">
               {item}<span className="w-1.5 h-1.5 rounded-full bg-[#fbbf24]" />
             </span>
           ))}
@@ -2850,7 +2850,7 @@ export default function AruvaPage() {
                 AI that institutions<br />
                 <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>can govern.</span>
               </h2>
-              <p className="text-[#0a1628]/65 text-base font-normal leading-relaxed mb-8">
+              <p className="text-[#0a1628]/60 text-base font-normal leading-relaxed mb-8">
                 Built for the real requirements of higher education: data residency, audit trails, role based access and full control over how AI behaves.
               </p>
               {/* Dark card */}
@@ -2921,7 +2921,7 @@ export default function AruvaPage() {
             Ready to see Aruva<br />
             <span className="text-[#228DC1]">in your courses?</span>
           </h2>
-          <p className="text-[#0a1628]/65 text-[18px] mb-10 max-w-2xl mx-auto font-normal leading-[1.7]">
+          <p className="text-[#0a1628]/60 text-[18px] mb-10 max-w-2xl mx-auto font-normal leading-[1.7]">
             Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution.
           </p>
           <button

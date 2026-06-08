@@ -458,7 +458,7 @@ export function KaiDashboard() {
                   className={`px-4 py-3 text-[11px] whitespace-nowrap transition-colors border-b-2 -mb-px ${
                     activeTab === key
                       ? 'border-[#228DC1] text-[#228DC1] font-semibold'
-                      : 'border-transparent text-[#0a1628]/40 hover:text-[#0a1628]/65 font-medium'
+                      : 'border-transparent text-[#0a1628]/40 hover:text-[#0a1628]/60 font-medium'
                   }`}
                 >
                   {tab}
@@ -500,11 +500,11 @@ export function KaiDashboard() {
                   </div>
                   <div>
                     <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1.5">Created</p>
-                    <p className="text-[#0a1628]/65 text-[12px]">12 Mar 2025</p>
+                    <p className="text-[#0a1628]/60 text-[12px]">12 Mar 2025</p>
                   </div>
                   <div>
                     <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1.5">Last trained</p>
-                    <p className="text-[#0a1628]/65 text-[12px]">Today, 08:14</p>
+                    <p className="text-[#0a1628]/60 text-[12px]">Today, 08:14</p>
                   </div>
                 </div>
 
@@ -790,7 +790,7 @@ function IntegrationsSection() {
             <h2 className="font-heading text-[#0a1628] mb-5">
               Connects to your stack. Works from day one.
             </h2>
-            <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] mb-8">
+            <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-8">
               Kai connects to your existing CRM, ticketing, messaging, knowledge, and workflow tools, giving your AI agent the context it needs to resolve queries, route requests, qualify leads, and trigger actions without replacing your current systems.
             </p>
             <div className="flex flex-col gap-3">
@@ -891,7 +891,7 @@ function SecurityComplianceSection() {
             <h2 className="font-heading text-[#0a1628] mb-5" style={{ ...reveal(leftInView, 100) }}>
               Designed for regulated<br />environments.
             </h2>
-            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8 max-w-xl" style={reveal(leftInView, 180)}>
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8 max-w-xl" style={reveal(leftInView, 180)}>
               Safe, measurable and auditable AI for teams with real governance requirements.
             </p>
 
@@ -1674,7 +1674,7 @@ function OmnichannelSection() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="type-label text-[#228DC1] mb-4">Omnichannel</p>
           <h2 className="font-heading text-[#0a1628] mb-5">One AI. Every channel.</h2>
-          <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7]">
+          <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
             Kai meets customers on Telegram, your website or email — with the same intelligence, context and resolution on every channel.
           </p>
         </div>
@@ -2044,7 +2044,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               Service that <span style={{ color: '#0a1628' }}>resolves,</span><br />
               no just responds.
             </h1>
-            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
               Kai resolves customer requests, qualifies leads, triggers workflows, and improves every customer interaction.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -2143,7 +2143,7 @@ export default function KaiPage() {
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Our AI agent is live<br />at enterprise scale.
               </h2>
-              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8">
+              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
                 Kai is running in production at enterprise organisations today. Real query volume, real containment rates, real CSAT improvement. Tracked from the first week, not the first quarter.
               </p>
               <Link to="/insights/case-studies" className="text-[13px] font-semibold text-[#228DC1] hover:underline transition-all">
@@ -2174,7 +2174,7 @@ export default function KaiPage() {
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Escalation rate reduced from 40% to 10% on average for all our users
               </h2>
-              <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8">
+              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
                 Kai handles the complex queries that used to demand human escalation, steadily containing more every month from day one.
               </p>
             </div>

@@ -110,7 +110,7 @@ function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-3">
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-[#0a1628]/65 text-[14px] leading-[1.8]">
+        <li key={item} className="flex items-start gap-3 text-[#0a1628]/60 text-[14px] leading-[1.8]">
           <span className="mt-[7px] h-1.5 w-1.5 bg-[#228DC1] shrink-0" />
           <span>{item}</span>
         </li>
@@ -166,7 +166,7 @@ export default function AboutSustainabilityPage() {
 
           <div className="grid lg:grid-cols-2 gap-12 mb-20">
             <h2 className="font-heading text-[#0a1628]">Commitment to Achieving Net Zero</h2>
-            <p className="text-[#0a1628]/65 text-[16px] leading-[1.85] self-center">
+            <p className="text-[#0a1628]/60 text-[16px] leading-[1.85] self-center">
               AWTG is committed to achieving Net Zero by 2045. We are currently working to develop a full implementation plan which will allow us to bring this target further forward. All emissions reported and future plans include the entities controlled by AWTG Ltd.
             </p>
           </div>
@@ -238,13 +238,13 @@ export default function AboutSustainabilityPage() {
           <div className="bg-[#f8fafc] border-l-[3px] border-[#228DC1] pl-8 pr-8 py-8 max-w-4xl">
             <p className="text-[#228DC1] text-[10px] font-bold uppercase tracking-[0.18em] mb-4">Declaration and Sign Off</p>
             <h3 className="font-h5 text-[#0a1628] mb-5">Carbon Reduction Plan Compliance</h3>
-            <p className="text-[#0a1628]/65 text-[15px] leading-[1.85] mb-4">
+            <p className="text-[#0a1628]/60 text-[15px] leading-[1.85] mb-4">
               This Carbon Reduction Plan has been completed in accordance with PPN 06/21 and associated guidance and reporting standard for Carbon Reduction Plans. Emissions have been reported and recorded in accordance with the GHG Reporting Protocol corporate standard and uses the appropriate Government emission conversion factors for greenhouse gas company reporting.
             </p>
-            <p className="text-[#0a1628]/65 text-[15px] leading-[1.85] mb-4">
+            <p className="text-[#0a1628]/60 text-[15px] leading-[1.85] mb-4">
               Scope 1 and Scope 2 emissions have been reported in accordance with SECR requirements, and the required subset of Scope 3 emissions have been reported in accordance with the Corporate Value Chain (Scope 3) Standard.
             </p>
-            <p className="text-[#0a1628]/65 text-[15px] leading-[1.85]">This Carbon Reduction Plan has been reviewed and signed off by the management team.</p>
+            <p className="text-[#0a1628]/60 text-[15px] leading-[1.85]">This Carbon Reduction Plan has been reviewed and signed off by the management team.</p>
             <div className="mt-6 pt-6 border-t border-gray-200">
               <p className="text-[#0a1628] text-[14px] font-semibold">
                 Signed: Abbey Alidoosti, Chief Executive Officer — 4th September 2024
@@ -261,10 +261,10 @@ export default function AboutSustainabilityPage() {
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <h2 className="font-heading text-[#0a1628]">Supporting communities, enabling growth and economic wellbeing</h2>
             <div className="space-y-4 self-center">
-              <p className="text-[#0a1628]/65 text-[16px] leading-[1.85]">
+              <p className="text-[#0a1628]/60 text-[16px] leading-[1.85]">
                 AWTG creates innovation that supports communities, enables growth and economic wellbeing through technology, automation and transformation. We assist our customers to maximise social, economic, technological and environmental wellbeing of their local communities.
               </p>
-              <p className="text-[#0a1628]/65 text-[16px] leading-[1.85]">
+              <p className="text-[#0a1628]/60 text-[16px] leading-[1.85]">
                 Through our internal policies, and collaboration with our supply chain, AWTG is committed to:
               </p>
             </div>

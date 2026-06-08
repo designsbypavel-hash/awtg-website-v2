@@ -165,7 +165,7 @@ function CoverageMap() {
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-4 text-[14px] text-[#0a1628]/65 font-medium">
+        <div className="flex items-center gap-4 text-[14px] text-[#0a1628]/60 font-medium">
           <span>Greater Manchester</span>
           <span>Updated: live</span>
         </div>
@@ -247,7 +247,7 @@ function CoverageMap() {
               </div>
               <button
                 onClick={() => setSelected(null)}
-                className="mt-6 text-[14px] text-[#0a1628]/65 hover:text-[#0a1628] font-medium transition-colors"
+                className="mt-6 text-[14px] text-[#0a1628]/60 hover:text-[#0a1628] font-medium transition-colors"
               >
                 Clear selection
               </button>
@@ -649,7 +649,7 @@ export default function IcmapPage() {
                 iCMAP intelligence<br />
                 that drives decisions.
               </h1>
-              <p className="text-[#0a1628]/65 text-[17px] font-normal leading-[1.7] max-w-xl mb-10">
+              <p className="text-[#0a1628]/60 text-[17px] font-normal leading-[1.7] max-w-xl mb-10">
                 iCMAP helps organisations monitor, manage, and optimise complex connectivity environments - giving teams real time visibility, faster issue detection, and better control across network operations.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -681,7 +681,7 @@ export default function IcmapPage() {
               <div key={item.label} className="bg-white px-8 py-8">
                 <p className="font-black text-[#0a1628] leading-none mb-2" style={{ fontSize: 'clamp(22px, 2.5vw, 36px)', letterSpacing: '-0.02em' }}>{item.stat}</p>
                 <p className="text-[#0a1628]/60 text-[14px] font-medium mb-0.5">{item.label}</p>
-                <p className="text-[#0a1628]/65 text-[14px] font-normal">{item.note}</p>
+                <p className="text-[#0a1628]/60 text-[14px] font-normal">{item.note}</p>
               </div>
             ))}
           </div>
@@ -696,7 +696,7 @@ export default function IcmapPage() {
             <h2 className="font-heading text-[#0a1628] mb-5">
               Every zone. Every generation. On a real map.
             </h2>
-            <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7]">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
               iCMAP brings live coverage, signal strength, population, and infrastructure data into one interactive map. Teams can filter by network generation, inspect local performance, identify weak zones, and prioritise improvements using AI powered scoring.
             </p>
           </div>
@@ -724,7 +724,7 @@ export default function IcmapPage() {
             <h2 className="font-heading text-[#0a1628] mb-4">
               From raw network data to coverage decisions
             </h2>
-            <p className="text-[#0a1628]/65 text-[18px] font-normal leading-[1.7] max-w-2xl">
+            <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.7] max-w-2xl">
               iCMAP brings live and historical network data into one intelligent map, helping teams identify weak coverage, prioritise action, and plan investment where it will have the greatest impact.
             </p>
           </div>

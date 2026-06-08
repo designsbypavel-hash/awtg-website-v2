@@ -65,7 +65,7 @@ export default function GenerativeAIPage() {
             <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
               Generative AI
             </h1>
-            <p className="text-[#0a1628]/65 text-[16px] max-w-xl font-normal leading-[1.7] mb-3">
+            <p className="text-[#0a1628]/60 text-[16px] max-w-xl font-normal leading-[1.7] mb-3">
               Most AI projects never reach production. Ours do. We build AI that works inside real organisations, connected to your systems, governed by your rules, and measured by actual outcomes.
             </p>
             <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7] max-w-xl mb-9">
@@ -85,7 +85,7 @@ export default function GenerativeAIPage() {
               <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1100&q=85&auto=format&fit=crop" alt="Generative AI" className="w-full h-full object-cover" loading="lazy" />
             </div>
             <div className="border border-white/12 bg-[#0a1628]/4 px-6 py-5">
-              <p className="text-[#0a1628]/65 text-[14px] uppercase tracking-[0.2em] font-semibold mb-2">Focus</p>
+              <p className="text-[#0a1628]/60 text-[14px] uppercase tracking-[0.2em] font-semibold mb-2">Focus</p>
               <p className="text-[#0a1628] text-[16px] font-medium leading-[1.3]">Production-ready AI: Kai, Aruva and enterprise GenAI</p>
             </div>
           </div>
@@ -95,9 +95,9 @@ export default function GenerativeAIPage() {
       {/* Metrics */}
       <section className="bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-10 grid sm:grid-cols-3 gap-8">
-          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">2016</p><p className="text-[#0a1628]/65 text-[14px] font-normal uppercase tracking-[0.18em]">AI products shipping since</p></div>
-          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">3</p><p className="text-[#0a1628]/65 text-[14px] font-normal uppercase tracking-[0.18em]">Production AI products</p></div>
-          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">Enterprise</p><p className="text-[#0a1628]/65 text-[14px] font-normal uppercase tracking-[0.18em]">Governed, secure deployment</p></div>
+          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">2016</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">AI products shipping since</p></div>
+          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">3</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">Production AI products</p></div>
+          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">Enterprise</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">Governed, secure deployment</p></div>
         </div>
       </section>
 
@@ -174,7 +174,7 @@ export default function GenerativeAIPage() {
               <h3 className="font-semibold text-[#0a1628] text-[22px] leading-[1.3] mb-3">
                 AI for Sales and Customer Services
               </h3>
-              <p className="text-[#0a1628]/65 text-[15px] leading-[1.7] font-normal mb-5 max-w-2xl">
+              <p className="text-[#0a1628]/60 text-[15px] leading-[1.7] font-normal mb-5 max-w-2xl">
                 Kai helps teams respond faster, govern handoffs and improve customer operations.
               </p>
               <Link to="/solutions/kai" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
@@ -203,7 +203,7 @@ export default function GenerativeAIPage() {
                   <p className="text-[#0a1628]/60 text-xs font-normal mt-6 italic">{p.proof}</p>
                 </div>
                 <div className="p-8">
-                  <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] font-normal mb-6">{p.desc}</p>
+                  <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] font-normal mb-6">{p.desc}</p>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {p.features.map((f) => (
                       <div key={f} className="flex items-start gap-2.5">
@@ -260,7 +260,7 @@ export default function GenerativeAIPage() {
               <div key={c.title} className="bg-white p-8 hover:bg-[#f7f8fa] transition-colors">
                 <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#228DC1] mb-5" />
                 <h3 className="text-[#0a1628] font-semibold mb-2 text-[14px]">{c.title}</h3>
-                <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">{c.desc}</p>
+                <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">{c.desc}</p>
               </div>
             ))}
           </div>
@@ -274,7 +274,7 @@ export default function GenerativeAIPage() {
           <h2 className="font-heading text-[#0a1628] mb-6">
             Ready to build AI that actually works in your organisation?
           </h2>
-          <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] mb-10 font-normal max-w-xl mx-auto">
+          <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-10 font-normal max-w-xl mx-auto">
             We have the products, the experience and the delivery track record. Talk to us about what you need and we will show you what is possible.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

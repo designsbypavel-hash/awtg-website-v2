@@ -42,12 +42,12 @@ export default function SolutionDetailPage({
               {title}
             </h1>
             {/* L4 — body */}
-            <p className="text-[#0a1628]/65 text-[16px] max-w-xl font-normal leading-[1.7] mb-9">{hero}</p>
+            <p className="text-[#0a1628]/60 text-[16px] max-w-xl font-normal leading-[1.7] mb-9">{hero}</p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-colors">
+              <Link to="/contact" className="btn btn-primary">
                 Request a Demo
               </Link>
-              <Link to="/solutions" className="inline-flex items-center gap-2 px-7 py-3.5 text-[#0a1628]/60 hover:text-white text-sm font-normal transition-colors">
+              <Link to="/solutions" className="btn btn-ghost">
                 View all solutions
               </Link>
             </div>
@@ -87,7 +87,7 @@ export default function SolutionDetailPage({
               {overviewTitle}
             </h2>
             {/* L4 — body */}
-            <p className="text-[#0a1628]/65 leading-[1.7] font-normal text-[16px]">{overview}</p>
+            <p className="text-[#0a1628]/60 leading-[1.7] font-normal text-[16px]">{overview}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {capabilities.map((capability) => (
@@ -96,7 +96,7 @@ export default function SolutionDetailPage({
                 {/* L3 — card heading */}
                 <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{capability.title}</h3>
                 {/* L4 — body */}
-                <p className="text-[#0a1628]/65 text-[14px] leading-[1.7] font-normal">{capability.desc}</p>
+                <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal">{capability.desc}</p>
               </div>
             ))}
           </div>
@@ -119,7 +119,7 @@ export default function SolutionDetailPage({
                 {/* L3 — card heading */}
                 <h3 className="font-card-heading text-[#0a1628] text-[20px] mb-3">{step.title}</h3>
                 {/* L4 — body */}
-                <p className="text-[#0a1628]/65 text-[14px] leading-[1.7] font-normal">{step.desc}</p>
+                <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -134,7 +134,7 @@ export default function SolutionDetailPage({
             <h2 className="font-heading text-[#0a1628] mb-6">
               {proofTitle}
             </h2>
-            <p className="text-[#0a1628]/65 text-[16px] leading-[1.7] font-normal">{proof}</p>
+            <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] font-normal">{proof}</p>
           </div>
           <div className="border border-gray-100 p-7 bg-white/[0.03]">
             <p className="type-label text-[#0a1628]/60 mb-6">Related pages</p>

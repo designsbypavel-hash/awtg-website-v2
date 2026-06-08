@@ -137,7 +137,7 @@ export default function InsightsCaseStudiesPage() {
                   <h2 className="font-h2 text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-5">
                     {featured.title}
                   </h2>
-                  <p className="text-[#0a1628]/65 text-[15px] font-normal leading-[1.75] max-w-lg">
+                  <p className="text-[#0a1628]/60 text-[15px] font-normal leading-[1.75] max-w-lg">
                     {featured.excerpt}
                   </p>
                 </div>

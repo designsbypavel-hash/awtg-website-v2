@@ -77,7 +77,7 @@ export default function AboutLeadershipPage() {
           <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
             The AWTG team is committed to cultivating a successful culture.
           </h1>
-          <p className="text-[#0a1628]/65 text-[18px] leading-[1.7] max-w-3xl font-normal">
+          <p className="text-[#0a1628]/60 text-[18px] leading-[1.7] max-w-3xl font-normal">
             The AWTG team is committed to cultivating a successful culture that drives our transformation and sustains our global growth. Get to know the some of the brilliant minds behind our strides towards sustainability and innovation.
           </p>
         </div>

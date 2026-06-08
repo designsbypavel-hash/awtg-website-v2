@@ -41,7 +41,7 @@ export default function ServicesSection() {
         <div className="text-center mb-16">
           <p className="text-[#228DC1] font-semibold text-[14px] uppercase tracking-widest mb-3">What We Do</p>
           <h2 className="font-heading text-[#0a1628] mb-4">Our Core Solutions</h2>
-          <p className="text-[#0a1628]/65 text-[18px] max-w-2xl mx-auto">
+          <p className="text-[#0a1628]/60 text-[18px] max-w-2xl mx-auto">
             From private 5G networks to AI-driven analytics, we deliver end-to-end telecoms transformation.
           </p>
         </div>

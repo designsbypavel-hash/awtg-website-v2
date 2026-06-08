@@ -393,7 +393,7 @@ export default function CareerRoleDetailPage() {
               {/* Speculative */}
               <div className="border border-gray-100 p-7">
                 <p className="type-label text-[#228DC1] mb-3">Not the right fit?</p>
-                <p className="text-[#0a1628]/65 text-[13px] leading-[1.75] mb-5">
+                <p className="text-[#0a1628]/60 text-[13px] leading-[1.75] mb-5">
                   We welcome speculative applications from talented people. Send your CV and tell us how you can contribute.
                 </p>
                 <Link

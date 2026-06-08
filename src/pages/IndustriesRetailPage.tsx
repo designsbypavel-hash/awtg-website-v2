@@ -32,15 +32,15 @@ export default function IndustriesRetailPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-12 grid grid-cols-3 gap-8 text-center">
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">25+</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Retail Clients</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Retail Clients</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">200+</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Store Deployments</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Store Deployments</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">15%</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Avg. Sales Uplift Reported</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Avg. Sales Uplift Reported</p>
           </div>
         </div>
       </section>

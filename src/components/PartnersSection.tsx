@@ -14,7 +14,7 @@ export default function PartnersSection() {
           {partners.map((partner) => (
             <div
               key={partner}
-              className="text-[#0a1628]/65 font-bold text-lg hover:text-[#228DC1] transition-colors cursor-default"
+              className="text-[#0a1628]/60 font-bold text-lg hover:text-[#228DC1] transition-colors cursor-default"
             >
               {partner}
             </div>

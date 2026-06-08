@@ -311,7 +311,7 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h1 className="font-serif-display text-[#0a1628] mb-4">Privacy Policy</h1>
           <p className="type-label text-[#0a1628]/45 mb-6">Effective April 2020</p>
-          <p className="text-[#0a1628]/65 text-[17px] max-w-2xl font-normal leading-[1.75]">
+          <p className="text-[#0a1628]/60 text-[17px] max-w-2xl font-normal leading-[1.75]">
             AWTG Limited recognises that you, its users, customers and visitors, want to know how we protect your privacy. This Privacy Policy helps you make an informed decision about whether to use or continue using the AWTG Service and/or AWTG Software.
           </p>
         </div>

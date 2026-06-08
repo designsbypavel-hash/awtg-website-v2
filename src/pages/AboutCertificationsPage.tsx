@@ -65,7 +65,7 @@ export default function AboutCertificationsPage() {
           <h1 className="font-serif-display text-[#0a1628] mb-6">
             Trusted and safe solutions to accommodate your regulatory requirements.
           </h1>
-          <p className="text-[#0a1628]/65 text-[18px] max-w-2xl font-normal leading-[1.7]">
+          <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.7]">
             ISO & Cyber Security, Supplier Accreditation, Membership, Ratings and Partnerships.
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function AboutCertificationsPage() {
                 <article key={item.name} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
                   <FontAwesomeIcon icon={group.label === 'ISO & Cyber Security' ? faShieldHalved : faCertificate} className="w-5 h-5 text-[#228DC1] mb-5" />
                   <h3 className="font-h5 text-[#0a1628] mb-3">{item.name}</h3>
-                  <p className="text-[#0a1628]/65 text-[14px] leading-[1.75] font-normal">{item.desc}</p>
+                  <p className="text-[#0a1628]/60 text-[14px] leading-[1.75] font-normal">{item.desc}</p>
                 </article>
               ))}
             </div>

@@ -15,7 +15,7 @@ export default function FullBleedBannerSection({ title, subtitle }: FullBleedBan
       />
       <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 className="font-heading text-[#0a1628]">{title}</h2>
-        {subtitle && <p className="mt-6 text-[#0a1628]/65 text-[18px] leading-[1.7]">{subtitle}</p>}
+        {subtitle && <p className="mt-6 text-[#0a1628]/60 text-[18px] leading-[1.7]">{subtitle}</p>}
       </div>
     </section>
   )

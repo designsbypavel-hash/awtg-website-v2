@@ -28,7 +28,7 @@ export default function ProcessSection() {
         <div className="text-center mb-16">
           <p className="text-[#228DC1] font-semibold text-[14px] uppercase tracking-widest mb-3">Our Process</p>
           <h2 className="font-heading text-[#0a1628] mb-4">How We Work</h2>
-          <p className="text-[#0a1628]/65 text-[18px] max-w-2xl mx-auto">
+          <p className="text-[#0a1628]/60 text-[18px] max-w-2xl mx-auto">
             A proven methodology that delivers results, from initial consultation to long-term managed service.
           </p>
         </div>

@@ -32,15 +32,15 @@ export default function IndustriesPublicSectorPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-12 grid grid-cols-3 gap-8 text-center">
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">50+</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Public Sector Clients</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Public Sector Clients</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">CCS</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Crown Commercial Supplier</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Crown Commercial Supplier</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">SC</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Cleared Personnel</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Cleared Personnel</p>
           </div>
         </div>
       </section>

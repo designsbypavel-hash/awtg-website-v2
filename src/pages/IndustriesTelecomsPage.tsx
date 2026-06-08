@@ -32,15 +32,15 @@ export default function IndustriesTelecomsPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-12 grid grid-cols-3 gap-8 text-center">
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">15+</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">MNO Clients</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">MNO Clients</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">40+</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">RF Engineers</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">RF Engineers</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">30</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Countries</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Countries</p>
           </div>
         </div>
       </section>

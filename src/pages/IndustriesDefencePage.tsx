@@ -32,15 +32,15 @@ export default function IndustriesDefencePage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-12 grid grid-cols-3 gap-8 text-center">
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">MOD</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Approved Supplier</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Approved Supplier</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">SC/DV</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Cleared Staff</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Cleared Staff</p>
           </div>
           <div>
             <p className="text-[#0a1628] text-3xl font-semibold mb-1">15+</p>
-            <p className="text-[#0a1628]/65 text-sm font-normal uppercase tracking-widest">Defence Deployments</p>
+            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Defence Deployments</p>
           </div>
         </div>
       </section>
