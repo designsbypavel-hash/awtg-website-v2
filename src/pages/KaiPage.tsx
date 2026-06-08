@@ -99,233 +99,235 @@ function StatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
 }
 
 function GlobalReachMap() {
-  const nodes = [
-    { id: 'nyc', label: 'New York', x: 196, y: 156, delay: '0s' },
-    { id: 'lon', label: 'London', x: 354, y: 126, delay: '0.7s' },
-    { id: 'dub', label: 'Dubai', x: 438, y: 177, delay: '1.4s' },
-    { id: 'sin', label: 'Singapore', x: 529, y: 220, delay: '2.1s' },
-    { id: 'syd', label: 'Sydney', x: 594, y: 286, delay: '2.8s' },
-  ]
+  const [paused, setPaused] = useState(false)
+  const ps = paused ? 'paused' : 'running'
+  const nodeStyle = (name: string): CSSProperties => ({
+    transformBox: 'fill-box',
+    transformOrigin: 'center',
+    animation: `${name} 12s ease-in-out infinite`,
+    animationPlayState: ps,
+  })
+  const arcStyle = (name: string): CSSProperties => ({
+    animation: `${name} 12s ease-in-out infinite`,
+    animationPlayState: ps,
+  })
+  const labelStyle = (name: string): CSSProperties => ({
+    animation: `${name} 12s ease-in-out infinite`,
+    animationPlayState: ps,
+  })
 
   return (
-    <div className="relative -mx-8 lg:-ml-16 lg:-mr-4 overflow-visible bg-transparent">
-      <svg viewBox="0 0 720 420" role="img" aria-label="Kai global reach shown as a globe map" className="block min-h-[380px] w-full">
+    <div
+      className="relative -mx-8 lg:-ml-16 lg:-mr-4 overflow-visible bg-transparent"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <style>{`
+        /* 12 s cycle — Africa 0 s, Africa→Asia arc 1.5 s, Asia 3.5 s,
+           Asia→Europe arc 5 s, Europe 7 s, Europe→Africa arc 8.5 s,
+           all hold 10 s, all fade 10.8 s */
+
+        @keyframes kaiDotAfrica {
+          0%          { opacity: 0; transform: scale(0)    }
+          5%          { opacity: 1; transform: scale(1.28) }
+          9%          { transform: scale(0.88) }
+          13%         { transform: scale(1)    }
+          88%         { opacity: 1; transform: scale(1)    }
+          95%, 100%   { opacity: 0; transform: scale(0)    }
+        }
+        @keyframes kaiHaloAfrica {
+          0%, 4%      { opacity: 0; transform: scale(0.6) }
+          10%         { opacity: 0.32; transform: scale(1)   }
+          17%         { opacity: 0;   transform: scale(2.6)  }
+          26%         { opacity: 0.24; transform: scale(1)   }
+          33%         { opacity: 0;   transform: scale(2.6)  }
+          47%         { opacity: 0.2;  transform: scale(1)   }
+          54%         { opacity: 0;   transform: scale(2.6)  }
+          68%         { opacity: 0.18; transform: scale(1)   }
+          75%         { opacity: 0;   transform: scale(2.6)  }
+          88%, 100%   { opacity: 0;   transform: scale(0.6) }
+        }
+        @keyframes kaiArcAfAsia {
+          0%, 10%     { stroke-dashoffset: 220; opacity: 0    }
+          15%         { opacity: 0.85                          }
+          25%         { stroke-dashoffset: 0                   }
+          88%         { stroke-dashoffset: 0;  opacity: 0.85  }
+          95%, 100%   { stroke-dashoffset: 0;  opacity: 0     }
+        }
+        @keyframes kaiDotAsia {
+          0%, 27%     { opacity: 0; transform: scale(0)    }
+          32%         { opacity: 1; transform: scale(1.28) }
+          36%         { transform: scale(0.88) }
+          40%         { transform: scale(1)    }
+          88%         { opacity: 1; transform: scale(1)    }
+          95%, 100%   { opacity: 0; transform: scale(0)    }
+        }
+        @keyframes kaiHaloAsia {
+          0%, 31%     { opacity: 0; transform: scale(0.6) }
+          37%         { opacity: 0.32; transform: scale(1)   }
+          44%         { opacity: 0;   transform: scale(2.6)  }
+          53%         { opacity: 0.24; transform: scale(1)   }
+          60%         { opacity: 0;   transform: scale(2.6)  }
+          72%         { opacity: 0.2;  transform: scale(1)   }
+          79%         { opacity: 0;   transform: scale(2.6)  }
+          88%, 100%   { opacity: 0;   transform: scale(0.6) }
+        }
+        @keyframes kaiArcAsEu {
+          0%, 39%     { stroke-dashoffset: 200; opacity: 0    }
+          44%         { opacity: 0.85                          }
+          54%         { stroke-dashoffset: 0                   }
+          88%         { stroke-dashoffset: 0;  opacity: 0.85  }
+          95%, 100%   { stroke-dashoffset: 0;  opacity: 0     }
+        }
+        @keyframes kaiDotEurope {
+          0%, 55%     { opacity: 0; transform: scale(0)    }
+          60%         { opacity: 1; transform: scale(1.28) }
+          64%         { transform: scale(0.88) }
+          68%         { transform: scale(1)    }
+          88%         { opacity: 1; transform: scale(1)    }
+          95%, 100%   { opacity: 0; transform: scale(0)    }
+        }
+        @keyframes kaiHaloEurope {
+          0%, 59%     { opacity: 0; transform: scale(0.6) }
+          65%         { opacity: 0.32; transform: scale(1)   }
+          72%         { opacity: 0;   transform: scale(2.6)  }
+          80%         { opacity: 0.24; transform: scale(1)   }
+          87%         { opacity: 0;   transform: scale(2.6)  }
+          88%, 100%   { opacity: 0;   transform: scale(0.6) }
+        }
+        @keyframes kaiArcEuAf {
+          0%, 68%     { stroke-dashoffset: 220; opacity: 0    }
+          73%         { opacity: 0.85                          }
+          83%         { stroke-dashoffset: 0                   }
+          88%         { stroke-dashoffset: 0;  opacity: 0.85  }
+          95%, 100%   { stroke-dashoffset: 0;  opacity: 0     }
+        }
+        @keyframes kaiLabelAf {
+          0%, 8%      { opacity: 0 } 14% { opacity: 0.6 }
+          88%         { opacity: 0.6 } 95%, 100% { opacity: 0 }
+        }
+        @keyframes kaiLabelAs {
+          0%, 33%     { opacity: 0 } 39% { opacity: 0.6 }
+          88%         { opacity: 0.6 } 95%, 100% { opacity: 0 }
+        }
+        @keyframes kaiLabelEu {
+          0%, 60%     { opacity: 0 } 66% { opacity: 0.6 }
+          88%         { opacity: 0.6 } 95%, 100% { opacity: 0 }
+        }
+      `}</style>
+
+      <svg
+        viewBox="0 0 720 420"
+        role="img"
+        aria-label="Kai global reach — Africa, Asia, and Europe connecting on an animated globe"
+        className="block min-h-[380px] w-full"
+      >
         <defs>
-          <radialGradient id="kaiReferenceBg" cx="48%" cy="45%" r="62%">
-            <stop offset="0%" stopColor="#f4f7fb" />
-            <stop offset="55%" stopColor="#d9e3f7" />
-            <stop offset="100%" stopColor="#b6c8ee" />
-          </radialGradient>
-          <linearGradient id="kaiReferenceOcean" x1="0%" x2="0%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="#43b7f0" />
-            <stop offset="55%" stopColor="#218fd3" />
+          <linearGradient id="kaiRefOcean" x1="0%" x2="0%" y1="0%" y2="100%">
+            <stop offset="0%"   stopColor="#43b7f0" />
+            <stop offset="55%"  stopColor="#218fd3" />
             <stop offset="100%" stopColor="#0870bb" />
           </linearGradient>
-          <linearGradient id="kaiReferenceLand" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="#61ff75" />
+          <linearGradient id="kaiRefLand" x1="0%" x2="100%" y1="0%" y2="100%">
+            <stop offset="0%"   stopColor="#61ff75" />
             <stop offset="100%" stopColor="#2ee65f" />
           </linearGradient>
-          <radialGradient id="kaiReferenceShine" cx="34%" cy="22%" r="55%">
-            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.38" />
-            <stop offset="60%" stopColor="#ffffff" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+          <radialGradient id="kaiRefShine" cx="34%" cy="22%" r="55%">
+            <stop offset="0%"   stopColor="#ffffff" stopOpacity="0.38" />
+            <stop offset="60%"  stopColor="#ffffff" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0"    />
           </radialGradient>
-          <filter id="kaiReferenceShadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="28" stdDeviation="24" floodColor="#0a1628" floodOpacity="0.22" />
+          <filter id="kaiRefShadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="28" stdDeviation="24" floodColor="#0a1628" floodOpacity="0.18" />
           </filter>
-          <clipPath id="kaiReferenceGlobeClip">
+          <filter id="kaiRefNodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <filter id="kaiRefArcGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <clipPath id="kaiRefGlobeClip">
             <circle cx="360" cy="210" r="148" />
           </clipPath>
         </defs>
 
-        <rect width="720" height="420" fill="url(#kaiReferenceBg)" opacity="0.95" />
-        <ellipse cx="360" cy="360" rx="142" ry="26" fill="#0a1628" opacity="0.12" />
+        {/* Drop shadow beneath globe */}
+        <ellipse cx="360" cy="366" rx="142" ry="18" fill="#0a1628" opacity="0.07" />
 
-        <g filter="url(#kaiReferenceShadow)">
-          <circle cx="360" cy="210" r="148" fill="url(#kaiReferenceOcean)" />
-          <g clipPath="url(#kaiReferenceGlobeClip)">
-            <g fill="url(#kaiReferenceLand)">
+        {/* Globe body */}
+        <g filter="url(#kaiRefShadow)">
+          <circle cx="360" cy="210" r="148" fill="url(#kaiRefOcean)" />
+          <g clipPath="url(#kaiRefGlobeClip)">
+            <g fill="url(#kaiRefLand)">
               <path d="M248 134c18-18 44-30 78-34 26-3 53-1 78 4 8 2 11 8 6 15-11 15-36 9-51 13-18 5-22 22-34 34-15 15-45 6-53 25-8 20 13 38 1 58-9 16-29 7-41-6-18-19-31-48-30-76 1-24 14-45 46-33Z" />
               <path d="M371 85c34 1 64 9 91 25 24 14 40 35 50 63 11 29 13 64 3 95-8 25-25 55-52 72-13 8-26 13-40 15 10-22 11-44 2-65-7-17-20-31-36-41-22-14-49-19-65-42-12-18-6-40 18-50 17-8 39-3 56-10 14-6 13-19 0-26-14-8-33-6-48-14-9-5-11-12-1-17 6-3 14-4 22-5Z" />
               <path d="M457 156c18 4 36 12 53 24 21 15 31 35 26 56-7 27-31 44-57 51-6-21-21-36-38-49-13-10-25-24-20-42 4-17 17-28 36-40Z" />
               <path d="M236 231c25 7 45 28 51 56 6 27-1 56-18 80-24-7-44-26-55-51-13-29-13-63 22-85Z" />
               <path d="M198 178c16 13 20 33 12 54-9 22-28 38-51 45-18-20-24-48-14-73 10-23 30-36 53-26Z" />
             </g>
-            <path d="M231 96c62-42 172-42 242 0" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.18" />
-            <path d="M211 210h296" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.14" />
-            <path d="M250 315c66 33 164 33 225 0" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.14" />
-            <ellipse cx="360" cy="210" rx="68" ry="148" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.12" />
-            <ellipse cx="360" cy="210" rx="112" ry="148" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.1" />
-            <rect x="212" y="62" width="296" height="296" fill="url(#kaiReferenceShine)" />
+            <path d="M231 96c62-42 172-42 242 0"   fill="none" stroke="#fff" strokeWidth="1" opacity="0.18" />
+            <path d="M211 210h296"                  fill="none" stroke="#fff" strokeWidth="1" opacity="0.14" />
+            <path d="M250 315c66 33 164 33 225 0"   fill="none" stroke="#fff" strokeWidth="1" opacity="0.14" />
+            <ellipse cx="360" cy="210" rx="68"  ry="148" fill="none" stroke="#fff" strokeWidth="1" opacity="0.12" />
+            <ellipse cx="360" cy="210" rx="112" ry="148" fill="none" stroke="#fff" strokeWidth="1" opacity="0.10" />
+            <rect x="212" y="62" width="296" height="296" fill="url(#kaiRefShine)" />
           </g>
           <circle cx="360" cy="210" r="148" fill="none" stroke="#25df60" strokeWidth="2.2" opacity="0.8" />
         </g>
-      </svg>
-    </div>
-  )
 
-  return (
-    <div className="relative overflow-hidden bg-transparent">
-      <style>{`
-        @keyframes kaiGlobeLand {
-          from { transform: translateX(-276px); }
-          to { transform: translateX(0); }
-        }
-        @keyframes kaiGlobeSpin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes kaiGlobeSignal {
-          0% { stroke-dashoffset: 260; opacity: 0; }
-          18% { opacity: 0.96; }
-          78% { opacity: 0.78; }
-          100% { stroke-dashoffset: 0; opacity: 0; }
-        }
-        @keyframes kaiGlobePulse {
-          0%, 100% { transform: scale(0.82); opacity: 0.9; }
-          50% { transform: scale(1.62); opacity: 0.12; }
-        }
-        @keyframes kaiSatelliteDrift {
-          0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.42; }
-          50% { transform: translate3d(8px, -5px, 0); opacity: 0.9; }
-        }
-        .kai-globe-land {
-          animation: kaiGlobeLand 18s linear infinite;
-        }
-        .kai-globe-orbit {
-          animation: kaiGlobeSpin 17s linear infinite;
-          transform-box: view-box;
-          transform-origin: 280px 160px;
-        }
-        .kai-globe-orbit-slow {
-          animation-duration: 26s;
-          animation-direction: reverse;
-        }
-        .kai-globe-signal {
-          stroke-dasharray: 260;
-          stroke-dashoffset: 260;
-          animation: kaiGlobeSignal 4.8s ease-in-out infinite;
-        }
-        .kai-globe-signal-2 { animation-delay: 1.25s; }
-        .kai-globe-signal-3 { animation-delay: 2.5s; }
-        .kai-globe-node-pulse {
-          transform-box: fill-box;
-          transform-origin: center;
-          animation: kaiGlobePulse 2.7s ease-in-out infinite;
-        }
-        .kai-globe-satellite {
-          animation: kaiSatelliteDrift 4.5s ease-in-out infinite;
-        }
-      `}</style>
-      <svg viewBox="0 0 560 320" role="img" aria-label="Kai global network shown as a revolving world globe with live connections" className="block h-full min-h-[300px] w-full">
-        <defs>
-          <radialGradient id="kaiSpaceGlow" cx="50%" cy="47%" r="70%">
-            <stop offset="0%" stopColor="#123a5a" />
-            <stop offset="58%" stopColor="#071423" />
-            <stop offset="100%" stopColor="#050b13" />
-          </radialGradient>
-          <radialGradient id="kaiGlobeWater" cx="36%" cy="30%" r="72%">
-            <stop offset="0%" stopColor="#dff7ff" />
-            <stop offset="19%" stopColor="#7ed7f4" />
-            <stop offset="48%" stopColor="#228DC1" />
-            <stop offset="77%" stopColor="#0d4d7a" />
-            <stop offset="100%" stopColor="#061a32" />
-          </radialGradient>
-          <radialGradient id="kaiGlobeAtmosphere" cx="35%" cy="28%" r="68%">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.85)" />
-            <stop offset="44%" stopColor="rgba(92,205,246,0.2)" />
-            <stop offset="74%" stopColor="rgba(34,141,193,0.08)" />
-            <stop offset="100%" stopColor="rgba(34,141,193,0)" />
-          </radialGradient>
-          <linearGradient id="kaiLandFill" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="#d6f6e8" />
-            <stop offset="45%" stopColor="#63b99e" />
-            <stop offset="100%" stopColor="#1d735f" />
-          </linearGradient>
-          <linearGradient id="kaiSignalStroke" x1="170" x2="430" y1="80" y2="240" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#9cecff" stopOpacity="0" />
-            <stop offset="35%" stopColor="#9cecff" />
-            <stop offset="100%" stopColor="#228DC1" stopOpacity="0" />
-          </linearGradient>
-          <filter id="kaiGlobeShadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="20" stdDeviation="20" floodColor="#000814" floodOpacity="0.58" />
-          </filter>
-          <filter id="kaiNodeGlow" x="-90%" y="-90%" width="280%" height="280%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <clipPath id="kaiGlobeClip">
-            <circle cx="280" cy="160" r="112" />
-          </clipPath>
-          <mask id="kaiGlobeFade">
-            <rect width="560" height="320" fill="black" />
-            <circle cx="280" cy="160" r="112" fill="white" />
-            <ellipse cx="336" cy="160" rx="72" ry="114" fill="rgba(0,0,0,0.36)" />
-          </mask>
-        </defs>
-
-        <rect width="560" height="320" fill="transparent" />
-        <ellipse cx="280" cy="277" rx="128" ry="20" fill="#0a1628" opacity="0.08" />
-
-        <g filter="url(#kaiGlobeShadow)">
-          <circle cx="280" cy="160" r="116" fill="#4dc9ee" opacity="0.18" />
-          <circle cx="280" cy="160" r="112" fill="url(#kaiGlobeWater)" />
-
-          <g clipPath="url(#kaiGlobeClip)">
-            <rect x="168" y="48" width="224" height="224" fill="url(#kaiGlobeWater)" />
-            <g opacity="0.18" stroke="#d8f8ff" strokeWidth="0.75" fill="none">
-              <ellipse cx="280" cy="160" rx="36" ry="112" />
-              <ellipse cx="280" cy="160" rx="72" ry="112" />
-              <path d="M168 160h224" />
-              <path d="M181 120c54 20 110 21 166 0" />
-              <path d="M181 200c54-20 110-21 166 0" />
-            </g>
-
-            <g className="kai-globe-land" fill="url(#kaiLandFill)" stroke="#b5f0d9" strokeWidth="0.8" opacity="0.92">
-              <path d="M192 93c21-12 54-8 72 11 8 9 12 20 9 30-14 6-30 4-41-4-12-9-19-4-34-7-18-4-27-19-6-30Z" />
-              <path d="M266 91c28-16 66-12 94 11 17 15 27 34 18 48-24 7-44-6-64-16-16-8-35-8-46-23-4-5-6-12-2-20Z" />
-              <path d="M336 151c22 1 44 15 53 35 10 22 1 44-19 52-26-8-42-25-48-51-4-17 0-30 14-36Z" />
-              <path d="M238 158c24 5 41 20 44 42 3 21-8 38-24 47-20-8-30-27-30-53 0-17 3-29 10-36Z" />
-              <path d="M116 102c31-17 76-12 103 11 14 12 19 27 10 41-26 8-51-4-74-16-22-12-43-12-61-21 3-7 8-12 22-15Z" />
-              <path d="M110 176c30-9 66 2 84 27 10 14 10 31-1 44-29-3-58-18-77-41-8-10-10-19-6-30Z" />
-              <path d="M469 95c30-12 64 0 80 24 8 13 9 27 2 41-25 6-54-2-78-20-18-13-27-29-4-45Z" />
-              <path d="M447 181c35-7 70 9 82 36 6 15 4 31-6 43-34-5-65-22-82-50-5-9-4-16 6-29Z" />
-              <path d="M560 93c21-12 54-8 72 11 8 9 12 20 9 30-14 6-30 4-41-4-12-9-19-4-34-7-18-4-27-19-6-30Z" />
-              <path d="M634 91c28-16 66-12 94 11 17 15 27 34 18 48-24 7-44-6-64-16-16-8-35-8-46-23-4-5-6-12-2-20Z" />
-              <path d="M704 151c22 1 44 15 53 35 10 22 1 44-19 52-26-8-42-25-48-51-4-17 0-30 14-36Z" />
-              <path d="M606 158c24 5 41 20 44 42 3 21-8 38-24 47-20-8-30-27-30-53 0-17 3-29 10-36Z" />
-            </g>
-
-            <rect x="168" y="48" width="224" height="224" fill="url(#kaiGlobeAtmosphere)" />
-            <ellipse cx="342" cy="160" rx="80" ry="116" fill="#020711" opacity="0.32" />
-          </g>
-
-          <circle cx="280" cy="160" r="112" fill="none" stroke="#a6edff" strokeWidth="1.2" opacity="0.65" />
-          <circle cx="280" cy="160" r="119" fill="none" stroke="#6cdcff" strokeWidth="1" opacity="0.18" />
+        {/* Animated connection arcs — clipped inside globe */}
+        <g clipPath="url(#kaiRefGlobeClip)" filter="url(#kaiRefArcGlow)">
+          {/* Africa → Asia */}
+          <path d="M376 252 C400 225 432 196 445 176"
+            fill="none" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round"
+            strokeDasharray="220" strokeDashoffset="220" opacity="0"
+            style={arcStyle('kaiArcAfAsia')} />
+          {/* Asia → Europe */}
+          <path d="M445 176 C420 162 388 152 348 150"
+            fill="none" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round"
+            strokeDasharray="200" strokeDashoffset="200" opacity="0"
+            style={arcStyle('kaiArcAsEu')} />
+          {/* Europe → Africa */}
+          <path d="M348 150 C350 188 360 222 376 252"
+            fill="none" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round"
+            strokeDasharray="220" strokeDashoffset="220" opacity="0"
+            style={arcStyle('kaiArcEuAf')} />
         </g>
 
-        <g className="kai-globe-orbit" fill="none" stroke="#79e7ff" strokeWidth="1.1" opacity="0.36">
-          <ellipse cx="280" cy="160" rx="158" ry="48" />
+        {/* Africa node (cx=376, cy=252) */}
+        <g filter="url(#kaiRefNodeGlow)">
+          <circle cx={376} cy={252} r={16} fill="#228DC1" opacity={0} style={nodeStyle('kaiHaloAfrica')} />
+          <circle cx={376} cy={252} r={5}  fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeStyle('kaiDotAfrica')} />
         </g>
-        <g className="kai-globe-orbit kai-globe-orbit-slow" fill="none" stroke="#ffffff" strokeWidth="0.9" opacity="0.18">
-          <ellipse cx="280" cy="160" rx="154" ry="76" transform="rotate(-18 280 160)" />
+        <text x={394} y={257} fontSize="8" fontWeight="700" letterSpacing="0.13em"
+          textAnchor="start" fill="#0a1628" opacity={0}
+          style={labelStyle('kaiLabelAf')}>
+          AFRICA
+        </text>
+
+        {/* Asia node (cx=445, cy=176) */}
+        <g filter="url(#kaiRefNodeGlow)">
+          <circle cx={445} cy={176} r={16} fill="#228DC1" opacity={0} style={nodeStyle('kaiHaloAsia')} />
+          <circle cx={445} cy={176} r={5}  fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeStyle('kaiDotAsia')} />
         </g>
+        <text x={454} y={172} fontSize="8" fontWeight="700" letterSpacing="0.13em"
+          textAnchor="start" fill="#0a1628" opacity={0}
+          style={labelStyle('kaiLabelAs')}>
+          ASIA
+        </text>
 
-        <path className="kai-globe-signal" d="M228 142 C258 86 324 83 383 205" fill="none" stroke="url(#kaiSignalStroke)" strokeWidth="3" strokeLinecap="round" />
-        <path className="kai-globe-signal kai-globe-signal-2" d="M282 113 C360 100 405 139 326 238" fill="none" stroke="url(#kaiSignalStroke)" strokeWidth="3" strokeLinecap="round" />
-        <path className="kai-globe-signal kai-globe-signal-3" d="M228 142 C276 226 330 236 339 170" fill="none" stroke="url(#kaiSignalStroke)" strokeWidth="3" strokeLinecap="round" />
-
-        {nodes.map((node) => (
-          <g key={node.id} filter="url(#kaiNodeGlow)">
-            <circle className="kai-globe-node-pulse" cx={node.x} cy={node.y} r="13" fill="#6fe7ff" opacity="0.26" style={{ animationDelay: node.delay }} />
-            <circle cx={node.x} cy={node.y} r="5.5" fill="#e9fbff" stroke="#228DC1" strokeWidth="2" />
-            <circle cx={node.x} cy={node.y} r="2" fill="#061a32" />
-          </g>
-        ))}
-
+        {/* Europe node (cx=348, cy=150) */}
+        <g filter="url(#kaiRefNodeGlow)">
+          <circle cx={348} cy={150} r={16} fill="#228DC1" opacity={0} style={nodeStyle('kaiHaloEurope')} />
+          <circle cx={348} cy={150} r={5}  fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeStyle('kaiDotEurope')} />
+        </g>
+        <text x={312} y={145} fontSize="8" fontWeight="700" letterSpacing="0.13em"
+          textAnchor="end" fill="#0a1628" opacity={0}
+          style={labelStyle('kaiLabelEu')}>
+          EUROPE
+        </text>
       </svg>
     </div>
   )
