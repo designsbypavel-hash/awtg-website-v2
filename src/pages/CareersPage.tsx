@@ -24,7 +24,6 @@ export default function CareersPage() {
     <>
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <p className="text-[#228DC1] font-semibold text-[14px] uppercase tracking-widest mb-3">Careers</p>
           <h1 className="font-serif-display text-[#0a1628] mb-6 max-w-3xl leading-[1.1]">
             Shape the Future of Connectivity
           </h1>

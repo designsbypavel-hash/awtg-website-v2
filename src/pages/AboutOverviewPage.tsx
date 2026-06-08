@@ -76,7 +76,6 @@ export default function AboutOverviewPage() {
     <>
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">Company Information</p>
           <div className="grid lg:grid-cols-[minmax(0,1fr)_380px] gap-12 lg:gap-20 items-end">
             <div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">

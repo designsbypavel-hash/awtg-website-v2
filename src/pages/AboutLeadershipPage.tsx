@@ -76,7 +76,6 @@ export default function AboutLeadershipPage() {
             <span>/</span>
             <span>Management</span>
           </nav>
-          <p className="type-label text-[#228DC1] mb-4">Management</p>
           <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
             The AWTG team is committed to cultivating a successful culture.
           </h1>
