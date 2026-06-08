@@ -58,13 +58,10 @@ export default function ContactPage() {
                   <label htmlFor="c-interest" className="block text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-2">Area of Interest</label>
                   <select id="c-interest" className="w-full border border-gray-200 px-4 py-3 text-sm text-[#0a1628] focus:outline-2 focus:outline-[#228DC1] bg-white">
                     <option value="">Select a topic</option>
-                    <option>Private 5G / LTE Networks</option>
-                    <option>Telecoms AI</option>
-                    <option>Generative AI</option>
-                    <option>Smart Cities</option>
-                    <option>Consultancy</option>
-                    <option>Engineering Services</option>
-                    <option>Other</option>
+                    <option>Products and Services</option>
+                    <option>Solutions</option>
+                    <option>Business Opportunities</option>
+                    <option>Others</option>
                   </select>
                 </div>
                 <div>
@@ -94,7 +91,7 @@ export default function ContactPage() {
                 <FontAwesomeIcon icon={faPhone} className="w-5 h-5 text-[#228DC1] shrink-0 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-1">Phone</p>
-                  <a href="tel:+442074000000" className="text-[#0a1628] font-medium hover:text-[#228DC1] transition-colors">+44 (0) 207 400 0000</a>
+                  <a href="tel:+442046027050" className="text-[#0a1628] font-medium hover:text-[#228DC1] transition-colors">+44 (0) 20 4602 7050</a>
                   <p className="text-[14px] text-[#0a1628]/60 mt-0.5 font-normal">Mon to Fri, 8:30am to 6:00pm GMT</p>
                 </div>
               </div>
@@ -102,8 +99,8 @@ export default function ContactPage() {
                 <FontAwesomeIcon icon={faLocationDot} className="w-5 h-5 text-[#228DC1] shrink-0 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-1">Head Office</p>
-                  <p className="text-[#0a1628] font-medium">London, United Kingdom</p>
-                  <p className="text-[14px] text-[#0a1628]/60 mt-0.5 font-normal">Registered in England &amp; Wales</p>
+                  <p className="text-[#0a1628] font-medium">8 Canham Mews, Canham Road</p>
+                  <p className="text-[14px] text-[#0a1628]/60 mt-0.5 font-normal">London, W3 7SR, United Kingdom</p>
                 </div>
               </div>
               <div className="flex gap-4">
