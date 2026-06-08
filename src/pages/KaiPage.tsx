@@ -104,15 +104,15 @@ function GlobalReachMap() {
   const nodeStyle = (name: string): CSSProperties => ({
     transformBox: 'fill-box',
     transformOrigin: 'center',
-    animation: `${name} 12s ease-in-out infinite`,
+    animation: `${name} 16s linear infinite`,
     animationPlayState: ps,
   })
   const arcStyle = (name: string): CSSProperties => ({
-    animation: `${name} 12s ease-in-out infinite`,
+    animation: `${name} 16s linear infinite`,
     animationPlayState: ps,
   })
   const labelStyle = (name: string): CSSProperties => ({
-    animation: `${name} 12s ease-in-out infinite`,
+    animation: `${name} 16s linear infinite`,
     animationPlayState: ps,
   })
 
@@ -123,96 +123,101 @@ function GlobalReachMap() {
       onMouseLeave={() => setPaused(false)}
     >
       <style>{`
-        /* 12 s cycle — Africa 0 s, Africa→Asia arc 1.5 s, Asia 3.5 s,
-           Asia→Europe arc 5 s, Europe 7 s, Europe→Africa arc 8.5 s,
-           all hold 10 s, all fade 10.8 s */
+        /* 16 s cycle — Africa 0 s, Af→As arc 0.96 s, Asia 3.36 s,
+           As→Eu arc 4.48 s, Europe 6.72 s, Eu→Af arc 7.84 s,
+           all hold 13.12 s, fade out 13.12→16 s */
 
         @keyframes kaiDotAfrica {
-          0%          { opacity: 0; transform: scale(0)    }
-          5%          { opacity: 1; transform: scale(1.28) }
-          9%          { transform: scale(0.88) }
-          13%         { transform: scale(1)    }
-          88%         { opacity: 1; transform: scale(1)    }
-          95%, 100%   { opacity: 0; transform: scale(0)    }
+          0%        { opacity: 0; transform: scale(0);   animation-timing-function: cubic-bezier(0.34,1.56,0.64,1) }
+          8%        { opacity: 1; transform: scale(1) }
+          82%       { opacity: 1; transform: scale(1);   animation-timing-function: ease-in }
+          95%       { opacity: 0; transform: scale(0.6) }
+          100%      { opacity: 0; transform: scale(0) }
         }
         @keyframes kaiHaloAfrica {
-          0%, 4%      { opacity: 0; transform: scale(0.6) }
-          10%         { opacity: 0.32; transform: scale(1)   }
-          17%         { opacity: 0;   transform: scale(2.6)  }
-          26%         { opacity: 0.24; transform: scale(1)   }
-          33%         { opacity: 0;   transform: scale(2.6)  }
-          47%         { opacity: 0.2;  transform: scale(1)   }
-          54%         { opacity: 0;   transform: scale(2.6)  }
-          68%         { opacity: 0.18; transform: scale(1)   }
-          75%         { opacity: 0;   transform: scale(2.6)  }
-          88%, 100%   { opacity: 0;   transform: scale(0.6) }
+          0%, 4%    { opacity: 0;    transform: scale(0.7) }
+          9%        { opacity: 0.26; transform: scale(1);   animation-timing-function: linear }
+          18%       { opacity: 0;    transform: scale(2.2) }
+          28%       { opacity: 0.20; transform: scale(1);   animation-timing-function: linear }
+          37%       { opacity: 0;    transform: scale(2.2) }
+          50%       { opacity: 0.16; transform: scale(1);   animation-timing-function: linear }
+          59%       { opacity: 0;    transform: scale(2.2) }
+          72%       { opacity: 0.12; transform: scale(1);   animation-timing-function: linear }
+          81%       { opacity: 0;    transform: scale(2.2) }
+          82%, 100% { opacity: 0;    transform: scale(0.7) }
         }
         @keyframes kaiArcAfAsia {
-          0%, 10%     { stroke-dashoffset: 220; opacity: 0    }
-          15%         { opacity: 0.85                          }
-          25%         { stroke-dashoffset: 0                   }
-          88%         { stroke-dashoffset: 0;  opacity: 0.85  }
-          95%, 100%   { stroke-dashoffset: 0;  opacity: 0     }
+          0%, 6%    { stroke-dashoffset: 220; opacity: 0 }
+          10%       { opacity: 0.9;  animation-timing-function: linear }
+          23%       { stroke-dashoffset: 0 }
+          82%       { stroke-dashoffset: 0; opacity: 0.9; animation-timing-function: ease-in }
+          95%, 100% { stroke-dashoffset: 0; opacity: 0 }
         }
         @keyframes kaiDotAsia {
-          0%, 27%     { opacity: 0; transform: scale(0)    }
-          32%         { opacity: 1; transform: scale(1.28) }
-          36%         { transform: scale(0.88) }
-          40%         { transform: scale(1)    }
-          88%         { opacity: 1; transform: scale(1)    }
-          95%, 100%   { opacity: 0; transform: scale(0)    }
+          0%        { opacity: 0; transform: scale(0) }
+          21%       { opacity: 0; transform: scale(0);   animation-timing-function: cubic-bezier(0.34,1.56,0.64,1) }
+          30%       { opacity: 1; transform: scale(1) }
+          82%       { opacity: 1; transform: scale(1);   animation-timing-function: ease-in }
+          95%       { opacity: 0; transform: scale(0.6) }
+          100%      { opacity: 0; transform: scale(0) }
         }
         @keyframes kaiHaloAsia {
-          0%, 31%     { opacity: 0; transform: scale(0.6) }
-          37%         { opacity: 0.32; transform: scale(1)   }
-          44%         { opacity: 0;   transform: scale(2.6)  }
-          53%         { opacity: 0.24; transform: scale(1)   }
-          60%         { opacity: 0;   transform: scale(2.6)  }
-          72%         { opacity: 0.2;  transform: scale(1)   }
-          79%         { opacity: 0;   transform: scale(2.6)  }
-          88%, 100%   { opacity: 0;   transform: scale(0.6) }
+          0%, 25%   { opacity: 0;    transform: scale(0.7) }
+          30%       { opacity: 0.26; transform: scale(1);   animation-timing-function: linear }
+          39%       { opacity: 0;    transform: scale(2.2) }
+          51%       { opacity: 0.20; transform: scale(1);   animation-timing-function: linear }
+          60%       { opacity: 0;    transform: scale(2.2) }
+          72%       { opacity: 0.16; transform: scale(1);   animation-timing-function: linear }
+          81%       { opacity: 0;    transform: scale(2.2) }
+          82%, 100% { opacity: 0;    transform: scale(0.7) }
         }
         @keyframes kaiArcAsEu {
-          0%, 39%     { stroke-dashoffset: 200; opacity: 0    }
-          44%         { opacity: 0.85                          }
-          54%         { stroke-dashoffset: 0                   }
-          88%         { stroke-dashoffset: 0;  opacity: 0.85  }
-          95%, 100%   { stroke-dashoffset: 0;  opacity: 0     }
+          0%, 28%   { stroke-dashoffset: 200; opacity: 0 }
+          32%       { opacity: 0.9;  animation-timing-function: linear }
+          44%       { stroke-dashoffset: 0 }
+          82%       { stroke-dashoffset: 0; opacity: 0.9; animation-timing-function: ease-in }
+          95%, 100% { stroke-dashoffset: 0; opacity: 0 }
         }
         @keyframes kaiDotEurope {
-          0%, 55%     { opacity: 0; transform: scale(0)    }
-          60%         { opacity: 1; transform: scale(1.28) }
-          64%         { transform: scale(0.88) }
-          68%         { transform: scale(1)    }
-          88%         { opacity: 1; transform: scale(1)    }
-          95%, 100%   { opacity: 0; transform: scale(0)    }
+          0%        { opacity: 0; transform: scale(0) }
+          42%       { opacity: 0; transform: scale(0);   animation-timing-function: cubic-bezier(0.34,1.56,0.64,1) }
+          51%       { opacity: 1; transform: scale(1) }
+          82%       { opacity: 1; transform: scale(1);   animation-timing-function: ease-in }
+          95%       { opacity: 0; transform: scale(0.6) }
+          100%      { opacity: 0; transform: scale(0) }
         }
         @keyframes kaiHaloEurope {
-          0%, 59%     { opacity: 0; transform: scale(0.6) }
-          65%         { opacity: 0.32; transform: scale(1)   }
-          72%         { opacity: 0;   transform: scale(2.6)  }
-          80%         { opacity: 0.24; transform: scale(1)   }
-          87%         { opacity: 0;   transform: scale(2.6)  }
-          88%, 100%   { opacity: 0;   transform: scale(0.6) }
+          0%, 46%   { opacity: 0;    transform: scale(0.7) }
+          51%       { opacity: 0.26; transform: scale(1);   animation-timing-function: linear }
+          60%       { opacity: 0;    transform: scale(2.2) }
+          72%       { opacity: 0.20; transform: scale(1);   animation-timing-function: linear }
+          81%       { opacity: 0;    transform: scale(2.2) }
+          82%, 100% { opacity: 0;    transform: scale(0.7) }
         }
         @keyframes kaiArcEuAf {
-          0%, 68%     { stroke-dashoffset: 220; opacity: 0    }
-          73%         { opacity: 0.85                          }
-          83%         { stroke-dashoffset: 0                   }
-          88%         { stroke-dashoffset: 0;  opacity: 0.85  }
-          95%, 100%   { stroke-dashoffset: 0;  opacity: 0     }
+          0%, 49%   { stroke-dashoffset: 220; opacity: 0 }
+          53%       { opacity: 0.9;  animation-timing-function: linear }
+          67%       { stroke-dashoffset: 0 }
+          82%       { stroke-dashoffset: 0; opacity: 0.9; animation-timing-function: ease-in }
+          95%, 100% { stroke-dashoffset: 0; opacity: 0 }
         }
         @keyframes kaiLabelAf {
-          0%, 8%      { opacity: 0 } 14% { opacity: 0.6 }
-          88%         { opacity: 0.6 } 95%, 100% { opacity: 0 }
+          0%, 6%    { opacity: 0 }
+          12%       { opacity: 0.72 }
+          82%       { opacity: 0.72 }
+          95%, 100% { opacity: 0 }
         }
         @keyframes kaiLabelAs {
-          0%, 33%     { opacity: 0 } 39% { opacity: 0.6 }
-          88%         { opacity: 0.6 } 95%, 100% { opacity: 0 }
+          0%, 23%   { opacity: 0 }
+          30%       { opacity: 0.72 }
+          82%       { opacity: 0.72 }
+          95%, 100% { opacity: 0 }
         }
         @keyframes kaiLabelEu {
-          0%, 60%     { opacity: 0 } 66% { opacity: 0.6 }
-          88%         { opacity: 0.6 } 95%, 100% { opacity: 0 }
+          0%, 44%   { opacity: 0 }
+          51%       { opacity: 0.72 }
+          82%       { opacity: 0.72 }
+          95%, 100% { opacity: 0 }
         }
       `}</style>
 
