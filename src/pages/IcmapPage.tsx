@@ -668,20 +668,27 @@ export default function IcmapPage() {
         </div>
       </section>
 
-      {/* -- Key metrics -- */}
-      <section className="bg-white border-t border-gray-100">
+      {/* -- Feature summary cards -- */}
+      <section className="bg-white border-t border-gray-100 py-10">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/6 border border-white/6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { stat: 'Filter',    label: 'by 2G, 3G, 4G, and 5G',            note: 'Compare every generation' },
-              { stat: 'Overlay',   label: 'population and terrain data',      note: 'Add operational context' },
-              { stat: 'Score',     label: 'gaps by severity and impact',      note: 'Quantify what matters most' },
-              { stat: 'Prioritise', label: 'investment and deployment decisions', note: 'Move from insight to action' },
+              { icon: faLayerGroup, stat: 'Filter',     label: 'by 2G, 3G, 4G, and 5G',               note: 'Compare every generation'         },
+              { icon: faMap,        stat: 'Overlay',    label: 'population and terrain data',          note: 'Add operational context'           },
+              { icon: faChartBar,   stat: 'Score',      label: 'gaps by severity and impact',          note: 'Quantify what matters most'        },
+              { icon: faBullseye,   stat: 'Prioritise', label: 'investment and deployment decisions',  note: 'Move from insight to action'       },
             ].map((item) => (
-              <div key={item.label} className="bg-white px-8 py-8">
-                <p className="font-black text-[#0a1628] leading-none mb-2" style={{ fontSize: 'clamp(22px, 2.5vw, 36px)', letterSpacing: '-0.02em' }}>{item.stat}</p>
-                <p className="text-[#0a1628]/60 text-[14px] font-medium mb-0.5">{item.label}</p>
-                <p className="text-[#0a1628]/60 text-[14px] font-normal">{item.note}</p>
+              <div
+                key={item.stat}
+                className="bg-white rounded-xl border border-gray-200 px-6 py-6 shadow-[0_1px_8px_rgba(10,22,40,0.04)] hover:shadow-[0_8px_28px_rgba(10,22,40,0.09)] hover:-translate-y-1 transition-all duration-300"
+                style={{ borderTop: '2.5px solid #228DC1' }}
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#228DC1]/10 flex items-center justify-center mb-5">
+                  <FontAwesomeIcon icon={item.icon} style={{ color: '#228DC1', fontSize: '15px' }} />
+                </div>
+                <p className="font-bold text-[#0a1628] text-[22px] leading-none mb-2 tracking-tight">{item.stat}</p>
+                <p className="text-[#0a1628] text-[13px] font-semibold mb-1">{item.label}</p>
+                <p className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{item.note}</p>
               </div>
             ))}
           </div>
