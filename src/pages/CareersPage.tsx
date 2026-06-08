@@ -67,12 +67,6 @@ export default function CareersPage() {
                 >
                   View Open Roles
                 </a>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#0a1628]/20 text-[#0a1628] text-[14px] font-semibold hover:border-[#228DC1] hover:text-[#228DC1] transition-colors"
-                >
-                  Send Speculative CV
-                </Link>
               </div>
             </div>
 
