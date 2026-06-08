@@ -91,7 +91,7 @@ export default function ContactPage() {
                 <FontAwesomeIcon icon={faPhone} className="w-5 h-5 text-[#228DC1] shrink-0 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-1">Phone</p>
-                  <a href="tel:+442046027050" className="text-[#0a1628] font-medium hover:text-[#228DC1] transition-colors">+44 (0) 20 4602 7050</a>
+                  <a href="tel:+442046027050" className="text-[#0a1628] font-semibold hover:text-[#228DC1] transition-colors">+44 (0) 20 4602 7050</a>
                   <p className="text-[14px] text-[#0a1628]/60 mt-0.5 font-normal">Mon to Fri, 8:30am to 6:00pm GMT</p>
                 </div>
               </div>
