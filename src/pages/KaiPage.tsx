@@ -2246,14 +2246,14 @@ export default function KaiPage() {
               {
                 num: '01',
                 pill: 'PARAMETERS',
-                label: 'Define your agent',
+                label: 'Choose your LLM',
                 desc: 'Build your agent with no code. Bring your own LLM (open weight or closed source) and set your goals, tone, and rules. State your goal, Kai executes.',
                 icon: faSliders,
               },
               {
                 num: '02',
                 pill: 'KNOWLEDGE',
-                label: 'Connector Knowledge',
+                label: 'Connect your Knowledge Base',
                 desc: 'End-to-end data privacy and control. Deploy on-prem or your cloud, on your terms. Data encrypted at rest and in transit, Crest-certified and ISO 42001 compliant.',
                 icon: faBookOpen,
               },
