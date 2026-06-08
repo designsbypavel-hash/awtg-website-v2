@@ -211,21 +211,21 @@ export default function AboutSustainabilityPage() {
 
           {/* Emissions comparison cards */}
           <div className="grid lg:grid-cols-2 gap-6 mb-20">
-            <div className="bg-[#0a1628] p-8 lg:p-10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#228DC1]/8 rounded-full blur-[60px]" />
+            <div className="bg-[#f8fafc] p-8 lg:p-10 border border-gray-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#228DC1]/6 rounded-full blur-[60px]" />
               <div className="relative">
                 <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.15em] mb-6">Baseline Year 2019</p>
-                <h3 className="text-white text-[20px] font-semibold mb-3">Baseline Emission Footprint</h3>
-                <p className="text-white/45 text-[14px] leading-[1.8] mb-8">
+                <h3 className="text-[#0a1628] text-[20px] font-semibold mb-3">Baseline Emission Footprint</h3>
+                <p className="text-[#0a1628]/55 text-[14px] leading-[1.8] mb-8">
                   Baseline emissions are a record of greenhouse gases produced prior to any reduction strategies.
                   The 2019 baseline was affected by the start of the Covid-19 pandemic.
                 </p>
                 <div className="grid grid-cols-3 gap-3">
                   {baselineEmissions.map((item) => (
-                    <div key={item.scope} className="border border-white/10 p-4 bg-white/3">
+                    <div key={item.scope} className="bg-white border border-[#228DC1]/12 p-4">
                       <p className="text-[#228DC1] text-[10px] font-bold uppercase tracking-[0.12em] mb-2">{item.scope}</p>
-                      <p className="text-white text-[24px] font-bold leading-none mb-1">{item.value}</p>
-                      <p className="text-white/35 text-[11px]">{item.unit}</p>
+                      <p className="text-[#0a1628] text-[24px] font-bold leading-none mb-1">{item.value}</p>
+                      <p className="text-[#0a1628]/40 text-[11px]">{item.unit}</p>
                     </div>
                   ))}
                 </div>
@@ -325,12 +325,11 @@ export default function AboutSustainabilityPage() {
           </div>
 
           {/* Pull quote */}
-          <div className="relative bg-[#0a1628] p-10 lg:p-14 overflow-hidden">
-            <div className="absolute top-[-60px] right-[-60px] w-72 h-72 bg-[#228DC1]/12 rounded-full blur-[80px] pointer-events-none" />
-            <div className="absolute bottom-[-40px] left-[-40px] w-48 h-48 bg-[#228DC1]/6 rounded-full blur-[60px] pointer-events-none" />
+          <div className="relative bg-[#edf5fb] border border-[#228DC1]/15 p-10 lg:p-14 overflow-hidden">
+            <div className="absolute top-[-60px] right-[-60px] w-72 h-72 bg-[#228DC1]/8 rounded-full blur-[80px] pointer-events-none" />
             <div className="relative">
-              <div className="text-[#228DC1] text-[72px] font-serif leading-none mb-2 opacity-30 select-none">&ldquo;</div>
-              <p className="text-white text-[18px] lg:text-[22px] font-light leading-[1.65] max-w-4xl">
+              <div className="text-[#228DC1] text-[72px] font-serif leading-none mb-2 opacity-25 select-none">&ldquo;</div>
+              <p className="text-[#0a1628] text-[18px] lg:text-[22px] font-light leading-[1.65] max-w-4xl">
                 Our social value goals, objectives and policies will be communicated clearly to our employees,
                 contractors, supply chain partners, communities we work with and relevant parties. We will review
                 our social value statements and related policies on an annual basis and aim for continuous improvement.
