@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleCheck, faGear, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faGear, faXmark, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 
@@ -2248,21 +2248,18 @@ export default function KaiPage() {
                 pill: 'PARAMETERS',
                 label: 'Choose your LLM',
                 desc: 'Build your agent with no code. Bring your own LLM (open weight or closed source) and set your goals, tone, and rules.',
-                icon: faSliders,
               },
               {
                 num: '02',
                 pill: 'KNOWLEDGE',
                 label: 'Connect your Knowledge Base',
                 desc: 'Connect your knowledge sources by uploading files, adding links, or integrating a database via API. End-to-end data privacy and control, encrypted at rest and in transit, CREST-certified and ISO 42001 compliant.',
-                icon: faBookOpen,
               },
               {
                 num: '03',
                 pill: 'SYSTEMS',
                 label: 'Activate your channel',
                 desc: 'Kai triggers systems automatically and integrates with your existing tools. Closed loop resolution: raise, route, resolve. Outcomes, not just chat.',
-                icon: faPlug,
               },
             ].map((step, i) => (
               <div
@@ -2306,15 +2303,6 @@ export default function KaiPage() {
                 <h3 className="text-white group-hover:text-violet-200 font-semibold text-[20px] leading-snug mb-3 transition-colors duration-300">{step.label}</h3>
                 <p className="text-white/55 text-[16px] font-normal leading-relaxed">{step.desc}</p>
 
-                {/* Icon bottom-right */}
-                <div className="mt-6 flex justify-end">
-                  <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:border-violet-500/40"
-                    style={{ background: 'rgba(34,141,193,0.15)', border: '1px solid rgba(34,141,193,0.25)' }}
-                  >
-                    <FontAwesomeIcon icon={step.icon} className="w-4 h-4 text-[#228DC1] group-hover:text-violet-400 transition-colors duration-300" />
-                  </div>
-                </div>
               </div>
             ))}
           </div>
