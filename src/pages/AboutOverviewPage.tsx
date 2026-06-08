@@ -1,325 +1,172 @@
-﻿import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faBuilding, faGlobe, faHandshake, faPeopleGroup } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
-const latestInsights = [
+const contentSections = [
   {
-    tag: 'Private 5G',
-    title: 'From Wi-Fi to Private 5G: The Evolution of Tourism Connectivity',
-    excerpt: 'How destinations can move from public Wi-Fi to secure, high-capacity private 5G experiences.',
-    date: 'October 20, 2025',
-    slug: 'wifi-to-private-5g-tourism-connectivity',
+    label: 'About the company',
+    title: 'AWTG delivers innovative platforms, solutions and services for enterprises, cities and communities.',
+    paragraphs: [
+      'AWTG is an end-to-end engineering services and technology solutions provider operating in Telecommunications, Immersive Tourism, Smart Education, Smart Cities, Smart Retail and Shopping, Industry 4.0, Smart Health, New Media, Internet and other markets that employ digital technologies. AWTG’s technology solutions cover Digital Transformation, Rapid Prototyping, Artificial Intelligence, Internet of Everything and Software.',
+      'Our vision is to improve communities through innovation that facilitates a better future for our employees, clients and stakeholders. Our mission is to create innovations that enables our clients to deliver products and services that brings better value to their customers and higher returns on investments.',
+    ],
   },
   {
-    tag: 'Smart Cities',
-    title: 'Designing Invisible Infrastructure: How Cities Are Rethinking Connectivity',
-    excerpt: 'How cities balance 5G infrastructure, urban aesthetics, heritage settings and public acceptance.',
-    date: 'September 22, 2025',
-    slug: 'designing-invisible-infrastructure-cities-connectivity',
+    label: 'Our Story',
+    title: 'Founded in 2006 to provide advanced professional services catering to the specific needs of the telecommunications industry.',
+    paragraphs: [
+      'Founded in 2006 to provide advanced professional services catering to the specific needs of the telecommunications industry, AWTG has built a strong reputation by focusing on customer satisfaction—utilising our considerable skills and expertise to deliver superior results and returns-on-investments for our clients.',
+      'In 2014, AWTG deployed the first 5G test bed in the UK—including the first developed 5G core network in the UK and the provisioning of software solutions, support and engagement as part of this. Since then, AWTG has designed and deployed 5G and other mobile and wireless communications networks for numerous other clients, and continues to be the leading services company delivering 5G solutions for various market verticals.',
+      'AWTG has also delivered various successful government projects that are both network deployment and consultancy centric, and has deployed thousands of 4G and 5G sites across three continents over the last 17 years.',
+    ],
   },
   {
-    tag: '5G',
-    title: '5G-Connected Ports: The Gateway to Smarter Trade',
-    excerpt: 'Why ports are becoming connected, data-driven environments powered by advanced 5G infrastructure.',
-    date: 'September 15, 2025',
-    slug: '5g-connected-ports-smarter-trade',
-  },
-]
-
-const milestones = [
-  {
-    year: '2003',
-    event: 'AWTG founded in London as a specialist telecoms consultancy.',
-    detail: 'Starting with a focused team of RF and wireless experts, AWTG began serving UK mobile operators with specialist consultancy that larger firms could not match for depth or speed.',
+    label: 'Open RAN Success Story',
+    title: 'AWTG has delivered more than 45,000 RAN sites globally.',
+    paragraphs: [
+      'AWTG has delivered more than 45,000 RAN sites globally and has built a strong reputation for its expertise in Open RAN technology since 2016 after the launch of the first private 5G network in the UK. In 2021, the company made significant investments in the development of Open RAN solutions, which have yielded positive outcomes. AWTG has secured multiple multi-million consortiums, including Flex-5G, Flexi-DAS, TUDOR, SCONDA, HiPerRAN, and Core HDD.',
+    ],
   },
   {
-    year: '2010',
-    event: 'Expanded into systems integration and network deployment services.',
-    detail: 'Growing client demand led us to build full end-to-end delivery capability, taking projects from initial design right through to live network deployment and handover.',
+    label: 'Our Culture',
+    title: 'We deliver innovations and technology to our customers with the highest standards of quality and cost effectiveness.',
+    paragraphs: [
+      'We deliver innovations and technology to our customers with the highest standards of quality and cost effectiveness.',
+      'Our innovation engineering and software development services are focused on the quality of deliverables while at the same time within defined budgets and timelines.',
+      'We promote a healthy work-life balance to our employees.',
+    ],
   },
   {
-    year: '2015',
-    event: "Launched private LTE division, becoming one of the UK's first private network specialists.",
-    detail: 'We identified the enterprise opportunity in dedicated wireless infrastructure ahead of the market and built a dedicated practice around private LTE long before it became mainstream.',
+    label: 'Diversity and Inclusion',
+    title: 'At AWTG, we cultivate an environment where individuals can feel at liberty to express themselves authentically.',
+    paragraphs: [
+      'At AWTG, we cultivate an environment where individuals can feel at liberty to express themselves authentically and establish significant connections with one another. Our focus on workplace diversity, promoting inclusivity, and community involvement, encouraging creativity to help build a more optimistic future for the company and the communities we work with.',
+      'We have full confidence in our staff to balance the demands of their personal and professional lives to create a flexible work environment. To broaden our diverse range of employees, we offer multiple opportunities to our team members, professionals and talented students.',
+    ],
   },
   {
-    year: '2019',
-    event: 'Awarded major 5G private network contracts across defence and port sectors.',
-    detail: 'Landmark projects with UK MoD and major port operators validated our 5G deployment capability at scale, across some of the most demanding connectivity environments in the country.',
-  },
-  {
-    year: '2022',
-    event: 'Established AI and Analytics division, integrating ML into network operations.',
-    detail: 'We built an internal AI engineering team and began productising our network intelligence capability into what would become Kai, our enterprise AI platform now live with major clients.',
-  },
-  {
-    year: '2024',
-    event: 'Launched Generative AI practice and expanded operations to 40+ countries.',
-    detail: 'Kai went live with British Council, Aruva launched for education, and AWTG began advising global organisations on AI transformation strategy, roadmapping and delivery.',
-  },
-  {
-    year: '2026',
-    event: 'Kai reaches 250,000+ users across 150+ countries.',
-    detail: 'Kai, our enterprise AI platform, is now live at scale across enterprise, government and education sectors worldwide, with continued growth across every region.',
+    label: 'Driving Long-term Social Impact',
+    title: 'AWTG has a strong commitment to corporate social responsibility.',
+    paragraphs: [
+      'AWTG has a strong commitment to corporate social responsibility (CSR) and is committed to creating a sustainable world in which all can thrive. Our team has embraced our responsibility to our community as part of our mission, striving to improve people’s lives and promote sustainability throughout the world.',
+    ],
   },
 ]
 
-const subLinks = [
-  { label: 'Leadership Team', href: '/about/leadership', desc: 'Meet the people driving AWTG forward.' },
-  { label: 'Certifications', href: '/about/certifications', desc: 'Our standards, accreditations and quality commitments.' },
-  { label: 'Sustainability', href: '/about/sustainability', desc: "How we're building a greener future." },
+const trustCategories = [
+  'Government',
+  'Health and Care',
+  'Industry Bodies',
+  'MNOs',
+  'Researchers',
+  'Technology Vendors',
+  'Vertical Applications',
 ]
 
-function TimelineSection() {
-  const [active, setActive] = useState<Set<number>>(new Set())
-  const rowRefs = useRef<(HTMLDivElement | null)[]>([])
-
-  useEffect(() => {
-    const check = () => {
-      const triggerY = window.innerHeight * 0.72
-      const next = new Set<number>()
-      rowRefs.current.forEach((row, i) => {
-        if (!row) return
-        if (row.getBoundingClientRect().top < triggerY) next.add(i)
-      })
-      setActive(prev => (next.size === prev.size ? prev : next))
-    }
-    const t = setTimeout(check, 60)
-    window.addEventListener('scroll', check, { passive: true })
-    window.addEventListener('resize', check, { passive: true })
-    return () => { clearTimeout(t); window.removeEventListener('scroll', check); window.removeEventListener('resize', check) }
-  }, [])
-
-  const isLast = (i: number) => i === milestones.length - 1
-
-  return (
-    <section className="py-28 bg-[#f8fafc]">
-      <div className="max-w-3xl mx-auto px-8 lg:px-12">
-        <p className="type-label text-[#228DC1] mb-4">History</p>
-        <h2 className="font-heading text-[#0a1628] mb-20">
-          Our journey
-        </h2>
-
-        {/* Timeline — no gaps between rows so line segments are seamless */}
-        <div>
-          {milestones.map((m, i) => {
-            const isActive = active.has(i)
-            const nextActive = active.has(i + 1)
-            const delay = `${i * 50}ms`
-
-            return (
-              <div
-                key={m.year}
-                ref={el => { rowRefs.current[i] = el }}
-                className="flex"
-              >
-                {/* ── Year ── */}
-                <div className="shrink-0 w-16 text-right pr-5 pt-1">
-                  <span
-                    className="font-black tabular-nums text-[14px] leading-none block"
-                    style={{
-                      color: isActive ? '#228DC1' : '#d1dbe8',
-                      letterSpacing: '-0.01em',
-                      transition: 'color 0.45s ease',
-                      transitionDelay: delay,
-                    }}
-                  >
-                    {m.year}
-                  </span>
-                </div>
-
-                {/* ── Dot + connector column ──
-                     This column STRETCHES to full row height (no items-start on parent).
-                     The flex-1 connector below the dot fills the remaining height,
-                     so the line is always continuous with no gaps.                ── */}
-                <div className="shrink-0 w-5 flex flex-col items-center">
-                  {/* Small top spacer so dot aligns with first line of text */}
-                  <div style={{ height: '6px', flexShrink: 0 }} />
-
-                  {/* Dot */}
-                  <div
-                    style={{
-                      width: '14px',
-                      height: '14px',
-                      borderRadius: '50%',
-                      flexShrink: 0,
-                      backgroundColor: isActive ? '#228DC1' : 'white',
-                      border: `2px solid ${isActive ? '#228DC1' : '#d1dbe8'}`,
-                      boxShadow: isActive ? '0 0 0 5px rgba(37,99,235,0.13)' : 'none',
-                      transition: 'all 0.45s cubic-bezier(0.4,0,0.2,1)',
-                      transitionDelay: delay,
-                      position: 'relative',
-                      zIndex: 1,
-                    }}
-                  />
-
-                  {/* Connector line below this dot (not on last item) */}
-                  {!isLast(i) && (
-                    <div
-                      style={{
-                        flex: 1,
-                        width: '2px',
-                        marginTop: '4px',
-                        borderRadius: '1px',
-                        background: '#e8edf4',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        minHeight: '32px',
-                      }}
-                    >
-                      {/* Blue fill travels down as next item activates */}
-                      <div
-                        style={{
-                          position: 'absolute',
-                          inset: 0,
-                          top: 0,
-                          background: '#228DC1',
-                          height: nextActive ? '100%' : '0%',
-                          transition: 'height 0.6s cubic-bezier(0.4,0,0.2,1)',
-                          transitionDelay: nextActive ? `${(i + 1) * 50}ms` : '0ms',
-                        }}
-                      />
-                    </div>
-                  )}
-                </div>
-
-                {/* ── Content ── */}
-                <div
-                  className="flex-1 pl-6 pb-10"
-                  style={{
-                    opacity: isActive ? 1 : 0,
-                    transform: isActive ? 'translateY(0px)' : 'translateY(10px)',
-                    transition: 'opacity 0.5s ease, transform 0.5s ease',
-                    transitionDelay: isActive ? `${i * 50 + 90}ms` : '0ms',
-                  }}
-                >
-                  <p
-                    className="font-semibold leading-[1.3] mb-2"
-                    style={{ fontSize: '16px', color: '#0a1628' }}
-                  >
-                    {m.event}
-                  </p>
-                  <p
-                    className="text-[14px] font-normal leading-[1.7]"
-                    style={{ color: 'rgba(10,22,40,0.5)' }}
-                  >
-                    {m.detail}
-                  </p>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    </section>
-  )
-}
+const aboutLinks = [
+  { label: 'Management', href: '/about/leadership', desc: 'Meet the brilliant minds behind our strides towards sustainability and innovation.' },
+  { label: 'Certifications', href: '/about/certifications', desc: 'Trusted and safe solutions to accommodate your regulatory requirements.' },
+  { label: 'Carbon Reduction Plan', href: '/about/sustainability#carbon-reduction-plan', desc: 'Our commitment to achieving Net Zero.' },
+  { label: 'Social Value Statement', href: '/about/sustainability#social-value-statement', desc: 'Supporting communities, enabling growth and economic wellbeing.' },
+]
 
 export default function AboutOverviewPage() {
   return (
     <>
-      {/* Hero */}
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">About AWTG</p>
-          <h1 className="font-serif-display text-[#0a1628] mb-6">
-            Over Two Decades of Telecoms Excellence
-          </h1>
-          <p className="text-[#0a1628]/65 text-[16px] max-w-2xl font-normal leading-[1.7]">
-            AWTG is an Advanced Wireless Technology Group, a UK-based specialist in private networks, telecoms AI and smart infrastructure for enterprises and governments worldwide.
-          </p>
+          <p className="type-label text-[#228DC1] mb-4">Company Information</p>
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_380px] gap-12 lg:gap-20 items-end">
+            <div>
+              <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
+                AWTG delivers innovative platforms, solutions and services for enterprises, cities and communities.
+              </h1>
+              <p className="text-[#0a1628]/65 text-[18px] max-w-2xl font-normal leading-[1.7]">
+                AWTG is an end-to-end engineering services and technology solutions provider operating across digital technology markets.
+              </p>
+            </div>
+            <div className="border-l-2 border-[#228DC1] pl-6 py-2">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Delivery footprint</p>
+              <p className="font-serif-display text-[#0a1628] text-[28px] leading-[1.1]">45,000+</p>
+              <p className="text-[#0a1628]/65 text-sm leading-relaxed mt-2">RAN sites delivered globally.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Mission */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 grid md:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
+          {[
+            { icon: faBuilding, title: 'Founded in 2006', text: 'Built to serve the specific needs of the telecommunications industry.' },
+            { icon: faGlobe, title: 'Three continents', text: 'Thousands of 4G and 5G sites deployed across three continents.' },
+            { icon: faHandshake, title: 'Trusted delivery', text: 'Government projects, network deployment and consultancy-centric programmes.' },
+          ].map((item) => (
+            <div key={item.title} className="bg-white p-7">
+              <FontAwesomeIcon icon={item.icon} className="w-5 h-5 text-[#228DC1] mb-5" />
+              <h2 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{item.title}</h2>
+              <p className="text-[#0a1628]/65 text-[14px] leading-[1.7] font-normal">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="type-label text-[#228DC1] mb-4">Our Mission</p>
-            <h2 className="font-heading text-[#0a1628] mb-6">
-              Connectivity that transforms organisations
-            </h2>
-            <p className="text-[#0a1628]/65 leading-[1.7] font-normal text-[16px] mb-4">
-              We exist to make cutting-edge wireless technology accessible, reliable and transformative for organisations that depend on connectivity. From a single-site private 5G deployment to a national smart city programme, we bring the expertise and commitment to deliver.
-            </p>
-            <p className="text-[#0a1628]/65 leading-[1.7] font-normal">
-              Our team of engineers, consultants and project managers are united by a passion for solving complex connectivity challenges and a relentless focus on client outcomes.
-            </p>
-          </div>
-          <div className="h-72 overflow-hidden bg-gray-100">
-            <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=85&auto=format&fit=crop"
-              alt="AWTG team collaboration"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <TimelineSection />
-
-      {/* Sub-nav */}
-      <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid sm:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
-            {subLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className="group bg-white p-8 hover:border-[#228DC1]/30 hover:bg-[#f7f8fa] transition-colors"
-              >
-                <h3 className="font-card-heading text-[#0a1628] text-[14px] mb-2 group-hover:text-[#228DC1] transition-colors">{link.label}</h3>
-                <p className="text-[#0a1628]/60 text-[14px] font-normal">{link.desc}</p>
-              </Link>
+          <div className="space-y-0 border-y border-gray-100">
+            {contentSections.map((section, index) => (
+              <article key={section.label} className="grid lg:grid-cols-[320px_minmax(0,1fr)] gap-8 lg:gap-14 py-12 border-b border-gray-100 last:border-b-0">
+                <div>
+                  <p className="type-label text-[#228DC1] mb-3">{String(index + 1).padStart(2, '0')}</p>
+                  <h2 className="font-card-heading text-[#0a1628] text-[18px]">{section.label}</h2>
+                </div>
+                <div>
+                  <p className="font-serif-display text-[#0a1628] leading-[1.2] mb-6" style={{ fontSize: 'clamp(22px, 2.4vw, 34px)' }}>
+                    {section.title}
+                  </p>
+                  <div className="space-y-5">
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="text-[#0a1628]/68 text-[16px] leading-[1.85] font-normal">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Insights */}
-      <section className="py-20 bg-white border-t border-gray-100">
+      <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex items-end justify-between mb-10 gap-8">
+          <div className="flex items-end justify-between gap-8 mb-10">
             <div>
-              <p className="type-label text-[#228DC1] mb-3">Insights</p>
-              <h2 className="font-heading text-[#0a1628]">
-                Latest thinking from AWTG
-              </h2>
+              <p className="type-label text-[#228DC1] mb-3">Trusted by our Partners and References</p>
+              <h2 className="font-heading text-[#0a1628]">The organisations and communities we serve.</h2>
             </div>
-            <Link
-              to="/insights/blog"
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-[#0a1628]/60 hover:text-[#228DC1] transition-colors shrink-0"
-            >
-              All articles <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-            </Link>
+            <FontAwesomeIcon icon={faPeopleGroup} className="hidden md:block w-8 h-8 text-[#228DC1]" />
           </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
+            {trustCategories.map((category) => (
+              <div key={category} className="bg-[#f8fafc] p-6">
+                <p className="font-card-heading text-[#0a1628] text-[14px]">{category}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div className="grid lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
-            {latestInsights.map((post) => (
-              <Link
-                key={post.slug}
-                to={`/insights/blog/${post.slug}`}
-                className="group bg-white p-8 flex flex-col justify-between hover:bg-[#f7f8fa] transition-colors"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="type-label text-[#228DC1]">{post.tag}</span>
-                    <span className="text-[#0a1628]/65 text-xs font-normal">{post.date}</span>
-                  </div>
-                  <h3 className="font-card-heading text-[#0a1628] text-[14px] leading-[1.3] mb-3 group-hover:text-[#228DC1] transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">
-                    {post.excerpt}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 mt-6 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.14em]">
-                  Read <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                </div>
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100">
+            {aboutLinks.map((link) => (
+              <Link key={link.href} to={link.href} className="group bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
+                <h3 className="font-card-heading text-[#0a1628] text-[14px] mb-2 group-hover:text-[#228DC1] transition-colors">{link.label}</h3>
+                <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal mb-5">{link.desc}</p>
+                <span className="inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.14em]">
+                  Explore <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+                </span>
               </Link>
             ))}
           </div>

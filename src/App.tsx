@@ -118,6 +118,8 @@ export default function App() {
         <Route path="about/leadership" element={<AboutLeadershipPage />} />
         <Route path="about/certifications" element={<AboutCertificationsPage />} />
         <Route path="about/sustainability" element={<AboutSustainabilityPage />} />
+        <Route path="about/carbon-reduction-plan" element={<AboutSustainabilityPage />} />
+        <Route path="about/social-value-statement" element={<AboutSustainabilityPage />} />
 
         {/* Insights */}
         <Route path="insights" element={<InsightsNewsPage />} />
