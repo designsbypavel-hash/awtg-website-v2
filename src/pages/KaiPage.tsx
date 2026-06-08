@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faGear, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
@@ -2050,16 +2049,13 @@ export default function KaiPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
           <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-10 lg:gap-16 items-center mb-14">
             <div className="max-w-xl">
-              <p className="type-label text-[#228DC1] mb-5">Global reach. Measurable customer outcomes.</p>
+              <p className="type-label text-[#0a1628] mb-5">Global reach. Measurable customer outcomes.</p>
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Our AI agent is live<br />at enterprise scale.
               </h2>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
-                Kai is running in production at enterprise organisations today. Real query volume, real containment rates, real CSAT improvement. Tracked from the first week, not the first quarter.
+                Our AI agent is live<br />at enterprise scale.
               </p>
-              <Link to="/insights/case-studies" className="text-[13px] font-semibold text-[#228DC1] hover:underline transition-all">
-                Read the case study
-              </Link>
             </div>
             <GlobalReachMap />
           </div>
