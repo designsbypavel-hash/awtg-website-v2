@@ -880,36 +880,36 @@ function Insights() {
 
 function ContactCTA() {
   return (
-    <section className="py-28 bg-[#0a1628]">
+    <section className="py-28 bg-[#f7f9fc] border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="font-serif-display text-white leading-[1.1] mb-4">
+            <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-4">
               Ready to build<br />
               <span className="text-[#228DC1]">something that matters?</span>
             </h2>
-            <p className="text-white/55 text-[16px] font-normal leading-[1.7] mb-10">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-10">
               No pitch. No jargon. Just honest advice from engineers who've done it before.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-colors">
+              <Link to="/contact" className="btn btn-primary">
                 Talk to an Expert
               </Link>
             </div>
           </div>
           <div className="space-y-6">
-            <div className="border-t border-white/10 pt-6">
-              <p className="text-[14px] font-semibold uppercase tracking-widest text-white/30 mb-2">Email</p>
-              <a href="mailto:info@awtg.co.uk" className="text-white/70 hover:text-white transition-colors font-medium">info@awtg.co.uk</a>
+            <div className="border-t border-gray-200 pt-6">
+              <p className="form-label mb-2">Email</p>
+              <a href="mailto:info@awtg.co.uk" className="text-[#0a1628] hover:text-[#228DC1] transition-colors font-medium text-[15px]">info@awtg.co.uk</a>
             </div>
-            <div className="border-t border-white/10 pt-6">
-              <p className="text-[14px] font-semibold uppercase tracking-widest text-white/30 mb-2">Phone</p>
-              <a href="tel:+442035155151" className="text-white/70 hover:text-white transition-colors font-medium">+44 (0) 20 3515 5151</a>
-              <p className="text-xs text-white/30 mt-1 font-normal">Monâ€“Fri, 9amâ€“6pm GMT</p>
+            <div className="border-t border-gray-200 pt-6">
+              <p className="form-label mb-2">Phone</p>
+              <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#228DC1] transition-colors font-medium text-[15px]">+44 (0) 20 3515 5151</a>
+              <p className="text-xs text-[#0a1628]/45 mt-1 font-normal">Mon–Fri, 9am–6pm GMT</p>
             </div>
-            <div className="border-t border-white/10 pt-6">
-              <p className="text-[14px] font-semibold uppercase tracking-widest text-white/30 mb-2">Offices</p>
-              <p className="text-white/70 font-medium">London</p>
+            <div className="border-t border-gray-200 pt-6">
+              <p className="form-label mb-2">Offices</p>
+              <p className="text-[#0a1628] font-medium text-[15px]">London</p>
             </div>
           </div>
         </div>
@@ -937,3 +937,4 @@ export default function Home() {
     </>
   )
 }
+
