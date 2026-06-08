@@ -40,7 +40,7 @@ const PATH_LABELS: Record<string, string> = {
   '/about/partnerships':               'Partnerships',
   '/about/innovation':                 'Innovation',
   // ── Insights ──────────────────────────────────────────────────────
-  '/insights':                         'Insights',
+  '/insights':                         'News',
   '/insights/blog':                    'Blog',
   '/insights/case-studies':            'Case Studies',
   '/insights/white-papers':            'White Papers',
@@ -53,7 +53,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   services:   'Services',
   industries: 'Industries',
   about:      'About',
-  insights:   'Insights',
+  insights:   'News',
   contact:    'Contact',
   careers:    'Careers',
   privacy:    'Privacy Policy',
