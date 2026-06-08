@@ -161,16 +161,16 @@ export default function AboutSustainabilityPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative pt-36 pb-28 bg-[#0a1628] overflow-hidden">
+      <section className="relative pt-36 pb-28 bg-white overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[-100px] right-[-100px] w-[700px] h-[700px] bg-[#228DC1]/10 rounded-full blur-[140px]" />
-          <div className="absolute bottom-0 left-[-80px] w-[500px] h-[400px] bg-[#228DC1]/6 rounded-full blur-[120px]" />
+          <div className="absolute top-0 right-0 w-[900px] h-[600px] bg-gradient-to-bl from-[#e8f4fb] via-[#f0f8fd] to-transparent" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-gradient-to-tr from-[#f0f8fd] to-transparent" />
           <div
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 opacity-[0.45]"
             style={{
               backgroundImage:
-                'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-              backgroundSize: '64px 64px',
+                'linear-gradient(rgba(34,141,193,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(34,141,193,0.07) 1px, transparent 1px)',
+              backgroundSize: '56px 56px',
             }}
           />
         </div>
@@ -179,10 +179,10 @@ export default function AboutSustainabilityPage() {
             <div className="h-px w-10 bg-[#228DC1]" />
             <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.18em]">Corporate Social Responsibility</p>
           </div>
-          <h1 className="font-serif-display text-white mb-6 max-w-4xl leading-[1.1]">
+          <h1 className="font-serif-display text-[#0a1628] mb-6 max-w-4xl leading-[1.1]">
             Carbon Reduction Plan<br />and Social Value Statement
           </h1>
-          <p className="text-white/55 text-[18px] max-w-2xl font-normal leading-[1.75] mb-12">
+          <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.75] mb-12">
             Commitment to Achieving Net Zero. Supporting communities, enabling growth and economic wellbeing.
           </p>
           <div className="flex flex-wrap gap-3">
@@ -194,7 +194,7 @@ export default function AboutSustainabilityPage() {
             </a>
             <a
               href="#social-value-statement"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white/75 text-[13px] font-semibold uppercase tracking-[0.1em] hover:border-white/40 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-[#0a1628]/20 text-[#0a1628]/70 text-[13px] font-semibold uppercase tracking-[0.1em] hover:border-[#228DC1] hover:text-[#228DC1] transition-colors"
             >
               Social Value Statement
             </a>
