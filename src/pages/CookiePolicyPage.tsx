@@ -148,7 +148,6 @@ export default function CookiePolicyPage() {
       {/* Hero */}
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">Legal</p>
           <h1 className="font-serif-display text-[#0a1628] mb-6">Cookie Policy</h1>
           <p className="text-[#0a1628]/65 text-[17px] max-w-2xl font-normal leading-[1.75]">
             This policy sets out how AWTG Limited handles your personal information collected via our websites and through your participation in AWTG related activities.

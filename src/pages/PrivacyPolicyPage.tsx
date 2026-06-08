@@ -311,7 +311,6 @@ export default function PrivacyPolicyPage() {
       {/* Hero */}
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">Legal</p>
           <h1 className="font-serif-display text-[#0a1628] mb-4">Privacy Policy</h1>
           <p className="type-label text-[#0a1628]/45 mb-6">Effective April 2020</p>
           <p className="text-[#0a1628]/65 text-[17px] max-w-2xl font-normal leading-[1.75]">
