@@ -100,12 +100,115 @@ function StatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
 
 function GlobalReachMap() {
   const nodes = [
-    { id: 'nyc', label: 'New York', x: 228, y: 142, delay: '0s' },
-    { id: 'lon', label: 'London', x: 282, y: 113, delay: '0.7s' },
-    { id: 'dub', label: 'Dubai', x: 339, y: 170, delay: '1.4s' },
-    { id: 'sin', label: 'Singapore', x: 383, y: 205, delay: '2.1s' },
-    { id: 'syd', label: 'Sydney', x: 326, y: 238, delay: '2.8s' },
+    { id: 'nyc', label: 'New York', x: 196, y: 156, delay: '0s' },
+    { id: 'lon', label: 'London', x: 354, y: 126, delay: '0.7s' },
+    { id: 'dub', label: 'Dubai', x: 438, y: 177, delay: '1.4s' },
+    { id: 'sin', label: 'Singapore', x: 529, y: 220, delay: '2.1s' },
+    { id: 'syd', label: 'Sydney', x: 594, y: 286, delay: '2.8s' },
   ]
+
+  return (
+    <div className="relative -mx-8 lg:-ml-16 lg:-mr-4 overflow-visible bg-transparent">
+      <style>{`
+        @keyframes kaiMapSignal {
+          0% { stroke-dashoffset: 520; opacity: 0; }
+          16% { opacity: 0.92; }
+          76% { opacity: 0.72; }
+          100% { stroke-dashoffset: 0; opacity: 0; }
+        }
+        @keyframes kaiMapPulse {
+          0%, 100% { transform: scale(0.82); opacity: 0.9; }
+          50% { transform: scale(1.8); opacity: 0.1; }
+        }
+        @keyframes kaiMapFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-7px); }
+        }
+        .kai-map-shell {
+          animation: kaiMapFloat 7s ease-in-out infinite;
+        }
+        .kai-map-signal {
+          stroke-dasharray: 520;
+          stroke-dashoffset: 520;
+          animation: kaiMapSignal 5.2s ease-in-out infinite;
+        }
+        .kai-map-signal-2 { animation-delay: 1.25s; }
+        .kai-map-signal-3 { animation-delay: 2.5s; }
+        .kai-map-node-pulse {
+          transform-box: fill-box;
+          transform-origin: center;
+          animation: kaiMapPulse 2.7s ease-in-out infinite;
+        }
+      `}</style>
+      <svg viewBox="0 0 720 380" role="img" aria-label="Kai global network shown on a world map with live connections" className="block min-h-[360px] w-full">
+        <defs>
+          <linearGradient id="kaiMapLandFill" x1="0%" x2="100%" y1="0%" y2="100%">
+            <stop offset="0%" stopColor="#d8f6ea" />
+            <stop offset="46%" stopColor="#78c8ad" />
+            <stop offset="100%" stopColor="#2f7d6e" />
+          </linearGradient>
+          <linearGradient id="kaiMapStroke" x1="160" x2="610" y1="120" y2="285" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#8ceaff" stopOpacity="0" />
+            <stop offset="42%" stopColor="#37c3ef" />
+            <stop offset="100%" stopColor="#228DC1" stopOpacity="0" />
+          </linearGradient>
+          <radialGradient id="kaiMapOceanGlow" cx="48%" cy="48%" r="62%">
+            <stop offset="0%" stopColor="#b8efff" stopOpacity="0.44" />
+            <stop offset="58%" stopColor="#52bce8" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#228DC1" stopOpacity="0" />
+          </radialGradient>
+          <filter id="kaiMapShadow" x="-18%" y="-28%" width="136%" height="160%">
+            <feDropShadow dx="0" dy="24" stdDeviation="26" floodColor="#0a1628" floodOpacity="0.16" />
+          </filter>
+          <filter id="kaiMapNodeGlow" x="-90%" y="-90%" width="280%" height="280%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <rect width="720" height="380" fill="transparent" />
+        <ellipse cx="370" cy="324" rx="290" ry="38" fill="#0a1628" opacity="0.055" />
+        <ellipse cx="372" cy="184" rx="330" ry="168" fill="url(#kaiMapOceanGlow)" />
+
+        <g className="kai-map-shell" filter="url(#kaiMapShadow)">
+          <g fill="none" stroke="#9feaff" strokeWidth="0.7" opacity="0.18">
+            <path d="M44 190h650" />
+            <path d="M70 116h596" />
+            <path d="M86 260h560" />
+            <path d="M172 66c-42 90-42 185 0 278" />
+            <path d="M360 46c-34 104-34 218 0 316" />
+            <path d="M552 66c40 94 40 184 0 278" />
+          </g>
+
+          <g fill="url(#kaiMapLandFill)" stroke="#b7f0dc" strokeWidth="1.2" opacity="0.93">
+            <path d="M74 115c16-25 49-39 87-36 39 3 68 18 88 43 15 19 34 24 61 26 16 1 29 11 32 25-21 20-52 20-74 6-16-10-32-10-48 1-18 13-39 14-57 3-21-13-41-5-63-10-31-7-43-38-26-58Z" />
+            <path d="M204 208c26 7 43 25 45 51 2 31-15 58-38 84-24-12-39-38-42-68-3-28 3-49 35-67Z" />
+            <path d="M315 91c28-21 72-25 107-13 26 9 41 27 37 50-24 9-41 1-61-10-17-9-36-8-55-2-21 7-41 5-56-9 3-7 8-12 28-16Z" />
+            <path d="M343 142c18-10 46-8 63 4 14 10 19 27 13 44-8 24 10 49 24 71-24 14-55 0-68-25-11-21-29-33-47-44-20-13-14-40 15-50Z" />
+            <path d="M437 126c39-24 105-27 148-4 31 16 44 39 36 64-31 10-65 2-93-18-22-16-46-21-75-16-22 4-42 0-53-12 8-7 18-11 37-14Z" />
+            <path d="M502 208c35-10 70-2 97 22 21 19 25 45 12 73-34 0-64-15-80-41-12-19-29-29-55-35 5-11 12-18 26-19Z" />
+            <path d="M592 270c28-8 61 2 83 23 14 14 16 33 3 49-34-1-67-16-88-39-9-10-9-21 2-33Z" />
+            <path d="M612 166c18-8 41-4 57 9 13 11 17 27 9 43-22 2-43-7-57-23-10-12-11-23-9-29Z" />
+          </g>
+        </g>
+
+        <path className="kai-map-signal" d="M196 156 C256 82 301 92 354 126 C394 151 416 165 438 177" fill="none" stroke="url(#kaiMapStroke)" strokeWidth="3.4" strokeLinecap="round" />
+        <path className="kai-map-signal kai-map-signal-2" d="M354 126 C458 104 514 150 529 220 C541 254 568 276 594 286" fill="none" stroke="url(#kaiMapStroke)" strokeWidth="3.4" strokeLinecap="round" />
+        <path className="kai-map-signal kai-map-signal-3" d="M196 156 C297 268 426 274 529 220" fill="none" stroke="url(#kaiMapStroke)" strokeWidth="3.4" strokeLinecap="round" />
+
+        {nodes.map((node) => (
+          <g key={node.id} filter="url(#kaiMapNodeGlow)">
+            <circle className="kai-map-node-pulse" cx={node.x} cy={node.y} r="16" fill="#6fe7ff" opacity="0.25" style={{ animationDelay: node.delay }} />
+            <circle cx={node.x} cy={node.y} r="7" fill="#e9fbff" stroke="#228DC1" strokeWidth="2.4" />
+            <circle cx={node.x} cy={node.y} r="2.5" fill="#061a32" />
+          </g>
+        ))}
+      </svg>
+    </div>
+  )
 
   return (
     <div className="relative overflow-hidden bg-transparent">
@@ -2047,7 +2150,7 @@ export default function KaiPage() {
       {/* -- Live in production -- */}
       <section className="bg-[#f8fafc] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-10 lg:gap-16 items-center mb-14">
+          <div className="grid lg:grid-cols-[0.78fr_1.22fr] gap-8 lg:gap-10 items-center mb-14">
             <div className="max-w-xl">
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Global reach. Measurable customer outcomes.
