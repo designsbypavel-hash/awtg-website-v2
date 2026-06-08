@@ -2,7 +2,6 @@
 import { Outlet } from 'react-router-dom'
 import Navigation from './Navigation'
 import Footer from './Footer'
-import Breadcrumb from './Breadcrumb'
 
 export default function Layout() {
   useEffect(() => {
@@ -16,7 +15,6 @@ export default function Layout() {
         Skip to main content
       </a>
       <Navigation />
-      <Breadcrumb />
       <main id="main-content" className="flex-1" tabIndex={-1}>
         <Outlet />
       </main>
