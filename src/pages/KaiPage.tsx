@@ -967,7 +967,6 @@ const KAI_HDR_TXT  = '#1a253e'
 const KAI_INPUT_BD = '#b3b3b3'
 const KAI_ICON_DARK = '#353535'
 
-// ─── Voice script (drives the animated voice phase) ──────────────────────────
 type VoiceSpeaker = 'ai' | 'user'
 interface VoiceTurn { speaker: VoiceSpeaker; text: string }
 const VOICE_SCRIPT: VoiceTurn[] = [
@@ -980,13 +979,7 @@ const VOICE_SCRIPT: VoiceTurn[] = [
   { speaker: 'ai',   text: "Yes! I've updated the address. You'll receive a confirmation shortly." },
 ]
 
-const KAI_VOICE_AUDIO: Record<number, string> = {
-  0: '/audio/kai-voice-greeting.mp3',
-  2: '/audio/kai-voice-delivery.mp3',
-  4: '/audio/kai-voice-distance.mp3',
-  6: '/audio/kai-voice-address.mp3',
-}
-
+// ─── Voice script (drives the animated voice phase) ──────────────────────────
 // ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
 type ChatRole = 'ai' | 'user' | 'signal' | 'map' | 'chips'
 const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
@@ -1003,34 +996,6 @@ const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
 ]
 
 // ─── Delivery map widget ──────────────────────────────────────────────────────
-const formatKaiSpeech = (text: string) =>
-  text
-    .replace(/#(\d+)/g, 'order number $1')
-    .replace(/\b6 PM\b/g, 'six P M')
-    .replace(/\b2\.4 miles\b/g, 'two point four miles')
-    .replace(/! /g, '. ')
-    .replace(/\. /g, '. ... ')
-
-const pickHumanLikeVoice = (voices: SpeechSynthesisVoice[]) => {
-  const scored = voices
-    .filter(voice => /^en[-_]/i.test(voice.lang))
-    .map(voice => {
-      const haystack = `${voice.name} ${voice.voiceURI} ${voice.lang}`
-      let score = 0
-      if (/natural|neural|online|premium/i.test(haystack)) score += 80
-      if (/microsoft/i.test(haystack)) score += 35
-      if (/google/i.test(haystack)) score += 25
-      if (/aria|jenny|samantha|zira|sonia|serena|daniel|libby/i.test(haystack)) score += 20
-      if (/en[-_]GB/i.test(voice.lang)) score += 12
-      if (/en[-_]US/i.test(voice.lang)) score += 8
-      if (/compact|eloquence|robot|novelty/i.test(haystack)) score -= 80
-      return { voice, score }
-    })
-    .sort((a, b) => b.score - a.score)
-
-  return scored[0]?.voice
-}
-
 function MapWidget() {
   // Street colour and block colours match the reference screenshot
   const STREET  = '#f5f2ec'
@@ -1116,9 +1081,6 @@ function KaiChatDemo() {
   const [turnIdx, setTurnIdx] = useState(-1)
   const [words,   setWords]   = useState(0)
   const tids = useRef<number[]>([])
-  const spokenTurnRef = useRef('')
-  const audioRef = useRef<HTMLAudioElement | null>(null)
-  const [speechVoices, setSpeechVoices] = useState<SpeechSynthesisVoice[]>([])
 
   const sched = (fn: () => void, ms: number) => {
     const id = window.setTimeout(fn, ms); tids.current.push(id)
@@ -1135,12 +1097,12 @@ function KaiChatDemo() {
       const msPw   = turn.speaker === 'ai' ? 155 : 95
       const revealMs = tokens.length * msPw
       const speechMs = turn.speaker === 'ai'
-        ? Math.max(4300, formatKaiSpeech(turn.text).length * 92)
+        ? Math.max(4300, turn.text.length * 80)
         : revealMs
 
       if (turn.speaker === 'user') {
         sched(() => { setTurnIdx(i); setWords(0); setOrbMode('listen') }, t)
-        t += 1100                              // listening window before user speaks
+        t += 1100
         sched(() => setOrbMode('user'), t)
       } else {
         sched(() => { setTurnIdx(i); setWords(0); setOrbMode('ai') }, t)
@@ -1154,7 +1116,7 @@ function KaiChatDemo() {
     })
 
     sched(() => setPhase('chat'), t)
-    t += 4000                              // show chat for 4s
+    t += 4000
     sched(() => setPhase('csat'), t)       // CSAT card eases in
     t += 4500
     sched(() => setPhase('csat-out'), t)
@@ -1166,18 +1128,8 @@ function KaiChatDemo() {
     return () => {
       clearTimeout(id)
       tids.current.forEach(clearTimeout)
-      audioRef.current?.pause()
       window.speechSynthesis?.cancel()
     }
-  }, [])
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
-
-    const loadVoices = () => setSpeechVoices(window.speechSynthesis.getVoices())
-    loadVoices()
-    window.speechSynthesis.addEventListener?.('voiceschanged', loadVoices)
-    return () => window.speechSynthesis.removeEventListener?.('voiceschanged', loadVoices)
   }, [])
 
   const isVoice     = phase === 'voice'
@@ -1205,47 +1157,6 @@ function KaiChatDemo() {
   const prevTurn          = turnIdx > 0  ? VOICE_SCRIPT[turnIdx - 1] : null
   const transcript        = currentTurn ? currentTurn.text.split(' ').slice(0, words).join(' ') : ''
   const showListeningLabel = orbMode === 'listen' && currentTurn?.speaker === 'user' && words === 0
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
-
-    const shouldStopSpeech = phase !== 'voice' || !currentTurn || currentTurn.speaker !== 'ai'
-    if (shouldStopSpeech) {
-      audioRef.current?.pause()
-      window.speechSynthesis.cancel()
-      return
-    }
-
-    const spokenKey = `${turnIdx}:${currentTurn.text}`
-    if (spokenTurnRef.current === spokenKey) return
-    spokenTurnRef.current = spokenKey
-
-    const utterance = new SpeechSynthesisUtterance(formatKaiSpeech(currentTurn.text))
-    utterance.lang = 'en-GB'
-    utterance.rate = 0.9
-    utterance.pitch = 0.96
-    utterance.volume = 1
-
-    const voices = speechVoices.length ? speechVoices : window.speechSynthesis.getVoices()
-    const preferredVoice = pickHumanLikeVoice(voices)
-    if (preferredVoice) utterance.voice = preferredVoice
-
-    const audioSrc = KAI_VOICE_AUDIO[turnIdx]
-    if (audioSrc) {
-      audioRef.current?.pause()
-      const audio = new Audio(audioSrc)
-      audio.volume = 0.92
-      audioRef.current = audio
-      audio.play().catch(() => {
-        window.speechSynthesis.cancel()
-        window.speechSynthesis.speak(utterance)
-      })
-      return
-    }
-
-    window.speechSynthesis.cancel()
-    window.speechSynthesis.speak(utterance)
-  }, [phase, currentTurn, turnIdx, speechVoices])
 
   return (
     <div className="select-none" style={{ width: '100%', maxWidth: 420, aspectRatio: '420 / 613' }}>
@@ -2327,4 +2238,3 @@ export default function KaiPage() {
     </>
   )
 }
-
