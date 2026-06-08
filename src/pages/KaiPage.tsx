@@ -1640,6 +1640,34 @@ function OmnichannelSection() {
   )
 
   return (
+    <>
+    <style>{`
+      .omni-panel {
+        border: 1px solid #e0e6ed;
+        box-shadow: 0 4px 24px rgba(10,22,40,0.07);
+        transition:
+          transform 0.42s cubic-bezier(0.22,1,0.36,1),
+          box-shadow 0.42s cubic-bezier(0.22,1,0.36,1),
+          border-color 0.3s ease;
+        will-change: transform;
+      }
+      .omni-panel:hover {
+        transform: translateY(-7px) scale(1.013);
+        box-shadow: 0 22px 54px rgba(10,22,40,0.13), 0 4px 16px rgba(10,22,40,0.05);
+        border-color: rgba(34,141,193,0.26);
+      }
+      .omni-panel-center {
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        transition:
+          transform 0.42s cubic-bezier(0.22,1,0.36,1),
+          box-shadow 0.42s cubic-bezier(0.22,1,0.36,1);
+        will-change: transform;
+      }
+      .omni-panel-center:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 32px 84px rgba(0,0,0,0.27), 0 8px 28px rgba(0,0,0,0.11);
+      }
+    `}</style>
     <section
       className="border-b border-gray-100"
       style={{
@@ -1738,7 +1766,7 @@ function OmnichannelSection() {
           <div className="grid grid-cols-3 gap-6">
 
             {/* ════ LEFT: TELEGRAM ════ */}
-            <div style={{ border:'1px solid #e0e6ed', borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', boxShadow:'0 4px 24px rgba(10,22,40,0.07)' }}>
+            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff' }}>
 
               {/* Header */}
               <div style={{ background:'#229ED9', padding:'11px 14px', display:'flex', alignItems:'center', gap:10, flexShrink:0 }}>
@@ -1799,7 +1827,7 @@ function OmnichannelSection() {
             </div>
 
             {/* ════ CENTRE: KAI WEB CHAT ════ */}
-            <div style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, boxShadow:'0px 8px 32px rgba(0,0,0,0.18)', display:'flex', flexDirection:'column' }}>
+            <div className="omni-panel-center" style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, display:'flex', flexDirection:'column' }}>
               <div style={{ borderRadius:15, background:'#fff', overflow:'hidden', flex:1, display:'flex', flexDirection:'column' }}>
 
                 {/* KAI header */}
@@ -1849,7 +1877,7 @@ function OmnichannelSection() {
             </div>
 
             {/* ════ RIGHT: GMAIL ════ */}
-            <div style={{ border:'1px solid #e0e6ed', borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', boxShadow:'0 4px 24px rgba(10,22,40,0.07)' }}>
+            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff' }}>
 
               {/* Gmail toolbar */}
               <div style={{ background:'white', borderBottom:'1px solid #e8e8e8', padding:'9px 14px', display:'flex', alignItems:'center', gap:10, flexShrink:0 }}>
@@ -1947,6 +1975,7 @@ function OmnichannelSection() {
 
       </div>
     </section>
+    </>
   )
 }
 
