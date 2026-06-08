@@ -2179,12 +2179,11 @@ export default function KaiPage() {
 
             {/* Left: copy */}
             <div className="lg:pt-2">
-              <p className="type-label text-[#228DC1] mb-5">Fewer escalations. Faster resolutions.</p>
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Escalation rate reduced from 40% to 10% on average for all our users
               </h2>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
-                Kai handles the complex queries that used to demand human escalation, steadily containing more every month from day one.
+                Escalation rate reduced from 40% to 10% on average for all our users
               </p>
             </div>
 
