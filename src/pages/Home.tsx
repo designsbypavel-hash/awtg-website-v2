@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faChevronLeft, faChevronRight, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
@@ -245,7 +245,7 @@ function Hero() {
 
 function WhatWeDo() {
   const rows = [
-    { num: '01', label: 'AI Products & Software', line: 'Kai, Aruva and bespoke AI — built for production, not proof of concept.', href: '/solutions/generative-ai' },
+    { num: '01', label: 'AI Products & Software', line: 'Kai, Aruva and bespoke AI â€” built for production, not proof of concept.', href: '/solutions/generative-ai' },
     { num: '02', label: 'Private Networks', line: 'Managed 4G/5G designed, deployed and monitored end-to-end. Live in weeks.', href: '/solutions/mobile-private-networks' },
     { num: '03', label: 'Engineering & Consultancy', line: '5G RF design, network testing and transformation strategy across 20+ countries.', href: '/services/engineering' },
   ]
@@ -690,78 +690,86 @@ export function PNaaS() {
 
 const testimonials = [
   {
-    initials: 'MR',
+    company: 'UK Public Sector',
     name: 'Head of Digital Transformation',
     org: 'Leading UK Public Sector Organisation',
     quote: "AWTG's technology team brought a level of innovation and commercial pragmatism that we hadn't found elsewhere. Their AI solutions delivered tangible ROI well ahead of schedule.",
-    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80&auto=format&fit=crop',
   },
   {
-    initials: 'SC',
-    name: 'CTO',
+    company: 'UK Telecoms Operator',
+    name: 'Chief Technology Officer',
     org: 'UK Telecoms Operator',
     quote: 'The private 5G network AWTG deployed for us transformed our operations completely. From deployment speed to ongoing support, they exceeded every expectation.',
-    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80&auto=format&fit=crop',
   },
   {
-    initials: 'JB',
+    company: 'NHS Foundation Trust',
     name: 'Director of Innovation',
     org: 'NHS Foundation Trust',
     quote: 'Bringing AWTG in to design our connectivity infrastructure was one of the best decisions we made. Their understanding of public sector requirements is unmatched.',
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&q=80&auto=format&fit=crop',
   },
 ]
 
+const CARDS_PER_PAGE = 3
+
 function ClientVoices() {
-  const [current, setCurrent] = useState(0)
-  const t = testimonials[current]
+  const [offset, setOffset] = useState(0)
+  const canPrev = offset > 0
+  const canNext = offset + CARDS_PER_PAGE < testimonials.length
+  const visible = testimonials.slice(offset, offset + CARDS_PER_PAGE)
   return (
-    <section className="py-32 bg-white">
+    <section className="py-28 bg-[#f7f9fc]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative overflow-hidden h-[420px] bg-gray-800">
-            <img src={t.img} alt={t.name} className="w-full h-full object-cover object-top" loading="lazy" />
-            {/* Subtle gradient just at the very bottom */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050a12]/70 via-transparent to-transparent" />
-            {/* Caption strip � pinned to bottom edge, full width */}
-            <div className="absolute bottom-0 left-0 right-0 flex items-center gap-3 bg-[#0a1628]/60 backdrop-blur-sm px-5 py-3.5">
-              <div className="w-8 h-8 rounded-full bg-[#228DC1] flex items-center justify-center text-white text-xs font-bold shrink-0">{t.initials}</div>
-              <div>
-                <p className="text-white text-[14px] font-semibold leading-[1.1]">{t.name}</p>
-                <p className="text-white/60 text-xs font-normal">{t.org}</p>
-              </div>
-            </div>
-          </div>
+
+        {/* Header row */}
+        <div className="flex items-start justify-between gap-8 mb-12">
           <div>
-            <p className="type-label text-[#228DC1] mb-8">Client Voices</p>
-            <div className="text-[#228DC1]/60 font-serif-display text-7xl leading-none mb-4">"</div>
-            <blockquote className="font-h2 text-[#0a1628] mb-8">
-              {t.quote}
-            </blockquote>
-            <p className="text-[#0a1628] font-semibold text-sm">{t.name}</p>
-            <p className="text-[#0a1628]/60 text-sm font-normal">{t.org}</p>
-            <div className="flex items-center gap-4 mt-8">
-              <button onClick={() => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length)}
-                className="w-10 h-10 rounded-full border border-gray-200 hover:border-gray-300 flex items-center justify-center text-[#0a1628]/60 hover:text-white transition-all">
-                <FontAwesomeIcon icon={faChevronLeft} className="w-4 h-4" />
-              </button>
-              <button onClick={() => setCurrent((c) => (c + 1) % testimonials.length)}
-                className="w-10 h-10 rounded-full border border-gray-200 hover:border-gray-300 flex items-center justify-center text-[#0a1628]/60 hover:text-white transition-all">
-                <FontAwesomeIcon icon={faChevronRight} className="w-4 h-4" />
-              </button>
-              <div className="flex gap-1.5">
-                {testimonials.map((_, i) => (
-                  <button key={i} onClick={() => setCurrent(i)}
-                    className={`rounded-full transition-all duration-200 ${i === current ? 'w-6 h-1.5 bg-[#228DC1]' : 'w-1.5 h-1.5 bg-[#228DC1]/12'}`} />
-                ))}
-              </div>
-            </div>
+            <p className="type-label text-[#228DC1] mb-4">Client Voices</p>
+            <h2 className="font-serif-display text-[#0a1628] leading-tight">Customer testimonials</h2>
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-3 max-w-lg">
+              Discover how organisations across telecoms, health and public sector deliver outcomes with AWTG.
+            </p>
+          </div>
+          <div className="flex gap-2 shrink-0 mt-1">
+            <button
+              onClick={() => setOffset((o) => o - 1)}
+              disabled={!canPrev}
+              aria-label="Previous testimonials"
+              className="w-10 h-10 border border-gray-200 flex items-center justify-center text-[#0a1628]/50 hover:border-[#228DC1] hover:text-[#228DC1] disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-150 rounded-full"
+            >
+              <FontAwesomeIcon icon={faChevronLeft} className="w-3 h-3" />
+            </button>
+            <button
+              onClick={() => setOffset((o) => o + 1)}
+              disabled={!canNext}
+              aria-label="Next testimonials"
+              className="w-10 h-10 border border-gray-200 flex items-center justify-center text-[#0a1628]/50 hover:border-[#228DC1] hover:text-[#228DC1] disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-150 rounded-full"
+            >
+              <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+            </button>
           </div>
         </div>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {visible.map((t, i) => (
+            <div key={offset + i} className="bg-white border border-gray-100 p-8 flex flex-col min-h-[320px]">
+              <p className="font-h4 text-[#0a1628] mb-10">{t.company}</p>
+              <blockquote className="text-[#0a1628]/70 text-[15px] leading-[1.85] font-normal flex-1">
+                "{t.quote}"
+              </blockquote>
+              <div className="mt-8 pt-6 border-t border-gray-100">
+                <p className="text-[#0a1628] font-semibold text-[13px]">{t.name}</p>
+                <p className="text-[#0a1628]/50 text-[12px] font-normal mt-0.5">{t.org}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   )
 }
+
 
 // --- PARTNERS -----------------------------------------------------------------
 
@@ -852,7 +860,7 @@ function Insights() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3 text-xs">
                   <span className={`font-semibold ${a.tagColor}`}>{a.tag}</span>
-                  <span className="text-[#0a1628]/20">·</span>
+                  <span className="text-[#0a1628]/20">Â·</span>
                   <span className="text-[#0a1628]/60 font-normal">{a.date}</span>
                 </div>
                 <p className="text-[14px] font-semibold text-[#0a1628] leading-[1.3] mb-4 line-clamp-3">{a.title}</p>
@@ -897,7 +905,7 @@ function ContactCTA() {
             <div className="border-t border-white/10 pt-6">
               <p className="text-[14px] font-semibold uppercase tracking-widest text-white/30 mb-2">Phone</p>
               <a href="tel:+442035155151" className="text-white/70 hover:text-white transition-colors font-medium">+44 (0) 20 3515 5151</a>
-              <p className="text-xs text-white/30 mt-1 font-normal">Mon–Fri, 9am–6pm GMT</p>
+              <p className="text-xs text-white/30 mt-1 font-normal">Monâ€“Fri, 9amâ€“6pm GMT</p>
             </div>
             <div className="border-t border-white/10 pt-6">
               <p className="text-[14px] font-semibold uppercase tracking-widest text-white/30 mb-2">Offices</p>
