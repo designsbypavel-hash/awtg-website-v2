@@ -1,4 +1,12 @@
 import CTASection from '@/components/CTASection'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faGraduationCap,
+  faBuilding,
+  faPeopleGroup,
+  faLeaf,
+  faScaleBalanced,
+} from '@fortawesome/free-solid-svg-icons'
 
 const baselineEmissions = [
   { scope: 'Scope 1', value: '5.5', unit: 'metric tons' },
@@ -41,56 +49,10 @@ const plannedProjects = [
   'Developing external communications plan such as publishing CSR with focus on carbon reduction',
 ]
 
-function IconEducation() {
-  return (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-      <path d="M6 12v5c3 3 9 3 12 0v-5" />
-    </svg>
-  )
-}
-
-function IconBusiness() {
-  return (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="7" width="20" height="14" rx="2" />
-      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-      <line x1="12" y1="12" x2="12.01" y2="12" />
-    </svg>
-  )
-}
-
-function IconCommunity() {
-  return (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
-    </svg>
-  )
-}
-
-function IconLeaf() {
-  return (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2 22c1.25-1.25 2.208-2.5 3-4 1.056-1.98 1.5-4.5 1.5-4.5S9.5 16 12 16c5 0 8-4 8-8S16 2 12 2 4 6 4 10c0 1.5.5 3 1 4L2 22z" />
-    </svg>
-  )
-}
-
-function IconGovernance() {
-  return (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <polyline points="9 12 11 14 15 10" />
-    </svg>
-  )
-}
-
 const socialValueSections = [
   {
     title: 'Employment and Skills',
-    Icon: IconEducation,
+    icon: faGraduationCap,
     items: [
       'Enabling local and community members to achieve the skills needed to access employment.',
       'Providing means for communities to publish and access employment, internship and apprenticeship opportunities.',
@@ -102,7 +64,7 @@ const socialValueSections = [
   },
   {
     title: 'Local Business and Economy',
-    Icon: IconBusiness,
+    icon: faBuilding,
     items: [
       'AWTG is an accredited Living Wage Employer.',
       'Providing equal work opportunities for local talent.',
@@ -113,7 +75,7 @@ const socialValueSections = [
   },
   {
     title: 'Community Engagement',
-    Icon: IconCommunity,
+    icon: faPeopleGroup,
     items: [
       'Providing technological capabilities to communities through our CSR programme.',
       'Supporting volunteering activities by our staff to deliver benefits to their local communities.',
@@ -124,7 +86,7 @@ const socialValueSections = [
   },
   {
     title: 'Environment',
-    Icon: IconLeaf,
+    icon: faLeaf,
     items: [
       'Committing to NetZero by 2045 as outlined in our carbon reduction plan.',
       'Playing our part to reduce pollution in communities we work with.',
@@ -135,7 +97,7 @@ const socialValueSections = [
   },
   {
     title: 'Governance, Measurement and Reporting',
-    Icon: IconGovernance,
+    icon: faScaleBalanced,
     items: [
       'Monitoring and reporting our social value and environmental impact by using recognised independent tools and reporting platforms',
       'Continuously improving our standards, efficiency and effectiveness.',
@@ -313,13 +275,13 @@ export default function AboutSustainabilityPage() {
             {socialValueSections.map((section, index) => (
               <article
                 key={section.title}
-                className="bg-white border border-gray-100 shadow-[0_2px_16px_rgba(10,22,40,0.05)] hover:shadow-[0_12px_36px_rgba(34,141,193,0.12)] hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
+                className="bg-white border border-gray-100 shadow-[0_2px_16px_rgba(10,22,40,0.05)] hover:shadow-[0_12px_36px_rgba(34,141,193,0.12)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <div className="h-[3px] bg-gradient-to-r from-[#228DC1] to-[#5bb8e8]" />
                 <div className="p-8">
                   <div className="flex items-start justify-between mb-7">
-                    <div className="w-12 h-12 bg-[#228DC1]/8 flex items-center justify-center text-[#228DC1] group-hover:bg-[#228DC1] group-hover:text-white transition-all duration-200">
-                      <section.Icon />
+                    <div className="w-12 h-12 bg-[#228DC1]/10 flex items-center justify-center text-[#228DC1]">
+                      <FontAwesomeIcon icon={section.icon} className="w-5 h-5" />
                     </div>
                     <span className="text-[#228DC1]/15 text-[42px] font-bold leading-none select-none tabular-nums">
                       {String(index + 1).padStart(2, '0')}
