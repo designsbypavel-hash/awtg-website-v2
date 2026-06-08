@@ -27,7 +27,7 @@ export default function InsightsResourceNav({
   const hasTopics = topics.length > 0 && onTopicChange
 
   return (
-    <section className="sticky top-16 z-30 border-y border-gray-100 bg-[#f8fafc]/95 backdrop-blur shadow-[0_12px_32px_rgba(10,22,40,0.05)]">
+    <section className="border-y border-gray-100 bg-[#f8fafc] shadow-[0_12px_32px_rgba(10,22,40,0.05)]">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4">
         <div className="border border-gray-100 bg-white p-3 sm:p-4">
           <div className="grid gap-4">
