@@ -310,14 +310,23 @@ export default function AboutSustainabilityPage() {
 
           {/* Social value cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-            {socialValueSections.map((section) => (
-              <article key={section.title} className="bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 group overflow-hidden">
-                <div className="h-[3px] bg-[#228DC1]" />
-                <div className="p-7">
-                  <div className="w-10 h-10 bg-[#228DC1]/10 flex items-center justify-center mb-5 text-[#228DC1] group-hover:bg-[#228DC1] group-hover:text-white transition-colors duration-200">
-                    <section.Icon />
+            {socialValueSections.map((section, index) => (
+              <article
+                key={section.title}
+                className="bg-white border border-gray-100 shadow-[0_2px_16px_rgba(10,22,40,0.05)] hover:shadow-[0_12px_36px_rgba(34,141,193,0.12)] hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
+              >
+                <div className="h-[3px] bg-gradient-to-r from-[#228DC1] to-[#5bb8e8]" />
+                <div className="p-8">
+                  <div className="flex items-start justify-between mb-7">
+                    <div className="w-12 h-12 bg-[#228DC1]/8 flex items-center justify-center text-[#228DC1] group-hover:bg-[#228DC1] group-hover:text-white transition-all duration-200">
+                      <section.Icon />
+                    </div>
+                    <span className="text-[#228DC1]/15 text-[42px] font-bold leading-none select-none tabular-nums">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
-                  <h3 className="text-[#0a1628] font-semibold text-[16px] mb-5 leading-[1.4]">{section.title}</h3>
+                  <h3 className="text-[#0a1628] font-semibold text-[17px] mb-4 leading-[1.35]">{section.title}</h3>
+                  <div className="h-px bg-gray-100 mb-5" />
                   <BulletList items={section.items} />
                 </div>
               </article>
