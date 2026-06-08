@@ -175,10 +175,6 @@ export default function AboutSustainabilityPage() {
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-10 bg-[#228DC1]" />
-            <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.18em]">Corporate Social Responsibility</p>
-          </div>
           <h1 className="font-serif-display text-[#0a1628] mb-6 max-w-4xl leading-[1.1]">
             Carbon Reduction Plan<br />and Social Value Statement
           </h1>
@@ -206,10 +202,6 @@ export default function AboutSustainabilityPage() {
       <section id="carbon-reduction-plan" className="py-24 bg-white scroll-mt-16">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-          <div className="flex items-center gap-3 mb-5">
-            <div className="h-px w-10 bg-[#228DC1]" />
-            <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.18em]">Carbon Reduction Plan</p>
-          </div>
           <div className="grid lg:grid-cols-2 gap-12 mb-20">
             <h2 className="font-heading text-[#0a1628]">Commitment to Achieving Net Zero</h2>
             <p className="text-[#0a1628]/65 text-[16px] leading-[1.85] self-center">
@@ -222,10 +214,7 @@ export default function AboutSustainabilityPage() {
             <div className="bg-[#0a1628] p-8 lg:p-10 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#228DC1]/8 rounded-full blur-[60px]" />
               <div className="relative">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="h-px w-8 bg-[#228DC1]" />
-                  <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.15em]">Baseline Year 2019</p>
-                </div>
+                <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.15em] mb-6">Baseline Year 2019</p>
                 <h3 className="text-white text-[20px] font-semibold mb-3">Baseline Emission Footprint</h3>
                 <p className="text-white/45 text-[14px] leading-[1.8] mb-8">
                   Baseline emissions are a record of greenhouse gases produced prior to any reduction strategies.
@@ -246,10 +235,7 @@ export default function AboutSustainabilityPage() {
             <div className="bg-[#edf5fb] p-8 lg:p-10 border border-[#228DC1]/15 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#228DC1]/8 rounded-full blur-[60px]" />
               <div className="relative">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="h-px w-8 bg-[#228DC1]" />
-                  <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.15em]">Reporting Year 2024</p>
-                </div>
+                <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.15em] mb-6">Reporting Year 2024</p>
                 <h3 className="text-[#0a1628] text-[20px] font-semibold mb-3">Current Emission Reporting</h3>
                 <p className="text-[#0a1628]/55 text-[14px] leading-[1.8] mb-8">
                   2022 and 2023 represent more realistic post-pandemic emissions. AWTG has grown steadily
@@ -310,10 +296,6 @@ export default function AboutSustainabilityPage() {
       <section id="social-value-statement" className="py-24 bg-[#f7f9fc] scroll-mt-16">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-          <div className="flex items-center gap-3 mb-5">
-            <div className="h-px w-10 bg-[#228DC1]" />
-            <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.18em]">Social Value Statement</p>
-          </div>
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <h2 className="font-heading text-[#0a1628]">Supporting communities, enabling growth and economic wellbeing</h2>
             <div className="space-y-4 self-center">
