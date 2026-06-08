@@ -838,7 +838,6 @@ function Insights() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
           <div>
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-3">Insights & Research</p>
             <h2 className="font-serif-display text-[#0a1628]">Explore the latest<br />from AWTG.</h2>
           </div>
           <Link to="/insights" className="text-sm font-medium text-[#228DC1] hover:text-[#1a6e99] transition-colors">
