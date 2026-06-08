@@ -2247,7 +2247,7 @@ export default function KaiPage() {
                 num: '01',
                 pill: 'PARAMETERS',
                 label: 'Choose your LLM',
-                desc: 'Build your agent with no code. Bring your own LLM (open weight or closed source) and set your goals, tone, and rules. State your goal, Kai executes.',
+                desc: 'Build your agent with no code. Bring your own LLM (open weight or closed source) and set your goals, tone, and rules.',
                 icon: faSliders,
               },
               {
