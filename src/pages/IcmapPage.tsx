@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Polygon, useMap } from 'react-leaflet'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleCheck, faMap, faTowerBroadcast, faChartBar, faGlobe, faLayerGroup, faBullseye } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faMap, faTowerBroadcast, faChartBar, faGlobe, faLayerGroup, faBullseye, faSignal, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import 'leaflet/dist/leaflet.css'
 import type { LatLngExpression } from 'leaflet'
@@ -707,18 +707,48 @@ export default function IcmapPage() {
             </p>
           </div>
           <CoverageMap />
-          <div className="mt-10 grid sm:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
-            {[
-              { label: 'Multi-generation visibility', desc: 'Compare 2G, 3G, 4G and 5G coverage in one operational view.' },
-              { label: 'Urban, rural and remote terrain', desc: 'Understand performance across dense cities, rural communities and hard-to-reach locations.' },
-              { label: 'Coverage clarity', desc: 'Know where coverage works, where it fails, and where to act next.' },
-            ].map((item) => (
-              <div key={item.label} className="bg-white px-8 py-6">
-                <p className="text-[#0a1628] font-semibold text-[14px] mb-2">{item.label}</p>
-                <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">{item.desc}</p>
+          <>
+            <style>{`
+              .cov-feat-card {
+                transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease;
+                cursor: default;
+              }
+              .cov-feat-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 16px 40px rgba(10,22,40,0.10);
+              }
+              .cov-feat-card:hover .cov-feat-icon {
+                background-color: rgba(34,141,193,0.22);
+              }
+              .cov-feat-divider { display: none; }
+              @media (min-width: 640px) { .cov-feat-divider { display: block; } }
+            `}</style>
+            <div className="mt-10 rounded-3xl bg-[#f8fafc] px-4 py-10 sm:px-6">
+              <div className="grid sm:grid-cols-3">
+                {[
+                  { icon: faSignal,    label: 'Multi-generation visibility',     desc: 'Compare 2G, 3G, 4G and 5G coverage in one operational view.' },
+                  { icon: faGlobe,     label: 'Urban, rural and remote terrain', desc: 'Understand performance across dense cities, rural communities and hard-to-reach locations.' },
+                  { icon: faChartLine, label: 'Coverage clarity',                desc: 'Know where coverage works, where it fails, and where to act next.' },
+                ].map((item, i) => (
+                  <div key={item.label} className="relative flex">
+                    {i > 0 && (
+                      <div className="cov-feat-divider w-px self-stretch bg-[#0a1628]/[0.08] flex-shrink-0" />
+                    )}
+                    <div className="cov-feat-card flex-1 px-8 py-9 rounded-2xl">
+                      <div
+                        className="cov-feat-icon w-12 h-12 rounded-full bg-[#228DC1]/10 flex items-center justify-center mb-6"
+                        style={{ transition: 'background-color 0.28s ease' }}
+                      >
+                        <FontAwesomeIcon icon={item.icon} style={{ fontSize: 18, color: '#228DC1' }} />
+                      </div>
+                      <p className="text-[#0a1628] font-semibold text-[16px] mb-3 leading-[1.35]">{item.label}</p>
+                      <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.75]">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          </>
         </div>
       </section>
 
