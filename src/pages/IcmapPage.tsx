@@ -8,7 +8,7 @@ import 'leaflet/dist/leaflet.css'
 import type { LatLngExpression } from 'leaflet'
 
 // -- Coverage zone data --------------------------------------------------------
-type CoverageType = '5g-plus' | '5g' | '4g' | '3g' | 'gap'
+type CoverageType = '5g' | '4g' | '3g' | 'gap'
 
 interface CoverageZone {
   id: string
@@ -21,16 +21,6 @@ interface CoverageZone {
 }
 
 const coverageZones: CoverageZone[] = [
-  // 5G+ core � Manchester city centre
-  {
-    id: 'z1', type: '5g-plus', label: '5G+',
-    signal: '-72 dBm', population: '28,400 residents', operator: 'All operators',
-    positions: [
-      [53.500, -2.265], [53.503, -2.210], [53.495, -2.175],
-      [53.472, -2.168], [53.455, -2.200], [53.450, -2.255],
-      [53.462, -2.300], [53.488, -2.310],
-    ],
-  },
   // 5G inner ring � inner Manchester suburbs
   {
     id: 'z2', type: '5g', label: '5G',
@@ -95,7 +85,6 @@ const zoneStyle: Record<CoverageType, { fill: string; stroke: string; label: str
   '3g':      { fill: '#f59e0b', stroke: '#d97706', label: '3G',          textColor: '#d97706' },
   '4g':      { fill: '#7c3aed', stroke: '#6d28d9', label: '4G',          textColor: '#7c3aed' },
   '5g':      { fill: '#3b82f6', stroke: '#228DC1', label: '5G',          textColor: '#228DC1' },
-  '5g-plus': { fill: '#1a6e99', stroke: '#1e3a8a', label: '5G+',         textColor: '#1a6e99' },
 }
 
 // Fit map to UK North bounds
@@ -112,7 +101,7 @@ function CoverageMap() {
 
   const isVisible = (type: CoverageType) => {
     if (activeLayer === 'all') return true
-    if (activeLayer === '5g') return type === '5g' || type === '5g-plus'
+    if (activeLayer === '5g') return type === '5g'
     if (activeLayer === '4g') return type === '4g'
     if (activeLayer === '3g') return type === '3g'
     if (activeLayer === 'gaps') return type === 'gap'
@@ -128,11 +117,10 @@ function CoverageMap() {
   ]
 
   const summaryBars = [
-    { label: '5G+', pct: 22, color: '#1a6e99' },
-    { label: '5G',  pct: 18, color: '#3b82f6' },
-    { label: '4G',  pct: 28, color: '#7c3aed' },
-    { label: '3G',  pct: 16, color: '#f59e0b' },
-    { label: 'Gap', pct: 16, color: '#ef4444' },
+    { label: '5G',  pct: 22, color: '#3b82f6' },
+    { label: '4G',  pct: 34, color: '#7c3aed' },
+    { label: '3G',  pct: 22, color: '#f59e0b' },
+    { label: 'Gap', pct: 22, color: '#ef4444' },
   ]
 
   return (
