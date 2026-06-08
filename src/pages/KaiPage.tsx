@@ -829,7 +829,7 @@ function IntegrationsSection() {
     { label: 'Gmail',        category: 'Email',      logo: integrationLogos.gmail },
     { label: 'Outlook',      category: 'Email',      logo: integrationLogos.outlook },
     { label: 'SAP',          category: 'ERP',        logo: integrationLogos.sap },
-    { label: 'Excel',        category: 'Spreadsheet', logo: integrationLogos.excel },
+    { label: 'Microsoft Excel', category: 'Spreadsheet', logo: integrationLogos.excel },
   ]
 
   // Manhattan distance from center card (row 1, col 2 in a 5-col grid)
