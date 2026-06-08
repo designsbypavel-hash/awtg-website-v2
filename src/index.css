@@ -329,6 +329,7 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
+  border-radius: 6px;
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   white-space: nowrap;
 }
@@ -421,7 +422,7 @@
 
 /* Uniform button treatment across pages */
 :root {
-  --awtg-button-radius: 0px;
+  --awtg-button-radius: 6px;
 }
 
 button,
