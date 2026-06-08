@@ -2261,7 +2261,7 @@ export default function KaiPage() {
                 num: '03',
                 pill: 'SYSTEMS',
                 label: 'Activate your channel',
-                desc: 'Kai triggers systems automatically and works with your existing tools via MCP server. Closed loop resolution: raise, route, resolve. Outcomes, not just chat.',
+                desc: 'Kai triggers systems automatically and integrates with your existing tools. Closed loop resolution: raise, route, resolve. Outcomes, not just chat.',
                 icon: faPlug,
               },
             ].map((step, i) => (
