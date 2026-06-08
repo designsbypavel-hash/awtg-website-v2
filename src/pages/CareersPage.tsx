@@ -53,7 +53,6 @@ export default function CareersPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left */}
             <div>
-              <p className="type-label text-[#228DC1] mb-5">Careers at AWTG</p>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.05] mb-6">
                 Be at the Forefront<br />of Connectivity<br />Innovation
               </h1>

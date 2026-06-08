@@ -87,7 +87,6 @@ export default function AboutLeadershipPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <p className="type-label text-[#228DC1] mb-3">Leadership</p>
               <h2 className="font-heading text-[#0a1628]">Executive and advisory team.</h2>
             </div>
             <p className="text-[#0a1628]/60 text-sm">{featured.length} leaders</p>
@@ -104,7 +103,6 @@ export default function AboutLeadershipPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <p className="type-label text-[#228DC1] mb-3">Management Team</p>
               <h2 className="font-heading text-[#0a1628]">Delivery, operations and product leadership.</h2>
             </div>
             <p className="text-[#0a1628]/60 text-sm">{widerTeam.length} team members</p>

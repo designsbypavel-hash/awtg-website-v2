@@ -15,7 +15,6 @@ export default function IndustriesPublicSectorPage() {
     <>
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Industries</p>
           <h1
             className="font-serif-display text-[#0a1628] leading-tight mb-6"
            

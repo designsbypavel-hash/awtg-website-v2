@@ -9,7 +9,6 @@ export default function ContactPage() {
       {/* Dark hero */}
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">Contact Us</p>
           <h1 className="font-h1 text-[#0a1628] mb-6">
             Let&apos;s Start a Conversation
           </h1>

@@ -124,7 +124,6 @@ function CurriculumAgnosticSection() {
 
           {/* LEFT â€” text */}
           <div style={reveal(inView, 0)}>
-            <p className="type-label text-[#228DC1] mb-5">Curriculum Agnostic</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
               One central Aruva layer.<br />
               <span className="text-[#228DC1]">Every subject can use it.</span>
@@ -407,7 +406,6 @@ function HowItWorksSection() {
 
         {/* Section header */}
         <div className="mb-14" style={reveal(inView, 0)}>
-          <p className="type-label text-[#228DC1] mb-4">How It Works</p>
           <h2 className="font-heading text-[#0a1628] mb-4">
             A learning story, guided by <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva</span>
           </h2>
@@ -941,7 +939,6 @@ function PlatformDiagram() {
             {/* â”€â”€ LEFT: static text â”€â”€ */}
             <div className="flex flex-col gap-8">
               <div>
-                <p className="type-label text-[#228DC1] mb-5">Architecture</p>
                 <h2 className="font-heading text-[#0a1628] mb-5">
                   Four layers.<br/>
                   <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
@@ -1715,7 +1712,6 @@ function MultimodalSection() {
               transition: 'opacity 0.6s ease, transform 0.6s ease',
               marginBottom: 32,
             }}>
-              <p className="type-label" style={{ color:'#228DC1', marginBottom:12 }}>Multimodal AI</p>
               <h2 style={{ fontFamily:'Roboto,system-ui,sans-serif', fontWeight:700, fontSize:36, letterSpacing:'-0.02em', lineHeight:1.12, color:'#0a1628' }}>
                 One AI. Every way <span style={{ color:'#228DC1' }}>students learn.</span>
               </h2>
@@ -2084,7 +2080,6 @@ function BloomInsightSection() {
         <div className="grid lg:grid-cols-[440px_minmax(0,1fr)] gap-12 xl:gap-16 items-start mb-16">
           {/* Left narrative */}
           <div className="lg:sticky lg:top-28" style={{ animation: 'fadeUp 0.6s ease both' }}>
-            <p className="type-label text-[#228DC1] mb-4">Learning Intelligence</p>
             <h2 className="font-heading text-[#0a1628] mb-9 max-w-[420px]">
               One student journey. Three semesters.<br />One clear progression picture.
             </h2>
@@ -2483,7 +2478,6 @@ function PrinciplesSection() {
     <section className="py-24 bg-[#f0f4f8] border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="mb-14">
-          <p className="type-label text-[#228DC1] mb-4">Product Principles</p>
           <h2 className="font-heading text-[#0a1628] mb-3">
             Four foundations <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every decision</span> is built on
           </h2>
@@ -2560,7 +2554,6 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
     <section className="py-24 bg-[#f5f0e8]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="mb-14">
-          <p className="type-label text-[#228DC1] mb-4">Who It's For</p>
           <h2 className="font-heading text-[#0a1628]">
             Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
           </h2>
@@ -2800,7 +2793,6 @@ export default function AruvaPage() {
       <section className="py-28 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-12">
-            <p className="type-label text-[#228DC1] mb-5">Why Aruva</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Most AI answers questions directly.<br />
               <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva develops</span> students' critical thinking.
@@ -2845,7 +2837,6 @@ export default function AruvaPage() {
 
             {/* Left */}
             <div>
-              <p className="type-label text-[#228DC1] mb-4">Governance and Trust</p>
               <h2 className="font-heading text-[#0a1628] mb-5">
                 AI that institutions<br />
                 <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>can govern.</span>

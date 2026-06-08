@@ -35,8 +35,6 @@ export default function SolutionDetailPage({
         <div className="absolute inset-0 opacity-[0.16]" style={{ background: 'radial-gradient(circle at 82% 18%, #228DC1 0, transparent 34%), radial-gradient(circle at 12% 82%, #228DC1 0, transparent 28%)' }} />
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-16 items-end">
           <div>
-            {/* L5 — eyebrow label */}
-            <p className="type-label text-[#7ac4e0] mb-5">AI Solutions</p>
             {/* L1 — hero display heading */}
             <h1 className="font-serif-display text-[#0a1628] mb-6">
               {title}

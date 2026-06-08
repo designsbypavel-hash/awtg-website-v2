@@ -252,7 +252,6 @@ function WhatWeDo() {
   return (
     <section className="py-20 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <p className="type-label text-[#228DC1] mb-12">What We Do</p>
         <div className="divide-y divide-gray-100">
           {rows.map((r) => (
             <Link key={r.num} to={r.href} className="group flex items-center justify-between gap-8 py-8 hover:pl-2 transition-all duration-300">
@@ -308,7 +307,6 @@ function AIProofPoints() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[1fr_auto] gap-16 items-center">
           <div>
-            <p className="type-label text-[#228DC1] mb-6">Live in Production</p>
             <h2 className="font-heading text-[#0a1628] mb-4">
               British Council.<br />
               <span className="text-[#228DC1]">AI handling learner support at scale.</span>
@@ -345,7 +343,6 @@ export function OurSolutions() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 items-end mb-16">
           <div>
-            <p className="type-label text-[#228DC1] mb-4">Our Solutions</p>
             <h2 className="font-heading text-[#0a1628]">
               Advancing connectivity for the{' '}
               <span className="text-[#228DC1]">technology supercycle.</span>
@@ -399,7 +396,6 @@ export function Vision() {
   return (
     <section className="py-28 bg-white border-t border-gray-100">
       <div className="max-w-5xl mx-auto px-8 lg:px-12 text-center">
-        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-10">AWTG Vision</p>
         <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
           The next wave of connectivity will{' '}
           <span className="text-[#228DC1]">transform businesses</span>
@@ -442,7 +438,6 @@ function Industries() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12 mb-14">
         <div className="grid lg:grid-cols-2 gap-12 items-end">
           <div>
-            <p className="type-label text-[#228DC1] mb-4">Your Industry</p>
             <h2 className="font-heading text-[#0a1628]">
               Powering transformation<br />across every sector.
             </h2>
@@ -594,7 +589,6 @@ function WhyAWTG() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 items-end mb-14">
           <div>
-            <p className="type-label text-[#228DC1] mb-4">Why AWTG</p>
             <h2 className="font-heading text-[#0a1628] max-w-3xl">
               The experience to deliver, and the team to stay with you.
             </h2>
@@ -723,7 +717,6 @@ function ClientVoices() {
         {/* Header row */}
         <div className="flex items-start justify-between gap-8 mb-12">
           <div>
-            <p className="type-label text-[#228DC1] mb-4">Client Voices</p>
             <h2 className="font-serif-display text-[#0a1628] leading-tight">Customer testimonials</h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-3 max-w-lg">
               Discover how organisations across telecoms, health and public sector deliver outcomes with AWTG.

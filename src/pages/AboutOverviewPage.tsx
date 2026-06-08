@@ -141,7 +141,6 @@ export default function AboutOverviewPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex items-end justify-between gap-8 mb-10">
             <div>
-              <p className="type-label text-[#228DC1] mb-3">Trusted by our Partners and References</p>
               <h2 className="font-heading text-[#0a1628]">The organisations and communities we serve.</h2>
             </div>
             <FontAwesomeIcon icon={faPeopleGroup} className="hidden md:block w-8 h-8 text-[#228DC1]" />

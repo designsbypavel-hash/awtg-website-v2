@@ -692,7 +692,6 @@ export default function IcmapPage() {
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-2xl mb-14">
-            <p className="type-label text-[#228DC1] mb-4">Live Coverage Intelligence</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Every zone. Every generation. On a real map.
             </h2>
@@ -720,7 +719,6 @@ export default function IcmapPage() {
       <section className="py-28 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-16">
-            <p className="type-label text-[#228DC1] mb-4">How It Works</p>
             <h2 className="font-heading text-[#0a1628] mb-4">
               From raw network data to coverage decisions
             </h2>
@@ -768,7 +766,6 @@ export default function IcmapPage() {
       <section className="py-28 bg-[#0a1628] border-t border-[#0d2442]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14">
-            <p className="type-label text-[#228DC1] mb-4">Capabilities</p>
             <h2 className="font-heading text-white mb-5">
               Coverage intelligence across every operational layer
             </h2>
@@ -794,7 +791,6 @@ export default function IcmapPage() {
       <section className="py-28 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14">
-            <p className="type-label text-[#228DC1] mb-4">Who It's For</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Designed for modern connectivity programmes
             </h2>

@@ -849,7 +849,6 @@ function IntegrationsSection() {
 
           {/* Left: copy */}
           <div>
-            <p className="text-[#228DC1] mb-4" style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.75 }}>Integrations</p>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Connects to your stack. Works from day one.
             </h2>
@@ -953,7 +952,6 @@ function SecurityComplianceSection() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-16 items-start">
           <div ref={leftRef} className="lg:sticky lg:top-28">
-            <p className="type-label text-[#228DC1] mb-4" style={reveal(leftInView)}>Security & Compliance</p>
             <h2 className="font-heading text-[#0a1628] mb-5" style={{ ...reveal(leftInView, 100) }}>
               Designed for regulated<br />environments.
             </h2>
@@ -1684,7 +1682,6 @@ function OmnichannelSection() {
 
         {/* ── Centred heading ── */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="type-label text-[#228DC1] mb-4">Omnichannel</p>
           <h2 className="font-heading text-[#0a1628] mb-5">One AI. Every channel.</h2>
           <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
             Kai meets customers on Telegram, your website or email — with the same intelligence, context and resolution on every channel.
@@ -2231,7 +2228,6 @@ export default function KaiPage() {
 
           {/* Heading */}
           <div className="mb-16">
-            <p className="text-[#228DC1] mb-4 font-bold uppercase tracking-[0.28em]" style={{ fontSize: '11px' }}>How It Works</p>
             <h2 className="font-heading text-white mb-4">
               Kai Connect Customers
             </h2>
