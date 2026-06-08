@@ -962,7 +962,7 @@ function SecurityComplianceSection() {
             </p>
 
             <div className="bg-[#0a1628] text-white p-8 shadow-[0_16px_50px_rgba(10,22,40,0.12)]" style={reveal(leftInView, 280)}>
-              <div className="grid gap-7 xl:grid-cols-[1fr_0.86fr] xl:items-center">
+              <div className="flex flex-col gap-7">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
                   <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 AI Management System certified</p>
