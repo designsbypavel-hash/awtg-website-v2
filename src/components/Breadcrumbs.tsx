@@ -83,25 +83,25 @@ export default function Breadcrumbs() {
       style={{ top: '64px' }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <ol className="flex items-center flex-wrap gap-1 py-2.5">
-          <li>
+        <ol className="flex items-center h-10 overflow-hidden">
+          <li className="flex items-center shrink-0">
             <Link
               to="/"
-              className="text-[12px] font-medium text-[#0a1628]/50 hover:text-[#228DC1] transition-colors duration-150"
+              className="text-[12px] font-medium leading-none text-[#0a1628]/50 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap"
             >
               Home
             </Link>
           </li>
           {crumbs.map((crumb) => (
-            <li key={crumb.href} className="flex items-center gap-1">
+            <li key={crumb.href} className="flex items-center shrink-0 min-w-0">
               <FontAwesomeIcon
                 icon={faChevronRight}
-                className="w-2 h-2 text-[#0a1628]/25 shrink-0"
+                className="w-2 h-2 text-[#0a1628]/25 mx-2 shrink-0"
                 aria-hidden="true"
               />
               {crumb.isLast ? (
                 <span
-                  className="text-[12px] font-medium text-[#228DC1] max-w-[220px] truncate"
+                  className="text-[12px] font-medium leading-none text-[#228DC1] whitespace-nowrap overflow-hidden text-ellipsis max-w-[220px]"
                   aria-current="page"
                 >
                   {crumb.label}
@@ -109,7 +109,7 @@ export default function Breadcrumbs() {
               ) : (
                 <Link
                   to={crumb.href}
-                  className="text-[12px] font-medium text-[#0a1628]/50 hover:text-[#228DC1] transition-colors duration-150 max-w-[180px] truncate"
+                  className="text-[12px] font-medium leading-none text-[#0a1628]/50 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]"
                 >
                   {crumb.label}
                 </Link>
