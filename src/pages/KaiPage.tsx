@@ -48,6 +48,7 @@ const certCREST    = new URL('../assets/cert-crest.svg',    import.meta.url).hre
 const integrationLogos = {
   appleMail: new URL('../assets/Integration/Apple Mail.svg', import.meta.url).href,
   doc: new URL('../assets/Integration/Doc.svg', import.meta.url).href,
+  excel: new URL('../assets/Integration/Excel.svg', import.meta.url).href,
   gmail: new URL('../assets/Integration/Gmail.svg', import.meta.url).href,
   hubspot: new URL('../assets/Integration/Hubspot.svg', import.meta.url).href,
   jira: new URL('../assets/Integration/Jira.svg', import.meta.url).href,
@@ -59,7 +60,6 @@ const integrationLogos = {
   telegram: new URL('../assets/Integration/Telegram.svg', import.meta.url).href,
   whatsapp: new URL('../assets/Integration/Whatsapp.svg', import.meta.url).href,
   yahooMail: new URL('../assets/Integration/Yahoo Mail.svg', import.meta.url).href,
-  zoho: new URL('../assets/Integration/Zoho.svg', import.meta.url).href,
   kaiHoriz: new URL('../assets/KAI Page Icons/logo horiz.svg', import.meta.url).href,
 }
 
@@ -829,7 +829,7 @@ function IntegrationsSection() {
     { label: 'Gmail',        category: 'Email',      logo: integrationLogos.gmail },
     { label: 'Outlook',      category: 'Email',      logo: integrationLogos.outlook },
     { label: 'SAP',          category: 'ERP',        logo: integrationLogos.sap },
-    { label: 'Zoho',         category: 'CRM',        logo: integrationLogos.zoho },
+    { label: 'Excel',        category: 'Spreadsheet', logo: integrationLogos.excel },
   ]
 
   // Manhattan distance from center card (row 1, col 2 in a 5-col grid)
