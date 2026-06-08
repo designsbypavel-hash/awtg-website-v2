@@ -2232,7 +2232,7 @@ export default function KaiPage() {
               Kai Connect Customers
             </h2>
             <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
-              Kai meets customers across web, email, chat, and messaging channels, delivering the same intelligence, context, and resolution wherever the conversation starts.
+              Kai connects with your customers across web, messaging, and chat channels, resolving their pain points wherever the conversation starts.
             </p>
           </div>
 
