@@ -109,103 +109,57 @@ function GlobalReachMap() {
 
   return (
     <div className="relative -mx-8 lg:-ml-16 lg:-mr-4 overflow-visible bg-transparent">
-      <style>{`
-        @keyframes kaiMapSignal {
-          0% { stroke-dashoffset: 520; opacity: 0; }
-          16% { opacity: 0.92; }
-          76% { opacity: 0.72; }
-          100% { stroke-dashoffset: 0; opacity: 0; }
-        }
-        @keyframes kaiMapPulse {
-          0%, 100% { transform: scale(0.82); opacity: 0.9; }
-          50% { transform: scale(1.8); opacity: 0.1; }
-        }
-        @keyframes kaiMapFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-7px); }
-        }
-        .kai-map-shell {
-          animation: kaiMapFloat 7s ease-in-out infinite;
-        }
-        .kai-map-signal {
-          stroke-dasharray: 520;
-          stroke-dashoffset: 520;
-          animation: kaiMapSignal 5.2s ease-in-out infinite;
-        }
-        .kai-map-signal-2 { animation-delay: 1.25s; }
-        .kai-map-signal-3 { animation-delay: 2.5s; }
-        .kai-map-node-pulse {
-          transform-box: fill-box;
-          transform-origin: center;
-          animation: kaiMapPulse 2.7s ease-in-out infinite;
-        }
-      `}</style>
-      <svg viewBox="0 0 720 380" role="img" aria-label="Kai global network shown on a world map with live connections" className="block min-h-[360px] w-full">
+      <svg viewBox="0 0 720 420" role="img" aria-label="Kai global reach shown as a globe map" className="block min-h-[380px] w-full">
         <defs>
-          <linearGradient id="kaiMapLandFill" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="#d8f6ea" />
-            <stop offset="46%" stopColor="#78c8ad" />
-            <stop offset="100%" stopColor="#2f7d6e" />
-          </linearGradient>
-          <linearGradient id="kaiMapStroke" x1="160" x2="610" y1="120" y2="285" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#8ceaff" stopOpacity="0" />
-            <stop offset="42%" stopColor="#37c3ef" />
-            <stop offset="100%" stopColor="#228DC1" stopOpacity="0" />
-          </linearGradient>
-          <radialGradient id="kaiMapOceanGlow" cx="48%" cy="48%" r="62%">
-            <stop offset="0%" stopColor="#b8efff" stopOpacity="0.44" />
-            <stop offset="58%" stopColor="#52bce8" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#228DC1" stopOpacity="0" />
+          <radialGradient id="kaiReferenceBg" cx="48%" cy="45%" r="62%">
+            <stop offset="0%" stopColor="#f4f7fb" />
+            <stop offset="55%" stopColor="#d9e3f7" />
+            <stop offset="100%" stopColor="#b6c8ee" />
           </radialGradient>
-          <filter id="kaiMapShadow" x="-18%" y="-28%" width="136%" height="160%">
-            <feDropShadow dx="0" dy="24" stdDeviation="26" floodColor="#0a1628" floodOpacity="0.16" />
+          <linearGradient id="kaiReferenceOcean" x1="0%" x2="0%" y1="0%" y2="100%">
+            <stop offset="0%" stopColor="#43b7f0" />
+            <stop offset="55%" stopColor="#218fd3" />
+            <stop offset="100%" stopColor="#0870bb" />
+          </linearGradient>
+          <linearGradient id="kaiReferenceLand" x1="0%" x2="100%" y1="0%" y2="100%">
+            <stop offset="0%" stopColor="#61ff75" />
+            <stop offset="100%" stopColor="#2ee65f" />
+          </linearGradient>
+          <radialGradient id="kaiReferenceShine" cx="34%" cy="22%" r="55%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.38" />
+            <stop offset="60%" stopColor="#ffffff" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+          </radialGradient>
+          <filter id="kaiReferenceShadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="28" stdDeviation="24" floodColor="#0a1628" floodOpacity="0.22" />
           </filter>
-          <filter id="kaiMapNodeGlow" x="-90%" y="-90%" width="280%" height="280%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
+          <clipPath id="kaiReferenceGlobeClip">
+            <circle cx="360" cy="210" r="148" />
+          </clipPath>
         </defs>
 
-        <rect width="720" height="380" fill="transparent" />
-        <ellipse cx="370" cy="324" rx="290" ry="38" fill="#0a1628" opacity="0.055" />
-        <ellipse cx="372" cy="184" rx="330" ry="168" fill="url(#kaiMapOceanGlow)" />
+        <rect width="720" height="420" fill="url(#kaiReferenceBg)" opacity="0.95" />
+        <ellipse cx="360" cy="360" rx="142" ry="26" fill="#0a1628" opacity="0.12" />
 
-        <g className="kai-map-shell" filter="url(#kaiMapShadow)">
-          <g fill="none" stroke="#9feaff" strokeWidth="0.7" opacity="0.18">
-            <path d="M44 190h650" />
-            <path d="M70 116h596" />
-            <path d="M86 260h560" />
-            <path d="M172 66c-42 90-42 185 0 278" />
-            <path d="M360 46c-34 104-34 218 0 316" />
-            <path d="M552 66c40 94 40 184 0 278" />
+        <g filter="url(#kaiReferenceShadow)">
+          <circle cx="360" cy="210" r="148" fill="url(#kaiReferenceOcean)" />
+          <g clipPath="url(#kaiReferenceGlobeClip)">
+            <g fill="url(#kaiReferenceLand)">
+              <path d="M248 134c18-18 44-30 78-34 26-3 53-1 78 4 8 2 11 8 6 15-11 15-36 9-51 13-18 5-22 22-34 34-15 15-45 6-53 25-8 20 13 38 1 58-9 16-29 7-41-6-18-19-31-48-30-76 1-24 14-45 46-33Z" />
+              <path d="M371 85c34 1 64 9 91 25 24 14 40 35 50 63 11 29 13 64 3 95-8 25-25 55-52 72-13 8-26 13-40 15 10-22 11-44 2-65-7-17-20-31-36-41-22-14-49-19-65-42-12-18-6-40 18-50 17-8 39-3 56-10 14-6 13-19 0-26-14-8-33-6-48-14-9-5-11-12-1-17 6-3 14-4 22-5Z" />
+              <path d="M457 156c18 4 36 12 53 24 21 15 31 35 26 56-7 27-31 44-57 51-6-21-21-36-38-49-13-10-25-24-20-42 4-17 17-28 36-40Z" />
+              <path d="M236 231c25 7 45 28 51 56 6 27-1 56-18 80-24-7-44-26-55-51-13-29-13-63 22-85Z" />
+              <path d="M198 178c16 13 20 33 12 54-9 22-28 38-51 45-18-20-24-48-14-73 10-23 30-36 53-26Z" />
+            </g>
+            <path d="M231 96c62-42 172-42 242 0" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.18" />
+            <path d="M211 210h296" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.14" />
+            <path d="M250 315c66 33 164 33 225 0" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.14" />
+            <ellipse cx="360" cy="210" rx="68" ry="148" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.12" />
+            <ellipse cx="360" cy="210" rx="112" ry="148" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.1" />
+            <rect x="212" y="62" width="296" height="296" fill="url(#kaiReferenceShine)" />
           </g>
-
-          <g fill="url(#kaiMapLandFill)" stroke="#b7f0dc" strokeWidth="1.2" opacity="0.93">
-            <path d="M74 115c16-25 49-39 87-36 39 3 68 18 88 43 15 19 34 24 61 26 16 1 29 11 32 25-21 20-52 20-74 6-16-10-32-10-48 1-18 13-39 14-57 3-21-13-41-5-63-10-31-7-43-38-26-58Z" />
-            <path d="M204 208c26 7 43 25 45 51 2 31-15 58-38 84-24-12-39-38-42-68-3-28 3-49 35-67Z" />
-            <path d="M315 91c28-21 72-25 107-13 26 9 41 27 37 50-24 9-41 1-61-10-17-9-36-8-55-2-21 7-41 5-56-9 3-7 8-12 28-16Z" />
-            <path d="M343 142c18-10 46-8 63 4 14 10 19 27 13 44-8 24 10 49 24 71-24 14-55 0-68-25-11-21-29-33-47-44-20-13-14-40 15-50Z" />
-            <path d="M437 126c39-24 105-27 148-4 31 16 44 39 36 64-31 10-65 2-93-18-22-16-46-21-75-16-22 4-42 0-53-12 8-7 18-11 37-14Z" />
-            <path d="M502 208c35-10 70-2 97 22 21 19 25 45 12 73-34 0-64-15-80-41-12-19-29-29-55-35 5-11 12-18 26-19Z" />
-            <path d="M592 270c28-8 61 2 83 23 14 14 16 33 3 49-34-1-67-16-88-39-9-10-9-21 2-33Z" />
-            <path d="M612 166c18-8 41-4 57 9 13 11 17 27 9 43-22 2-43-7-57-23-10-12-11-23-9-29Z" />
-          </g>
+          <circle cx="360" cy="210" r="148" fill="none" stroke="#25df60" strokeWidth="2.2" opacity="0.8" />
         </g>
-
-        <path className="kai-map-signal" d="M196 156 C256 82 301 92 354 126 C394 151 416 165 438 177" fill="none" stroke="url(#kaiMapStroke)" strokeWidth="3.4" strokeLinecap="round" />
-        <path className="kai-map-signal kai-map-signal-2" d="M354 126 C458 104 514 150 529 220 C541 254 568 276 594 286" fill="none" stroke="url(#kaiMapStroke)" strokeWidth="3.4" strokeLinecap="round" />
-        <path className="kai-map-signal kai-map-signal-3" d="M196 156 C297 268 426 274 529 220" fill="none" stroke="url(#kaiMapStroke)" strokeWidth="3.4" strokeLinecap="round" />
-
-        {nodes.map((node) => (
-          <g key={node.id} filter="url(#kaiMapNodeGlow)">
-            <circle className="kai-map-node-pulse" cx={node.x} cy={node.y} r="16" fill="#6fe7ff" opacity="0.25" style={{ animationDelay: node.delay }} />
-            <circle cx={node.x} cy={node.y} r="7" fill="#e9fbff" stroke="#228DC1" strokeWidth="2.4" />
-            <circle cx={node.x} cy={node.y} r="2.5" fill="#061a32" />
-          </g>
-        ))}
       </svg>
     </div>
   )
