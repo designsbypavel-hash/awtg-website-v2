@@ -1,6 +1,6 @@
 ﻿import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 const products = [
   {
@@ -73,7 +73,7 @@ export default function GenerativeAIPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-colors">
-                Request a Demo <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+                Request a Demo
               </Link>
               <Link to="/solutions" className="inline-flex items-center gap-2 px-7 py-3.5 text-[#0a1628]/60 hover:text-[#228DC1] text-sm font-medium transition-colors">
                 View all solutions
@@ -177,8 +177,8 @@ export default function GenerativeAIPage() {
               <p className="text-[#0a1628]/65 text-[15px] leading-[1.7] font-normal mb-5 max-w-2xl">
                 Kai helps teams respond faster, govern handoffs and improve customer operations.
               </p>
-              <Link to="/solutions/kai" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all">
-                Explore innovation <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+              <Link to="/solutions/kai" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+                Explore innovation
               </Link>
             </div>
           </div>

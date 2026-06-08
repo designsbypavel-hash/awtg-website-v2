@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faNetworkWired, faBrain, faMicrochip, faBuilding, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faNetworkWired, faBrain, faMicrochip, faBuilding } from '@fortawesome/free-solid-svg-icons'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
 const services: { icon: IconDefinition; title: string; description: string; href: string; color: string }[] = [
@@ -61,8 +61,8 @@ export default function ServicesSection() {
               </div>
               <h3 className="text-[20px] font-semibold text-[#0a1628] mb-3">{service.title}</h3>
               <p className="text-[#0a1628]/75 text-[16px] leading-[1.7] mb-4">{service.description}</p>
-              <span className="inline-flex items-center gap-1 text-[#228DC1] text-sm font-semibold group-hover:gap-2 transition-all">
-                Learn more <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+              <span className="text-[#228DC1] text-sm font-semibold">
+                Learn more
               </span>
             </Link>
           ))}

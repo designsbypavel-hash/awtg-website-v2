@@ -1,6 +1,4 @@
 ﻿import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 type Card = {
   title: string
@@ -38,7 +36,7 @@ function UtilityPage({
             to={primaryHref}
             className="inline-flex items-center gap-2 mt-8 px-7 py-3.5 border border-[#228DC1] text-[#228DC1] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-colors"
           >
-            {primaryLabel} <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+            {primaryLabel}
           </Link>
         </div>
       </section>
@@ -57,7 +55,7 @@ function UtilityPage({
                 </h2>
                 <p className="text-[#0a1628]/75 text-sm leading-relaxed font-normal mb-6">{card.desc}</p>
                 <span className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1]">
-                  Explore <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  Explore
                 </span>
               </Link>
             ))}

@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight, faCalendarDays, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faPlay } from '@fortawesome/free-solid-svg-icons'
 import {
   categoryColours,
   cleanText,
@@ -40,7 +40,7 @@ export default function InsightsNewsDetailPage() {
         <h1 className="text-[32px] font-bold text-[#0a1628] mb-4">News Story Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This news story does not exist or may have been moved.</p>
         <Link to="/insights" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
-          <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4" /> Back to Newsroom
+          Back to Newsroom
         </Link>
       </div>
     )
@@ -55,7 +55,7 @@ export default function InsightsNewsDetailPage() {
               to="/insights"
               className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#228DC1] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
-              <FontAwesomeIcon icon={faArrowLeft} className="w-3.5 h-3.5" /> Newsroom
+              Newsroom
             </Link>
             <span className="text-[#0a1628]/30">/</span>
             <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
@@ -120,7 +120,7 @@ export default function InsightsNewsDetailPage() {
 
           <div className="pt-8 border-t border-gray-100">
             <Link to="/insights" className="inline-flex items-center gap-2 text-[#228DC1] text-sm font-semibold hover:text-[#0a1628] transition-colors">
-              <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4" /> Back to all news
+              Back to all news
             </Link>
           </div>
         </div>
@@ -141,8 +141,7 @@ export default function InsightsNewsDetailPage() {
                   </h3>
                   <p className="text-[#0a1628]/60 text-xs mb-5">{newsItem.date}</p>
                   <span className="inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
-                    Read <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
-                  </span>
+                    Read                  </span>
                 </Link>
               ))}
             </div>

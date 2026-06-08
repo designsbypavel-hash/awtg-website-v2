@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
 type Section = {
@@ -325,7 +325,7 @@ export default function InsightsCaseStudyDetailPage() {
         <h1 className="text-[32px] font-bold text-[#0a1628] mb-4">Case Study Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This case study does not exist or may have been moved.</p>
         <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
-          <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4" /> Back to Case Studies
+          Back to Case Studies
         </Link>
       </div>
     )
@@ -341,7 +341,7 @@ export default function InsightsCaseStudyDetailPage() {
               to="/insights/case-studies"
               className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#228DC1] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
-              <FontAwesomeIcon icon={faArrowLeft} className="w-3.5 h-3.5" /> Case Studies
+              Case Studies
             </Link>
             <span className="text-[#0a1628]/30">·</span>
             <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[study.tag] ?? 'bg-[#228DC1]/8 text-[#0a1628]/60'}`}>
@@ -440,8 +440,7 @@ export default function InsightsCaseStudyDetailPage() {
               Speak to our experts
             </Link>
             <Link to="/insights/case-studies" className="px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all inline-flex items-center gap-2">
-              More case studies <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-            </Link>
+              More case studies            </Link>
           </div>
         </div>
       </section>

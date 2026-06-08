@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
 
@@ -144,8 +143,7 @@ export default function InsightsCaseStudiesPage() {
                   </p>
                 </div>
                 <div className="mt-10 flex items-center gap-2 text-[#228DC1] text-sm font-semibold">
-                  Read case study <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
+                  Read case study                </div>
               </div>
               {/* Right: stats panel */}
               <div className="bg-[#0a1628] p-10 lg:p-14 flex flex-col justify-between">
@@ -191,8 +189,7 @@ export default function InsightsCaseStudiesPage() {
                     {cs.excerpt}
                   </p>
                   <div className="flex items-center gap-2 text-[#228DC1] text-[12px] font-semibold mt-auto">
-                    Read case study <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                    Read case study                  </div>
                 </div>
               </Link>
             ))}

@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
 
 const posts = [
@@ -165,8 +165,7 @@ export default function InsightsBlogPage() {
                     <span className="flex items-center gap-1.5"><FontAwesomeIcon icon={faClock} className="w-3 h-3" /> {featured.readTime} read</span>
                   </div>
                   <span className="text-[#228DC1] text-xs font-semibold uppercase tracking-[0.1em] flex items-center gap-1.5 group-hover:gap-3 transition-all">
-                    Read article <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
-                  </span>
+                    Read article                  </span>
                 </div>
               </div>
               <div className="lg:col-span-2 bg-[#f8fafc] min-h-[280px] flex items-center justify-center relative overflow-hidden">
@@ -217,8 +216,7 @@ export default function InsightsBlogPage() {
                       <FontAwesomeIcon icon={faClock} className="w-3 h-3" /> {post.readTime} read
                     </span>
                     <span className="text-[#228DC1] text-xs font-semibold uppercase tracking-[0.1em] flex items-center gap-1 group-hover:gap-2 transition-all ml-auto">
-                      Read <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
-                    </span>
+                      Read                    </span>
                   </div>
                 </Link>
                 </li>

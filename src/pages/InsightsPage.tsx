@@ -1,6 +1,4 @@
 ﻿import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const categories = [
   { label: 'Blog', href: '/insights/blog', desc: 'Expert perspectives on telecoms trends and technology.' },
@@ -35,7 +33,7 @@ export default function InsightsPage() {
                 <h2 className="text-[24px] font-semibold text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">{cat.label}</h2>
                 <p className="text-[#0a1628]/75 mb-6">{cat.desc}</p>
                 <span className="inline-flex items-center gap-2 text-[#228DC1] font-semibold text-sm group-hover:gap-3 transition-all">
-                  Browse {cat.label} <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+                  Browse {cat.label}
                 </span>
               </Link>
             ))}

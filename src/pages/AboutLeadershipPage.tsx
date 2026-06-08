@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 type Person = {
   name: string
@@ -126,7 +125,7 @@ export default function AboutLeadershipPage() {
             <h2 className="font-h2 text-[#0a1628]">Ready to explore what AWTG can do for you?</h2>
           </div>
           <Link to="/contact" className="shrink-0 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all inline-flex items-center gap-2">
-            Contact Us <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+            Contact Us
           </Link>
         </div>
       </section>

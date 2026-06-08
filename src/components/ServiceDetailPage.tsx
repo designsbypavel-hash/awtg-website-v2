@@ -1,6 +1,6 @@
 ﻿import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 type Metric = { value: string; label: string }
 type Capability = { title: string; desc: string }
@@ -43,7 +43,7 @@ export default function ServiceDetailPage({
             {/* L4 — body */}
             <p className="text-[#0a1628]/65 text-[16px] max-w-xl font-normal leading-[1.7] mb-9">{hero}</p>
             <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-colors">
-              Request a Demo <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+              Request a Demo
             </Link>
           </div>
           <div className="flex flex-col">
@@ -135,7 +135,6 @@ export default function ServiceDetailPage({
               {related.map((link) => (
                 <Link key={link.href} to={link.href} className="flex items-center justify-between border-b border-gray-100 pb-3 text-[#0a1628]/70 hover:text-white font-normal text-[14px] transition-colors">
                   {link.label}
-                  <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
                 </Link>
               ))}
             </div>

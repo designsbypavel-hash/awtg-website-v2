@@ -1,7 +1,7 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faLocationDot, faBriefcase, faArrowRight, faArrowLeft,
+  faLocationDot, faBriefcase,
   faBuilding, faCalendarDays, faCircleCheck,
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -274,7 +274,7 @@ export default function CareerRoleDetailPage() {
             to="/careers"
             className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#228DC1] transition-colors mb-8"
           >
-            <FontAwesomeIcon icon={faArrowLeft} className="w-3 h-3" /> Back to Careers
+            Back to Careers
           </Link>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div>
@@ -298,7 +298,7 @@ export default function CareerRoleDetailPage() {
               to={`/careers/${role.slug}/apply`}
               className="shrink-0 inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
             >
-              Apply for This Role <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+              Apply for This Role
             </Link>
           </div>
         </div>
@@ -351,7 +351,7 @@ export default function CareerRoleDetailPage() {
                   to={`/careers/${role.slug}/apply`}
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                 >
-                  Apply Now <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                  Apply Now
                 </Link>
               </div>
             </div>
@@ -385,7 +385,7 @@ export default function CareerRoleDetailPage() {
                     to={`/careers/${role.slug}/apply`}
                     className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                   >
-                    Apply for This Role <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+                    Apply for This Role
                   </Link>
                 </div>
               </div>
@@ -400,7 +400,7 @@ export default function CareerRoleDetailPage() {
                   to="/contact"
                   className="inline-flex items-center gap-2 text-[#228DC1] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                 >
-                  Send Speculative CV <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+                  Send Speculative CV
                 </Link>
               </div>
 
@@ -425,7 +425,7 @@ export default function CareerRoleDetailPage() {
                     to="/careers"
                     className="mt-5 pt-5 border-t border-gray-100 flex items-center gap-2 text-[#228DC1] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
-                    View all positions <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+                    View all positions
                   </Link>
                 </div>
               )}
@@ -443,7 +443,7 @@ export default function CareerRoleDetailPage() {
               <h2 className="font-h3 text-[#0a1628]">More open positions</h2>
             </div>
             <Link to="/careers" className="text-[#228DC1] text-sm font-semibold hover:text-[#1a7fa8] transition-colors flex items-center gap-1.5">
-              All roles <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+              All roles
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
@@ -459,7 +459,7 @@ export default function CareerRoleDetailPage() {
                 <h3 className="font-h5 text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-3">{r.title}</h3>
                 <p className="text-[#0a1628]/55 text-[13px] mb-5">{r.location} · {r.type}</p>
                 <span className="inline-flex items-center gap-2 text-[#228DC1] text-[12px] font-semibold uppercase tracking-[0.1em]">
-                  View Role <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  View Role
                 </span>
               </Link>
             ))}

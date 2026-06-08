@@ -1,6 +1,6 @@
 ﻿import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 const solutions = [
   {
@@ -134,9 +134,9 @@ export default function SolutionsPage() {
               </ul>
               <Link
                 to={s.href}
-                className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all duration-200 w-fit"
+                className="text-sm font-medium text-[#228DC1] hover:underline transition-all duration-200 w-fit"
               >
-                Explore {s.title} <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+                Explore {s.title}
               </Link>
             </div>
           </div>

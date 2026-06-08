@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 function Para({ children }: { children: React.ReactNode }) {
   return <p className="text-[#0a1628]/70 text-[15px] leading-[1.9] font-normal">{children}</p>
@@ -373,7 +372,7 @@ export default function PrivacyPolicyPage() {
             to="/contact"
             className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
           >
-            Get in Touch <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+            Get in Touch
           </Link>
         </div>
       </section>

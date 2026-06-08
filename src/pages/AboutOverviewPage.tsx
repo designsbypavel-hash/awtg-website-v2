@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faBuilding, faGlobe, faHandshake, faPeopleGroup } from '@fortawesome/free-solid-svg-icons'
+import { faBuilding, faGlobe, faHandshake, faPeopleGroup } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
 const contentSections = [
@@ -164,7 +164,7 @@ export default function AboutOverviewPage() {
                 <h3 className="font-card-heading text-[#0a1628] text-[14px] mb-2 group-hover:text-[#228DC1] transition-colors">{link.label}</h3>
                 <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal mb-5">{link.desc}</p>
                 <span className="inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.14em]">
-                  Explore <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+                  Explore
                 </span>
               </Link>
             ))}

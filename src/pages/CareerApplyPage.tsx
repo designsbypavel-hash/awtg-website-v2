@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faArrowLeft, faArrowRight, faLocationDot, faBriefcase,
+  faLocationDot, faBriefcase,
   faBuilding, faCloudArrowUp, faCircleCheck, faXmark,
   faFile,
 } from '@fortawesome/free-solid-svg-icons'
@@ -167,7 +167,7 @@ export default function CareerApplyPage() {
               to={getRoleHref(role.slug)}
               className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#228DC1] transition-colors mb-8"
             >
-              <FontAwesomeIcon icon={faArrowLeft} className="w-3 h-3" /> Back to role
+              Back to role
             </Link>
             <div className="max-w-xl">
               <div className="w-14 h-14 bg-[#228DC1]/10 flex items-center justify-center mb-8">
@@ -189,7 +189,7 @@ export default function CareerApplyPage() {
                   to="/careers"
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                 >
-                  View All Roles <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                  View All Roles
                 </Link>
                 <Link
                   to="/"
@@ -214,7 +214,7 @@ export default function CareerApplyPage() {
             to={getRoleHref(role.slug)}
             className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#228DC1] transition-colors mb-8"
           >
-            <FontAwesomeIcon icon={faArrowLeft} className="w-3 h-3" /> Back to role
+            Back to role
           </Link>
           <p className="type-label text-[#228DC1] mb-3">Apply</p>
           <h1 className="font-h1 text-[#0a1628] mb-4">{role.title}</h1>
@@ -410,7 +410,7 @@ export default function CareerApplyPage() {
                     type="submit"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                   >
-                    Submit Application <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                    Submit Application
                   </button>
                 </div>
 
@@ -439,7 +439,7 @@ export default function CareerApplyPage() {
                     to={getRoleHref(role.slug)}
                     className="mt-5 flex items-center gap-2 text-[#228DC1] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
-                    <FontAwesomeIcon icon={faArrowLeft} className="w-3 h-3" /> View full job description
+                    View full job description
                   </Link>
                 </div>
 
@@ -470,7 +470,7 @@ export default function CareerApplyPage() {
                     href="mailto:info@awtg.co.uk"
                     className="inline-flex items-center gap-2 text-[#228DC1] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
-                    info@awtg.co.uk <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+                    info@awtg.co.uk
                   </a>
                 </div>
 

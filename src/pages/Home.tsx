@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck, faChevronLeft, faChevronRight, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faChevronLeft, faChevronRight, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
 
 // --- BRAND SVG LOGOS --------------------------------------------------------
 
@@ -263,7 +263,6 @@ function WhatWeDo() {
                   <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">{r.line}</p>
                 </div>
               </div>
-              <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5 text-[#228DC1] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
           ))}
         </div>
@@ -317,8 +316,8 @@ function AIProofPoints() {
             <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] max-w-xl mb-8">
               We deployed Kai directly into British Council English Online. Customer satisfaction is up. Escalations are down. It's live, not a demo.
             </p>
-            <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all">
-              Discuss a similar project <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+            <Link to="/contact" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+              Discuss a similar project
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-px bg-gray-200 border border-gray-200 shrink-0">
@@ -365,8 +364,8 @@ export function OurSolutions() {
                 <div className="p-12 lg:p-16 flex flex-col justify-center">
                   <h3 className="font-h3 text-[#0a1628] mb-4">{panel.title}</h3>
                   <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-6 font-normal">{panel.desc}</p>
-                  <Link to={panel.href} className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all">
-                    {panel.link} <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+                  <Link to={panel.href} className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+                    {panel.link}
                   </Link>
                 </div>
                 <div className="h-64 lg:h-auto min-h-[300px] bg-gray-100">
@@ -381,8 +380,8 @@ export function OurSolutions() {
                 <div className="p-12 lg:p-16 flex flex-col justify-center">
                   <h3 className="font-h3 text-[#0a1628] mb-4">{panel.title}</h3>
                   <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-6 font-normal">{panel.desc}</p>
-                  <Link to={panel.href} className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] hover:gap-3 transition-all">
-                    {panel.link} <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+                  <Link to={panel.href} className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+                    {panel.link}
                   </Link>
                 </div>
               </>
@@ -461,7 +460,7 @@ function Industries() {
             <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
               <h3 className="font-h4 text-white mb-2">{card.title}</h3>
               <span className="inline-flex items-center gap-1.5 text-sm text-[#0a1628]/60 group-hover:text-white transition-colors font-medium">
-                {card.sub} <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                {card.sub}
               </span>
             </div>
           </Link>
@@ -858,7 +857,7 @@ function Insights() {
                 </div>
                 <p className="text-[14px] font-semibold text-[#0a1628] leading-[1.3] mb-4 line-clamp-3">{a.title}</p>
                 <span className="text-xs font-medium text-[#228DC1] inline-flex items-center gap-1.5">
-                  Read more <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
+                  Read more
                 </span>
               </div>
             </Link>

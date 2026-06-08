@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight, faDownload, faExternalLinkAlt, faFilePdf } from '@fortawesome/free-solid-svg-icons'
+import { faDownload, faExternalLinkAlt, faFilePdf } from '@fortawesome/free-solid-svg-icons'
 import { getWhitePaperHref, whitePapers } from './InsightsWhitePapersPage'
 
 export default function InsightsWhitePaperDetailPage() {
@@ -17,7 +17,7 @@ export default function InsightsWhitePaperDetailPage() {
         <h1 className="text-[32px] font-bold text-[#0a1628] mb-4">Whitepaper Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This whitepaper does not exist or may have been moved.</p>
         <Link to="/insights/white-papers" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
-          <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4" /> Back to Whitepapers
+          Back to Whitepapers
         </Link>
       </div>
     )
@@ -33,7 +33,7 @@ export default function InsightsWhitePaperDetailPage() {
                 to="/insights/white-papers"
                 className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#228DC1] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
               >
-                <FontAwesomeIcon icon={faArrowLeft} className="w-3.5 h-3.5" /> Whitepapers
+                Whitepapers
               </Link>
               <span className="text-[#0a1628]/30">/</span>
               <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 bg-[#228DC1]/10 text-[#228DC1]">
@@ -114,8 +114,7 @@ export default function InsightsWhitePaperDetailPage() {
                   </h3>
                   <p className="text-[#0a1628]/60 text-xs mb-5">{item.date}</p>
                   <span className="inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
-                    Open <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3" />
-                  </span>
+                    Open                  </span>
                 </Link>
               ))}
             </div>

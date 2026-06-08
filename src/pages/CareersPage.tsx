@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faLocationDot, faBriefcase, faArrowRight, faArrowDown,
+  faLocationDot, faBriefcase,
   faLightbulb, faUsers, faArrowTrendUp, faGlobe,
   faHeartPulse, faGraduationCap, faLaptopCode,
   faHouseChimney, faHandshake, faPeopleGroup,
@@ -65,13 +65,13 @@ export default function CareersPage() {
                   href="#open-roles"
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                 >
-                  View Open Roles <FontAwesomeIcon icon={faArrowDown} className="w-3.5 h-3.5" />
+                  View Open Roles
                 </a>
                 <Link
                   to="/contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#0a1628]/20 text-[#0a1628] text-[14px] font-semibold hover:border-[#228DC1] hover:text-[#228DC1] transition-colors"
                 >
-                  Send Speculative CV <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                  Send Speculative CV
                 </Link>
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function CareersPage() {
                     to={getRoleHref(role.slug)}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-2.5 border border-[#228DC1] text-[#228DC1] text-[13px] font-semibold hover:bg-[#228DC1] hover:text-white transition-all"
                   >
-                    View Role <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                    View Role
                   </Link>
                 </div>
               </li>
@@ -232,7 +232,7 @@ export default function CareersPage() {
             to="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
           >
-            Send Speculative Application <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+            Send Speculative Application
           </Link>
         </div>
       </section>

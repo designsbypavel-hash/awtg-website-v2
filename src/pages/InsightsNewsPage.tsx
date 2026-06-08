@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCalendarDays, faNewspaper, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faNewspaper, faPlay } from '@fortawesome/free-solid-svg-icons'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
 
 type NewsItem = {
@@ -623,8 +623,7 @@ export default function InsightsNewsPage() {
                   <FontAwesomeIcon icon={faCalendarDays} className="w-3 h-3" /> {featured.date}
                 </span>
                 <span className="inline-flex items-center gap-2 text-[#228DC1] font-semibold uppercase tracking-[0.12em]">
-                  Read story <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
-                </span>
+                  Read story                </span>
               </div>
             </Link>
             <div className="lg:col-span-2 bg-[#f0f7fc] border border-[#228DC1]/15 p-8 lg:p-10 flex flex-col justify-between min-h-[360px]">
@@ -640,8 +639,7 @@ export default function InsightsNewsPage() {
                 </div>
               </div>
               <Link to="/contact" className="mt-10 inline-flex items-center gap-2 text-[#228DC1] text-sm font-semibold hover:text-[#1a7fa8] transition-colors">
-                Media enquiries <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
-              </Link>
+                Media enquiries              </Link>
             </div>
           </div>
         </div>
@@ -692,8 +690,7 @@ export default function InsightsNewsPage() {
                     {cleanText(item.excerpt)}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
-                    {getNewsVideoUrl(item) ? 'Watch story' : 'Read story'} <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
-                  </span>
+                    {getNewsVideoUrl(item) ? 'Watch story' : 'Read story'}                  </span>
                 </div>
               </Link>
             ))}
@@ -716,8 +713,7 @@ export default function InsightsNewsPage() {
             to="/contact"
             className="shrink-0 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all inline-flex items-center gap-2"
           >
-            Get in touch <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-          </Link>
+            Get in touch          </Link>
         </div>
       </section>
     </>

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faCircleCheck, faGear, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faGear, faXmark, faSliders, faBookOpen, faPlug, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 
@@ -713,7 +713,7 @@ export function KaiDashboard() {
                 Type a message...
               </div>
               <div className="w-6 h-6 bg-[#228DC1] flex items-center justify-center shrink-0 self-center">
-                <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 text-white" />
+                <FontAwesomeIcon icon={faPaperPlane} className="w-3 h-3 text-white" />
               </div>
             </div>
           </div>
@@ -2146,8 +2146,8 @@ export default function KaiPage() {
               <p className="text-[#0a1628]/65 text-[16px] font-normal leading-[1.7] mb-8">
                 Kai is running in production at enterprise organisations today. Real query volume, real containment rates, real CSAT improvement. Tracked from the first week, not the first quarter.
               </p>
-              <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#228DC1] hover:gap-3 transition-all">
-                Read the case study <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+              <Link to="/insights/case-studies" className="text-[13px] font-semibold text-[#228DC1] hover:underline transition-all">
+                Read the case study
               </Link>
             </div>
             <GlobalReachMap />

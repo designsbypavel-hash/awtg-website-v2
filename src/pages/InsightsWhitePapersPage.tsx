@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faFilePdf, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
+import { faFilePdf, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
 
@@ -189,8 +189,7 @@ export default function InsightsWhitePapersPage() {
               <div className="flex flex-wrap items-center justify-between gap-4 text-[#0a1628]/60 text-xs border-t border-gray-100 pt-7">
                 <span>{featuredPaper.date}</span>
                 <span className="inline-flex items-center gap-2 text-[#228DC1] font-semibold uppercase tracking-[0.12em]">
-                  Read whitepaper <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
-                </span>
+                  Read whitepaper                </span>
               </div>
             </div>
             <div className="lg:col-span-2 bg-[#0a1628] text-white p-8 lg:p-10 min-h-[360px] flex flex-col justify-between">
@@ -252,8 +251,7 @@ export default function InsightsWhitePapersPage() {
                     {paper.desc}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
-                    Open whitepaper <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
-                  </span>
+                    Open whitepaper                  </span>
                 </div>
               </Link>
             ))}

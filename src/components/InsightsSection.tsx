@@ -1,6 +1,6 @@
 ﻿import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faClock } from '@fortawesome/free-solid-svg-icons'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 
 const posts = [
   {
@@ -49,9 +49,9 @@ export default function InsightsSection() {
           </div>
           <Link
             to="/insights"
-            className="inline-flex items-center gap-2 text-[#228DC1] font-semibold hover:gap-3 transition-all text-sm"
+            className="text-[#228DC1] font-semibold hover:underline transition-all text-sm"
           >
-            View all insights <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+            View all insights
           </Link>
         </div>
 
