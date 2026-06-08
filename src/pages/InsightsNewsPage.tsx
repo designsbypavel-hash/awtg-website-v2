@@ -8,7 +8,6 @@ type NewsItem = {
   date: string
   category: string
   excerpt: string
-  sourceUrl?: string
   youtubeEmbedUrl?: string
 }
 
@@ -38,7 +37,6 @@ export const newsItems: NewsItem[] = [
     date: 'May 4, 2026',
     category: 'Artificial Intelligence',
     excerpt: 'Shaping the future of education with Aruva, AWTG’s AI-powered platform designed to connect institutions, educators and learners through smarter collaboration and digital-first learning.',
-    sourceUrl: 'https://www.awtg.co.uk/the-future-of-learning-is-here-inside-aruva-awtg-educational-ai-platform',
     youtubeEmbedUrl: 'https://www.youtube.com/embed/L20VwApk4q4?feature=oembed',
   },
   {
@@ -46,7 +44,6 @@ export const newsItems: NewsItem[] = [
     date: 'April 29, 2026',
     category: 'Artificial Intelligence',
     excerpt: 'From early innovation to where AWTG is today, the company’s AI journey continues to push the boundaries of what is possible with technology, clarity and real-world impact.',
-    sourceUrl: 'https://www.awtg.co.uk/awtg-ai-journey-from-innovation-to-expansion',
     youtubeEmbedUrl: 'https://www.youtube.com/embed/BAvyHUxvlfM?feature=oembed',
   },
   {
@@ -54,7 +51,6 @@ export const newsItems: NewsItem[] = [
     date: 'April 20, 2026',
     category: 'Innovation',
     excerpt: 'AWTG and Lime Microsystems announced a strategic partnership bringing artificial intelligence and machine learning capabilities to LimeSDR software-defined radio platforms.',
-    sourceUrl: 'https://www.awtg.co.uk/awtg-lime-microsystems-announce-strategic-partnership-to-deliver-ai-ml%e2%80%91powered-software%e2%80%91defined-radio-solutions',
   },
   {
     title: 'AWTG Appointed to Crown Commercial Service Technology Services 4 Framework',
@@ -67,7 +63,6 @@ export const newsItems: NewsItem[] = [
     date: 'December 16, 2025',
     category: 'Engineering',
     excerpt: 'Matt Moayedi shares how AWTG builds flexible, future-ready digital infrastructure across sectors from smart cities and public networks to edge computing and AI.',
-    sourceUrl: 'https://www.awtg.co.uk/innovators-table-episode-5-matt-moayedi-awtg-director-of-engineering',
     youtubeEmbedUrl: 'https://www.youtube.com/embed/jd4rkMayo_U?feature=oembed',
   },
   {
@@ -75,7 +70,6 @@ export const newsItems: NewsItem[] = [
     date: 'December 8, 2025',
     category: 'Artificial Intelligence',
     excerpt: 'Peter Najm discusses how AWTG uses AI to drive efficiency, automation and transparency across customer service, smart cities and other operational settings.',
-    sourceUrl: 'https://www.awtg.co.uk/innovators-table-episode-4-peter-najm-awtg-ai-product-manager',
     youtubeEmbedUrl: 'https://www.youtube.com/embed/bupY1MLSTBw?feature=oembed',
   },
   {
@@ -572,22 +566,7 @@ const newsVideoUrlsBySlug: Record<string, string> = {
   [createNewsSlug('AWTG is Delighted to be Part of CORE Project at Cambridge Tech Week')]: 'https://www.youtube.com/embed/qbIXZ3XAVuM?feature=oembed',
 }
 
-const newsSourceUrlsBySlug: Record<string, string> = {
-  [createNewsSlug('The Future of Learning is Here: Inside Aruva, AWTG Educational AI Platform')]: 'https://www.awtg.co.uk/the-future-of-learning-is-here-inside-aruva-awtg-educational-ai-platform',
-  [createNewsSlug("AWTG's AI Journey: From Innovation to Expansion")]: 'https://www.awtg.co.uk/awtg-ai-journey-from-innovation-to-expansion',
-  [createNewsSlug("Innovator's Table Episode 5: Matt Moayedi, AWTG Director of Engineering")]: 'https://www.awtg.co.uk/innovators-table-episode-5-matt-moayedi-awtg-director-of-engineering',
-  [createNewsSlug("Innovator's Table Episode 4: Peter Najm, AWTG AI Product Manager")]: 'https://www.awtg.co.uk/innovators-table-episode-4-peter-najm-awtg-ai-product-manager',
-  [createNewsSlug('Digital Transformation in Motion Across the Borderlands Region')]: 'https://www.awtg.co.uk/digital-transformation-in-motion-across-the-borderlands-region',
-  [createNewsSlug('AWTG Demonstrates 5G Excellence at Millbrook Proving Ground')]: 'https://www.awtg.co.uk/awtg-demonstrates-5g-excellence-at-millbrook-proving-ground',
-  [createNewsSlug('AWTG Showcases 5G and AI Innovations in TechForge Media Interview at IoT Tech Expo 2025')]: 'https://www.awtg.co.uk/awtg-techforge-media-interview-iot-tech-expo-2025',
-  [createNewsSlug('AWTG at Connected Britain 2025: Showcasing Innovation, Collaboration, and the Future of Connectivity')]: 'https://www.awtg.co.uk/awtg-at-connected-britain-2025-showcasing-innovation-collaboration-and-the-future-of-connectivity',
-  [createNewsSlug('AWTG Launches 5G Open RAN Lab')]: 'https://www.awtg.co.uk/awtg-5g-open-ran-lab',
-  [createNewsSlug("AWTG's AI with New Features Help Businesses Thrive")]: 'https://www.awtg.co.uk/awtg-ai-businesses-thrive',
-  [createNewsSlug('AWTG is Delighted to be Part of CORE Project at Cambridge Tech Week')]: 'https://www.awtg.co.uk/awtg-core-cambridge-tech-week',
-}
-
 export const getNewsVideoUrl = (item: NewsItem) => item.youtubeEmbedUrl ?? newsVideoUrlsBySlug[createNewsSlug(item.title)]
-export const getNewsSourceUrl = (item: NewsItem) => item.sourceUrl ?? newsSourceUrlsBySlug[createNewsSlug(item.title)]
 
 export default function InsightsNewsPage() {
   const [activeCategory, setActiveCategory] = useState('All')

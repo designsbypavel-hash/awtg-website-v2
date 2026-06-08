@@ -1,12 +1,11 @@
 import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight, faCalendarDays, faExternalLinkAlt, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faArrowRight, faCalendarDays, faPlay } from '@fortawesome/free-solid-svg-icons'
 import {
   categoryColours,
   cleanText,
   createNewsSlug,
   getNewsHref,
-  getNewsSourceUrl,
   getNewsVideoUrl,
   newsItems,
 } from './InsightsNewsPage'
@@ -29,7 +28,6 @@ const getYouTubeWatchUrl = (embedUrl: string) => {
 export default function InsightsNewsDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const item = newsItems.find((newsItem) => createNewsSlug(newsItem.title) === slug)
-  const sourceUrl = item ? getNewsSourceUrl(item) : undefined
   const youtubeEmbedUrl = item ? getNewsVideoUrl(item) : undefined
   const related = newsItems
     .filter((newsItem) => newsItem.category === item?.category && createNewsSlug(newsItem.title) !== slug)
@@ -104,16 +102,6 @@ export default function InsightsNewsDetailPage() {
                 >
                   <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5" /> Watch on YouTube
                 </a>
-                {sourceUrl && (
-                  <a
-                    href={sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 text-[#0a1628] text-sm font-medium hover:border-[#228DC1] hover:text-[#228DC1] transition-all"
-                  >
-                    Original AWTG story <FontAwesomeIcon icon={faExternalLinkAlt} className="w-3.5 h-3.5" />
-                  </a>
-                )}
               </div>
             </div>
           )}
@@ -123,19 +111,6 @@ export default function InsightsNewsDetailPage() {
               {paragraph}
             </p>
           ))}
-
-          {!youtubeEmbedUrl && sourceUrl && (
-            <div className="mb-12">
-              <a
-                href={sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#228DC1] text-[#228DC1] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-all"
-              >
-                View original AWTG story <FontAwesomeIcon icon={faExternalLinkAlt} className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          )}
 
           <div className="my-12 border-l-2 border-[#228DC1] pl-8 py-1">
             <p className="font-serif-display text-[#0a1628] leading-snug italic" style={{ fontSize: 'clamp(18px, 2vw, 24px)' }}>
