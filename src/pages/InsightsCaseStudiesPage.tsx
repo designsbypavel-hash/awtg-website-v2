@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
+import InsightsResourceNav from '@/components/InsightsResourceNav'
 
 const tagColour: Record<string, string> = {
   'Open RAN Security': 'bg-[#228DC1]/10 text-[#228DC1]',
@@ -91,7 +93,12 @@ const studies = [
   },
 ]
 
+const caseStudyTopics = ['All', featured.tag, ...Array.from(new Set(studies.map((study) => study.tag)))]
+
 export default function InsightsCaseStudiesPage() {
+  const [activeTopic, setActiveTopic] = useState('All')
+  const filteredStudies = activeTopic === 'All' ? studies : studies.filter((study) => study.tag === activeTopic)
+
   return (
     <>
       {/* Hero */}
@@ -104,6 +111,13 @@ export default function InsightsCaseStudiesPage() {
           </p>
         </div>
       </section>
+
+      <InsightsResourceNav
+        activeResource="case-studies"
+        activeTopic={activeTopic}
+        topics={caseStudyTopics}
+        onTopicChange={setActiveTopic}
+      />
 
       {/* Featured */}
       <section className="bg-[#f8fafc] pb-0 border-t border-gray-100">
@@ -155,7 +169,7 @@ export default function InsightsCaseStudiesPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <p className="type-label text-[#0a1628]/50 mb-10">All case studies</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {studies.map(cs => (
+            {filteredStudies.map(cs => (
               <Link
                 key={cs.slug}
                 to={`/insights/case-studies/${cs.slug}`}

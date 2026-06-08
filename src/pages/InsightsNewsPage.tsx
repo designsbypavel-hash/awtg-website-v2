@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faCalendarDays, faNewspaper, faPlay } from '@fortawesome/free-solid-svg-icons'
+import InsightsResourceNav from '@/components/InsightsResourceNav'
 
 type NewsItem = {
   title: string
@@ -647,26 +648,12 @@ export default function InsightsNewsPage() {
         </div>
       </section>
 
-      <div className="bg-white border-b border-gray-100 sticky top-16 z-30">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex flex-wrap items-center gap-2 py-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.1em] transition-all ${
-                  activeCategory === category
-                    ? 'bg-[#228DC1] text-white'
-                    : 'text-[#0a1628]/65 hover:text-[#228DC1] hover:bg-gray-50'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+      <InsightsResourceNav
+        activeResource="newsroom"
+        activeTopic={activeCategory}
+        topics={categories}
+        onTopicChange={setActiveCategory}
+      />
 
       <section className="py-20 bg-[#f7f8fa]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">

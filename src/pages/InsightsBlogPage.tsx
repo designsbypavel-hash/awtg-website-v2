@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import InsightsResourceNav from '@/components/InsightsResourceNav'
 
 const posts = [
   {
@@ -126,26 +127,12 @@ export default function InsightsBlogPage() {
         </div>
       </section>
 
-      {/* Filter bar */}
-      <div className="bg-white border-b border-gray-100 sticky top-16 z-30">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex items-center gap-1 overflow-x-auto py-3 scrollbar-hide">
-            {tags.map(tag => (
-              <button
-                key={tag}
-                onClick={() => setActiveTag(tag)}
-                className={`shrink-0 px-4 py-1.5 text-[14px] font-semibold uppercase tracking-[0.1em] transition-all ${
-                  activeTag === tag
-                    ? 'bg-[#228DC1] text-white'
-                    : 'text-[#0a1628]/65 hover:text-[#228DC1] hover:bg-gray-50'
-                }`}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+      <InsightsResourceNav
+        activeResource="blog"
+        activeTopic={activeTag}
+        topics={tags}
+        onTopicChange={setActiveTag}
+      />
 
       {/* Featured post */}
       {featured && (
