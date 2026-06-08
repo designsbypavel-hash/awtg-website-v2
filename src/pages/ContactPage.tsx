@@ -113,13 +113,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="mt-12 p-6 bg-[#f7f8fa] border border-gray-100">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#0a1628]/60 mb-3">Regional Offices</p>
-              <div className="space-y-2 text-[14px] text-[#0a1628]/70 font-normal">
-                <p>Manchester &mdash; Birmingham &mdash; Edinburgh</p>
-                <p>Dubai &mdash; Singapore &mdash; Nairobi</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
