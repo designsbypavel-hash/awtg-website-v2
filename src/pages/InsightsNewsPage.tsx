@@ -10,7 +10,27 @@ type NewsItem = {
   excerpt: string
 }
 
-const newsItems: NewsItem[] = [
+export type { NewsItem }
+
+export const cleanText = (value: string) => value
+  .replace(/[’‘]/g, "'")
+  .replace(/[“”]/g, '"')
+  .replace(/[–—]/g, '-')
+  .replace(/â€™/g, "'")
+  .replace(/â€˜/g, "'")
+  .replace(/â€œ|â€�/g, '"')
+  .replace(/â€“|â€”/g, '-')
+  .replace(/Â/g, '')
+
+export const createNewsSlug = (title: string) => cleanText(title)
+  .toLowerCase()
+  .replace(/&/g, ' and ')
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+
+export const getNewsHref = (item: NewsItem) => `/insights/news/${createNewsSlug(item.title)}`
+
+export const newsItems: NewsItem[] = [
   {
     title: 'The Future of Learning is Here: Inside Aruva, AWTG’s Educational AI Platform',
     date: 'May 4, 2026',
@@ -511,7 +531,7 @@ const newsItems: NewsItem[] = [
   },
 ]
 
-const categoryColours: Record<string, string> = {
+export const categoryColours: Record<string, string> = {
   'Artificial Intelligence': 'bg-[#228DC1]/10 text-[#228DC1]',
   Awards: 'bg-amber-50 text-amber-700',
   Engineering: 'bg-slate-100 text-slate-700',
@@ -563,7 +583,7 @@ export default function InsightsNewsPage() {
       <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-5 border border-gray-100">
-            <article className="lg:col-span-3 p-8 lg:p-12">
+            <Link to={getNewsHref(featured)} className="group lg:col-span-3 p-8 lg:p-12">
               <div className="flex flex-wrap items-center gap-3 mb-7">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60">Featured</span>
                 <span className="w-8 h-px bg-gray-200" />
@@ -571,28 +591,30 @@ export default function InsightsNewsPage() {
                   {featured.category}
                 </span>
               </div>
-              <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-5" style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>
-                {featured.title}
+              <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-5 group-hover:text-[#228DC1] transition-colors" style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>
+                {cleanText(featured.title)}
               </h2>
               <p className="text-[#0a1628]/70 text-[16px] font-normal leading-[1.8] max-w-2xl mb-9">
-                {featured.excerpt}
+                {cleanText(featured.excerpt)}
               </p>
-              <div className="flex flex-wrap items-center gap-4 text-[#0a1628]/60 text-xs border-t border-gray-100 pt-7">
+              <div className="flex flex-wrap items-center justify-between gap-4 text-[#0a1628]/60 text-xs border-t border-gray-100 pt-7">
                 <span className="inline-flex items-center gap-2">
                   <FontAwesomeIcon icon={faCalendarDays} className="w-3 h-3" /> {featured.date}
                 </span>
-                <span>AWTG News</span>
+                <span className="inline-flex items-center gap-2 text-[#228DC1] font-semibold uppercase tracking-[0.12em]">
+                  Read story <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                </span>
               </div>
-            </article>
+            </Link>
             <div className="lg:col-span-2 bg-[#0a1628] text-white p-8 lg:p-10 flex flex-col justify-between min-h-[360px]">
               <div>
                 <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#7ac4e0] mb-7">Latest briefings</p>
                 <div className="space-y-6">
                   {spotlight.map((item) => (
-                    <div key={item.title} className="border-t border-white/10 pt-5">
+                    <Link key={item.title} to={getNewsHref(item)} className="group block border-t border-white/10 pt-5">
                       <p className="text-white/55 text-xs mb-2">{item.date}</p>
-                      <h3 className="text-white text-[15px] font-semibold leading-[1.35]">{item.title}</h3>
-                    </div>
+                      <h3 className="text-white text-[15px] font-semibold leading-[1.35] group-hover:text-[#7ac4e0] transition-colors">{cleanText(item.title)}</h3>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -606,13 +628,13 @@ export default function InsightsNewsPage() {
 
       <div className="bg-white border-b border-gray-100 sticky top-16 z-30">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex items-center gap-1 overflow-x-auto py-3 scrollbar-hide">
+          <div className="flex flex-wrap items-center gap-2 py-4">
             {categories.map((category) => (
               <button
                 key={category}
                 type="button"
                 onClick={() => setActiveCategory(category)}
-                className={`shrink-0 px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.1em] transition-all ${
+                className={`px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.1em] transition-all ${
                   activeCategory === category
                     ? 'bg-[#228DC1] text-white'
                     : 'text-[#0a1628]/65 hover:text-[#228DC1] hover:bg-gray-50'
@@ -639,7 +661,7 @@ export default function InsightsNewsPage() {
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {visibleNews.map((item, index) => (
-              <article key={`${item.title}-${item.date}`} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all">
+              <Link key={`${item.title}-${item.date}`} to={getNewsHref(item)} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all">
                 <div className="h-36 bg-[#eef5f9] relative overflow-hidden border-b border-gray-100">
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,141,193,0.18),rgba(10,22,40,0.04))]" />
                   <div className="absolute left-6 top-6 h-11 w-11 bg-white flex items-center justify-center text-[#228DC1]">
@@ -657,13 +679,16 @@ export default function InsightsNewsPage() {
                     <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
                   </div>
                   <h3 className="text-[#0a1628] text-[16px] font-semibold leading-[1.35] mb-3 group-hover:text-[#228DC1] transition-colors">
-                    {item.title}
+                    {cleanText(item.title)}
                   </h3>
                   <p className="text-[#0a1628]/65 text-[14px] font-normal leading-[1.7]">
-                    {item.excerpt}
+                    {cleanText(item.excerpt)}
                   </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
+                    Read story <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+                  </span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>

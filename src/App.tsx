@@ -54,6 +54,7 @@ import AboutSustainabilityPage from './pages/AboutSustainabilityPage'
 
 // Insights
 import InsightsNewsPage from './pages/InsightsNewsPage'
+import InsightsNewsDetailPage from './pages/InsightsNewsDetailPage'
 import InsightsBlogPage from './pages/InsightsBlogPage'
 import InsightsCaseStudiesPage from './pages/InsightsCaseStudiesPage'
 import InsightsWhitePapersPage from './pages/InsightsWhitePapersPage'
@@ -121,6 +122,7 @@ export default function App() {
         {/* Insights */}
         <Route path="insights" element={<InsightsNewsPage />} />
         <Route path="insights/news" element={<InsightsNewsPage />} />
+        <Route path="insights/news/:slug" element={<InsightsNewsDetailPage />} />
         <Route path="insights/blog" element={<InsightsBlogPage />} />
         <Route path="insights/case-studies" element={<InsightsCaseStudiesPage />} />
         <Route path="insights/white-papers" element={<InsightsWhitePapersPage />} />
