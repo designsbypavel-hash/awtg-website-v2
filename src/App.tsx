@@ -58,6 +58,7 @@ import InsightsNewsDetailPage from './pages/InsightsNewsDetailPage'
 import InsightsBlogPage from './pages/InsightsBlogPage'
 import InsightsCaseStudiesPage from './pages/InsightsCaseStudiesPage'
 import InsightsWhitePapersPage from './pages/InsightsWhitePapersPage'
+import InsightsWhitePaperDetailPage from './pages/InsightsWhitePaperDetailPage'
 import InsightsBlogPostPage from './pages/InsightsBlogPostPage'
 import InsightsCaseStudyDetailPage from './pages/InsightsCaseStudyDetailPage'
 import DesignRationalePage from './pages/DesignRationalePage'
@@ -128,6 +129,7 @@ export default function App() {
         <Route path="insights/blog" element={<InsightsBlogPage />} />
         <Route path="insights/case-studies" element={<InsightsCaseStudiesPage />} />
         <Route path="insights/white-papers" element={<InsightsWhitePapersPage />} />
+        <Route path="insights/white-papers/:slug" element={<InsightsWhitePaperDetailPage />} />
         <Route path="insights/blog/:slug" element={<InsightsBlogPostPage />} />
         <Route path="insights/case-studies/:slug" element={<InsightsCaseStudyDetailPage />} />
 
