@@ -2180,10 +2180,10 @@ export default function KaiPage() {
             {/* Left: copy */}
             <div className="lg:pt-2">
               <h2 className="font-heading text-[#0a1628] mb-5">
-                Escalation rate reduced from 40% to 10% on average for all our users
+                Fewer escalations. Faster resolutions.
               </h2>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
-                Escalation rate reduced from 40% to 10% on average for all our users
+                Fewer escalations. Faster resolutions.
               </p>
             </div>
 
