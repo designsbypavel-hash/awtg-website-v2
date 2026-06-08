@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CTASection from '@/components/CTASection'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
 

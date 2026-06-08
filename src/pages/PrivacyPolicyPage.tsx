@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Para({ children }: { children: React.ReactNode }) {
   return <p className="text-[#0a1628]/70 text-[15px] leading-[1.9] font-normal">{children}</p>
