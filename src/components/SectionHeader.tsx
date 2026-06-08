@@ -8,7 +8,7 @@ interface SectionHeaderProps {
 }
 
 export default function SectionHeader({
-  eyebrow,
+  eyebrow: _eyebrow,
   title,
   description,
   center = false,
