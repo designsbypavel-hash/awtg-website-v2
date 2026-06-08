@@ -36,7 +36,7 @@ const LABELS: Record<string, string> = {
   kai: 'Kai',
   aruva: 'Aruva',
   icmap: 'iCMAP',
-  insights: 'Insights',
+  insights: 'News',
   news: 'News',
   blog: 'Blog',
   'case-studies': 'Case Studies',
