@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Polygon, useMap } from 'react-leaflet'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleCheck, faMap, faTowerBroadcast, faChartBar, faGlobe, faLayerGroup, faBullseye, faSignal, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faMap, faTowerBroadcast, faChartBar, faGlobe, faLayerGroup, faBullseye, faSignal, faChartLine, faDatabase, faMapLocationDot, faCrosshairs, faRoute, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import 'leaflet/dist/leaflet.css'
 import type { LatLngExpression } from 'leaflet'
@@ -378,35 +378,35 @@ const useCases = [
 const steps = [
   {
     num: '01',
-    icon: faLayerGroup,
+    icon: faDatabase,
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
-    detail: 'OSS/BSS feeds, drive tests, crowdsourced measurements and open data.',
-    color: '#228DC1',
+    detailLabel: 'Data sources',
+    detail: 'OSS/BSS feeds, drive tests, crowdsourced measurements and open datasets.',
   },
   {
     num: '02',
-    icon: faMap,
+    icon: faMapLocationDot,
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
+    detailLabel: 'Mapping tools',
     detail: 'Heat maps, shape files and granular local views stay aligned.',
-    color: '#7c3aed',
   },
   {
     num: '03',
-    icon: faBullseye,
+    icon: faCrosshairs,
     label: 'Score weak zones',
     desc: 'Surface underserved areas and rank them by severity and impact.',
-    detail: 'AI scoring combines coverage quality, terrain and population need.',
-    color: '#059669',
+    detailLabel: 'AI scoring',
+    detail: 'Scoring combines coverage quality, terrain and population need.',
   },
   {
     num: '04',
-    icon: faChartBar,
+    icon: faRoute,
     label: 'Plan the next action',
     desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
-    detail: 'Export-ready outputs for planning, regulation and GIS workflows.',
-    color: '#d97706',
+    detailLabel: 'Outputs',
+    detail: 'Export-ready formats for planning, regulation and GIS workflows.',
   },
 ]
 
@@ -763,38 +763,35 @@ export default function IcmapPage() {
               iCMAP brings live and historical network data into one intelligent map, helping teams identify weak coverage, prioritise action, and plan investment where it will have the greatest impact.
             </p>
           </div>
-          <div className="relative">
-            <div className="hidden lg:block absolute left-[12%] right-[12%] top-[34px] h-px bg-gradient-to-r from-[#228DC1]/25 via-[#7c3aed]/25 to-[#d97706]/25" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {steps.map((step) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {steps.map((step, i) => (
+              <div key={step.num} className="relative">
+                {i < steps.length - 1 && (
+                  <div className="hidden lg:flex absolute -right-[13px] top-[52px] z-10 w-6 h-6 items-center justify-center">
+                    <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 11, color: '#228DC1', opacity: 0.30 }} />
+                  </div>
+                )}
                 <div
-                  key={step.num}
-                  className="relative bg-white border border-gray-200 p-7 min-h-[310px] flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(10,22,40,0.10)]"
-                  style={{ borderRadius: 8 }}
+                  className="bg-white border border-gray-100 p-8 flex flex-col h-full shadow-[0_2px_8px_rgba(10,22,40,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
+                  style={{ borderRadius: 20 }}
                 >
-                  <div className="flex items-center justify-between mb-8">
-                    <div
-                      className="w-16 h-16 flex items-center justify-center border border-white shadow-[0_10px_28px_rgba(10,22,40,0.08)]"
-                      style={{ backgroundColor: `${step.color}14`, borderRadius: 8 }}
-                    >
-                      <FontAwesomeIcon icon={step.icon} className="w-6 h-6" style={{ color: step.color }} />
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-12 h-12 rounded-full bg-[#228DC1]/10 flex items-center justify-center flex-shrink-0">
+                      <FontAwesomeIcon icon={step.icon} style={{ fontSize: 17, color: '#228DC1' }} />
                     </div>
-                    <span
-                      className="text-[12px] font-black tracking-[0.16em] tabular-nums"
-                      style={{ color: step.color }}
-                    >
+                    <span className="text-[12px] font-black tracking-[0.14em] tabular-nums text-[#0a1628]/20 mt-1">
                       {step.num}
                     </span>
                   </div>
-                  <div className="h-1 w-12 mb-7" style={{ backgroundColor: step.color, borderRadius: 2 }} />
-                  <h3 className="text-[#0a1628] font-semibold text-[18px] leading-[1.2] mb-4">{step.label}</h3>
-                  <p className="text-[#0a1628]/64 text-[14px] font-normal leading-[1.7] mb-8">{step.desc}</p>
+                  <h3 className="text-[#0a1628] font-semibold text-[17px] leading-[1.3] mb-3">{step.label}</h3>
+                  <p className="text-[#0a1628]/58 text-[14px] font-normal leading-[1.75] mb-8">{step.desc}</p>
                   <div className="mt-auto pt-5 border-t border-gray-100">
-                    <p className="text-[#0a1628]/46 text-[12px] font-semibold uppercase tracking-[0.12em] leading-[1.65]">{step.detail}</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#228DC1] mb-2">{step.detailLabel}</p>
+                    <p className="text-[#0a1628]/48 text-[13px] font-normal leading-[1.65]">{step.detail}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
