@@ -194,16 +194,6 @@ function IdamsHeroVisual() {
   return (
     <div className="w-full max-w-[580px]">
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_32px_72px_rgba(10,22,40,0.16)]">
-        <div className="flex items-center gap-1.5 border-b border-gray-200 bg-[#f0f2f5] px-4 py-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#fc5f57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-          <div className="mx-auto rounded-md border border-gray-200 bg-white px-4 py-1 text-[10px] font-medium text-[#0a1628]/45">
-            idams.awtg.co.uk/assets/search
-          </div>
-          <span className="text-[10px] font-black uppercase tracking-[0.14em] text-[#059669]">85k+</span>
-        </div>
-
         <div className="grid md:grid-cols-[160px_1fr]">
           <aside className="border-b border-gray-100 bg-[#f8fafc] p-4 md:border-b-0 md:border-r">
             <div className="mb-5">
