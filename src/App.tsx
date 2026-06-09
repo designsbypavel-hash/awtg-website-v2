@@ -34,6 +34,22 @@ import ServicesDigitalTransformationPage from './pages/ServicesDigitalTransforma
 import ServicesIoTPage from './pages/ServicesIoTPage'
 import ServicesAIMLPage from './pages/ServicesAIMLPage'
 
+// AI sector pages
+import AiEducationPage from './pages/AiEducationPage'
+import AiCommercePage from './pages/AiCommercePage'
+import AiDigitalTransformationPage from './pages/AiDigitalTransformationPage'
+import AiPublicSectorPage from './pages/AiPublicSectorPage'
+
+// Connectivity sector pages
+import ConnectivityHealthPage from './pages/ConnectivityHealthPage'
+import ConnectivityPublicSectorPage from './pages/ConnectivityPublicSectorPage'
+import ConnectivitySpaceDefencePage from './pages/ConnectivitySpaceDefencePage'
+import ConnectivityEducationPage from './pages/ConnectivityEducationPage'
+import ConnectivityGovernmentPage from './pages/ConnectivityGovernmentPage'
+import ConnectivityCommercePage from './pages/ConnectivityCommercePage'
+import ConnectivityManufacturingPage from './pages/ConnectivityManufacturingPage'
+import ConnectivityEngineeringPage from './pages/ConnectivityEngineeringPage'
+
 // Industries
 import IndustriesEnterprisePage from './pages/IndustriesEnterprisePage'
 import IndustriesTelecomsPage from './pages/IndustriesTelecomsPage'
@@ -105,6 +121,22 @@ export default function App() {
         <Route path="services/digital-transformation" element={<ServicesDigitalTransformationPage />} />
         <Route path="services/iot" element={<ServicesIoTPage />} />
         <Route path="services/ai-ml" element={<ServicesAIMLPage />} />
+
+        {/* AI sector pages */}
+        <Route path="ai/education" element={<AiEducationPage />} />
+        <Route path="ai/commerce" element={<AiCommercePage />} />
+        <Route path="ai/digital-transformation" element={<AiDigitalTransformationPage />} />
+        <Route path="ai/public-sector" element={<AiPublicSectorPage />} />
+
+        {/* Connectivity sector pages */}
+        <Route path="connectivity/health" element={<ConnectivityHealthPage />} />
+        <Route path="connectivity/public-sector" element={<ConnectivityPublicSectorPage />} />
+        <Route path="connectivity/space-defence" element={<ConnectivitySpaceDefencePage />} />
+        <Route path="connectivity/education" element={<ConnectivityEducationPage />} />
+        <Route path="connectivity/government" element={<ConnectivityGovernmentPage />} />
+        <Route path="connectivity/commerce" element={<ConnectivityCommercePage />} />
+        <Route path="connectivity/manufacturing" element={<ConnectivityManufacturingPage />} />
+        <Route path="connectivity/engineering" element={<ConnectivityEngineeringPage />} />
 
         {/* Industries */}
         <Route path="industries/enterprise" element={<IndustriesEnterprisePage />} />
