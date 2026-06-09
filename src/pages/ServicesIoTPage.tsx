@@ -182,15 +182,6 @@ const useCases: Card[] = [
   },
 ]
 
-const partnerLogos = [
-  { src: '/logos/partners/Boldyn.png', alt: 'Boldyn Networks' },
-  { src: '/logos/partners/Frame 565.png', alt: 'University of Glasgow' },
-  { src: '/logos/clients/kai-cumberland.svg', alt: 'Connecting Cumbria' },
-  { src: '/logos/clients/west-berkshire.svg', alt: 'West Berkshire Council' },
-  { src: '/logos/clients/cambridgeshire.svg', alt: 'Cambridgeshire County Council' },
-  { src: '/logos/partners/Catapult.png', alt: 'Digital Catapult' },
-]
-
 function IdamsHeroVisual() {
   const assets = [
     { label: 'Roof', x: '22%', y: '24%', color: '#228DC1' },
@@ -464,26 +455,6 @@ export default function ServicesIoTPage() {
                 <h3 className="mb-3 text-[16px] font-semibold leading-[1.3] text-[#0a1628]">{useCase.title}</h3>
                 <p className="mb-6 text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">{useCase.desc}</p>
                 <p className="mt-auto border-t border-gray-100 pt-5 text-[12px] font-semibold leading-[1.6] text-[#0a1628]/70">{useCase.benefit}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-gray-100 bg-white py-16">
-        <div className="mx-auto max-w-7xl px-8 lg:px-12">
-          <p className="mb-10 text-center text-[10px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/30">
-            Trusted by infrastructure and connectivity partners
-          </p>
-          <div className="grid grid-cols-2 items-center gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {partnerLogos.map((logo) => (
-              <div key={logo.alt} className="flex h-24 items-center justify-center rounded-xl border border-gray-200 bg-white px-5 shadow-[0_1px_8px_rgba(10,22,40,0.03)]">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="max-h-10 w-full max-w-[150px] object-contain opacity-80"
-                  loading="lazy"
-                />
               </div>
             ))}
           </div>
