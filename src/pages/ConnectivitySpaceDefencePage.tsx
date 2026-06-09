@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faShieldHalved, faLock, faSatellite, faServer, faSitemap,
-  faWifi, faNetworkWired, faMicrochip, faGears, faArrowTrendUp,
+  faWifi, faNetworkWired, faMicrochip, faGears,
   faShield, faDiagramProject, faUserShield, faLayerGroup, faCloud,
 } from '@fortawesome/free-solid-svg-icons'
 

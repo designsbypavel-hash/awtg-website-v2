@@ -2,8 +2,8 @@ import CTASection from '@/components/CTASection'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faSitemap, faWifi, faServer, faMicrochip, faShield,
-  faNetworkWired, faCloud, faGears, faArrowTrendUp, faLock,
+  faSitemap, faWifi, faMicrochip, faShield,
+  faNetworkWired, faCloud, faGears, faArrowTrendUp,
   faShieldHalved, faDiagramProject, faUserShield, faLayerGroup, faMobile,
 } from '@fortawesome/free-solid-svg-icons'
 

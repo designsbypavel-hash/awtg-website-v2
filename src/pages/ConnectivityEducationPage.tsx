@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faGraduationCap, faUsers, faShield, faWifi, faMobile,
   faCloud, faSitemap, faNetworkWired, faLock, faArrowTrendUp,
-  faShieldHalved, faDiagramProject, faUserShield, faLayerGroup, faGears,
+  faShieldHalved, faUserShield, faLayerGroup, faGears,
 } from '@fortawesome/free-solid-svg-icons'
 
 const challenges = [
