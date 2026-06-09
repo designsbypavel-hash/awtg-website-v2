@@ -295,10 +295,7 @@ export default function ServicesEngineeringPage() {
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
           <div>
-            <h1 className="font-serif-display mb-5 leading-[1.02] text-[#0a1628]">SCAP</h1>
-            <p className="mb-6 text-[22px] font-semibold leading-[1.35] text-[#0a1628]">
-              Service Correlation and Assurance Platform
-            </p>
+            <h1 className="font-serif-display mb-7 leading-[1.02] text-[#0a1628]">SCAP</h1>
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.75] text-[#0a1628]/62">
               A unified analytics and assurance platform that combines enterprise network visibility, private network analytics and operational intelligence into a single decision-making workspace.
             </p>
