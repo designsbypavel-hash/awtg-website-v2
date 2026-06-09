@@ -2,178 +2,175 @@ import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
 import {
   faGraduationCap,
-  faComments,
-  faLanguage,
-  faMagnifyingGlass,
+  faBrain,
+  faBookOpen,
   faChartLine,
+  faShieldHalved,
   faUsers,
-  faClock,
-  faTriangleExclamation,
-  faHeadset,
-  faArrowTrendUp,
   faLightbulb,
+  faArrowTrendUp,
+  faClipboardList,
+  faComments,
 } from '@fortawesome/free-solid-svg-icons'
 
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Education',
-    title: 'AI for education and student success',
+    title: 'AI-powered teaching and formative assessment for higher education',
     subtitle:
-      'Handle student enquiries at scale, support multilingual learners and surface retention insights with AI built for education.',
+      'Aruva helps universities personalise learning, generate meaningful feedback and understand student progress in real time.',
     description:
-      'From first enquiry through to alumni engagement, AWTG builds conversational AI that integrates with existing systems, works within institutional governance and delivers measurable improvements from deployment.',
-    ctaLabel: 'Talk to our experts',
+      'Guided by educator intent, evidence-based pedagogy and institution-controlled AI, Aruva connects course design, adaptive tutoring, formative assessment, performance profiling and institutional analytics into one continuous learning loop.',
+    ctaLabel: 'Request a demo',
     visualIcon: faGraduationCap,
     visualItems: [
-      { icon: faComments, label: 'Student enquiry automation' },
-      { icon: faLanguage, label: 'Multilingual AI support' },
-      { icon: faMagnifyingGlass, label: 'Admissions & enrolment AI' },
-      { icon: faChartLine, label: 'Retention analytics' },
+      { icon: faBookOpen, label: 'Smart Syllabus' },
+      { icon: faComments, label: 'Adaptive AI tutoring' },
+      { icon: faClipboardList, label: 'Formative assessment' },
+      { icon: faChartLine, label: 'Real-time learning analytics' },
     ],
   },
 
   challenges: {
-    heading: 'The pressures facing education today',
+    heading: 'The pressures facing higher education today',
     intro:
-      'Institutions face growing student expectations, multilingual populations and administrative demand that manual operations cannot sustainably absorb.',
+      'Universities are under pressure to adopt AI, improve student engagement, strengthen formative assessment and protect academic integrity — without losing control of pedagogy, data or institutional governance.',
     items: [
       {
-        icon: faUsers,
-        title: 'High enquiry volumes',
-        desc: 'Students expect instant answers on courses, fees, timetables and support. Manual handling at scale drives delays, inconsistency and staff fatigue.',
+        icon: faBrain,
+        title: 'Generic AI does not improve learning',
+        desc: 'Generic AI can help students move faster, but speed alone does not improve learning. Universities need tools grounded in course structure, approved content and educator intent — not blank chatbot prompts.',
       },
       {
-        icon: faLanguage,
-        title: 'Multilingual complexity',
-        desc: 'Serving international students across many languages requires consistent, accurate guidance that traditional operations cannot sustainably provide.',
+        icon: faClipboardList,
+        title: 'Educators lack timely insight',
+        desc: 'Faculty need earlier visibility into where students are struggling. Traditional analytics dashboards show information after the fact, disconnected from day-to-day learning and formative feedback.',
       },
       {
-        icon: faClock,
-        title: 'Administrative overload',
-        desc: 'Repetitive routine queries consume staff capacity that should be directed at teaching, pastoral care and complex individual student needs.',
+        icon: faComments,
+        title: 'Feedback arrives too late to act on',
+        desc: 'End-of-term grades and surveys tell educators what happened, not what is happening. Identifying learning gaps and adjusting teaching in time to improve outcomes requires continuous, real-time signals.',
       },
       {
-        icon: faTriangleExclamation,
-        title: 'Student retention pressure',
-        desc: 'Students who cannot access timely, relevant support disengage early. Identifying at-risk students requires insights most institutions currently lack.',
+        icon: faShieldHalved,
+        title: 'AI governance and academic integrity',
+        desc: 'Institutions need AI that aligns with teaching quality, data governance and academic integrity — with auditability, source traceability and institution-level policy control built in from the start.',
       },
     ],
   },
 
   supports: {
-    heading: 'What AWTG delivers for education',
+    heading: 'What Aruva delivers for universities',
     intro:
-      'AWTG builds AI that works within your existing institution — integrating with your systems, governed by your policies and measured against outcomes that matter to you.',
+      'Aruva connects the full academic lifecycle — course design, adaptive support, formative assessment, performance profiling and institutional analytics — into one governed platform designed for higher education.',
     items: [
       {
-        icon: faComments,
-        title: 'Student enquiry and support automation',
-        desc: 'AI that handles the high proportion of student queries drawing on standard institutional guidance, freeing staff for complex, pastoral and high-value interactions.',
+        icon: faBookOpen,
+        title: 'Smart Syllabus and professor-guided tutoring',
+        desc: 'Course outcomes, approved resources, policies and assessments become the intelligence layer that guides AI tutoring, assessment and analytics. Educators define tone, depth, rules and learning flow so AI support follows academic intent.',
         bullets: [
-          'Common query handling at scale, 24/7',
-          'Responses grounded in approved institutional content',
-          'Clear escalation pathways to human advisors',
-          'Deployable across web, app and messaging channels',
+          'Turns syllabus structure into an intelligent learning framework',
+          'Professor-defined rules govern AI behaviour and content',
+          'Approved materials used as the source for every student interaction',
+          'Consistent alignment between course design and AI support',
         ],
       },
       {
-        icon: faLanguage,
-        title: 'Multilingual student engagement',
-        desc: 'Serve international and diverse learner populations with AI that responds consistently across languages, using the same institutional guidance regardless of language chosen.',
+        icon: faClipboardList,
+        title: 'Formative assessment and Learning Curve AI',
+        desc: 'Aruva supports quizzes, rubrics, assessment variants and early learning-gap detection before final outcomes are fixed. Learning Curve AI builds student performance profiles across mastery, confidence, pace, workload and risk signals.',
         bullets: [
-          'Multiple language support available from day one',
-          'Consistent accuracy and content parity across languages',
-          'Configurable to cross-campus and multi-programme deployments',
-          'No proportional cost increase as language volume grows',
+          'Formative feedback during the term, not only after it',
+          'Mastery tracking and confidence signals per student',
+          'Assessment variants to support academic integrity',
+          'Early intervention signals for at-risk learners',
         ],
       },
       {
         icon: faChartLine,
-        title: 'Insight and institutional intelligence',
-        desc: 'Turn student interactions into actionable intelligence — revealing demand patterns, content gaps, confusion points and early indicators of disengagement or support need.',
+        title: 'Institutional analytics and governance',
+        desc: 'Real-time analytics give educators, departments and quality teams visibility into engagement, topic difficulty, material effectiveness and assessment alignment. The platform supports data residency strategy, audit trails, role-based access and institution-controlled deployment.',
         bullets: [
-          'Interaction demand and trend analysis',
-          'Content gap and knowledge base improvement signals',
-          'Retention risk indicator surfacing',
-          'Reporting for service improvement and governance',
+          'Educator and department-level learning dashboards',
+          'Cross-course and cross-cohort quality intelligence',
+          'Role-based access, audit trails and attribution',
+          'Cloud, hybrid or on-premises deployment supported',
         ],
       },
     ],
   },
 
   useCases: {
-    heading: 'Where AI makes a difference',
+    heading: 'Platform capabilities',
     intro:
-      'From prospective student enquiries through to ongoing learner support, AWTG deploys AI across the full student lifecycle.',
+      'Aruva brings the core elements of teaching and learning into one governed platform — from course design and adaptive tutoring through to formative assessment, performance profiling and institutional analytics.',
     items: [
       {
+        icon: faBookOpen,
+        title: 'Smart Syllabus',
+        desc: 'Turns course outcomes, resources, policies, assessments and pedagogy into the intelligence layer that guides tutoring, assessment and analytics across the institution.',
+      },
+      {
         icon: faComments,
-        title: 'AI student support assistant',
-        desc: 'Conversational AI for common student questions on courses, fees, timetables and welfare, using approved institutional content with escalation built in.',
+        title: 'Professor-guided AI tutoring',
+        desc: 'Allows educators to define tone, depth, approved content and learning flow, so AI support follows academic intent and keeps students engaged with verified source material.',
       },
       {
-        icon: faMagnifyingGlass,
-        title: 'Admissions and enrolment AI',
-        desc: 'Support prospective students through the enquiry and application journey with consistent guidance on requirements, deadlines and next steps.',
+        icon: faClipboardList,
+        title: 'Formative assessment intelligence',
+        desc: 'Supports quizzes, rubrics, feedback checks and early learning-gap detection — giving educators insight into student understanding before final outcomes are fixed.',
       },
       {
-        icon: faLanguage,
-        title: 'Multilingual education AI',
-        desc: 'Consistent AI-powered student communications in multiple languages, serving international and diverse learner populations more effectively.',
+        icon: faBrain,
+        title: 'Learning Curve AI',
+        desc: 'Builds student performance profiles across mastery, confidence, pace, workload and risk signals to personalise support and surface early intervention opportunities.',
       },
       {
         icon: faChartLine,
-        title: 'Student insight and analytics',
-        desc: 'Turn interaction data into institutional intelligence — surfacing common concerns, service gaps and early retention risk signals for action.',
+        title: 'Institutional analytics',
+        desc: 'Aggregates learning signals across courses, cohorts and departments to support quality enhancement, retention monitoring and accreditation evidence.',
       },
       {
-        icon: faHeadset,
-        title: 'Human handover and pastoral escalation',
-        desc: 'Context-rich escalation to student services, welfare teams and academic advisors when students need human support beyond what AI can provide.',
+        icon: faShieldHalved,
+        title: 'Governance and data control',
+        desc: 'Supports role-based access, audit trails, data residency strategy, attribution, policy controls and institution-controlled deployment across the academic lifecycle.',
       },
     ],
   },
 
   outcomes: {
-    heading: 'What good looks like',
+    heading: 'What Aruva delivers',
     intro:
-      'AI-powered student support delivers measurable improvements in containment, multilingual coverage, staff efficiency and institutional intelligence.',
+      'Aruva is designed to create measurable improvement across the whole academic lifecycle — better student support, more effective educators, stronger formative assessment and institution-level learning intelligence.',
     items: [
       {
         icon: faArrowTrendUp,
-        title: 'Higher containment rates',
-        desc: 'Measurable reduction in avoidable contacts reaching human teams, visible from the first weeks of deployment.',
-      },
-      {
-        icon: faLanguage,
-        title: 'Multilingual coverage at scale',
-        desc: 'International students receive the same quality of information as home students, without proportional cost increases.',
+        title: 'Better student outcomes',
+        desc: 'Personalised support, source-backed explanations, mastery tracking and earlier intervention help students build understanding and stay on track throughout the term.',
       },
       {
         icon: faUsers,
-        title: 'Staff time redirected',
-        desc: 'Teams focus on complex, high-value and pastoral student needs rather than repetitive routine queries.',
+        title: 'More effective educators',
+        desc: 'Assessment support, feedback intelligence, material effectiveness insight and reduced routine workload give faculty more time for research, mentoring and deeper teaching.',
       },
       {
         icon: faLightbulb,
-        title: 'Better institutional decisions',
-        desc: 'Insight from AI interactions informs service design, content improvement and proactive student engagement strategies.',
+        title: 'Formative insight during the term',
+        desc: 'Continuous signals from tutoring, quizzes, planner activity and student reflection let educators identify gaps and adjust teaching while it still matters.',
+      },
+      {
+        icon: faShieldHalved,
+        title: 'Responsible, governed AI adoption',
+        desc: 'Institutions gain a practical route from AI experimentation to accountable deployment — with auditability, traceability and governance built into the platform from day one.',
       },
     ],
   },
 
-  proof: {
-    quote:
-      'AWTG delivered AI at enterprise scale for the British Council, demonstrating measurable containment improvements and CSAT gains from the first weeks of operation across a globally distributed deployment.',
-    author: 'AWTG',
-    context: 'British Council deployment',
-  },
-
   cta: {
-    title: 'Ready to transform student support?',
+    title: 'See Aruva in action with a real course structure',
     subtitle:
-      'Speak to AWTG about AI for student enquiry management, multilingual engagement and education service delivery.',
-    label: 'Talk to our experts',
+      'Request a demo to see how Aruva turns syllabus design, adaptive tutoring, formative assessment and learning analytics into one continuous feedback loop for higher education.',
+    label: 'Request a demo',
   },
 }
 
