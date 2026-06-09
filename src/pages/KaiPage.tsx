@@ -139,27 +139,68 @@ function GlobalReachSection() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
+  const highlights = [
+    { label: 'Enterprise-grade SLAs', sub: '99.99% uptime guaranteed' },
+    { label: 'Week-one containment', sub: 'No long ramp-up period' },
+    { label: 'Zero infrastructure lift', sub: 'Deploys into your existing stack' },
+  ]
+
   return (
-    <section ref={sectionRef} className="bg-[#f8fafc] border-b border-gray-100" style={{ minHeight: '170vh' }}>
-      <div className="sticky top-0 h-screen flex items-center">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: remains fixed */}
+    <section ref={sectionRef} className="border-b border-gray-100" style={{ minHeight: '170vh', background: '#f8fafc' }}>
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+        {/* subtle background texture */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.018]"
+          style={{ backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)', backgroundSize: '32px 32px' }}
+        />
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full relative">
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-20 items-center">
+
+            {/* Left: fixed content */}
             <div>
-              <h2 className="font-heading text-[#0a1628] mb-4">
-                Global reach. Measurable customer outcomes.
-              </h2>
-              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-lg">
-                Live globally. Trusted by enterprise organisations. Proven through real query volumes, measurable containment, and CSAT improvements from week one.
+              {/* eyebrow */}
+              <p className="type-label text-[#228DC1] mb-5" style={{ letterSpacing: '0.15em' }}>
+                LIVE IN PRODUCTION
               </p>
+              <h2 className="font-heading text-[#0a1628] mb-5" style={{ lineHeight: 1.15 }}>
+                Global reach.<br />Measurable outcomes.
+              </h2>
+              <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] mb-10 max-w-md">
+                Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
+              </p>
+
+              {/* supporting highlights */}
+              <div className="space-y-3">
+                {highlights.map(h => (
+                  <div key={h.label} className="flex items-start gap-3">
+                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#228DC1] shrink-0" />
+                    <div>
+                      <span className="text-[#0a1628] text-[14px] font-semibold">{h.label}</span>
+                      <span className="text-[#0a1628]/45 text-[13px] font-normal"> — {h.sub}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* deployment badge */}
+              <div
+                className="inline-flex items-center gap-2.5 mt-10 px-4 py-2.5 rounded-xl"
+                style={{ background: 'rgba(34,141,193,0.07)', border: '1px solid rgba(34,141,193,0.15)' }}
+              >
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[#0a1628]/65 text-[12px] font-medium tracking-wide">Actively deployed — not a pilot</span>
+              </div>
             </div>
+
             {/* Right: cards stack in one by one as section scrolls */}
             <div className="space-y-4">
-              <MetricCard prefix="" num={250} suffix="k+" label="Production reach"   note="Users supported each month"  visible={shown[0]} />
-              <MetricCard prefix="+" num={17}  suffix="%"   label="CSAT uplift"        note="User satisfaction"           visible={shown[1]} />
-              <MetricCard prefix="" num={38}  suffix=" sec" label="Avg handle time"   note="vs 4+ min industry avg"      visible={shown[2]} />
-              <MetricCard prefix="" num={150} suffix="+"    label="Countries reached"  note="Global enterprise reach"     visible={shown[3]} />
+              <MetricCard prefix="" num={250} suffix="k+" label="Production reach"  note="Users supported each month" visible={shown[0]} />
+              <MetricCard prefix="+" num={17}  suffix="%"  label="CSAT uplift"       note="User satisfaction"          visible={shown[1]} />
+              <MetricCard prefix="" num={38}  suffix=" sec" label="Avg handle time"  note="vs 4+ min industry avg"     visible={shown[2]} />
+              <MetricCard prefix="" num={150} suffix="+"   label="Countries reached" note="Global enterprise reach"    visible={shown[3]} />
             </div>
+
           </div>
         </div>
       </div>
