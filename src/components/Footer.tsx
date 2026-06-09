@@ -74,14 +74,6 @@ const footerCols = [
   },
 ]
 
-const badges = [
-  'ISO 9001:2015',
-  'Cyber Essentials Plus',
-  'Crown Commercial Supplier',
-  'GSMA Partner',
-  'TM Forum Member',
-]
-
 export default function Footer() {
   return (
     <footer role="contentinfo" className="bg-[#050d1a] text-white">
@@ -135,15 +127,6 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
-
-        {/* Certification badges */}
-        <div className="flex flex-wrap gap-2 py-8 border-b border-white/10">
-          {badges.map((badge) => (
-            <span key={badge} className="px-3 py-1.5 text-xs font-medium text-white/50 border border-white/20 rounded-full">
-              {badge}
-            </span>
           ))}
         </div>
 
