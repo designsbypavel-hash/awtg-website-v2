@@ -67,63 +67,103 @@ function ScrollProgress() {
 }
 
 
-// Persistent observer — stays active so animation reverses on scroll-back
-function useScrollReveal(threshold = 0.25) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => setInView(e.isIntersecting),
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return [ref, inView] as const
-}
-
-function ScrollStatCard({ prefix = '', num, suffix = '', label, note, enterDelay = 0, exitDelay = 0 }: {
-  prefix?: string; num: number; suffix?: string; label: string; note: string; enterDelay?: number; exitDelay?: number
+// -- Individual metric card driven by external `visible` prop -----------------
+function MetricCard({ prefix = '', num, suffix = '', label, note, visible }: {
+  prefix?: string; num: number; suffix?: string; label: string; note: string; visible: boolean
 }) {
-  const [ref, inView] = useScrollReveal(0.3)
   const [count, setCount] = useState(0)
+  const rafRef = useRef<number>(0)
 
   useEffect(() => {
-    if (!inView) { setCount(0); return }
-    const duration = 1200
+    cancelAnimationFrame(rafRef.current)
+    if (!visible) { setCount(0); return }
+    const duration = 1100
     const t0 = Date.now()
-    let raf: number
     const tick = () => {
       const p = Math.min((Date.now() - t0) / duration, 1)
       setCount((1 - Math.pow(1 - p, 3)) * num)
-      if (p < 1) { raf = requestAnimationFrame(tick) }
+      if (p < 1) { rafRef.current = requestAnimationFrame(tick) }
     }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [inView, num])
+    rafRef.current = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [visible, num])
 
   const display = Number.isInteger(num) ? Math.round(count).toString() : count.toFixed(1)
-  const delay = inView ? enterDelay : exitDelay
 
   return (
     <div
-      ref={ref}
-      className="relative bg-white border border-gray-200 px-8 py-8 shadow-[0_1px_8px_rgba(10,22,40,0.03)] overflow-hidden"
+      className="relative bg-white overflow-hidden"
       style={{
-        opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(36px)',
-        transition: `opacity 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+        borderRadius: 16,
+        border: '1px solid rgba(15,23,42,0.08)',
+        boxShadow: visible ? '0 4px 24px rgba(15,23,42,0.07)' : '0 1px 4px rgba(15,23,42,0.03)',
+        padding: '28px 32px',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0) scale(1)' : 'translateY(24px) scale(0.98)',
+        transition: 'opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease',
       }}
     >
       <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#228DC1] to-[#0e6a9a]" />
-      <p className="font-black leading-none mb-2" style={{ fontSize: 'clamp(24px, 2.8vw, 38px)', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #228DC1 0%, #0e6a9a 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+      <p className="font-black leading-none mb-2"
+        style={{ fontSize: 'clamp(30px, 3.2vw, 44px)', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #228DC1 0%, #0e6a9a 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
         {prefix}{display}{suffix}
       </p>
-      <p className="text-[#0a1628] text-[13px] font-semibold mb-0.5">{label}</p>
-      <p className="text-[#0a1628]/60 text-[10px] font-normal">{note}</p>
+      <p className="text-[#0a1628] text-[14px] font-semibold mb-0.5">{label}</p>
+      <p className="text-[#0a1628]/55 text-[11px] font-normal">{note}</p>
     </div>
+  )
+}
+
+// -- Sticky-left / scroll-stacked-right section --------------------------------
+function GlobalReachSection() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const [shown, setShown] = useState([false, false, false, false])
+
+  useEffect(() => {
+    const fn = () => {
+      const el = sectionRef.current
+      if (!el) return
+      const { top, height } = el.getBoundingClientRect()
+      const vh = window.innerHeight
+      // 0 when section enters viewport, 1 when section bottom exits
+      const progress = Math.max(0, Math.min(1, (vh - top) / height))
+      setShown([
+        progress > 0.05,
+        progress > 0.30,
+        progress > 0.55,
+        progress > 0.78,
+      ])
+    }
+    window.addEventListener('scroll', fn, { passive: true })
+    fn()
+    return () => window.removeEventListener('scroll', fn)
+  }, [])
+
+  return (
+    <section ref={sectionRef} className="bg-[#f8fafc] border-b border-gray-100" style={{ minHeight: '170vh' }}>
+      <div className="sticky top-0 h-screen flex items-center">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left: remains fixed */}
+            <div>
+              <h2 className="font-heading text-[#0a1628] mb-4">
+                Global reach. Measurable customer outcomes.
+              </h2>
+              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-lg">
+                Live globally. Trusted by enterprise organisations. Proven through real query volumes, measurable containment, and CSAT improvements from week one.
+              </p>
+            </div>
+            {/* Right: cards stack in one by one as section scrolls */}
+            <div className="space-y-4">
+              <MetricCard prefix="" num={250} suffix="k+" label="Production reach"   note="Users supported each month"  visible={shown[0]} />
+              <MetricCard prefix="+" num={17}  suffix="%"   label="CSAT uplift"        note="User satisfaction"           visible={shown[1]} />
+              <MetricCard prefix="" num={38}  suffix=" sec" label="Avg handle time"   note="vs 4+ min industry avg"      visible={shown[2]} />
+              <MetricCard prefix="" num={150} suffix="+"    label="Countries reached"  note="Global enterprise reach"     visible={shown[3]} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -1456,28 +1496,7 @@ export default function KaiPage() {
       })()}
 
       {/* -- Live in production -- */}
-      <section className="bg-[#f8fafc] border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: text */}
-            <div>
-              <h2 className="font-heading text-[#0a1628] mb-4">
-                Global reach. Measurable customer outcomes.
-              </h2>
-              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-lg">
-                Live globally. Trusted by enterprise organisations. Proven through real query volumes, measurable containment, and CSAT improvements from week one.
-              </p>
-            </div>
-            {/* Right: 2×2 — stack in sequentially on scroll-down, unstack in reverse on scroll-up */}
-            <div className="grid grid-cols-2 gap-4">
-              <ScrollStatCard num={250} suffix="k+" label="Production reach" note="Users supported each month" enterDelay={0}   exitDelay={450} />
-              <ScrollStatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction"        enterDelay={150} exitDelay={300} />
-              <ScrollStatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg"      enterDelay={300} exitDelay={150} />
-              <ScrollStatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach"      enterDelay={450} exitDelay={0}   />
-            </div>
-          </div>
-        </div>
-      </section>
+      <GlobalReachSection />
 
       {/* -- Escalation Rate Chart -- */}
       <section className="bg-white border-b border-gray-100">
