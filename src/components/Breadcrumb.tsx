@@ -14,7 +14,7 @@ const PATH_LABELS: Record<string, string> = {
   '/services/engineering':               'Engineering',
   '/services/software':                  'Software Development',
   '/services/digital-transformation':    'Digital Transformation',
-  '/services/iot':                       'IoT',
+  '/services/iot':                       'iDAMS',
   '/services/ai-ml':                     'AI & ML',
   // ── Solutions ─────────────────────────────────────────────────────
   '/solutions/mobile-private-networks':  'Mobile Private Networks',

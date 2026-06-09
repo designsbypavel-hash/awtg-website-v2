@@ -28,7 +28,7 @@ const LABELS: Record<string, string> = {
   engineering: 'Engineering',
   software: 'Software Development',
   'digital-transformation': 'Digital Transformation',
-  iot: 'IoT Platforms',
+  iot: 'iDAMS',
   'ai-ml': 'AI/ML',
   industries: 'Industries',
   enterprise: 'Enterprise',
