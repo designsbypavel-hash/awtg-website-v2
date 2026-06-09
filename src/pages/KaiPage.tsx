@@ -2179,7 +2179,7 @@ export default function KaiPage() {
                 Fewer escalations. Faster resolutions.
               </h2>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
-                Fewer escalations. Faster resolutions.
+                Escalation rate reduced from 40% to 10% on average for all our users.
               </p>
             </div>
 
