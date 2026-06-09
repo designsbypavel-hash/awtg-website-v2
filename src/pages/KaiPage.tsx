@@ -971,7 +971,7 @@ function SecurityComplianceSection() {
                 <div className="rounded-[18px] border border-white/[0.12] bg-white/[0.07] px-5 py-5 flex items-center gap-4">
                   {/* ISO 42001 */}
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <img src={certISO42001} alt="ISO 42001" style={{ width: 48, height: 48, objectFit: 'contain', flexShrink: 0 }} />
+                    <img src={certISO42001} alt="ISO 42001" style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0 }} />
                     <div className="min-w-0">
                       <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.16em] leading-none mb-1">Certified</p>
                       <p className="text-[13px] font-semibold text-white/90 leading-tight">ISO 42001</p>
@@ -981,7 +981,7 @@ function SecurityComplianceSection() {
                   <div className="w-px self-stretch bg-white/[0.12]" />
                   {/* CREST */}
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <img src={certCREST} alt="CREST" style={{ width: 48, height: 48, objectFit: 'contain', flexShrink: 0 }} />
+                    <img src={certCREST} alt="CREST" style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0 }} />
                     <div className="min-w-0">
                       <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.16em] leading-none mb-1">Certified</p>
                       <p className="text-[13px] font-semibold text-white/90 leading-tight">CREST</p>
