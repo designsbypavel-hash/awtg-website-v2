@@ -1,5 +1,4 @@
 ﻿import CTASection from '@/components/CTASection'
-import { Link } from 'react-router-dom'
 
 const solutions = [
   { title: 'In-Store Private 5G and Wi-Fi', desc: 'Dedicated store connectivity delivering reliable coverage for staff devices, point-of-sale systems, inventory scanners and customer guest Wi-Fi.' },
@@ -27,24 +26,7 @@ export default function IndustriesRetailPage() {
         </div>
       </section>
 
-      <section className="bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 py-12 grid grid-cols-3 gap-8 text-center">
-          <div>
-            <p className="text-[#0a1628] text-3xl font-semibold mb-1">25+</p>
-            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Retail Clients</p>
-          </div>
-          <div>
-            <p className="text-[#0a1628] text-3xl font-semibold mb-1">200+</p>
-            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Store Deployments</p>
-          </div>
-          <div>
-            <p className="text-[#0a1628] text-3xl font-semibold mb-1">15%</p>
-            <p className="text-[#0a1628]/60 text-sm font-normal uppercase tracking-widest">Avg. Sales Uplift Reported</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h2
             className="font-serif-display text-[#0a1628] mb-4"
@@ -62,23 +44,6 @@ export default function IndustriesRetailPage() {
                 <p className="text-[#0a1628]/75 text-sm font-normal leading-relaxed">{s.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="border-l-2 border-[#228DC1] pl-8">
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-3">Commercial Impact</p>
-            <p className="text-[#0a1628] text-xl font-normal leading-relaxed max-w-3xl">
-              Across more than 200 store deployments, AWTG clients have reported an average 15% uplift in sales attributed to improved in-store connectivity, AI-driven merchandising insights and frictionless omnichannel fulfilment.
-            </p>
-            <Link
-              to="/insights/case-studies"
-              className="inline-flex items-center gap-2 mt-6 text-[#228DC1] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
-            >
-              View Case Studies
-            </Link>
           </div>
         </div>
       </section>
