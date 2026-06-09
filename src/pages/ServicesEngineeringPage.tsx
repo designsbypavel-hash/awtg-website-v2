@@ -272,7 +272,6 @@ export default function ServicesEngineeringPage() {
         description="Share a few details and we will show how SCAP brings private network analytics, enterprise operations and assurance intelligence into one decision-making workspace."
         logoSrc="/logo-icon.svg"
         accentColor="#228DC1"
-        trustItems={['Private networks', 'Enterprise assurance', 'Operational analytics', 'Data sovereignty', 'RAN intelligence', 'Modular deployment']}
         outcomes={[
           'A focused demo around your private network or enterprise operations',
           'A walkthrough of correlation across RAN, applications, assets and service data',

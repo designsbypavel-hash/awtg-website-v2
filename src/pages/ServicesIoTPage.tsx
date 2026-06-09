@@ -298,7 +298,6 @@ export default function ServicesIoTPage() {
         description="Share a few details and we will show how iDAMS helps teams discover, evaluate, acquire and manage telecom and infrastructure assets through one geospatial marketplace."
         logoSrc="/logo-icon.svg"
         accentColor="#228DC1"
-        trustItems={['Telecom assets', 'Geospatial search', 'Site acquisition', 'Asset inventory', 'Role-based access', 'Marketplace workflows']}
         outcomes={[
           'A focused walkthrough of asset discovery and search areas',
           'A demo of marketplace workflows for owners and asset consumers',

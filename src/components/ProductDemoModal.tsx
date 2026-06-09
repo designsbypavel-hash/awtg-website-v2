@@ -10,7 +10,6 @@ type ProductDemoModalProps = {
   description: string
   logoSrc: string
   accentColor?: string
-  trustItems: string[]
   outcomes: string[]
 }
 
@@ -31,7 +30,6 @@ export default function ProductDemoModal({
   description,
   logoSrc,
   accentColor = '#228DC1',
-  trustItems,
   outcomes,
 }: ProductDemoModalProps) {
   useEffect(() => {
@@ -109,19 +107,6 @@ export default function ProductDemoModal({
                       </span>
                       <p className="text-[13px] font-medium leading-relaxed text-[#0a1628]/70">{outcome}</p>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-12">
-                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#0a1628]/35">
-                  Trusted delivery experience
-                </p>
-                <div className="flex flex-wrap gap-2.5">
-                  {trustItems.map((item) => (
-                    <span key={item} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-[12px] font-semibold text-[#0a1628]/55">
-                      {item}
-                    </span>
                   ))}
                 </div>
               </div>

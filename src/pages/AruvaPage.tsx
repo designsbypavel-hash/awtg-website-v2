@@ -2655,7 +2655,6 @@ export default function AruvaPage() {
         description="Share a few details and we will show how Aruva maps student understanding, supports educators and turns course content into governed learning intelligence."
         logoSrc="/aruva-logo-vector.svg"
         accentColor="#228DC1"
-        trustItems={['Higher education', 'Learning analytics', 'Governed AI', 'LMS integration', 'Bloom mapping', 'Academic support']}
         outcomes={[
           'A demo tailored to your courses, LMS and assessment model',
           'A walkthrough of Bloom-level insight and student learning profiles',
@@ -2928,5 +2927,4 @@ export default function AruvaPage() {
     </>
   )
 }
-
 
