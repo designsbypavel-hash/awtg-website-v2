@@ -2,176 +2,164 @@ import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
 import {
   faIndustry,
-  faMicrochip,
-  faShieldHalved,
   faNetworkWired,
-  faCloud,
-  faGears,
   faWifi,
+  faMicrochip,
   faChartLine,
-  faUsers,
+  faShieldHalved,
+  faGears,
   faArrowTrendUp,
+  faLightbulb,
+  faCloud,
 } from '@fortawesome/free-solid-svg-icons'
 
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Manufacturing',
-    title: 'Connectivity for manufacturing',
+    title: 'Connectivity for industrial and operational environments',
     subtitle:
-      'Private 5G and LTE, industrial IoT connectivity and OT security for manufacturing, logistics and industrial operations.',
+      'AWTG supports organisations with the connectivity foundations needed for operational visibility, automation and connected assets.',
     description:
-      'AWTG designs and deploys wireless infrastructure for complex industrial environments — from factory floor to port logistics — providing the reliable, secure connectivity that Industry 4.0 operations demand.',
+      'Manufacturing and industrial organisations need reliable connectivity to support operational systems, connected assets, data flows and future automation. AWTG brings experience in telecoms, advanced connectivity, 5G, IoT, software and secure infrastructure — giving us the capability to support manufacturers exploring connected operations.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faIndustry,
     visualItems: [
-      { icon: faWifi, label: 'Private 5G & LTE' },
-      { icon: faMicrochip, label: 'Industrial IoT' },
-      { icon: faShieldHalved, label: 'OT security' },
-      { icon: faGears, label: 'Industry 4.0 automation' },
+      { icon: faNetworkWired, label: 'Operational connectivity' },
+      { icon: faWifi, label: 'Private 5G & wireless' },
+      { icon: faMicrochip, label: 'IoT foundations' },
+      { icon: faChartLine, label: 'Data & dashboards' },
     ],
   },
 
   challenges: {
-    heading: 'Connectivity challenges in manufacturing',
+    heading: 'Connectivity challenges in industrial environments',
     intro:
-      'Manufacturing and logistics operations demand connectivity that performs across large, complex sites — supporting automation, IoT and operational technology without compromise.',
+      'Industrial and manufacturing organisations face infrastructure challenges that limit operational visibility, constrain automation and slow the path to more connected operations.',
     items: [
       {
+        icon: faNetworkWired,
+        title: 'Operational connectivity gaps',
+        desc: 'Many industrial environments rely on fragmented or ageing connectivity that cannot reliably support the operational systems, devices and data flows that modern operations require.',
+      },
+      {
         icon: faWifi,
-        title: 'Coverage across complex sites',
-        desc: 'Large factories, warehouses and port facilities present significant wireless coverage challenges — with metal structures, interference and scale that commercial Wi-Fi cannot adequately address.',
+        title: 'Standard networks not sufficient',
+        desc: 'Consumer or office-grade wireless is often insufficient for industrial environments — where coverage, interference, device density and performance requirements are fundamentally different.',
       },
       {
         icon: faMicrochip,
-        title: 'Industrial IoT density',
-        desc: 'Manufacturing operations increasingly depend on hundreds or thousands of connected sensors, AGVs, robots and monitoring devices — each requiring reliable, low-latency connectivity.',
+        title: 'Disconnected assets and limited visibility',
+        desc: 'Without reliable connectivity to equipment, sensors and operational assets, organisations lack the real-time visibility needed to support efficient and safe site operations.',
       },
       {
         icon: faShieldHalved,
-        title: 'OT security and IT/OT convergence',
-        desc: 'Connecting operational technology to enterprise IT networks creates significant security exposure. OT systems were not designed for network connectivity and require careful segmentation and protection.',
-      },
-      {
-        icon: faCloud,
-        title: 'Edge computing and latency',
-        desc: 'Real-time manufacturing applications — machine vision, process control, autonomous vehicles — require low-latency local processing that centralised cloud connectivity cannot always provide.',
+        title: 'Security and resilience requirements',
+        desc: 'Operational environments need connectivity that is resilient, secure and designed around business continuity — requirements that generic network solutions often fail to address.',
       },
     ],
   },
 
   supports: {
-    heading: 'What AWTG delivers for manufacturing',
+    heading: 'What AWTG supports for manufacturing',
     intro:
-      'AWTG combines wireless expertise, OT security knowledge and industrial IoT experience to deliver connectivity programmes for manufacturing, logistics and port operations.',
+      "AWTG's capability in telecoms, advanced connectivity, 5G, IoT and secure infrastructure gives us the foundations to support industrial and manufacturing organisations with their connectivity needs.",
     items: [
       {
-        icon: faWifi,
-        title: 'Private 5G and LTE wireless',
-        desc: 'Purpose-built private wireless networks for industrial sites — providing the coverage, capacity and deterministic performance that critical manufacturing operations require.',
+        icon: faNetworkWired,
+        title: 'Operational and private wireless connectivity',
+        desc: 'Reliable networks that support equipment, staff devices, operational systems and digital workflows across industrial environments — including private 5G and advanced wireless where standard connectivity falls short.',
         bullets: [
-          'RF design for complex industrial environments',
-          'Private LTE and 5G deployment across large sites',
-          'Seamless coverage for mobile assets and AGVs',
-          'Spectrum coordination and interference management',
+          'Operational network design for industrial environments',
+          'Private 5G and advanced wireless where required',
+          'Coverage across complex industrial sites and structures',
+          'Resilient architecture supporting business continuity',
         ],
       },
       {
         icon: faMicrochip,
-        title: 'Industrial IoT connectivity',
-        desc: 'Robust, segmented connectivity for the growing estate of industrial IoT devices — from environmental sensors to robotic process equipment and automated guided vehicles.',
+        title: 'IoT foundations and data infrastructure',
+        desc: 'Connected sensors can support visibility across assets, equipment and site conditions. AWTG can support the digital layer needed to collect, organise and present operational data where required.',
         bullets: [
-          'Dedicated network segments for IoT device categories',
-          'Device onboarding and lifecycle management',
-          'Traffic prioritisation for operational-critical devices',
-          'Integration with SCADA, MES and enterprise platforms',
+          'IoT and sensor connectivity foundations',
+          'Asset and equipment monitoring infrastructure',
+          'Data collection and dashboard integration',
+          'Secure data flow architecture from edge to platform',
         ],
       },
       {
         icon: faShieldHalved,
-        title: 'OT security and network segmentation',
-        desc: 'Network architecture and security controls that protect operational technology from IT-side threats — maintaining the availability and safety of critical manufacturing systems.',
+        title: 'AI-ready and secure infrastructure',
+        desc: 'Manufacturers exploring AI and automation need strong connectivity and reliable data foundations. AWTG can help build the secure, resilient infrastructure that makes future intelligent operations possible.',
         bullets: [
-          'IT/OT network segmentation and zone architecture',
-          'Firewall and access control policy for OT environments',
-          'Vulnerability management adapted for OT system constraints',
-          'Ongoing OT network monitoring and threat detection',
+          'Infrastructure designed for AI and automation readiness',
+          'Secure operational environment architecture',
+          'Network resilience and business continuity design',
+          'Connectivity that supports digital transformation programmes',
         ],
       },
     ],
   },
 
   useCases: {
-    heading: 'Applications across manufacturing and logistics',
+    heading: 'Connectivity service areas',
     intro:
-      'From automotive factory to container port, AWTG delivers the connectivity programmes that enable modern industrial operations.',
+      "AWTG's experience in advanced connectivity and secure digital infrastructure enables us to support industrial organisations across a range of connectivity needs.",
     items: [
       {
+        icon: faNetworkWired,
+        title: 'Industrial connectivity',
+        desc: 'Support operational environments with secure and reliable network foundations — connecting equipment, systems and teams across industrial sites.',
+      },
+      {
         icon: faWifi,
-        title: 'Private wireless for industrial sites',
-        desc: 'Private LTE and 5G network design and deployment across factories, warehouses and logistics facilities — providing reliable coverage from floor to ceiling.',
+        title: 'Private networks',
+        desc: 'Explore advanced wireless and private 5G connectivity for controlled industrial environments where performance, security and coverage requirements demand it.',
       },
       {
         icon: faMicrochip,
-        title: 'Industrial IoT programmes',
-        desc: 'End-to-end industrial IoT connectivity — from initial device and network architecture design through to deployment, management and performance monitoring.',
-      },
-      {
-        icon: faShieldHalved,
-        title: 'OT network security programmes',
-        desc: 'Assessment, segmentation and ongoing management of OT network security — protecting manufacturing systems from cyber threats without compromising operational continuity.',
+        title: 'IoT foundations',
+        desc: 'Enable connected assets, sensors and data flows where required — creating the visibility layer that supports operational decision making and future automation.',
       },
       {
         icon: faGears,
-        title: 'Industry 4.0 network enablement',
-        desc: 'Network infrastructure supporting smart manufacturing programmes — machine vision, digital twins, autonomous systems and real-time process monitoring.',
-      },
-      {
-        icon: faNetworkWired,
-        title: 'Logistics and port connectivity',
-        desc: 'Wireless and wired connectivity for large logistics and port environments — providing seamless coverage for cranes, vehicles and container operations across the site.',
+        title: 'AI-ready operations',
+        desc: 'Prepare the connectivity and data infrastructure needed for automation, analytics and future AI use cases — building the foundations before the applications are ready.',
       },
     ],
   },
 
   outcomes: {
-    heading: 'What industrial connectivity delivers',
+    heading: 'What better connectivity enables',
     intro:
-      'Well-designed industrial wireless and OT networks improve operational efficiency, enable automation and reduce the risk exposure that poor connectivity creates in manufacturing environments.',
+      'Strong connectivity foundations create the conditions for operational improvement, greater visibility and readiness for more intelligent, automated industrial operations.',
     items: [
       {
         icon: faArrowTrendUp,
-        title: 'Operational efficiency gains',
-        desc: 'Reliable wireless connectivity enables automation, real-time monitoring and data-driven process optimisation that reduce waste and improve throughput.',
-      },
-      {
-        icon: faUsers,
-        title: 'Safer working environments',
-        desc: 'Connected safety systems, real-time location services and IoT-enabled hazard monitoring improve worker safety across complex industrial sites.',
+        title: 'Improved operational connectivity',
+        desc: 'Operational systems, staff devices and digital workflows supported by reliable, purpose-designed connectivity across the industrial environment.',
       },
       {
         icon: faChartLine,
-        title: 'Asset and process visibility',
-        desc: 'IoT-connected assets and real-time operational data provide the visibility needed for predictive maintenance, inventory management and process improvement.',
+        title: 'Better site visibility',
+        desc: 'Connected assets and sensors provide the operational data needed to support informed decisions and improve visibility across the site.',
+      },
+      {
+        icon: faLightbulb,
+        title: 'Foundations for automation',
+        desc: 'The connectivity and data infrastructure in place to support automation, analytics and AI when the organisation is ready to pursue them.',
       },
       {
         icon: faCloud,
-        title: 'IT/OT integration enabled',
-        desc: 'Secure, segmented OT networks enable safe integration with enterprise IT systems — unlocking the data that drives Industry 4.0 programmes.',
+        title: 'Secure data flows',
+        desc: 'Operational data flowing securely from edge devices and sensors through to dashboards and platforms that support operational decision making.',
       },
     ],
   },
 
-  proof: {
-    quote:
-      'AWTG delivered a private wireless network for a 500-hectare port facility, providing seamless coverage across container yards, warehouses and operational buildings — connecting the entire estate on a single, managed private network.',
-    author: 'AWTG Engineering',
-    context: 'Port infrastructure deployment',
-  },
-
   cta: {
-    title: 'Connectivity for industrial operations',
+    title: 'Speak to AWTG about connectivity for industrial environments',
     subtitle:
-      'Speak to AWTG about private 5G and LTE, industrial IoT connectivity and OT security for manufacturing and logistics.',
+      'AWTG brings experience in telecoms, advanced connectivity, 5G, IoT and secure infrastructure to support manufacturing and industrial organisations.',
     label: 'Talk to our experts',
   },
 }

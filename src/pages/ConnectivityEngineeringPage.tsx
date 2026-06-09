@@ -3,168 +3,163 @@ import type { SectorPageData } from '@/components/IndustrySectorPage'
 import {
   faWrench,
   faWifi,
-  faShield,
   faMicrochip,
   faNetworkWired,
   faCloud,
+  faGlobe,
   faUsers,
   faChartLine,
+  faLightbulb,
   faArrowTrendUp,
-  faGlobe,
 } from '@fortawesome/free-solid-svg-icons'
 
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Engineering',
-    title: 'Connectivity for engineering and construction',
+    title: 'Connectivity for complex engineering projects',
     subtitle:
-      'Deployable site wireless, asset IoT connectivity and remote team communications for engineering and construction operations.',
+      'AWTG helps engineering and infrastructure organisations connect sites, assets, teams and systems through secure digital infrastructure.',
     description:
-      'AWTG designs and deploys connectivity solutions for engineering and construction environments — temporary site networks, asset tracking and remote team communications that keep projects running efficiently from groundbreak to handover.',
+      'Engineering projects often involve complex sites, technical teams, distributed assets and operational data. AWTG brings experience in telecoms, 5G, IoT, software, secure infrastructure and innovation programmes — allowing us to support engineering organisations that need better connectivity across sites, systems and assets.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faWrench,
     visualItems: [
-      { icon: faWifi, label: 'Deployable site wireless' },
-      { icon: faMicrochip, label: 'Asset IoT connectivity' },
-      { icon: faNetworkWired, label: 'Project network infrastructure' },
-      { icon: faCloud, label: 'Cloud-connected site systems' },
+      { icon: faWifi, label: 'Site connectivity' },
+      { icon: faMicrochip, label: 'Connected assets & IoT' },
+      { icon: faNetworkWired, label: 'Advanced private networks' },
+      { icon: faCloud, label: 'Data platforms' },
     ],
   },
 
   challenges: {
-    heading: 'Connectivity challenges on engineering projects',
+    heading: 'Connectivity challenges in engineering',
     intro:
-      'Engineering and construction projects require connectivity that can be deployed quickly, withstands harsh environments and supports the operational technology that modern projects depend on.',
+      'Engineering and infrastructure projects face connectivity challenges that limit team productivity, reduce operational visibility and create barriers to digital innovation.',
     items: [
       {
         icon: faGlobe,
-        title: 'Remote and temporary site locations',
-        desc: 'Engineering projects often operate in remote locations or temporary site environments where commercial connectivity infrastructure does not exist or is inadequate.',
+        title: 'Complex and distributed environments',
+        desc: 'Engineering projects often span multiple sites, remote locations and technical environments where standard commercial connectivity is inadequate or unavailable.',
       },
       {
         icon: faMicrochip,
-        title: 'Asset tracking and visibility',
-        desc: 'Large project sites involve significant plant, equipment and materials that are difficult to track and manage without reliable IoT connectivity and visibility tools.',
-      },
-      {
-        icon: faWifi,
-        title: 'Site wireless performance',
-        desc: 'Outdoor environments, large structures and interference from plant equipment create challenging wireless propagation conditions that consumer solutions cannot overcome.',
+        title: 'Disconnected assets and equipment',
+        desc: 'Without reliable connectivity to equipment and operational assets, engineering organisations lack the real-time visibility needed to support efficient project and site management.',
       },
       {
         icon: faUsers,
-        title: 'Distributed team communications',
-        desc: 'Project teams spanning multiple sites, disciplines and organisations need reliable, secure communications infrastructure that moves with the project through its phases.',
+        title: 'Field team digital access',
+        desc: 'Teams working in the field or across distributed project sites often lack reliable access to the systems, data and communications they need to work effectively.',
+      },
+      {
+        icon: faWifi,
+        title: 'Connectivity gaps at project sites',
+        desc: 'Project locations frequently lack appropriate connectivity infrastructure — creating barriers to operational monitoring, team communications and data-driven decision making.',
       },
     ],
   },
 
   supports: {
-    heading: 'What AWTG delivers for engineering',
+    heading: 'What AWTG supports for engineering',
     intro:
-      'AWTG provides connectivity solutions designed for the demands of engineering and construction environments — deployable, ruggedised and managed across the full project lifecycle.',
+      "AWTG's experience in telecoms, 5G, IoT, public sector connectivity, ESA-related innovation and digital infrastructure enables us to support engineering organisations with complex connectivity requirements.",
     items: [
       {
         icon: faWifi,
-        title: 'Deployable site wireless networks',
-        desc: 'Ruggedised, rapidly deployable wireless infrastructure for construction sites and engineering environments — providing reliable coverage outdoors and across complex structures.',
+        title: 'Site and wireless connectivity',
+        desc: 'Connectivity for operational sites, technical environments, project locations and distributed teams — including advanced wireless and private networks where standard connectivity falls short.',
         bullets: [
-          'Outdoor and industrial-grade wireless hardware',
-          'Rapid deployment and reconfiguration as the site evolves',
-          'Coverage design for large-scale outdoor environments',
-          'Managed service with remote monitoring capability',
+          'Site connectivity for project and operational environments',
+          'Advanced wireless and private networks where required',
+          'Connectivity for remote and technically demanding locations',
+          'Secure access for distributed engineering teams',
         ],
       },
       {
         icon: faMicrochip,
-        title: 'Asset and equipment IoT',
-        desc: 'IoT connectivity for plant, equipment and materials tracking across the project site — providing the real-time visibility that project managers need to control costs and schedules.',
+        title: 'Connected assets and data platforms',
+        desc: 'IoT and sensor infrastructure to support visibility across equipment, environmental conditions or operational assets — connected through to data platforms and reporting tools that support operational decisions.',
         bullets: [
-          'Asset location and utilisation tracking',
-          'Plant monitoring and maintenance alerting',
-          'Materials and inventory tracking systems',
-          'Integration with project management platforms',
+          'Asset and equipment connectivity foundations',
+          'Environmental and operational monitoring where required',
+          'Data collection and platform integration',
+          'Dashboards and reporting for engineering decision making',
         ],
       },
       {
         icon: faNetworkWired,
-        title: 'Project network infrastructure',
-        desc: 'Scalable network infrastructure for site offices, welfare facilities and engineering systems — supporting BIM platforms, project management software and collaboration tools.',
+        title: 'Innovation environments and secure infrastructure',
+        desc: 'AWTG has experience in advanced connectivity and innovation programmes, making us well placed to support pilots, demonstrators and emerging technology projects alongside secure operational infrastructure delivery.',
         bullets: [
-          'Temporary site office LAN and wireless',
-          'Secure connectivity between site and central project systems',
-          'VPN access for remote project team members',
-          'Infrastructure scaling as the project progresses',
+          'Pilot and demonstrator connectivity support',
+          'Innovation and testbed programme experience',
+          'Secure infrastructure for technical environments',
+          'ESA and public sector innovation programme experience',
         ],
       },
     ],
   },
 
   useCases: {
-    heading: 'Connectivity across the project lifecycle',
+    heading: 'Connectivity service areas',
     intro:
-      'From mobilisation to handover, AWTG provides the connectivity infrastructure that keeps engineering and construction projects moving efficiently.',
+      'From project site connectivity to innovation programmes, AWTG supports engineering and infrastructure organisations across a range of connectivity needs.',
     items: [
       {
         icon: faWifi,
-        title: 'Site wireless deployment',
-        desc: 'Rapid deployment of ruggedised outdoor wireless for construction sites — providing coverage for site offices, plant areas and distributed work zones.',
+        title: 'Site and project connectivity',
+        desc: 'Support teams working across complex, distributed or technical environments — providing reliable connectivity for project sites, field operations and multi-site programmes.',
       },
       {
         icon: faMicrochip,
-        title: 'Plant and asset tracking',
-        desc: 'IoT-enabled asset tracking for construction plant, equipment and materials — giving project managers real-time visibility of their site resources.',
+        title: 'Connected assets',
+        desc: 'Use connectivity and sensors to improve visibility across equipment, environmental conditions and operational assets where required by the project or programme.',
       },
       {
-        icon: faNetworkWired,
-        title: 'Site office and engineering system networks',
-        desc: 'Managed LAN and wireless for site offices, design hubs and engineering workspaces — supporting BIM, design collaboration and project management platforms.',
+        icon: faChartLine,
+        title: 'Engineering data platforms',
+        desc: 'Connect data from operational assets and site systems into dashboards and reporting tools that support better project and engineering decision making.',
       },
       {
-        icon: faShield,
-        title: 'Site security and access control',
-        desc: 'Network-connected site security, CCTV and access control systems — providing reliable monitoring and access management across the project boundary.',
-      },
-      {
-        icon: faCloud,
-        title: 'Cloud platform connectivity',
-        desc: 'Reliable connectivity to cloud-hosted project platforms — BIM 360, Procore, Microsoft 365 and specialist engineering software used across the project team.',
+        icon: faLightbulb,
+        title: 'Innovation environments',
+        desc: 'Support pilots, demonstrators and emerging technology programmes with the connectivity and digital infrastructure that advanced engineering and innovation projects require.',
       },
     ],
   },
 
   outcomes: {
-    heading: 'What connected sites deliver',
+    heading: 'What better connectivity delivers',
     intro:
-      'Reliable, well-managed connectivity across engineering and construction sites improves project efficiency, reduces risk and keeps distributed teams productive.',
+      'Reliable, well-designed connectivity across engineering environments improves team productivity, operational visibility and readiness for future digital and AI programmes.',
     items: [
       {
         icon: faArrowTrendUp,
-        title: 'Projects running on schedule',
-        desc: 'Reliable connectivity for engineering systems and project management platforms reduces the delays that poor site infrastructure creates.',
+        title: 'Better site and asset connectivity',
+        desc: 'Sites, assets and operational systems connected reliably — removing the infrastructure barriers that slow project delivery and limit operational visibility.',
       },
       {
         icon: faUsers,
-        title: 'Distributed teams connected',
-        desc: 'Project teams across sites, disciplines and organisations stay connected and collaborative — reducing the communication gaps that cause rework and delay.',
+        title: 'Engineering teams better connected',
+        desc: 'Field and project teams with the digital access they need — reducing the communication and information gaps that create rework and delay.',
       },
       {
-        icon: faChartLine,
-        title: 'Asset and resource visibility',
-        desc: 'IoT-enabled asset tracking gives project managers the visibility to optimise plant utilisation, reduce losses and manage costs more effectively.',
+        icon: faCloud,
+        title: 'Improved data access',
+        desc: 'Operational and asset data flowing from the site into the platforms and dashboards that support engineering decisions and programme oversight.',
       },
       {
         icon: faGlobe,
-        title: 'Connectivity anywhere on site',
-        desc: 'Ruggedised wireless infrastructure provides reliable coverage across the full project footprint — regardless of scale, environment or project phase.',
+        title: 'Visibility across distributed sites',
+        desc: 'Connected monitoring across project sites and technical environments — improving situational awareness for engineering leaders and project teams.',
       },
     ],
   },
 
   cta: {
-    title: 'Connectivity built for engineering',
+    title: 'Speak to AWTG about connectivity for engineering',
     subtitle:
-      'Speak to AWTG about deployable site wireless, asset IoT connectivity and project network infrastructure for engineering and construction.',
+      'AWTG supports engineering and infrastructure organisations with site connectivity, connected assets, data platforms and innovation programmes.',
     label: 'Talk to our experts',
   },
 }
