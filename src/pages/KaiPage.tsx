@@ -2050,8 +2050,8 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               />
             </div>
             <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
-              Customer Enterprise<br />
-              Service that <span style={{ color: '#0a1628' }}>resolves,</span><br />
+              Enterprise Customer<br />
+              Service AI that <span style={{ color: '#0a1628' }}>resolves,</span><br />
               no just responds.
             </h1>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
