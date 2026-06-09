@@ -28,7 +28,7 @@ const tagAccent: Record<string, string> = {
 const featured = {
   slug: 'itrustric-open-ran-security',
   tag: 'Open RAN Security',
-  title: "iTRUSTRIC – Securing Open RAN with AWTG’s Advanced Solution",
+  title: "iTRUSTRIC: Securing Open RAN with AWTG’s Advanced Solution",
   date: 'October 7, 2024',
   excerpt: "Open RAN’s disaggregated architecture creates powerful flexibility and new security exposure. iTRUSTRIC is AWTG’s purpose-built platform to secure data flows, improve network visibility and ensure compliance across multi-vendor Open RAN deployments.",
   sector: 'Telecommunications',
@@ -71,7 +71,7 @@ const studies = [
   {
     slug: 'akt-stability-testing',
     tag: 'Performance Testing',
-    title: 'AKT – Stability Testing – Scenario',
+    title: 'AKT: Stability Testing Scenario',
     date: 'September 1, 2013',
     excerpt: "Multi-day network stability assessment using AWTG’s Broadband Tester agents to measure user-perceived speed, reliability and quality of experience.",
   },

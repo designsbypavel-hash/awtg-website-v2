@@ -112,7 +112,7 @@ export default function GenerativeAIPage() {
                 <span className="w-3 h-3 rounded-full bg-[#fc5f57]" />
                 <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
                 <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-                <span className="flex-1 text-center text-[12px] text-[#666] font-medium tracking-tight">AI Agent Composer - Retail Hub</span>
+                <span className="flex-1 text-center text-[12px] text-[#666] font-medium tracking-tight">AI Agent Composer: Retail Hub</span>
               </div>
               {/* Editor body */}
               <div className="flex bg-[#fafafa]" style={{ minHeight: 340 }}>

@@ -638,7 +638,7 @@ export default function IcmapPage() {
                 that drives decisions.
               </h1>
               <p className="text-[#0a1628]/60 text-[17px] font-normal leading-[1.7] max-w-xl mb-10">
-                iCMAP helps organisations monitor, manage, and optimise complex connectivity environments - giving teams real time visibility, faster issue detection, and better control across network operations.
+                iCMAP helps organisations monitor, manage, and optimise complex connectivity environments, giving teams real-time visibility, faster issue detection, and better control across network operations.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
