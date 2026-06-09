@@ -45,13 +45,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 relative">
           <div className="grid lg:grid-cols-[1fr_400px] gap-16 items-center">
             <div>
-              <span className="inline-block px-3.5 py-1.5 border border-[#0a1628]/12 bg-white text-[#0a1628]/50 text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full mb-8">
-                {hero.badge}
-              </span>
               <h1 className="font-serif-display text-[#0a1628] mb-5">{hero.title}</h1>
-              <p className="text-[#0a1628]/70 text-[18px] font-medium leading-[1.65] mb-3 max-w-xl">
-                {hero.subtitle}
-              </p>
               <p className="text-[#0a1628]/50 text-[15px] font-normal leading-[1.8] mb-10 max-w-lg">
                 {hero.description}
               </p>
