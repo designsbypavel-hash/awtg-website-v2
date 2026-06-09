@@ -33,26 +33,26 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
   return (
     <>
       {/* ─── Hero ─── */}
-      <section className="pt-32 pb-24 bg-[#0a1628] relative overflow-hidden">
+      <section className="pt-32 pb-24 bg-[#f8fafc] relative overflow-hidden">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          className="pointer-events-none absolute inset-0 opacity-[0.025]"
           style={{
-            backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)',
             backgroundSize: '34px 34px',
           }}
         />
         <div className="max-w-7xl mx-auto px-8 lg:px-12 relative">
           <div className="grid lg:grid-cols-[1fr_400px] gap-16 items-center">
             <div>
-              <span className="inline-block px-3.5 py-1.5 border border-white/15 bg-white/5 text-white/55 text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full mb-8">
+              <span className="inline-block px-3.5 py-1.5 border border-[#0a1628]/12 bg-white text-[#0a1628]/50 text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full mb-8">
                 {hero.badge}
               </span>
-              <h1 className="font-serif-display text-white mb-5">{hero.title}</h1>
-              <p className="text-white/65 text-[18px] font-medium leading-[1.65] mb-3 max-w-xl">
+              <h1 className="font-serif-display text-[#0a1628] mb-5">{hero.title}</h1>
+              <p className="text-[#0a1628]/70 text-[18px] font-medium leading-[1.65] mb-3 max-w-xl">
                 {hero.subtitle}
               </p>
-              <p className="text-white/45 text-[15px] font-normal leading-[1.8] mb-10 max-w-lg">
+              <p className="text-[#0a1628]/50 text-[15px] font-normal leading-[1.8] mb-10 max-w-lg">
                 {hero.description}
               </p>
               <Link to={hero.ctaHref ?? '/contact'} className="btn btn-primary">
@@ -63,32 +63,13 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
             {/* capability panel */}
             <div className="hidden lg:block">
               <div
-                className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-                style={{ background: 'rgba(255,255,255,0.04)' }}
+                className="rounded-[20px] overflow-hidden bg-white"
+                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 4px 24px rgba(15,23,42,0.07), 0 1px 4px rgba(15,23,42,0.04)' }}
               >
-                <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/10">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                  </div>
-                  <span className="ml-2 text-white/30 text-[11px] font-medium tracking-[0.18em] uppercase">
-                    AWTG Platform
-                  </span>
-                  <div className="ml-auto flex items-center gap-1.5">
-                    <div
-                      className="w-1.5 h-1.5 rounded-full bg-emerald-400"
-                      style={{ boxShadow: '0 0 6px rgba(52,211,153,0.7)' }}
-                    />
-                    <span className="text-emerald-400/80 text-[10px] font-semibold tracking-wide uppercase">
-                      Live
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center py-8 px-6">
+                <div className="flex items-center justify-center py-8 px-6 border-b" style={{ borderColor: 'rgba(15,23,42,0.06)' }}>
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                    style={{ background: 'rgba(34,141,193,0.2)' }}
+                    style={{ background: 'rgba(34,141,193,0.1)' }}
                   >
                     <FontAwesomeIcon
                       icon={hero.visualIcon}
@@ -96,26 +77,25 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     />
                   </div>
                 </div>
-                <div className="px-5 pb-6 space-y-2.5">
+                <div className="px-5 py-5 space-y-2.5">
                   {hero.visualItems.map(item => (
                     <div
                       key={item.label}
-                      className="flex items-center gap-3 rounded-xl px-4 py-3"
-                      style={{ background: 'rgba(255,255,255,0.045)' }}
+                      className="flex items-center gap-3 rounded-xl px-4 py-3 bg-[#f8fafc]"
+                      style={{ border: '1px solid rgba(15,23,42,0.06)' }}
                     >
                       <div
                         className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                        style={{ background: 'rgba(34,141,193,0.18)' }}
+                        style={{ background: 'rgba(34,141,193,0.1)' }}
                       >
                         <FontAwesomeIcon
                           icon={item.icon}
-                          style={{ fontSize: 12, color: '#60b8e0' }}
+                          style={{ fontSize: 12, color: '#228DC1' }}
                         />
                       </div>
-                      <span className="text-white/65 text-[13px] font-medium flex-1">
+                      <span className="text-[#0a1628]/65 text-[13px] font-medium flex-1">
                         {item.label}
                       </span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400/60" />
                     </div>
                   ))}
                 </div>
