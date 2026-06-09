@@ -1429,21 +1429,23 @@ export default function KaiPage() {
       {/* -- Live in production -- */}
       <section className="bg-[#f8fafc] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              Global reach. Measurable customer outcomes.
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-2xl">
-              Live globally. Trusted by enterprise organisations. Proven through real query volumes, measurable containment, and CSAT improvements from week one.
-            </p>
-          </div>
-
-          {/* Metrics row � same section */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <StatCard num={250} suffix="k+" label="Production reach" note="Users supported each month" delay={0} />
-            <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction" delay={100} />
-            <StatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
-            <StatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left: text */}
+            <div>
+              <h2 className="font-heading text-[#0a1628] mb-4">
+                Global reach. Measurable customer outcomes.
+              </h2>
+              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-lg">
+                Live globally. Trusted by enterprise organisations. Proven through real query volumes, measurable containment, and CSAT improvements from week one.
+              </p>
+            </div>
+            {/* Right: 2×2 metric cards with count-up animation */}
+            <div className="grid grid-cols-2 gap-4">
+              <StatCard num={250} suffix="k+" label="Production reach" note="Users supported each month" delay={0} />
+              <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction" delay={100} />
+              <StatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
+              <StatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
+            </div>
           </div>
         </div>
       </section>
