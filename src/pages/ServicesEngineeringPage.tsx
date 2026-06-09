@@ -158,16 +158,6 @@ const benefits: SimpleCard[] = [
   { icon: faLayerGroup, title: 'Scalable Deployment', desc: 'Designed for private networks, multi-site estates and enterprise environments.' },
 ]
 
-const trustedLogos = [
-  { src: '/logos/partners/Nokia.png', alt: 'Nokia' },
-  { src: '/logos/clients/kai-borderlands.svg', alt: 'Borderlands Inclusive Growth Deal' },
-  { src: '/logos/clients/kai-cambridge.svg', alt: 'Cambridgeshire County Council' },
-  { src: '/logos/clients/kai-cumberland.svg', alt: 'Cumberland Council' },
-  { src: '/logos/partners/UK Tel.png', alt: 'UK Telecoms Innovation Network' },
-  { src: '/logos/partners/Catapult.png', alt: 'Digital Catapult' },
-  { src: '/logos/partners/Vodafone.png', alt: 'Vodafone' },
-]
-
 function ScapHeroVisual() {
   const sourceNodes = [
     { label: 'RAN', x: '13%', y: '24%', color: '#228DC1' },
@@ -267,10 +257,9 @@ function ScapHeroVisual() {
   )
 }
 
-function SectionIntro({ eyebrow, title, desc }: { eyebrow: string; title: string; desc: string }) {
+function SectionIntro({ title, desc }: { title: string; desc: string }) {
   return (
     <div className="mb-14 max-w-3xl">
-      <p className="type-label mb-4 text-[#228DC1]">{eyebrow}</p>
       <h2 className="font-heading mb-5 text-[#0a1628]">{title}</h2>
       <p className="text-[16px] font-normal leading-[1.75] text-[#0a1628]/62">{desc}</p>
     </div>
@@ -295,7 +284,6 @@ export default function ServicesEngineeringPage() {
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
           <div>
-            <p className="type-label mb-5 text-[#228DC1]">Service Correlation and Assurance Platform</p>
             <h1 className="font-serif-display mb-5 leading-[1.02] text-[#0a1628]">SCAP</h1>
             <p className="mb-6 text-[22px] font-semibold leading-[1.35] text-[#0a1628]">
               Service Correlation and Assurance Platform
@@ -316,7 +304,6 @@ export default function ServicesEngineeringPage() {
       <section className="border-t border-gray-100 bg-white py-24">
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <SectionIntro
-            eyebrow="Core capabilities"
             title="Enterprise assurance for private network operations"
             desc="SCAP gives enterprise teams ownership of their operational analytics while connecting infrastructure, application, RAN and private network signals into a single platform view."
           />
@@ -345,7 +332,6 @@ export default function ServicesEngineeringPage() {
       <section className="border-t border-gray-100 bg-[#f8fafc] py-24">
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <SectionIntro
-            eyebrow="Analytics layer"
             title="From raw signals to assured business outcomes"
             desc="SCAP is a platform layer that turns network, operational and enterprise data into correlated insight for assurance, optimisation and decision-making."
           />
@@ -374,7 +360,6 @@ export default function ServicesEngineeringPage() {
       <section className="border-t border-gray-100 bg-white py-24">
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <SectionIntro
-            eyebrow="Enterprise use cases"
             title="Operational intelligence across connected environments"
             desc="SCAP supports enterprise teams that need to correlate network behaviour with assets, people, logistics, production and service outcomes."
           />
@@ -396,7 +381,6 @@ export default function ServicesEngineeringPage() {
       <section className="border-t border-[#0d2442] bg-[#0a1628] py-24">
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="mb-14 max-w-3xl">
-            <p className="type-label mb-4 text-[#7ac4e0]">Network assurance intelligence</p>
             <h2 className="font-heading mb-5 text-white">Assure the network and the service together</h2>
             <p className="text-[16px] font-normal leading-[1.75] text-white/62">
               SCAP brings assurance data into one workspace so enterprise and network teams can understand performance, experience, congestion and mobility together.
@@ -419,7 +403,6 @@ export default function ServicesEngineeringPage() {
       <section className="border-t border-gray-100 bg-[#f8fafc] py-24">
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <SectionIntro
-            eyebrow="Platform benefits"
             title="Built for private analytics at enterprise scale"
             desc="SCAP is designed for organisations that need visibility, privacy, modular deployment and practical operational value from their private network investments."
           />
@@ -431,28 +414,6 @@ export default function ServicesEngineeringPage() {
                 </div>
                 <h3 className="mb-2 text-[15px] font-semibold text-[#0a1628]">{benefit.title}</h3>
                 <p className="text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">{benefit.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="overflow-hidden border-y border-gray-100 bg-white py-10">
-        <p className="mb-9 text-center text-[10px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/30">
-          Trusted by leading organisations and partners
-        </p>
-        <div className="relative">
-          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-32 bg-gradient-to-r from-white to-transparent" />
-          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-32 bg-gradient-to-l from-white to-transparent" />
-          <div className="flex w-max animate-[marquee_48s_linear_infinite] items-center gap-0 whitespace-nowrap">
-            {[...trustedLogos, ...trustedLogos].map((logo, index) => (
-              <div key={`${logo.alt}-${index}`} className="inline-flex select-none items-center justify-center px-12">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-10 w-auto max-w-[180px] object-contain opacity-80 transition-opacity duration-300 hover:opacity-100"
-                  loading="lazy"
-                />
               </div>
             ))}
           </div>
