@@ -155,11 +155,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/privacy" className="text-xs text-white/55 hover:text-white transition-colors py-1 min-h-[24px] inline-flex items-center">Privacy Policy</Link>
-            <Link to="/terms" className="text-xs text-white/55 hover:text-white transition-colors py-1 min-h-[24px] inline-flex items-center">Terms of Service</Link>
             <Link to="/cookies" className="text-xs text-white/55 hover:text-white transition-colors py-1 min-h-[24px] inline-flex items-center">Cookie Settings</Link>
-            <a href="https://awtg.co.uk" target="_blank" rel="noopener noreferrer" aria-label="AWTG website (opens in new tab)" className="text-xs text-white/55 hover:text-white transition-colors py-1 min-h-[24px] inline-flex items-center">
-              awtg.co.uk ↗
-            </a>
           </div>
         </div>
       </div>
