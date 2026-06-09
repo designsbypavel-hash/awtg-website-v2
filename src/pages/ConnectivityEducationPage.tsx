@@ -1,252 +1,174 @@
-import CTASection from '@/components/CTASection'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import IndustrySectorPage from '@/components/IndustrySectorPage'
+import type { SectorPageData } from '@/components/IndustrySectorPage'
 import {
-  faGraduationCap, faUsers, faShield, faWifi, faMobile,
-  faCloud, faSitemap, faNetworkWired, faLock, faArrowTrendUp,
-  faShieldHalved, faUserShield, faLayerGroup, faGears,
+  faGraduationCap,
+  faWifi,
+  faShield,
+  faNetworkWired,
+  faCloud,
+  faUsers,
+  faMobile,
+  faLock,
+  faChartLine,
+  faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons'
 
-const challenges = [
-  {
-    icon: faUsers,
-    title: 'High-density user environments',
-    desc: 'Lecture theatres, libraries, student unions and halls of residence create extreme wireless density challenges. Networks must handle thousands of simultaneous connections without performance degradation.',
+const data: SectorPageData = {
+  hero: {
+    badge: 'Connectivity · Education',
+    title: 'Connectivity for education',
+    subtitle:
+      'Campus wireless, safeguarding-compliant networks and managed infrastructure services for schools, colleges and universities.',
+    description:
+      'AWTG designs and deploys network infrastructure for educational institutions — from primary school to university campus — meeting DfE requirements, online safety standards and the connectivity demands of modern teaching and learning.',
+    ctaLabel: 'Talk to our experts',
+    visualIcon: faGraduationCap,
+    visualItems: [
+      { icon: faWifi, label: 'Campus wireless networks' },
+      { icon: faShield, label: 'Safeguarding & filtering' },
+      { icon: faNetworkWired, label: 'Managed education networks' },
+      { icon: faCloud, label: 'Cloud-ready connectivity' },
+    ],
   },
-  {
-    icon: faMobile,
-    title: 'BYOD and device proliferation',
-    desc: 'Students and staff bring multiple personal devices onto campus networks. Managing access, security and performance across an unpredictable device estate requires thoughtful network architecture.',
-  },
-  {
-    icon: faShield,
-    title: 'Safeguarding and content filtering',
-    desc: 'Schools and colleges have statutory safeguarding obligations that require appropriate internet filtering, monitoring and access controls for student networks — without blocking legitimate academic use.',
-  },
-  {
-    icon: faSitemap,
-    title: 'Multi-building and multi-site estates',
-    desc: 'Education institutions operate across many buildings, campuses and sites with very different construction types, ages and legacy infrastructure — making consistent connectivity complex to deliver.',
-  },
-  {
-    icon: faArrowTrendUp,
-    title: 'Budget and procurement constraints',
-    desc: 'Education institutions must balance network performance investment against significant budget pressure — requiring efficient design, competitive procurement and clear return on investment.',
-  },
-]
 
-const capabilities = [
-  {
-    icon: faWifi,
-    title: 'Campus wireless networks',
-    desc: 'High-density wireless network design and deployment for university campuses, schools and colleges — delivering reliable coverage across lecture spaces, libraries, labs and social areas.',
+  challenges: {
+    heading: 'Network challenges in education',
+    intro:
+      'Educational institutions need reliable, secure networks that support modern teaching, meet safeguarding requirements and remain manageable within constrained IT budgets.',
+    items: [
+      {
+        icon: faUsers,
+        title: 'High device density',
+        desc: 'Modern classrooms support dozens of simultaneous devices — student laptops, tablets, interactive displays and IoT sensors — placing significant demands on wireless infrastructure.',
+      },
+      {
+        icon: faShield,
+        title: 'Safeguarding and compliance',
+        desc: 'Schools and colleges must meet Keeping Children Safe in Education and DfE requirements for online safety filtering and monitoring across all school-provided connectivity.',
+      },
+      {
+        icon: faWifi,
+        title: 'Coverage and performance gaps',
+        desc: 'Older or poorly designed wireless infrastructure creates dead zones, performance issues and frustration for both staff and students that directly affect learning outcomes.',
+      },
+      {
+        icon: faMobile,
+        title: 'BYOD and personal device management',
+        desc: 'Supporting a mix of school-owned and personal devices across student and staff populations requires network segmentation and access policy that many networks lack.',
+      },
+    ],
   },
-  {
-    icon: faShield,
-    title: 'Safeguarding and content filtering',
-    desc: 'Network-level content filtering and monitoring solutions for schools and colleges, meeting DfE requirements and Ofsted expectations for online safety and digital safeguarding.',
-  },
-  {
-    icon: faNetworkWired,
-    title: 'Campus LAN and core network infrastructure',
-    desc: 'Structured cabling, switching and core network infrastructure for education campuses — designed for performance, reliability and long-term scalability.',
-  },
-  {
-    icon: faCloud,
-    title: 'Cloud and internet connectivity',
-    desc: 'High-bandwidth internet and cloud connectivity for education institutions — supporting streaming, video conferencing, cloud-based learning platforms and research network access.',
-  },
-  {
-    icon: faSitemap,
-    title: 'Multi-site network management',
-    desc: 'Unified network management across multi-site education estates, providing consistent performance, visibility and control whether a student is on the main campus or a satellite site.',
-  },
-  {
-    icon: faLock,
-    title: 'Network security and access control',
-    desc: 'Identity-based network access control that distinguishes between staff, students and visitors — ensuring appropriate access, security segmentation and monitoring across the estate.',
-  },
-]
 
-const services = [
-  {
-    icon: faWifi,
-    title: 'Campus wireless design and deployment',
-    desc: 'Survey, design and deployment of high-density wireless networks for education campuses — from schools and sixth forms to university estates with thousands of concurrent users.',
+  supports: {
+    heading: 'What AWTG delivers for education',
+    intro:
+      'AWTG provides network infrastructure services tailored to educational institutions — combining technical expertise with an understanding of the DfE and safeguarding requirements that govern school networking.',
+    items: [
+      {
+        icon: faWifi,
+        title: 'Campus wireless infrastructure',
+        desc: 'High-density Wi-Fi designed for educational environments — providing reliable coverage in classrooms, libraries, sports halls and outdoor teaching areas.',
+        bullets: [
+          'RF survey and design for educational building types',
+          'High-density access point deployment for classroom environments',
+          'Seamless roaming across campus buildings and zones',
+          'Separate networks for staff, students and guests',
+        ],
+      },
+      {
+        icon: faShield,
+        title: 'Safeguarding-compliant networks',
+        desc: 'Network design and filtering solutions that meet Keeping Children Safe in Education obligations and DfE guidance on internet safety for educational institutions.',
+        bullets: [
+          'Content filtering aligned to DfE requirements',
+          'Monitoring and alerting for safeguarding compliance',
+          'Separate traffic handling for different user categories',
+          'Audit logging to support safeguarding investigations',
+        ],
+      },
+      {
+        icon: faCloud,
+        title: 'Managed and cloud-ready connectivity',
+        desc: 'Managed connectivity services that keep educational networks performing reliably — with cloud-ready architecture for Microsoft 365, Google Workspace and cloud-hosted learning platforms.',
+        bullets: [
+          'Managed NOC with education-aware monitoring',
+          'Optimised routing for cloud-hosted educational platforms',
+          'Bandwidth management for teaching and learning priorities',
+          'Proactive maintenance during school holidays where possible',
+        ],
+      },
+    ],
   },
-  {
-    icon: faShield,
-    title: 'Safeguarding and filtering solutions',
-    desc: 'Compliant internet filtering, monitoring and online safety solutions for schools and colleges — meeting statutory safeguarding requirements and supporting Ofsted readiness.',
-  },
-  {
-    icon: faNetworkWired,
-    title: 'Network infrastructure refresh',
-    desc: 'Structured cabling, switching and core infrastructure modernisation for education sites with outdated or performance-limited network hardware.',
-  },
-  {
-    icon: faCloud,
-    title: 'Connectivity and internet services',
-    desc: 'High-bandwidth internet, WAN and cloud connectivity services for education institutions, sized for the demands of modern digital learning and research.',
-  },
-  {
-    icon: faGears,
-    title: 'Network managed services for education',
-    desc: 'Ongoing managed network services with SLAs, monitoring and support tailored to the academic calendar and operational requirements of education institutions.',
-  },
-]
 
-const whyItems = [
-  {
-    icon: faGraduationCap,
-    title: 'Education sector experience',
-    desc: 'AWTG has delivered network infrastructure for education organisations, with understanding of the specific technical, safeguarding and commercial requirements of the sector.',
+  useCases: {
+    heading: 'Solutions across the education estate',
+    intro:
+      'From a single school to a multi-academy trust, AWTG delivers network infrastructure that supports the full range of educational activities.',
+    items: [
+      {
+        icon: faWifi,
+        title: 'Campus-wide wireless rollout',
+        desc: 'End-to-end wireless programmes for schools and universities — survey, design, deployment and commissioning across all teaching and support spaces.',
+      },
+      {
+        icon: faShield,
+        title: 'Online safety and content filtering',
+        desc: 'DfE-compliant internet safety filtering and monitoring for schools — meeting statutory safeguarding obligations with appropriate controls and reporting.',
+      },
+      {
+        icon: faNetworkWired,
+        title: 'School and MAT network programmes',
+        desc: 'Consistent, well-managed network infrastructure across multi-academy trusts — reducing fragmentation and operational overhead across multiple sites.',
+      },
+      {
+        icon: faCloud,
+        title: 'Cloud platform connectivity',
+        desc: 'Optimised connectivity for Microsoft 365, Google Workspace and cloud-hosted MIS and learning management systems used across the school estate.',
+      },
+      {
+        icon: faLock,
+        title: 'Network security and access control',
+        desc: 'Appropriate network segmentation, access control and security monitoring to protect school systems, student data and safeguarding records.',
+      },
+    ],
   },
-  {
-    icon: faShieldHalved,
-    title: 'Safeguarding and compliance expertise',
-    desc: 'We understand the online safety and safeguarding obligations that schools and colleges must meet, and design network solutions that support compliance without limiting legitimate use.',
+
+  outcomes: {
+    heading: 'Better connectivity, better learning',
+    intro:
+      'Well-designed education networks improve teaching delivery, meet compliance requirements and reduce the burden on IT staff and school leadership.',
+    items: [
+      {
+        icon: faArrowTrendUp,
+        title: 'Reliable classroom connectivity',
+        desc: 'Consistent wireless performance across all teaching spaces removes the connectivity failures that disrupt lessons and frustrate staff.',
+      },
+      {
+        icon: faShield,
+        title: 'Safeguarding compliance met',
+        desc: 'Networks designed and managed to meet DfE and Keeping Children Safe in Education requirements — reducing compliance risk for school leadership.',
+      },
+      {
+        icon: faUsers,
+        title: 'Reduced IT burden',
+        desc: 'Managed services and well-designed infrastructure reduce the daily support burden on school IT teams and staff, freeing time for teaching support.',
+      },
+      {
+        icon: faChartLine,
+        title: 'Network visibility and reporting',
+        desc: 'Monitoring and reporting tools provide IT leads and school leadership with the insight needed to manage network performance and safeguarding obligations.',
+      },
+    ],
   },
-  {
-    icon: faLayerGroup,
-    title: 'High-density wireless engineering',
-    desc: 'Our wireless network engineering capability is specifically suited to the high-density, high-demand environments that university and college campuses present.',
+
+  cta: {
+    title: 'Better connectivity for every learner',
+    subtitle:
+      'Speak to AWTG about campus wireless, DfE-compliant networks and managed connectivity services for educational institutions.',
+    label: 'Talk to our experts',
   },
-  {
-    icon: faUserShield,
-    title: 'Long-term partnership approach',
-    desc: 'Education institutions need reliable, responsive partners for ongoing network support. AWTG offers managed services with the continuity and accountability that multi-year relationships require.',
-  },
-]
+}
 
 export default function ConnectivityEducationPage() {
-  return (
-    <>
-      {/* ── Hero ── */}
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <h1 className="font-serif-display text-[#0a1628] mb-6">
-              Connectivity for education
-            </h1>
-            <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.75] mb-10">
-              AWTG designs and delivers campus wireless, safeguarding solutions and network infrastructure for schools, colleges and universities — built for the demands of modern digital learning environments.
-            </p>
-            <Link to="/contact" className="btn btn-primary">
-              Talk to our experts
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Challenges ── */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">
-              Connectivity challenges in education
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-4 lg:mt-0">
-              Education institutions face a unique combination of density, diversity and compliance demands. These are the challenges AWTG helps schools, colleges and universities address.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {challenges.map(c => (
-              <div key={c.title} className="p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-sm transition-all">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{c.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── What connectivity supports ── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              What AWTG delivers for education connectivity
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              AWTG delivers connectivity solutions designed for the specific environment of education — high-density user populations, safeguarding obligations and the diverse infrastructure of modern campuses.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {capabilities.map(c => (
-              <div key={c.title} className="p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-sm transition-all">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{c.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Service blocks ── */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">
-              How AWTG can help
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-4 lg:mt-0">
-              AWTG structures education connectivity delivery around the real demands of schools, colleges and universities — from campus wireless and safeguarding to managed network services.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
-            {services.map(s => (
-              <div key={s.title} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={s.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{s.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Why AWTG ── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              Why AWTG
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              AWTG brings education sector understanding, safeguarding expertise and campus wireless engineering capability to schools, colleges and universities.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
-            {whyItems.map(w => (
-              <div key={w.title} className="flex gap-5">
-                <div className="w-10 h-10 shrink-0 flex items-center justify-center text-[#228DC1] mt-0.5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={w.icon} style={{ fontSize: 17 }} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-1.5">{w.title}</h3>
-                  <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{w.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTASection
-        title="Connectivity for schools, colleges and universities"
-        subtitle="Speak to AWTG about campus wireless, safeguarding solutions and network infrastructure for education institutions."
-        primaryLabel="Talk to our experts"
-        primaryHref="/contact"
-      />
-    </>
-  )
+  return <IndustrySectorPage data={data} />
 }

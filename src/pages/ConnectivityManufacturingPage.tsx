@@ -1,269 +1,181 @@
-import CTASection from '@/components/CTASection'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import IndustrySectorPage from '@/components/IndustrySectorPage'
+import type { SectorPageData } from '@/components/IndustrySectorPage'
 import {
-  faIndustry, faMicrochip, faShield, faSitemap, faServer,
-  faWifi, faNetworkWired, faGears, faArrowTrendUp,
-  faShieldHalved, faDiagramProject, faUserShield, faLayerGroup, faCloud,
+  faIndustry,
+  faMicrochip,
+  faShieldHalved,
+  faNetworkWired,
+  faCloud,
+  faGears,
+  faWifi,
+  faChartLine,
+  faUsers,
+  faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons'
 
-const challenges = [
-  {
-    icon: faIndustry,
-    title: 'OT and IT network convergence',
-    desc: 'Manufacturing environments increasingly require convergence of operational technology and IT networks — creating security and architecture challenges where legacy OT systems were never designed for IP connectivity.',
+const data: SectorPageData = {
+  hero: {
+    badge: 'Connectivity · Manufacturing',
+    title: 'Connectivity for manufacturing',
+    subtitle:
+      'Private 5G and LTE, industrial IoT connectivity and OT security for manufacturing, logistics and industrial operations.',
+    description:
+      'AWTG designs and deploys wireless infrastructure for complex industrial environments — from factory floor to port logistics — providing the reliable, secure connectivity that Industry 4.0 operations demand.',
+    ctaLabel: 'Talk to our experts',
+    visualIcon: faIndustry,
+    visualItems: [
+      { icon: faWifi, label: 'Private 5G & LTE' },
+      { icon: faMicrochip, label: 'Industrial IoT' },
+      { icon: faShieldHalved, label: 'OT security' },
+      { icon: faGears, label: 'Industry 4.0 automation' },
+    ],
   },
-  {
-    icon: faMicrochip,
-    title: 'Industrial IoT and connected machinery',
-    desc: 'Modern manufacturing relies on a growing estate of connected machines, sensors and monitoring equipment. Managing device connectivity, security and performance at scale requires dedicated network design.',
-  },
-  {
-    icon: faShield,
-    title: 'OT security and cyber resilience',
-    desc: 'Manufacturing and industrial environments are high-priority targets for ransomware and nation-state attacks. OT security requires specialist approaches distinct from standard enterprise cybersecurity.',
-  },
-  {
-    icon: faSitemap,
-    title: 'Large campus and multi-building environments',
-    desc: 'Manufacturing plants, warehouses and distribution centres span large footprints with challenging RF environments, metallic interference and harsh conditions for wireless infrastructure.',
-  },
-  {
-    icon: faServer,
-    title: 'Real-time operational requirements',
-    desc: 'Manufacturing processes depend on real-time data exchange between machines, control systems and enterprise platforms. Network latency or packet loss directly impacts production quality and efficiency.',
-  },
-]
 
-const capabilities = [
-  {
-    icon: faWifi,
-    title: 'Private 5G and LTE for manufacturing',
-    desc: 'Dedicated private wireless networks delivering the performance, coverage and reliability that industrial automation, AGVs, robotics and smart manufacturing require.',
+  challenges: {
+    heading: 'Connectivity challenges in manufacturing',
+    intro:
+      'Manufacturing and logistics operations demand connectivity that performs across large, complex sites — supporting automation, IoT and operational technology without compromise.',
+    items: [
+      {
+        icon: faWifi,
+        title: 'Coverage across complex sites',
+        desc: 'Large factories, warehouses and port facilities present significant wireless coverage challenges — with metal structures, interference and scale that commercial Wi-Fi cannot adequately address.',
+      },
+      {
+        icon: faMicrochip,
+        title: 'Industrial IoT density',
+        desc: 'Manufacturing operations increasingly depend on hundreds or thousands of connected sensors, AGVs, robots and monitoring devices — each requiring reliable, low-latency connectivity.',
+      },
+      {
+        icon: faShieldHalved,
+        title: 'OT security and IT/OT convergence',
+        desc: 'Connecting operational technology to enterprise IT networks creates significant security exposure. OT systems were not designed for network connectivity and require careful segmentation and protection.',
+      },
+      {
+        icon: faCloud,
+        title: 'Edge computing and latency',
+        desc: 'Real-time manufacturing applications — machine vision, process control, autonomous vehicles — require low-latency local processing that centralised cloud connectivity cannot always provide.',
+      },
+    ],
   },
-  {
-    icon: faMicrochip,
-    title: 'Industrial IoT connectivity and management',
-    desc: 'Connectivity infrastructure for connected machines, production sensors, environmental monitoring and asset tracking — with appropriate segmentation from enterprise IT networks.',
-  },
-  {
-    icon: faNetworkWired,
-    title: 'OT and IT network architecture',
-    desc: 'Network design that safely enables OT and IT convergence — protecting legacy industrial systems while enabling real-time data flow to enterprise platforms and cloud analytics.',
-  },
-  {
-    icon: faShieldHalved,
-    title: 'OT and industrial cyber security',
-    desc: 'Security architecture and monitoring solutions designed for operational technology environments — protecting SCADA, PLC and industrial control systems from cyber threats.',
-  },
-  {
-    icon: faCloud,
-    title: 'Edge computing and cloud integration',
-    desc: 'Edge infrastructure supporting real-time data processing at the factory floor, with secure connectivity to cloud platforms for analytics, digital twin and enterprise applications.',
-  },
-  {
-    icon: faGears,
-    title: 'Network managed services for manufacturing',
-    desc: 'Ongoing managed network services for manufacturing facilities — with support models aligned to shift patterns, planned maintenance windows and production continuity requirements.',
-  },
-]
 
-const services = [
-  {
-    icon: faWifi,
-    title: 'Private wireless for industrial environments',
-    desc: 'Private 5G and LTE network design and deployment for manufacturing facilities — covering production floors, warehouses, yards and complex multi-building campus environments.',
+  supports: {
+    heading: 'What AWTG delivers for manufacturing',
+    intro:
+      'AWTG combines wireless expertise, OT security knowledge and industrial IoT experience to deliver connectivity programmes for manufacturing, logistics and port operations.',
+    items: [
+      {
+        icon: faWifi,
+        title: 'Private 5G and LTE wireless',
+        desc: 'Purpose-built private wireless networks for industrial sites — providing the coverage, capacity and deterministic performance that critical manufacturing operations require.',
+        bullets: [
+          'RF design for complex industrial environments',
+          'Private LTE and 5G deployment across large sites',
+          'Seamless coverage for mobile assets and AGVs',
+          'Spectrum coordination and interference management',
+        ],
+      },
+      {
+        icon: faMicrochip,
+        title: 'Industrial IoT connectivity',
+        desc: 'Robust, segmented connectivity for the growing estate of industrial IoT devices — from environmental sensors to robotic process equipment and automated guided vehicles.',
+        bullets: [
+          'Dedicated network segments for IoT device categories',
+          'Device onboarding and lifecycle management',
+          'Traffic prioritisation for operational-critical devices',
+          'Integration with SCADA, MES and enterprise platforms',
+        ],
+      },
+      {
+        icon: faShieldHalved,
+        title: 'OT security and network segmentation',
+        desc: 'Network architecture and security controls that protect operational technology from IT-side threats — maintaining the availability and safety of critical manufacturing systems.',
+        bullets: [
+          'IT/OT network segmentation and zone architecture',
+          'Firewall and access control policy for OT environments',
+          'Vulnerability management adapted for OT system constraints',
+          'Ongoing OT network monitoring and threat detection',
+        ],
+      },
+    ],
   },
-  {
-    icon: faMicrochip,
-    title: 'Industrial IoT connectivity',
-    desc: 'Connectivity infrastructure and device management for connected manufacturing equipment, production monitoring and industrial IoT deployments.',
-  },
-  {
-    icon: faNetworkWired,
-    title: 'OT network design and modernisation',
-    desc: 'OT network architecture design that protects legacy industrial systems while enabling safe IT/OT convergence and real-time data integration.',
-  },
-  {
-    icon: faShieldHalved,
-    title: 'OT security and monitoring',
-    desc: 'Security monitoring, asset discovery and threat detection for operational technology environments — using OT-specific tooling designed for industrial control system environments.',
-  },
-  {
-    icon: faArrowTrendUp,
-    title: 'Digital manufacturing connectivity',
-    desc: 'Network infrastructure supporting smart manufacturing, digital twin, predictive maintenance and Industry 4.0 initiatives — connecting factory floor data to enterprise and cloud platforms.',
-  },
-]
 
-const whyItems = [
-  {
-    icon: faDiagramProject,
-    title: 'Proven in large-scale industrial environments',
-    desc: 'AWTG has delivered private wireless networks at significant scale — including a 500-hectare campus deployment — demonstrating the engineering and project management capability that industrial programmes require.',
+  useCases: {
+    heading: 'Applications across manufacturing and logistics',
+    intro:
+      'From automotive factory to container port, AWTG delivers the connectivity programmes that enable modern industrial operations.',
+    items: [
+      {
+        icon: faWifi,
+        title: 'Private wireless for industrial sites',
+        desc: 'Private LTE and 5G network design and deployment across factories, warehouses and logistics facilities — providing reliable coverage from floor to ceiling.',
+      },
+      {
+        icon: faMicrochip,
+        title: 'Industrial IoT programmes',
+        desc: 'End-to-end industrial IoT connectivity — from initial device and network architecture design through to deployment, management and performance monitoring.',
+      },
+      {
+        icon: faShieldHalved,
+        title: 'OT network security programmes',
+        desc: 'Assessment, segmentation and ongoing management of OT network security — protecting manufacturing systems from cyber threats without compromising operational continuity.',
+      },
+      {
+        icon: faGears,
+        title: 'Industry 4.0 network enablement',
+        desc: 'Network infrastructure supporting smart manufacturing programmes — machine vision, digital twins, autonomous systems and real-time process monitoring.',
+      },
+      {
+        icon: faNetworkWired,
+        title: 'Logistics and port connectivity',
+        desc: 'Wireless and wired connectivity for large logistics and port environments — providing seamless coverage for cranes, vehicles and container operations across the site.',
+      },
+    ],
   },
-  {
-    icon: faShieldHalved,
-    title: 'OT and industrial security expertise',
-    desc: 'We understand the specific security requirements of industrial control systems, SCADA and OT environments — applying appropriate approaches that protect operational continuity.',
+
+  outcomes: {
+    heading: 'What industrial connectivity delivers',
+    intro:
+      'Well-designed industrial wireless and OT networks improve operational efficiency, enable automation and reduce the risk exposure that poor connectivity creates in manufacturing environments.',
+    items: [
+      {
+        icon: faArrowTrendUp,
+        title: 'Operational efficiency gains',
+        desc: 'Reliable wireless connectivity enables automation, real-time monitoring and data-driven process optimisation that reduce waste and improve throughput.',
+      },
+      {
+        icon: faUsers,
+        title: 'Safer working environments',
+        desc: 'Connected safety systems, real-time location services and IoT-enabled hazard monitoring improve worker safety across complex industrial sites.',
+      },
+      {
+        icon: faChartLine,
+        title: 'Asset and process visibility',
+        desc: 'IoT-connected assets and real-time operational data provide the visibility needed for predictive maintenance, inventory management and process improvement.',
+      },
+      {
+        icon: faCloud,
+        title: 'IT/OT integration enabled',
+        desc: 'Secure, segmented OT networks enable safe integration with enterprise IT systems — unlocking the data that drives Industry 4.0 programmes.',
+      },
+    ],
   },
-  {
-    icon: faLayerGroup,
-    title: 'End-to-end industrial network delivery',
-    desc: 'From initial survey and design through deployment, integration and ongoing managed service, AWTG delivers complete industrial network programmes with a single point of accountability.',
+
+  proof: {
+    quote:
+      'AWTG delivered a private wireless network for a 500-hectare port facility, providing seamless coverage across container yards, warehouses and operational buildings — connecting the entire estate on a single, managed private network.',
+    author: 'AWTG Engineering',
+    context: 'Port infrastructure deployment',
   },
-  {
-    icon: faUserShield,
-    title: 'Production continuity as a design principle',
-    desc: 'Manufacturing network infrastructure is designed with zero-tolerance for disruption to production. Resilience, redundancy and failover are engineered into every AWTG deployment from the start.',
+
+  cta: {
+    title: 'Connectivity for industrial operations',
+    subtitle:
+      'Speak to AWTG about private 5G and LTE, industrial IoT connectivity and OT security for manufacturing and logistics.',
+    label: 'Talk to our experts',
   },
-]
+}
 
 export default function ConnectivityManufacturingPage() {
-  return (
-    <>
-      {/* ── Hero ── */}
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <h1 className="font-serif-display text-[#0a1628] mb-6">
-              Connectivity for manufacturing
-            </h1>
-            <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.75] mb-10">
-              AWTG designs and delivers private wireless, industrial IoT connectivity and OT network infrastructure for manufacturing facilities — supporting smart manufacturing, automation and Industry 4.0 programmes.
-            </p>
-            <Link to="/contact" className="btn btn-primary">
-              Talk to our experts
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Challenges ── */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">
-              Connectivity challenges in manufacturing
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-4 lg:mt-0">
-              Manufacturing connectivity sits at the intersection of operational technology, industrial IoT and enterprise IT — with production continuity and OT security as non-negotiable requirements.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {challenges.map(c => (
-              <div key={c.title} className="p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-sm transition-all">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{c.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── What connectivity supports ── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              What AWTG delivers for manufacturing connectivity
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              AWTG designs manufacturing connectivity infrastructure that supports smart factory operations, industrial automation and OT security — with the resilience and performance that production environments demand.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {capabilities.map(c => (
-              <div key={c.title} className="p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-sm transition-all">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{c.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Service blocks ── */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">
-              How AWTG can help
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-4 lg:mt-0">
-              AWTG structures manufacturing connectivity delivery around focused service areas aligned to the specific infrastructure, OT and Industry 4.0 requirements of modern manufacturing operations.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
-            {services.map(s => (
-              <div key={s.title} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={s.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{s.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Why AWTG ── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              Why AWTG
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              AWTG brings proven large-scale industrial network delivery, OT security expertise and the manufacturing sector understanding that complex connectivity programmes require.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
-            {whyItems.map(w => (
-              <div key={w.title} className="flex gap-5">
-                <div className="w-10 h-10 shrink-0 flex items-center justify-center text-[#228DC1] mt-0.5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={w.icon} style={{ fontSize: 17 }} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-1.5">{w.title}</h3>
-                  <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{w.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Scale note ── */}
-      <section className="py-20 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="border-l-2 border-[#228DC1] pl-8">
-            <p className="text-[#0a1628]/80 text-xl font-normal leading-relaxed max-w-3xl">
-              AWTG deployed a campus-wide private 5G network across 500 hectares for a major UK port operator — enabling autonomous vehicle coordination, real-time cargo tracking and digital twin integration. The same engineering capability applies to large-scale manufacturing environments.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 mt-6 text-[#228DC1] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
-            >
-              Speak to our team
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <CTASection
-        title="Connectivity for manufacturing and Industry 4.0"
-        subtitle="Speak to AWTG about private wireless, industrial IoT and OT network infrastructure for your manufacturing operations."
-        primaryLabel="Talk to our experts"
-        primaryHref="/contact"
-      />
-    </>
-  )
+  return <IndustrySectorPage data={data} />
 }

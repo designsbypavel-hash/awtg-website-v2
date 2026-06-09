@@ -1,252 +1,174 @@
-import CTASection from '@/components/CTASection'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import IndustrySectorPage from '@/components/IndustrySectorPage'
+import type { SectorPageData } from '@/components/IndustrySectorPage'
 import {
-  faBuilding, faShield, faDatabase, faUsers, faClipboardList,
-  faComments, faMagnifyingGlass, faChartLine, faRobot, faGears,
-  faShieldHalved, faUserShield, faArrowTrendUp, faDiagramProject, faLock,
+  faLandmark,
+  faComments,
+  faShieldHalved,
+  faUsers,
+  faChartLine,
+  faClipboardList,
+  faGlobe,
+  faArrowTrendUp,
+  faClock,
+  faLightbulb,
 } from '@fortawesome/free-solid-svg-icons'
 
-const challenges = [
-  {
-    icon: faUsers,
-    title: 'High volumes of public enquiries',
-    desc: 'Public sector organisations face enormous volumes of inbound queries from citizens about services, entitlements, applications and processes — far exceeding the capacity of front-line teams.',
+const data: SectorPageData = {
+  hero: {
+    badge: 'AI Platform · Public Sector',
+    title: 'AI for the public sector',
+    subtitle:
+      'Respond to more citizens faster, reduce case backlogs and give frontline teams the intelligence to act on what matters.',
+    description:
+      'AWTG deploys conversational AI and intelligent automation for public sector organisations — designed around compliance, accessibility and the practical constraints of government IT environments.',
+    ctaLabel: 'Talk to our experts',
+    visualIcon: faLandmark,
+    visualItems: [
+      { icon: faComments, label: 'Citizen service AI' },
+      { icon: faUsers, label: 'Case processing automation' },
+      { icon: faChartLine, label: 'Service analytics' },
+      { icon: faShieldHalved, label: 'Governance & compliance' },
+    ],
   },
-  {
-    icon: faClipboardList,
-    title: 'Administrative burden on staff',
-    desc: 'Complex case management, regulatory reporting and document processing consume significant staff time that could be directed toward delivering services and resolving the most complex issues.',
-  },
-  {
-    icon: faShield,
-    title: 'Data security and compliance requirements',
-    desc: 'AI deployments in the public sector must meet stringent information security standards, data protection obligations and public accountability requirements that commercial deployments may not face.',
-  },
-  {
-    icon: faBuilding,
-    title: 'Legacy systems and infrastructure',
-    desc: 'Many public sector organisations rely on legacy IT that was not designed to integrate with modern AI platforms — requiring thoughtful approaches to integration that avoid disruption to live services.',
-  },
-  {
-    icon: faDatabase,
-    title: 'Accurate, trusted information at scale',
-    desc: 'Citizens need reliable answers to complex questions about entitlements, procedures and services. AI used in this context must draw only on approved, current guidance and operate with clear accountability.',
-  },
-]
 
-const capabilities = [
-  {
-    icon: faComments,
-    title: 'Citizen service and enquiry support',
-    desc: 'AI can handle a high proportion of common citizen enquiries using approved guidance and service information, reducing pressure on front-line teams while improving speed of response.',
+  challenges: {
+    heading: 'The pressures public services face',
+    intro:
+      'Public sector organisations must deliver more with constrained resources, navigate strict governance and serve citizens with diverse needs and digital confidence.',
+    items: [
+      {
+        icon: faUsers,
+        title: 'Rising citizen demand',
+        desc: 'Enquiry volumes across benefits, services and information requests continue to grow while staffing levels and budgets remain under pressure.',
+      },
+      {
+        icon: faShieldHalved,
+        title: 'Compliance and governance',
+        desc: 'Public sector AI must operate within strict governance frameworks — GDPR, accessibility standards and ministerial accountability requirements that commercial tools often overlook.',
+      },
+      {
+        icon: faClock,
+        title: 'Staff capacity and retention',
+        desc: 'Frontline teams spend disproportionate time on routine enquiries, reducing the bandwidth available for complex casework and vulnerable citizen support.',
+      },
+      {
+        icon: faGlobe,
+        title: 'Digital inclusion gaps',
+        desc: 'Not all citizens are equally digitally confident. AI deployments must be accessible, clearly signposted and complemented by human escalation pathways.',
+      },
+    ],
   },
-  {
-    icon: faMagnifyingGlass,
-    title: 'Knowledge and policy management',
-    desc: 'Help staff navigate complex policy and procedure documentation quickly, reducing time spent searching and improving the consistency of advice given to citizens.',
-  },
-  {
-    icon: faRobot,
-    title: 'Case processing and workflow support',
-    desc: 'Support caseworkers with AI that assists document review, data extraction and case management tasks — freeing time for the human judgement that complex cases require.',
-  },
-  {
-    icon: faChartLine,
-    title: 'Service demand intelligence',
-    desc: 'Turn citizen interactions into useful insight, helping organisations identify emerging issues, predict demand, and direct resource to where it will have the greatest impact.',
-  },
-  {
-    icon: faGears,
-    title: 'Internal productivity and staff support',
-    desc: 'Help public sector teams work more efficiently with AI that assists drafting, research, translation and internal knowledge management — reducing time spent on routine cognitive tasks.',
-  },
-  {
-    icon: faLock,
-    title: 'Secure, compliant AI deployment',
-    desc: 'Every deployment is designed around the data security, governance and transparency requirements of public sector operation, with full audit trails and human oversight built in.',
-  },
-]
 
-const services = [
-  {
-    icon: faComments,
-    title: 'AI citizen service assistant',
-    desc: 'A conversational AI layer that answers common citizen questions using approved service and policy content, with clear escalation pathways to human advisors.',
+  supports: {
+    heading: 'What AWTG delivers for public services',
+    intro:
+      'AWTG designs AI for the real operating environment of public sector organisations — compliant, accessible and built to work with existing systems and governance frameworks.',
+    items: [
+      {
+        icon: faComments,
+        title: 'Citizen service automation',
+        desc: 'Conversational AI that handles high-volume citizen enquiries on benefits, services, eligibility and local information — available around the clock via web and messaging channels.',
+        bullets: [
+          'Common enquiry resolution using approved, current guidance',
+          'Accessible design meeting WCAG and public sector standards',
+          'Clear escalation to human advisors where needed',
+          'Audit trail and transparency for governance requirements',
+        ],
+      },
+      {
+        icon: faClipboardList,
+        title: 'Case management and triage AI',
+        desc: 'AI that supports case intake, classification, routing and status management — reducing manual handling and improving consistency across complex workflows.',
+        bullets: [
+          'Automated case triage and priority classification',
+          'Document processing and data extraction',
+          'Integration with existing case management platforms',
+          'Audit-ready logging for accountability requirements',
+        ],
+      },
+      {
+        icon: faShieldHalved,
+        title: 'Policy and compliance intelligence',
+        desc: 'Give frontline teams and citizens access to accurate, current policy guidance — reducing errors, improving consistency and ensuring compliance with changing requirements.',
+        bullets: [
+          'Conversational access to current policy and guidance',
+          'Version-controlled knowledge base management',
+          'Usage analytics to identify guidance gaps',
+          'Integration with legislative change workflows',
+        ],
+      },
+    ],
   },
-  {
-    icon: faMagnifyingGlass,
-    title: 'AI for internal knowledge and policy',
-    desc: 'Help staff find the right policy, procedure or guidance quickly — reducing inconsistency in advice and cutting the time teams spend searching internal systems.',
-  },
-  {
-    icon: faChartLine,
-    title: 'Service analytics and demand intelligence',
-    desc: 'Build a picture of citizen needs from interaction data — identifying trends, anticipating demand spikes and supporting evidence-based decisions about service design.',
-  },
-  {
-    icon: faRobot,
-    title: 'AI-assisted case processing',
-    desc: 'Support caseworkers with document processing, data extraction and workflow AI that reduces the administrative component of case management.',
-  },
-  {
-    icon: faUsers,
-    title: 'Human oversight and escalation design',
-    desc: 'Design escalation frameworks that ensure complex, sensitive or contested cases are always handled by trained human staff, with full context preserved from AI interactions.',
-  },
-]
 
-const whyItems = [
-  {
-    icon: faShieldHalved,
-    title: 'Security and compliance first',
-    desc: 'AWTG designs every AI deployment around information security, data protection and public accountability requirements — with full audit trails, governance documentation and clear oversight.',
+  useCases: {
+    heading: 'AI across public service delivery',
+    intro:
+      'From citizen-facing helpdesks to back-office case processing, AWTG deploys AI that improves both citizen experience and operational efficiency.',
+    items: [
+      {
+        icon: faComments,
+        title: 'Citizen helpdesk AI',
+        desc: 'Conversational AI for citizen enquiries on local services, benefits eligibility, appointment booking and information requests — available 24/7 across channels.',
+      },
+      {
+        icon: faClipboardList,
+        title: 'Case triage and processing',
+        desc: 'Automated intake, classification and routing of cases to the right team at the right time, reducing manual effort and improving response consistency.',
+      },
+      {
+        icon: faShieldHalved,
+        title: 'Policy navigation and guidance',
+        desc: 'AI-powered access to current policy, legislation and guidance for both citizens and frontline staff — reducing errors and improving first-contact resolution.',
+      },
+      {
+        icon: faChartLine,
+        title: 'Service analytics and reporting',
+        desc: 'Operational dashboards and trend analysis to surface demand patterns, service gaps and performance metrics for leadership and continuous improvement teams.',
+      },
+      {
+        icon: faGlobe,
+        title: 'Multi-channel citizen access',
+        desc: 'Consistent AI across web, mobile and telephony channels — meeting citizens where they are and supporting digital inclusion goals across the population.',
+      },
+    ],
   },
-  {
-    icon: faArrowTrendUp,
-    title: 'Measurable outcomes from deployment',
-    desc: 'Our AI programmes are built around measurable containment, satisfaction and productivity targets — with reporting frameworks that meet public sector accountability expectations.',
+
+  outcomes: {
+    heading: 'Better outcomes for citizens and teams',
+    intro:
+      'Public sector AI deployments with AWTG deliver improvements in response times, compliance assurance, staff capacity and service intelligence.',
+    items: [
+      {
+        icon: faArrowTrendUp,
+        title: 'Faster citizen response',
+        desc: 'More enquiries resolved at first contact, reducing wait times and improving the citizen experience across routine service interactions.',
+      },
+      {
+        icon: faShieldHalved,
+        title: 'Compliance by design',
+        desc: 'AI built to meet public sector governance, accessibility and data handling requirements — reducing risk and supporting auditability.',
+      },
+      {
+        icon: faUsers,
+        title: 'Staff capacity freed',
+        desc: 'Frontline teams redirected from repetitive volume to complex casework, vulnerable citizen support and high-value service delivery.',
+      },
+      {
+        icon: faLightbulb,
+        title: 'Better service intelligence',
+        desc: 'Insight from citizen interactions informs service design, policy communication and proactive improvements to the most common failure points.',
+      },
+    ],
   },
-  {
-    icon: faDiagramProject,
-    title: 'Integration with existing public sector systems',
-    desc: 'AWTG has experience integrating AI with the legacy platforms, document management systems and case management tools common in public sector organisations.',
+
+  cta: {
+    title: 'AI for better public services',
+    subtitle:
+      'Speak to AWTG about AI for citizen service delivery, case management automation and public sector compliance.',
+    label: 'Talk to our experts',
   },
-  {
-    icon: faUserShield,
-    title: 'Responsible AI built for public trust',
-    desc: 'Public trust depends on transparent, accountable AI. Every AWTG deployment is designed with explainability, human oversight and clear escalation in mind.',
-  },
-]
+}
 
 export default function AiPublicSectorPage() {
-  return (
-    <>
-      {/* ── Hero ── */}
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <h1 className="font-serif-display text-[#0a1628] mb-6">
-              AI for the public sector
-            </h1>
-            <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.75] mb-10">
-              AWTG helps public sector organisations use AI to improve citizen services, reduce administrative burden and deliver better outcomes within the security and compliance frameworks that public service demands.
-            </p>
-            <Link to="/contact" className="btn btn-primary">
-              Talk to our experts
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Challenges ── */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">
-              Challenges facing the public sector
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-4 lg:mt-0">
-              Public sector organisations must serve more citizens with constrained resources while maintaining accuracy, security and accountability. These are the pressures AI directly helps address.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {challenges.map(c => (
-              <div key={c.title} className="p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-sm transition-all">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{c.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── What AI supports ── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              What AI can support in public services
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              Through platforms such as Kai, AWTG helps public sector organisations build an AI layer that improves citizen service quality, supports staff productivity and maintains the security and accountability standards that public organisations require.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {capabilities.map(c => (
-              <div key={c.title} className="p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-sm transition-all">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{c.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Service blocks ── */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">
-              How AWTG can help
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-4 lg:mt-0">
-              AWTG structures AI delivery for public sector organisations around focused service areas, each designed to deliver measurable improvement to citizen experience and operational efficiency.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
-            {services.map(s => (
-              <div key={s.title} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
-                <div className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={s.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{s.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Why AWTG ── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              Why AWTG
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              AWTG brings proven AI delivery experience to public sector organisations, with a track record in large-scale service environments and the governance rigour that public accountability demands.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
-            {whyItems.map(w => (
-              <div key={w.title} className="flex gap-5">
-                <div className="w-10 h-10 shrink-0 flex items-center justify-center text-[#228DC1] mt-0.5" style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}>
-                  <FontAwesomeIcon icon={w.icon} style={{ fontSize: 17 }} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-1.5">{w.title}</h3>
-                  <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{w.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTASection
-        title="AI for public sector service delivery"
-        subtitle="Speak to AWTG about responsible AI for citizen services, case management and public sector operations."
-        primaryLabel="Talk to our experts"
-        primaryHref="/contact"
-      />
-    </>
-  )
+  return <IndustrySectorPage data={data} />
 }
