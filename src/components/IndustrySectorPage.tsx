@@ -102,9 +102,9 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       {/* ─── Challenges ─── */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center mb-16">
+          <div className="mb-14">
             <h2 className="font-heading text-[#0a1628] mb-4">{challenges.heading}</h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75]">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
               {challenges.intro}
             </p>
           </div>
@@ -139,9 +139,9 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       {/* ─── What AWTG Supports ─── */}
       <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">{supports.heading}</h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] mt-4 lg:mt-0">
+          <div className="mb-14">
+            <h2 className="font-heading text-[#0a1628] mb-4">{supports.heading}</h2>
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
               {supports.intro}
             </p>
           </div>
@@ -183,9 +183,9 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       {/* ─── Use Cases / Service Blocks ─── */}
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">{useCases.heading}</h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] mt-4 lg:mt-0">
+          <div className="mb-14">
+            <h2 className="font-heading text-[#0a1628] mb-4">{useCases.heading}</h2>
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
               {useCases.intro}
             </p>
           </div>
