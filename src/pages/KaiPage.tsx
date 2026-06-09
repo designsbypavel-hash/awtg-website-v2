@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGear, faXmark, faChevronDown, faPaperPlane, faMicrophone } from '@fortawesome/free-solid-svg-icons'
+import { faGear, faXmark, faChevronDown, faPaperPlane, faMicrophone, faRobot, faArrowRightFromBracket, faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 
@@ -1502,8 +1502,32 @@ export default function KaiPage() {
                 Fewer escalations. Faster resolutions.
               </h2>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
-                Escalation rate reduced from 40% to 10% on average for all our users.
+                Kai helps resolve more customer queries at the first point of contact, reducing unnecessary handovers and giving support teams more time to focus on complex cases.
               </p>
+              <div className="space-y-3">
+                {[
+                  { icon: faRobot,                 title: 'More queries resolved automatically', desc: 'Kai handles routine queries end-to-end.' },
+                  { icon: faArrowRightFromBracket,  title: 'Cleaner human handover',              desc: 'Only complex cases are escalated.' },
+                  { icon: faChartSimple,            title: 'Better service visibility',           desc: 'Track trends and act on insights faster.' },
+                ].map(item => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-4 p-4 rounded-2xl bg-white"
+                    style={{ border: '1px solid rgba(15,23,42,0.07)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ background: 'rgba(34,141,193,0.09)' }}
+                    >
+                      <FontAwesomeIcon icon={item.icon} style={{ fontSize: 15, color: '#228DC1' }} />
+                    </div>
+                    <div>
+                      <p className="text-[#0a1628] text-[14px] font-semibold leading-snug mb-0.5">{item.title}</p>
+                      <p className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Right: chart card — Intercom-style */}
