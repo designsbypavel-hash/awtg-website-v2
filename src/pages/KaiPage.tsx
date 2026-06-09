@@ -68,8 +68,8 @@ function ScrollProgress() {
 
 
 // -- Individual metric card driven by external `visible` prop -----------------
-function MetricCard({ prefix = '', num, suffix = '', label, note, visible }: {
-  prefix?: string; num: number; suffix?: string; label: string; note: string; visible: boolean
+function MetricCard({ prefix = '', num, suffix = '', label, note, visible, delay = 0 }: {
+  prefix?: string; num: number; suffix?: string; label: string; note: string; visible: boolean; delay?: number
 }) {
   const [count, setCount] = useState(0)
   const rafRef = useRef<number>(0)
@@ -77,16 +77,18 @@ function MetricCard({ prefix = '', num, suffix = '', label, note, visible }: {
   useEffect(() => {
     cancelAnimationFrame(rafRef.current)
     if (!visible) { setCount(0); return }
-    const duration = 1100
-    const t0 = Date.now()
-    const tick = () => {
-      const p = Math.min((Date.now() - t0) / duration, 1)
-      setCount((1 - Math.pow(1 - p, 3)) * num)
-      if (p < 1) { rafRef.current = requestAnimationFrame(tick) }
-    }
-    rafRef.current = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(rafRef.current)
-  }, [visible, num])
+    const tid = setTimeout(() => {
+      const duration = 1100
+      const t0 = Date.now()
+      const tick = () => {
+        const p = Math.min((Date.now() - t0) / duration, 1)
+        setCount((1 - Math.pow(1 - p, 3)) * num)
+        if (p < 1) { rafRef.current = requestAnimationFrame(tick) }
+      }
+      rafRef.current = requestAnimationFrame(tick)
+    }, delay)
+    return () => { clearTimeout(tid); cancelAnimationFrame(rafRef.current) }
+  }, [visible, num, delay])
 
   const display = Number.isInteger(num) ? Math.round(count).toString() : count.toFixed(1)
 
@@ -99,8 +101,8 @@ function MetricCard({ prefix = '', num, suffix = '', label, note, visible }: {
         boxShadow: visible ? '0 4px 24px rgba(15,23,42,0.07)' : '0 1px 4px rgba(15,23,42,0.03)',
         padding: '28px 32px',
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0) scale(1)' : 'translateY(24px) scale(0.98)',
-        transition: 'opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease',
+        transform: visible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.98)',
+        transition: `opacity 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms, box-shadow 0.4s ease`,
       }}
     >
       <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#228DC1] to-[#0e6a9a]" />
@@ -114,62 +116,44 @@ function MetricCard({ prefix = '', num, suffix = '', label, note, visible }: {
   )
 }
 
-// -- Sticky-left / scroll-stacked-right section --------------------------------
+// -- Horizontal metrics section -----------------------------------------------
 function GlobalReachSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const [shown, setShown] = useState([false, false, false, false])
+  const [ref, inView] = useInView(0.2)
 
-  useEffect(() => {
-    const fn = () => {
-      const el = sectionRef.current
-      if (!el) return
-      const { top, height } = el.getBoundingClientRect()
-      const vh = window.innerHeight
-      // 0 when section enters viewport, 1 when section bottom exits
-      const progress = Math.max(0, Math.min(1, (vh - top) / height))
-      setShown([
-        progress > 0.05,
-        progress > 0.30,
-        progress > 0.55,
-        progress > 0.78,
-      ])
-    }
-    window.addEventListener('scroll', fn, { passive: true })
-    fn()
-    return () => window.removeEventListener('scroll', fn)
-  }, [])
+  const metrics = [
+    { prefix: '',  num: 250, suffix: 'k+',  label: 'Production reach',  note: 'Users supported each month', delay: 0 },
+    { prefix: '+', num: 17,  suffix: '%',   label: 'CSAT uplift',        note: 'User satisfaction',          delay: 120 },
+    { prefix: '',  num: 38,  suffix: ' sec', label: 'Avg handle time',   note: 'vs 4+ min industry avg',     delay: 240 },
+    { prefix: '',  num: 150, suffix: '+',   label: 'Countries reached',  note: 'Global enterprise reach',    delay: 360 },
+  ]
 
   return (
-    <section ref={sectionRef} className="border-b border-gray-100" style={{ minHeight: '170vh', background: '#f8fafc' }}>
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        {/* subtle background texture */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-[0.018]"
-          style={{ backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)', backgroundSize: '32px 32px' }}
-        />
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full relative">
-          <div className="grid lg:grid-cols-[1fr_1fr] gap-20 items-center">
+    <section className="bg-[#f8fafc] border-b border-gray-100 py-24">
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        {/* heading + description */}
+        <div className="mb-14 max-w-2xl">
+          <h2 className="font-heading text-[#0a1628] mb-4">
+            Global reach. Measurable customer outcomes.
+          </h2>
+          <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75]">
+            Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
+          </p>
+        </div>
 
-            {/* Left: fixed content */}
-            <div>
-              <h2 className="font-heading text-[#0a1628] mb-5" style={{ lineHeight: 1.15 }}>
-                Global reach.<br />Measurable outcomes.
-              </h2>
-              <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] max-w-md">
-                Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
-              </p>
-            </div>
-
-            {/* Right: cards stack in one by one as section scrolls */}
-            <div className="space-y-4">
-              <MetricCard prefix="" num={250} suffix="k+" label="Production reach"  note="Users supported each month" visible={shown[0]} />
-              <MetricCard prefix="+" num={17}  suffix="%"  label="CSAT uplift"       note="User satisfaction"          visible={shown[1]} />
-              <MetricCard prefix="" num={38}  suffix=" sec" label="Avg handle time"  note="vs 4+ min industry avg"     visible={shown[2]} />
-              <MetricCard prefix="" num={150} suffix="+"   label="Countries reached" note="Global enterprise reach"    visible={shown[3]} />
-            </div>
-
-          </div>
+        {/* metric cards — horizontal row */}
+        <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {metrics.map(m => (
+            <MetricCard
+              key={m.label}
+              prefix={m.prefix}
+              num={m.num}
+              suffix={m.suffix}
+              label={m.label}
+              note={m.note}
+              visible={inView}
+              delay={m.delay}
+            />
+          ))}
         </div>
       </div>
     </section>
