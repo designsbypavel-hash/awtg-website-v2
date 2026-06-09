@@ -35,11 +35,11 @@ const navItems: NavEntry[] = [
       {
         heading: 'Industries',
         items: [
-          { label: 'Education', desc: 'Connected campus and EdTech platforms', href: '/industries/education' },
+          { label: 'Education', desc: 'AI for student support, admissions and multilingual engagement', href: '/ai/education' },
           { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
-          { label: 'Commerce', desc: 'Omnichannel connectivity and AI solutions', href: '/industries/retail' },
-          { label: 'Digital Transformation', desc: 'Strategic AI advisory, roadmap and transformation support', href: '/services/consultancy' },
-          { label: 'Public Sector', desc: 'Central and local government technology', href: '/industries/public-sector' },
+          { label: 'Commerce', desc: 'AI for customer service, product guidance and retail operations', href: '/ai/commerce' },
+          { label: 'Digital Transformation', desc: 'Process automation, knowledge management and organisational AI', href: '/ai/digital-transformation' },
+          { label: 'Public Sector', desc: 'AI for citizen services, case management and policy delivery', href: '/ai/public-sector' },
         ],
       },
     ],
