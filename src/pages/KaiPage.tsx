@@ -139,12 +139,6 @@ function GlobalReachSection() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  const highlights = [
-    { label: 'Enterprise-grade SLAs', sub: '99.99% uptime guaranteed' },
-    { label: 'Week-one containment', sub: 'No long ramp-up period' },
-    { label: 'Zero infrastructure lift', sub: 'Deploys into your existing stack' },
-  ]
-
   return (
     <section ref={sectionRef} className="border-b border-gray-100" style={{ minHeight: '170vh', background: '#f8fafc' }}>
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
@@ -159,38 +153,12 @@ function GlobalReachSection() {
 
             {/* Left: fixed content */}
             <div>
-              {/* eyebrow */}
-              <p className="type-label text-[#228DC1] mb-5" style={{ letterSpacing: '0.15em' }}>
-                LIVE IN PRODUCTION
-              </p>
               <h2 className="font-heading text-[#0a1628] mb-5" style={{ lineHeight: 1.15 }}>
                 Global reach.<br />Measurable outcomes.
               </h2>
-              <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] mb-10 max-w-md">
+              <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] max-w-md">
                 Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
               </p>
-
-              {/* supporting highlights */}
-              <div className="space-y-3">
-                {highlights.map(h => (
-                  <div key={h.label} className="flex items-start gap-3">
-                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#228DC1] shrink-0" />
-                    <div>
-                      <span className="text-[#0a1628] text-[14px] font-semibold">{h.label}</span>
-                      <span className="text-[#0a1628]/45 text-[13px] font-normal"> — {h.sub}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* deployment badge */}
-              <div
-                className="inline-flex items-center gap-2.5 mt-10 px-4 py-2.5 rounded-xl"
-                style={{ background: 'rgba(34,141,193,0.07)', border: '1px solid rgba(34,141,193,0.15)' }}
-              >
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[#0a1628]/65 text-[12px] font-medium tracking-wide">Actively deployed — not a pilot</span>
-              </div>
             </div>
 
             {/* Right: cards stack in one by one as section scrolls */}
