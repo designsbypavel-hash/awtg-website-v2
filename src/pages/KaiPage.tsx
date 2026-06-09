@@ -21,20 +21,6 @@ function useInView(threshold = 0.12) {
   return [ref, inView] as const
 }
 
-function useCountUp(end: number, inView: boolean, duration = 1400) {
-  const [val, setVal] = useState(0)
-  useEffect(() => {
-    if (!inView) return
-    const t0 = Date.now()
-    const tick = () => {
-      const p = Math.min((Date.now() - t0) / duration, 1)
-      setVal((1 - Math.pow(1 - p, 3)) * end)
-      if (p < 1) requestAnimationFrame(tick)
-    }
-    requestAnimationFrame(tick)
-  }, [inView, end, duration])
-  return val
-}
 
 const reveal = (inView: boolean, delay = 0): CSSProperties => ({
   opacity: inView ? 1 : 0,
@@ -80,14 +66,56 @@ function ScrollProgress() {
   )
 }
 
-function StatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
+
+// Persistent observer — stays active so animation reverses on scroll-back
+function useScrollReveal(threshold = 0.25) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([e]) => setInView(e.isIntersecting),
+      { threshold }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [threshold])
+  return [ref, inView] as const
+}
+
+function ScrollStatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
   prefix?: string; num: number; suffix?: string; label: string; note: string; delay?: number
 }) {
-  const [ref, inView] = useInView()
-  const val = useCountUp(num, inView)
-  const display = Number.isInteger(num) ? Math.round(val).toString() : val.toFixed(1)
+  const [ref, inView] = useScrollReveal(0.3)
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!inView) { setCount(0); return }
+    const duration = 1400
+    const t0 = Date.now()
+    let raf: number
+    const tick = () => {
+      const p = Math.min((Date.now() - t0) / duration, 1)
+      setCount((1 - Math.pow(1 - p, 3)) * num)
+      if (p < 1) { raf = requestAnimationFrame(tick) }
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView, num])
+
+  const display = Number.isInteger(num) ? Math.round(count).toString() : count.toFixed(1)
+
   return (
-    <div ref={ref} className="relative bg-white border border-gray-200 px-8 py-8 shadow-[0_1px_8px_rgba(10,22,40,0.03)] overflow-hidden" style={reveal(inView, delay)}>
+    <div
+      ref={ref}
+      className="relative bg-white border border-gray-200 px-8 py-8 shadow-[0_1px_8px_rgba(10,22,40,0.03)] overflow-hidden"
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? 'translateY(0)' : 'translateY(32px)',
+        transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+      }}
+    >
       <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#228DC1] to-[#0e6a9a]" />
       <p className="font-black leading-none mb-2" style={{ fontSize: 'clamp(24px, 2.8vw, 38px)', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #228DC1 0%, #0e6a9a 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
         {prefix}{display}{suffix}
@@ -98,7 +126,7 @@ function StatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
   )
 }
 
-// -- Integrations � Kai as glowing hub ----------------------------------------
+// -- Integrations — Kai as glowing hub ----------------------------------------
 function IntegrationsSection() {
   const [ref, inView] = useInView(0.08)
 
@@ -1439,12 +1467,12 @@ export default function KaiPage() {
                 Live globally. Trusted by enterprise organisations. Proven through real query volumes, measurable containment, and CSAT improvements from week one.
               </p>
             </div>
-            {/* Right: 2×2 metric cards with count-up animation */}
+            {/* Right: 2×2 metric cards — animate in on scroll, out on scroll-back */}
             <div className="grid grid-cols-2 gap-4">
-              <StatCard num={250} suffix="k+" label="Production reach" note="Users supported each month" delay={0} />
-              <StatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction" delay={100} />
-              <StatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
-              <StatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
+              <ScrollStatCard num={250} suffix="k+" label="Production reach" note="Users supported each month" delay={0} />
+              <ScrollStatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction" delay={100} />
+              <ScrollStatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
+              <ScrollStatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
             </div>
           </div>
         </div>
