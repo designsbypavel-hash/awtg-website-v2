@@ -2,6 +2,12 @@ import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
+type Crumb = {
+  href?: string
+  label: string
+  isLast: boolean
+}
+
 const LABELS: Record<string, string> = {
   about: 'About',
   leadership: 'Leadership',
@@ -54,6 +60,13 @@ const LABELS: Record<string, string> = {
   'social-value-statement': 'Social Value Statement',
 }
 
+const PATH_CRUMBS: Record<string, Omit<Crumb, 'isLast'>[]> = {
+  '/services/engineering': [
+    { label: 'Connectivity' },
+    { href: '/services/engineering', label: 'SCAP' },
+  ],
+}
+
 function toLabel(segment: string): string {
   return (
     LABELS[segment] ??
@@ -70,11 +83,17 @@ export default function Breadcrumbs() {
 
   if (segments.length === 0) return null
 
-  const crumbs = segments.map((seg, i) => ({
-    href: '/' + segments.slice(0, i + 1).join('/'),
-    label: toLabel(seg),
-    isLast: i === segments.length - 1,
-  }))
+  const customCrumbs = PATH_CRUMBS[pathname]
+  const crumbs: Crumb[] = customCrumbs
+    ? customCrumbs.map((crumb, i) => ({
+        ...crumb,
+        isLast: i === customCrumbs.length - 1,
+      }))
+    : segments.map((seg, i) => ({
+        href: '/' + segments.slice(0, i + 1).join('/'),
+        label: toLabel(seg),
+        isLast: i === segments.length - 1,
+      }))
 
   return (
     <nav
@@ -106,13 +125,17 @@ export default function Breadcrumbs() {
                 >
                   {crumb.label}
                 </span>
-              ) : (
+              ) : crumb.href ? (
                 <Link
                   to={crumb.href}
                   className="text-[12px] font-medium leading-none text-[#0a1628]/50 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]"
                 >
                   {crumb.label}
                 </Link>
+              ) : (
+                <span className="text-[12px] font-medium leading-none text-[#0a1628]/50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">
+                  {crumb.label}
+                </span>
               )}
             </li>
           ))}
