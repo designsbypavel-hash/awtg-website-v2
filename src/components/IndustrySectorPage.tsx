@@ -108,17 +108,18 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
               {challenges.intro}
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {challenges.items.map((c, i) => (
               <div
                 key={c.title}
-                className="relative p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-md transition-all"
+                className="relative p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200"
+                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
               >
                 <span className="absolute top-5 right-5 font-bold text-[#0a1628]/10 text-[11px] tracking-widest select-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div
-                  className="w-11 h-11 flex items-center justify-center text-[#228DC1] mb-5"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
                   style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
                 >
                   <FontAwesomeIcon icon={c.icon} style={{ fontSize: 18 }} />
@@ -144,14 +145,15 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
               {supports.intro}
             </p>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6">
             {supports.items.map(s => (
               <div
                 key={s.title}
-                className="bg-white border border-gray-100 p-8 hover:border-[#228DC1]/25 hover:shadow-sm transition-all"
+                className="bg-white rounded-[18px] p-8 hover:shadow-md transition-all duration-200"
+                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
               >
                 <div
-                  className="w-12 h-12 flex items-center justify-center text-[#228DC1] mb-6"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-[#228DC1] mb-6"
                   style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
                 >
                   <FontAwesomeIcon icon={s.icon} style={{ fontSize: 20 }} />
@@ -187,25 +189,25 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
               {useCases.intro}
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {useCases.items.map(u => (
-              <div key={u.title} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
-                <div className="flex items-start gap-4">
-                  <div
-                    className="w-10 h-10 flex items-center justify-center text-[#228DC1] shrink-0"
-                    style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
-                  >
-                    <FontAwesomeIcon icon={u.icon} style={{ fontSize: 16 }} />
-                  </div>
-                  <div>
-                    <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-1.5 leading-snug">
-                      {u.title}
-                    </h3>
-                    <p className="text-[#0a1628]/55 text-[13.5px] font-normal leading-relaxed">
-                      {u.desc}
-                    </p>
-                  </div>
+              <div
+                key={u.title}
+                className="bg-white rounded-[18px] p-6 hover:shadow-md transition-all duration-200"
+                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+              >
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-4"
+                  style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
+                >
+                  <FontAwesomeIcon icon={u.icon} style={{ fontSize: 16 }} />
                 </div>
+                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2 leading-snug">
+                  {u.title}
+                </h3>
+                <p className="text-[#0a1628]/55 text-[13.5px] font-normal leading-relaxed">
+                  {u.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -219,18 +221,15 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
             <h2 className="font-heading text-white mb-4">{outcomes.heading}</h2>
             <p className="text-white/45 text-[16px] font-normal leading-[1.75]">{outcomes.intro}</p>
           </div>
-          <div
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px"
-            style={{ background: 'rgba(255,255,255,0.09)' }}
-          >
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {outcomes.items.map(o => (
               <div
                 key={o.title}
-                className="p-8 hover:bg-white/5 transition-colors"
-                style={{ background: '#0a1628' }}
+                className="p-7 rounded-[18px] hover:bg-white/5 transition-colors duration-200"
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
               >
                 <div
-                  className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
                   style={{ backgroundColor: 'rgba(34,141,193,0.15)' }}
                 >
                   <FontAwesomeIcon icon={o.icon} style={{ fontSize: 17 }} />
@@ -238,7 +237,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 <h3 className="font-semibold text-white text-[15px] leading-snug mb-2">
                   {o.title}
                 </h3>
-                <p className="text-white/40 text-[13px] font-normal leading-relaxed">{o.desc}</p>
+                <p className="text-white/45 text-[13px] font-normal leading-relaxed">{o.desc}</p>
               </div>
             ))}
           </div>
