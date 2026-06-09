@@ -164,22 +164,23 @@ export default function IndustriesHealthTechPage() {
       {/* ── Healthcare challenges ── */}
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">
+          <div className="mb-14">
+            <h2 className="font-heading text-[#0a1628] mb-4">
               Challenges facing health tech today
             </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-4 lg:mt-0">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
               Healthcare organisations are navigating mounting operational, regulatory and technological complexity. These are the core pressures AWTG helps address.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {challenges.map(c => (
               <div
                 key={c.title}
-                className="p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-sm transition-all"
+                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200"
+                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
               >
                 <div
-                  className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
                   style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
                 >
                   <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
@@ -203,14 +204,15 @@ export default function IndustriesHealthTechPage() {
               Purpose-built platforms and products designed for the demands of clinical environments, developed in collaboration with healthcare professionals.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {solutions.map(s => (
               <div
                 key={s.title}
-                className="p-7 border border-gray-100 bg-white hover:border-[#228DC1]/30 hover:shadow-sm transition-all"
+                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200"
+                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
               >
                 <div
-                  className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
                   style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
                 >
                   <FontAwesomeIcon icon={s.icon} style={{ fontSize: 17 }} />
@@ -227,19 +229,23 @@ export default function IndustriesHealthTechPage() {
       {/* ── What we deliver ── */}
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-16 items-end mb-14">
-            <h2 className="font-heading text-[#0a1628]">
+          <div className="mb-14">
+            <h2 className="font-heading text-[#0a1628] mb-4">
               What we deliver
             </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-4 lg:mt-0">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
               From strategy to implementation, AWTG delivers end-to-end digital health capabilities that integrate with NHS systems, protect patient data and scale with your organisation.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {deliverables.map(d => (
-              <div key={d.title} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
+              <div
+                key={d.title}
+                className="bg-white p-7 rounded-[18px] hover:shadow-md transition-all duration-200"
+                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+              >
                 <div
-                  className="w-10 h-10 flex items-center justify-center text-[#228DC1] mb-5"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
                   style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
                 >
                   <FontAwesomeIcon icon={d.icon} style={{ fontSize: 17 }} />
@@ -263,19 +269,21 @@ export default function IndustriesHealthTechPage() {
               We combine technical depth with genuine healthcare domain expertise, delivering solutions that work in the real world of clinical care.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {whyItems.map(w => (
-              <div key={w.title} className="flex gap-5">
+              <div
+                key={w.title}
+                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200"
+                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+              >
                 <div
-                  className="w-10 h-10 shrink-0 flex items-center justify-center text-[#228DC1] mt-0.5"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
                   style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
                 >
                   <FontAwesomeIcon icon={w.icon} style={{ fontSize: 17 }} />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-1.5">{w.title}</h3>
-                  <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{w.desc}</p>
-                </div>
+                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{w.title}</h3>
+                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{w.desc}</p>
               </div>
             ))}
           </div>
