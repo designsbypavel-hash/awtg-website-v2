@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import {
@@ -23,6 +23,7 @@ import {
   faWarehouse,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
+import ProductDemoModal from '@/components/ProductDemoModal'
 
 type FeatureCard = {
   icon: IconDefinition
@@ -267,8 +268,28 @@ function SectionIntro({ title, desc }: { title: string; desc: string }) {
 }
 
 export default function ServicesEngineeringPage() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+  const openDemo = () => setIsDemoOpen(true)
+  const closeDemo = () => setIsDemoOpen(false)
+
   return (
     <>
+      <ProductDemoModal
+        isOpen={isDemoOpen}
+        onClose={closeDemo}
+        productName="SCAP"
+        title="See SCAP in action"
+        description="Share a few details and we will show how SCAP brings private network analytics, enterprise operations and assurance intelligence into one decision-making workspace."
+        logoSrc="/logo-icon.svg"
+        accentColor="#228DC1"
+        trustItems={['Private networks', 'Enterprise assurance', 'Operational analytics', 'Data sovereignty', 'RAN intelligence', 'Modular deployment']}
+        outcomes={[
+          'A focused demo around your private network or enterprise operations',
+          'A walkthrough of correlation across RAN, applications, assets and service data',
+          'Guidance on data ownership, privacy and deployment architecture',
+          'A practical pilot path for assurance, congestion and mobility analytics',
+        ]}
+      />
       <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
         <div className="absolute inset-0 pointer-events-none opacity-45">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -291,9 +312,9 @@ export default function ServicesEngineeringPage() {
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.75] text-[#0a1628]/62">
               A unified analytics and assurance platform that combines enterprise network visibility, private network analytics and operational intelligence into a single decision-making workspace.
             </p>
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-[#228DC1] px-7 py-3.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#1a6e99]">
+            <button type="button" onClick={openDemo} className="inline-flex items-center gap-2 rounded-lg bg-[#228DC1] px-7 py-3.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#1a6e99]">
               Request a Demo
-            </Link>
+            </button>
           </div>
           <div className="flex justify-center lg:justify-end">
             <ScapHeroVisual />
@@ -424,6 +445,7 @@ export default function ServicesEngineeringPage() {
         title="Ready to see SCAP in your network environment?"
         subtitle="Talk to AWTG about service correlation, private network analytics and assurance intelligence for your enterprise operations."
         primaryLabel="Request a Demo"
+        primaryOnClick={openDemo}
       />
     </>
   )

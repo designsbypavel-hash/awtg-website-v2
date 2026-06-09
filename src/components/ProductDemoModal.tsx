@@ -54,7 +54,7 @@ export default function ProductDemoModal({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 py-6 sm:px-6">
+    <div className="fixed inset-0 z-[3000] flex items-center justify-center overflow-y-auto px-4 py-6 sm:px-6">
       <button
         type="button"
         aria-label="Close demo form"
@@ -62,7 +62,7 @@ export default function ProductDemoModal({
         className="absolute inset-0 bg-[#0a1628]/35 backdrop-blur-[6px]"
       />
 
-      <div className="relative w-full max-w-6xl overflow-hidden rounded-[18px] border border-gray-200 bg-white shadow-[0_28px_90px_rgba(10,22,40,0.22)]">
+      <div className="relative my-auto max-h-[calc(100dvh-48px)] w-full max-w-6xl overflow-y-auto rounded-[18px] border border-gray-200 bg-white shadow-[0_28px_90px_rgba(10,22,40,0.22)]">
         <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
           <div className="relative overflow-hidden bg-[#f8fafc] px-7 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
             <div
