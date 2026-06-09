@@ -99,241 +99,197 @@ function StatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
 }
 
 function GlobalReachMap() {
-  const [paused, setPaused] = useState(false)
-  const ps = paused ? 'paused' : 'running'
-  const nodeStyle = (name: string): CSSProperties => ({
-    transformBox: 'fill-box',
+  const DUR = '24s'
+  const anim = (name: string): CSSProperties => ({
+    animation: `${name} ${DUR} linear infinite`,
+  })
+  const nodeAnim = (name: string): CSSProperties => ({
+    transformBox: 'fill-box' as const,
     transformOrigin: 'center',
-    animation: `${name} 16s linear infinite`,
-    animationPlayState: ps,
-  })
-  const arcStyle = (name: string): CSSProperties => ({
-    animation: `${name} 16s linear infinite`,
-    animationPlayState: ps,
-  })
-  const labelStyle = (name: string): CSSProperties => ({
-    animation: `${name} 16s linear infinite`,
-    animationPlayState: ps,
+    animation: `${name} ${DUR} linear infinite`,
   })
 
   return (
-    <div
-      className="relative -mx-8 lg:-ml-16 lg:-mr-4 overflow-visible bg-transparent"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <div className="relative flex justify-center items-center overflow-visible" style={{ minHeight: 360 }}>
       <style>{`
-        /* 16 s cycle — Africa 0 s, Af→As arc 0.96 s, Asia 3.36 s,
-           As→Eu arc 4.48 s, Europe 6.72 s, Eu→Af arc 7.84 s,
-           all hold 13.12 s, fade out 13.12→16 s */
+        @keyframes kaiGlobeRotate {
+          from { transform: perspective(2400px) rotateY(0deg); }
+          to   { transform: perspective(2400px) rotateY(360deg); }
+        }
 
-        @keyframes kaiDotAfrica {
-          0%        { opacity: 0; transform: scale(0);   animation-timing-function: cubic-bezier(0.34,1.56,0.64,1) }
-          8%        { opacity: 1; transform: scale(1) }
-          82%       { opacity: 1; transform: scale(1);   animation-timing-function: ease-in }
-          95%       { opacity: 0; transform: scale(0.6) }
-          100%      { opacity: 0; transform: scale(0) }
+        /* 24s cycle:
+           Africa  0→8%   Af→Eu arc 10→25%   Europe 22→28%
+           Eu→As  30→46%  Asia 43→49%         As→Au  51→66%
+           Australia 63→69%   hold 69→87%     fade 87→96% */
+
+        @keyframes kaiNodeAf {
+          0%,3%     { opacity:0; transform:scale(0); }
+          3%        { animation-timing-function:cubic-bezier(0.34,1.56,0.64,1); }
+          8%        { opacity:1; transform:scale(1); }
+          87%       { opacity:1; transform:scale(1); animation-timing-function:ease-in; }
+          95%       { opacity:0; transform:scale(0.6); }
+          100%      { opacity:0; }
         }
-        @keyframes kaiHaloAfrica {
-          0%, 4%    { opacity: 0;    transform: scale(0.7) }
-          9%        { opacity: 0.26; transform: scale(1);   animation-timing-function: linear }
-          18%       { opacity: 0;    transform: scale(2.2) }
-          28%       { opacity: 0.20; transform: scale(1);   animation-timing-function: linear }
-          37%       { opacity: 0;    transform: scale(2.2) }
-          50%       { opacity: 0.16; transform: scale(1);   animation-timing-function: linear }
-          59%       { opacity: 0;    transform: scale(2.2) }
-          72%       { opacity: 0.12; transform: scale(1);   animation-timing-function: linear }
-          81%       { opacity: 0;    transform: scale(2.2) }
-          82%, 100% { opacity: 0;    transform: scale(0.7) }
+        @keyframes kaiHaloAf {
+          0%,4%     { opacity:0; transform:scale(0.5); }
+          9%        { opacity:0.28; transform:scale(1); animation-timing-function:linear; }
+          17%       { opacity:0; transform:scale(2.1); }
+          30%       { opacity:0.20; transform:scale(1); animation-timing-function:linear; }
+          38%       { opacity:0; transform:scale(2.1); }
+          54%       { opacity:0.14; transform:scale(1); animation-timing-function:linear; }
+          62%       { opacity:0; transform:scale(2.1); }
+          87%,100%  { opacity:0; transform:scale(0.5); }
         }
-        @keyframes kaiArcAfAsia {
-          0%, 6%    { stroke-dashoffset: 220; opacity: 0 }
-          10%       { opacity: 0.9;  animation-timing-function: linear }
-          23%       { stroke-dashoffset: 0 }
-          82%       { stroke-dashoffset: 0; opacity: 0.9; animation-timing-function: ease-in }
-          95%, 100% { stroke-dashoffset: 0; opacity: 0 }
+        @keyframes kaiArcAfEu {
+          0%,10%    { stroke-dashoffset:180; opacity:0; }
+          14%       { opacity:0.8; animation-timing-function:linear; }
+          25%       { stroke-dashoffset:0; }
+          87%       { stroke-dashoffset:0; opacity:0.8; animation-timing-function:ease-in; }
+          95%,100%  { stroke-dashoffset:0; opacity:0; }
         }
-        @keyframes kaiDotAsia {
-          0%        { opacity: 0; transform: scale(0) }
-          21%       { opacity: 0; transform: scale(0);   animation-timing-function: cubic-bezier(0.34,1.56,0.64,1) }
-          30%       { opacity: 1; transform: scale(1) }
-          82%       { opacity: 1; transform: scale(1);   animation-timing-function: ease-in }
-          95%       { opacity: 0; transform: scale(0.6) }
-          100%      { opacity: 0; transform: scale(0) }
+        @keyframes kaiNodeEu {
+          0%,22%    { opacity:0; transform:scale(0); }
+          22%       { animation-timing-function:cubic-bezier(0.34,1.56,0.64,1); }
+          28%       { opacity:1; transform:scale(1); }
+          87%       { opacity:1; transform:scale(1); animation-timing-function:ease-in; }
+          95%       { opacity:0; transform:scale(0.6); }
+          100%      { opacity:0; }
         }
-        @keyframes kaiHaloAsia {
-          0%, 25%   { opacity: 0;    transform: scale(0.7) }
-          30%       { opacity: 0.26; transform: scale(1);   animation-timing-function: linear }
-          39%       { opacity: 0;    transform: scale(2.2) }
-          51%       { opacity: 0.20; transform: scale(1);   animation-timing-function: linear }
-          60%       { opacity: 0;    transform: scale(2.2) }
-          72%       { opacity: 0.16; transform: scale(1);   animation-timing-function: linear }
-          81%       { opacity: 0;    transform: scale(2.2) }
-          82%, 100% { opacity: 0;    transform: scale(0.7) }
+        @keyframes kaiHaloEu {
+          0%,23%    { opacity:0; transform:scale(0.5); }
+          29%       { opacity:0.28; transform:scale(1); animation-timing-function:linear; }
+          37%       { opacity:0; transform:scale(2.1); }
+          52%       { opacity:0.20; transform:scale(1); animation-timing-function:linear; }
+          60%       { opacity:0; transform:scale(2.1); }
+          74%       { opacity:0.14; transform:scale(1); animation-timing-function:linear; }
+          82%       { opacity:0; transform:scale(2.1); }
+          87%,100%  { opacity:0; transform:scale(0.5); }
         }
-        @keyframes kaiArcAsEu {
-          0%, 28%   { stroke-dashoffset: 200; opacity: 0 }
-          32%       { opacity: 0.9;  animation-timing-function: linear }
-          44%       { stroke-dashoffset: 0 }
-          82%       { stroke-dashoffset: 0; opacity: 0.9; animation-timing-function: ease-in }
-          95%, 100% { stroke-dashoffset: 0; opacity: 0 }
+        @keyframes kaiArcEuAs {
+          0%,30%    { stroke-dashoffset:200; opacity:0; }
+          34%       { opacity:0.8; animation-timing-function:linear; }
+          46%       { stroke-dashoffset:0; }
+          87%       { stroke-dashoffset:0; opacity:0.8; animation-timing-function:ease-in; }
+          95%,100%  { stroke-dashoffset:0; opacity:0; }
         }
-        @keyframes kaiDotEurope {
-          0%        { opacity: 0; transform: scale(0) }
-          42%       { opacity: 0; transform: scale(0);   animation-timing-function: cubic-bezier(0.34,1.56,0.64,1) }
-          51%       { opacity: 1; transform: scale(1) }
-          82%       { opacity: 1; transform: scale(1);   animation-timing-function: ease-in }
-          95%       { opacity: 0; transform: scale(0.6) }
-          100%      { opacity: 0; transform: scale(0) }
+        @keyframes kaiNodeAs {
+          0%,43%    { opacity:0; transform:scale(0); }
+          43%       { animation-timing-function:cubic-bezier(0.34,1.56,0.64,1); }
+          49%       { opacity:1; transform:scale(1); }
+          87%       { opacity:1; transform:scale(1); animation-timing-function:ease-in; }
+          95%       { opacity:0; transform:scale(0.6); }
+          100%      { opacity:0; }
         }
-        @keyframes kaiHaloEurope {
-          0%, 46%   { opacity: 0;    transform: scale(0.7) }
-          51%       { opacity: 0.26; transform: scale(1);   animation-timing-function: linear }
-          60%       { opacity: 0;    transform: scale(2.2) }
-          72%       { opacity: 0.20; transform: scale(1);   animation-timing-function: linear }
-          81%       { opacity: 0;    transform: scale(2.2) }
-          82%, 100% { opacity: 0;    transform: scale(0.7) }
+        @keyframes kaiHaloAs {
+          0%,44%    { opacity:0; transform:scale(0.5); }
+          50%       { opacity:0.28; transform:scale(1); animation-timing-function:linear; }
+          58%       { opacity:0; transform:scale(2.1); }
+          72%       { opacity:0.20; transform:scale(1); animation-timing-function:linear; }
+          80%       { opacity:0; transform:scale(2.1); }
+          87%,100%  { opacity:0; transform:scale(0.5); }
         }
-        @keyframes kaiArcEuAf {
-          0%, 49%   { stroke-dashoffset: 220; opacity: 0 }
-          53%       { opacity: 0.9;  animation-timing-function: linear }
-          67%       { stroke-dashoffset: 0 }
-          82%       { stroke-dashoffset: 0; opacity: 0.9; animation-timing-function: ease-in }
-          95%, 100% { stroke-dashoffset: 0; opacity: 0 }
+        @keyframes kaiArcAsAu {
+          0%,51%    { stroke-dashoffset:160; opacity:0; }
+          55%       { opacity:0.8; animation-timing-function:linear; }
+          66%       { stroke-dashoffset:0; }
+          87%       { stroke-dashoffset:0; opacity:0.8; animation-timing-function:ease-in; }
+          95%,100%  { stroke-dashoffset:0; opacity:0; }
         }
-        @keyframes kaiLabelAf {
-          0%, 6%    { opacity: 0 }
-          12%       { opacity: 0.72 }
-          82%       { opacity: 0.72 }
-          95%, 100% { opacity: 0 }
+        @keyframes kaiNodeAu {
+          0%,63%    { opacity:0; transform:scale(0); }
+          63%       { animation-timing-function:cubic-bezier(0.34,1.56,0.64,1); }
+          69%       { opacity:1; transform:scale(1); }
+          87%       { opacity:1; transform:scale(1); animation-timing-function:ease-in; }
+          95%       { opacity:0; transform:scale(0.6); }
+          100%      { opacity:0; }
         }
-        @keyframes kaiLabelAs {
-          0%, 23%   { opacity: 0 }
-          30%       { opacity: 0.72 }
-          82%       { opacity: 0.72 }
-          95%, 100% { opacity: 0 }
+        @keyframes kaiHaloAu {
+          0%,64%    { opacity:0; transform:scale(0.5); }
+          70%       { opacity:0.28; transform:scale(1); animation-timing-function:linear; }
+          78%       { opacity:0; transform:scale(2.1); }
+          87%,100%  { opacity:0; transform:scale(0.5); }
         }
-        @keyframes kaiLabelEu {
-          0%, 44%   { opacity: 0 }
-          51%       { opacity: 0.72 }
-          82%       { opacity: 0.72 }
-          95%, 100% { opacity: 0 }
-        }
+        @keyframes kaiLabelAf  { 0%,7%  { opacity:0; } 13% { opacity:0.65; } 87% { opacity:0.65; } 95%,100% { opacity:0; } }
+        @keyframes kaiLabelEu  { 0%,26% { opacity:0; } 32% { opacity:0.65; } 87% { opacity:0.65; } 95%,100% { opacity:0; } }
+        @keyframes kaiLabelAs  { 0%,47% { opacity:0; } 53% { opacity:0.65; } 87% { opacity:0.65; } 95%,100% { opacity:0; } }
+        @keyframes kaiLabelAu  { 0%,67% { opacity:0; } 73% { opacity:0.65; } 87% { opacity:0.65; } 95%,100% { opacity:0; } }
       `}</style>
 
-      <svg
-        viewBox="0 0 720 420"
-        role="img"
-        aria-label="Kai global reach — Africa, Asia, and Europe connecting on an animated globe"
-        className="block min-h-[380px] w-full"
-      >
-        <defs>
-          <linearGradient id="kaiRefOcean" x1="0%" x2="0%" y1="0%" y2="100%">
-            <stop offset="0%"   stopColor="#43b7f0" />
-            <stop offset="55%"  stopColor="#218fd3" />
-            <stop offset="100%" stopColor="#0870bb" />
-          </linearGradient>
-          <linearGradient id="kaiRefLand" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%"   stopColor="#61ff75" />
-            <stop offset="100%" stopColor="#2ee65f" />
-          </linearGradient>
-          <radialGradient id="kaiRefShine" cx="34%" cy="22%" r="55%">
-            <stop offset="0%"   stopColor="#ffffff" stopOpacity="0.38" />
-            <stop offset="60%"  stopColor="#ffffff" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="#ffffff" stopOpacity="0"    />
-          </radialGradient>
-          <filter id="kaiRefShadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="28" stdDeviation="24" floodColor="#0a1628" floodOpacity="0.18" />
-          </filter>
-          <filter id="kaiRefNodeGlow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-          <filter id="kaiRefArcGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-          <clipPath id="kaiRefGlobeClip">
-            <circle cx="360" cy="210" r="148" />
-          </clipPath>
-        </defs>
+      {/* Rotating realistic globe */}
+      <div className="relative" style={{ width: 'min(100%, 420px)', aspectRatio: '1 / 1' }}>
+        <img
+          src="/images/globe-realistic.png"
+          alt=""
+          aria-hidden="true"
+          className="block w-full h-full object-contain select-none pointer-events-none"
+          style={{ animation: 'kaiGlobeRotate 22s linear infinite', mixBlendMode: 'multiply' }}
+        />
 
-        {/* Drop shadow beneath globe */}
-        <ellipse cx="360" cy="366" rx="142" ry="18" fill="#0a1628" opacity="0.07" />
+        {/* Connection overlay — fixed screen-space, not rotating with globe */}
+        <svg
+          viewBox="0 0 420 420"
+          className="absolute inset-0 w-full h-full"
+          style={{ pointerEvents: 'none', overflow: 'visible' }}
+          aria-label="Animated global connections: Africa, Europe, Asia, Australia"
+        >
+          <defs>
+            <filter id="kaiNodeGlowR" x="-120%" y="-120%" width="340%" height="340%">
+              <feGaussianBlur stdDeviation="2.5" result="b" />
+              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+            <filter id="kaiArcGlowR" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="1.4" result="b" />
+              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
 
-        {/* Globe body */}
-        <g filter="url(#kaiRefShadow)">
-          <circle cx="360" cy="210" r="148" fill="url(#kaiRefOcean)" />
-          <g clipPath="url(#kaiRefGlobeClip)">
-            <g fill="url(#kaiRefLand)">
-              <path d="M248 134c18-18 44-30 78-34 26-3 53-1 78 4 8 2 11 8 6 15-11 15-36 9-51 13-18 5-22 22-34 34-15 15-45 6-53 25-8 20 13 38 1 58-9 16-29 7-41-6-18-19-31-48-30-76 1-24 14-45 46-33Z" />
-              <path d="M371 85c34 1 64 9 91 25 24 14 40 35 50 63 11 29 13 64 3 95-8 25-25 55-52 72-13 8-26 13-40 15 10-22 11-44 2-65-7-17-20-31-36-41-22-14-49-19-65-42-12-18-6-40 18-50 17-8 39-3 56-10 14-6 13-19 0-26-14-8-33-6-48-14-9-5-11-12-1-17 6-3 14-4 22-5Z" />
-              <path d="M457 156c18 4 36 12 53 24 21 15 31 35 26 56-7 27-31 44-57 51-6-21-21-36-38-49-13-10-25-24-20-42 4-17 17-28 36-40Z" />
-              <path d="M236 231c25 7 45 28 51 56 6 27-1 56-18 80-24-7-44-26-55-51-13-29-13-63 22-85Z" />
-              <path d="M198 178c16 13 20 33 12 54-9 22-28 38-51 45-18-20-24-48-14-73 10-23 30-36 53-26Z" />
-            </g>
-            <path d="M231 96c62-42 172-42 242 0"   fill="none" stroke="#fff" strokeWidth="1" opacity="0.18" />
-            <path d="M211 210h296"                  fill="none" stroke="#fff" strokeWidth="1" opacity="0.14" />
-            <path d="M250 315c66 33 164 33 225 0"   fill="none" stroke="#fff" strokeWidth="1" opacity="0.14" />
-            <ellipse cx="360" cy="210" rx="68"  ry="148" fill="none" stroke="#fff" strokeWidth="1" opacity="0.12" />
-            <ellipse cx="360" cy="210" rx="112" ry="148" fill="none" stroke="#fff" strokeWidth="1" opacity="0.10" />
-            <rect x="212" y="62" width="296" height="296" fill="url(#kaiRefShine)" />
-          </g>
-          <circle cx="360" cy="210" r="148" fill="none" stroke="#25df60" strokeWidth="2.2" opacity="0.8" />
-        </g>
+          {/* Africa (200,268) → Europe (185,148) */}
+          <path d="M200,268 C198,228 190,185 185,148"
+            fill="none" stroke="#228DC1" strokeWidth="1.6" strokeLinecap="round"
+            strokeDasharray="180" strokeDashoffset="180" opacity="0"
+            filter="url(#kaiArcGlowR)" style={anim('kaiArcAfEu')} />
 
-        {/* Animated connection arcs — clipped inside globe */}
-        <g clipPath="url(#kaiRefGlobeClip)" filter="url(#kaiRefArcGlow)">
-          {/* Africa → Asia */}
-          <path d="M376 252 C400 225 432 196 445 176"
-            fill="none" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round"
-            strokeDasharray="220" strokeDashoffset="220" opacity="0"
-            style={arcStyle('kaiArcAfAsia')} />
-          {/* Asia → Europe */}
-          <path d="M445 176 C420 162 388 152 348 150"
-            fill="none" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round"
+          {/* Europe (185,148) → Asia (295,178) */}
+          <path d="M185,148 C220,136 258,144 295,178"
+            fill="none" stroke="#228DC1" strokeWidth="1.6" strokeLinecap="round"
             strokeDasharray="200" strokeDashoffset="200" opacity="0"
-            style={arcStyle('kaiArcAsEu')} />
-          {/* Europe → Africa */}
-          <path d="M348 150 C350 188 360 222 376 252"
-            fill="none" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round"
-            strokeDasharray="220" strokeDashoffset="220" opacity="0"
-            style={arcStyle('kaiArcEuAf')} />
-        </g>
+            filter="url(#kaiArcGlowR)" style={anim('kaiArcEuAs')} />
 
-        {/* Africa node (cx=376, cy=252) */}
-        <g filter="url(#kaiRefNodeGlow)">
-          <circle cx={376} cy={252} r={16} fill="#228DC1" opacity={0} style={nodeStyle('kaiHaloAfrica')} />
-          <circle cx={376} cy={252} r={5}  fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeStyle('kaiDotAfrica')} />
-        </g>
-        <text x={394} y={257} fontSize="8" fontWeight="700" letterSpacing="0.13em"
-          textAnchor="start" fill="#0a1628" opacity={0}
-          style={labelStyle('kaiLabelAf')}>
-          AFRICA
-        </text>
+          {/* Asia (295,178) → Australia (308,298) */}
+          <path d="M295,178 C316,210 320,258 308,298"
+            fill="none" stroke="#228DC1" strokeWidth="1.6" strokeLinecap="round"
+            strokeDasharray="160" strokeDashoffset="160" opacity="0"
+            filter="url(#kaiArcGlowR)" style={anim('kaiArcAsAu')} />
 
-        {/* Asia node (cx=445, cy=176) */}
-        <g filter="url(#kaiRefNodeGlow)">
-          <circle cx={445} cy={176} r={16} fill="#228DC1" opacity={0} style={nodeStyle('kaiHaloAsia')} />
-          <circle cx={445} cy={176} r={5}  fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeStyle('kaiDotAsia')} />
-        </g>
-        <text x={454} y={172} fontSize="8" fontWeight="700" letterSpacing="0.13em"
-          textAnchor="start" fill="#0a1628" opacity={0}
-          style={labelStyle('kaiLabelAs')}>
-          ASIA
-        </text>
+          {/* Africa node */}
+          <g filter="url(#kaiNodeGlowR)">
+            <circle cx={200} cy={268} r={14} fill="#228DC1" opacity={0} style={nodeAnim('kaiHaloAf')} />
+            <circle cx={200} cy={268} r={4.5} fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeAnim('kaiNodeAf')} />
+          </g>
+          <text x={212} y={273} fontSize="8" fontWeight="700" letterSpacing="0.13em" fill="#0a1628" opacity={0} style={anim('kaiLabelAf')}>AFRICA</text>
 
-        {/* Europe node (cx=348, cy=150) */}
-        <g filter="url(#kaiRefNodeGlow)">
-          <circle cx={348} cy={150} r={16} fill="#228DC1" opacity={0} style={nodeStyle('kaiHaloEurope')} />
-          <circle cx={348} cy={150} r={5}  fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeStyle('kaiDotEurope')} />
-        </g>
-        <text x={312} y={145} fontSize="8" fontWeight="700" letterSpacing="0.13em"
-          textAnchor="end" fill="#0a1628" opacity={0}
-          style={labelStyle('kaiLabelEu')}>
-          EUROPE
-        </text>
-      </svg>
+          {/* Europe node */}
+          <g filter="url(#kaiNodeGlowR)">
+            <circle cx={185} cy={148} r={14} fill="#228DC1" opacity={0} style={nodeAnim('kaiHaloEu')} />
+            <circle cx={185} cy={148} r={4.5} fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeAnim('kaiNodeEu')} />
+          </g>
+          <text x={146} y={143} fontSize="8" fontWeight="700" letterSpacing="0.13em" textAnchor="end" fill="#0a1628" opacity={0} style={anim('kaiLabelEu')}>EUROPE</text>
+
+          {/* Asia node */}
+          <g filter="url(#kaiNodeGlowR)">
+            <circle cx={295} cy={178} r={14} fill="#228DC1" opacity={0} style={nodeAnim('kaiHaloAs')} />
+            <circle cx={295} cy={178} r={4.5} fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeAnim('kaiNodeAs')} />
+          </g>
+          <text x={309} y={174} fontSize="8" fontWeight="700" letterSpacing="0.13em" fill="#0a1628" opacity={0} style={anim('kaiLabelAs')}>ASIA</text>
+
+          {/* Australia node */}
+          <g filter="url(#kaiNodeGlowR)">
+            <circle cx={308} cy={298} r={14} fill="#228DC1" opacity={0} style={nodeAnim('kaiHaloAu')} />
+            <circle cx={308} cy={298} r={4.5} fill="#fff" stroke="#228DC1" strokeWidth="1.8" opacity={0} style={nodeAnim('kaiNodeAu')} />
+          </g>
+          <text x={322} y={303} fontSize="8" fontWeight="700" letterSpacing="0.13em" fill="#0a1628" opacity={0} style={anim('kaiLabelAu')}>AUSTRALIA</text>
+        </svg>
+      </div>
     </div>
   )
 }
