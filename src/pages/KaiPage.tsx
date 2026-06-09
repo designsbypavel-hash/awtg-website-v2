@@ -84,15 +84,15 @@ function useScrollReveal(threshold = 0.25) {
   return [ref, inView] as const
 }
 
-function ScrollStatCard({ prefix = '', num, suffix = '', label, note, delay = 0 }: {
-  prefix?: string; num: number; suffix?: string; label: string; note: string; delay?: number
+function ScrollStatCard({ prefix = '', num, suffix = '', label, note, enterDelay = 0, exitDelay = 0 }: {
+  prefix?: string; num: number; suffix?: string; label: string; note: string; enterDelay?: number; exitDelay?: number
 }) {
   const [ref, inView] = useScrollReveal(0.3)
   const [count, setCount] = useState(0)
 
   useEffect(() => {
     if (!inView) { setCount(0); return }
-    const duration = 1400
+    const duration = 1200
     const t0 = Date.now()
     let raf: number
     const tick = () => {
@@ -105,6 +105,7 @@ function ScrollStatCard({ prefix = '', num, suffix = '', label, note, delay = 0 
   }, [inView, num])
 
   const display = Number.isInteger(num) ? Math.round(count).toString() : count.toFixed(1)
+  const delay = inView ? enterDelay : exitDelay
 
   return (
     <div
@@ -112,8 +113,8 @@ function ScrollStatCard({ prefix = '', num, suffix = '', label, note, delay = 0 
       className="relative bg-white border border-gray-200 px-8 py-8 shadow-[0_1px_8px_rgba(10,22,40,0.03)] overflow-hidden"
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(32px)',
-        transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+        transform: inView ? 'translateY(0)' : 'translateY(36px)',
+        transition: `opacity 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
       }}
     >
       <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#228DC1] to-[#0e6a9a]" />
@@ -1467,12 +1468,12 @@ export default function KaiPage() {
                 Live globally. Trusted by enterprise organisations. Proven through real query volumes, measurable containment, and CSAT improvements from week one.
               </p>
             </div>
-            {/* Right: 2×2 metric cards — animate in on scroll, out on scroll-back */}
+            {/* Right: 2×2 — stack in sequentially on scroll-down, unstack in reverse on scroll-up */}
             <div className="grid grid-cols-2 gap-4">
-              <ScrollStatCard num={250} suffix="k+" label="Production reach" note="Users supported each month" delay={0} />
-              <ScrollStatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction" delay={100} />
-              <ScrollStatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg" delay={200} />
-              <ScrollStatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach" delay={300} />
+              <ScrollStatCard num={250} suffix="k+" label="Production reach" note="Users supported each month" enterDelay={0}   exitDelay={450} />
+              <ScrollStatCard prefix="+" num={17} suffix="%" label="CSAT uplift" note="User satisfaction"        enterDelay={150} exitDelay={300} />
+              <ScrollStatCard num={38} suffix=" sec" label="Avg handle time" note="vs 4+ min industry avg"      enterDelay={300} exitDelay={150} />
+              <ScrollStatCard num={150} suffix="+" label="Countries reached" note="Global enterprise reach"      enterDelay={450} exitDelay={0}   />
             </div>
           </div>
         </div>
