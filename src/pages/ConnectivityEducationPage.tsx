@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Education',
     accentColor: '#7c3aed',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1562774053-701939374585?w=840&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=840&q=80',
     title: 'Connectivity for education',
     subtitle:
       'Campus wireless, safeguarding-compliant networks and managed infrastructure services for schools, colleges and universities.',

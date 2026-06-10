@@ -40,7 +40,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Digital Transformation',
     accentColor: '#7c3aed',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=840&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=840&q=80',
     title: 'AI for digital transformation',
     subtitle:
       'Automate processes, unlock trapped knowledge and give your organisation the intelligence it needs to move faster.',

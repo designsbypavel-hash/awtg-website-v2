@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Public Sector',
     accentColor: '#0891b2',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=840&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&auto=format&fit=crop&w=840&q=80',
     title: 'AI for the public sector',
     subtitle:
       'Respond to more citizens faster, reduce case backlogs and give frontline teams the intelligence to act on what matters.',

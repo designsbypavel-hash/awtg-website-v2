@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Public Sector',
     accentColor: '#0891b2',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1541872703-574674d09572?w=840&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1541872703-574674d09572?ixlib=rb-4.0.3&auto=format&fit=crop&w=840&q=80',
     title: 'Connectivity for the public sector',
     subtitle:
       'PSN-aligned network infrastructure, secure remote access and managed services for central and local government.',
