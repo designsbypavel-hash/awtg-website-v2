@@ -137,10 +137,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       <section className="py-24" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14 max-w-2xl">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] mb-4"
-              style={{ background: `${accent}10`, color: accent, border: `1px solid ${accent}20` }}>
-              Challenges
-            </span>
             <h2 className="font-heading text-[#0a1628] mb-4">{challenges.heading}</h2>
             <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{challenges.intro}</p>
           </div>
@@ -156,9 +152,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     style={{ background: tile.bg }}>
                     <FontAwesomeIcon icon={c.icon} style={{ fontSize: 20, color: tile.fg }} />
                   </div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: tile.fg }}>
-                    Challenge {String(i + 1).padStart(2, '0')}
-                  </p>
                   <h3 className="font-semibold text-[#0a1628] text-[14px] leading-snug mb-3">{c.title}</h3>
                   <p className="text-[#0a1628]/52 text-[13px] leading-relaxed">{c.desc}</p>
                 </div>
@@ -174,10 +167,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       <section className="py-28 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-20 max-w-2xl">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] mb-4"
-              style={{ background: `${accent}10`, color: accent, border: `1px solid ${accent}20` }}>
-              What we deliver
-            </span>
             <h2 className="font-heading text-[#0a1628] mb-4">{supports.heading}</h2>
             <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{supports.intro}</p>
           </div>
@@ -190,13 +179,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
 
                   {/* ── Text side (Kore.ai use-case left) ── */}
                   <div className={isReversed ? 'lg:order-2' : ''}>
-                    {/* Category pill */}
-                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] mb-6"
-                      style={{ background: `${accent}10`, color: accent, border: `1px solid ${accent}20` }}>
-                      <div className="w-2 h-2 rounded-full" style={{ background: accent }} />
-                      {s.title}
-                    </span>
-                    <h3 className="font-heading text-[#0a1628] text-[26px] leading-snug mb-5">{s.title}</h3>
+                      <h3 className="font-heading text-[#0a1628] text-[26px] leading-snug mb-5">{s.title}</h3>
                     <p className="text-[#0a1628]/58 text-[15px] leading-[1.85] mb-8">{s.desc}</p>
 
                     {/* Kore.ai-style numbered feature rows */}
@@ -238,28 +221,10 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                         </div>
                       </div>
 
-                      {/* Central icon with rings */}
-                      <div className="flex items-center justify-center py-8"
+                      {/* Large centred icon */}
+                      <div className="flex items-center justify-center py-16"
                         style={{ background: `linear-gradient(180deg, ${accent}06 0%, white 100%)` }}>
-                        <div className="relative flex items-center justify-center">
-                          <div className="absolute rounded-full" style={{ width: 88, height: 88, border: `1.5px dashed ${accent}28` }} />
-                          <div className="absolute rounded-full" style={{ width: 114, height: 114, border: `1px dashed ${accent}16` }} />
-                          <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative z-10"
-                            style={{ background: `${accent}12`, border: `2px solid ${accent}26`, boxShadow: `0 8px 24px ${accent}20` }}>
-                            <FontAwesomeIcon icon={s.icon} style={{ fontSize: 28, color: accent }} />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* 2×2 tag grid */}
-                      <div className="px-5 pb-5 grid grid-cols-2 gap-2">
-                        {s.bullets.map((b, idx) => (
-                          <div key={idx} className="flex items-start gap-2 px-3 py-2.5 rounded-[10px]"
-                            style={{ background: idx % 2 === 0 ? `${accent}07` : 'rgba(15,23,42,0.025)', border: `1px solid ${idx % 2 === 0 ? `${accent}16` : 'rgba(15,23,42,0.07)'}` }}>
-                            <div className="w-1.5 h-1.5 rounded-full shrink-0 mt-[5px]" style={{ background: accent }} />
-                            <span className="text-[#0a1628]/58 text-[12px] leading-tight">{b}</span>
-                          </div>
-                        ))}
+                        <FontAwesomeIcon icon={s.icon} style={{ fontSize: 80, color: accent, opacity: 0.85 }} />
                       </div>
 
                       <div className="h-1" style={{ background: `linear-gradient(90deg, ${accent} 0%, ${accent}25 100%)` }} />
@@ -278,10 +243,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       <section className="py-24 border-t border-gray-100" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14 max-w-2xl">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] mb-4"
-              style={{ background: `${accent}10`, color: accent, border: `1px solid ${accent}20` }}>
-              Use cases
-            </span>
             <h2 className="font-heading text-[#0a1628] mb-4">{useCases.heading}</h2>
             <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{useCases.intro}</p>
           </div>
@@ -297,10 +258,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     <div className="w-12 h-12 rounded-[12px] flex items-center justify-center mb-5" style={{ background: tile.bg }}>
                       <FontAwesomeIcon icon={u.icon} style={{ fontSize: 20, color: tile.fg }} />
                     </div>
-                    {/* Accenture-style small caps label */}
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] mb-2.5" style={{ color: accent }}>
-                      Use case
-                    </p>
                     <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-3">{u.title}</h3>
                     <p className="text-[#0a1628]/52 text-[13.5px] leading-relaxed">{u.desc}</p>
                   </div>
@@ -320,16 +277,8 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
 
             {/* Left: large heading — Kore.ai "Why enterprises choose" */}
             <div className="lg:sticky lg:top-32">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] mb-5"
-                style={{ background: `${accent}10`, color: accent, border: `1px solid ${accent}20` }}>
-                Outcomes
-              </span>
               <h2 className="font-heading text-[#0a1628] mb-5 leading-tight">{outcomes.heading}</h2>
-              <p className="text-[#0a1628]/55 text-[15px] leading-[1.75] mb-8">{outcomes.intro}</p>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full" style={{ background: '#059669' }} />
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: '#059669' }}>AWTG outcomes</span>
-              </div>
+              <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{outcomes.intro}</p>
             </div>
 
             {/* Right: 2×2 card grid */}
