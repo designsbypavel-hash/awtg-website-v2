@@ -67,93 +67,207 @@ function ScrollProgress() {
 }
 
 
-// -- Individual metric card driven by external `visible` prop -----------------
-function MetricCard({ prefix = '', num, suffix = '', label, note, visible, delay = 0 }: {
-  prefix?: string; num: number; suffix?: string; label: string; note: string; visible: boolean; delay?: number
+// -- Animated globe + outcomes panel ------------------------------------------
+function GlobeCountUp({ num, prefix = '', suffix = '', visible, delay = 0 }: {
+  num: number; prefix?: string; suffix?: string; visible: boolean; delay?: number
 }) {
   const [count, setCount] = useState(0)
   const rafRef = useRef<number>(0)
-
   useEffect(() => {
     cancelAnimationFrame(rafRef.current)
     if (!visible) { setCount(0); return }
     const tid = setTimeout(() => {
-      const duration = 1100
-      const t0 = Date.now()
+      const dur = 1200, t0 = Date.now()
       const tick = () => {
-        const p = Math.min((Date.now() - t0) / duration, 1)
+        const p = Math.min((Date.now() - t0) / dur, 1)
         setCount((1 - Math.pow(1 - p, 3)) * num)
-        if (p < 1) { rafRef.current = requestAnimationFrame(tick) }
+        if (p < 1) rafRef.current = requestAnimationFrame(tick)
       }
       rafRef.current = requestAnimationFrame(tick)
     }, delay)
     return () => { clearTimeout(tid); cancelAnimationFrame(rafRef.current) }
   }, [visible, num, delay])
-
   const display = Number.isInteger(num) ? Math.round(count).toString() : count.toFixed(1)
+  return <>{prefix}{display}{suffix}</>
+}
+
+type GlobeChip = {
+  prefix: string; num: number; suffix: string
+  label: string; note: string; delay: number; pos: CSSProperties
+}
+
+function GlobePanel({ visible }: { visible: boolean }) {
+  const nodes: Array<{ cx: number; cy: number }> = [
+    { cx: 152, cy: 168 },
+    { cx: 210, cy: 135 },
+    { cx: 278, cy: 165 },
+    { cx: 328, cy: 200 },
+    { cx: 320, cy: 252 },
+    { cx: 162, cy: 262 },
+    { cx: 228, cy: 218 },
+  ]
+
+  const lines: Array<{ d: string; delay: number }> = [
+    { d: 'M 152,168 Q 180,108 210,135', delay: 0 },
+    { d: 'M 210,135 Q 246,118 278,165', delay: 350 },
+    { d: 'M 278,165 Q 310,158 328,200', delay: 700 },
+    { d: 'M 328,200 Q 340,228 320,252', delay: 1050 },
+    { d: 'M 152,168 Q 138,218 162,262', delay: 200 },
+    { d: 'M 228,218 Q 245,168 210,135', delay: 500 },
+  ]
+
+  const chips: GlobeChip[] = [
+    { prefix: '', num: 250, suffix: 'k+', label: 'Production reach',  note: 'Users supported monthly',   delay: 600,  pos: { top: '8%',    left: '0%'  } },
+    { prefix: '+', num: 17, suffix: '%',  label: 'CSAT uplift',        note: 'User satisfaction',         delay: 800,  pos: { top: '8%',    right: '0%' } },
+    { prefix: '', num: 150, suffix: '+',  label: 'Countries reached',  note: 'Global enterprise reach',   delay: 1200, pos: { bottom: '8%', left: '0%'  } },
+    { prefix: '', num: 38,  suffix: ' sec', label: 'Avg handle time', note: 'vs 4+ min industry avg',    delay: 1000, pos: { bottom: '8%', right: '0%' } },
+  ]
 
   return (
-    <div
-      className="relative bg-white overflow-hidden"
-      style={{
-        borderRadius: 16,
-        border: '1px solid rgba(15,23,42,0.08)',
-        boxShadow: visible ? '0 4px 24px rgba(15,23,42,0.07)' : '0 1px 4px rgba(15,23,42,0.03)',
-        padding: '28px 32px',
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.98)',
-        transition: `opacity 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms, box-shadow 0.4s ease`,
-      }}
-    >
-      <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#228DC1] to-[#0e6a9a]" />
-      <p className="font-black leading-none mb-2"
-        style={{ fontSize: 'clamp(30px, 3.2vw, 44px)', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #228DC1 0%, #0e6a9a 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-        {prefix}{display}{suffix}
-      </p>
-      <p className="text-[#0a1628] text-[14px] font-semibold mb-0.5">{label}</p>
-      <p className="text-[#0a1628]/55 text-[11px] font-normal">{note}</p>
+    <div style={{ position: 'relative', maxWidth: 500, margin: '0 auto', width: '100%' }}>
+      <style>{`
+        @keyframes awtg-globe-pulse {
+          0%   { transform: scale(1);   opacity: 0.65; }
+          100% { transform: scale(3.8); opacity: 0;    }
+        }
+        .awtg-p1 {
+          transform-box: fill-box; transform-origin: center;
+          animation: awtg-globe-pulse 2.8s ease-out infinite;
+        }
+        .awtg-p2 {
+          transform-box: fill-box; transform-origin: center;
+          animation: awtg-globe-pulse 2.8s ease-out 1.4s infinite;
+        }
+      `}</style>
+
+      <svg width="100%" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Globe grid */}
+        <circle cx="240" cy="240" r="145" stroke="#228DC1" strokeOpacity="0.18" strokeWidth="1.5" />
+        <ellipse cx="240" cy="240" rx="145" ry="12"  stroke="#228DC1" strokeOpacity="0.12" strokeWidth="1" />
+        <ellipse cx="240" cy="168" rx="125" ry="11"  stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
+        <ellipse cx="240" cy="312" rx="125" ry="11"  stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
+        <ellipse cx="240" cy="115" rx="73"  ry="7"   stroke="#228DC1" strokeOpacity="0.07" strokeWidth="1" />
+        <ellipse cx="240" cy="365" rx="73"  ry="7"   stroke="#228DC1" strokeOpacity="0.07" strokeWidth="1" />
+        <ellipse cx="240" cy="240" rx="73"  ry="145" stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
+        <ellipse cx="240" cy="240" rx="126" ry="145" stroke="#228DC1" strokeOpacity="0.07" strokeWidth="1" />
+
+        {/* Animated connection routes */}
+        {lines.map((line, i) => (
+          <path
+            key={i}
+            d={line.d}
+            stroke="#228DC1"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeOpacity="0.72"
+            strokeDasharray="500"
+            strokeDashoffset={visible ? 0 : 500}
+            style={{
+              transition: visible
+                ? `stroke-dashoffset 1.8s cubic-bezier(0.25,1,0.5,1) ${line.delay}ms`
+                : 'none',
+            }}
+          />
+        ))}
+
+        {/* Nodes with pulsing rings */}
+        {nodes.map((n, i) => (
+          <g key={i}>
+            {visible && (
+              <>
+                <circle
+                  cx={n.cx} cy={n.cy} r="5"
+                  stroke="#228DC1" strokeWidth="1.2" fill="none" strokeOpacity="0.55"
+                  className="awtg-p1"
+                  style={{ animationDelay: `${(i * 0.38).toFixed(2)}s` }}
+                />
+                <circle
+                  cx={n.cx} cy={n.cy} r="5"
+                  stroke="#228DC1" strokeWidth="0.8" fill="none" strokeOpacity="0.35"
+                  className="awtg-p2"
+                  style={{ animationDelay: `${(i * 0.38).toFixed(2)}s` }}
+                />
+              </>
+            )}
+            <circle
+              cx={n.cx} cy={n.cy} r="4"
+              fill="#228DC1"
+              fillOpacity={visible ? 0.9 : 0}
+              style={{ transition: `fill-opacity 0.4s ease ${200 + i * 100}ms` }}
+            />
+          </g>
+        ))}
+      </svg>
+
+      {/* Floating metric chips */}
+      {chips.map((chip, i) => (
+        <div
+          key={i}
+          style={{
+            position: 'absolute',
+            ...chip.pos,
+            background: 'white',
+            border: '1px solid rgba(15,23,42,0.09)',
+            borderRadius: 12,
+            boxShadow: '0 4px 20px rgba(15,23,42,0.09)',
+            padding: '12px 16px',
+            minWidth: 138,
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0) scale(1)' : 'translateY(12px) scale(0.96)',
+            transition: `opacity 0.5s ease ${chip.delay}ms, transform 0.5s ease ${chip.delay}ms`,
+          }}
+        >
+          <p style={{
+            fontSize: 22, fontWeight: 800, letterSpacing: '-0.03em',
+            background: 'linear-gradient(135deg, #228DC1, #0e6a9a)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            lineHeight: 1.1, margin: '0 0 3px',
+          }}>
+            <GlobeCountUp num={chip.num} prefix={chip.prefix} suffix={chip.suffix} visible={visible} delay={chip.delay + 150} />
+          </p>
+          <p style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', margin: '0 0 2px' }}>{chip.label}</p>
+          <p style={{ fontSize: 10, color: 'rgba(10,22,40,0.5)', margin: 0 }}>{chip.note}</p>
+        </div>
+      ))}
     </div>
   )
 }
 
-// -- Horizontal metrics section -----------------------------------------------
+// -- Redesigned global reach — two-column, text left / animated globe right ---
 function GlobalReachSection() {
-  const [ref, inView] = useInView(0.2)
-
-  const metrics = [
-    { prefix: '',  num: 250, suffix: 'k+',  label: 'Production reach',  note: 'Users supported each month', delay: 0 },
-    { prefix: '+', num: 17,  suffix: '%',   label: 'CSAT uplift',        note: 'User satisfaction',          delay: 120 },
-    { prefix: '',  num: 38,  suffix: ' sec', label: 'Avg handle time',   note: 'vs 4+ min industry avg',     delay: 240 },
-    { prefix: '',  num: 150, suffix: '+',   label: 'Countries reached',  note: 'Global enterprise reach',    delay: 360 },
-  ]
+  const [ref, inView] = useInView(0.15)
 
   return (
     <section className="bg-[#f8fafc] border-b border-gray-100 py-24">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        {/* heading + description */}
-        <div className="mb-14 max-w-2xl">
-          <h2 className="font-heading text-[#0a1628] mb-4">
-            Global reach. Measurable customer outcomes.
-          </h2>
-          <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75]">
-            Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
-          </p>
-        </div>
+      <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-        {/* metric cards — horizontal row */}
-        <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-          {metrics.map(m => (
-            <MetricCard
-              key={m.label}
-              prefix={m.prefix}
-              num={m.num}
-              suffix={m.suffix}
-              label={m.label}
-              note={m.note}
-              visible={inView}
-              delay={m.delay}
-            />
-          ))}
+          {/* Left — text content */}
+          <div style={reveal(inView, 0)}>
+            <h2 className="font-heading text-[#0a1628] mb-5">
+              Global reach. Measurable customer outcomes.
+            </h2>
+            <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] mb-8">
+              Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 text-[14px] font-semibold text-white rounded-xl px-6 py-3"
+              style={{
+                background: 'linear-gradient(135deg, #228DC1 0%, #0e6a9a 100%)',
+                boxShadow: '0 4px 16px rgba(34,141,193,0.28)',
+                textDecoration: 'none',
+              }}
+            >
+              See customer results
+            </a>
+          </div>
+
+          {/* Right — animated globe panel */}
+          <div style={reveal(inView, 200)}>
+            <GlobePanel visible={inView} />
+          </div>
+
         </div>
       </div>
     </section>
