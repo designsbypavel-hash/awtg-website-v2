@@ -269,7 +269,7 @@ export default function Navigation() {
         onMouseLeave={closeDropdownSoon}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex items-center h-16">
+          <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
             <Link to="/" className="flex items-center shrink-0 z-10" aria-label="AWTG — Home">
@@ -280,8 +280,8 @@ export default function Navigation() {
               />
             </Link>
 
-            {/* Desktop Nav — left-anchored directly after logo */}
-            <nav className="hidden lg:flex items-center ml-8" aria-label="Main navigation">
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex items-center" aria-label="Main navigation">
               {navItems.map(({ label, key }) => (
                 <button
                   key={key}
@@ -315,8 +315,8 @@ export default function Navigation() {
               </Link>
             </nav>
 
-            {/* Right CTAs — pushed to far right */}
-            <div className="hidden lg:flex items-center gap-2 ml-auto">
+            {/* Right CTAs */}
+            <div className="hidden lg:flex items-center gap-2">
               <Link
                 to="/contact"
                 className={`px-4 py-2 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
@@ -335,9 +335,9 @@ export default function Navigation() {
               </Link>
             </div>
 
-            {/* Mobile toggle — pushed to far right */}
+            {/* Mobile toggle */}
             <button
-              className={`lg:hidden ml-auto p-2 transition-colors ${linkCls}`}
+              className={`lg:hidden p-2 transition-colors ${linkCls}`}
               aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
