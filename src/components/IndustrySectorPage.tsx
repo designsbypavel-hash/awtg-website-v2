@@ -62,15 +62,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
         />
 
         <div className="max-w-7xl mx-auto px-8 lg:px-12 relative">
-          {hero.badge && (
-            <div
-              className="inline-flex items-center mb-6 px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] border"
-              style={{ background: `${accent}12`, color: accent, borderColor: `${accent}25` }}
-            >
-              {hero.badge}
-            </div>
-          )}
-
           <div className="grid lg:grid-cols-[1fr_420px] gap-16 items-center">
             <div>
               <h1 className="font-serif-display text-[#0a1628] mb-5">{hero.title}</h1>
