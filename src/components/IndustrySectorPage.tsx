@@ -69,14 +69,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
 
             {/* Left: text */}
             <div>
-              {hero.badge && (
-                <span
-                  className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] mb-6"
-                  style={{ background: `${accent}12`, color: accent, border: `1px solid ${accent}22` }}
-                >
-                  {hero.badge}
-                </span>
-              )}
               <h1 className="font-serif-display text-[#0a1628] mb-5 leading-[1.1]">{hero.title}</h1>
               <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.85] mb-10 max-w-lg">
                 {hero.description}
