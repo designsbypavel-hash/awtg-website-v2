@@ -840,31 +840,47 @@ export function Partners() {
 
 const articles = [
   {
-    tag: 'Blog', tagColor: 'text-[#228DC1]',
-    date: 'Oct 2025', readTime: '5 min read',
+    tag: 'Blog',
+    tagPill: 'bg-[#228DC1]/10 text-[#228DC1]',
+    accent: 'bg-[#228DC1]',
+    date: 'Oct 2025',
+    readTime: '5 min read',
     title: 'From Wi-Fi to Private 5G: The Evolution of Tourism Connectivity',
-    img: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80&auto=format&fit=crop',
+    excerpt: 'How destinations can move from public Wi-Fi to secure, high-capacity private 5G experiences for visitors, venues and operators.',
+    img: 'https://images.unsplash.com/photo-1529074963764-98f45c47344b?w=600&q=80&auto=format&fit=crop',
     href: '/insights/blog/wifi-to-private-5g-tourism-connectivity',
   },
   {
-    tag: 'Smart Cities', tagColor: 'text-[#7c3aed]',
-    date: 'Sep 2025', readTime: '6 min read',
+    tag: 'Smart Cities',
+    tagPill: 'bg-[#7c3aed]/10 text-[#7c3aed]',
+    accent: 'bg-[#7c3aed]',
+    date: 'Sep 2025',
+    readTime: '6 min read',
     title: 'Designing Invisible Infrastructure: How Cities Are Rethinking Connectivity',
-    img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80&auto=format&fit=crop',
+    excerpt: 'A look at how urban planners and network architects are balancing 5G roll-out, street-level aesthetics and public acceptance.',
+    img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&auto=format&fit=crop',
     href: '/insights/blog/designing-invisible-infrastructure-cities-connectivity',
   },
   {
-    tag: '5G', tagColor: 'text-[#0891b2]',
-    date: 'Sep 2025', readTime: '6 min read',
+    tag: '5G',
+    tagPill: 'bg-[#0891b2]/10 text-[#0891b2]',
+    accent: 'bg-[#0891b2]',
+    date: 'Sep 2025',
+    readTime: '6 min read',
     title: '5G-Connected Ports: The Gateway to Smarter Trade',
-    img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=600&q=80&auto=format&fit=crop',
+    excerpt: 'Port operators are deploying private 5G to digitise terminal operations, improve safety and cut container dwell times.',
+    img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80&auto=format&fit=crop',
     href: '/insights/blog/5g-connected-ports-smarter-trade',
   },
   {
-    tag: 'Rail', tagColor: 'text-[#059669]',
-    date: 'Sep 2025', readTime: '7 min read',
+    tag: 'Rail',
+    tagPill: 'bg-[#059669]/10 text-[#059669]',
+    accent: 'bg-[#059669]',
+    date: 'Sep 2025',
+    readTime: '7 min read',
     title: 'Public-Private Partnerships: Accelerating Rural Rail Digital Transformation',
-    img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop',
+    excerpt: 'How collaboration between operators, local authorities and technology partners is bringing connectivity to underserved rail corridors.',
+    img: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&q=80&auto=format&fit=crop',
     href: '/insights/blog/public-private-partnerships-rural-rail-digital-transformation',
   },
 ]
@@ -873,33 +889,54 @@ function Insights() {
   return (
     <section className="py-28 bg-[#f7f8fa]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
-          <div>
-            <h2 className="font-serif-display text-[#0a1628]">Explore the latest<br />from AWTG.</h2>
-          </div>
-          <Link to="/insights" className="text-sm font-medium text-[#228DC1] hover:text-[#1a6e99] transition-colors">
-            All insights
-          </Link>
-        </div>
+        <SectionHeader
+          className="mb-14"
+          title={<>Explore the latest<br />from AWTG.</>}
+          description="Insight, analysis and perspectives from AWTG's engineers and sector specialists."
+        />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {articles.map((a) => (
-            <Link key={a.title} to={a.href} className="bg-white overflow-hidden border border-gray-100">
-              <div className="h-44 overflow-hidden bg-gray-100">
-                <img src={a.img} alt={a.title} className="w-full h-full object-cover" loading="lazy" />
+            <Link
+              key={a.title}
+              to={a.href}
+              className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all flex flex-col overflow-hidden"
+            >
+              <div className="h-48 overflow-hidden bg-gray-100">
+                <img
+                  src={a.img}
+                  alt={a.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
               </div>
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-3 text-xs">
-                  <span className={`font-semibold ${a.tagColor}`}>{a.tag}</span>
-                  <span className="text-[#0a1628]/20">Â·</span>
-                  <span className="text-[#0a1628]/60 font-normal">{a.date}</span>
+              <div className={`h-[3px] w-full ${a.accent}`} />
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${a.tagPill}`}>{a.tag}</span>
+                  <span className="text-[#0a1628]/40 text-[11px]">{a.date}</span>
                 </div>
-                <p className="text-[14px] font-semibold text-[#0a1628] leading-[1.3] mb-4 line-clamp-3">{a.title}</p>
-                <span className="text-xs font-medium text-[#228DC1] inline-flex items-center gap-1.5">
-                  Read more
-                </span>
+                <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors leading-[1.4]">{a.title}</h3>
+                <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-5 line-clamp-2 flex-1">{a.excerpt}</p>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <span className="text-[#0a1628]/40 text-[11px]">{a.readTime}</span>
+                  <span className="text-[#228DC1] text-[12px] font-semibold inline-flex items-center gap-1">
+                    Read more
+                    <svg className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
               </div>
             </Link>
           ))}
+        </div>
+        <div className="mt-10 flex justify-center">
+          <Link
+            to="/insights"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#0a1628]/20 text-[#0a1628]/70 text-sm font-medium hover:border-[#228DC1] hover:text-[#228DC1] transition-all duration-200"
+          >
+            View all insights
+          </Link>
         </div>
       </div>
     </section>
