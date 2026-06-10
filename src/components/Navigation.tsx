@@ -362,7 +362,7 @@ export default function Navigation() {
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 lg:py-10">
+              <div className="px-10 py-8 lg:py-10">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
