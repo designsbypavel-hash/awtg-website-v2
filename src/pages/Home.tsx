@@ -613,7 +613,7 @@ function WhyAWTG() {
         </div>
         <div className="mt-8 text-right">
           <Link to="/about/certifications" className="text-sm font-medium text-[#0a1628]/60 hover:text-[#228DC1] transition-colors">
-            View all certifications ?
+            View all certifications
           </Link>
         </div>
       </div>
