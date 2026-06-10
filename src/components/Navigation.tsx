@@ -362,7 +362,7 @@ export default function Navigation() {
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="max-w-[1760px] mx-auto px-8 lg:px-12 xl:px-14 2xl:px-16 py-14">
+              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 lg:py-10">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
@@ -389,19 +389,19 @@ export default function Navigation() {
 
                 {/* Grouped mega menu */}
                 {nav.groups && (
-                  <div className="grid grid-cols-[minmax(0,1fr)_560px] gap-20 xl:gap-28 items-start">
-                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-14' : 'grid-cols-2 gap-20 xl:gap-28'}`}>
+                  <div className="grid grid-cols-[minmax(0,1fr)_300px] gap-10 xl:gap-14 items-start">
+                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-8' : 'grid-cols-2 gap-8 xl:gap-10'}`}>
                       {nav.groups.map((group) => (
                         <div key={group.heading}>
-                          <p className="text-[12px] font-bold uppercase tracking-[0.28em] text-[#0a1628]/45 mb-8 px-2">
+                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/45 mb-5 px-1">
                             {group.heading}
                           </p>
-                          <div className="space-y-7">
+                          <div className="space-y-4">
                             {group.items.map((item) => (
                               <Link
                                 key={item.href}
                                 to={item.href}
-                                className="group block px-2 py-0 transition-transform duration-200 hover:translate-x-1"
+                                className="group block px-1 py-0 transition-transform duration-200 hover:translate-x-1"
                                 onMouseEnter={() => {
                                   const panel = featuredPanels[nav.key]
                                   const match = panel?.items.findIndex((featured) => featured.href === item.href || featured.label === item.label) ?? -1
@@ -410,10 +410,10 @@ export default function Navigation() {
                                 onClick={closeDropdownNow}
                               >
                                 <div>
-                                  <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-1 tracking-[-0.01em]">
+                                  <p className="text-[#0a1628] text-[13.5px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
                                     {item.label}
                                   </p>
-                                  <p className="text-[#0a1628]/58 text-xs font-normal leading-relaxed">
+                                  <p className="text-[#0a1628]/55 text-[11.5px] font-normal leading-relaxed">
                                     {item.desc}
                                   </p>
                                 </div>
@@ -429,7 +429,7 @@ export default function Navigation() {
                       const item = panel.items[featuredIndex % panel.items.length]
                       return (
                         <div className="pt-1">
-                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-5">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-4">
                             {panel.eyebrow}
                           </p>
                           <Link
@@ -438,31 +438,31 @@ export default function Navigation() {
                             onClick={closeDropdownNow}
                             className="group block"
                           >
-                            <div className="relative h-[272px] overflow-hidden rounded-[10px] bg-[#f5f8fb] border border-gray-200 shadow-[0_22px_60px_rgba(10,22,40,0.12)]">
+                            <div className="relative h-[170px] overflow-hidden rounded-[8px] bg-[#f5f8fb] border border-gray-200 shadow-[0_8px_32px_rgba(10,22,40,0.10)]">
                               <img
                                 src={item.image}
                                 alt=""
-                                className={`h-full w-full ${item.imageFit === 'contain' ? 'object-contain p-10' : 'object-cover'}`}
+                                className={`h-full w-full ${item.imageFit === 'contain' ? 'object-contain p-6' : 'object-cover'}`}
                               />
-                              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(10,22,40,0.10)_100%)]" />
-                              <div className="absolute left-7 top-7 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]">
+                              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(10,22,40,0.08)_100%)]" />
+                              <div className="absolute left-4 top-4 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#0a1628]">
                                 {item.badge}
                               </div>
-                              <span className="absolute bottom-6 right-7 text-[#0a1628] transition-transform duration-200 group-hover:translate-x-1">→</span>
+                              <span className="absolute bottom-4 right-4 text-[#0a1628] transition-transform duration-200 group-hover:translate-x-1">→</span>
                             </div>
-                            <h3 className="mt-7 text-[#0a1628] text-[16px] font-semibold tracking-[-0.01em]">
+                            <h3 className="mt-4 text-[#0a1628] text-[14px] font-semibold tracking-[-0.01em]">
                               {item.label}
                             </h3>
-                            <p className="mt-2 max-w-[500px] text-[#0a1628]/62 text-[13px] leading-relaxed">
+                            <p className="mt-1.5 text-[#0a1628]/60 text-[12px] leading-relaxed">
                               {item.desc}
                             </p>
                           </Link>
                           <Link
                             to={panel.href}
                             onClick={closeDropdownNow}
-                            className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#228DC1] hover:text-[#0a1628] transition-colors"
+                            className="mt-4 inline-flex items-center text-[12px] font-semibold text-[#228DC1] hover:text-[#0a1628] transition-colors"
                           >
-                            {panel.cta} <span className="ml-2">→</span>
+                            {panel.cta} <span className="ml-1.5">→</span>
                           </Link>
                         </div>
                       )

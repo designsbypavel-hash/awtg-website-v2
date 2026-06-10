@@ -98,29 +98,29 @@ export default function Breadcrumbs() {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="fixed left-0 right-0 z-[1500] bg-white border-b border-gray-100"
+      className="fixed left-0 right-0 z-[1500] bg-white/95 backdrop-blur-sm border-b border-gray-100/80"
       style={{ top: '64px' }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <ol className="flex items-center h-10 overflow-hidden">
+        <ol className="flex items-center gap-0 h-9 overflow-hidden">
           <li className="flex items-center shrink-0">
             <Link
               to="/"
-              className="text-[12px] font-medium leading-none text-[#0a1628]/50 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap"
+              className="text-[11.5px] font-medium text-[#0a1628]/45 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap"
             >
               Home
             </Link>
           </li>
           {crumbs.map((crumb) => (
-            <li key={crumb.href} className="flex items-center shrink-0 min-w-0">
+            <li key={crumb.href ?? crumb.label} className="flex items-center shrink-0 min-w-0">
               <FontAwesomeIcon
                 icon={faChevronRight}
-                className="w-2 h-2 text-[#0a1628]/25 mx-2 shrink-0"
+                className="w-[7px] h-[7px] text-[#0a1628]/20 mx-2 shrink-0"
                 aria-hidden="true"
               />
               {crumb.isLast ? (
                 <span
-                  className="text-[12px] font-medium leading-none text-[#228DC1] whitespace-nowrap overflow-hidden text-ellipsis max-w-[220px]"
+                  className="text-[11.5px] font-medium text-[#228DC1] whitespace-nowrap overflow-hidden text-ellipsis max-w-[220px]"
                   aria-current="page"
                 >
                   {crumb.label}
@@ -128,12 +128,12 @@ export default function Breadcrumbs() {
               ) : crumb.href ? (
                 <Link
                   to={crumb.href}
-                  className="text-[12px] font-medium leading-none text-[#0a1628]/50 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]"
+                  className="text-[11.5px] font-medium text-[#0a1628]/45 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]"
                 >
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-[12px] font-medium leading-none text-[#0a1628]/50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">
+                <span className="text-[11.5px] font-medium text-[#0a1628]/40 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">
                   {crumb.label}
                 </span>
               )}
