@@ -816,17 +816,25 @@ function EscalationChart() {
 
   const pts = [
     { x:54,  y:67,  pct:'40%', lbl:'MAY 2024' },
-    { x:136, y:92,  pct:'34%', lbl:'SEP 2024' },
+    { x:136, y:92,  pct:'34%', lbl:'SEP 2024', interaction: 'Advanced Sentiment Analysis' },
     { x:219, y:120, pct:'28%', lbl:'JAN 2025' },
-    { x:301, y:147, pct:'22%', lbl:'MAY 2025' },
-    { x:383, y:174, pct:'16%', lbl:'SEP 2025' },
+    { x:301, y:147, pct:'22%', lbl:'MAY 2025', interaction: 'Deep Contextual Knowledge' },
+    { x:383, y:174, pct:'16%', lbl:'SEP 2025', interaction: 'Conversation Design' },
     { x:466, y:192, pct:'12%', lbl:'DEC 2025' },
     { x:548, y:201, pct:'10%', lbl:'MAR 2026' },
   ]
 
+  const interactionCallouts = [
+    { point: pts[1], x: 120, y: 29, width: 166, label: 'Advanced Sentiment Analysis' },
+    { point: pts[3], x: 248, y: 70, width: 166, label: 'Deep Contextual Knowledge' },
+    { point: pts[4], x: 358, y: 119, width: 136, label: 'Conversation Design' },
+  ]
+
   const hp = hovered !== null ? pts[hovered] : null
-  // Keep tooltip box (80px wide) fully within the 560-wide viewBox
-  const tx = hp ? Math.min(Math.max(hp.x, 44), 516) : 0
+  const tooltipWidth = hp?.interaction ? 168 : 80
+  const tooltipHeight = hp?.interaction ? 62 : 46
+  // Keep tooltip box fully within the 560-wide viewBox.
+  const tx = hp ? Math.min(Math.max(hp.x, (tooltipWidth / 2) + 4), 560 - (tooltipWidth / 2) - 4) : 0
 
   return (
     <svg width="100%" viewBox="0 0 560 295" xmlns="http://www.w3.org/2000/svg" style={{ display:'block' }}>
@@ -880,6 +888,43 @@ function EscalationChart() {
         strokeLinecap="round" strokeLinejoin="round"
       />
 
+      {/* Interaction callouts */}
+      {interactionCallouts.map(({ point, x, y, width, label }) => (
+        <g key={label} style={{ pointerEvents:'none' }}>
+          <line
+            x1={x + width / 2}
+            y1={y + 28}
+            x2={point.x}
+            y2={point.y - 8}
+            stroke="#228DC1"
+            strokeWidth="1.2"
+            strokeDasharray="3,4"
+            opacity="0.42"
+          />
+          <rect
+            x={x}
+            y={y}
+            width={width}
+            height="28"
+            rx="6"
+            fill="#ffffff"
+            stroke="rgba(34,141,193,0.28)"
+          />
+          <text
+            x={x + width / 2}
+            y={y + 18}
+            textAnchor="middle"
+            fontSize="8.5"
+            fontWeight="700"
+            fill="#1a6e99"
+            fontFamily="Roboto,sans-serif"
+            letterSpacing="0.035em"
+          >
+            {label}
+          </text>
+        </g>
+      ))}
+
       {/* Vertical indicator line on hover */}
       {hp && (
         <line
@@ -914,12 +959,16 @@ function EscalationChart() {
       {/* Tooltip card */}
       {hp && (
         <g style={{ pointerEvents:'none' }}>
-          <rect x={tx-40} y={hp.y - 70} width="80" height="46"
+          <rect x={tx - tooltipWidth / 2} y={hp.y - tooltipHeight - 24} width={tooltipWidth} height={tooltipHeight}
             rx="6" fill="#0a1628"/>
-          <text x={tx} y={hp.y - 49} textAnchor="middle"
+          <text x={tx} y={hp.y - tooltipHeight - 3} textAnchor="middle"
             fontSize="15" fontWeight="700" fill="white" fontFamily="Roboto,sans-serif">{hp.pct}</text>
           <text x={tx} y={hp.y - 33} textAnchor="middle"
             fontSize="9" fill="rgba(255,255,255,0.58)" fontFamily="Roboto,sans-serif" letterSpacing="0.04em">{hp.lbl}</text>
+          {hp.interaction && (
+            <text x={tx} y={hp.y - 18} textAnchor="middle"
+              fontSize="8.5" fontWeight="700" fill="#8bd8ff" fontFamily="Roboto,sans-serif" letterSpacing="0.03em">{hp.interaction}</text>
+          )}
           {/* Arrow */}
           <polygon points={`${tx-6},${hp.y-24} ${tx+6},${hp.y-24} ${tx},${hp.y-16}`} fill="#0a1628"/>
         </g>
