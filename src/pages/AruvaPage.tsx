@@ -1175,8 +1175,6 @@ function MMTextDemo() {
   const [active, setActive] = React.useState(0)
   const [score, setScore] = React.useState(MM_TEXT_CONVERSATIONS[0].confidence)
   const activeStudent = MM_TEXT_CONVERSATIONS[active]
-  const activeExample = { equation: '', topic: '', result: '', steps: [] as Array<{ label: string; val: string }> }
-  const stepCount = 0
 
   React.useEffect(() => {
     const id = setInterval(() => {
