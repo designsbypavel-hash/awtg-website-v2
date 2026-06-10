@@ -983,9 +983,13 @@ function EscalationChart() {
         <mask id="escMask">
           <rect x="54" y="10" width="494" height="234" fill="url(#escFade)"/>
         </mask>
-        <filter id="escSoftShadow" x="-20%" y="-40%" width="140%" height="180%">
-          <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#0a1628" floodOpacity="0.12"/>
+        <filter id="escSoftShadow" x="-30%" y="-60%" width="160%" height="220%">
+          <feDropShadow dx="0" dy="4" stdDeviation="12" floodColor="#0a1628" floodOpacity="0.18"/>
         </filter>
+        <linearGradient id="escAccentGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#228DC1"/>
+          <stop offset="100%" stopColor="#0e6a9a"/>
+        </linearGradient>
       </defs>
 
       {/* Chart bg */}
@@ -1031,28 +1035,30 @@ function EscalationChart() {
           y1={activePoint.y}
           x2={activeCardX + (activePoint.x > 330 ? activeCardWidth : 0)}
           y2={activeCardY + 28}
-          stroke="#0a1628"
+          stroke="#228DC1"
           strokeWidth="1.2"
           strokeDasharray="3,4"
-          opacity="0.28"
+          opacity="0.45"
         />
-        <circle cx={activePoint.x} cy={activePoint.y} r="9" fill="none" stroke="#0a1628" strokeWidth="1.5" opacity="0.52">
+        <circle cx={activePoint.x} cy={activePoint.y} r="9" fill="none" stroke="#228DC1" strokeWidth="1.5" opacity="0.52">
           <animate attributeName="r" values="9;21;9" dur="2.8s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.52;0;0.52" dur="2.8s" repeatCount="indefinite"/>
         </circle>
-        <circle cx={activePoint.x} cy={activePoint.y} r="5.5" fill="#0a1628"/>
+        <circle cx={activePoint.x} cy={activePoint.y} r="5.5" fill="#228DC1"/>
         <g filter="url(#escSoftShadow)">
-          <rect x={activeCardX} y={activeCardY} width={activeCardWidth} height="54" rx="8" fill="#0a1628"/>
-          <text x={activeCardX + 14} y={activeCardY + 20} fontSize="8" fontWeight="700"
-            fill="#8bd8ff" fontFamily="Roboto,sans-serif" letterSpacing="0.08em">ACTIVE INTERACTION</text>
-          <text x={activeCardX + 14} y={activeCardY + 35} fontSize="10.2" fontWeight="800"
-            fill="#fff" fontFamily="Roboto,sans-serif">{active.label}</text>
-          <text x={activeCardX + 14} y={activeCardY + 47} fontSize="7.8"
-            fill="rgba(255,255,255,0.62)" fontFamily="Roboto,sans-serif">{active.detail}</text>
+          <rect x={activeCardX} y={activeCardY} width={activeCardWidth} height="56" rx="8"
+            fill="white" stroke="rgba(34,141,193,0.18)" strokeWidth="1"/>
+          <rect x={activeCardX} y={activeCardY + 1} width="3" height="54" rx="1.5" fill="url(#escAccentGrad)"/>
+          <text x={activeCardX + 14} y={activeCardY + 17} fontSize="7.5" fontWeight="700"
+            fill="#228DC1" fontFamily="Roboto,sans-serif" letterSpacing="0.1em">ACTIVE INTERACTION</text>
+          <text x={activeCardX + 14} y={activeCardY + 32} fontSize="10.2" fontWeight="800"
+            fill="#0a1628" fontFamily="Roboto,sans-serif">{active.label}</text>
+          <text x={activeCardX + 14} y={activeCardY + 45} fontSize="7.8"
+            fill="rgba(10,22,40,0.5)" fontFamily="Roboto,sans-serif">{active.detail}</text>
         </g>
         <g transform={`translate(${activeCardX + activeCardWidth - 34}, ${activeCardY + 12})`}>
           {interactions.map((item, index) => (
-            <circle key={item.label} cx={index * 9} cy="0" r="2.4" fill={index === activeInteraction ? '#8bd8ff' : 'rgba(255,255,255,0.28)'}/>
+            <circle key={item.label} cx={index * 9} cy="0" r="2.4" fill={index === activeInteraction ? '#228DC1' : 'rgba(10,22,40,0.18)'}/>
           ))}
         </g>
       </g>
