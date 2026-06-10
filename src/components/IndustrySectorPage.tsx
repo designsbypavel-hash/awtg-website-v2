@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import CTASection from '@/components/CTASection'
 import IndustryIconVisual from '@/components/IndustryIconVisual'
+import IndustryCard from '@/components/IndustryCard'
+import IndustrySectionHeader from '@/components/IndustrySectionHeader'
 
 export interface SectorHero {
   badge?: string
@@ -19,26 +21,19 @@ export interface SectorHero {
   heroImage?: string
 }
 export interface SectorChallenge { icon: IconDefinition; title: string; desc: string }
-export interface SectorSupport { icon: IconDefinition; title: string; desc: string; bullets: string[] }
-export interface SectorUseCase { icon: IconDefinition; title: string; desc: string }
-export interface SectorOutcome { icon: IconDefinition; title: string; desc: string }
+export interface SectorSupport   { icon: IconDefinition; title: string; desc: string; bullets: string[] }
+export interface SectorUseCase   { icon: IconDefinition; title: string; desc: string }
+export interface SectorOutcome   { icon: IconDefinition; title: string; desc: string }
 export interface SectorPageData {
   hero: SectorHero
   challenges: { heading: string; intro: string; items: SectorChallenge[] }
-  supports: { heading: string; intro: string; items: SectorSupport[] }
-  useCases: { heading: string; intro: string; items: SectorUseCase[] }
-  outcomes: { heading: string; intro: string; items: SectorOutcome[] }
+  supports:   { heading: string; intro: string; items: SectorSupport[] }
+  useCases:   { heading: string; intro: string; items: SectorUseCase[] }
+  outcomes:   { heading: string; intro: string; items: SectorOutcome[] }
   proof?: { quote: string; author?: string; context?: string }
   cta: { title: string; subtitle: string; label?: string }
 }
 
-/* Kore.ai-style pastel icon tile colours — cycling per card */
-const PASTEL = [
-  { bg: '#fff7ed', fg: '#d97706' },
-  { bg: '#eff6ff', fg: '#2563eb' },
-  { bg: '#f0fdf4', fg: '#16a34a' },
-  { bg: '#fdf4ff', fg: '#9333ea' },
-]
 const ITEM_COLORS = ['#228DC1', '#7c3aed', '#059669', '#d97706']
 
 export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
@@ -49,21 +44,31 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
   return (
     <>
       {/* ══════════════════════════════════════════════════════
-          HERO — light gradient, pill badge, text left + right panel
+          HERO
       ══════════════════════════════════════════════════════ */}
       <section
         className="pt-32 pb-24 relative overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #f8fbfe 0%, #f0f7fb 50%, #fafcfe 100%)' }}
       >
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0"
-          style={{ opacity: 0.03, backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse at 72% 38%, ${accent}12 0%, transparent 58%)` }} />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            opacity: 0.03,
+            backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at 72% 38%, ${accent}12 0%, transparent 58%)` }}
+        />
 
         <div className="max-w-7xl mx-auto px-8 lg:px-12 relative">
           <div className="grid lg:grid-cols-[1fr_460px] gap-14 items-center">
+
+            {/* Left: text */}
             <div>
-              {/* Kore.ai-style pill badge */}
               {hero.badge && (
                 <span
                   className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] mb-6"
@@ -85,27 +90,50 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
               </Link>
             </div>
 
-            {/* Right: image or visual panel */}
+            {/* Right: hero image → heroVisual → capability list */}
             <div className="hidden lg:block">
               {hero.heroImage && !imgError ? (
-                <div className="relative rounded-[20px] overflow-hidden"
-                  style={{ boxShadow: '0 20px 60px rgba(15,23,42,0.13), 0 4px 16px rgba(15,23,42,0.07)', border: '1px solid rgba(15,23,42,0.07)' }}>
-                  <img src={hero.heroImage} alt={hero.title} onError={() => setImgError(true)}
-                    className="w-full object-cover" style={{ height: '420px', display: 'block' }} />
-                  <div className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-                    style={{ background: `linear-gradient(to top, ${accent}25 0%, transparent 100%)` }} />
+                <div
+                  className="relative rounded-[20px] overflow-hidden"
+                  style={{
+                    boxShadow: '0 20px 60px rgba(15,23,42,0.13), 0 4px 16px rgba(15,23,42,0.07)',
+                    border: '1px solid rgba(15,23,42,0.07)',
+                  }}
+                >
+                  <img
+                    src={hero.heroImage}
+                    alt={hero.title}
+                    onError={() => setImgError(true)}
+                    className="w-full object-cover"
+                    style={{ height: '420px', display: 'block' }}
+                  />
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+                    style={{ background: `linear-gradient(to top, ${accent}25 0%, transparent 100%)` }}
+                  />
                 </div>
               ) : hero.heroVisual ?? (
-                <div className="rounded-[20px] overflow-hidden bg-white"
-                  style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 16px 56px rgba(15,23,42,0.1)' }}>
-                  <div className="flex items-center gap-3 px-6 py-5 border-b"
-                    style={{ background: `linear-gradient(135deg, ${accent}0d 0%, ${accent}06 100%)`, borderColor: `${accent}18` }}>
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                      style={{ background: `${accent}18`, border: `1px solid ${accent}28` }}>
+                <div
+                  className="rounded-[20px] overflow-hidden bg-white"
+                  style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 16px 56px rgba(15,23,42,0.1)' }}
+                >
+                  <div
+                    className="flex items-center gap-3 px-6 py-5 border-b"
+                    style={{
+                      background: `linear-gradient(135deg, ${accent}0d 0%, ${accent}06 100%)`,
+                      borderColor: `${accent}18`,
+                    }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      style={{ background: `${accent}18`, border: `1px solid ${accent}28` }}
+                    >
                       <FontAwesomeIcon icon={hero.visualIcon} style={{ fontSize: 18, color: accent }} />
                     </div>
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: accent }}>{hero.badge ?? 'Capabilities'}</p>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: accent }}>
+                        {hero.badge ?? 'Capabilities'}
+                      </p>
                       <p className="text-[12px] text-[#0a1628]/40 font-medium mt-0.5">AWTG platform</p>
                     </div>
                   </div>
@@ -113,10 +141,15 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     {hero.visualItems.map((item, i) => {
                       const c = ITEM_COLORS[i % 4]
                       return (
-                        <div key={item.label} className="flex items-center gap-3 rounded-xl px-4 py-3"
-                          style={{ background: 'rgba(15,23,42,0.02)', border: '1px solid rgba(15,23,42,0.06)' }}>
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                            style={{ background: `${c}12`, border: `1px solid ${c}22` }}>
+                        <div
+                          key={item.label}
+                          className="flex items-center gap-3 rounded-xl px-4 py-3"
+                          style={{ background: 'rgba(15,23,42,0.02)', border: '1px solid rgba(15,23,42,0.06)' }}
+                        >
+                          <div
+                            className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                            style={{ background: `${c}12`, border: `1px solid ${c}22` }}
+                          >
                             <FontAwesomeIcon icon={item.icon} style={{ fontSize: 12, color: c }} />
                           </div>
                           <span className="text-[#0a1628]/65 text-[13px] font-medium flex-1">{item.label}</span>
@@ -133,63 +166,49 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          CHALLENGES — Kore.ai style: pastel icon tiles, clean cards
+          CHALLENGES
       ══════════════════════════════════════════════════════ */}
       <section className="py-24" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14 max-w-2xl">
-            <h2 className="font-heading text-[#0a1628] mb-4">{challenges.heading}</h2>
-            <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{challenges.intro}</p>
-          </div>
-
+          <IndustrySectionHeader
+            heading={challenges.heading}
+            intro={challenges.intro}
+            className="mb-14"
+          />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {challenges.items.map((c, i) => {
-              const tile = PASTEL[i % 4]
-              return (
-                <div key={c.title} className="bg-white p-7 rounded-[16px] transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-                  style={{ border: '1px solid rgba(15,23,42,0.07)', boxShadow: '0 2px 10px rgba(15,23,42,0.05)' }}>
-                  {/* Kore.ai-style pastel square icon tile */}
-                  <div className="w-12 h-12 rounded-[12px] flex items-center justify-center mb-5"
-                    style={{ background: tile.bg }}>
-                    <FontAwesomeIcon icon={c.icon} style={{ fontSize: 20, color: tile.fg }} />
-                  </div>
-                  <h3 className="font-semibold text-[#0a1628] text-[14px] leading-snug mb-3">{c.title}</h3>
-                  <p className="text-[#0a1628]/52 text-[13px] leading-relaxed">{c.desc}</p>
-                </div>
-              )
-            })}
+            {challenges.items.map((c, i) => (
+              <IndustryCard key={c.title} icon={c.icon} title={c.title} desc={c.desc} index={i} />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SUPPORTS — Kore.ai use-case rows: text left + panel right
+          SUPPORTS — alternating text + icon visual
       ══════════════════════════════════════════════════════ */}
       <section className="py-28 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-20 max-w-2xl">
-            <h2 className="font-heading text-[#0a1628] mb-4">{supports.heading}</h2>
-            <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{supports.intro}</p>
-          </div>
-
+          <IndustrySectionHeader
+            heading={supports.heading}
+            intro={supports.intro}
+            className="mb-20"
+          />
           <div className="space-y-24">
             {supports.items.map((s, i) => {
               const isReversed = i % 2 === 1
               return (
                 <div key={s.title} className="grid lg:grid-cols-2 gap-16 items-center">
-
-                  {/* ── Text side (Kore.ai use-case left) ── */}
                   <div className={isReversed ? 'lg:order-2' : ''}>
-                      <h3 className="font-heading text-[#0a1628] text-[26px] leading-snug mb-5">{s.title}</h3>
+                    <h3 className="font-heading text-[#0a1628] text-[26px] leading-snug mb-5">{s.title}</h3>
                     <p className="text-[#0a1628]/58 text-[15px] leading-[1.85] mb-8">{s.desc}</p>
-
-                    {/* Kore.ai-style numbered feature rows */}
                     {s.bullets.length > 0 && (
-                      <div className="space-y-3 mb-8">
+                      <div className="space-y-3">
                         {s.bullets.map((b, idx) => (
                           <div key={idx} className="flex items-start gap-4">
-                            <div className="w-7 h-7 rounded-[8px] flex items-center justify-center shrink-0 mt-0.5 text-[11px] font-bold"
-                              style={{ background: `${accent}12`, color: accent, border: `1px solid ${accent}22` }}>
+                            <div
+                              className="w-7 h-7 rounded-[8px] flex items-center justify-center shrink-0 mt-0.5 text-[11px] font-bold"
+                              style={{ background: `${accent}12`, color: accent, border: `1px solid ${accent}22` }}
+                            >
                               {String(idx + 1).padStart(2, '0')}
                             </div>
                             <span className="text-[#0a1628]/60 text-[14px] leading-relaxed pt-0.5">{b}</span>
@@ -198,8 +217,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                       </div>
                     )}
                   </div>
-
-                  {/* ── Minimal icon visual ── */}
                   <div className={isReversed ? 'lg:order-1' : ''}>
                     <IndustryIconVisual icon={s.icon} accent={accent} />
                   </div>
@@ -211,79 +228,65 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          USE CASES — Accenture-inspired light: accent bar + label + heading
+          USE CASES
       ══════════════════════════════════════════════════════ */}
       <section className="py-24 border-t border-gray-100" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14 max-w-2xl">
-            <h2 className="font-heading text-[#0a1628] mb-4">{useCases.heading}</h2>
-            <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{useCases.intro}</p>
-          </div>
-
+          <IndustrySectionHeader
+            heading={useCases.heading}
+            intro={useCases.intro}
+            className="mb-14"
+          />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {useCases.items.map((u, i) => {
-              const tile = PASTEL[i % 4]
-              return (
-                <div key={u.title} className="bg-white rounded-[16px] overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5"
-                  style={{ border: '1px solid rgba(15,23,42,0.07)', boxShadow: '0 2px 10px rgba(15,23,42,0.04)', borderTop: `3px solid ${accent}` }}>
-                  <div className="p-7">
-                    {/* Pastel icon tile */}
-                    <div className="w-12 h-12 rounded-[12px] flex items-center justify-center mb-5" style={{ background: tile.bg }}>
-                      <FontAwesomeIcon icon={u.icon} style={{ fontSize: 20, color: tile.fg }} />
-                    </div>
-                    <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-3">{u.title}</h3>
-                    <p className="text-[#0a1628]/52 text-[13.5px] leading-relaxed">{u.desc}</p>
-                  </div>
-                </div>
-              )
-            })}
+            {useCases.items.map((u, i) => (
+              <IndustryCard
+                key={u.title}
+                icon={u.icon}
+                title={u.title}
+                desc={u.desc}
+                index={i}
+                accentTop={accent}
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          OUTCOMES — Kore.ai "Why" layout: heading left + 2×2 grid right
+          OUTCOMES — asymmetric: sticky heading left + 2×2 grid right
       ══════════════════════════════════════════════════════ */}
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_2fr] gap-16 items-start">
-
-            {/* Left: large heading — Kore.ai "Why enterprises choose" */}
             <div className="lg:sticky lg:top-32">
               <h2 className="font-heading text-[#0a1628] mb-5 leading-tight">{outcomes.heading}</h2>
               <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{outcomes.intro}</p>
             </div>
-
-            {/* Right: 2×2 card grid */}
             <div className="grid sm:grid-cols-2 gap-5">
-              {outcomes.items.map((o, i) => {
-                const tile = PASTEL[i % 4]
-                return (
-                  <div key={o.title} className="bg-white p-7 rounded-[16px] transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-                    style={{ border: '1px solid rgba(15,23,42,0.07)', boxShadow: '0 2px 10px rgba(15,23,42,0.04)' }}>
-                    <div className="w-12 h-12 rounded-[12px] flex items-center justify-center mb-5" style={{ background: tile.bg }}>
-                      <FontAwesomeIcon icon={o.icon} style={{ fontSize: 20, color: tile.fg }} />
-                    </div>
-                    <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-3">{o.title}</h3>
-                    <p className="text-[#0a1628]/52 text-[13px] leading-relaxed">{o.desc}</p>
-                  </div>
-                )
-              })}
+              {outcomes.items.map((o, i) => (
+                <IndustryCard key={o.title} icon={o.icon} title={o.title} desc={o.desc} index={i} />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Proof quote (optional) ── */}
+      {/* Optional proof quote */}
       {proof && (
         <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <div className="max-w-3xl border-l-4 pl-8" style={{ borderColor: accent }}>
-              <p className="text-[#0a1628]/75 text-[18px] font-normal leading-relaxed mb-5">"{proof.quote}"</p>
+              <p className="text-[#0a1628]/75 text-[18px] font-normal leading-relaxed mb-5">
+                "{proof.quote}"
+              </p>
               {proof.author && (
                 <p className="text-[#0a1628]/40 text-[13px] font-semibold uppercase tracking-wider">
                   {proof.author}
-                  {proof.context && <span className="font-normal normal-case tracking-normal text-[#0a1628]/35"> — {proof.context}</span>}
+                  {proof.context && (
+                    <span className="font-normal normal-case tracking-normal text-[#0a1628]/35">
+                      {' '}— {proof.context}
+                    </span>
+                  )}
                 </p>
               )}
             </div>

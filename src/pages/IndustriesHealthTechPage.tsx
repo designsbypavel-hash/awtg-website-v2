@@ -1,12 +1,21 @@
-import CTASection from '@/components/CTASection'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faArrowTrendUp, faShield, faUserGroup, faSitemap, faHospital,
-  faHeartPulse, faHouseChimney, faEye, faClipboardList, faBuilding, faGraduationCap,
-  faRotate, faMicrochip, faCode, faLock, faMobile, faCloud,
-  faShieldHalved, faDiagramProject, faUserShield, faLayerGroup, faGears, faHeart,
+  faHeartPulse, faHouseChimney, faEye, faClipboardList, faBuilding,
+  faGraduationCap, faRotate, faMicrochip, faCode, faLock, faMobile,
+  faCloud, faShieldHalved, faDiagramProject, faUserShield, faLayerGroup,
+  faGears, faHeart,
 } from '@fortawesome/free-solid-svg-icons'
+import CTASection from '@/components/CTASection'
+import IndustrySectionHeader from '@/components/IndustrySectionHeader'
+import IndustryCard from '@/components/IndustryCard'
+
+const ACCENT = '#059669'
+
+const HERO_IMAGE =
+  'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=840&q=80'
 
 const challenges = [
   {
@@ -141,186 +150,234 @@ const whyItems = [
   },
 ]
 
-const AMBER = '#d97706'
-const BLUE  = '#228DC1'
-const PURPLE = '#7c3aed'
-const GREEN = '#059669'
-
 export default function IndustriesHealthTechPage() {
+  const [imgError, setImgError] = useState(false)
+
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <h1 className="font-serif-display text-[#0a1628] mb-6">
-              Health Tech
-            </h1>
-            <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.75] mb-10">
-              Digital health solutions that improve care delivery, operational efficiency and patient experiences through connected systems, secure platforms and intelligent healthcare workflows.
-            </p>
-            <Link to="/contact" className="btn btn-primary">
-              Talk to our experts
-            </Link>
+      {/* ══════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════ */}
+      <section
+        className="pt-32 pb-24 relative overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #f8fbfe 0%, #f0f7fb 50%, #fafcfe 100%)' }}
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            opacity: 0.03,
+            backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at 72% 38%, ${ACCENT}12 0%, transparent 58%)` }}
+        />
+
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 relative">
+          <div className="grid lg:grid-cols-[1fr_460px] gap-14 items-center">
+
+            {/* Left: text */}
+            <div>
+              <span
+                className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em] mb-6"
+                style={{ background: `${ACCENT}12`, color: ACCENT, border: `1px solid ${ACCENT}22` }}
+              >
+                AI · Health Tech
+              </span>
+              <h1 className="font-serif-display text-[#0a1628] mb-5 leading-[1.1]">
+                Health Tech
+              </h1>
+              <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.85] mb-10 max-w-lg">
+                Digital health solutions that improve care delivery, operational efficiency and patient
+                experiences through connected systems, secure platforms and intelligent healthcare workflows.
+              </p>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-[14px] text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                style={{ background: ACCENT, boxShadow: `0 4px 18px ${ACCENT}35` }}
+              >
+                Talk to our experts
+              </Link>
+            </div>
+
+            {/* Right: hero image */}
+            <div className="hidden lg:block">
+              {!imgError ? (
+                <div
+                  className="relative rounded-[20px] overflow-hidden"
+                  style={{
+                    boxShadow: '0 20px 60px rgba(15,23,42,0.13), 0 4px 16px rgba(15,23,42,0.07)',
+                    border: '1px solid rgba(15,23,42,0.07)',
+                  }}
+                >
+                  <img
+                    src={HERO_IMAGE}
+                    alt="Health Tech"
+                    onError={() => setImgError(true)}
+                    className="w-full object-cover"
+                    style={{ height: '420px', display: 'block' }}
+                  />
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+                    style={{ background: `linear-gradient(to top, ${ACCENT}25 0%, transparent 100%)` }}
+                  />
+                </div>
+              ) : (
+                /* Fallback capability panel */
+                <div
+                  className="rounded-[20px] overflow-hidden bg-white"
+                  style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 16px 56px rgba(15,23,42,0.1)' }}
+                >
+                  <div
+                    className="flex items-center gap-3 px-6 py-5 border-b"
+                    style={{
+                      background: `linear-gradient(135deg, ${ACCENT}0d 0%, ${ACCENT}06 100%)`,
+                      borderColor: `${ACCENT}18`,
+                    }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      style={{ background: `${ACCENT}18`, border: `1px solid ${ACCENT}28` }}
+                    >
+                      <FontAwesomeIcon icon={faHospital} style={{ fontSize: 18, color: ACCENT }} />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: ACCENT }}>
+                        AI · Health Tech
+                      </p>
+                      <p className="text-[12px] text-[#0a1628]/40 font-medium mt-0.5">AWTG platform</p>
+                    </div>
+                  </div>
+                  {[
+                    { icon: faHeartPulse, label: 'Clinical AI platforms' },
+                    { icon: faMicrochip, label: 'IoMT device connectivity' },
+                    { icon: faShield, label: 'DSPT-compliant infrastructure' },
+                    { icon: faCloud, label: 'Cloud healthcare solutions' },
+                  ].map((item, i) => {
+                    const colors = ['#228DC1', '#7c3aed', '#059669', '#d97706']
+                    const c = colors[i]
+                    return (
+                      <div key={item.label} className="flex items-center gap-3 rounded-xl px-4 py-3 mx-5 my-1.5"
+                        style={{ background: 'rgba(15,23,42,0.02)', border: '1px solid rgba(15,23,42,0.06)' }}>
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                          style={{ background: `${c}12`, border: `1px solid ${c}22` }}>
+                          <FontAwesomeIcon icon={item.icon} style={{ fontSize: 12, color: c }} />
+                        </div>
+                        <span className="text-[#0a1628]/65 text-[13px] font-medium flex-1">{item.label}</span>
+                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: c, opacity: 0.55 }} />
+                      </div>
+                    )
+                  })}
+                  <div className="pb-4" />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Healthcare challenges ── */}
-      <section className="py-24 bg-white border-t border-gray-100">
+      {/* ══════════════════════════════════════════════════════
+          CHALLENGES
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-24" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              Challenges facing health tech today
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
-              Healthcare organisations are navigating mounting operational, regulatory and technological complexity. These are the core pressures AWTG helps address.
-            </p>
-          </div>
+          <IndustrySectionHeader
+            heading="Challenges facing health tech today"
+            intro="Healthcare organisations are navigating mounting operational, regulatory and technological complexity. These are the core pressures AWTG helps address."
+            className="mb-14"
+          />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {challenges.map(c => (
-              <div
-                key={c.title}
-                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  border: '1px solid rgba(15,23,42,0.08)',
-                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
-                  borderTop: `3px solid ${AMBER}`,
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: `${AMBER}10`, border: `1px solid ${AMBER}22`, color: AMBER }}
-                >
-                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2">{c.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{c.desc}</p>
-              </div>
+            {challenges.map((c, i) => (
+              <IndustryCard key={c.title} icon={c.icon} title={c.title} desc={c.desc} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── AWTG solutions ── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
+      {/* ══════════════════════════════════════════════════════
+          SOLUTIONS (with product abbreviations)
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              AWTG health technology solutions
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              Purpose-built platforms and products designed for the demands of clinical environments, developed in collaboration with healthcare professionals.
-            </p>
-          </div>
+          <IndustrySectionHeader
+            heading="AWTG health technology solutions"
+            intro="Purpose-built platforms and products designed for the demands of clinical environments, developed in collaboration with healthcare professionals."
+            className="mb-14"
+          />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {solutions.map(s => (
-              <div
+            {solutions.map((s, i) => (
+              <IndustryCard
                 key={s.title}
-                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  border: '1px solid rgba(15,23,42,0.08)',
-                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
-                  borderTop: `3px solid ${BLUE}`,
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: `${BLUE}10`, border: `1px solid ${BLUE}22`, color: BLUE }}
-                >
-                  <FontAwesomeIcon icon={s.icon} style={{ fontSize: 17 }} />
-                </div>
-                <p className="type-label text-[#0a1628]/40 mb-2">{s.abbr}</p>
-                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2">{s.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{s.desc}</p>
-              </div>
+                icon={s.icon}
+                title={s.title}
+                desc={s.desc}
+                index={i}
+                accentTop={ACCENT}
+                abbr={s.abbr}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── What we deliver ── */}
+      {/* ══════════════════════════════════════════════════════
+          DELIVERABLES
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-24 border-t border-gray-100" style={{ background: '#f8fafc' }}>
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <IndustrySectionHeader
+            heading="What we deliver"
+            intro="From strategy to implementation, AWTG delivers end-to-end digital health capabilities that integrate with NHS systems, protect patient data and scale with your organisation."
+            className="mb-14"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {deliverables.map((d, i) => (
+              <IndustryCard key={d.title} icon={d.icon} title={d.title} desc={d.desc} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          WHY AWTG — asymmetric: sticky heading left + 2×2 grid right
+      ══════════════════════════════════════════════════════ */}
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              What we deliver
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
-              From strategy to implementation, AWTG delivers end-to-end digital health capabilities that integrate with NHS systems, protect patient data and scale with your organisation.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {deliverables.map(d => (
-              <div
-                key={d.title}
-                className="bg-white p-7 rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  border: '1px solid rgba(15,23,42,0.08)',
-                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
-                  borderTop: `3px solid ${PURPLE}`,
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: `${PURPLE}10`, border: `1px solid ${PURPLE}22`, color: PURPLE }}
-                >
-                  <FontAwesomeIcon icon={d.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-card-heading text-[#0a1628] text-sm mb-2">{d.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{d.desc}</p>
-              </div>
-            ))}
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-16 items-start">
+            <div className="lg:sticky lg:top-32">
+              <h2 className="font-heading text-[#0a1628] mb-5 leading-tight">Why AWTG</h2>
+              <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">
+                We combine technical depth with genuine healthcare domain expertise, delivering solutions
+                that work in the real world of clinical care.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {whyItems.map((w, i) => (
+                <IndustryCard key={w.title} icon={w.icon} title={w.title} desc={w.desc} index={i} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Why AWTG ── */}
-      <section className="py-24 border-t border-gray-100" style={{ background: '#f0f9f5' }}>
+      {/* ══════════════════════════════════════════════════════
+          COMPLIANCE NOTE
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-20 border-t border-gray-100" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              Why AWTG
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              We combine technical depth with genuine healthcare domain expertise, delivering solutions that work in the real world of clinical care.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {whyItems.map(w => (
-              <div
-                key={w.title}
-                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  border: `1px solid ${GREEN}18`,
-                  boxShadow: `0 2px 8px ${GREEN}0a`,
-                  borderTop: `3px solid ${GREEN}`,
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: `${GREEN}12`, border: `1px solid ${GREEN}25`, color: GREEN }}
-                >
-                  <FontAwesomeIcon icon={w.icon} style={{ fontSize: 17 }} />
-                </div>
-                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2">{w.title}</h3>
-                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{w.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Compliance note ── */}
-      <section className="py-20 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl border-l-4 border-[#228DC1] pl-8">
-            <p className="text-[#0a1628]/80 text-xl font-normal leading-relaxed">
-              All AWTG health technology deployments are delivered in full compliance with the NHS Data Security and Protection Toolkit, with 99.99% uptime SLAs and defined incident response procedures aligned to NHS England standards.
+          <div className="max-w-3xl border-l-4 pl-8" style={{ borderColor: ACCENT }}>
+            <p className="text-[#0a1628]/75 text-[18px] font-normal leading-relaxed mb-5">
+              All AWTG health technology deployments are delivered in full compliance with the NHS Data
+              Security and Protection Toolkit, with 99.99% uptime SLAs and defined incident response
+              procedures aligned to NHS England standards.
             </p>
             <Link
               to="/insights/case-studies"
-              className="inline-flex items-center gap-2 mt-6 text-[#228DC1] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
+              className="inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-widest transition-opacity hover:opacity-70"
+              style={{ color: ACCENT }}
             >
               View case studies
             </Link>
@@ -328,7 +385,6 @@ export default function IndustriesHealthTechPage() {
         </div>
       </section>
 
-      {/* ── Final CTA ── */}
       <CTASection
         title="Ready to modernise healthcare delivery?"
         subtitle="Speak with our health technology specialists about your organisation's digital transformation goals."
