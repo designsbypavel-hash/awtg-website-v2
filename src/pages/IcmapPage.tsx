@@ -218,7 +218,7 @@ function CoverageMap() {
               <div className="space-y-4">
                 <div>
                   <p className="text-[14px] text-gray-400 font-medium mb-0.5">Coverage</p>
-                  <p className="text-[15px] font-black" style={{ color: zoneStyle[selected.type].textColor }}>{selected.label}</p>
+                  <p className="text-sm font-black" style={{ color: zoneStyle[selected.type].textColor }}>{selected.label}</p>
                 </div>
                 <div>
                   <p className="text-[14px] text-gray-400 font-medium mb-0.5">Signal strength</p>
@@ -637,7 +637,7 @@ export default function IcmapPage() {
                 Coverage Map intelligence<br />
                 that drives decisions.
               </h1>
-              <p className="text-[#0a1628]/60 text-[17px] font-normal leading-[1.7] max-w-xl mb-10">
+              <p className="text-[#0a1628]/60 text-base font-normal leading-[1.7] max-w-xl mb-10">
                 iCMAP helps organisations monitor, manage, and optimise complex connectivity environments, giving teams real-time visibility, faster issue detection, and better control across network operations.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -674,7 +674,7 @@ export default function IcmapPage() {
                 <div className="w-10 h-10 rounded-xl bg-[#228DC1]/10 flex items-center justify-center mb-5">
                   <FontAwesomeIcon icon={item.icon} style={{ color: '#228DC1', fontSize: '15px' }} />
                 </div>
-                <p className="font-bold text-[#0a1628] text-[22px] leading-none mb-2 tracking-tight">{item.stat}</p>
+                <p className="font-bold text-[#0a1628] text-2xl leading-none mb-2 tracking-tight">{item.stat}</p>
                 <p className="text-[#0a1628] text-[13px] font-semibold mb-1">{item.label}</p>
                 <p className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{item.note}</p>
               </div>
@@ -771,7 +771,7 @@ export default function IcmapPage() {
                       {step.num}
                     </span>
                   </div>
-                  <h3 className="text-[#0a1628] font-semibold text-[17px] leading-[1.3] mb-3">{step.label}</h3>
+                  <h3 className="text-[#0a1628] font-semibold text-base leading-[1.3] mb-3">{step.label}</h3>
                   <p className="text-[#0a1628]/58 text-[14px] font-normal leading-[1.75] mb-8">{step.desc}</p>
                   <div className="mt-auto pt-5 border-t border-gray-100">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#228DC1] mb-2">{step.detailLabel}</p>
@@ -801,7 +801,7 @@ export default function IcmapPage() {
                 <div className="w-9 h-9 flex items-center justify-center mb-6" style={{ backgroundColor: `${cap.color}24` }}>
                   <FontAwesomeIcon icon={cap.icon} className="w-4 h-4" style={{ color: cap.color }} />
                 </div>
-                <h3 className="text-white font-semibold text-[15px] leading-[1.3] mb-3">{cap.label}</h3>
+                <h3 className="text-white font-semibold text-sm leading-[1.3] mb-3">{cap.label}</h3>
                 <p className="text-white/56 text-[13px] font-normal leading-[1.7]">{cap.desc}</p>
               </div>
             ))}

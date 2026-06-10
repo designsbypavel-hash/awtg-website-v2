@@ -56,7 +56,7 @@ export default function IndustriesEnterprisePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
             {solutions.map(s => (
               <div key={s.title} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
-                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{s.title}</h3>
+                <h3 className="font-card-heading text-[#0a1628] text-sm mb-2">{s.title}</h3>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{s.desc}</p>
               </div>
             ))}

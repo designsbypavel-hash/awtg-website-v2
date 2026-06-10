@@ -152,7 +152,7 @@
                   </span>
                 </div>
                 <div className="lg:col-span-2">
-                  <p className="text-[#0a1628]/60 leading-relaxed font-normal text-[15px]">
+                  <p className="text-[#0a1628]/60 leading-relaxed font-normal text-sm">
                     {d.rationale}
                   </p>
                 </div>

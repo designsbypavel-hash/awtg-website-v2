@@ -322,7 +322,7 @@ export default function InsightsCaseStudyDetailPage() {
     return (
       <div className="pt-32 pb-24 max-w-3xl mx-auto px-6 text-center">
         <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">404</p>
-        <h1 className="text-[32px] font-bold text-[#0a1628] mb-4">Case Study Not Found</h1>
+        <h1 className="text-4xl font-bold text-[#0a1628] mb-4">Case Study Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This case study does not exist or may have been moved.</p>
         <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
           Back to Case Studies

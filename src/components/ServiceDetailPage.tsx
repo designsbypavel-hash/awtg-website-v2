@@ -85,7 +85,7 @@ export default function ServiceDetailPage({
               <div key={capability.title} className="border border-gray-100 p-6 hover:border-[#228DC1]/30 hover:shadow-sm transition-all bg-white">
                 <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#228DC1] mb-4" />
                 {/* L3 — card heading */}
-                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{capability.title}</h3>
+                <h3 className="font-card-heading text-[#0a1628] text-sm mb-2">{capability.title}</h3>
                 {/* L4 — body */}
                 <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal">{capability.desc}</p>
               </div>

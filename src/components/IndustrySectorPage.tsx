@@ -46,7 +46,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
           <div className="grid lg:grid-cols-[1fr_400px] gap-16 items-center">
             <div>
               <h1 className="font-serif-display text-[#0a1628] mb-5">{hero.title}</h1>
-              <p className="text-[#0a1628]/50 text-[15px] font-normal leading-[1.8] mb-10 max-w-lg">
+              <p className="text-[#0a1628]/50 text-sm font-normal leading-[1.8] mb-10 max-w-lg">
                 {hero.description}
               </p>
               <Link to={hero.ctaHref ?? '/contact'} className="btn btn-primary">
@@ -124,7 +124,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 >
                   <FontAwesomeIcon icon={c.icon} style={{ fontSize: 18 }} />
                 </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2.5">
+                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2.5">
                   {c.title}
                 </h3>
                 <p className="text-[#0a1628]/55 text-[13.5px] font-normal leading-relaxed">
@@ -158,7 +158,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 >
                   <FontAwesomeIcon icon={s.icon} style={{ fontSize: 20 }} />
                 </div>
-                <h3 className="font-semibold text-[#0a1628] text-[17px] leading-snug mb-3">
+                <h3 className="font-semibold text-[#0a1628] text-base leading-snug mb-3">
                   {s.title}
                 </h3>
                 <p className="text-[#0a1628]/60 text-[14px] font-normal leading-relaxed mb-5">
@@ -202,7 +202,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 >
                   <FontAwesomeIcon icon={u.icon} style={{ fontSize: 16 }} />
                 </div>
-                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2 leading-snug">
+                <h3 className="font-card-heading text-[#0a1628] text-sm mb-2 leading-snug">
                   {u.title}
                 </h3>
                 <p className="text-[#0a1628]/55 text-[13.5px] font-normal leading-relaxed">
@@ -234,7 +234,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 >
                   <FontAwesomeIcon icon={o.icon} style={{ fontSize: 17 }} />
                 </div>
-                <h3 className="font-semibold text-white text-[15px] leading-snug mb-2">
+                <h3 className="font-semibold text-white text-sm leading-snug mb-2">
                   {o.title}
                 </h3>
                 <p className="text-white/45 text-[13px] font-normal leading-relaxed">{o.desc}</p>
@@ -249,7 +249,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
         <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <div className="max-w-3xl border-l-2 border-[#228DC1] pl-8">
-              <p className="text-[#0a1628]/80 text-[19px] font-normal leading-relaxed mb-5">
+              <p className="text-[#0a1628]/80 text-lg font-normal leading-relaxed mb-5">
                 "{proof.quote}"
               </p>
               {proof.author && (

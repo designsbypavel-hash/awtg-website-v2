@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
 
 function Para({ children }: { children: React.ReactNode }) {
-  return <p className="text-[#0a1628]/70 text-[15px] leading-[1.9] font-normal">{children}</p>
+  return <p className="text-[#0a1628]/70 text-sm leading-[1.9] font-normal">{children}</p>
 }
 
 function Bullets({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2.5 mt-1">
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-[#0a1628]/70 text-[15px] leading-[1.85] font-normal">
+        <li key={item} className="flex items-start gap-3 text-[#0a1628]/70 text-sm leading-[1.85] font-normal">
           <span className="mt-[9px] h-1.5 w-1.5 bg-[#228DC1] shrink-0" />
           <span>{item}</span>
         </li>
@@ -109,9 +109,9 @@ const sections = [
           If you would like to update your information, modify your communication preferences, or if you do not want to receive marketing communications from AWTG in the future, please contact us:
         </Para>
         <div className="bg-[#f8fafc] border border-gray-100 p-6 space-y-2">
-          <p className="text-[#0a1628] text-[15px] font-semibold">AWTG Limited</p>
-          <p className="text-[#0a1628]/70 text-[15px]">8 Canham Mews, Canham Road, London, W3 7SR, United Kingdom</p>
-          <a href="mailto:info@awtg.co.uk" className="block text-[#228DC1] text-[15px] hover:underline">info@awtg.co.uk</a>
+          <p className="text-[#0a1628] text-sm font-semibold">AWTG Limited</p>
+          <p className="text-[#0a1628]/70 text-sm">8 Canham Mews, Canham Road, London, W3 7SR, United Kingdom</p>
+          <a href="mailto:info@awtg.co.uk" className="block text-[#228DC1] text-sm hover:underline">info@awtg.co.uk</a>
         </div>
       </div>
     ),
@@ -147,7 +147,7 @@ export default function CookiePolicyPage() {
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h1 className="font-serif-display text-[#0a1628] mb-6">Cookie Policy</h1>
-          <p className="text-[#0a1628]/60 text-[17px] max-w-2xl font-normal leading-[1.75]">
+          <p className="text-[#0a1628]/60 text-base max-w-2xl font-normal leading-[1.75]">
             This policy sets out how AWTG Limited handles your personal information collected via our websites and through your participation in AWTG related activities.
           </p>
         </div>
@@ -197,7 +197,7 @@ export default function CookiePolicyPage() {
           <div>
             <p className="type-label text-[#228DC1] mb-3">Cookie Enquiries</p>
             <h2 className="font-h2 text-[#0a1628]">Questions about our cookie use?</h2>
-            <p className="text-[#0a1628]/60 text-[15px] mt-3 max-w-xl leading-[1.75]">
+            <p className="text-[#0a1628]/60 text-sm mt-3 max-w-xl leading-[1.75]">
               Contact AWTG at <a href="mailto:info@awtg.co.uk" className="text-[#228DC1] hover:underline">info@awtg.co.uk</a> or write to us at 8 Canham Mews, Canham Road, London, W3 7SR.
             </p>
           </div>

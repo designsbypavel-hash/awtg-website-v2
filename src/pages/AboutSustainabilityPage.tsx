@@ -185,7 +185,7 @@ export default function AboutSustainabilityPage() {
                 <div className="grid grid-cols-3 gap-3">
                   {baselineEmissions.map((item) => (
                     <div key={item.scope} className="bg-white border border-[#228DC1]/12 p-4">
-                      <p className="text-[#228DC1] text-[10px] font-bold uppercase tracking-[0.12em] mb-2">{item.scope}</p>
+                      <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.12em] mb-2">{item.scope}</p>
                       <p className="text-[#0a1628] text-[24px] font-bold leading-none mb-1">{item.value}</p>
                       <p className="text-[#0a1628]/40 text-[11px]">{item.unit}</p>
                     </div>
@@ -206,7 +206,7 @@ export default function AboutSustainabilityPage() {
                 <div className="grid grid-cols-3 gap-3">
                   {currentEmissions.map((item) => (
                     <div key={item.scope} className="bg-white border border-[#228DC1]/12 p-4">
-                      <p className="text-[#228DC1] text-[10px] font-bold uppercase tracking-[0.12em] mb-2">{item.scope}</p>
+                      <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.12em] mb-2">{item.scope}</p>
                       <p className="text-[#0a1628] text-[24px] font-bold leading-none mb-1">{item.value}</p>
                       <p className="text-[#0a1628]/40 text-[11px]">{item.unit}</p>
                     </div>
@@ -226,7 +226,7 @@ export default function AboutSustainabilityPage() {
               <div key={title} className="border border-gray-100 bg-white overflow-hidden">
                 <div className="h-[3px]" style={{ background: accent }} />
                 <div className="p-7">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] mb-2" style={{ color: accent }}>{label}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] mb-2" style={{ color: accent }}>{label}</p>
                   <h3 className="font-h5 text-[#0a1628] mb-5">{title}</h3>
                   <BulletList items={items} />
                 </div>
@@ -236,15 +236,15 @@ export default function AboutSustainabilityPage() {
 
           {/* Declaration */}
           <div className="bg-[#f8fafc] border-l-[3px] border-[#228DC1] pl-8 pr-8 py-8 max-w-4xl">
-            <p className="text-[#228DC1] text-[10px] font-bold uppercase tracking-[0.18em] mb-4">Declaration and Sign Off</p>
+            <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Declaration and Sign Off</p>
             <h3 className="font-h5 text-[#0a1628] mb-5">Carbon Reduction Plan Compliance</h3>
-            <p className="text-[#0a1628]/60 text-[15px] leading-[1.85] mb-4">
+            <p className="text-[#0a1628]/60 text-sm leading-[1.85] mb-4">
               This Carbon Reduction Plan has been completed in accordance with PPN 06/21 and associated guidance and reporting standard for Carbon Reduction Plans. Emissions have been reported and recorded in accordance with the GHG Reporting Protocol corporate standard and uses the appropriate Government emission conversion factors for greenhouse gas company reporting.
             </p>
-            <p className="text-[#0a1628]/60 text-[15px] leading-[1.85] mb-4">
+            <p className="text-[#0a1628]/60 text-sm leading-[1.85] mb-4">
               Scope 1 and Scope 2 emissions have been reported in accordance with SECR requirements, and the required subset of Scope 3 emissions have been reported in accordance with the Corporate Value Chain (Scope 3) Standard.
             </p>
-            <p className="text-[#0a1628]/60 text-[15px] leading-[1.85]">This Carbon Reduction Plan has been reviewed and signed off by the management team.</p>
+            <p className="text-[#0a1628]/60 text-sm leading-[1.85]">This Carbon Reduction Plan has been reviewed and signed off by the management team.</p>
             <div className="mt-6 pt-6 border-t border-gray-200">
               <p className="text-[#0a1628] text-[14px] font-semibold">
                 Signed: Abbey Alidoosti, Chief Executive Officer — 4th September 2024
@@ -283,7 +283,7 @@ export default function AboutSustainabilityPage() {
                     <div className="w-12 h-12 bg-[#228DC1]/10 flex items-center justify-center text-[#228DC1]">
                       <FontAwesomeIcon icon={section.icon} className="w-5 h-5" />
                     </div>
-                    <span className="text-[#228DC1]/15 text-[42px] font-bold leading-none select-none tabular-nums">
+                    <span className="text-[#228DC1]/15 text-[44px] font-bold leading-none select-none tabular-nums">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
@@ -300,7 +300,7 @@ export default function AboutSustainabilityPage() {
             <div className="absolute top-[-60px] right-[-60px] w-72 h-72 bg-[#228DC1]/8 rounded-full blur-[80px] pointer-events-none" />
             <div className="relative">
               <div className="text-[#228DC1] text-[72px] font-serif leading-none mb-2 opacity-25 select-none">&ldquo;</div>
-              <p className="text-[#0a1628] text-[18px] lg:text-[22px] font-light leading-[1.65] max-w-4xl">
+              <p className="text-[#0a1628] text-lg lg:text-2xl font-light leading-[1.65] max-w-4xl">
                 Our social value goals, objectives and policies will be communicated clearly to our employees,
                 contractors, supply chain partners, communities we work with and relevant parties. We will review
                 our social value statements and related policies on an annual basis and aim for continuous improvement.

@@ -248,7 +248,7 @@ function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-3 mt-4">
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-[#0a1628]/70 text-[15px] leading-[1.85] font-normal">
+        <li key={item} className="flex items-start gap-3 text-[#0a1628]/70 text-sm leading-[1.85] font-normal">
           <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#228DC1] shrink-0 mt-[3px]" />
           <span>{item}</span>
         </li>
@@ -317,7 +317,7 @@ export default function CareerRoleDetailPage() {
                 <h2 className="font-h3 text-[#0a1628] mb-6 pb-4 border-b border-gray-100">About the Role</h2>
                 <div className="space-y-4">
                   {role.about.map((para) => (
-                    <p key={para} className="text-[#0a1628]/70 text-[15px] leading-[1.9] font-normal">{para}</p>
+                    <p key={para} className="text-[#0a1628]/70 text-sm leading-[1.9] font-normal">{para}</p>
                   ))}
                 </div>
               </div>

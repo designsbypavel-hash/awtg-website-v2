@@ -197,8 +197,8 @@ function IdamsHeroVisual() {
         <div className="grid md:grid-cols-[160px_1fr]">
           <aside className="border-b border-gray-100 bg-[#f8fafc] p-4 md:border-b-0 md:border-r">
             <div className="mb-5">
-              <p className="text-[17px] font-black tracking-tight text-[#0a1628]">iDAMS</p>
-              <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#228DC1]">Asset exchange</p>
+              <p className="text-base font-black tracking-tight text-[#0a1628]">iDAMS</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#228DC1]">Asset exchange</p>
             </div>
             <div className="space-y-2.5">
               {[
@@ -208,7 +208,7 @@ function IdamsHeroVisual() {
                 ['Contract', 'Ready'],
               ].map(([label, value]) => (
                 <div key={label} className="rounded-lg border border-gray-200 bg-white px-3 py-2.5">
-                  <p className="text-[9px] font-black uppercase tracking-[0.12em] text-[#0a1628]/35">{label}</p>
+                  <p className="text-[11px] font-black uppercase tracking-[0.12em] text-[#0a1628]/35">{label}</p>
                   <p className="mt-1 text-[12px] font-semibold text-[#0a1628]/76">{value}</p>
                 </div>
               ))}
@@ -227,7 +227,7 @@ function IdamsHeroVisual() {
               {assets.map((asset) => (
                 <div
                   key={asset.label}
-                  className="absolute flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 bg-white text-[9px] font-black uppercase tracking-[0.08em] shadow-[0_10px_24px_rgba(10,22,40,0.10)]"
+                  className="absolute flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 bg-white text-[11px] font-black uppercase tracking-[0.08em] shadow-[0_10px_24px_rgba(10,22,40,0.10)]"
                   style={{ left: asset.x, top: asset.y, borderColor: asset.color, color: asset.color }}
                 >
                   <span className="absolute -inset-2 rounded-full opacity-10" style={{ backgroundColor: asset.color }} />
@@ -237,18 +237,18 @@ function IdamsHeroVisual() {
 
               <div className="absolute right-3 top-5 w-[190px] rounded-xl border border-gray-200 bg-white/95 p-4 shadow-[0_18px_36px_rgba(10,22,40,0.12)]">
                 <div className="mb-3 flex items-center justify-between">
-                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#0a1628]/40">Search result</p>
-                  <span className="rounded-full bg-[#059669]/10 px-2 py-1 text-[9px] font-black text-[#059669]">MATCH</span>
+                  <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/40">Search result</p>
+                  <span className="rounded-full bg-[#059669]/10 px-2 py-1 text-[11px] font-black text-[#059669]">MATCH</span>
                 </div>
-                <p className="text-[15px] font-semibold text-[#0a1628]">Rooftop asset</p>
+                <p className="text-sm font-semibold text-[#0a1628]">Rooftop asset</p>
                 <p className="mt-1 text-[11px] leading-relaxed text-[#0a1628]/55">Available for small cell deployment inside selected boundary.</p>
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <div className="rounded-md bg-[#f8fafc] p-2">
-                    <p className="text-[9px] text-[#0a1628]/35">Height</p>
+                    <p className="text-[11px] text-[#0a1628]/35">Height</p>
                     <p className="text-[11px] font-black text-[#0a1628]">24m</p>
                   </div>
                   <div className="rounded-md bg-[#f8fafc] p-2">
-                    <p className="text-[9px] text-[#0a1628]/35">Status</p>
+                    <p className="text-[11px] text-[#0a1628]/35">Status</p>
                     <p className="text-[11px] font-black text-[#228DC1]">Open</p>
                   </div>
                 </div>
@@ -262,7 +262,7 @@ function IdamsHeroVisual() {
                 ['Workflow', 'Acquire'],
               ].map(([label, value]) => (
                 <div key={label} className="rounded-lg border border-gray-200 bg-white/90 p-3">
-                  <p className="text-[10px] font-semibold text-[#0a1628]/42">{label}</p>
+                  <p className="text-[11px] font-semibold text-[#0a1628]/42">{label}</p>
                   <p className="mt-1 text-[12px] font-black text-[#228DC1]">{value}</p>
                 </div>
               ))}
@@ -347,7 +347,7 @@ export default function ServicesIoTPage() {
                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: `${capability.color}18` }}>
                   <FontAwesomeIcon icon={capability.icon} className="h-5 w-5" style={{ color: capability.color }} />
                 </div>
-                <h3 className="mb-3 text-[17px] font-semibold leading-[1.3] text-[#0a1628]">{capability.title}</h3>
+                <h3 className="mb-3 text-base font-semibold leading-[1.3] text-[#0a1628]">{capability.title}</h3>
                 <p className="mb-6 text-[14px] font-normal leading-[1.7] text-[#0a1628]/60">{capability.desc}</p>
                 <p className="mt-auto border-t border-gray-100 pt-5 text-[13px] font-semibold text-[#0a1628]/72">{capability.benefit}</p>
               </div>
@@ -375,7 +375,7 @@ export default function ServicesIoTPage() {
                     <FontAwesomeIcon icon={step.icon} className="h-5 w-5 text-[#228DC1]" />
                   </span>
                   <p className="mb-2 text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/25">0{index + 1}</p>
-                  <h3 className="mb-3 text-[17px] font-semibold text-[#0a1628]">{step.title}</h3>
+                  <h3 className="mb-3 text-base font-semibold text-[#0a1628]">{step.title}</h3>
                   <p className="text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">{step.desc}</p>
                 </div>
               </div>
@@ -396,7 +396,7 @@ export default function ServicesIoTPage() {
                 <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#228DC1]/10">
                   <FontAwesomeIcon icon={feature.icon} className="h-4 w-4 text-[#228DC1]" />
                 </div>
-                <h3 className="mb-2 text-[15px] font-semibold text-[#0a1628]">{feature.title}</h3>
+                <h3 className="mb-2 text-sm font-semibold text-[#0a1628]">{feature.title}</h3>
                 <p className="text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">{feature.desc}</p>
               </div>
             ))}

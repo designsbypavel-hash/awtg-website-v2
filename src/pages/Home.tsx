@@ -747,7 +747,7 @@ function ClientVoices() {
           {visible.map((t, i) => (
             <div key={offset + i} className="bg-white border border-gray-100 p-8 flex flex-col min-h-[320px]">
               <p className="font-h4 text-[#0a1628] mb-10">{t.company}</p>
-              <blockquote className="text-[#0a1628]/70 text-[15px] leading-[1.85] font-normal flex-1">
+              <blockquote className="text-[#0a1628]/70 text-sm leading-[1.85] font-normal flex-1">
                 "{t.quote}"
               </blockquote>
               <div className="mt-8 pt-6 border-t border-gray-100">
@@ -893,16 +893,16 @@ function ContactCTA() {
           <div className="space-y-6">
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Email</p>
-              <a href="mailto:info@awtg.co.uk" className="text-[#0a1628] hover:text-[#228DC1] transition-colors font-medium text-[15px]">info@awtg.co.uk</a>
+              <a href="mailto:info@awtg.co.uk" className="text-[#0a1628] hover:text-[#228DC1] transition-colors font-medium text-sm">info@awtg.co.uk</a>
             </div>
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Phone</p>
-              <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#228DC1] transition-colors font-medium text-[15px]">+44 (0) 20 3515 5151</a>
+              <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#228DC1] transition-colors font-medium text-sm">+44 (0) 20 3515 5151</a>
               <p className="text-xs text-[#0a1628]/45 mt-1 font-normal">Mon–Fri, 9am–6pm GMT</p>
             </div>
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Offices</p>
-              <p className="text-[#0a1628] font-medium text-[15px]">London</p>
+              <p className="text-[#0a1628] font-medium text-sm">London</p>
             </div>
           </div>
         </div>

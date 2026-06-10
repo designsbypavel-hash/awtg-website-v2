@@ -175,8 +175,8 @@ function ScapHeroVisual() {
         <div className="grid md:grid-cols-[150px_1fr]">
           <aside className="border-b border-gray-100 bg-[#f8fafc] p-4 md:border-b-0 md:border-r">
             <div className="mb-5">
-              <p className="text-[17px] font-black tracking-tight text-[#0a1628]">SCAP</p>
-              <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#228DC1]">Assurance layer</p>
+              <p className="text-base font-black tracking-tight text-[#0a1628]">SCAP</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#228DC1]">Assurance layer</p>
             </div>
             <div className="space-y-3">
               {[
@@ -187,8 +187,8 @@ function ScapHeroVisual() {
               ].map(([label, value, color]) => (
                 <div key={label} className="rounded-lg border border-gray-200 bg-white p-3">
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="text-[10px] font-semibold text-[#0a1628]/45">{label}</span>
-                    <span className="text-[10px] font-black" style={{ color }}>{value}</span>
+                    <span className="text-[11px] font-semibold text-[#0a1628]/45">{label}</span>
+                    <span className="text-[11px] font-black" style={{ color }}>{value}</span>
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-gray-100">
                     <div className="h-full rounded-full" style={{ width: label === 'Congestion' ? '38%' : '78%', backgroundColor: color }} />
@@ -213,7 +213,7 @@ function ScapHeroVisual() {
               {sourceNodes.map((node) => (
                 <div
                   key={node.label}
-                  className="absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border bg-white text-[10px] font-black text-[#0a1628] shadow-[0_10px_24px_rgba(10,22,40,0.08)]"
+                  className="absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border bg-white text-[11px] font-black text-[#0a1628] shadow-[0_10px_24px_rgba(10,22,40,0.08)]"
                   style={{ left: node.x, top: node.y, borderColor: `${node.color}55` }}
                 >
                   <span className="absolute -inset-1 rounded-[14px] opacity-20" style={{ backgroundColor: node.color }} />
@@ -225,7 +225,7 @@ function ScapHeroVisual() {
                 <div className="absolute inset-3 rounded-full border border-dashed border-[#228DC1]/30" />
                 <FontAwesomeIcon icon={faLayerGroup} className="relative mb-2 h-6 w-6 text-[#228DC1]" />
                 <p className="relative text-center text-[12px] font-black uppercase tracking-[0.12em] text-[#0a1628]">Correlation</p>
-                <p className="relative mt-1 text-[10px] font-semibold text-[#0a1628]/45">Analytics engine</p>
+                <p className="relative mt-1 text-[11px] font-semibold text-[#0a1628]/45">Analytics engine</p>
               </div>
             </div>
 
@@ -236,7 +236,7 @@ function ScapHeroVisual() {
                 ['Assurance', 'Active', '#7c3aed'],
               ].map(([label, value, color]) => (
                 <div key={label} className="rounded-lg border border-gray-200 bg-white/90 p-3">
-                  <p className="text-[10px] font-semibold text-[#0a1628]/42">{label}</p>
+                  <p className="text-[11px] font-semibold text-[#0a1628]/42">{label}</p>
                   <p className="mt-1 text-[12px] font-black" style={{ color }}>{value}</p>
                 </div>
               ))}
@@ -320,7 +320,7 @@ export default function ServicesEngineeringPage() {
                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: `${capability.color}18` }}>
                   <FontAwesomeIcon icon={capability.icon} className="h-5 w-5" style={{ color: capability.color }} />
                 </div>
-                <h3 className="mb-3 text-[17px] font-semibold leading-[1.3] text-[#0a1628]">{capability.title}</h3>
+                <h3 className="mb-3 text-base font-semibold leading-[1.3] text-[#0a1628]">{capability.title}</h3>
                 <p className="mb-7 text-[14px] font-normal leading-[1.7] text-[#0a1628]/60">{capability.desc}</p>
                 <div className="mt-auto space-y-3 border-t border-gray-100 pt-5">
                   {capability.benefits.map((benefit) => (
@@ -419,7 +419,7 @@ export default function ServicesEngineeringPage() {
                 <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#228DC1]/10">
                   <FontAwesomeIcon icon={benefit.icon} className="h-4 w-4 text-[#228DC1]" />
                 </div>
-                <h3 className="mb-2 text-[15px] font-semibold text-[#0a1628]">{benefit.title}</h3>
+                <h3 className="mb-2 text-sm font-semibold text-[#0a1628]">{benefit.title}</h3>
                 <p className="text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">{benefit.desc}</p>
               </div>
             ))}

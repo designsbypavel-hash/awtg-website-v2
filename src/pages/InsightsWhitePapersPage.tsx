@@ -272,7 +272,7 @@ export default function InsightsWhitePapersPage() {
               { label: 'Newsroom', href: '/insights' },
             ].map((item) => (
               <Link key={item.href} to={item.href} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors group">
-                <p className="font-card-heading text-[#0a1628] text-[15px] group-hover:text-[#228DC1] transition-colors">{item.label}</p>
+                <p className="font-card-heading text-[#0a1628] text-sm group-hover:text-[#228DC1] transition-colors">{item.label}</p>
               </Link>
             ))}
           </div>

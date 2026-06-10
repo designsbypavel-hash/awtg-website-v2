@@ -410,7 +410,7 @@ function SecurityComplianceSection() {
             <div className="bg-[#0a1628] text-white p-8 shadow-[0_16px_50px_rgba(10,22,40,0.12)]" style={reveal(leftInView, 280)}>
               <div className="flex flex-col gap-7">
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
                   <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 AI Management System certified</p>
                   <p className="text-white/58 text-sm font-normal leading-relaxed">
                     Governance, access control and auditability are built in from day one.
@@ -421,7 +421,7 @@ function SecurityComplianceSection() {
                   <div className="flex items-center gap-3 flex-1 min-w-0">
                     <img src={certISO42001} alt="ISO 42001" style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0 }} />
                     <div className="min-w-0">
-                      <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.16em] leading-none mb-1">Certified</p>
+                      <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.16em] leading-none mb-1">Certified</p>
                       <p className="text-[13px] font-semibold text-white/90 leading-tight">ISO 42001</p>
                     </div>
                   </div>
@@ -431,7 +431,7 @@ function SecurityComplianceSection() {
                   <div className="flex items-center gap-3 flex-1 min-w-0">
                     <img src={certCREST} alt="CREST" style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0 }} />
                     <div className="min-w-0">
-                      <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.16em] leading-none mb-1">Certified</p>
+                      <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.16em] leading-none mb-1">Certified</p>
                       <p className="text-[13px] font-semibold text-white/90 leading-tight">CREST</p>
                     </div>
                   </div>
@@ -451,7 +451,7 @@ function SecurityComplianceSection() {
                 { badge: 'AI governance', title: 'Auditable AI', detail: 'Rules for access, consent and escalation.' },
               ].map((item, i) => (
                 <div key={item.badge} className="group bg-white border border-gray-200 p-6 shadow-[0_1px_8px_rgba(10,22,40,0.03)] hover:shadow-[0_16px_40px_rgba(10,22,40,0.07)] hover:-translate-y-0.5 transition-all" style={reveal(gridInView, i * 80)}>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#228DC1] mb-5">{item.badge}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#228DC1] mb-5">{item.badge}</p>
                   <h3 className="text-[#0a1628] text-[14px] font-semibold mb-2">{item.title}</h3>
                   <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.detail}</p>
                 </div>
@@ -465,7 +465,7 @@ function SecurityComplianceSection() {
                 { label: 'Deployment', value: 'Your choice' },
               ].map((item) => (
                 <div key={item.label} className="bg-[#f8fafc] border border-gray-200 px-5 py-4">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1">{item.label}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1">{item.label}</p>
                   <p className="text-[#0a1628] text-[13px] font-semibold">{item.value}</p>
                 </div>
               ))}
@@ -1638,7 +1638,7 @@ export default function KaiPage() {
         const all = [...items, ...items]
         return (
           <div className="bg-white border-y border-gray-100 py-10 overflow-hidden">
-            <p className="text-center text-[10px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/30 mb-9">
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/30 mb-9">
               Trusted by leading organisations
             </p>
             <div className="relative">

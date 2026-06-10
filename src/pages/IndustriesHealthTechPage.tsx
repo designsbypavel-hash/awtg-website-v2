@@ -185,7 +185,7 @@ export default function IndustriesHealthTechPage() {
                 >
                   <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
                 </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{c.title}</h3>
+                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2">{c.title}</h3>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{c.desc}</p>
               </div>
             ))}
@@ -218,7 +218,7 @@ export default function IndustriesHealthTechPage() {
                   <FontAwesomeIcon icon={s.icon} style={{ fontSize: 17 }} />
                 </div>
                 <p className="type-label text-[#0a1628]/40 mb-2">{s.abbr}</p>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{s.title}</h3>
+                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2">{s.title}</h3>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{s.desc}</p>
               </div>
             ))}
@@ -250,7 +250,7 @@ export default function IndustriesHealthTechPage() {
                 >
                   <FontAwesomeIcon icon={d.icon} style={{ fontSize: 17 }} />
                 </div>
-                <h3 className="font-card-heading text-[#0a1628] text-[15px] mb-2">{d.title}</h3>
+                <h3 className="font-card-heading text-[#0a1628] text-sm mb-2">{d.title}</h3>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{d.desc}</p>
               </div>
             ))}
@@ -282,7 +282,7 @@ export default function IndustriesHealthTechPage() {
                 >
                   <FontAwesomeIcon icon={w.icon} style={{ fontSize: 17 }} />
                 </div>
-                <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-2">{w.title}</h3>
+                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2">{w.title}</h3>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{w.desc}</p>
               </div>
             ))}

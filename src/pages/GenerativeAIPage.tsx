@@ -94,9 +94,9 @@ export default function GenerativeAIPage() {
       {/* Metrics */}
       <section className="bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-10 grid sm:grid-cols-3 gap-8">
-          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">2016</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">AI products shipping since</p></div>
-          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">3</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">Production AI products</p></div>
-          <div><p className="text-[#0a1628] text-[28px] font-semibold mb-1">Enterprise</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">Governed, secure deployment</p></div>
+          <div><p className="text-[#0a1628] text-3xl font-semibold mb-1">2016</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">AI products shipping since</p></div>
+          <div><p className="text-[#0a1628] text-3xl font-semibold mb-1">3</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">Production AI products</p></div>
+          <div><p className="text-[#0a1628] text-3xl font-semibold mb-1">Enterprise</p><p className="text-[#0a1628]/60 text-[14px] font-normal uppercase tracking-[0.18em]">Governed, secure deployment</p></div>
         </div>
       </section>
 
@@ -123,7 +123,7 @@ export default function GenerativeAIPage() {
                   ))}
                 </div>
                 {/* Code area */}
-                <div className="flex-1 p-4 text-[11.5px] leading-[1.75] overflow-hidden select-none">
+                <div className="flex-1 p-4 text-xs leading-[1.75] overflow-hidden select-none">
                   {[
                     { ln: 1,  tokens: [{ t: '• Core System Config', c: '#888' }] },
                     { ln: 2,  tokens: [{ t: 'SUPERVISOR', c: '#0e7490' }, { t: ': ', c: '#444' }, { t: 'Retail_Manager', c: '#1a1a1a' }] },
@@ -169,11 +169,11 @@ export default function GenerativeAIPage() {
             </div>
             {/* Card body */}
             <div className="px-8 py-8">
-              <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/35 mb-2">KAI</p>
-              <h3 className="font-semibold text-[#0a1628] text-[22px] leading-[1.3] mb-3">
+              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/35 mb-2">KAI</p>
+              <h3 className="font-semibold text-[#0a1628] text-2xl leading-[1.3] mb-3">
                 AI for Sales and Customer Services
               </h3>
-              <p className="text-[#0a1628]/60 text-[15px] leading-[1.7] font-normal mb-5 max-w-2xl">
+              <p className="text-[#0a1628]/60 text-sm leading-[1.7] font-normal mb-5 max-w-2xl">
                 Kai helps teams respond faster, govern handoffs and improve customer operations.
               </p>
               <Link to="/solutions/kai" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">

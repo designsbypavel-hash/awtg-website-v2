@@ -14,7 +14,7 @@ export default function InsightsWhitePaperDetailPage() {
     return (
       <div className="pt-32 pb-24 max-w-3xl mx-auto px-6 text-center">
         <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">404</p>
-        <h1 className="text-[32px] font-bold text-[#0a1628] mb-4">Whitepaper Not Found</h1>
+        <h1 className="text-4xl font-bold text-[#0a1628] mb-4">Whitepaper Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This whitepaper does not exist or may have been moved.</p>
         <Link to="/insights/white-papers" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
           Back to Whitepapers
@@ -87,7 +87,7 @@ export default function InsightsWhitePaperDetailPage() {
             <object data={paper.pdf} type="application/pdf" className="h-[80vh] min-h-[640px] w-full">
               <div className="p-8 text-center">
                 <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#228DC1] mb-5" />
-                <p className="text-[#0a1628]/70 text-[15px] leading-[1.7] mb-5">
+                <p className="text-[#0a1628]/70 text-sm leading-[1.7] mb-5">
                   Your browser cannot display this PDF inline.
                 </p>
                 <a href={paper.pdf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#228DC1] text-white text-sm font-medium">

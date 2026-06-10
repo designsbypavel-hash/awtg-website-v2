@@ -566,14 +566,14 @@ function AlignVisual() {
       {/* Header */}
       <div className="mb-5">
         <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1">Policy Compilation</p>
-        <p className="text-[#0a1628] font-semibold text-[15px]">Course inputs â†’ compiled AI policy</p>
+        <p className="text-[#0a1628] font-semibold text-sm">Course inputs â†’ compiled AI policy</p>
       </div>
 
       {/* Three-column layout: inputs | arrow | outputs */}
       <div className="flex items-center gap-4 mb-5">
         {/* Inputs */}
         <div className="flex-1 space-y-2">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Course Inputs</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Course Inputs</p>
           {inputs.map(row => (
             <div key={row.label} className="px-3 py-2 rounded-lg bg-[#f8fafc] border border-gray-100 text-[13px] font-semibold text-[#0a1628]/70" style={{ borderLeft: `2px solid ${row.color}` }}>
               {row.label}
@@ -586,12 +586,12 @@ function AlignVisual() {
           <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
             <path d="M1 8h28M22 2l8 6-8 6" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className="text-[9px] font-black uppercase tracking-[0.12em] text-[#228DC1]/70">compile</span>
+          <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#228DC1]/70">compile</span>
         </div>
 
         {/* Outputs */}
         <div className="flex-1 space-y-2">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Policy Outputs</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Policy Outputs</p>
           {outputs.map(row => (
             <div key={row.label} className="px-3 py-2 rounded-lg bg-[#f8fafc] border border-gray-100 text-[13px] font-semibold text-[#0a1628]/70" style={{ borderLeft: `2px solid ${row.color}` }}>
               {row.label}
@@ -620,11 +620,11 @@ function MasteryStoryVisual() {
       <div className="px-6 py-5 bg-[#f8fafc] border-b border-gray-100 flex items-start justify-between">
         <div>
           <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Skill Mastery</p>
-          <h3 className="text-[#0a1628] text-[22px] font-black leading-tight">Aruva turns learning into signals</h3>
+          <h3 className="text-[#0a1628] text-2xl font-black leading-tight">Aruva turns learning into signals</h3>
           <p className="text-[13px] text-[#0a1628]/55 mt-2">Real-time quantification of academic competency and cognitive growth.</p>
         </div>
         <div className="rounded-2xl bg-white px-5 py-3 text-center border border-gray-200 shadow-[0_6px_18px_rgba(10,22,40,0.06)]">
-          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#0a1628]/35">Global mastery</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/35">Global mastery</p>
           <p className="text-[24px] font-black text-[#0a1628] leading-none mt-1">22%</p>
         </div>
       </div>
@@ -636,7 +636,7 @@ function MasteryStoryVisual() {
               <div className="flex items-center justify-between gap-4 mb-3">
                 <div>
                   <p className="text-[14px] font-bold text-[#0a1628]">{skill.label}</p>
-                  <p className="text-[10px] font-black uppercase tracking-[0.14em]" style={{ color: skill.color }}>{skill.status}</p>
+                  <p className="text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: skill.color }}>{skill.status}</p>
                 </div>
                 <p className="text-[18px] font-black" style={{ color: skill.color }}>{skill.pct}%</p>
               </div>
@@ -2102,12 +2102,12 @@ function BloomInsightSection() {
                       style={{ background: isActive ? s.accent : 'transparent' }} />
 
                     <div className="flex items-center justify-between mb-3">
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em]"
+                      <p className="text-[11px] font-black uppercase tracking-[0.18em]"
                         style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.32)' }}>
                         {s.label}
                       </p>
                       <div className="text-right">
-                        <span className="text-[26px] font-black leading-none tabular-nums"
+                        <span className="text-2xl font-black leading-none tabular-nums"
                           style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.30)' }}>
                           {s.grade}%
                         </span>
@@ -2183,13 +2183,13 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile Â· compared with class average</p>
+                    <p className="text-[11px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile Â· compared with class average</p>
                   </div>
                 </div>
               </div>
               <div className="shrink-0 ml-4 text-right">
-                <p className="text-[40px] font-black leading-none tabular-nums" style={{ color: sem.accent }}>{sem.grade}%</p>
-                <p className="text-[15px] font-bold" style={{ color: sem.accent + 'cc' }}>{sem.gradeLabel}</p>
+                <p className="text-[44px] font-black leading-none tabular-nums" style={{ color: sem.accent }}>{sem.grade}%</p>
+                <p className="text-sm font-bold" style={{ color: sem.accent + 'cc' }}>{sem.gradeLabel}</p>
               </div>
             </div>
 
@@ -2326,7 +2326,7 @@ function BloomInsightSection() {
                     <div key={label}>
                       <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-[15px] font-semibold"
+                          <span className="text-sm font-semibold"
                             style={{ color: val >= 75 ? '#059669' : 'rgba(10,22,40,0.72)' }}>
                             {label}
                           </span>
@@ -2363,7 +2363,7 @@ function BloomInsightSection() {
             <div className="rounded-xl p-5 border transition-colors duration-300"
               style={{ background: sem.accent + '07', borderColor: sem.accent + '20' }}>
               <p className="text-[16px] font-semibold text-[#0a1628] mb-1.5 leading-snug">{sem.headline}</p>
-              <p className="text-[15px] text-[#0a1628]/55 leading-relaxed">{sem.detail}</p>
+              <p className="text-sm text-[#0a1628]/55 leading-relaxed">{sem.detail}</p>
             </div>
           </div>
         </div>
@@ -2386,13 +2386,13 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[10px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile Â· compared with class average</p>
+                    <p className="text-[11px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile Â· compared with class average</p>
                   </div>
                 </div>
               </div>
               <div className="shrink-0 ml-4 text-right">
-                <p className="text-[40px] font-black leading-none tabular-nums" style={{ color: dokSem.accent }}>{dokSem.grade}%</p>
-                <p className="text-[15px] font-bold" style={{ color: dokSem.accent + 'cc' }}>{dokSem.gradeLabel}</p>
+                <p className="text-[44px] font-black leading-none tabular-nums" style={{ color: dokSem.accent }}>{dokSem.grade}%</p>
+                <p className="text-sm font-bold" style={{ color: dokSem.accent + 'cc' }}>{dokSem.gradeLabel}</p>
               </div>
             </div>
 
@@ -2409,7 +2409,7 @@ function BloomInsightSection() {
                         <div className="flex items-center gap-2">
                           <span className="inline-flex items-center justify-center w-6 h-6 rounded-md text-[11px] font-black text-white"
                             style={{ background: DOK_COLORS[i] }}>{i+1}</span>
-                          <span className="text-[15px] font-semibold" style={{ color: isLow ? '#d97706' : 'rgba(10,22,40,0.8)' }}>
+                          <span className="text-sm font-semibold" style={{ color: isLow ? '#d97706' : 'rgba(10,22,40,0.8)' }}>
                             {DOK_NAMES[i]}
                           </span>
                         </div>
@@ -2457,7 +2457,7 @@ function BloomInsightSection() {
             <div className="rounded-xl p-5 border transition-colors duration-300"
               style={{ background: dokSem.accent + '07', borderColor: dokSem.accent + '20' }}>
               <p className="text-[16px] font-semibold text-[#0a1628] mb-1.5 leading-snug">{dokSem.headline}</p>
-              <p className="text-[15px] text-[#0a1628]/55 leading-relaxed">{dokSem.detail}</p>
+              <p className="text-sm text-[#0a1628]/55 leading-relaxed">{dokSem.detail}</p>
             </div>
           </div>
         </div>
@@ -2630,7 +2630,7 @@ function PlatformMetricsStrip() {
               style={{ fontSize: 'clamp(36px,3.2vw,50px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
               {item.stat}
             </p>
-            <p className="text-[#0a1628]/70 text-[15px] font-normal leading-snug max-w-[210px]">{item.label}</p>
+            <p className="text-[#0a1628]/70 text-sm font-normal leading-snug max-w-[210px]">{item.label}</p>
           </div>
         ))}
       </div>
