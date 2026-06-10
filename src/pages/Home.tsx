@@ -428,22 +428,28 @@ export function Vision() {
 
 const industryCards = [
   {
-    title: 'Communication Service Providers',
-    sub: 'Explore telecoms',
-    href: '/industries/telecoms',
-    img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&auto=format&fit=crop',
-  },
-  {
-    title: 'Enterprises & Connected Industries',
-    sub: 'Explore enterprise',
+    tag: 'Enterprise',
+    title: 'Enterprise & Connected Industries',
+    desc: 'Private 5G, IoT and AI-powered operations for manufacturing, logistics and enterprise campuses.',
+    cta: 'Explore enterprise',
     href: '/industries/enterprise',
-    img: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1565514020179-026b92b2d70b?w=900&q=85&auto=format&fit=crop',
   },
   {
+    tag: 'Health & Life Sciences',
+    title: 'Health & Life Sciences',
+    desc: 'NHS-grade connectivity, clinical AI and digital infrastructure built around patient outcomes and care delivery.',
+    cta: 'Explore health tech',
+    href: '/industries/health-tech',
+    img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=900&q=85&auto=format&fit=crop',
+  },
+  {
+    tag: 'Government',
     title: 'Public Sector & Government',
-    sub: 'Explore public sector',
+    desc: 'Smart cities, citizen-facing AI and secure connectivity for central and local government bodies.',
+    cta: 'Explore public sector',
     href: '/industries/public-sector',
-    img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=85&auto=format&fit=crop',
   },
 ]
 
@@ -453,18 +459,45 @@ function Industries() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12 mb-14">
         <SectionHeader
           title={<>Powering transformation<br />across every sector.</>}
-          description="From mobile operators to government bodies, AWTG delivers technology built specifically for your world. Select your sector to explore."
+          description="From enterprise campuses to NHS trusts and government bodies, AWTG delivers technology built specifically for your world."
         />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3">
         {industryCards.map((card) => (
-          <Link key={card.title} to={card.href} className="relative group overflow-hidden h-[400px]">
-            <img src={card.img} alt={card.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050a12]/85 via-[#050a12]/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-              <h3 className="font-h4 text-white mb-2">{card.title}</h3>
-              <span className="inline-flex items-center gap-1.5 text-sm text-[#0a1628]/60 group-hover:text-white transition-colors font-medium">
-                {card.sub}
+          <Link
+            key={card.title}
+            to={card.href}
+            className="relative group overflow-hidden h-[500px] flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#228DC1]"
+            aria-label={card.cta}
+          >
+            {/* Background image */}
+            <img
+              src={card.img}
+              alt={card.title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            {/* Gradient — heavier at bottom for legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050a12]/95 via-[#050a12]/45 to-[#050a12]/10 transition-opacity duration-300" />
+
+            {/* Tag — top left */}
+            <div className="relative z-10 p-8 pb-0">
+              <span className="inline-block text-[11px] font-bold uppercase tracking-[0.22em] text-white/60 bg-white/10 border border-white/15 px-3 py-1.5 backdrop-blur-sm">
+                {card.tag}
+              </span>
+            </div>
+
+            {/* Content — pinned to bottom */}
+            <div className="relative z-10 mt-auto p-8 lg:p-10">
+              <h3 className="font-h4 text-white mb-3 leading-snug">{card.title}</h3>
+              <p className="text-white/55 text-sm leading-[1.7] font-normal mb-6 max-w-[280px]">
+                {card.desc}
+              </p>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#228DC1] group-hover:gap-3.5 transition-all duration-300">
+                {card.cta}
+                <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
               </span>
             </div>
           </Link>
