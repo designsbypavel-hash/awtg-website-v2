@@ -1080,11 +1080,9 @@ function EscalationChart() {
           <rect x={activeCardX} y={activeCardY} width={activeCardWidth} height="56" rx="8"
             fill="white" stroke="rgba(34,141,193,0.18)" strokeWidth="1"/>
           <rect x={activeCardX} y={activeCardY + 1} width="3" height="54" rx="1.5" fill="url(#escAccentGrad)"/>
-          <text x={activeCardX + 14} y={activeCardY + 17} fontSize="7.5" fontWeight="700"
-            fill="#228DC1" fontFamily="Roboto,sans-serif" letterSpacing="0.1em">ACTIVE INTERACTION</text>
-          <text x={activeCardX + 14} y={activeCardY + 32} fontSize="10.2" fontWeight="800"
+          <text x={activeCardX + 14} y={activeCardY + 26} fontSize="10.2" fontWeight="800"
             fill="#0a1628" fontFamily="Roboto,sans-serif">{active.label}</text>
-          <text x={activeCardX + 14} y={activeCardY + 45} fontSize="7.8"
+          <text x={activeCardX + 14} y={activeCardY + 41} fontSize="7.8"
             fill="rgba(10,22,40,0.5)" fontFamily="Roboto,sans-serif">{active.detail}</text>
         </g>
         <g transform={`translate(${activeCardX + activeCardWidth - 34}, ${activeCardY + 12})`}>
