@@ -5,6 +5,7 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 const products = [
   {
     name: 'Kai',
+    href: '/products/kai',
     tag: 'Enterprise AI Platform',
     color: '#228DC1',
     desc: 'Kai is our production enterprise AI platform. Live, not a concept. It handles customer conversations at scale, connects to your existing systems, and gives you clear visibility of what is working through real-time dashboards and satisfaction metrics.',
@@ -18,6 +19,7 @@ const products = [
   },
   {
     name: 'Aruva',
+    href: '/products/aruva',
     tag: 'Agentic Education AI',
     color: '#059669',
     desc: 'Aruva is an agentic AI platform built for schools and institutions. It personalises learning for every student, automates content delivery, and gives educators real-time insight into progress, without adding to their workload.',
@@ -31,6 +33,7 @@ const products = [
   },
   {
     name: 'Ella',
+    href: null as string | null,
     tag: 'Voice AI, Est. 2016',
     color: '#7c3aed',
     desc: "Ella was AWTG's first AI product, a voice command and control solution launched in 2016, the first of its kind in the market at the time. Ella established AWTG's AI engineering capability and laid the foundation for Kai and Aruva.",
@@ -74,7 +77,7 @@ export default function GenerativeAIPage() {
               <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-colors">
                 Request a Demo
               </Link>
-              <Link to="/solutions" className="inline-flex items-center gap-2 px-7 py-3.5 text-[#0a1628]/60 hover:text-[#228DC1] text-sm font-medium transition-colors">
+              <Link to="/" className="inline-flex items-center gap-2 px-7 py-3.5 text-[#0a1628]/60 hover:text-[#228DC1] text-sm font-medium transition-colors">
                 View all solutions
               </Link>
             </div>
@@ -176,8 +179,8 @@ export default function GenerativeAIPage() {
               <p className="text-[#0a1628]/60 text-sm leading-[1.7] font-normal mb-5 max-w-2xl">
                 Kai helps teams respond faster, govern handoffs and improve customer operations.
               </p>
-              <Link to="/solutions/kai" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
-                Explore innovation
+              <Link to="/products/kai" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+                Explore Kai
               </Link>
             </div>
           </div>
@@ -192,28 +195,45 @@ export default function GenerativeAIPage() {
             Built and shipped.<br />Not theoretical.
           </h2>
           <div className="space-y-px">
-            {products.map((p) => (
-              <div key={p.name} className="grid lg:grid-cols-[280px_1fr] gap-0 border border-gray-100 bg-white hover:border-[#228DC1]/30 transition-all">
-                <div className="p-8 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between">
-                  <div>
-                    <p className="text-[14px] font-semibold uppercase tracking-[0.2em] mb-2" style={{ color: p.color }}>{p.tag}</p>
-                    <h3 className="font-serif-display text-[#0a1628]">{p.name}</h3>
+            {products.map((p) => {
+              const cardClass = `grid lg:grid-cols-[280px_1fr] gap-0 border border-gray-100 bg-white transition-all${p.href ? ' hover:border-[#228DC1]/40 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#228DC1]' : ''}`
+              const inner = (
+                <>
+                  <div className="p-8 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-between">
+                    <div>
+                      <p className="text-[14px] font-semibold uppercase tracking-[0.2em] mb-2" style={{ color: p.color }}>{p.tag}</p>
+                      <h3 className="font-serif-display text-[#0a1628]">{p.name}</h3>
+                    </div>
+                    <p className="text-[#0a1628]/60 text-xs font-normal mt-6 italic">{p.proof}</p>
                   </div>
-                  <p className="text-[#0a1628]/60 text-xs font-normal mt-6 italic">{p.proof}</p>
-                </div>
-                <div className="p-8">
-                  <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] font-normal mb-6">{p.desc}</p>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {p.features.map((f) => (
-                      <div key={f} className="flex items-start gap-2.5">
-                        <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 shrink-0 mt-0.5 text-[#228DC1]" />
-                        <span className="text-[#0a1628]/75 text-[14px] font-normal">{f}</span>
-                      </div>
-                    ))}
+                  <div className="p-8">
+                    <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] font-normal mb-6">{p.desc}</p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {p.features.map((f) => (
+                        <div key={f} className="flex items-start gap-2.5">
+                          <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 shrink-0 mt-0.5 text-[#228DC1]" />
+                          <span className="text-[#0a1628]/75 text-[14px] font-normal">{f}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {p.href && (
+                      <span className="inline-block mt-5 text-sm font-medium text-[#228DC1]">
+                        Explore {p.name} →
+                      </span>
+                    )}
                   </div>
+                </>
+              )
+              return p.href ? (
+                <Link key={p.name} to={p.href} className={cardClass} aria-label={`Learn more about ${p.name}`}>
+                  {inner}
+                </Link>
+              ) : (
+                <div key={p.name} className={cardClass}>
+                  {inner}
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
@@ -280,7 +300,7 @@ export default function GenerativeAIPage() {
             <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] hover:bg-[#1a6e99] text-white text-sm font-medium transition-colors">
               Request a conversation
             </Link>
-            <Link to="/solutions" className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1]/40 hover:border-[#228DC1] text-[#228DC1] text-sm font-medium transition-colors">
+            <Link to="/" className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1]/40 hover:border-[#228DC1] text-[#228DC1] text-sm font-medium transition-colors">
               View all solutions
             </Link>
           </div>
