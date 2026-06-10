@@ -1025,7 +1025,38 @@ function EscalationChart() {
         strokeLinecap="round" strokeLinejoin="round"
       />
 
-      {/* Animated interaction layer */}
+      {/* Vertical indicator line on hover */}
+      {hp && (
+        <line
+          x1={hp.x} y1={hp.y + 8} x2={hp.x} y2={244}
+          stroke="#228DC1" strokeWidth="1.5" strokeDasharray="4,3" opacity="0.4"
+        />
+      )}
+
+      {/* Data points + labels */}
+      {pts.map((pt, i) => (
+        <g key={pt.lbl} style={{ cursor:'crosshair' }}
+          onMouseEnter={() => setHovered(i)}
+          onMouseLeave={() => setHovered(null)}
+        >
+          {/* Static % label — hidden while its tooltip is showing */}
+          {hovered !== i && (
+            <text x={pt.x} y={pt.y - 11} textAnchor="middle" fontSize="10.5" fontWeight="700"
+              fill="#1a6e99" fontFamily="Roboto,sans-serif">{pt.pct}</text>
+          )}
+          {/* X-axis date label */}
+          <text x={pt.x} y="256" textAnchor="end" fontSize="9" fill="#526779" fontWeight="600"
+            fontFamily="Roboto,sans-serif" transform={`rotate(-60,${pt.x},256)`}>{pt.lbl}</text>
+          {/* Wide invisible hit area for easy hover */}
+          <circle cx={pt.x} cy={pt.y} r="20" fill="transparent"/>
+          {/* Visible circle — filled on hover */}
+          <circle cx={pt.x} cy={pt.y} r={hovered === i ? 7 : 5}
+            fill={hovered === i ? '#228DC1' : 'white'}
+            stroke="#228DC1" strokeWidth="2.5"/>
+        </g>
+      ))}
+
+      {/* Animated interaction layer — rendered after data points so card stays on top */}
       <g style={{ pointerEvents:'none' }}>
         <circle r="4.5" fill="#0a1628">
           <animateMotion dur="8.4s" repeatCount="indefinite" path="M54,67 L136,92 L219,120 L301,147 L383,174 L466,192 L548,201"/>
@@ -1062,37 +1093,6 @@ function EscalationChart() {
           ))}
         </g>
       </g>
-
-      {/* Vertical indicator line on hover */}
-      {hp && (
-        <line
-          x1={hp.x} y1={hp.y + 8} x2={hp.x} y2={244}
-          stroke="#228DC1" strokeWidth="1.5" strokeDasharray="4,3" opacity="0.4"
-        />
-      )}
-
-      {/* Data points + labels */}
-      {pts.map((pt, i) => (
-        <g key={pt.lbl} style={{ cursor:'crosshair' }}
-          onMouseEnter={() => setHovered(i)}
-          onMouseLeave={() => setHovered(null)}
-        >
-          {/* Static % label — hidden while its tooltip is showing */}
-          {hovered !== i && (
-            <text x={pt.x} y={pt.y - 11} textAnchor="middle" fontSize="10.5" fontWeight="700"
-              fill="#1a6e99" fontFamily="Roboto,sans-serif">{pt.pct}</text>
-          )}
-          {/* X-axis date label */}
-          <text x={pt.x} y="256" textAnchor="end" fontSize="9" fill="#526779" fontWeight="600"
-            fontFamily="Roboto,sans-serif" transform={`rotate(-60,${pt.x},256)`}>{pt.lbl}</text>
-          {/* Wide invisible hit area for easy hover */}
-          <circle cx={pt.x} cy={pt.y} r="20" fill="transparent"/>
-          {/* Visible circle — filled on hover */}
-          <circle cx={pt.x} cy={pt.y} r={hovered === i ? 7 : 5}
-            fill={hovered === i ? '#228DC1' : 'white'}
-            stroke="#228DC1" strokeWidth="2.5"/>
-        </g>
-      ))}
 
       {/* Tooltip card */}
       {hp && (
