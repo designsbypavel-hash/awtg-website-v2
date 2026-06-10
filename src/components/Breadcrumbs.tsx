@@ -101,7 +101,7 @@ export default function Breadcrumbs() {
       className="fixed left-0 right-0 z-[1500] bg-white/95 backdrop-blur-sm border-b border-gray-100/80"
       style={{ top: '64px' }}
     >
-      <div className="max-w-[1440px] mx-auto px-8 lg:px-12">
+      <div className="px-10">
         <ol className="flex items-center gap-0 h-9 overflow-hidden">
           <li className="flex items-center shrink-0">
             <Link
