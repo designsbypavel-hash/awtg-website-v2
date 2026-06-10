@@ -1,24 +1,27 @@
+import { useId } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
 interface Props {
   icon: IconDefinition
   accent: string
-  chips?: string[]   // kept for API compat — not rendered
+  chips?: string[]
   className?: string
 }
 
 export default function IndustryIconVisual({ icon, accent, className = '' }: Props) {
+  const uid = useId().replace(/:/g, '')
+
   return (
     <div
       className={`relative flex items-center justify-center overflow-hidden rounded-[28px] ${className}`}
       style={{
         minHeight: 440,
-        background: `linear-gradient(140deg, ${accent}06 0%, ${accent}02 60%, transparent 100%)`,
-        border: `1px solid ${accent}0e`,
+        background: `linear-gradient(150deg, ${accent}07 0%, ${accent}02 55%, transparent 100%)`,
+        border: `1px solid ${accent}10`,
       }}
     >
-      {/* ── Network / node SVG — fills the full panel, no text ── */}
+      {/* ── Flowing arc illustration — no text, fully abstract ── */}
       <svg
         aria-hidden="true"
         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -26,125 +29,129 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* ── Spoke lines from hub (200,140) to outer nodes ── */}
-        {[
-          [46, 34],  [200, 18], [354, 34],
-          [370,140], [354,246], [200,262],
-          [46, 246], [30, 140],
-          [96, 72],  [304, 72], [96, 208], [304, 208],
-        ].map(([x, y], i) => (
-          <line
-            key={`spoke-${i}`}
-            x1="200" y1="140"
-            x2={x} y2={y}
-            stroke={accent}
-            strokeWidth="0.6"
-            opacity="0.18"
-            strokeDasharray="4 6"
-          />
-        ))}
+        <defs>
+          {/* Arc 1: left→right sweep */}
+          <linearGradient id={`${uid}a`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stopColor={accent} stopOpacity="0"    />
+            <stop offset="30%"  stopColor={accent} stopOpacity="0.28" />
+            <stop offset="70%"  stopColor={accent} stopOpacity="0.20" />
+            <stop offset="100%" stopColor={accent} stopOpacity="0"    />
+          </linearGradient>
+          {/* Arc 2: diagonal */}
+          <linearGradient id={`${uid}b`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stopColor={accent} stopOpacity="0.22" />
+            <stop offset="50%"  stopColor={accent} stopOpacity="0.14" />
+            <stop offset="100%" stopColor={accent} stopOpacity="0"    />
+          </linearGradient>
+          {/* Arc 3: counter-diagonal */}
+          <linearGradient id={`${uid}c`} x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stopColor={accent} stopOpacity="0.18" />
+            <stop offset="60%"  stopColor={accent} stopOpacity="0.10" />
+            <stop offset="100%" stopColor={accent} stopOpacity="0"    />
+          </linearGradient>
+          {/* Arc 4: vertical sweep */}
+          <linearGradient id={`${uid}d`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stopColor={accent} stopOpacity="0.16" />
+            <stop offset="100%" stopColor={accent} stopOpacity="0"    />
+          </linearGradient>
+        </defs>
 
-        {/* ── Cross-connections between outer nodes ── */}
-        {[
-          [46,34,  200,18], [200,18, 354,34],
-          [354,34, 370,140],[370,140,354,246],
-          [354,246,200,262],[200,262,46,246],
-          [46,246, 30,140], [30,140, 46,34],
-          [96,72,  304,72], [96,208, 304,208],
-          [46,34,  96,72],  [354,34, 304,72],
-          [46,246, 96,208], [354,246,304,208],
-        ].map(([x1,y1,x2,y2], i) => (
-          <line
-            key={`edge-${i}`}
-            x1={x1} y1={y1} x2={x2} y2={y2}
-            stroke={accent}
-            strokeWidth="0.5"
-            opacity="0.10"
-          />
-        ))}
+        {/* Arc 1 — wide horizontal sweep below icon */}
+        <path
+          d="M -20,230 C 80,180 160,110 280,130 C 340,138 380,170 420,160"
+          fill="none"
+          stroke={`url(#${uid}a)`}
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
 
-        {/* ── Outer ring nodes ── */}
-        {[
-          { cx: 46,  cy: 34,  r: 5,   op: 0.45, pulse: true  },
-          { cx: 200, cy: 18,  r: 3.5, op: 0.35, pulse: false },
-          { cx: 354, cy: 34,  r: 5,   op: 0.45, pulse: false },
-          { cx: 370, cy: 140, r: 4,   op: 0.40, pulse: true  },
-          { cx: 354, cy: 246, r: 5,   op: 0.45, pulse: false },
-          { cx: 200, cy: 262, r: 3.5, op: 0.35, pulse: false },
-          { cx: 46,  cy: 246, r: 5,   op: 0.45, pulse: true  },
-          { cx: 30,  cy: 140, r: 4,   op: 0.40, pulse: false },
-        ].map(({ cx, cy, r, op, pulse }) => (
-          <g key={`outer-${cx}-${cy}`}>
-            {/* Outer halo ring */}
-            <circle cx={cx} cy={cy} r={r + 5} fill="none" stroke={accent} strokeWidth="0.6" opacity={op * 0.35} />
-            {/* Filled node */}
-            <circle cx={cx} cy={cy} r={r} fill={accent} opacity={pulse ? undefined : op}>
-              {pulse && (
-                <animate attributeName="opacity" values={`${op};${op * 1.8};${op}`} dur="2.8s" repeatCount="indefinite" />
-              )}
-            </circle>
-          </g>
-        ))}
+        {/* Arc 2 — diagonal from top-left curving to bottom-right */}
+        <path
+          d="M 10,-10 C 60,60 120,100 180,130 C 250,165 320,190 420,260"
+          fill="none"
+          stroke={`url(#${uid}b)`}
+          strokeWidth="1.1"
+          strokeLinecap="round"
+        />
 
-        {/* ── Mid-tier nodes ── */}
-        {[
-          { cx: 96,  cy: 72,  r: 3.5, op: 0.30 },
-          { cx: 304, cy: 72,  r: 3.5, op: 0.30 },
-          { cx: 96,  cy: 208, r: 3.5, op: 0.30 },
-          { cx: 304, cy: 208, r: 3.5, op: 0.30 },
-        ].map(({ cx, cy, r, op }) => (
-          <g key={`mid-${cx}-${cy}`}>
-            <circle cx={cx} cy={cy} r={r + 4} fill="none" stroke={accent} strokeWidth="0.5" opacity={op * 0.4} />
-            <circle cx={cx} cy={cy} r={r} fill={accent} opacity={op} />
-          </g>
-        ))}
+        {/* Arc 3 — sweeping from top-right down to bottom-left */}
+        <path
+          d="M 420,20 C 360,60 300,80 240,120 C 180,158 120,200 -10,270"
+          fill="none"
+          stroke={`url(#${uid}c)`}
+          strokeWidth="1.1"
+          strokeLinecap="round"
+        />
 
-        {/* ── Small decorative scatter dots ── */}
-        {[
-          [130, 44, 2], [270, 44, 1.5], [340, 105, 1.5],
-          [340, 178, 2], [270, 238, 1.5], [130, 238, 2],
-          [60, 178, 1.5], [60, 105, 2],
-          [160, 88, 1.5], [240, 88, 1.5],
-          [160, 196, 1.5], [240, 196, 1.5],
-        ].map(([cx, cy, r], i) => (
-          <circle key={`dot-${i}`} cx={cx} cy={cy} r={r} fill={accent} opacity="0.18" />
-        ))}
+        {/* Arc 4 — tall vertical sweep from top through left side */}
+        <path
+          d="M 55,-10 C 40,60 30,120 55,170 C 75,210 90,240 70,290"
+          fill="none"
+          stroke={`url(#${uid}d)`}
+          strokeWidth="0.9"
+          strokeLinecap="round"
+        />
+
+        {/* Arc 5 — mirror vertical on right */}
+        <path
+          d="M 345,-10 C 360,60 370,120 345,170 C 325,210 310,240 330,290"
+          fill="none"
+          stroke={`url(#${uid}d)`}
+          strokeWidth="0.9"
+          strokeLinecap="round"
+        />
+
+        {/* ── Elegant accent nodes — sparse, non-uniform ── */}
+        {/* Top-left */}
+        <circle cx="58"  cy="44"  r="4.5" fill={accent} opacity="0.30" />
+        <circle cx="58"  cy="44"  r="9"   fill="none" stroke={accent} strokeWidth="0.7" opacity="0.12" />
+
+        {/* Top-right */}
+        <circle cx="342" cy="38"  r="3.5" fill={accent} opacity="0.25" />
+        <circle cx="342" cy="38"  r="7"   fill="none" stroke={accent} strokeWidth="0.6" opacity="0.10" />
+
+        {/* Bottom-right */}
+        <circle cx="352" cy="242" r="5"   fill={accent} opacity="0.28" />
+        <circle cx="352" cy="242" r="10"  fill="none" stroke={accent} strokeWidth="0.7" opacity="0.11" />
+
+        {/* Bottom-left */}
+        <circle cx="50"  cy="236" r="3.5" fill={accent} opacity="0.22" />
+
+        {/* Small accent dots along arcs */}
+        <circle cx="160" cy="24"  r="2"   fill={accent} opacity="0.20" />
+        <circle cx="280" cy="258" r="2.5" fill={accent} opacity="0.18" />
+        <circle cx="378" cy="110" r="2"   fill={accent} opacity="0.18" />
+        <circle cx="22"  cy="150" r="2"   fill={accent} opacity="0.18" />
+
+        {/* Subtle short line accents */}
+        <line x1="80"  y1="20"  x2="108" y2="20"  stroke={accent} strokeWidth="1.2" strokeLinecap="round" opacity="0.18" />
+        <line x1="292" y1="260" x2="320" y2="260" stroke={accent} strokeWidth="1.2" strokeLinecap="round" opacity="0.15" />
+        <line x1="20"  y1="80"  x2="20"  y2="108" stroke={accent} strokeWidth="1.2" strokeLinecap="round" opacity="0.18" />
+        <line x1="380" y1="172" x2="380" y2="200" stroke={accent} strokeWidth="1.2" strokeLinecap="round" opacity="0.15" />
       </svg>
 
-      {/* ── Spinning dashed rings ── */}
+      {/* ── Single slow-rotating ring ── */}
       <div
         aria-hidden="true"
         className="absolute rounded-full animate-spin"
         style={{
-          width: 258,
-          height: 258,
-          border: `1.5px dashed ${accent}30`,
-          animationDuration: '22s',
+          width: 250,
+          height: 250,
+          border: `1px solid ${accent}22`,
+          animationDuration: '28s',
           animationTimingFunction: 'linear',
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute rounded-full animate-spin"
-        style={{
-          width: 200,
-          height: 200,
-          border: `1px dashed ${accent}20`,
-          animationDuration: '15s',
-          animationTimingFunction: 'linear',
-          animationDirection: 'reverse',
         }}
       />
 
-      {/* ── Ambient glow ── */}
+      {/* ── Soft radial glow behind icon ── */}
       <div
         aria-hidden="true"
         className="absolute pointer-events-none"
         style={{
-          width: 340,
-          height: 340,
+          width: 320,
+          height: 320,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${accent}12 0%, transparent 68%)`,
+          background: `radial-gradient(circle, ${accent}12 0%, transparent 65%)`,
         }}
       />
 
@@ -156,7 +163,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
           height: 128,
           background: 'white',
           border: `1.5px solid ${accent}22`,
-          boxShadow: `0 12px 52px ${accent}20, 0 2px 12px rgba(15,23,42,0.06)`,
+          boxShadow: `0 12px 52px ${accent}1e, 0 2px 12px rgba(15,23,42,0.06)`,
         }}
       >
         <FontAwesomeIcon icon={icon} style={{ fontSize: 54, color: accent }} />
