@@ -218,7 +218,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     )}
                   </div>
                   <div className={isReversed ? 'lg:order-1' : ''}>
-                    <IndustryIconVisual icon={s.icon} accent={accent} />
+                    <IndustryIconVisual icon={s.icon} accent={accent} chips={s.bullets} />
                   </div>
                 </div>
               )
