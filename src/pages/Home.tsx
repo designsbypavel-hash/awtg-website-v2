@@ -433,7 +433,7 @@ const industryCards = [
     desc: 'Private 5G, IoT and AI-powered operations for manufacturing, logistics and enterprise campuses.',
     cta: 'Explore enterprise',
     href: '/industries/enterprise',
-    img: 'https://images.unsplash.com/photo-1565514020179-026b92b2d70b?w=900&q=85&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=85&auto=format&fit=crop',
   },
   {
     tag: 'Health & Life Sciences',
