@@ -268,7 +268,7 @@ export default function Navigation() {
         className={`fixed top-0 left-0 right-0 z-[2000] transition-colors duration-200 ${navBg}`}
         onMouseLeave={closeDropdownSoon}
       >
-        <div className="px-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
@@ -362,7 +362,7 @@ export default function Navigation() {
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="px-10 py-8 lg:py-10">
+              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 lg:py-10">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
