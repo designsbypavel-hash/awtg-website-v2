@@ -813,28 +813,44 @@ function KaiChatDemo() {
 // -- Escalation chart with hover interaction ----------------------------------
 function EscalationChart() {
   const [hovered, setHovered] = useState<number | null>(null)
+  const [activeInteraction, setActiveInteraction] = useState(0)
 
   const pts = [
     { x:54,  y:67,  pct:'40%', lbl:'MAY 2024' },
-    { x:136, y:92,  pct:'34%', lbl:'SEP 2024', interaction: 'Advanced Sentiment Analysis' },
+    { x:136, y:92,  pct:'34%', lbl:'SEP 2024' },
     { x:219, y:120, pct:'28%', lbl:'JAN 2025' },
-    { x:301, y:147, pct:'22%', lbl:'MAY 2025', interaction: 'Deep Contextual Knowledge' },
-    { x:383, y:174, pct:'16%', lbl:'SEP 2025', interaction: 'Conversation Design' },
+    { x:301, y:147, pct:'22%', lbl:'MAY 2025' },
+    { x:383, y:174, pct:'16%', lbl:'SEP 2025' },
     { x:466, y:192, pct:'12%', lbl:'DEC 2025' },
     { x:548, y:201, pct:'10%', lbl:'MAR 2026' },
   ]
 
-  const interactionCallouts = [
-    { point: pts[1], x: 120, y: 29, width: 166, label: 'Advanced Sentiment Analysis' },
-    { point: pts[3], x: 248, y: 70, width: 166, label: 'Deep Contextual Knowledge' },
-    { point: pts[4], x: 358, y: 119, width: 136, label: 'Conversation Design' },
+  const interactions = [
+    { pointIndex: 1, label: 'Advanced Sentiment Analysis', detail: 'Detects tone shifts before handover.' },
+    { pointIndex: 3, label: 'Deep Contextual Knowledge', detail: 'Uses richer history to resolve accurately.' },
+    { pointIndex: 4, label: 'Conversation Design', detail: 'Guides users through clearer journeys.' },
   ]
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveInteraction(current => (current + 1) % interactions.length)
+    }, 2800)
+    return () => window.clearInterval(timer)
+  }, [interactions.length])
+
   const hp = hovered !== null ? pts[hovered] : null
-  const tooltipWidth = hp?.interaction ? 168 : 80
-  const tooltipHeight = hp?.interaction ? 62 : 46
+  const hoveredInteraction = hovered !== null
+    ? interactions.find(item => item.pointIndex === hovered)
+    : undefined
+  const tooltipWidth = hoveredInteraction ? 168 : 80
+  const tooltipHeight = hoveredInteraction ? 62 : 46
   // Keep tooltip box fully within the 560-wide viewBox.
   const tx = hp ? Math.min(Math.max(hp.x, (tooltipWidth / 2) + 4), 560 - (tooltipWidth / 2) - 4) : 0
+  const active = interactions[activeInteraction]
+  const activePoint = pts[active.pointIndex]
+  const activeCardX = activePoint.x > 330 ? activePoint.x - 186 : activePoint.x + 22
+  const activeCardY = Math.max(24, activePoint.y - 72)
+  const activeCardWidth = 178
 
   return (
     <svg width="100%" viewBox="0 0 560 295" xmlns="http://www.w3.org/2000/svg" style={{ display:'block' }}>
@@ -853,6 +869,9 @@ function EscalationChart() {
         <mask id="escMask">
           <rect x="54" y="10" width="494" height="234" fill="url(#escFade)"/>
         </mask>
+        <filter id="escSoftShadow" x="-20%" y="-40%" width="140%" height="180%">
+          <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#0a1628" floodOpacity="0.12"/>
+        </filter>
       </defs>
 
       {/* Chart bg */}
@@ -888,42 +907,41 @@ function EscalationChart() {
         strokeLinecap="round" strokeLinejoin="round"
       />
 
-      {/* Interaction callouts */}
-      {interactionCallouts.map(({ point, x, y, width, label }) => (
-        <g key={label} style={{ pointerEvents:'none' }}>
-          <line
-            x1={x + width / 2}
-            y1={y + 28}
-            x2={point.x}
-            y2={point.y - 8}
-            stroke="#228DC1"
-            strokeWidth="1.2"
-            strokeDasharray="3,4"
-            opacity="0.42"
-          />
-          <rect
-            x={x}
-            y={y}
-            width={width}
-            height="28"
-            rx="6"
-            fill="#ffffff"
-            stroke="rgba(34,141,193,0.28)"
-          />
-          <text
-            x={x + width / 2}
-            y={y + 18}
-            textAnchor="middle"
-            fontSize="8.5"
-            fontWeight="700"
-            fill="#1a6e99"
-            fontFamily="Roboto,sans-serif"
-            letterSpacing="0.035em"
-          >
-            {label}
-          </text>
+      {/* Animated interaction layer */}
+      <g style={{ pointerEvents:'none' }}>
+        <circle r="4.5" fill="#0a1628">
+          <animateMotion dur="8.4s" repeatCount="indefinite" path="M54,67 L136,92 L219,120 L301,147 L383,174 L466,192 L548,201"/>
+        </circle>
+        <line
+          x1={activePoint.x}
+          y1={activePoint.y}
+          x2={activeCardX + (activePoint.x > 330 ? activeCardWidth : 0)}
+          y2={activeCardY + 28}
+          stroke="#0a1628"
+          strokeWidth="1.2"
+          strokeDasharray="3,4"
+          opacity="0.28"
+        />
+        <circle cx={activePoint.x} cy={activePoint.y} r="9" fill="none" stroke="#0a1628" strokeWidth="1.5" opacity="0.52">
+          <animate attributeName="r" values="9;21;9" dur="2.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.52;0;0.52" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx={activePoint.x} cy={activePoint.y} r="5.5" fill="#0a1628"/>
+        <g filter="url(#escSoftShadow)">
+          <rect x={activeCardX} y={activeCardY} width={activeCardWidth} height="54" rx="8" fill="#0a1628"/>
+          <text x={activeCardX + 14} y={activeCardY + 20} fontSize="8" fontWeight="700"
+            fill="#8bd8ff" fontFamily="Roboto,sans-serif" letterSpacing="0.08em">ACTIVE INTERACTION</text>
+          <text x={activeCardX + 14} y={activeCardY + 35} fontSize="10.2" fontWeight="800"
+            fill="#fff" fontFamily="Roboto,sans-serif">{active.label}</text>
+          <text x={activeCardX + 14} y={activeCardY + 47} fontSize="7.8"
+            fill="rgba(255,255,255,0.62)" fontFamily="Roboto,sans-serif">{active.detail}</text>
         </g>
-      ))}
+        <g transform={`translate(${activeCardX + activeCardWidth - 34}, ${activeCardY + 12})`}>
+          {interactions.map((item, index) => (
+            <circle key={item.label} cx={index * 9} cy="0" r="2.4" fill={index === activeInteraction ? '#8bd8ff' : 'rgba(255,255,255,0.28)'}/>
+          ))}
+        </g>
+      </g>
 
       {/* Vertical indicator line on hover */}
       {hp && (
@@ -965,9 +983,9 @@ function EscalationChart() {
             fontSize="15" fontWeight="700" fill="white" fontFamily="Roboto,sans-serif">{hp.pct}</text>
           <text x={tx} y={hp.y - 33} textAnchor="middle"
             fontSize="9" fill="rgba(255,255,255,0.58)" fontFamily="Roboto,sans-serif" letterSpacing="0.04em">{hp.lbl}</text>
-          {hp.interaction && (
+          {hoveredInteraction && (
             <text x={tx} y={hp.y - 18} textAnchor="middle"
-              fontSize="8.5" fontWeight="700" fill="#8bd8ff" fontFamily="Roboto,sans-serif" letterSpacing="0.03em">{hp.interaction}</text>
+              fontSize="8.5" fontWeight="700" fill="#8bd8ff" fontFamily="Roboto,sans-serif" letterSpacing="0.03em">{hoveredInteraction.label}</text>
           )}
           {/* Arrow */}
           <polygon points={`${tx-6},${hp.y-24} ${tx+6},${hp.y-24} ${tx},${hp.y-16}`} fill="#0a1628"/>
