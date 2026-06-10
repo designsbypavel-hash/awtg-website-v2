@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Manufacturing',
+    accentColor: '#ea580c',
     title: 'Connectivity for industrial and operational environments',
     subtitle:
       'AWTG supports organisations with the connectivity foundations needed for operational visibility, automation and connected assets.',

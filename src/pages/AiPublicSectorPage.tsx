@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Public Sector',
+    accentColor: '#0891b2',
     title: 'AI for the public sector',
     subtitle:
       'Respond to more citizens faster, reduce case backlogs and give frontline teams the intelligence to act on what matters.',

@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Space & Defence',
+    accentColor: '#1d4ed8',
     title: 'Connectivity for space and defence',
     subtitle:
       'Mission-critical network infrastructure, SATCOM integration and high-assurance communications for defence and space environments.',

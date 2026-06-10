@@ -141,6 +141,11 @@ const whyItems = [
   },
 ]
 
+const AMBER = '#d97706'
+const BLUE  = '#228DC1'
+const PURPLE = '#7c3aed'
+const GREEN = '#059669'
+
 export default function IndustriesHealthTechPage() {
   return (
     <>
@@ -176,12 +181,16 @@ export default function IndustriesHealthTechPage() {
             {challenges.map(c => (
               <div
                 key={c.title}
-                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200"
-                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  border: '1px solid rgba(15,23,42,0.08)',
+                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
+                  borderTop: `3px solid ${AMBER}`,
+                }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
-                  style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: `${AMBER}10`, border: `1px solid ${AMBER}22`, color: AMBER }}
                 >
                   <FontAwesomeIcon icon={c.icon} style={{ fontSize: 17 }} />
                 </div>
@@ -208,12 +217,16 @@ export default function IndustriesHealthTechPage() {
             {solutions.map(s => (
               <div
                 key={s.title}
-                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200"
-                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  border: '1px solid rgba(15,23,42,0.08)',
+                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
+                  borderTop: `3px solid ${BLUE}`,
+                }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
-                  style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: `${BLUE}10`, border: `1px solid ${BLUE}22`, color: BLUE }}
                 >
                   <FontAwesomeIcon icon={s.icon} style={{ fontSize: 17 }} />
                 </div>
@@ -241,12 +254,16 @@ export default function IndustriesHealthTechPage() {
             {deliverables.map(d => (
               <div
                 key={d.title}
-                className="bg-white p-7 rounded-[18px] hover:shadow-md transition-all duration-200"
-                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+                className="bg-white p-7 rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  border: '1px solid rgba(15,23,42,0.08)',
+                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
+                  borderTop: `3px solid ${PURPLE}`,
+                }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
-                  style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: `${PURPLE}10`, border: `1px solid ${PURPLE}22`, color: PURPLE }}
                 >
                   <FontAwesomeIcon icon={d.icon} style={{ fontSize: 17 }} />
                 </div>
@@ -259,7 +276,7 @@ export default function IndustriesHealthTechPage() {
       </section>
 
       {/* ── Why AWTG ── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
+      <section className="py-24 border-t border-gray-100" style={{ background: '#f0f9f5' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-2xl mb-14">
             <h2 className="font-heading text-[#0a1628] mb-4">
@@ -273,12 +290,16 @@ export default function IndustriesHealthTechPage() {
             {whyItems.map(w => (
               <div
                 key={w.title}
-                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200"
-                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  border: `1px solid ${GREEN}18`,
+                  boxShadow: `0 2px 8px ${GREEN}0a`,
+                  borderTop: `3px solid ${GREEN}`,
+                }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-[#228DC1] mb-5"
-                  style={{ backgroundColor: 'rgba(34,141,193,0.08)' }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: `${GREEN}12`, border: `1px solid ${GREEN}25`, color: GREEN }}
                 >
                   <FontAwesomeIcon icon={w.icon} style={{ fontSize: 17 }} />
                 </div>
@@ -293,8 +314,8 @@ export default function IndustriesHealthTechPage() {
       {/* ── Compliance note ── */}
       <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="border-l-2 border-[#228DC1] pl-8">
-            <p className="text-[#0a1628]/80 text-xl font-normal leading-relaxed max-w-3xl">
+          <div className="max-w-3xl border-l-4 border-[#228DC1] pl-8">
+            <p className="text-[#0a1628]/80 text-xl font-normal leading-relaxed">
               All AWTG health technology deployments are delivered in full compliance with the NHS Data Security and Protection Toolkit, with 99.99% uptime SLAs and defined incident response procedures aligned to NHS England standards.
             </p>
             <Link

@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Public Sector',
+    accentColor: '#0891b2',
     title: 'Connectivity for the public sector',
     subtitle:
       'PSN-aligned network infrastructure, secure remote access and managed services for central and local government.',

@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Healthcare',
+    accentColor: '#059669',
     title: 'Connectivity for healthcare',
     subtitle:
       'Secure, DSPT-compliant network infrastructure designed for the clinical environment — from acute ward to community care.',

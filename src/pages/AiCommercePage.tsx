@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Commerce',
+    accentColor: '#d97706',
     title: 'AI for commerce and customer operations',
     subtitle:
       'Resolve customer enquiries faster, reduce friction across the purchase journey and surface demand intelligence at scale.',

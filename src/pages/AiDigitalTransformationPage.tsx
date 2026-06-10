@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Digital Transformation',
+    accentColor: '#7c3aed',
     title: 'AI for digital transformation',
     subtitle:
       'Automate processes, unlock trapped knowledge and give your organisation the intelligence it needs to move faster.',

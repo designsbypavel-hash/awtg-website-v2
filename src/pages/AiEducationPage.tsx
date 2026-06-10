@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Education',
+    accentColor: '#228DC1',
     title: 'AI-powered teaching and formative assessment for higher education',
     subtitle:
       'Aruva helps universities personalise learning, generate meaningful feedback and understand student progress in real time.',

@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Commerce',
+    accentColor: '#d97706',
     title: 'Connectivity for commerce and retail',
     subtitle:
       'Multi-site SD-WAN, PCI DSS-compliant networks and customer Wi-Fi infrastructure for retail and commercial operations.',

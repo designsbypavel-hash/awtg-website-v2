@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Education',
+    accentColor: '#7c3aed',
     title: 'Connectivity for education',
     subtitle:
       'Campus wireless, safeguarding-compliant networks and managed infrastructure services for schools, colleges and universities.',

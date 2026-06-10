@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Engineering',
+    accentColor: '#6b7280',
     title: 'Connectivity for complex engineering projects',
     subtitle:
       'AWTG helps engineering and infrastructure organisations connect sites, assets, teams and systems through secure digital infrastructure.',

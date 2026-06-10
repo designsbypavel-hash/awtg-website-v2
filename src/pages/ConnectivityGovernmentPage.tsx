@@ -16,6 +16,7 @@ import {
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Government',
+    accentColor: '#4f46e5',
     title: 'Connectivity for government',
     subtitle:
       'PSN-compliant networks, GovWifi infrastructure and cleared managed services for central and local government.',
