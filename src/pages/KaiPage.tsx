@@ -250,17 +250,6 @@ function GlobalReachSection() {
             <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] mb-8">
               Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
             </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 text-[14px] font-semibold text-white rounded-xl px-6 py-3"
-              style={{
-                background: 'linear-gradient(135deg, #228DC1 0%, #0e6a9a 100%)',
-                boxShadow: '0 4px 16px rgba(34,141,193,0.28)',
-                textDecoration: 'none',
-              }}
-            >
-              See customer results
-            </a>
           </div>
 
           {/* Right — animated globe panel */}
