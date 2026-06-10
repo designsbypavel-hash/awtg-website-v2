@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faGears,
   faBrain,
@@ -11,12 +12,35 @@ import {
   faLightbulb,
   faArrowTrendUp,
   faComments,
+  faShield,
 } from '@fortawesome/free-solid-svg-icons'
+
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#7c3aed"
+    headerIcon={faGears}
+    title="AI Transformation"
+    subtitle="Enterprise automation platform"
+    items={[
+      { icon: faBrain, label: 'Intelligent process automation' },
+      { icon: faDatabase, label: 'Knowledge extraction & RAG' },
+      { icon: faCloud, label: 'Cloud-native AI integration' },
+      { icon: faChartLine, label: 'Performance analytics' },
+    ]}
+    badges={[
+      { icon: faShield, label: 'ISO 27001', color: '#059669' },
+      { icon: faCloud, label: 'Cloud Ready', color: '#0891b2' },
+      { icon: faSitemap, label: 'Enterprise Scale', color: '#7c3aed' },
+    ]}
+  />
+)
 
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Digital Transformation',
     accentColor: '#7c3aed',
+    heroVisual,
+    heroImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=840&q=80&auto=format&fit=crop',
     title: 'AI for digital transformation',
     subtitle:
       'Automate processes, unlock trapped knowledge and give your organisation the intelligence it needs to move faster.',

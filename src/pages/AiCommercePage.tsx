@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faCartShopping,
   faHeadset,
@@ -11,12 +12,35 @@ import {
   faMagnifyingGlass,
   faBolt,
   faComments,
+  faShield,
 } from '@fortawesome/free-solid-svg-icons'
+
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#d97706"
+    headerIcon={faCartShopping}
+    title="Commerce AI"
+    subtitle="Customer operations platform"
+    items={[
+      { icon: faHeadset, label: 'AI customer support automation' },
+      { icon: faLanguage, label: 'Multilingual query handling' },
+      { icon: faRotateLeft, label: 'Returns & order management' },
+      { icon: faBolt, label: 'Real-time product recommendations' },
+    ]}
+    badges={[
+      { icon: faShield, label: 'GDPR Aligned', color: '#059669' },
+      { icon: faComments, label: 'CRM Ready', color: '#7c3aed' },
+      { icon: faUsers, label: 'Omnichannel', color: '#d97706' },
+    ]}
+  />
+)
 
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Commerce',
     accentColor: '#d97706',
+    heroVisual,
+    heroImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=840&q=80&auto=format&fit=crop',
     title: 'AI for commerce and customer operations',
     subtitle:
       'Resolve customer enquiries faster, reduce friction across the purchase journey and surface demand intelligence at scale.',

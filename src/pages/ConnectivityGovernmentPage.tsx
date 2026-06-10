@@ -39,6 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Government',
     accentColor: '#4f46e5',
     heroVisual,
+    heroImage: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?w=840&q=80&auto=format&fit=crop',
     title: 'Connectivity for government',
     subtitle:
       'PSN-compliant networks, GovWifi infrastructure and cleared managed services for central and local government.',

@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faLandmark,
   faComments,
@@ -13,10 +14,32 @@ import {
   faLightbulb,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#0891b2"
+    headerIcon={faLandmark}
+    title="Public Services AI"
+    subtitle="Citizen engagement platform"
+    items={[
+      { icon: faComments, label: 'Citizen enquiry automation' },
+      { icon: faShieldHalved, label: 'Secure by design' },
+      { icon: faClipboardList, label: 'Case management intelligence' },
+      { icon: faGlobe, label: 'Multi-channel service delivery' },
+    ]}
+    badges={[
+      { icon: faShieldHalved, label: 'UK GDPR', color: '#059669' },
+      { icon: faGlobe, label: 'GOV.UK Ready', color: '#0891b2' },
+      { icon: faClock, label: '24/7 Service', color: '#7c3aed' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Public Sector',
     accentColor: '#0891b2',
+    heroVisual,
+    heroImage: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=840&q=80&auto=format&fit=crop',
     title: 'AI for the public sector',
     subtitle:
       'Respond to more citizens faster, reduce case backlogs and give frontline teams the intelligence to act on what matters.',

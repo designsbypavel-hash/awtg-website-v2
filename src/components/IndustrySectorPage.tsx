@@ -15,6 +15,7 @@ export interface SectorHero {
   visualIcon: IconDefinition
   visualItems: Array<{ icon: IconDefinition; label: string }>
   heroVisual?: ReactNode
+  heroImage?: string
 }
 export interface SectorChallenge { icon: IconDefinition; title: string; desc: string }
 export interface SectorSupport { icon: IconDefinition; title: string; desc: string; bullets: string[] }
@@ -42,68 +43,108 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
 
   return (
     <>
-      {/* ─── Hero ─── */}
+      {/* ═══════════════════════════════════════════
+          HERO — light gradient, text left + panel right
+      ═══════════════════════════════════════════ */}
       <section
         className="pt-32 pb-24 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #f0f7fb 0%, #e8f4fa 50%, #f5f8fc 100%)' }}
+        style={{ background: `linear-gradient(135deg, #f8fbfe 0%, #f0f7fb 50%, #fafcfe 100%)` }}
       >
+        {/* subtle dot grid */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
-            opacity: 0.04,
+            opacity: 0.035,
             backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)',
             backgroundSize: '32px 32px',
           }}
         />
+        {/* accent glow orb */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: `radial-gradient(circle at 72% 38%, ${accent}18 0%, transparent 55%)` }}
+          style={{ background: `radial-gradient(ellipse at 72% 38%, ${accent}14 0%, transparent 58%)` }}
         />
 
         <div className="max-w-7xl mx-auto px-8 lg:px-12 relative">
-          <div className="grid lg:grid-cols-[1fr_420px] gap-16 items-center">
+          <div className="grid lg:grid-cols-[1fr_440px] gap-16 items-center">
+            {/* Left: copy */}
             <div>
-              <h1 className="font-serif-display text-[#0a1628] mb-5">{hero.title}</h1>
-              <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.8] mb-10 max-w-lg">
+              {hero.subtitle && (
+                <p
+                  className="text-[11px] font-bold uppercase tracking-[0.22em] mb-4"
+                  style={{ color: accent }}
+                >
+                  {hero.subtitle}
+                </p>
+              )}
+              <h1 className="font-serif-display text-[#0a1628] mb-6 leading-[1.1]">
+                {hero.title}
+              </h1>
+              <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.85] mb-10 max-w-lg">
                 {hero.description}
               </p>
-              <Link to={hero.ctaHref ?? '/contact'} className="btn btn-primary">
+              <Link
+                to={hero.ctaHref ?? '/contact'}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-[14px] text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                style={{ background: accent, boxShadow: `0 4px 18px ${accent}35` }}
+              >
                 {hero.ctaLabel ?? 'Talk to our experts'}
               </Link>
             </div>
 
-            {/* ─── Hero right visual ─── */}
+            {/* Right: image or visual panel */}
             <div className="hidden lg:block">
-              {hero.heroVisual ?? (
+              {hero.heroImage ? (
+                <div
+                  className="relative rounded-[20px] overflow-hidden"
+                  style={{
+                    boxShadow: '0 20px 60px rgba(15,23,42,0.14), 0 4px 16px rgba(15,23,42,0.08)',
+                    border: '1px solid rgba(15,23,42,0.07)',
+                  }}
+                >
+                  <img
+                    src={hero.heroImage}
+                    alt={hero.title}
+                    className="w-full object-cover"
+                    style={{ height: '420px', display: 'block' }}
+                  />
+                  {/* subtle accent gradient overlay at bottom */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+                    style={{
+                      background: `linear-gradient(to top, ${accent}22 0%, transparent 100%)`,
+                    }}
+                  />
+                </div>
+              ) : hero.heroVisual ?? (
                 <div
                   className="rounded-[20px] overflow-hidden bg-white"
                   style={{
                     border: '1px solid rgba(15,23,42,0.08)',
-                    boxShadow: '0 12px 48px rgba(15,23,42,0.12), 0 2px 8px rgba(15,23,42,0.06)',
+                    boxShadow: '0 16px 56px rgba(15,23,42,0.1), 0 2px 8px rgba(15,23,42,0.05)',
                   }}
                 >
                   <div
                     className="flex items-center gap-3 px-6 py-5 border-b"
                     style={{
-                      background: `linear-gradient(135deg, ${accent}0e 0%, ${accent}06 100%)`,
+                      background: `linear-gradient(135deg, ${accent}0d 0%, ${accent}06 100%)`,
                       borderColor: `${accent}18`,
                     }}
                   >
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center"
                       style={{ background: `${accent}18`, border: `1px solid ${accent}28` }}
                     >
-                      <FontAwesomeIcon icon={hero.visualIcon} style={{ fontSize: 22, color: accent }} />
+                      <FontAwesomeIcon icon={hero.visualIcon} style={{ fontSize: 18, color: accent }} />
                     </div>
                     <div>
                       <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: accent }}>
                         {hero.badge ?? 'Capabilities'}
                       </p>
-                      <p className="text-[12px] text-[#0a1628]/45 font-medium mt-0.5">AWTG platform</p>
+                      <p className="text-[12px] text-[#0a1628]/40 font-medium mt-0.5">AWTG platform</p>
                     </div>
                   </div>
-
                   <div className="px-5 py-4 space-y-2">
                     {hero.visualItems.map((item, i) => {
                       const c = ITEM_COLORS[i % 4]
@@ -119,8 +160,8 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                           >
                             <FontAwesomeIcon icon={item.icon} style={{ fontSize: 12, color: c }} />
                           </div>
-                          <span className="text-[#0a1628]/70 text-[13px] font-medium flex-1">{item.label}</span>
-                          <div className="w-1.5 h-1.5 rounded-full" style={{ background: c, opacity: 0.6 }} />
+                          <span className="text-[#0a1628]/65 text-[13px] font-medium flex-1">{item.label}</span>
+                          <div className="w-1.5 h-1.5 rounded-full" style={{ background: c, opacity: 0.55 }} />
                         </div>
                       )
                     })}
@@ -132,158 +173,243 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
         </div>
       </section>
 
-      {/* ─── Challenges ─── */}
-      <section className="py-24 bg-white">
+      {/* ═══════════════════════════════════════════
+          CHALLENGES — off-white bg, 4-col cards
+      ═══════════════════════════════════════════ */}
+      <section className="py-24" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14">
+          <div className="mb-14 max-w-2xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] mb-3" style={{ color: CHALLENGE }}>
+              Challenges
+            </p>
             <h2 className="font-heading text-[#0a1628] mb-4">{challenges.heading}</h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">{challenges.intro}</p>
+            <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{challenges.intro}</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {challenges.items.map((c, i) => (
               <div
                 key={c.title}
-                className="relative p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                className="relative bg-white p-7 rounded-[18px] overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 style={{
-                  border: '1px solid rgba(15,23,42,0.08)',
-                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
+                  border: '1px solid rgba(15,23,42,0.07)',
+                  boxShadow: '0 2px 12px rgba(15,23,42,0.05)',
                   borderTop: `3px solid ${CHALLENGE}`,
                 }}
               >
-                <span className="absolute top-5 right-5 font-bold text-[#0a1628]/10 text-[11px] tracking-widest select-none">
+                <span
+                  className="absolute -top-1 right-3 font-black select-none leading-none pointer-events-none"
+                  style={{ fontSize: '64px', color: `${CHALLENGE}09`, letterSpacing: '-0.05em' }}
+                >
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: `${CHALLENGE}12`, border: `1px solid ${CHALLENGE}25`, color: CHALLENGE }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: `${CHALLENGE}10`, border: `1px solid ${CHALLENGE}25`, color: CHALLENGE }}
                 >
-                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 18 }} />
+                  <FontAwesomeIcon icon={c.icon} style={{ fontSize: 20 }} />
                 </div>
-                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2.5">{c.title}</h3>
-                <p className="text-[#0a1628]/55 text-[13.5px] font-normal leading-relaxed">{c.desc}</p>
+                <h3 className="font-semibold text-[#0a1628] text-[14px] leading-snug mb-3">{c.title}</h3>
+                <p className="text-[#0a1628]/52 text-[13px] leading-relaxed">{c.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── What AWTG Supports ─── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
+      {/* ═══════════════════════════════════════════
+          SUPPORTS — white bg, alternating rows
+      ═══════════════════════════════════════════ */}
+      <section className="py-28 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14">
+          <div className="mb-20 max-w-2xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] mb-3" style={{ color: SUPPORT }}>
+              What we deliver
+            </p>
             <h2 className="font-heading text-[#0a1628] mb-4">{supports.heading}</h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">{supports.intro}</p>
+            <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{supports.intro}</p>
           </div>
-          <div className="grid lg:grid-cols-3 gap-6">
-            {supports.items.map(s => (
-              <div
-                key={s.title}
-                className="bg-white rounded-[18px] p-8 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  border: '1px solid rgba(15,23,42,0.08)',
-                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
-                  borderTop: `3px solid ${SUPPORT}`,
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                  style={{ backgroundColor: `${SUPPORT}10`, border: `1px solid ${SUPPORT}22`, color: SUPPORT }}
-                >
-                  <FontAwesomeIcon icon={s.icon} style={{ fontSize: 20 }} />
+
+          <div className="space-y-24">
+            {supports.items.map((s, i) => {
+              const isReversed = i % 2 === 1
+              return (
+                <div key={s.title} className="grid lg:grid-cols-2 gap-16 items-center">
+                  {/* Text side */}
+                  <div className={isReversed ? 'lg:order-2' : ''}>
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center mb-7"
+                      style={{ backgroundColor: `${SUPPORT}10`, border: `1.5px solid ${SUPPORT}25`, color: SUPPORT }}
+                    >
+                      <FontAwesomeIcon icon={s.icon} style={{ fontSize: 24 }} />
+                    </div>
+                    <h3 className="font-heading text-[#0a1628] text-[26px] leading-snug mb-5">{s.title}</h3>
+                    <p className="text-[#0a1628]/58 text-[15px] leading-[1.85] mb-8">{s.desc}</p>
+                    {s.bullets.length > 0 && (
+                      <ul className="space-y-3">
+                        {s.bullets.map(b => (
+                          <li key={b} className="flex items-start gap-3">
+                            <div
+                              className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                              style={{ background: `${SUPPORT}12`, border: `1px solid ${SUPPORT}28` }}
+                            >
+                              <div className="w-1.5 h-1.5 rounded-full" style={{ background: SUPPORT }} />
+                            </div>
+                            <span className="text-[#0a1628]/58 text-[14px] leading-relaxed">{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+
+                  {/* Visual panel side */}
+                  <div className={isReversed ? 'lg:order-1' : ''}>
+                    <div
+                      className="rounded-[28px] flex flex-col items-center justify-center p-14 relative overflow-hidden"
+                      style={{
+                        background: `linear-gradient(145deg, ${accent}07 0%, ${accent}12 100%)`,
+                        border: `1px solid ${accent}18`,
+                        minHeight: '300px',
+                        boxShadow: `0 8px 40px ${accent}12`,
+                      }}
+                    >
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          opacity: 0.04,
+                          backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)',
+                          backgroundSize: '22px 22px',
+                        }}
+                      />
+                      <div
+                        className="w-20 h-20 rounded-3xl flex items-center justify-center mb-5 relative"
+                        style={{
+                          background: `${accent}14`,
+                          border: `2px solid ${accent}28`,
+                          boxShadow: `0 0 32px ${accent}18`,
+                        }}
+                      >
+                        <FontAwesomeIcon icon={s.icon} style={{ fontSize: 36, color: accent }} />
+                      </div>
+                      <p className="text-[#0a1628]/60 text-[15px] font-semibold text-center mb-5 relative">{s.title}</p>
+                      <div className="flex gap-2 relative">
+                        {s.bullets.slice(0, 3).map((_, idx) => (
+                          <div
+                            key={idx}
+                            className="h-1 rounded-full transition-all"
+                            style={{
+                              width: idx === 0 ? '28px' : '10px',
+                              background: idx === 0 ? accent : `${accent}30`,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-[#0a1628] text-base leading-snug mb-3">{s.title}</h3>
-                <p className="text-[#0a1628]/60 text-[14px] font-normal leading-relaxed mb-5">{s.desc}</p>
-                {s.bullets.length > 0 && (
-                  <ul className="pt-5 border-t border-gray-100 space-y-2.5">
-                    {s.bullets.map(b => (
-                      <li key={b} className="flex items-start gap-2.5">
-                        <div className="w-1.5 h-1.5 rounded-full shrink-0 mt-2" style={{ background: SUPPORT }} />
-                        <span className="text-[#0a1628]/55 text-[13px] leading-relaxed">{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* ─── Use Cases ─── */}
-      <section className="py-24 bg-white border-t border-gray-100">
+      {/* ═══════════════════════════════════════════
+          USE CASES — off-white bg, 3-col card grid
+      ═══════════════════════════════════════════ */}
+      <section className="py-24 border-t border-gray-100" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14">
+          <div className="mb-14 max-w-2xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] mb-3" style={{ color: USECASE }}>
+              Use cases
+            </p>
             <h2 className="font-heading text-[#0a1628] mb-4">{useCases.heading}</h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">{useCases.intro}</p>
+            <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{useCases.intro}</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {useCases.items.map(u => (
               <div
                 key={u.title}
-                className="bg-white rounded-[18px] p-6 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                className="bg-white p-7 rounded-[18px] transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 style={{
-                  border: '1px solid rgba(15,23,42,0.08)',
-                  boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
+                  border: '1px solid rgba(15,23,42,0.07)',
+                  boxShadow: '0 2px 10px rgba(15,23,42,0.04)',
                   borderLeft: `3px solid ${USECASE}`,
                 }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: `${USECASE}10`, border: `1px solid ${USECASE}22`, color: USECASE }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: `${USECASE}0e`, border: `1px solid ${USECASE}22`, color: USECASE }}
                 >
-                  <FontAwesomeIcon icon={u.icon} style={{ fontSize: 16 }} />
+                  <FontAwesomeIcon icon={u.icon} style={{ fontSize: 17 }} />
                 </div>
-                <h3 className="font-card-heading text-[#0a1628] text-sm mb-2 leading-snug">{u.title}</h3>
-                <p className="text-[#0a1628]/55 text-[13.5px] font-normal leading-relaxed">{u.desc}</p>
+                <h3 className="font-semibold text-[#0a1628] text-[14px] mb-3 leading-snug">{u.title}</h3>
+                <p className="text-[#0a1628]/52 text-[13.5px] leading-relaxed">{u.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── Outcomes ─── light green instead of dark navy */}
-      <section className="py-24 border-t border-gray-100" style={{ background: '#f0f9f5' }}>
+      {/* ═══════════════════════════════════════════
+          OUTCOMES — white bg, 4-col cards
+      ═══════════════════════════════════════════ */}
+      <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-4">{outcomes.heading}</h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75]">{outcomes.intro}</p>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+            <div className="max-w-xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] mb-3" style={{ color: OUTCOME }}>
+                Outcomes
+              </p>
+              <h2 className="font-heading text-[#0a1628] mb-4">{outcomes.heading}</h2>
+              <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{outcomes.intro}</p>
+            </div>
+            <div className="shrink-0 flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full" style={{ background: OUTCOME }} />
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: OUTCOME }}>
+                AWTG outcomes
+              </span>
+            </div>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {outcomes.items.map(o => (
               <div
                 key={o.title}
-                className="p-7 bg-white rounded-[18px] hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                className="p-7 rounded-[18px] transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                 style={{
+                  background: `linear-gradient(145deg, #f2faf6 0%, #eaf7f1 100%)`,
                   border: `1px solid ${OUTCOME}18`,
-                  boxShadow: `0 2px 8px ${OUTCOME}0a`,
                   borderTop: `3px solid ${OUTCOME}`,
+                  boxShadow: `0 2px 10px ${OUTCOME}0a`,
                 }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: `${OUTCOME}12`, border: `1px solid ${OUTCOME}25`, color: OUTCOME }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: `${OUTCOME}12`, border: `1px solid ${OUTCOME}28`, color: OUTCOME }}
                 >
-                  <FontAwesomeIcon icon={o.icon} style={{ fontSize: 17 }} />
+                  <FontAwesomeIcon icon={o.icon} style={{ fontSize: 18 }} />
                 </div>
-                <h3 className="font-semibold text-[#0a1628] text-sm leading-snug mb-2">{o.title}</h3>
-                <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{o.desc}</p>
+                <h3 className="font-semibold text-[#0a1628] text-[14px] leading-snug mb-2.5">{o.title}</h3>
+                <p className="text-[#0a1628]/55 text-[13px] leading-relaxed">{o.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── Proof (optional) ─── */}
+      {/* ─── Proof quote (optional) ─── */}
       {proof && (
         <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
-            <div className="max-w-3xl border-l-4 border-[#228DC1] pl-8">
-              <p className="text-[#0a1628]/80 text-lg font-normal leading-relaxed mb-5">"{proof.quote}"</p>
+            <div
+              className="max-w-3xl border-l-4 pl-8"
+              style={{ borderColor: accent }}
+            >
+              <p className="text-[#0a1628]/75 text-[18px] font-normal leading-relaxed mb-5">"{proof.quote}"</p>
               {proof.author && (
-                <p className="text-[#0a1628]/50 text-[13px] font-semibold uppercase tracking-wider">
+                <p className="text-[#0a1628]/40 text-[13px] font-semibold uppercase tracking-wider">
                   {proof.author}
                   {proof.context && (
-                    <span className="font-normal normal-case tracking-normal"> — {proof.context}</span>
+                    <span className="font-normal normal-case tracking-normal text-[#0a1628]/35"> — {proof.context}</span>
                   )}
                 </p>
               )}

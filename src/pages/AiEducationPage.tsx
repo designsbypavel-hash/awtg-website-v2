@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faGraduationCap,
   faBrain,
@@ -13,10 +14,32 @@ import {
   faComments,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#228DC1"
+    headerIcon={faGraduationCap}
+    title="Aruva Platform"
+    subtitle="Higher education AI"
+    items={[
+      { icon: faBrain, label: 'Adaptive AI tutoring' },
+      { icon: faBookOpen, label: 'Formative assessment engine' },
+      { icon: faChartLine, label: 'Student progress analytics' },
+      { icon: faComments, label: 'Personalised feedback' },
+    ]}
+    badges={[
+      { icon: faShieldHalved, label: 'UK GDPR', color: '#059669' },
+      { icon: faGraduationCap, label: 'HE Ready', color: '#228DC1' },
+      { icon: faBookOpen, label: 'Evidence Based', color: '#7c3aed' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'AI Platform · Education',
     accentColor: '#228DC1',
+    heroVisual,
+    heroImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=840&q=80&auto=format&fit=crop',
     title: 'AI-powered teaching and formative assessment for higher education',
     subtitle:
       'Aruva helps universities personalise learning, generate meaningful feedback and understand student progress in real time.',

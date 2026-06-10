@@ -39,6 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Healthcare',
     accentColor: '#059669',
     heroVisual,
+    heroImage: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=840&q=80&auto=format&fit=crop',
     title: 'Connectivity for healthcare',
     subtitle:
       'Secure, DSPT-compliant network infrastructure designed for the clinical environment — from acute ward to community care.',

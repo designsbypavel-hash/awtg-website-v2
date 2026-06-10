@@ -39,6 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Space & Defence',
     accentColor: '#1d4ed8',
     heroVisual,
+    heroImage: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=840&q=80&auto=format&fit=crop',
     title: 'Connectivity for space and defence',
     subtitle:
       'Mission-critical network infrastructure, SATCOM integration and high-assurance communications for defence and space environments.',
