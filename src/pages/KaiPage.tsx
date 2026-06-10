@@ -1458,6 +1458,7 @@ export default function KaiPage() {
           { src: '/logos/clients/kai-borderlands.svg',     alt: 'Borderlands 5G Innovation Region' },
           { src: '/logos/clients/kai-frame1.svg',          alt: 'West Berkshire Council' },
           { src: '/logos/clients/kai-frame3.svg',          alt: 'Retail Hub' },
+          { src: '/logos/clients/kai-leicester.svg',       alt: 'Leicester City Council' },
           { src: '/logos/clients/kai-frame2.svg',          alt: 'TVRA Rural Action' },
         ]
         const all = [...items, ...items]
