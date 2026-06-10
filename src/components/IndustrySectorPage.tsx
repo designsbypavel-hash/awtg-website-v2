@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import CTASection from '@/components/CTASection'
+import IndustryIconVisual from '@/components/IndustryIconVisual'
 
 export interface SectorHero {
   badge?: string
@@ -198,37 +199,9 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     )}
                   </div>
 
-                  {/* ── Visual panel side ── */}
+                  {/* ── Minimal icon visual ── */}
                   <div className={isReversed ? 'lg:order-1' : ''}>
-                    <div className="rounded-[20px] overflow-hidden"
-                      style={{ border: '1px solid rgba(15,23,42,0.09)', boxShadow: '0 16px 48px rgba(15,23,42,0.09), 0 2px 8px rgba(15,23,42,0.05)' }}>
-
-                      {/* Accent header */}
-                      <div className="flex items-center gap-4 px-6 py-5"
-                        style={{ background: `linear-gradient(135deg, ${accent} 0%, ${accent}cc 100%)` }}>
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                          style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.25)' }}>
-                          <FontAwesomeIcon icon={s.icon} style={{ fontSize: 18, color: 'white' }} />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-white font-semibold text-[14px] leading-tight truncate">{s.title}</p>
-                          <p className="text-white/60 text-[11px] mt-0.5 font-medium uppercase tracking-[0.12em]">AWTG capability</p>
-                        </div>
-                        <div className="ml-auto shrink-0 flex items-center gap-1.5">
-                          <div className="w-2 h-2 rounded-full bg-white/30" />
-                          <div className="w-2 h-2 rounded-full bg-white/30" />
-                          <div className="w-2 h-2 rounded-full bg-white" />
-                        </div>
-                      </div>
-
-                      {/* Large centred icon */}
-                      <div className="flex items-center justify-center py-16"
-                        style={{ background: `linear-gradient(180deg, ${accent}06 0%, white 100%)` }}>
-                        <FontAwesomeIcon icon={s.icon} style={{ fontSize: 80, color: accent, opacity: 0.85 }} />
-                      </div>
-
-                      <div className="h-1" style={{ background: `linear-gradient(90deg, ${accent} 0%, ${accent}25 100%)` }} />
-                    </div>
+                    <IndustryIconVisual icon={s.icon} accent={accent} />
                   </div>
                 </div>
               )
