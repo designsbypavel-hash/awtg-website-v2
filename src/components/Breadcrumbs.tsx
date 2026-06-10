@@ -39,8 +39,8 @@ const LABELS: Record<string, string> = {
   retail: 'Commerce',
   defence: 'Space & Defence',
   products: 'Products',
-  kai: 'Kai',
-  aruva: 'Aruva',
+  kai: 'AI for Sales and Customer Services',
+  aruva: 'AI for Education',
   icmap: 'iCMAP',
   insights: 'News',
   news: 'News',
@@ -101,7 +101,7 @@ export default function Breadcrumbs() {
       className="fixed left-0 right-0 z-[1500] bg-white/95 backdrop-blur-sm border-b border-gray-100/80"
       style={{ top: '64px' }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-12">
         <ol className="flex items-center gap-0 h-9 overflow-hidden">
           <li className="flex items-center shrink-0">
             <Link
@@ -120,7 +120,7 @@ export default function Breadcrumbs() {
               />
               {crumb.isLast ? (
                 <span
-                  className="text-[11.5px] font-medium text-[#228DC1] whitespace-nowrap overflow-hidden text-ellipsis max-w-[220px]"
+                  className="text-[11.5px] font-medium text-[#228DC1] whitespace-nowrap overflow-hidden text-ellipsis max-w-[360px]"
                   aria-current="page"
                 >
                   {crumb.label}
