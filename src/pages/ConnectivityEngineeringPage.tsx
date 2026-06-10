@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faWrench,
   faWifi,
@@ -13,10 +14,31 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#6b7280"
+    headerIcon={faWrench}
+    title="Site Connectivity"
+    subtitle="Engineering infrastructure"
+    items={[
+      { icon: faWifi, label: 'Multi-site wireless' },
+      { icon: faMicrochip, label: 'Asset IoT' },
+      { icon: faNetworkWired, label: 'OT/IT convergence' },
+      { icon: faCloud, label: 'Remote monitoring' },
+    ]}
+    badges={[
+      { icon: faNetworkWired, label: 'SD-WAN', color: '#059669' },
+      { icon: faMicrochip, label: 'IoT Ready', color: '#6b7280' },
+      { icon: faGlobe, label: 'Multi-site', color: '#0891b2' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Engineering',
     accentColor: '#6b7280',
+    heroVisual,
     title: 'Connectivity for complex engineering projects',
     subtitle:
       'AWTG helps engineering and infrastructure organisations connect sites, assets, teams and systems through secure digital infrastructure.',

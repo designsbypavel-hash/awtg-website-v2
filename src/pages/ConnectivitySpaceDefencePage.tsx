@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faSatellite,
   faShieldHalved,
@@ -13,10 +14,31 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#1d4ed8"
+    headerIcon={faSatellite}
+    title="Secure Comms"
+    subtitle="Space & defence infrastructure"
+    items={[
+      { icon: faSatellite, label: 'SATCOM integration' },
+      { icon: faShieldHalved, label: 'High-assurance security' },
+      { icon: faNetworkWired, label: 'Tactical private networking' },
+      { icon: faLock, label: 'Classified communications' },
+    ]}
+    badges={[
+      { icon: faShieldHalved, label: 'SC/DV', color: '#059669' },
+      { icon: faSatellite, label: 'MOD Approved', color: '#1d4ed8' },
+      { icon: faGlobe, label: 'NATO Aligned', color: '#7c3aed' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Space & Defence',
     accentColor: '#1d4ed8',
+    heroVisual,
     title: 'Connectivity for space and defence',
     subtitle:
       'Mission-critical network infrastructure, SATCOM integration and high-assurance communications for defence and space environments.',

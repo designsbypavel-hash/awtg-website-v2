@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faStore,
   faNetworkWired,
@@ -13,10 +14,31 @@ import {
   faLock,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#d97706"
+    headerIcon={faStore}
+    title="Retail Network"
+    subtitle="Commerce connectivity platform"
+    items={[
+      { icon: faNetworkWired, label: 'Multi-site SD-WAN' },
+      { icon: faShieldHalved, label: 'PCI DSS compliance' },
+      { icon: faWifi, label: 'Customer Wi-Fi' },
+      { icon: faCloud, label: 'Cloud integration' },
+    ]}
+    badges={[
+      { icon: faShieldHalved, label: 'PCI DSS', color: '#059669' },
+      { icon: faWifi, label: 'SD-WAN', color: '#0891b2' },
+      { icon: faStore, label: 'Retail Ready', color: '#d97706' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Commerce',
     accentColor: '#d97706',
+    heroVisual,
     title: 'Connectivity for commerce and retail',
     subtitle:
       'Multi-site SD-WAN, PCI DSS-compliant networks and customer Wi-Fi infrastructure for retail and commercial operations.',

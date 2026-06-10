@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faHospital,
   faWifi,
@@ -13,10 +14,31 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#059669"
+    headerIcon={faHospital}
+    title="NHS Connectivity"
+    subtitle="Clinical network infrastructure"
+    items={[
+      { icon: faShield, label: 'DSPT-compliant networks' },
+      { icon: faWifi, label: 'Clinical wireless coverage' },
+      { icon: faMicrochip, label: 'IoMT device connectivity' },
+      { icon: faCloud, label: 'NHS cloud integration' },
+    ]}
+    badges={[
+      { icon: faShield, label: 'DSPT', color: '#059669' },
+      { icon: faHospital, label: 'NHS Aligned', color: '#0891b2' },
+      { icon: faLock, label: 'Encrypted', color: '#7c3aed' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Healthcare',
     accentColor: '#059669',
+    heroVisual,
     title: 'Connectivity for healthcare',
     subtitle:
       'Secure, DSPT-compliant network infrastructure designed for the clinical environment — from acute ward to community care.',

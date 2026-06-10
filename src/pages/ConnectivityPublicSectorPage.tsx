@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faLandmark,
   faNetworkWired,
@@ -13,10 +14,31 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#0891b2"
+    headerIcon={faLandmark}
+    title="PSN Network"
+    subtitle="Public sector connectivity"
+    items={[
+      { icon: faShield, label: 'PSN-aligned networks' },
+      { icon: faNetworkWired, label: 'Government WAN & SD-WAN' },
+      { icon: faCloud, label: 'Cloud & G-Cloud connectivity' },
+      { icon: faWifi, label: 'GovWifi deployment' },
+    ]}
+    badges={[
+      { icon: faShield, label: 'PSN', color: '#059669' },
+      { icon: faNetworkWired, label: 'CCS', color: '#0891b2' },
+      { icon: faUsers, label: 'SC Cleared', color: '#7c3aed' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Public Sector',
     accentColor: '#0891b2',
+    heroVisual,
     title: 'Connectivity for the public sector',
     subtitle:
       'PSN-aligned network infrastructure, secure remote access and managed services for central and local government.',

@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faLandmark,
   faNetworkWired,
@@ -13,10 +14,31 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#4f46e5"
+    headerIcon={faLandmark}
+    title="Gov Connectivity"
+    subtitle="Secure government infrastructure"
+    items={[
+      { icon: faNetworkWired, label: 'PSN-compliant networks' },
+      { icon: faShield, label: 'GovWifi infrastructure' },
+      { icon: faLock, label: 'Classified environments' },
+      { icon: faCloud, label: 'G-Cloud connectivity' },
+    ]}
+    badges={[
+      { icon: faShield, label: 'PSN', color: '#059669' },
+      { icon: faNetworkWired, label: 'GovWifi', color: '#4f46e5' },
+      { icon: faLock, label: 'NCSC Aligned', color: '#7c3aed' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Government',
     accentColor: '#4f46e5',
+    heroVisual,
     title: 'Connectivity for government',
     subtitle:
       'PSN-compliant networks, GovWifi infrastructure and cleared managed services for central and local government.',

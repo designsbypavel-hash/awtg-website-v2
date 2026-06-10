@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faGraduationCap,
   faWifi,
@@ -13,10 +14,31 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#7c3aed"
+    headerIcon={faGraduationCap}
+    title="Campus Network"
+    subtitle="Education connectivity"
+    items={[
+      { icon: faWifi, label: 'High-density campus wireless' },
+      { icon: faShield, label: 'Safeguarding-compliant networks' },
+      { icon: faNetworkWired, label: 'Research & HPC infrastructure' },
+      { icon: faMobile, label: 'BYOD & guest access' },
+    ]}
+    badges={[
+      { icon: faGraduationCap, label: 'Eduroam', color: '#059669' },
+      { icon: faShield, label: 'DfE Aligned', color: '#7c3aed' },
+      { icon: faCloud, label: 'Cloud Ready', color: '#0891b2' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Education',
     accentColor: '#7c3aed',
+    heroVisual,
     title: 'Connectivity for education',
     subtitle:
       'Campus wireless, safeguarding-compliant networks and managed infrastructure services for schools, colleges and universities.',

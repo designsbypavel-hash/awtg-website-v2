@@ -1,5 +1,6 @@
 import IndustrySectorPage from '@/components/IndustrySectorPage'
 import type { SectorPageData } from '@/components/IndustrySectorPage'
+import IndustryVisualPanel from '@/components/IndustryVisualPanel'
 import {
   faIndustry,
   faNetworkWired,
@@ -13,10 +14,31 @@ import {
   faCloud,
 } from '@fortawesome/free-solid-svg-icons'
 
+const heroVisual = (
+  <IndustryVisualPanel
+    accent="#ea580c"
+    headerIcon={faIndustry}
+    title="Industrial IoT"
+    subtitle="Manufacturing connectivity"
+    items={[
+      { icon: faNetworkWired, label: 'OT/IT convergence' },
+      { icon: faWifi, label: 'Private 5G networks' },
+      { icon: faMicrochip, label: 'Industrial IoT' },
+      { icon: faGears, label: 'Automation-ready' },
+    ]}
+    badges={[
+      { icon: faMicrochip, label: 'Private 5G', color: '#059669' },
+      { icon: faGears, label: 'OT/IT Ready', color: '#ea580c' },
+      { icon: faShieldHalved, label: 'IEC 62443', color: '#7c3aed' },
+    ]}
+  />
+)
+
 const data: SectorPageData = {
   hero: {
     badge: 'Connectivity · Manufacturing',
     accentColor: '#ea580c',
+    heroVisual,
     title: 'Connectivity for industrial and operational environments',
     subtitle:
       'AWTG supports organisations with the connectivity foundations needed for operational visibility, automation and connected assets.',
