@@ -340,7 +340,7 @@ const audiences = [
     color: '#228DC1',
     soft: '#e8f4fc',
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-    stat: '3Ã— faster gap closure',
+    stat: '3x faster gap closure',
   },
   {
     label: 'Educators',
@@ -673,7 +673,7 @@ function TutorVisual() {
     { role: 'aruva',   text: "Good instinct. Now think about what actually gives buyers that power â€” is it the number of alternatives, switching costs, or something else?" },
     { role: 'student', text: "I think it's switching costs. If it's easy to switch, buyers have more leverage." },
   ]
-  const signal = { label: 'Mastery signal captured', sub: 'Apply level Â· Bloom taxonomy updated', color: '#228DC1', bg: '#e8f4fc', border: '#b8ddf0' }
+  const signal = { label: 'Mastery signal captured', sub: 'Apply level - Bloom taxonomy updated', color: '#228DC1', bg: '#e8f4fc', border: '#b8ddf0' }
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
@@ -685,8 +685,8 @@ function TutorVisual() {
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
           </div>
           <span className="text-[14px] font-semibold text-[#0a1628]/60">Adaptive Tutor</span>
-          <span className="text-[#0a1628]/20">Â·</span>
-          <span className="text-[13px] text-[#0a1628]/40">Business Strategy 101 Â· Week 3</span>
+          <span className="text-[#0a1628]/20 mx-1">|</span>
+          <span className="text-[13px] text-[#0a1628]/40">Business Strategy 101 - Week 3</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">Socratic mode</span>
@@ -698,7 +698,7 @@ function TutorVisual() {
         <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: '#f59e0b' }}>MG</div>
         <div>
           <p className="text-[13px] font-semibold text-[#0a1628] leading-none">Maria Garcia</p>
-          <p className="text-[11px] text-[#0a1628]/45 mt-0.5">Business Strategy 101 Â· Analogy-oriented learner</p>
+          <p className="text-[11px] text-[#0a1628]/45 mt-0.5">Business Strategy 101 - Analogy-oriented learner</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fef3c7] border border-[#d97706]/20">
           <div className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
@@ -1244,44 +1244,6 @@ function MMTextDemo() {
           <div style={{ width:'100%', height:7, borderRadius:999, background:'rgba(10,22,40,0.08)', overflow:'hidden' }}>
             <div style={{ height:'100%', width:`${score}%`, borderRadius:999, background:activeStudent.accent, transition:'width 0.18s ease' }}/>
           </div>
-        </div>
-      </div>
-    </div>
-  )
-
-  return (
-    <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'30px 36px' }}>
-      <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:2 }}>
-        <div style={{ flex:1 }}>
-          <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:700, lineHeight:1.2 }}>Solving: {activeExample.equation}</p>
-          <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.32)', marginTop:3 }}>{activeExample.topic} Â· {stepCount} steps Â· equation updates automatically</p>
-        </div>
-        <div style={{ minWidth:78, textAlign:'right' }}>
-          <p style={{ fontSize:20, fontWeight:800, color:'#7c3aed', lineHeight:1 }}>{score}%</p>
-          <p style={{ fontSize:9, color:'rgba(10,22,40,0.36)', fontWeight:700, textTransform:'uppercase', letterSpacing:'0.08em' }}>confidence</p>
-        </div>
-      </div>
-
-      <div key={active} style={{ display:'flex', flexDirection:'column', gap:13 }}>
-        {activeExample.steps.map((s, i) => (
-          <div key={`${s.label}-${s.val}`} style={{
-            display:'flex', alignItems:'center', gap:10,
-            opacity:0, transform:'translateY(6px)',
-            animation:`mmCardIn 0.36s ease ${0.1+i*0.18}s forwards`,
-          }}>
-            <span style={{ fontSize:9, fontWeight:800, color:'#7c3aed', letterSpacing:'0.10em', textTransform:'uppercase', minWidth:50, flexShrink:0 }}>{s.label}</span>
-            <span style={{ fontSize:13, fontFamily:"'Roboto Mono','Courier New',monospace", color:'#1e1b4b', background:'rgba(124,58,237,0.07)', padding:'6px 12px', borderRadius:6, border:'1px solid rgba(124,58,237,0.16)', flex:1 }}>{s.val}</span>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ display:'grid', gridTemplateColumns:'1fr auto', alignItems:'center', gap:14, marginTop:6, padding:'10px 12px', background:'linear-gradient(90deg,rgba(124,58,237,0.10),rgba(124,58,237,0.03))', border:'1px solid rgba(124,58,237,0.16)', borderRadius:10 }}>
-        <div>
-          <p style={{ fontSize:10, color:'rgba(10,22,40,0.40)', textTransform:'uppercase', letterSpacing:'0.12em', fontWeight:800, lineHeight:1 }}>Result</p>
-          <p style={{ fontSize:14, color:'#1e1b4b', fontWeight:800, lineHeight:1.2, marginTop:4 }}>{activeExample.result}</p>
-        </div>
-        <div style={{ width:74, height:8, borderRadius:999, background:'rgba(124,58,237,0.14)', overflow:'hidden' }}>
-          <div style={{ height:'100%', width:`${score}%`, borderRadius:999, background:'linear-gradient(90deg,#a78bfa,#7c3aed)', transition:'width 0.18s ease' }}/>
         </div>
       </div>
     </div>
@@ -2183,7 +2145,7 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[11px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile Â· compared with class average</p>
+                    <p className="text-[11px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile - compared with class average</p>
                   </div>
                 </div>
               </div>
@@ -2386,7 +2348,7 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[11px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile Â· compared with class average</p>
+                    <p className="text-[11px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile - compared with class average</p>
                   </div>
                 </div>
               </div>
@@ -2500,7 +2462,9 @@ function PrinciplesSection() {
                 <FontAwesomeIcon icon={p.icon} style={{ width:18, height:18, color: p.color }} />
               </div>
               {/* Label */}
-              <p className="type-label mb-3" style={{ color: p.color }}>{p.label}</p>
+              <p className="type-label mb-2" style={{ color: p.color }}>{p.label}</p>
+              {/* Title */}
+              <p className="text-[#0a1628] font-semibold text-base leading-snug mb-3">{p.title}</p>
               {/* Desc */}
               <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{p.desc}</p>
             </div>
