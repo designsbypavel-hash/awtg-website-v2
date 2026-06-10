@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
@@ -40,6 +40,7 @@ const ITEM_COLORS = [SUPPORT, USECASE, OUTCOME, CHALLENGE]
 export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
   const { hero, challenges, supports, useCases, outcomes, proof, cta } = data
   const accent = hero.accentColor ?? '#228DC1'
+  const [imgError, setImgError] = useState(false)
 
   return (
     <>
@@ -93,9 +94,9 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
               </Link>
             </div>
 
-            {/* Right: image or visual panel */}
+            {/* Right: image (with fallback) or visual panel */}
             <div className="hidden lg:block">
-              {hero.heroImage ? (
+              {hero.heroImage && !imgError ? (
                 <div
                   className="relative rounded-[20px] overflow-hidden"
                   style={{
@@ -106,15 +107,13 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                   <img
                     src={hero.heroImage}
                     alt={hero.title}
+                    onError={() => setImgError(true)}
                     className="w-full object-cover"
                     style={{ height: '420px', display: 'block' }}
                   />
-                  {/* subtle accent gradient overlay at bottom */}
                   <div
                     className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-                    style={{
-                      background: `linear-gradient(to top, ${accent}22 0%, transparent 100%)`,
-                    }}
+                    style={{ background: `linear-gradient(to top, ${accent}28 0%, transparent 100%)` }}
                   />
                 </div>
               ) : hero.heroVisual ?? (
@@ -261,49 +260,64 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     )}
                   </div>
 
-                  {/* Visual panel side */}
+                  {/* Visual panel side — feature preview card */}
                   <div className={isReversed ? 'lg:order-1' : ''}>
                     <div
-                      className="rounded-[28px] flex flex-col items-center justify-center p-14 relative overflow-hidden"
+                      className="rounded-[20px] overflow-hidden"
                       style={{
-                        background: `linear-gradient(145deg, ${accent}07 0%, ${accent}12 100%)`,
-                        border: `1px solid ${accent}18`,
-                        minHeight: '300px',
-                        boxShadow: `0 8px 40px ${accent}12`,
+                        border: '1px solid rgba(15,23,42,0.09)',
+                        boxShadow: '0 16px 48px rgba(15,23,42,0.10), 0 2px 8px rgba(15,23,42,0.05)',
                       }}
                     >
+                      {/* Accent header */}
                       <div
-                        aria-hidden="true"
-                        className="absolute inset-0 pointer-events-none"
-                        style={{
-                          opacity: 0.04,
-                          backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)',
-                          backgroundSize: '22px 22px',
-                        }}
-                      />
-                      <div
-                        className="w-20 h-20 rounded-3xl flex items-center justify-center mb-5 relative"
-                        style={{
-                          background: `${accent}14`,
-                          border: `2px solid ${accent}28`,
-                          boxShadow: `0 0 32px ${accent}18`,
-                        }}
+                        className="flex items-center gap-4 px-6 py-5"
+                        style={{ background: `linear-gradient(135deg, ${accent} 0%, ${accent}cc 100%)` }}
                       >
-                        <FontAwesomeIcon icon={s.icon} style={{ fontSize: 36, color: accent }} />
+                        <div
+                          className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                          style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.25)' }}
+                        >
+                          <FontAwesomeIcon icon={s.icon} style={{ fontSize: 18, color: 'white' }} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-white font-semibold text-[14px] leading-tight truncate">{s.title}</p>
+                          <p className="text-white/60 text-[11px] mt-0.5 font-medium uppercase tracking-[0.12em]">AWTG capability</p>
+                        </div>
+                        <div className="ml-auto shrink-0 flex items-center gap-1.5">
+                          <div className="w-2 h-2 rounded-full bg-white/30" />
+                          <div className="w-2 h-2 rounded-full bg-white/30" />
+                          <div className="w-2 h-2 rounded-full bg-white" />
+                        </div>
                       </div>
-                      <p className="text-[#0a1628]/60 text-[15px] font-semibold text-center mb-5 relative">{s.title}</p>
-                      <div className="flex gap-2 relative">
-                        {s.bullets.slice(0, 3).map((_, idx) => (
+
+                      {/* Bullet feature rows */}
+                      <div className="bg-white px-4 py-4 space-y-2">
+                        {s.bullets.map((b, idx) => (
                           <div
                             key={idx}
-                            className="h-1 rounded-full transition-all"
+                            className="flex items-start gap-3 px-4 py-3.5 rounded-[12px]"
                             style={{
-                              width: idx === 0 ? '28px' : '10px',
-                              background: idx === 0 ? accent : `${accent}30`,
+                              background: idx % 2 === 0 ? `${accent}06` : 'rgba(15,23,42,0.018)',
+                              border: '1px solid rgba(15,23,42,0.055)',
                             }}
-                          />
+                          >
+                            <div
+                              className="w-5 h-5 rounded-full shrink-0 mt-0.5 flex items-center justify-center"
+                              style={{ background: `${accent}18`, border: `1px solid ${accent}30` }}
+                            >
+                              <div className="w-1.5 h-1.5 rounded-full" style={{ background: accent }} />
+                            </div>
+                            <span className="text-[#0a1628]/62 text-[13px] leading-relaxed">{b}</span>
+                          </div>
                         ))}
                       </div>
+
+                      {/* Footer accent bar */}
+                      <div
+                        className="h-1"
+                        style={{ background: `linear-gradient(90deg, ${accent} 0%, ${accent}35 100%)` }}
+                      />
                     </div>
                   </div>
                 </div>
