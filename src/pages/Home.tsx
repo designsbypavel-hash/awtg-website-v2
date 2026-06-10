@@ -241,6 +241,27 @@ function Hero() {
   )
 }
 
+// --- SHARED SECTION HEADER ---------------------------------------------------
+
+function SectionHeader({
+  title,
+  description,
+  className = '',
+}: {
+  title: React.ReactNode
+  description?: string
+  className?: string
+}) {
+  return (
+    <div className={className}>
+      <h2 className="font-heading text-[#0a1628] mb-5">{title}</h2>
+      {description && (
+        <p className="text-[#0a1628]/60 text-base font-normal leading-[1.7] max-w-2xl">{description}</p>
+      )}
+    </div>
+  )
+}
+
 // --- WHAT WE DO -------------------------------------------------------------
 
 function WhatWeDo() {
@@ -341,17 +362,11 @@ export function OurSolutions() {
   return (
     <section className="bg-[#f7f8fa]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-end mb-16">
-          <div>
-            <h2 className="font-heading text-[#0a1628]">
-              Advancing connectivity for the{' '}
-              <span className="text-[#228DC1]">technology supercycle.</span>
-            </h2>
-          </div>
-          <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] font-normal">
-            Whether you're a mobile operator, enterprise CIO, or public sector leader, AWTG delivers the connectivity, intelligence, and software your organisation needs to lead.
-          </p>
-        </div>
+        <SectionHeader
+          className="mb-16"
+          title={<>Advancing connectivity for the{' '}<span className="text-[#228DC1]">technology supercycle.</span></>}
+          description="Whether you're a mobile operator, enterprise CIO, or public sector leader, AWTG delivers the connectivity, intelligence, and software your organisation needs to lead."
+        />
       </div>
       <div className="max-w-7xl mx-auto px-8 lg:px-12 pb-28 space-y-4">
         {solutionPanels.map((panel) => (
@@ -436,16 +451,10 @@ function Industries() {
   return (
     <section className="bg-white pt-16">
       <div className="max-w-7xl mx-auto px-8 lg:px-12 mb-14">
-        <div className="grid lg:grid-cols-2 gap-12 items-end">
-          <div>
-            <h2 className="font-heading text-[#0a1628]">
-              Powering transformation<br />across every sector.
-            </h2>
-          </div>
-          <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] font-normal">
-            From mobile operators to government bodies, AWTG delivers technology built specifically for your world. Select your sector to explore.
-          </p>
-        </div>
+        <SectionHeader
+          title={<>Powering transformation<br />across every sector.</>}
+          description="From mobile operators to government bodies, AWTG delivers technology built specifically for your world. Select your sector to explore."
+        />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3">
         {industryCards.map((card) => (
@@ -587,16 +596,11 @@ function WhyAWTG() {
   return (
     <section className="py-20 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-end mb-14">
-          <div>
-            <h2 className="font-heading text-[#0a1628] max-w-3xl">
-              The experience to deliver, and the team to stay with you.
-            </h2>
-          </div>
-          <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-            Crown Commercial Service approved. ISO 9001, 27001, 14001, 45001 and 42001 certified. Cyber Essentials Plus. SC and DV cleared engineers.
-          </p>
-        </div>
+        <SectionHeader
+          className="mb-14"
+          title="The experience to deliver, and the team to stay with you."
+          description="Crown Commercial Service approved. ISO 9001, 27001, 14001, 45001 and 42001 certified. Cyber Essentials Plus. SC and DV cleared engineers."
+        />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#e7edf3] border border-[#e7edf3]">
           {[
             { value: '19+', label: 'Years', sub: 'Engineering since 2006' },
@@ -656,7 +660,7 @@ export function PNaaS() {
               </Link>
               <Link to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 text-[#0a1628]/60 hover:text-white text-sm font-medium transition-colors">
-                Talk to an Engineer ?
+                Talk to an Engineer
               </Link>
             </div>
           </div>
@@ -841,7 +845,7 @@ function Insights() {
             <h2 className="font-serif-display text-[#0a1628]">Explore the latest<br />from AWTG.</h2>
           </div>
           <Link to="/insights" className="text-sm font-medium text-[#228DC1] hover:text-[#1a6e99] transition-colors">
-            All insights ?
+            All insights
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
