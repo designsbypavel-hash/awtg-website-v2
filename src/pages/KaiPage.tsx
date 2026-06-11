@@ -141,8 +141,34 @@ function GlobePanel({ visible }: { visible: boolean }) {
       `}</style>
 
       <svg width="100%" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Globe grid */}
+        <defs>
+          <clipPath id="globe-map-clip">
+            <circle cx="240" cy="240" r="144" />
+          </clipPath>
+        </defs>
+
+        {/* Globe outer ring */}
         <circle cx="240" cy="240" r="145" stroke="#228DC1" strokeOpacity="0.18" strokeWidth="1.5" />
+
+        {/* World map continents — equirectangular, clipped to globe */}
+        <g clipPath="url(#globe-map-clip)" fill="#228DC1" fillOpacity="0.09">
+          {/* North America */}
+          <path d="M103,124 L106,151 L135,151 L142,163 L146,188 L168,216 L174,224 L180,224 L190,222 L187,209 L176,200 L176,188 L180,168 L198,164 L195,148 L189,139 L172,122 L159,122 L143,124 L127,127 Z" />
+          {/* Greenland */}
+          <path d="M188,111 L200,106 L220,107 L226,118 L216,122 L205,143 L196,130 L185,119 Z" />
+          {/* South America */}
+          <path d="M176,221 L190,222 L196,234 L212,253 L210,277 L201,293 L192,304 L189,329 L184,329 L180,321 L180,301 L182,269 L180,248 L177,240 Z" />
+          {/* Europe */}
+          <path d="M232,179 L232,170 L236,147 L240,157 L252,145 L265,126 L266,135 L263,143 L264,151 L256,151 L251,160 L253,168 L268,172 L269,180 L264,180 L251,180 L239,171 L236,182 Z" />
+          {/* Africa */}
+          <path d="M226,179 L240,179 L248,180 L258,183 L270,216 L280,222 L272,251 L267,280 L254,296 L240,300 L226,295 L226,216 Z" />
+          {/* Asia (incl. Middle East & Indian subcontinent) */}
+          <path d="M261,172 L270,171 L272,180 L276,172 L285,168 L288,156 L296,172 L300,195 L305,226 L300,240 L304,256 L321,256 L325,232 L325,208 L337,208 L337,184 L345,176 L357,168 L353,153 L349,147 L353,124 L341,122 L325,121 L305,121 L288,122 L272,124 L264,130 L261,133 L263,151 L261,159 Z" />
+          {/* Australia */}
+          <path d="M331,275 L345,259 L355,256 L363,282 L361,300 L351,296 L334,296 L331,282 Z" />
+        </g>
+
+        {/* Globe latitude / longitude grid */}
         <ellipse cx="240" cy="240" rx="145" ry="12"  stroke="#228DC1" strokeOpacity="0.12" strokeWidth="1" />
         <ellipse cx="240" cy="168" rx="125" ry="11"  stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
         <ellipse cx="240" cy="312" rx="125" ry="11"  stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
