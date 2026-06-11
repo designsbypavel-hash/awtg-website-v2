@@ -88,7 +88,7 @@ const posts = [
   },
 ]
 
-const tags = ['All', '5G', 'Private 5G', 'Private Networks', 'Smart Cities', 'Rail', 'Transport', 'AI']
+const tags = ['All', '5G', 'Private 5G', 'Private Networks', 'Smart Cities', 'Rail', 'Transport', 'AI', 'Infrastructure', 'Education']
 
 const tagColour: Record<string, string> = {
   'AI': 'bg-[#228DC1]/10 text-[#228DC1]',

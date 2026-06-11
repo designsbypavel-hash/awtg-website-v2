@@ -646,7 +646,7 @@ export default function InsightsNewsPage() {
       </section>
 
       <InsightsResourceNav
-        activeResource="newsroom"
+        activeResource="blog"
         activeTopic={activeCategory}
         topics={categories}
         onTopicChange={setActiveCategory}

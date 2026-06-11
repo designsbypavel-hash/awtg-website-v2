@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-type ResourceKey = 'newsroom' | 'blog' | 'case-studies' | 'whitepapers'
+type ResourceKey = 'blog' | 'case-studies' | 'whitepapers'
 
 type InsightsResourceNavProps = {
   activeResource: ResourceKey
@@ -11,7 +11,6 @@ type InsightsResourceNavProps = {
 }
 
 const resourceLinks: { key: ResourceKey; label: string; href: string }[] = [
-  { key: 'newsroom', label: 'Newsroom', href: '/insights' },
   { key: 'blog', label: 'Blog', href: '/insights/blog' },
   { key: 'case-studies', label: 'Case Studies', href: '/insights/case-studies' },
   { key: 'whitepapers', label: 'Whitepapers', href: '/insights/white-papers' },
