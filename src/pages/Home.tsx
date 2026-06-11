@@ -165,8 +165,8 @@ function Hero() {
           loop
           muted
           playsInline
+          preload="auto"
           className="home-hero-media w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1800&q=80&auto=format&fit=crop"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
