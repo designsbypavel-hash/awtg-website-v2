@@ -452,7 +452,7 @@ function IntegrationsSection() {
               return (
                 <div
                   key={item.label}
-                  className={`relative flex flex-col items-center justify-center gap-2 p-3 min-h-[100px] transition-all duration-300 select-none ${
+                  className={`relative flex flex-col items-center justify-center gap-2 p-4 min-h-[110px] transition-all duration-300 select-none ${
                     item.isKai
                       ? 'z-10 [&_span]:hidden'
                       : isAdjacent
@@ -499,7 +499,7 @@ function IntegrationsSection() {
                   ) : (
                     <>
                       <img src={item.logo ?? undefined} alt={item.label}
-                        className="w-10 h-10 object-contain"
+                        style={{ width: 'auto', height: 'auto', maxWidth: '76%', maxHeight: 58, objectFit: 'contain' }}
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
                     </>
                   )}
