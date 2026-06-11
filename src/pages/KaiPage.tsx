@@ -1626,14 +1626,14 @@ export default function KaiPage() {
       {(() => {
         const items = [
           { src: '/logos/clients/kai-kp.svg',              alt: 'Kaiser Permanente',                height: 44 },
-          { src: '/logos/clients/kai-cambridge.svg',       alt: 'Cambridgeshire County Council',    height: 28 },
+          { src: '/logos/clients/kai-cambridge.svg',       alt: 'Cambridgeshire County Council',    height: 32 },
           { src: '/logos/clients/kai-cumberland.svg',      alt: 'Cumberland Council',               height: 48 },
           { src: '/logos/clients/kai-british-council.svg', alt: 'British Council',                  height: 36 },
           { src: '/logos/clients/kai-borderlands.svg',     alt: 'Borderlands 5G Innovation Region', height: 40 },
-          { src: '/logos/clients/kai-frame1.svg',          alt: 'West Berkshire Council',           height: 48 },
+          { src: '/logos/clients/kai-frame1.svg',          alt: 'West Berkshire Council',           height: 44 },
           { src: '/logos/clients/kai-frame3.svg',          alt: 'Retail Hub',                       height: 44 },
-          { src: '/logos/clients/kai-leicester.svg',       alt: 'Leicester City Council',           height: 44 },
-          { src: '/logos/clients/kai-frame2.svg',          alt: 'TVRA Rural Action',                height: 32 },
+          { src: '/logos/clients/kai-leicester.svg',       alt: 'Leicester City Council',           height: 56 },
+          { src: '/logos/clients/kai-frame2.svg',          alt: 'TVRA Rural Action',                height: 40 },
           { src: '/logos/partners/ESA.svg',                alt: 'ESA',                              height: 36 },
         ]
         const all = [...items, ...items]
