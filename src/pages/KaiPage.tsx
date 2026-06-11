@@ -156,7 +156,166 @@ const FLAG_SLOTS = [
   { cx: 228, cy: 218, dx: -14, dy:  44 },
 ]
 
+const KAI_GLOBE_COUNTRIES = [
+  { code: 'GB', name: 'United Kingdom', x: 47, y: 43 },
+  { code: 'US', name: 'United States',   x: 17, y: 41 },
+  { code: 'BR', name: 'Brazil',          x: 29, y: 69 },
+  { code: 'ZA', name: 'South Africa',    x: 48, y: 80 },
+  { code: 'AE', name: 'UAE',             x: 62, y: 53 },
+  { code: 'IN', name: 'India',           x: 74, y: 56 },
+  { code: 'SG', name: 'Singapore',       x: 88, y: 66 },
+  { code: 'JP', name: 'Japan',           x: 87, y: 48 },
+  { code: 'BE', name: 'Belgium',         x: 52, y: 38 },
+  { code: 'MA', name: 'Morocco',         x: 44, y: 52 },
+  { code: 'MY', name: 'Malaysia',        x: 80, y: 62 },
+  { code: 'NG', name: 'Nigeria',         x: 52, y: 60 },
+  { code: 'PL', name: 'Poland',          x: 56, y: 35 },
+  { code: 'FR', name: 'France',          x: 45, y: 40 },
+]
+
+const KAI_GLOBE_LABEL_SLOTS = [
+  { x: 30, y: 17, align: 'left' as const },
+  { x: 70, y: 18, align: 'left' as const },
+  { x: 84, y: 31, align: 'left' as const },
+  { x: 78, y: 54, align: 'left' as const },
+  { x: 67, y: 75, align: 'left' as const },
+  { x: 20, y: 72, align: 'right' as const },
+  { x: 13, y: 50, align: 'right' as const },
+  { x: 18, y: 31, align: 'right' as const },
+]
+
+function RealisticGlobePanel({ visible }: { visible: boolean }) {
+  const [activeStep, setActiveStep] = useState(0)
+  const [shownCount, setShownCount] = useState(0)
+
+  useEffect(() => {
+    if (!visible) {
+      setActiveStep(0)
+      setShownCount(0)
+      return
+    }
+
+    const revealTimers = KAI_GLOBE_LABEL_SLOTS.map((_, i) =>
+      window.setTimeout(() => setShownCount(i + 1), 550 + i * 180)
+    )
+    const cycle = window.setInterval(() => {
+      setActiveStep(current => (current + 1) % KAI_GLOBE_COUNTRIES.length)
+    }, 1450)
+
+    return () => {
+      revealTimers.forEach(window.clearTimeout)
+      window.clearInterval(cycle)
+    }
+  }, [visible])
+
+  return (
+    <div style={{ position: 'relative', width: '100%', minHeight: 430, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <style>{`
+        @keyframes kaiGlobeFloat {
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+          50% { transform: translate3d(0, -10px, 0) scale(1.01); }
+        }
+        @keyframes kaiGlobeGlow {
+          0%, 100% { opacity: 0.28; transform: translate(-50%, -50%) scale(0.96); }
+          50% { opacity: 0.52; transform: translate(-50%, -50%) scale(1.05); }
+        }
+        @keyframes kaiNodePulse {
+          0% { transform: translate(-50%, -50%) scale(0.65); opacity: 0.7; }
+          100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
+        }
+      `}</style>
+
+      <div style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        width: '76%',
+        height: '76%',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(34,141,193,0.18), rgba(34,141,193,0) 68%)',
+        filter: 'blur(10px)',
+        animation: 'kaiGlobeGlow 5.4s ease-in-out infinite',
+        pointerEvents: 'none',
+      }} />
+
+      <img
+        src="/images/kai-globe-transparent-4k.png"
+        alt="KAi global reach network globe"
+        style={{
+          width: 'min(100%, 560px)',
+          height: 'auto',
+          display: 'block',
+          filter: 'drop-shadow(0 26px 48px rgba(34,141,193,0.15))',
+          animation: visible ? 'kaiGlobeFloat 7s ease-in-out infinite' : 'none',
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.96)',
+          transition: 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)',
+        }}
+      />
+
+      {KAI_GLOBE_LABEL_SLOTS.map((slot, i) => {
+        const country = KAI_GLOBE_COUNTRIES[(activeStep + i) % KAI_GLOBE_COUNTRIES.length]
+        const isVisible = visible && shownCount > i
+        const isActive = i === 0 || i === 3
+        return (
+          <div key={`${country.code}-${i}`} style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+            <span style={{
+              position: 'absolute',
+              left: `${country.x}%`,
+              top: `${country.y}%`,
+              width: 11,
+              height: 11,
+              borderRadius: 999,
+              background: isActive ? '#0ea5e9' : '#228DC1',
+              border: '2px solid rgba(255,255,255,0.92)',
+              boxShadow: '0 0 18px rgba(34,141,193,0.55)',
+              opacity: isVisible ? 1 : 0,
+              transform: 'translate(-50%, -50%)',
+              transition: 'opacity 0.35s ease',
+            }}>
+              <span style={{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                width: 24,
+                height: 24,
+                borderRadius: 999,
+                border: '1px solid rgba(14,165,233,0.55)',
+                animation: `kaiNodePulse 2.4s ease-out ${i * 0.18}s infinite`,
+              }} />
+            </span>
+            <div style={{
+              position: 'absolute',
+              left: `${slot.x}%`,
+              top: `${slot.y}%`,
+              transform: `${slot.align === 'right' ? 'translate(-100%, -50%)' : 'translate(0, -50%)'} scale(${isVisible ? 1 : 0.82})`,
+              opacity: isVisible ? 1 : 0,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              background: 'rgba(255,255,255,0.94)',
+              border: '1px solid rgba(34,141,193,0.18)',
+              borderRadius: 999,
+              padding: '7px 11px',
+              boxShadow: '0 8px 24px rgba(10,22,40,0.12)',
+              color: '#0a1628',
+              fontFamily: 'Roboto, sans-serif',
+              whiteSpace: 'nowrap',
+              transition: 'opacity 0.45s ease, transform 0.45s cubic-bezier(0.34,1.56,0.64,1)',
+            }}>
+              <span style={{ fontSize: 10, fontWeight: 900, color: '#228DC1', letterSpacing: '0.04em' }}>{country.code}</span>
+              <span style={{ fontSize: 11, fontWeight: 800 }}>{country.name}</span>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 function GlobePanel({ visible }: { visible: boolean }) {
+  return <RealisticGlobePanel visible={visible} />
+
   const nodes: Array<{ cx: number; cy: number }> = [
     { cx: 152, cy: 168 },
     { cx: 210, cy: 135 },
@@ -832,12 +991,12 @@ function KaiChatDemo() {
               padding: '6px 0 14px',
             }}>
 
-              {/* ── TOP: KAI VOICE label + live transcript ── */}
+              {/* ── TOP: KAi VOICE label + live transcript ── */}
               <div style={{ padding: '0 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
                   <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.42)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>
-                    KAI VOICE
+                    KAi VOICE
                   </span>
                 </div>
 
@@ -900,9 +1059,9 @@ function KaiChatDemo() {
               </div>
             </div>
 
-            {/* KAI label — bottom left */}
+            {/* KAi label — bottom left */}
             <div style={{ position: 'absolute', bottom: 66, left: 22 }}>
-              <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>KAI</span>
+              <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', fontFamily: 'Roboto,sans-serif' }}>KAi</span>
             </div>
 
             {/* Voice input bar — minimal, buttons only */}
@@ -1130,7 +1289,7 @@ function EscalationChart() {
 //   • dot-grid section background
 //   • 7 channel icon squares in a 3-column grid (matching panels below)
 //   • SVG connector: stubs → horizontal bar → 3 drops → panel tops
-//   • Three panels: Telegram | KAI Web Chat | Gmail
+//   • Three panels: Telegram | KAi Web Chat | Gmail
 //
 // SVG coordinate system  viewBox="0 0 1000 80"  preserveAspectRatio="none"
 //   Column centres: 160 | 500 | 840   (same proportions as CSS grid cols)
@@ -1151,7 +1310,7 @@ function OmnichannelSection() {
     { from:'user', text:'Brilliant, thank you!',                                                              time:'09:43', ticks:'✓✓' },
   ]
 
-  // ─── KAI web messages ───────────────────────────────────────────────────
+  // ─── KAi web messages ───────────────────────────────────────────────────
   const kaiMsgs: { from:'ai'|'user'; text:string; meta?:string; signal?:string }[] = [
     { from:'ai',   text:"Hi there! 👋\nWhat can I help you with today?" },
     { from:'user', text:"I'd like to upgrade my subscription to the Pro plan." },
@@ -1253,7 +1412,7 @@ function OmnichannelSection() {
               </ChIcon>
             </div>
 
-            {/* Centre: KAI (glowing) */}
+            {/* Centre: KAi (glowing) */}
             <div className="flex justify-center items-center">
               <ChIcon color="#228DC1" bg="rgba(34,141,193,0.10)" glow>
                 <img src={integrationLogos.kaiHoriz} alt="Kai" style={{ width:46, height:24, objectFit:'contain' }}
@@ -1368,11 +1527,11 @@ function OmnichannelSection() {
               </div>
             </div>
 
-            {/* ════ CENTRE: KAI WEB CHAT ════ */}
+            {/* ════ CENTRE: KAi WEB CHAT ════ */}
             <div className="omni-panel-center" style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, display:'flex', flexDirection:'column' }}>
               <div style={{ borderRadius:15, background:'#fff', overflow:'hidden', flex:1, display:'flex', flexDirection:'column' }}>
 
-                {/* KAI header */}
+                {/* KAi header */}
                 <div style={{ background:KAI_HDR_GRAD, padding:'13px 16px', display:'flex', alignItems:'center', gap:8, flexShrink:0 }}>
                   <div style={{ width:32, height:32, background:'#fff', borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
                     <img src="/kai-logo.svg" alt="Kai" style={{ width:20, height:20 }}
@@ -1464,7 +1623,7 @@ function OmnichannelSection() {
                 </div>
               </div>
 
-              {/* KAI reply — expanded */}
+              {/* KAi reply — expanded */}
               <div style={{ padding:'12px 14px', flex:1 }}>
                 <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:9 }}>
                   <div style={{ width:30, height:30, borderRadius:'50%', background:'#228DC1', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
@@ -1505,7 +1664,7 @@ function OmnichannelSection() {
         </div>{/* end desktop block */}
 
         {/* ═══════════════════════════════════════════════════════════════════
-            MOBILE: channel pills + KAI widget
+            MOBILE: channel pills + KAi widget
         ══════════════════════════════════════════════════════════════════════ */}
         <div className="lg:hidden flex flex-wrap justify-center gap-2 mb-10">
           {['WhatsApp','Telegram','Teams','Web Chat','Gmail','Outlook','Telegram'].map((ch, i) => (
@@ -1733,10 +1892,9 @@ export default function KaiPage() {
               {/* Card header */}
               <div style={{ padding:'20px 22px 12px' }}>
                 <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#0a1628', lineHeight:1.35, fontFamily:'Roboto,sans-serif', letterSpacing:'-0.01em' }}>
-                  Escalation rate reduced from{' '}
+                  Client Escalation rate reduced from{' '}
                   <span style={{ color:'#228DC1' }}>40%</span> to{' '}
-                  <span style={{ color:'#228DC1' }}>10%</span>{' '}
-                  <span style={{ fontWeight:400, color:'rgba(10,22,40,0.50)', fontSize:14 }}>over time</span>
+                  <span style={{ color:'#228DC1' }}>10%</span>
                 </p>
               </div>
 
@@ -1774,7 +1932,7 @@ export default function KaiPage() {
       {/* -- Integrations -- */}
       <IntegrationsSection />
 
-      {/* -- Omnichannel (Telegram / KAI / Gmail) -- */}
+      {/* -- Omnichannel (Telegram / KAi / Gmail) -- */}
       <OmnichannelSection />
 
       {/* -- How Kai Works -- */}
@@ -1796,7 +1954,7 @@ export default function KaiPage() {
           {/* Heading */}
           <div className="mb-16">
             <h2 className="font-heading text-white mb-4">
-              Build your KAI Agent
+              Build your KAi Agent
             </h2>
             <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
               Kai connects with your customers across web, messaging, and chat channels, resolving their pain points wherever the conversation starts.
