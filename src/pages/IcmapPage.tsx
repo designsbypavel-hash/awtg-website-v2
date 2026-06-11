@@ -755,8 +755,8 @@ export default function IcmapPage() {
             {steps.map((step, i) => (
               <div key={step.num} className="relative">
                 {i < steps.length - 1 && (
-                  <div className="hidden lg:flex absolute -right-[13px] top-[52px] z-10 w-6 h-6 items-center justify-center">
-                    <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 11, color: '#228DC1', opacity: 0.30 }} />
+                  <div className="hidden lg:flex absolute -right-[16px] top-[50px] z-10 w-8 h-8 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm">
+                    <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 11, color: '#228DC1' }} />
                   </div>
                 )}
                 <div
