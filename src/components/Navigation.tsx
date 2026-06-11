@@ -122,8 +122,8 @@ const featuredPanels: Record<string, FeaturedPanel> = {
     eyebrow: 'Featured',
     title: 'Network intelligence in motion',
     desc: 'Plan, analyse and optimise connectivity with products built for real infrastructure decisions.',
-    href: '/products/icmap',
-    cta: 'View connectivity',
+    href: '',
+    cta: '',
     items: [
       {
         label: 'AWTG × Telecom of Thailand',
