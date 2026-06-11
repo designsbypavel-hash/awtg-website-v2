@@ -69,24 +69,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
           style={{ minHeight: 640, paddingTop: 128, paddingBottom: 80 }}
         >
           <div style={{ maxWidth: 660 }}>
-            {hero.badge && (
-              <div
-                className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-7"
-                style={{
-                  background: 'rgba(255,255,255,0.1)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: 'rgba(255,255,255,0.75)',
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  backdropFilter: 'blur(10px)',
-                }}
-              >
-                {hero.badge}
-              </div>
-            )}
-
             <h1
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4.2vw, 56px)' }}

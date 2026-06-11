@@ -40,7 +40,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Commerce',
     accentColor: '#d97706',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=840&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'AI for commerce and customer operations',
     subtitle:
       'Resolve customer enquiries faster, reduce friction across the purchase journey and surface demand intelligence at scale.',

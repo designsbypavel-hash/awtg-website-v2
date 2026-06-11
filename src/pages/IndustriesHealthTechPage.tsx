@@ -13,7 +13,7 @@ const data: SectorPageData = {
     badge: 'AI · Health Tech',
     accentColor: '#059669',
     heroImage:
-      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=840&q=80',
+      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Health Tech',
     description:
       'Digital health solutions that improve care delivery, operational efficiency and patient experiences through connected systems, secure platforms and intelligent healthcare workflows.',

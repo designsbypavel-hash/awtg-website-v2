@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Education',
     accentColor: '#228DC1',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=840&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'AI-powered teaching and formative assessment for higher education',
     subtitle:
       'Aruva helps universities personalise learning, generate meaningful feedback and understand student progress in real time.',
