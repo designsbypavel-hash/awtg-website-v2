@@ -1742,8 +1742,47 @@ export default function KaiPage() {
               </div>
 
               {/* SVG chart — hover-interactive */}
-              <div style={{ padding:'4px 16px 20px' }}>
+              <div style={{ padding:'4px 16px 0' }}>
                 <EscalationChart />
+              </div>
+
+              {/* Result callout */}
+              <div style={{
+                borderTop: '1px solid rgba(34,141,193,0.14)',
+                padding: '14px 20px 16px',
+                background: 'linear-gradient(90deg, rgba(34,141,193,0.07) 0%, transparent 80%)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 14,
+              }}>
+                <div style={{
+                  width: 3, minHeight: 40,
+                  background: 'linear-gradient(180deg, #228DC1 0%, #0e6a9a 100%)',
+                  borderRadius: 2,
+                  flexShrink: 0,
+                }} />
+                <p style={{ margin: 0, lineHeight: 1.55 }}>
+                  <span style={{
+                    display: 'block',
+                    fontWeight: 800, fontSize: 15,
+                    color: '#0a1628',
+                    letterSpacing: '-0.02em',
+                  }}>
+                    Escalation rate reduced from{' '}
+                    <span style={{ color: '#228DC1' }}>40%</span>
+                    {' '}to{' '}
+                    <span style={{ color: '#228DC1' }}>10%</span>
+                  </span>
+                  <span style={{
+                    display: 'block',
+                    fontSize: 12.5,
+                    color: 'rgba(10,22,40,0.50)',
+                    fontWeight: 400,
+                    marginTop: 2,
+                  }}>
+                    on average for all our users
+                  </span>
+                </p>
               </div>
 
             </div>
