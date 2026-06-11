@@ -942,7 +942,6 @@ function KaiChatDemo() {
 // -- Escalation chart with hover interaction ----------------------------------
 function EscalationChart() {
   const [hovered, setHovered] = useState<number | null>(null)
-  const [activeInteraction, setActiveInteraction] = useState(0)
 
   const pts = [
     { x:54,  y:67,  pct:'40%', lbl:'MAY 2024' },
@@ -954,32 +953,8 @@ function EscalationChart() {
     { x:548, y:201, pct:'10%', lbl:'MAR 2026' },
   ]
 
-  const interactions = [
-    { pointIndex: 1, label: 'Advanced Sentiment Analysis', detail: 'Detects tone shifts before handover.' },
-    { pointIndex: 3, label: 'Deep Contextual Knowledge', detail: 'Uses richer history to resolve accurately.' },
-    { pointIndex: 4, label: 'Conversation Design', detail: 'Guides users through clearer journeys.' },
-  ]
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveInteraction(current => (current + 1) % interactions.length)
-    }, 2800)
-    return () => window.clearInterval(timer)
-  }, [interactions.length])
-
   const hp = hovered !== null ? pts[hovered] : null
-  const hoveredInteraction = hovered !== null
-    ? interactions.find(item => item.pointIndex === hovered)
-    : undefined
-  const tooltipWidth = hoveredInteraction ? 168 : 80
-  const tooltipHeight = hoveredInteraction ? 62 : 46
-  // Keep tooltip box fully within the 560-wide viewBox.
-  const tx = hp ? Math.min(Math.max(hp.x, (tooltipWidth / 2) + 4), 560 - (tooltipWidth / 2) - 4) : 0
-  const active = interactions[activeInteraction]
-  const activePoint = pts[active.pointIndex]
-  const activeCardX = activePoint.x > 330 ? activePoint.x - 186 : activePoint.x + 22
-  const activeCardY = Math.max(24, activePoint.y - 72)
-  const activeCardWidth = 178
+  const tx = hp ? Math.min(Math.max(hp.x, 44), 516) : 0
 
   return (
     <svg width="100%" viewBox="0 0 560 295" xmlns="http://www.w3.org/2000/svg" style={{ display:'block' }}>
@@ -998,129 +973,59 @@ function EscalationChart() {
         <mask id="escMask">
           <rect x="54" y="10" width="494" height="234" fill="url(#escFade)"/>
         </mask>
-        <filter id="escSoftShadow" x="-30%" y="-60%" width="160%" height="220%">
-          <feDropShadow dx="0" dy="4" stdDeviation="12" floodColor="#0a1628" floodOpacity="0.18"/>
-        </filter>
-        <linearGradient id="escAccentGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#228DC1"/>
-          <stop offset="100%" stopColor="#0e6a9a"/>
-        </linearGradient>
       </defs>
 
-      {/* Chart bg */}
       <rect x="54" y="10" width="494" height="234" fill="white"/>
 
-      {/* Dashed grid lines + Y labels */}
-      {[
-        { pct:50, y:20  },
-        { pct:40, y:67  },
-        { pct:30, y:114 },
-        { pct:20, y:161 },
-        { pct:10, y:208 },
-      ].map(({ pct, y }) => (
+      {[{ pct:50,y:20 },{ pct:40,y:67 },{ pct:30,y:114 },{ pct:20,y:161 },{ pct:10,y:208 }].map(({ pct, y }) => (
         <g key={pct}>
           <line x1="54" y1={y} x2="548" y2={y} stroke="#ddd" strokeDasharray="5,4" strokeWidth="1"/>
           <text x="46" y={y+4} textAnchor="end" fontSize="11" fill="#526779" fontWeight="600" fontFamily="Roboto,sans-serif">{pct}%</text>
         </g>
       ))}
 
-      {/* X-axis baseline */}
       <line x1="54" y1="244" x2="548" y2="244" stroke="#ccc" strokeWidth="1"/>
 
-      {/* Area fill */}
       <polygon
         points="54,67 136,92 219,120 301,147 383,174 466,192 548,201 548,244 54,244"
         fill="url(#escDots)" clipPath="url(#escClip)" mask="url(#escMask)"
       />
-
-      {/* Line */}
       <polyline
         points="54,67 136,92 219,120 301,147 383,174 466,192 548,201"
         fill="none" stroke="#228DC1" strokeWidth="2.5"
         strokeLinecap="round" strokeLinejoin="round"
       />
 
-      {/* Vertical indicator line on hover */}
       {hp && (
-        <line
-          x1={hp.x} y1={hp.y + 8} x2={hp.x} y2={244}
-          stroke="#228DC1" strokeWidth="1.5" strokeDasharray="4,3" opacity="0.4"
-        />
+        <line x1={hp.x} y1={hp.y + 8} x2={hp.x} y2={244}
+          stroke="#228DC1" strokeWidth="1.5" strokeDasharray="4,3" opacity="0.4"/>
       )}
 
-      {/* Data points + labels */}
       {pts.map((pt, i) => (
         <g key={pt.lbl} style={{ cursor:'crosshair' }}
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(null)}
         >
-          {/* Static % label — hidden while its tooltip is showing */}
           {hovered !== i && (
             <text x={pt.x} y={pt.y - 11} textAnchor="middle" fontSize="10.5" fontWeight="700"
               fill="#1a6e99" fontFamily="Roboto,sans-serif">{pt.pct}</text>
           )}
-          {/* X-axis date label */}
           <text x={pt.x} y="256" textAnchor="end" fontSize="9" fill="#526779" fontWeight="600"
             fontFamily="Roboto,sans-serif" transform={`rotate(-60,${pt.x},256)`}>{pt.lbl}</text>
-          {/* Wide invisible hit area for easy hover */}
           <circle cx={pt.x} cy={pt.y} r="20" fill="transparent"/>
-          {/* Visible circle — filled on hover */}
           <circle cx={pt.x} cy={pt.y} r={hovered === i ? 7 : 5}
             fill={hovered === i ? '#228DC1' : 'white'}
             stroke="#228DC1" strokeWidth="2.5"/>
         </g>
       ))}
 
-      {/* Animated interaction layer — rendered after data points so card stays on top */}
-      <g style={{ pointerEvents:'none' }}>
-        <circle r="4.5" fill="#0a1628">
-          <animateMotion dur="8.4s" repeatCount="indefinite" path="M54,67 L136,92 L219,120 L301,147 L383,174 L466,192 L548,201"/>
-        </circle>
-        <line
-          x1={activePoint.x}
-          y1={activePoint.y}
-          x2={activeCardX + (activePoint.x > 330 ? activeCardWidth : 0)}
-          y2={activeCardY + 28}
-          stroke="#228DC1"
-          strokeWidth="1.2"
-          strokeDasharray="3,4"
-          opacity="0.45"
-        />
-        <circle cx={activePoint.x} cy={activePoint.y} r="9" fill="none" stroke="#228DC1" strokeWidth="1.5" opacity="0.52">
-          <animate attributeName="r" values="9;21;9" dur="2.8s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.52;0;0.52" dur="2.8s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx={activePoint.x} cy={activePoint.y} r="5.5" fill="#228DC1"/>
-        <g filter="url(#escSoftShadow)">
-          <rect x={activeCardX} y={activeCardY} width={activeCardWidth} height="56" rx="8"
-            fill="white" stroke="rgba(34,141,193,0.18)" strokeWidth="1"/>
-          <rect x={activeCardX} y={activeCardY + 1} width="3" height="54" rx="1.5" fill="url(#escAccentGrad)"/>
-          <text x={activeCardX + 14} y={activeCardY + 26} fontSize="10.2" fontWeight="800"
-            fill="#0a1628" fontFamily="Roboto,sans-serif">{active.label}</text>
-          <text x={activeCardX + 14} y={activeCardY + 41} fontSize="7.8"
-            fill="rgba(10,22,40,0.5)" fontFamily="Roboto,sans-serif">{active.detail}</text>
-        </g>
-        <g transform={`translate(${activeCardX + activeCardWidth - 34}, ${activeCardY + 12})`}>
-          {interactions.map((item, index) => (
-            <circle key={item.label} cx={index * 9} cy="0" r="2.4" fill={index === activeInteraction ? '#228DC1' : 'rgba(10,22,40,0.18)'}/>
-          ))}
-        </g>
-      </g>
-
-      {/* Tooltip card */}
       {hp && (
         <g style={{ pointerEvents:'none' }}>
-          <rect x={tx - tooltipWidth / 2} y={hp.y - tooltipHeight - 24} width={tooltipWidth} height={tooltipHeight}
-            rx="6" fill="#0a1628"/>
-          <text x={tx} y={hp.y - tooltipHeight - 3} textAnchor="middle"
+          <rect x={tx - 40} y={hp.y - 70} width="80" height="46" rx="6" fill="#0a1628"/>
+          <text x={tx} y={hp.y - 44} textAnchor="middle"
             fontSize="15" fontWeight="700" fill="white" fontFamily="Roboto,sans-serif">{hp.pct}</text>
-          <text x={tx} y={hp.y - 33} textAnchor="middle"
+          <text x={tx} y={hp.y - 30} textAnchor="middle"
             fontSize="9" fill="rgba(255,255,255,0.58)" fontFamily="Roboto,sans-serif" letterSpacing="0.04em">{hp.lbl}</text>
-          {hoveredInteraction && (
-            <text x={tx} y={hp.y - 18} textAnchor="middle"
-              fontSize="8.5" fontWeight="700" fill="#8bd8ff" fontFamily="Roboto,sans-serif" letterSpacing="0.03em">{hoveredInteraction.label}</text>
-          )}
-          {/* Arrow */}
           <polygon points={`${tx-6},${hp.y-24} ${tx+6},${hp.y-24} ${tx},${hp.y-16}`} fill="#0a1628"/>
         </g>
       )}
@@ -1744,6 +1649,25 @@ export default function KaiPage() {
               {/* SVG chart — hover-interactive */}
               <div style={{ padding:'4px 16px 0' }}>
                 <EscalationChart />
+              </div>
+
+              {/* Feature chips: what drove the reduction */}
+              <div style={{ padding:'0 16px 16px' }}>
+                <p style={{ margin:'12px 0 10px', fontSize:9.5, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(10,22,40,0.32)', fontFamily:'Roboto,sans-serif' }}>
+                  What drove this reduction
+                </p>
+                <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:8 }}>
+                  {[
+                    { label:'Advanced Sentiment Analysis', detail:'Detects tone shifts before a handover is needed.' },
+                    { label:'Deep Contextual Knowledge', detail:'Uses richer conversation history to resolve accurately.' },
+                    { label:'Conversation Design', detail:'Guides users through clearer, structured journeys.' },
+                  ].map((item, i) => (
+                    <div key={i} style={{ padding:'11px 12px 12px', background:'rgba(34,141,193,0.04)', borderRadius:6, border:'1px solid rgba(34,141,193,0.13)', borderTop:'2px solid #228DC1' }}>
+                      <p style={{ margin:'0 0 4px', fontSize:11.5, fontWeight:800, color:'#0a1628', lineHeight:1.3, fontFamily:'Roboto,sans-serif' }}>{item.label}</p>
+                      <p style={{ margin:0, fontSize:10.5, color:'rgba(10,22,40,0.46)', lineHeight:1.5, fontFamily:'Roboto,sans-serif' }}>{item.detail}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Result callout */}
