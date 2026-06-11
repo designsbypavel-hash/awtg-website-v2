@@ -58,7 +58,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
           className="absolute inset-0"
           style={{
             background: hero.heroImage
-              ? 'linear-gradient(to right, rgba(8,18,36,0.70) 0%, rgba(8,18,36,0.44) 40%, rgba(8,18,36,0.16) 66%, transparent 100%)'
+              ? 'linear-gradient(to right, rgba(8,18,36,0.88) 0%, rgba(8,18,36,0.72) 26%, rgba(8,18,36,0.28) 48%, rgba(8,18,36,0.06) 62%, transparent 75%)'
               : `linear-gradient(135deg, #f0f7fb 0%, ${accent}10 100%)`,
           }}
         />
