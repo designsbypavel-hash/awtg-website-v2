@@ -1,8 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faNewspaper, faPlay } from '@fortawesome/free-solid-svg-icons'
-import InsightsResourceNav from '@/components/InsightsResourceNav'
 
 type NewsItem = {
   title: string
@@ -549,7 +548,6 @@ export const categoryColours: Record<string, string> = {
   Telecommunications: 'bg-sky-50 text-sky-700',
 }
 
-const categories = ['All', ...Array.from(new Set(newsItems.map((item) => item.category)))]
 const featured = newsItems[0]
 const spotlight = newsItems.slice(1, 4)
 
@@ -570,7 +568,7 @@ const newsVideoUrlsBySlug: Record<string, string> = {
 export const getNewsVideoUrl = (item: NewsItem) => item.youtubeEmbedUrl ?? newsVideoUrlsBySlug[createNewsSlug(item.title)]
 
 export default function InsightsNewsPage() {
-  const [activeCategory, setActiveCategory] = useState('All')
+  const activeCategory = 'All'
 
   const filteredNews = useMemo(
     () => activeCategory === 'All' ? newsItems : newsItems.filter((item) => item.category === activeCategory),
@@ -644,13 +642,6 @@ export default function InsightsNewsPage() {
           </div>
         </div>
       </section>
-
-      <InsightsResourceNav
-        activeResource="blog"
-        activeTopic={activeCategory}
-        topics={categories}
-        onTopicChange={setActiveCategory}
-      />
 
       <section className="py-20 bg-[#f7f8fa]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
