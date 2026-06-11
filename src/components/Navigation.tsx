@@ -381,11 +381,9 @@ export default function Navigation() {
                     <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-8' : 'grid-cols-2 gap-8 xl:gap-10'}`}>
                       {nav.groups.map((group) => (
                         <div key={group.heading}>
-                          {group.heading && (
-                            <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/45 mb-5 px-1">
-                              {group.heading}
-                            </p>
-                          )}
+                          <p className={`text-[11px] font-bold uppercase tracking-[0.24em] mb-5 px-1 ${group.heading ? 'text-[#0a1628]/45' : 'invisible'}`}>
+                            {group.heading || 'Industries'}
+                          </p>
                           <div className="space-y-4">
                             {group.items.map((item) => (
                               <Link
