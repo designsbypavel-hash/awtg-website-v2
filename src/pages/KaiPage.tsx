@@ -91,11 +91,6 @@ function GlobeCountUp({ num, prefix = '', suffix = '', visible, delay = 0 }: {
   return <>{prefix}{display}{suffix}</>
 }
 
-type GlobeChip = {
-  prefix: string; num: number; suffix: string
-  label: string; note: string; delay: number; pos: CSSProperties
-}
-
 function GlobePanel({ visible }: { visible: boolean }) {
   const nodes: Array<{ cx: number; cy: number }> = [
     { cx: 152, cy: 168 },
@@ -116,15 +111,8 @@ function GlobePanel({ visible }: { visible: boolean }) {
     { d: 'M 228,218 Q 245,168 210,135', delay: 500 },
   ]
 
-  const chips: GlobeChip[] = [
-    { prefix: '', num: 250, suffix: 'k+', label: 'Production reach',  note: 'Users supported monthly',   delay: 600,  pos: { top: '8%',    left: '0%'  } },
-    { prefix: '+', num: 17, suffix: '%',  label: 'CSAT uplift',        note: 'User satisfaction',         delay: 800,  pos: { top: '8%',    right: '0%' } },
-    { prefix: '', num: 150, suffix: '+',  label: 'Countries reached',  note: 'Global enterprise reach',   delay: 1200, pos: { bottom: '8%', left: '0%'  } },
-    { prefix: '', num: 38,  suffix: ' sec', label: 'Avg handle time', note: 'vs 4+ min industry avg',    delay: 1000, pos: { bottom: '8%', right: '0%' } },
-  ]
-
   return (
-    <div style={{ position: 'relative', maxWidth: 500, margin: '0 auto', width: '100%' }}>
+    <div style={{ position: 'relative', maxWidth: 460, margin: '0 auto', width: '100%' }}>
       <style>{`
         @keyframes awtg-globe-pulse {
           0%   { transform: scale(1);   opacity: 0.65; }
@@ -225,36 +213,6 @@ function GlobePanel({ visible }: { visible: boolean }) {
         ))}
       </svg>
 
-      {/* Floating metric chips */}
-      {chips.map((chip, i) => (
-        <div
-          key={i}
-          style={{
-            position: 'absolute',
-            ...chip.pos,
-            background: 'white',
-            border: '1px solid rgba(15,23,42,0.09)',
-            borderRadius: 12,
-            boxShadow: '0 4px 20px rgba(15,23,42,0.09)',
-            padding: '12px 16px',
-            minWidth: 138,
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0) scale(1)' : 'translateY(12px) scale(0.96)',
-            transition: `opacity 0.5s ease ${chip.delay}ms, transform 0.5s ease ${chip.delay}ms`,
-          }}
-        >
-          <p style={{
-            fontSize: 22, fontWeight: 800, letterSpacing: '-0.03em',
-            background: 'linear-gradient(135deg, #228DC1, #0e6a9a)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-            lineHeight: 1.1, margin: '0 0 3px',
-          }}>
-            <GlobeCountUp num={chip.num} prefix={chip.prefix} suffix={chip.suffix} visible={visible} delay={chip.delay + 150} />
-          </p>
-          <p style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', margin: '0 0 2px' }}>{chip.label}</p>
-          <p style={{ fontSize: 10, color: 'rgba(10,22,40,0.5)', margin: 0 }}>{chip.note}</p>
-        </div>
-      ))}
     </div>
   )
 }
@@ -284,6 +242,34 @@ function GlobalReachSection() {
           </div>
 
         </div>
+
+        {/* Stat cards row */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
+          {([
+            { prefix: '',  num: 250, suffix: 'k+',   label: 'Production reach',  note: 'Users supported monthly',  delay: 0   },
+            { prefix: '+', num: 17,  suffix: '%',     label: 'CSAT uplift',       note: 'User satisfaction',        delay: 120 },
+            { prefix: '',  num: 150, suffix: '+',     label: 'Countries reached', note: 'Global enterprise reach',  delay: 240 },
+            { prefix: '',  num: 38,  suffix: ' sec',  label: 'Avg handle time',   note: 'vs 4+ min industry avg',   delay: 360 },
+          ] as const).map((stat, i) => (
+            <div key={i} style={{
+              background: 'white',
+              border: '1px solid rgba(15,23,42,0.09)',
+              borderRadius: 12,
+              boxShadow: '0 4px 20px rgba(15,23,42,0.07)',
+              padding: '22px 24px',
+              opacity: inView ? 1 : 0,
+              transform: inView ? 'translateY(0)' : 'translateY(14px)',
+              transition: `opacity 0.5s ease ${700 + stat.delay}ms, transform 0.5s ease ${700 + stat.delay}ms`,
+            }}>
+              <p style={{ fontSize: 28, fontWeight: 800, letterSpacing: '-0.03em', background: 'linear-gradient(135deg, #228DC1, #0e6a9a)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1.1, margin: '0 0 5px' }}>
+                <GlobeCountUp num={stat.num} prefix={stat.prefix} suffix={stat.suffix} visible={inView} delay={stat.delay + 200} />
+              </p>
+              <p style={{ fontSize: 12.5, fontWeight: 700, color: '#0a1628', margin: '0 0 2px' }}>{stat.label}</p>
+              <p style={{ fontSize: 11.5, color: 'rgba(10,22,40,0.50)', margin: 0 }}>{stat.note}</p>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   )
