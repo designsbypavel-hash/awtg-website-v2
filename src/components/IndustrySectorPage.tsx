@@ -58,7 +58,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
           className="absolute inset-0"
           style={{
             background: hero.heroImage
-              ? 'linear-gradient(to right, rgba(8,18,36,0.93) 0%, rgba(8,18,36,0.80) 38%, rgba(8,18,36,0.48) 65%, rgba(8,18,36,0.18) 100%)'
+              ? 'linear-gradient(to right, rgba(8,18,36,0.70) 0%, rgba(8,18,36,0.44) 40%, rgba(8,18,36,0.16) 66%, transparent 100%)'
               : `linear-gradient(135deg, #f0f7fb 0%, ${accent}10 100%)`,
           }}
         />
@@ -141,11 +141,9 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 style={{ padding: '64px clamp(32px, 5vw, 80px)' }}
               >
                 <div style={{ maxWidth: 520 }}>
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                    style={{ background: `${accent}12`, border: `1px solid ${accent}22` }}
-                  >
-                    <FontAwesomeIcon icon={s.icon} style={{ fontSize: 18, color: accent }} />
+                  <div className="flex items-center gap-3 mb-6">
+                    <div style={{ width: 3, height: 32, background: accent, borderRadius: 2, flexShrink: 0 }} />
+                    <FontAwesomeIcon icon={s.icon} style={{ fontSize: 19, color: accent }} />
                   </div>
 
                   <h3
@@ -162,17 +160,12 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                   {s.bullets.length > 0 && (
                     <div className="space-y-3">
                       {s.bullets.map((b, idx) => (
-                        <div key={idx} className="flex items-start gap-4">
-                          <div
-                            className="w-7 h-7 rounded-[8px] flex items-center justify-center shrink-0 mt-0.5 text-[11px] font-bold"
-                            style={{ background: `${accent}12`, color: accent, border: `1px solid ${accent}22` }}
-                          >
-                            {String(idx + 1).padStart(2, '0')}
-                          </div>
+                        <div key={idx} className="flex items-start gap-3">
                           <span
-                            className="pt-0.5"
-                            style={{ color: 'rgba(10,22,40,0.6)', fontSize: 14, lineHeight: 1.72 }}
-                          >
+                            className="shrink-0 rounded-full"
+                            style={{ width: 5, height: 5, background: accent, marginTop: 8, flexShrink: 0 }}
+                          />
+                          <span style={{ color: 'rgba(10,22,40,0.6)', fontSize: 14, lineHeight: 1.72 }}>
                             {b}
                           </span>
                         </div>
