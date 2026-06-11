@@ -37,7 +37,6 @@ const PATH_LABELS: Record<string, string> = {
   '/about/leadership':                 'Leadership',
   '/about/certifications':             'Certifications',
   '/about/sustainability':             'Sustainability',
-  '/about/partnerships':               'Partnerships',
   '/about/innovation':                 'Innovation',
   // ── Insights ──────────────────────────────────────────────────────
   '/insights':                         'News',

@@ -14,7 +14,6 @@ const LABELS: Record<string, string> = {
   certifications: 'Certifications',
   sustainability: 'Sustainability',
   overview: 'Overview',
-  partnerships: 'Partnerships',
   innovation: 'Innovation',
   solutions: 'Solutions',
   'mobile-private-networks': 'Mobile Private Networks',

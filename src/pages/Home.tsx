@@ -228,14 +228,6 @@ function Hero() {
               ))}
             </div>
           </div>
-          <div className="shrink-0 px-6 py-4 border-l border-black/10">
-            <Link
-              to="/about/partnerships"
-              className="text-[#0a1628]/60 hover:text-[#0a1628] text-[14px] font-medium tracking-widest uppercase whitespace-nowrap transition-colors"
-            >
-              Our Partners
-            </Link>
-          </div>
         </div>
       </div>
     </section>

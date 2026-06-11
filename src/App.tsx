@@ -9,7 +9,6 @@ import {
   IBecomePage,
   InnovationPage,
   IYouthPage,
-  PartnershipsPage,
   ServicesOverviewPage,
   TermsPage,
 } from './pages/UtilityPages'
@@ -150,8 +149,7 @@ export default function App() {
         {/* About */}
         <Route path="about" element={<AboutOverviewPage />} />
         <Route path="about/overview" element={<AboutOverviewPage />} />
-        <Route path="about/partnerships" element={<PartnershipsPage />} />
-        <Route path="about/innovation" element={<InnovationPage />} />
+<Route path="about/innovation" element={<InnovationPage />} />
         <Route path="about/leadership" element={<AboutLeadershipPage />} />
         <Route path="about/certifications" element={<AboutCertificationsPage />} />
         <Route path="about/sustainability" element={<AboutSustainabilityPage />} />

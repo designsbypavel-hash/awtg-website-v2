@@ -84,20 +84,6 @@ export function ServicesOverviewPage() {
   )
 }
 
-export function PartnershipsPage() {
-  return (
-    <UtilityPage
-      eyebrow="Proof"
-      title="Trusted by operators, vendors and public sector partners."
-      intro="AWTG works with organisations where delivery matters: telecoms operators, technology vendors, NHS and public sector teams, and enterprise leaders modernising critical infrastructure."
-      cards={[
-        { title: 'Client Outcomes', desc: 'See how AWTG translates AI and connectivity into working deployments.', href: '/insights/case-studies' },
-        { title: 'Certifications', desc: 'Explore the standards, accreditations and frameworks behind our delivery model.', href: '/about/certifications' },
-        { title: 'Leadership', desc: 'Meet the people guiding AWTG across telecoms, AI and public sector technology.', href: '/about/leadership' },
-      ]}
-    />
-  )
-}
 
 export function InnovationPage() {
   return (
