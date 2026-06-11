@@ -1805,7 +1805,7 @@ export default function KaiPage() {
           {/* Heading */}
           <div className="mb-16">
             <h2 className="font-heading text-white mb-4">
-              Kai Connect Customers
+              Build your KAI Agent
             </h2>
             <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
               Kai connects with your customers across web, messaging, and chat channels, resolving their pain points wherever the conversation starts.
