@@ -168,7 +168,7 @@ function Hero() {
           className="home-hero-media w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1800&q=80&auto=format&fit=crop"
         >
-          <source src="https://cdn.pixabay.com/video/2025/04/23/273922_large.mp4" type="video/mp4" />
+          <source src="/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Gradient: darkest bottom-left (where copy lives), lighter top-right */}
         <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/55 to-black/30" />
