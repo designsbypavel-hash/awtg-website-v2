@@ -99,18 +99,10 @@ const featuredPanels: Record<string, FeaturedPanel> = {
   innovation: {
     eyebrow: 'Featured',
     title: 'AI built around real work',
-    desc: 'Explore the two fastest routes into production AI: guided education experiences and customer-facing service intelligence.',
-    href: '/solutions/generative-ai',
-    cta: 'Explore innovation',
+    desc: '',
+    href: '',
+    cta: '',
     items: [
-      {
-        label: 'AI for Education',
-        desc: 'Aruva maps learning signals and guides every student through governed course intelligence.',
-        href: '/products/aruva',
-        badge: 'Aruva',
-        image: '/education-featured.png',
-        imageFit: 'cover',
-      },
       {
         label: 'The Future of Learning is Here: Inside Aruva',
         desc: "AWTG's educational AI platform connecting institutions, educators and learners through smarter collaboration.",
@@ -448,13 +440,15 @@ export default function Navigation() {
                               {item.desc}
                             </p>
                           </Link>
-                          <Link
-                            to={panel.href}
-                            onClick={closeDropdownNow}
-                            className="mt-4 inline-flex items-center text-[12px] font-semibold text-[#228DC1] hover:text-[#0a1628] transition-colors"
-                          >
-                            {panel.cta} <span className="ml-1.5">→</span>
-                          </Link>
+                          {panel.cta && (
+                            <Link
+                              to={panel.href}
+                              onClick={closeDropdownNow}
+                              className="mt-4 inline-flex items-center text-[12px] font-semibold text-[#228DC1] hover:text-[#0a1628] transition-colors"
+                            >
+                              {panel.cta} <span className="ml-1.5">→</span>
+                            </Link>
+                          )}
                         </div>
                       )
                     })()}
