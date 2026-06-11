@@ -43,102 +43,205 @@ function ScrollProgress() {
 }
 
 // â”€â”€ IDAMS Map Visual â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-const IDAMS_SLIDES = [
-  '/idams-map-1.png',
-  '/idams-map-2.png',
-  '/idams-map-3.png',
-]
-
 function IdamsMapVisual() {
-  const [current, setCurrent] = useState(0)
-  const [next, setNext] = useState<number | null>(null)
-  const [transitioning, setTransitioning] = useState(false)
+  const [activeSignal, setActiveSignal] = useState(0)
+
+  const mapSignals = [
+    { label: '6,730 assets indexed', detail: 'Owner and asset layers synced', x: 46, y: 49 },
+    { label: 'Polygon selection active', detail: 'Ealing boundary highlighted', x: 56, y: 50 },
+    { label: 'Acquisition workflow ready', detail: 'Query, shortlist, request', x: 72, y: 58 },
+  ]
 
   useEffect(() => {
-    const id = setInterval(() => {
-      const n = (current + 1) % 3
-      setNext(n)
-      setTransitioning(true)
-      setTimeout(() => {
-        setCurrent(n)
-        setNext(null)
-        setTransitioning(false)
-      }, 500)
-    }, 4000)
+    const id = window.setInterval(() => {
+      setActiveSignal(current => (current + 1) % mapSignals.length)
+    }, 2800)
     return () => clearInterval(id)
-  }, [current])
+  }, [mapSignals.length])
 
-  const goTo = (i: number) => {
-    if (i === current || transitioning) return
-    setNext(i)
-    setTransitioning(true)
-    setTimeout(() => {
-      setCurrent(i)
-      setNext(null)
-      setTransitioning(false)
-    }, 500)
-  }
+  const active = mapSignals[activeSignal]
 
   return (
-    <div style={{ width: '100%', maxWidth: 640 }}>
+    <div style={{ width: '100%', maxWidth: 760 }}>
+      <style>{`
+        @keyframes idamsScan {
+          0% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
+          16% { opacity: 0.52; }
+          46% { opacity: 0.18; }
+          100% { transform: translateX(150%) skewX(-12deg); opacity: 0; }
+        }
+        @keyframes idamsPulse {
+          0%, 100% { transform: translate(-50%, -50%) scale(0.86); opacity: 0.72; }
+          50% { transform: translate(-50%, -50%) scale(1.34); opacity: 0.1; }
+        }
+        @keyframes idamsFloat {
+          0%, 100% { transform: translate3d(0, 0, 0); }
+          50% { transform: translate3d(0, -8px, 0); }
+        }
+        @keyframes idamsDraw {
+          0% { stroke-dashoffset: 420; opacity: 0; }
+          18% { opacity: 0.68; }
+          70% { opacity: 0.5; }
+          100% { stroke-dashoffset: 0; opacity: 0.18; }
+        }
+      `}</style>
       <div style={{
-        borderRadius: 16,
+        borderRadius: 18,
         overflow: 'hidden',
-        boxShadow: '0 32px 80px rgba(10,22,60,0.22)',
+        boxShadow: '0 34px 90px rgba(10,22,60,0.20)',
         position: 'relative',
-        background: '#0a1628',
-        aspectRatio: '16/10',
+        background: 'linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%)',
+        aspectRatio: '2549 / 1349',
+        border: '1px solid rgba(61,77,158,0.14)',
       }}>
-        {/* Current image */}
         <img
-          src={IDAMS_SLIDES[current]}
-          alt={`IDAMS platform screen ${current + 1}`}
+          src="/idams-map-1.png"
+          alt="IDAMS interactive asset map showing selected Ealing assets"
           style={{
-            position: 'absolute', inset: 0, width: '100%', height: '100%',
-            objectFit: 'cover',
-            opacity: transitioning ? 0 : 1,
-            transition: 'opacity 0.5s ease',
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
           }}
         />
-        {/* Next image fading in */}
-        {next !== null && (
-          <img
-            src={IDAMS_SLIDES[next]}
-            alt={`IDAMS platform screen ${next + 1}`}
-            style={{
-              position: 'absolute', inset: 0, width: '100%', height: '100%',
-              objectFit: 'cover',
-              opacity: transitioning ? 1 : 0,
-              transition: 'opacity 0.5s ease',
-            }}
+
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          background: 'linear-gradient(180deg, rgba(255,255,255,0) 62%, rgba(10,22,40,0.08) 100%)',
+        }} />
+
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          width: '36%',
+          pointerEvents: 'none',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(34,141,193,0.18) 48%, transparent 100%)',
+          animation: 'idamsScan 4.8s cubic-bezier(0.16,1,0.3,1) infinite',
+        }} />
+
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+          <path
+            d="M47 50 C54 42 63 45 70 54 S82 63 91 55"
+            fill="none"
+            stroke="#3d4d9e"
+            strokeWidth="0.42"
+            strokeLinecap="round"
+            strokeDasharray="8 5"
+            style={{ animation: 'idamsDraw 5.6s ease-in-out infinite' }}
           />
-        )}
-        {/* Dot indicators */}
+          <path
+            d="M44 48 C38 40 31 42 24 48"
+            fill="none"
+            stroke="#228DC1"
+            strokeWidth="0.34"
+            strokeLinecap="round"
+            strokeDasharray="6 5"
+            style={{ animation: 'idamsDraw 6.4s ease-in-out infinite' }}
+          />
+        </svg>
+
+        {mapSignals.map((signal, index) => (
+          <button
+            key={signal.label}
+            type="button"
+            aria-label={signal.label}
+            onMouseEnter={() => setActiveSignal(index)}
+            style={{
+              position: 'absolute',
+              left: `${signal.x}%`,
+              top: `${signal.y}%`,
+              width: 16,
+              height: 16,
+              borderRadius: 999,
+              border: '2px solid #fff',
+              background: index === activeSignal ? '#228DC1' : '#3d4d9e',
+              boxShadow: '0 8px 22px rgba(61,77,158,0.32)',
+              transform: 'translate(-50%, -50%)',
+              cursor: 'pointer',
+              pointerEvents: 'auto',
+            }}
+          >
+            <span style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: 42,
+              height: 42,
+              borderRadius: 999,
+              border: '1px solid rgba(34,141,193,0.55)',
+              animation: `idamsPulse 2.4s ease-in-out ${index * 0.35}s infinite`,
+            }} />
+          </button>
+        ))}
+
         <div style={{
-          position: 'absolute', bottom: 14, left: '50%', transform: 'translateX(-50%)',
-          display: 'flex', gap: 6, zIndex: 10,
+          position: 'absolute',
+          right: 18,
+          bottom: 18,
+          width: 238,
+          borderRadius: 14,
+          padding: '14px 16px',
+          background: 'rgba(10,22,40,0.82)',
+          border: '1px solid rgba(255,255,255,0.14)',
+          boxShadow: '0 18px 52px rgba(10,22,40,0.22)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          animation: 'idamsFloat 4s ease-in-out infinite',
+          pointerEvents: 'none',
         }}>
-          {[0, 1, 2].map(i => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              style={{
-                width: i === current ? 20 : 7, height: 7, borderRadius: 4,
-                background: i === current ? '#fff' : 'rgba(255,255,255,0.45)',
-                border: 'none', cursor: 'pointer', padding: 0,
-                transition: 'width 0.35s ease, background 0.35s ease',
-              }}
-            />
-          ))}
+          <p style={{
+            margin: '0 0 7px',
+            color: '#8bd8ff',
+            fontSize: 9,
+            fontWeight: 800,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+          }}>
+            Live asset intelligence
+          </p>
+          <p style={{ margin: '0 0 4px', color: '#fff', fontSize: 15, fontWeight: 800, lineHeight: 1.15 }}>
+            {active.label}
+          </p>
+          <p style={{ margin: 0, color: 'rgba(255,255,255,0.64)', fontSize: 11, lineHeight: 1.45 }}>
+            {active.detail}
+          </p>
+          <div style={{ display: 'flex', gap: 5, marginTop: 12 }}>
+            {mapSignals.map((signal, index) => (
+              <span
+                key={signal.label}
+                style={{
+                  height: 3,
+                  flex: 1,
+                  borderRadius: 999,
+                  background: index === activeSignal ? '#8bd8ff' : 'rgba(255,255,255,0.22)',
+                  transition: 'background 0.3s ease',
+                }}
+              />
+            ))}
+          </div>
         </div>
-        {/* IDAMS badge */}
+
         <div style={{
-          position: 'absolute', top: 12, right: 12, zIndex: 10,
-          background: 'rgba(10,22,40,0.72)', backdropFilter: 'blur(6px)',
-          borderRadius: 8, padding: '4px 10px',
-          fontSize: 10, fontWeight: 800, color: '#fff', letterSpacing: '0.08em',
+          position: 'absolute',
+          top: 14,
+          right: 14,
+          background: 'rgba(255,255,255,0.86)',
+          border: '1px solid rgba(61,77,158,0.14)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          borderRadius: 999,
+          padding: '7px 12px',
+          fontSize: 10,
+          fontWeight: 800,
+          color: '#3d4d9e',
+          letterSpacing: '0.08em',
+          boxShadow: '0 10px 28px rgba(10,22,40,0.10)',
         }}>
-          IDAMS
+          IDAMS MAP
         </div>
       </div>
     </div>
@@ -159,7 +262,7 @@ const capabilities = [
   { icon: faMapLocationDot, title: 'Interactive Asset Map',       color: '#228DC1', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
   { icon: faSearchLocation,  title: 'Advanced Search & Filtering', color: '#059669', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
   { icon: faDatabase,        title: 'Asset Data Management',       color: '#7c3aed', desc: 'Import, create, update, and manage asset records in one place. IDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
-  { icon: faClipboardCheck,  title: 'Acquisition Workflow',        color: '#d97706', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications â€” keeping every request visible and accountable.' },
+  { icon: faClipboardCheck,  title: 'Acquisition Workflow',        color: '#d97706', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications - keeping every request visible and accountable.' },
   { icon: faChartLine,       title: 'Reporting & Insights',        color: '#dc2626', desc: 'Use dashboards, reports, and exports to understand asset usage, acquisition progress, and operational performance across your estate.' },
   { icon: faNetworkWired,    title: 'Integration-Ready Platform',  color: '#0891b2', desc: 'IDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
 ]
@@ -248,7 +351,7 @@ export default function ServicesIoTPage() {
               IDAMS
             </h1>
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              Intelligent Digital Asset Management System. A secure, map-based marketplace that helps local authorities, operators, and infrastructure partners discover, request, and manage assets â€” faster.
+              Intelligent Digital Asset Management System. A secure, map-based marketplace that helps local authorities, operators, and infrastructure partners discover, request, and manage assets faster.
             </p>
             <button
               type="button"
@@ -301,7 +404,7 @@ export default function ServicesIoTPage() {
           <div style={reveal(audInView, 0)}>
             <SectionHeader
               title="Built for asset owners and asset consumers"
-              desc="IDAMS serves both sides of the asset marketplace â€” those who hold infrastructure and those who need access to it."
+              desc="IDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it."
             />
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
@@ -403,7 +506,7 @@ export default function ServicesIoTPage() {
           <div style={reveal(whyInView, 0)}>
             <SectionHeader
               title="Why IDAMS?"
-              desc="From asset register to digital marketplace â€” IDAMS creates a practical bridge between organisations that own assets and those that need access to them."
+              desc="From asset register to digital marketplace, IDAMS creates a practical bridge between organisations that own assets and those that need access to them."
             />
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
