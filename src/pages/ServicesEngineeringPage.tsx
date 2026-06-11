@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type CSSProperties } from 'react'
+import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChartLine, faCircleCheck, faLayerGroup, faServer,
@@ -49,150 +49,264 @@ function ScrollProgress() {
   )
 }
 
-// -- SCAP Platform Dashboard Visual -------------------------------------------
+// -- SCAP KPI Dashboard Visual (mirrors real SCAP UI) -------------------------
 function ScapDashboardVisual() {
-  const [activeModule, setActiveModule] = useState(0)
-  const modules = [
-    { label: 'SMO', color: '#228DC1', metric: 'O-RAN O1', status: 'Connected' },
-    { label: 'PM', color: '#059669', metric: '98.4%', status: 'SLA met' },
-    { label: 'CM', color: '#7c3aed', metric: '12 nodes', status: 'Synced' },
-    { label: 'FM', color: '#d97706', metric: '3 active', status: 'Alarms' },
-  ]
+  const [mounted, setMounted] = useState(false)
+  const [scanIdx, setScanIdx] = useState(0)
+  const [refreshSeed, setRefreshSeed] = useState(0)
+  const linePathRef = useRef<SVGPathElement>(null)
+  const [pathLength, setPathLength] = useState(800)
+
+  // Real data from actual SCAP platform
+  const barBase  = [185, 10, 5, 5, 5, 5, 5, 20, 125, 115, 250, 430, 20, 80, 65, 20]
+  const lineBase = [81, 76, 63, 64, 78, 77, 65, 65, 65, 65, 90, 38, 72, 72, 82, 50]
+  const dates    = ['22/05','23/05','24/05','25/05','26/05','27/05','28/05','29/05',
+                    '30/05','31/05','01/06','02/06','03/06','04/06','05/06','06/06']
+
+  // Slight jitter on each refresh to simulate live data
+  const jitter = (v: number, pct = 0.06) => Math.round(v * (1 + (Math.random() * 2 - 1) * pct))
+  const barValues  = barBase.map(v => (refreshSeed === 0 ? v : jitter(v)))
+  const lineValues = lineBase.map(v => (refreshSeed === 0 ? v : Math.min(100, Math.max(5, jitter(v, 0.04)))))
 
   useEffect(() => {
-    const id = setInterval(() => setActiveModule(p => (p + 1) % 4), 2200)
+    const t = setTimeout(() => setMounted(true), 250)
+    return () => clearTimeout(t)
+  }, [])
+
+  useEffect(() => {
+    if (linePathRef.current) setPathLength(linePathRef.current.getTotalLength())
+  }, [mounted])
+
+  // Scanning highlight across charts
+  useEffect(() => {
+    const id = setInterval(() => setScanIdx(i => (i + 1) % barValues.length), 380)
+    return () => clearInterval(id)
+  }, [barValues.length])
+
+  // Periodic data refresh
+  useEffect(() => {
+    const id = setInterval(() => {
+      setMounted(false)
+      setTimeout(() => { setRefreshSeed(s => s + 1); setMounted(true) }, 120)
+    }, 7000)
     return () => clearInterval(id)
   }, [])
 
-  const active = modules[activeModule]
+  const CW = 200, CH = 86
+  const maxBar = 430
+  const bw = CW / barValues.length - 1.2
+
+  const linePath = lineValues.map((v, i) => {
+    const x = (i / (lineValues.length - 1)) * CW
+    const y = CH - (v / 100) * CH
+    return `${i === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${y.toFixed(1)}`
+  }).join(' ')
+
+  const areaPath = `${linePath} L ${CW} ${CH} L 0 ${CH} Z`
+
+  const s: Record<string, React.CSSProperties> = {
+    root: { width: '100%', maxWidth: 620, fontFamily: 'system-ui,-apple-system,sans-serif' },
+    card: { borderRadius: 14, border: '1px solid rgba(60,60,100,0.10)', background: '#f4f5fb',
+            boxShadow: '0 32px 80px rgba(10,22,60,0.18), 0 2px 8px rgba(10,22,60,0.06)', overflow: 'hidden' },
+    topbar: { background: '#fff', borderBottom: '1px solid rgba(0,0,0,0.06)', display: 'flex',
+              alignItems: 'center', justifyContent: 'space-between', padding: '0 14px', height: 42 },
+    body: { display: 'flex' },
+    sidebar: { width: 138, background: '#fff', borderRight: '1px solid rgba(0,0,0,0.06)', flexShrink: 0, paddingBottom: 8 },
+    charts: { flex: 1, padding: '10px 10px 8px', display: 'flex', gap: 8 },
+    chartBox: { flex: 1, background: '#fff', borderRadius: 8, border: '1px solid rgba(60,60,100,0.08)', padding: '9px 9px 7px' },
+    statusBar: { background: '#fff', borderTop: '1px solid rgba(0,0,0,0.05)', display: 'flex',
+                 alignItems: 'center', gap: 8, padding: '0 14px', height: 30 },
+  }
 
   return (
-    <div className="w-full max-w-[580px]">
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0d1c31] shadow-[0_38px_86px_rgba(10,22,40,0.40)]">
-        {/* Top bar */}
-        <div className="flex items-center gap-2 border-b border-white/8 px-5 py-3">
-          <div className="h-3 w-3 rounded-full bg-[#ef4444]/70" />
-          <div className="h-3 w-3 rounded-full bg-[#f59e0b]/70" />
-          <div className="h-3 w-3 rounded-full bg-[#22c55e]/70" />
-          <span className="ml-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/30">SCAP · Network Management Platform</span>
+    <div style={s.root}>
+      <div style={s.card}>
+
+        {/* ── Top bar ── */}
+        <div style={s.topbar}>
+          <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+            <div style={{ width:28, height:28, background:'#3d4d9e', borderRadius:7,
+                          display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <rect x="0" y="6" width="3" height="7" fill="#fff" opacity="0.65" rx="0.5"/>
+                <rect x="4" y="3" width="3" height="10" fill="#fff" rx="0.5"/>
+                <rect x="8" y="0" width="3" height="13" fill="#fff" rx="0.5"/>
+                <rect x="12" y="4" width="1.5" height="9" fill="#fff" opacity="0.65" rx="0.5"/>
+              </svg>
+            </div>
+            <span style={{ fontSize:13, fontWeight:700, color:'#1a1f3c', letterSpacing:'-0.01em' }}>KPI Dashboard</span>
+          </div>
+          <div style={{ display:'flex', alignItems:'center', gap:5 }}>
+            <span style={{ fontSize:10, color:'#bbb' }}>Vendor</span>
+            <span style={{ fontSize:11, fontWeight:700, color:'#3d4d9e', background:'#eef0f8',
+                           padding:'2px 9px', borderRadius:5 }}>AWTG RAN</span>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ opacity:0.45 }}>
+              <path d="M2 4l3 3 3-3" stroke="#555" strokeWidth="1.4" strokeLinecap="round"/>
+            </svg>
+          </div>
         </div>
 
-        <div className="grid grid-cols-[140px_1fr]">
+        {/* ── Body ── */}
+        <div style={s.body}>
+
           {/* Sidebar */}
-          <aside className="border-r border-white/8 p-4">
-            <p className="mb-4 text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">Admin Panel</p>
-            <div className="space-y-1">
-              {modules.map((mod, i) => (
-                <button
-                  key={mod.label}
-                  onClick={() => setActiveModule(i)}
-                  className="w-full rounded-lg px-3 py-2.5 text-left transition-all"
-                  style={{
-                    background: activeModule === i ? `${mod.color}20` : 'transparent',
-                    borderLeft: activeModule === i ? `2px solid ${mod.color}` : '2px solid transparent',
-                  }}
-                >
-                  <p className="text-[11px] font-bold text-white/90">{mod.label}</p>
-                  <p className="text-[9.5px] text-white/40">
-                    {mod.label === 'SMO' ? 'Orchestration' :
-                     mod.label === 'PM' ? 'Performance' :
-                     mod.label === 'CM' ? 'Configuration' : 'Fault Mgmt'}
-                  </p>
-                </button>
-              ))}
+          <div style={s.sidebar}>
+            <div style={{ padding:'9px 12px 5px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+              <span style={{ fontSize:8, fontWeight:800, color:'#ccc', letterSpacing:'0.13em', textTransform:'uppercase' }}>Admin Panel</span>
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" style={{ opacity:0.35 }}>
+                <path d="M1 3h9M1 7h9" stroke="#555" strokeWidth="1.4" strokeLinecap="round"/>
+              </svg>
             </div>
-            <div className="mt-6 space-y-2">
-              {['Alarms', 'KPI Alerts', 'Reports'].map(item => (
-                <div key={item} className="flex items-center gap-2 px-3 py-1.5">
-                  <div className="h-1.5 w-1.5 rounded-full bg-white/20" />
-                  <span className="text-[10px] text-white/30">{item}</span>
-                </div>
-              ))}
-            </div>
-          </aside>
 
-          {/* Main panel */}
-          <div className="min-h-[340px] p-5">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">{active.label} Dashboard</p>
-                <p className="text-[15px] font-semibold text-white">
-                  {active.label === 'SMO' ? 'Service Management & Orchestration' :
-                   active.label === 'PM' ? 'KPI Performance Dashboard' :
-                   active.label === 'CM' ? 'Configuration Management' : 'Fault Management'}
-                </p>
+            {/* Settings row */}
+            <div style={{ padding:'5px 12px', display:'flex', alignItems:'center', justifyContent:'space-between', cursor:'pointer' }}>
+              <div style={{ display:'flex', alignItems:'center', gap:5 }}>
+                <FontAwesomeIcon icon={faServer} style={{ fontSize:9, color:'#aaa' }} />
+                <span style={{ fontSize:10, fontWeight:500, color:'#999' }}>Settings</span>
               </div>
-              <span className="rounded-full px-3 py-1 text-[10px] font-bold" style={{ background: `${active.color}22`, color: active.color }}>
-                {active.status}
-              </span>
+              <svg width="9" height="9" viewBox="0 0 9 9" fill="none" style={{ opacity:0.4 }}>
+                <path d="M2 4l2.5 2.5L7 4" stroke="#666" strokeWidth="1.2" strokeLinecap="round"/>
+              </svg>
             </div>
 
-            {/* KPI row */}
-            <div className="mb-4 grid grid-cols-3 gap-2">
-              {active.label === 'SMO' && [
-                ['O-RAN O1', 'Active', '#228DC1'],
-                ['NETCONF', 'Synced', '#059669'],
-                ['NonRT RIC', 'Online', '#7c3aed'],
-              ].map(([label, val, color]) => (
-                <div key={label} className="rounded-lg border border-white/8 bg-white/5 p-3">
-                  <p className="text-[9px] text-white/38">{label}</p>
-                  <p className="text-[12px] font-bold" style={{ color }}>{val}</p>
+            {/* Performance Management */}
+            <div>
+              <div style={{ padding:'6px 12px 4px', display:'flex', alignItems:'center',
+                            justifyContent:'space-between', cursor:'pointer' }}>
+                <div style={{ display:'flex', alignItems:'center', gap:5 }}>
+                  <FontAwesomeIcon icon={faChartLine} style={{ fontSize:9, color:'#3d4d9e' }} />
+                  <span style={{ fontSize:10, fontWeight:700, color:'#1a1f3c' }}>Performance Management</span>
                 </div>
-              ))}
-              {active.label === 'PM' && [
-                ['Availability', '99.8%', '#059669'],
-                ['BLER', '0.4%', '#228DC1'],
-                ['Throughput', '↑12%', '#7c3aed'],
-              ].map(([label, val, color]) => (
-                <div key={label} className="rounded-lg border border-white/8 bg-white/5 p-3">
-                  <p className="text-[9px] text-white/38">{label}</p>
-                  <p className="text-[12px] font-bold" style={{ color }}>{val}</p>
-                </div>
-              ))}
-              {active.label === 'CM' && [
-                ['Schema', 'YANG', '#7c3aed'],
-                ['Changes', '3 pending', '#d97706'],
-                ['Baseline', 'Golden', '#059669'],
-              ].map(([label, val, color]) => (
-                <div key={label} className="rounded-lg border border-white/8 bg-white/5 p-3">
-                  <p className="text-[9px] text-white/38">{label}</p>
-                  <p className="text-[12px] font-bold" style={{ color }}>{val}</p>
-                </div>
-              ))}
-              {active.label === 'FM' && [
-                ['Critical', '1', '#ef4444'],
-                ['Major', '2', '#d97706'],
-                ['Cleared', '14', '#059669'],
-              ].map(([label, val, color]) => (
-                <div key={label} className="rounded-lg border border-white/8 bg-white/5 p-3">
-                  <p className="text-[9px] text-white/38">{label}</p>
-                  <p className="text-[12px] font-bold" style={{ color }}>{val}</p>
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                  <path d="M2 3.5l2.5 2.5L7 3.5" stroke="#555" strokeWidth="1.2" strokeLinecap="round"/>
+                </svg>
+              </div>
+              {[
+                { label:'KPI Dashboard',   active:true  },
+                { label:'KPI Thresholds',  active:false },
+                { label:'KPI Alerts',      active:false },
+              ].map(item => (
+                <div key={item.label} style={{
+                  padding:'4px 12px 4px 26px',
+                  background: item.active ? '#eef0f8' : 'transparent',
+                  borderLeft: item.active ? '2px solid #3d4d9e' : '2px solid transparent',
+                  cursor:'pointer',
+                }}>
+                  <span style={{ fontSize:10, color: item.active ? '#3d4d9e' : '#999',
+                                 fontWeight: item.active ? 600 : 400 }}>{item.label}</span>
                 </div>
               ))}
             </div>
 
-            {/* Mini chart bars */}
-            <div className="mb-4 rounded-xl border border-white/8 bg-white/4 p-4">
-              <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.14em] text-white/30">
-                {active.label === 'PM' ? 'RRC Establishment Attempts' :
-                 active.label === 'FM' ? 'Alarm History' :
-                 active.label === 'CM' ? 'Config Change Timeline' : 'NE Onboarding Status'}
-              </p>
-              <div className="flex items-end gap-1.5 h-[52px]">
-                {[28, 42, 35, 55, 48, 62, 44, 58, 38, 50, 66, 45].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-sm transition-all duration-300"
-                    style={{ height: `${h}%`, background: `${active.color}${i === 10 ? 'cc' : '55'}` }} />
+            {/* Other nav sections */}
+            <div style={{ marginTop:4 }}>
+              {[
+                { icon: faTriangleExclamation, label:'Fault Management' },
+                { icon: faCodeBranch,          label:'Configuration Management' },
+                { icon: faNetworkWired,        label:'SMO' },
+              ].map(({ icon, label }) => (
+                <div key={label} style={{ padding:'6px 12px', display:'flex', alignItems:'center',
+                                          justifyContent:'space-between', cursor:'pointer' }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:5 }}>
+                    <FontAwesomeIcon icon={icon} style={{ fontSize:9, color:'#bbb' }} />
+                    <span style={{ fontSize:10, fontWeight:500, color:'#aaa' }}>{label}</span>
+                  </div>
+                  <svg width="9" height="9" viewBox="0 0 9 9" fill="none" style={{ opacity:0.35 }}>
+                    <path d="M2 4l2.5 2.5L7 4" stroke="#666" strokeWidth="1.2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Charts */}
+          <div style={s.charts}>
+
+            {/* ── Bar chart: DRB Establishment Attempts ── */}
+            <div style={s.chartBox}>
+              <div style={{ fontSize:10, fontWeight:700, color:'#1a1f3c', marginBottom:7, lineHeight:1.3 }}>
+                DRB Establishment Attempts
+              </div>
+              <svg viewBox={`0 0 ${CW} ${CH}`} style={{ display:'block', width:'100%', height:CH }}>
+                {[0,0.25,0.5,0.75,1].map(p => (
+                  <line key={p} x1="0" y1={CH - p*CH} x2={CW} y2={CH - p*CH}
+                    stroke="rgba(0,0,0,0.05)" strokeWidth="0.7" />
+                ))}
+                {barValues.map((v, i) => {
+                  const h = mounted ? (v / maxBar) * CH : 0
+                  const x = i * (CW / barValues.length) + 0.5
+                  const active = scanIdx === i
+                  return (
+                    <rect key={i} x={x} y={CH - h} width={bw} height={Math.max(0, h)}
+                      fill={active ? '#5569d4' : '#3d4d9e'} opacity={active ? 1 : 0.72}
+                      style={{ transition:'y 0.9s cubic-bezier(0.34,1.56,0.64,1), height 0.9s cubic-bezier(0.34,1.56,0.64,1)' }}
+                    />
+                  )
+                })}
+              </svg>
+              <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>
+                {[0,4,8,11,15].map(i => (
+                  <span key={i} style={{ fontSize:7, color:'#ccc' }}>{dates[i]}</span>
                 ))}
               </div>
             </div>
 
-            {/* Status row */}
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-[#22c55e]" style={{ boxShadow: '0 0 6px #22c55e' }} />
-              <span className="text-[10px] text-white/40">Platform operational · Vendor: AWTG RAN · O-RAN compliant</span>
+            {/* ── Line chart: Total Accessibility Success Rate ── */}
+            <div style={s.chartBox}>
+              <div style={{ fontSize:10, fontWeight:700, color:'#1a1f3c', marginBottom:7, lineHeight:1.3 }}>
+                Total Accessibility Success Rate
+              </div>
+              <svg viewBox={`0 0 ${CW} ${CH}`} style={{ display:'block', width:'100%', height:CH }}>
+                {[0,0.25,0.5,0.75,1].map(p => (
+                  <line key={p} x1="0" y1={CH - p*CH} x2={CW} y2={CH - p*CH}
+                    stroke="rgba(0,0,0,0.05)" strokeWidth="0.7" />
+                ))}
+                {/* Area */}
+                <path d={areaPath} fill="#3d4d9e" opacity={mounted ? 0.07 : 0}
+                  style={{ transition:'opacity 0.6s ease' }} />
+                {/* Line with draw animation */}
+                <path
+                  ref={linePathRef}
+                  d={linePath}
+                  fill="none" stroke="#3d4d9e" strokeWidth="1.5"
+                  strokeLinejoin="round" strokeLinecap="round"
+                  strokeDasharray={pathLength}
+                  strokeDashoffset={mounted ? 0 : pathLength}
+                  style={{ transition:'stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1)' }}
+                />
+                {/* Data points */}
+                {lineValues.map((v, i) => {
+                  const x = (i / (lineValues.length - 1)) * CW
+                  const y = CH - (v / 100) * CH
+                  const active = scanIdx % lineValues.length === i
+                  return (
+                    <circle key={i} cx={x} cy={y}
+                      r={active ? 3 : (mounted ? 1.5 : 0)}
+                      fill={active ? '#5569d4' : '#3d4d9e'}
+                      style={{ transition:'r 0.25s ease' }}
+                    />
+                  )
+                })}
+              </svg>
+              <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>
+                {[0,4,8,11,15].map(i => (
+                  <span key={i} style={{ fontSize:7, color:'#ccc' }}>{dates[i]}</span>
+                ))}
+              </div>
             </div>
+
           </div>
         </div>
+
+        {/* ── Status bar ── */}
+        <div style={s.statusBar}>
+          <div style={{ width:6, height:6, borderRadius:'50%', background:'#22c55e',
+                        boxShadow:'0 0 5px #22c55e', flexShrink:0 }} />
+          <span style={{ fontSize:9, color:'#bbb' }}>
+            Platform operational · 5G O-RAN · AWTG RAN · Data refreshed just now
+          </span>
+        </div>
+
       </div>
     </div>
   )
