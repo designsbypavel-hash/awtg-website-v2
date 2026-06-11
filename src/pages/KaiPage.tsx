@@ -45,6 +45,7 @@ const integrationLogos = {
   serviceNow: new URL('../assets/Integration/ServiceNow.svg', import.meta.url).href,
   freshworks: new URL('../assets/Integration/Freshworks.svg', import.meta.url).href,
   teams: new URL('../assets/Integration/Teams.svg', import.meta.url).href,
+  telegram: new URL('../assets/Integration/Telegram.svg', import.meta.url).href,
   whatsapp: new URL('../assets/Integration/Whatsapp.svg', import.meta.url).href,
   yahooMail: new URL('../assets/Integration/Yahoo Mail.svg', import.meta.url).href,
   kaiHoriz: new URL('../assets/KAI Page Icons/logo horiz.svg', import.meta.url).href,
