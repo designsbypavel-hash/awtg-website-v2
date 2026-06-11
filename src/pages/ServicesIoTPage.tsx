@@ -59,8 +59,6 @@ function IdamsMapVisual() {
     return () => clearInterval(id)
   }, [mapSignals.length])
 
-  const active = mapSignals[activeSignal]
-
   return (
     <div style={{ width: '100%', maxWidth: 760 }}>
       <style>{`
@@ -73,16 +71,6 @@ function IdamsMapVisual() {
         @keyframes idamsPulse {
           0%, 100% { transform: translate(-50%, -50%) scale(0.86); opacity: 0.72; }
           50% { transform: translate(-50%, -50%) scale(1.34); opacity: 0.1; }
-        }
-        @keyframes idamsFloat {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(0, -8px, 0); }
-        }
-        @keyframes idamsDraw {
-          0% { stroke-dashoffset: 420; opacity: 0; }
-          18% { opacity: 0.68; }
-          70% { opacity: 0.5; }
-          100% { stroke-dashoffset: 0; opacity: 0.18; }
         }
       `}</style>
       <div style={{
@@ -123,27 +111,6 @@ function IdamsMapVisual() {
           animation: 'idamsScan 4.8s cubic-bezier(0.16,1,0.3,1) infinite',
         }} />
 
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-          <path
-            d="M47 50 C54 42 63 45 70 54 S82 63 91 55"
-            fill="none"
-            stroke="#3d4d9e"
-            strokeWidth="0.42"
-            strokeLinecap="round"
-            strokeDasharray="8 5"
-            style={{ animation: 'idamsDraw 5.6s ease-in-out infinite' }}
-          />
-          <path
-            d="M44 48 C38 40 31 42 24 48"
-            fill="none"
-            stroke="#228DC1"
-            strokeWidth="0.34"
-            strokeLinecap="round"
-            strokeDasharray="6 5"
-            style={{ animation: 'idamsDraw 6.4s ease-in-out infinite' }}
-          />
-        </svg>
-
         {mapSignals.map((signal, index) => (
           <button
             key={signal.label}
@@ -178,71 +145,6 @@ function IdamsMapVisual() {
           </button>
         ))}
 
-        <div style={{
-          position: 'absolute',
-          right: 18,
-          bottom: 18,
-          width: 238,
-          borderRadius: 14,
-          padding: '14px 16px',
-          background: 'rgba(10,22,40,0.82)',
-          border: '1px solid rgba(255,255,255,0.14)',
-          boxShadow: '0 18px 52px rgba(10,22,40,0.22)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          animation: 'idamsFloat 4s ease-in-out infinite',
-          pointerEvents: 'none',
-        }}>
-          <p style={{
-            margin: '0 0 7px',
-            color: '#8bd8ff',
-            fontSize: 9,
-            fontWeight: 800,
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-          }}>
-            Live asset intelligence
-          </p>
-          <p style={{ margin: '0 0 4px', color: '#fff', fontSize: 15, fontWeight: 800, lineHeight: 1.15 }}>
-            {active.label}
-          </p>
-          <p style={{ margin: 0, color: 'rgba(255,255,255,0.64)', fontSize: 11, lineHeight: 1.45 }}>
-            {active.detail}
-          </p>
-          <div style={{ display: 'flex', gap: 5, marginTop: 12 }}>
-            {mapSignals.map((signal, index) => (
-              <span
-                key={signal.label}
-                style={{
-                  height: 3,
-                  flex: 1,
-                  borderRadius: 999,
-                  background: index === activeSignal ? '#8bd8ff' : 'rgba(255,255,255,0.22)',
-                  transition: 'background 0.3s ease',
-                }}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div style={{
-          position: 'absolute',
-          top: 14,
-          right: 14,
-          background: 'rgba(255,255,255,0.86)',
-          border: '1px solid rgba(61,77,158,0.14)',
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)',
-          borderRadius: 999,
-          padding: '7px 12px',
-          fontSize: 10,
-          fontWeight: 800,
-          color: '#3d4d9e',
-          letterSpacing: '0.08em',
-          boxShadow: '0 10px 28px rgba(10,22,40,0.10)',
-        }}>
-          IDAMS MAP
-        </div>
       </div>
     </div>
   )
