@@ -348,7 +348,7 @@ function GlobalReachSection() {
               Global reach. Measurable customer outcomes.
             </h2>
             <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] mb-10">
-              Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
+              Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from day 1.
             </p>
 
             {/* 2 × 2 stat grid — flush with text, no extra margin */}
