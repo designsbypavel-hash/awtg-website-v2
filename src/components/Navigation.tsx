@@ -130,14 +130,6 @@ const featuredPanels: Record<string, FeaturedPanel> = {
     cta: 'View connectivity',
     items: [
       {
-        label: 'iCMAP',
-        desc: 'Intelligent 5G coverage mapping and network gap analysis.',
-        href: '/products/icmap',
-        badge: '5G',
-        image: heroImage,
-        imageFit: 'contain',
-      },
-      {
         label: 'AWTG × Telecom of Thailand',
         desc: '50%+ reduction in operating costs and $250M in new addressable revenue. GSMA-validated.',
         href: '/insights/case-studies/tot-service-assurance',
