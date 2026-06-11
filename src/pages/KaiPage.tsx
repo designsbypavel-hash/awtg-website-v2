@@ -112,7 +112,7 @@ function GlobePanel({ visible }: { visible: boolean }) {
   ]
 
   return (
-    <div style={{ position: 'relative', maxWidth: 460, margin: '0 auto', width: '100%' }}>
+    <div style={{ position: 'relative', maxWidth: 360, margin: '0 auto', width: '100%' }}>
       <style>{`
         @keyframes awtg-globe-pulse {
           0%   { transform: scale(1);   opacity: 0.65; }
@@ -222,9 +222,9 @@ function GlobalReachSection() {
   const [ref, inView] = useInView(0.15)
 
   return (
-    <section className="bg-[#f8fafc] border-b border-gray-100 py-24">
+    <section className="bg-[#f8fafc] border-b border-gray-100 py-16">
       <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
 
           {/* Left — text content */}
           <div style={reveal(inView, 0)}>
@@ -244,7 +244,7 @@ function GlobalReachSection() {
         </div>
 
         {/* Stat cards row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
           {([
             { prefix: '',  num: 250, suffix: 'k+',   label: 'Production reach',  note: 'Users supported monthly',  delay: 0   },
             { prefix: '+', num: 17,  suffix: '%',     label: 'CSAT uplift',       note: 'User satisfaction',        delay: 120 },
