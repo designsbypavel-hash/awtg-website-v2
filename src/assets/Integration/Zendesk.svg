@@ -1,0 +1,8 @@
+<svg viewBox="0 0 560 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Z icon: upper D-shape (right-facing half-disc) -->
+  <path d="M12,30 H54 A36,36 0 0,1 54,102 H12 Z" fill="#03363D"/>
+  <!-- Z icon: lower D-shape (left-facing half-disc, offset right) -->
+  <path d="M108,54 H66 A36,36 0 0,0 66,126 H108 Z" fill="#03363D"/>
+  <!-- "endesk" text -->
+  <text x="132" y="114" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="80" font-weight="700" fill="#03363D" letter-spacing="-1">endesk</text>
+</svg>
