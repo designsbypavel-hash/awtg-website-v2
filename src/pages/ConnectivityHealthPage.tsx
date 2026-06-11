@@ -98,6 +98,7 @@ const data: SectorPageData = {
           'Encryption across all clinical data pathways',
           'Architecture documentation for DSPT submission support',
         ],
+        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80',
       },
       {
         icon: faWifi,
@@ -109,6 +110,7 @@ const data: SectorPageData = {
           'Roaming and handoff optimised for mobile clinical workflows',
           'Separate SSID management for clinical, staff and guest traffic',
         ],
+        image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=1200&q=80',
       },
       {
         icon: faMicrochip,
@@ -120,6 +122,7 @@ const data: SectorPageData = {
           'Traffic prioritisation for patient-critical device communications',
           'Integration with clinical IT and EPR infrastructure',
         ],
+        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80',
       },
     ],
   },

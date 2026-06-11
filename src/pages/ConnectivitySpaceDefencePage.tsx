@@ -98,6 +98,7 @@ const data: SectorPageData = {
           'Interoperability with NATO and allied systems where required',
           'Operational continuity under degraded conditions',
         ],
+        image: 'https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&q=80',
       },
       {
         icon: faSatellite,
@@ -109,6 +110,7 @@ const data: SectorPageData = {
           'SATCOM network management and monitoring',
           'Integration with terrestrial and tactical radio networks',
         ],
+        image: 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=1200&q=80',
       },
       {
         icon: faShieldHalved,
@@ -120,6 +122,7 @@ const data: SectorPageData = {
           'Formal risk assessment and accreditation support',
           'Ongoing security monitoring and assurance reporting',
         ],
+        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80',
       },
     ],
   },

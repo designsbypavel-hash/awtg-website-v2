@@ -70,6 +70,7 @@ const data: SectorPageData = {
           'Care coordination and referral workflow automation',
           'Compliance with NHS England, CQC and DSPT standards',
         ],
+        image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=80',
       },
       {
         icon: faHouseChimney,
@@ -81,6 +82,7 @@ const data: SectorPageData = {
           'Real-time intervention triggers for clinical teams',
           'GDPR-compliant data flows from home to clinical systems',
         ],
+        image: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1200&q=80',
       },
       {
         icon: faCode,
@@ -92,6 +94,7 @@ const data: SectorPageData = {
           'Mobile-first portals for patients and practitioners',
           'Continuous iteration with clinical and operational stakeholders',
         ],
+        image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1200&q=80',
       },
     ],
   },

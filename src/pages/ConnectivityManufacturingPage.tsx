@@ -98,6 +98,7 @@ const data: SectorPageData = {
           'Coverage across complex industrial sites and structures',
           'Resilient architecture supporting business continuity',
         ],
+        image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80',
       },
       {
         icon: faMicrochip,
@@ -109,6 +110,7 @@ const data: SectorPageData = {
           'Data collection and dashboard integration',
           'Secure data flow architecture from edge to platform',
         ],
+        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80',
       },
       {
         icon: faShieldHalved,
@@ -120,6 +122,7 @@ const data: SectorPageData = {
           'Network resilience and business continuity design',
           'Connectivity that supports digital transformation programmes',
         ],
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80',
       },
     ],
   },

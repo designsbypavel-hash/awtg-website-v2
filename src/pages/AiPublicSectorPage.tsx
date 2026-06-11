@@ -98,6 +98,7 @@ const data: SectorPageData = {
           'Clear escalation to human advisors where needed',
           'Audit trail and transparency for governance requirements',
         ],
+        image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80',
       },
       {
         icon: faClipboardList,
@@ -109,6 +110,7 @@ const data: SectorPageData = {
           'Integration with existing case management platforms',
           'Audit-ready logging for accountability requirements',
         ],
+        image: 'https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=1200&q=80',
       },
       {
         icon: faShieldHalved,
@@ -120,6 +122,7 @@ const data: SectorPageData = {
           'Usage analytics to identify guidance gaps',
           'Integration with legislative change workflows',
         ],
+        image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80',
       },
     ],
   },

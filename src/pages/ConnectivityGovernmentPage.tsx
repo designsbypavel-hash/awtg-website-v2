@@ -98,6 +98,7 @@ const data: SectorPageData = {
           'Traffic classification and segmentation for data handling policies',
           'High-availability design for continuity of citizen services',
         ],
+        image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80',
       },
       {
         icon: faShield,
@@ -109,6 +110,7 @@ const data: SectorPageData = {
           'Integration with government identity and access management',
           'Monitoring and compliance reporting for GovWifi obligations',
         ],
+        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80',
       },
       {
         icon: faCloud,
@@ -120,6 +122,7 @@ const data: SectorPageData = {
           'Performance optimisation for cloud-hosted citizen services',
           'Routing compliance for government data handling requirements',
         ],
+        image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80',
       },
     ],
   },

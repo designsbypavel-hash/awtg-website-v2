@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
@@ -21,7 +21,7 @@ export interface SectorHero {
   heroImage?: string
 }
 export interface SectorChallenge { icon: IconDefinition; title: string; desc: string }
-export interface SectorSupport   { icon: IconDefinition; title: string; desc: string; bullets: string[] }
+export interface SectorSupport   { icon: IconDefinition; title: string; desc: string; bullets: string[]; image?: string }
 export interface SectorUseCase   { icon: IconDefinition; title: string; desc: string }
 export interface SectorOutcome   { icon: IconDefinition; title: string; desc: string }
 export interface SectorPageData {
@@ -34,125 +34,84 @@ export interface SectorPageData {
   cta: { title: string; subtitle: string; label?: string }
 }
 
-const ITEM_COLORS = ['#228DC1', '#7c3aed', '#059669', '#d97706']
-
 export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
   const { hero, challenges, supports, useCases, outcomes, proof, cta } = data
   const accent = hero.accentColor ?? '#228DC1'
-  const [imgError, setImgError] = useState(false)
 
   return (
     <>
       {/* ══════════════════════════════════════════════════════
-          HERO
+          HERO — full-bleed image with dark overlay
       ══════════════════════════════════════════════════════ */}
-      <section
-        className="pt-32 pb-24 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #f8fbfe 0%, #f0f7fb 50%, #fafcfe 100%)' }}
-      >
+      <section className="relative overflow-hidden" style={{ minHeight: 640 }}>
+        {/* Background photo */}
+        {hero.heroImage && (
+          <img
+            src={hero.heroImage}
+            alt={hero.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+
+        {/* Gradient overlay — dark left for text, transparent right for photo */}
         <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
+          className="absolute inset-0"
           style={{
-            opacity: 0.03,
-            backgroundImage: 'radial-gradient(circle, #0a1628 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
+            background: hero.heroImage
+              ? 'linear-gradient(to right, rgba(8,18,36,0.93) 0%, rgba(8,18,36,0.80) 38%, rgba(8,18,36,0.48) 65%, rgba(8,18,36,0.18) 100%)'
+              : `linear-gradient(135deg, #f0f7fb 0%, ${accent}10 100%)`,
           }}
         />
+
+        {/* Text content */}
         <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse at 72% 38%, ${accent}12 0%, transparent 58%)` }}
-        />
-
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 relative">
-          <div className="grid lg:grid-cols-[1fr_460px] gap-14 items-center">
-
-            {/* Left: text */}
-            <div>
-              <h1 className="font-serif-display text-[#0a1628] mb-5 leading-[1.1]">{hero.title}</h1>
-              <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.85] mb-10 max-w-lg">
-                {hero.description}
-              </p>
-              <Link
-                to={hero.ctaHref ?? '/contact'}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-[14px] text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                style={{ background: accent, boxShadow: `0 4px 18px ${accent}35` }}
+          className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
+          style={{ minHeight: 640, paddingTop: 128, paddingBottom: 80 }}
+        >
+          <div style={{ maxWidth: 660 }}>
+            {hero.badge && (
+              <div
+                className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-7"
+                style={{
+                  background: 'rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: 'rgba(255,255,255,0.75)',
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  backdropFilter: 'blur(10px)',
+                }}
               >
-                {hero.ctaLabel ?? 'Talk to our experts'}
-              </Link>
-            </div>
+                {hero.badge}
+              </div>
+            )}
 
-            {/* Right: hero image → heroVisual → capability list */}
-            <div className="hidden lg:block">
-              {hero.heroImage && !imgError ? (
-                <div
-                  className="relative rounded-[20px] overflow-hidden"
-                  style={{
-                    boxShadow: '0 20px 60px rgba(15,23,42,0.13), 0 4px 16px rgba(15,23,42,0.07)',
-                    border: '1px solid rgba(15,23,42,0.07)',
-                  }}
-                >
-                  <img
-                    src={hero.heroImage}
-                    alt={hero.title}
-                    onError={() => setImgError(true)}
-                    className="w-full object-cover"
-                    style={{ height: '420px', display: 'block' }}
-                  />
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-                    style={{ background: `linear-gradient(to top, ${accent}25 0%, transparent 100%)` }}
-                  />
-                </div>
-              ) : hero.heroVisual ?? (
-                <div
-                  className="rounded-[20px] overflow-hidden bg-white"
-                  style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 16px 56px rgba(15,23,42,0.1)' }}
-                >
-                  <div
-                    className="flex items-center gap-3 px-6 py-5 border-b"
-                    style={{
-                      background: `linear-gradient(135deg, ${accent}0d 0%, ${accent}06 100%)`,
-                      borderColor: `${accent}18`,
-                    }}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center"
-                      style={{ background: `${accent}18`, border: `1px solid ${accent}28` }}
-                    >
-                      <FontAwesomeIcon icon={hero.visualIcon} style={{ fontSize: 18, color: accent }} />
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: accent }}>
-                        {hero.badge ?? 'Capabilities'}
-                      </p>
-                      <p className="text-[12px] text-[#0a1628]/40 font-medium mt-0.5">AWTG platform</p>
-                    </div>
-                  </div>
-                  <div className="px-5 py-4 space-y-2">
-                    {hero.visualItems.map((item, i) => {
-                      const c = ITEM_COLORS[i % 4]
-                      return (
-                        <div
-                          key={item.label}
-                          className="flex items-center gap-3 rounded-xl px-4 py-3"
-                          style={{ background: 'rgba(15,23,42,0.02)', border: '1px solid rgba(15,23,42,0.06)' }}
-                        >
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                            style={{ background: `${c}12`, border: `1px solid ${c}22` }}
-                          >
-                            <FontAwesomeIcon icon={item.icon} style={{ fontSize: 12, color: c }} />
-                          </div>
-                          <span className="text-[#0a1628]/65 text-[13px] font-medium flex-1">{item.label}</span>
-                          <div className="w-1.5 h-1.5 rounded-full" style={{ background: c, opacity: 0.55 }} />
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
+            <h1
+              className="font-serif-display text-white leading-[1.06] mb-6"
+              style={{ fontSize: 'clamp(34px, 4.2vw, 56px)' }}
+            >
+              {hero.title}
+            </h1>
+
+            <p
+              className="mb-10"
+              style={{ color: 'rgba(255,255,255,0.65)', fontSize: 17, lineHeight: 1.82, maxWidth: 540 }}
+            >
+              {hero.description}
+            </p>
+
+            <Link
+              to={hero.ctaHref ?? '/contact'}
+              className="inline-flex items-center gap-2 rounded-xl font-semibold text-[14px] text-white transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
+              style={{
+                background: accent,
+                boxShadow: `0 6px 24px ${accent}55`,
+                padding: '14px 32px',
+              }}
+            >
+              {hero.ctaLabel ?? 'Talk to our experts'}
+            </Link>
           </div>
         </div>
       </section>
@@ -176,47 +135,108 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SUPPORTS — alternating text + icon visual
+          SUPPORTS — "What AWTG delivers for ___"
+          Full-width alternating photo + text panels
       ══════════════════════════════════════════════════════ */}
-      <section className="py-28 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+      <section className="bg-white border-t border-gray-100 overflow-hidden">
+        {/* Section heading — constrained width */}
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-20 pb-14">
           <IndustrySectionHeader
             heading={supports.heading}
             intro={supports.intro}
-            className="mb-20"
           />
-          <div className="space-y-24">
-            {supports.items.map((s, i) => {
-              const isReversed = i % 2 === 1
-              return (
-                <div key={s.title} className="grid lg:grid-cols-2 gap-16 items-center">
-                  <div className={isReversed ? 'lg:order-2' : ''}>
-                    <h3 className="font-heading text-[#0a1628] text-[26px] leading-snug mb-5">{s.title}</h3>
-                    <p className="text-[#0a1628]/58 text-[15px] leading-[1.85] mb-8">{s.desc}</p>
-                    {s.bullets.length > 0 && (
-                      <div className="space-y-3">
-                        {s.bullets.map((b, idx) => (
-                          <div key={idx} className="flex items-start gap-4">
-                            <div
-                              className="w-7 h-7 rounded-[8px] flex items-center justify-center shrink-0 mt-0.5 text-[11px] font-bold"
-                              style={{ background: `${accent}12`, color: accent, border: `1px solid ${accent}22` }}
-                            >
-                              {String(idx + 1).padStart(2, '0')}
-                            </div>
-                            <span className="text-[#0a1628]/60 text-[14px] leading-relaxed pt-0.5">{b}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+        </div>
+
+        {/* Edge-to-edge alternating panels */}
+        {supports.items.map((s, i) => {
+          const isReversed = i % 2 === 1
+          return (
+            <div key={s.title} className="grid lg:grid-cols-2" style={{ minHeight: 500 }}>
+
+              {/* Text panel */}
+              <div
+                className={`flex flex-col justify-center bg-white ${isReversed ? 'lg:order-2' : ''}`}
+                style={{ padding: '64px clamp(32px, 5vw, 80px)' }}
+              >
+                <div style={{ maxWidth: 520 }}>
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+                    style={{ background: `${accent}12`, border: `1px solid ${accent}22` }}
+                  >
+                    <FontAwesomeIcon icon={s.icon} style={{ fontSize: 18, color: accent }} />
                   </div>
-                  <div className={isReversed ? 'lg:order-1' : ''}>
+
+                  <h3
+                    className="font-heading text-[#0a1628] leading-snug mb-4"
+                    style={{ fontSize: 'clamp(20px, 2vw, 27px)' }}
+                  >
+                    {s.title}
+                  </h3>
+
+                  <p style={{ color: 'rgba(10,22,40,0.55)', fontSize: 15, lineHeight: 1.88, marginBottom: 32 }}>
+                    {s.desc}
+                  </p>
+
+                  {s.bullets.length > 0 && (
+                    <div className="space-y-3">
+                      {s.bullets.map((b, idx) => (
+                        <div key={idx} className="flex items-start gap-4">
+                          <div
+                            className="w-7 h-7 rounded-[8px] flex items-center justify-center shrink-0 mt-0.5 text-[11px] font-bold"
+                            style={{ background: `${accent}12`, color: accent, border: `1px solid ${accent}22` }}
+                          >
+                            {String(idx + 1).padStart(2, '0')}
+                          </div>
+                          <span
+                            className="pt-0.5"
+                            style={{ color: 'rgba(10,22,40,0.6)', fontSize: 14, lineHeight: 1.72 }}
+                          >
+                            {b}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Photo / visual panel */}
+              <div
+                className={`relative overflow-hidden ${isReversed ? 'lg:order-1' : ''}`}
+                style={{
+                  minHeight: 420,
+                  background: s.image
+                    ? undefined
+                    : `linear-gradient(135deg, ${accent}10 0%, ${accent}05 100%)`,
+                }}
+              >
+                {s.image ? (
+                  <>
+                    <img
+                      src={s.image}
+                      alt={s.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    {/* Subtle inner shadow on the join edge for depth */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background: isReversed
+                          ? 'linear-gradient(to right, rgba(10,22,40,0.12) 0%, transparent 30%)'
+                          : 'linear-gradient(to left, rgba(10,22,40,0.12) 0%, transparent 30%)',
+                      }}
+                    />
+                  </>
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center p-12">
                     <IndustryIconVisual icon={s.icon} accent={accent} chips={s.bullets} />
                   </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+                )}
+              </div>
+
+            </div>
+          )
+        })}
       </section>
 
       {/* ══════════════════════════════════════════════════════

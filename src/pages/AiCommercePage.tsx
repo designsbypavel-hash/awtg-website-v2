@@ -99,6 +99,7 @@ const data: SectorPageData = {
           'Escalation to human agents with full context',
           'CSAT measurement built in from deployment',
         ],
+        image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80',
       },
       {
         icon: faCartShopping,
@@ -110,6 +111,7 @@ const data: SectorPageData = {
           'Cross-sell and upsell surfacing from catalogue data',
           'Available across web, app and messaging channels',
         ],
+        image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80',
       },
       {
         icon: faChartLine,
@@ -121,6 +123,7 @@ const data: SectorPageData = {
           'CSAT and resolution quality dashboards',
           'Seasonal and campaign impact reporting',
         ],
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
       },
     ],
   },

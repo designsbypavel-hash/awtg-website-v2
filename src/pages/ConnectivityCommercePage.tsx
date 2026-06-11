@@ -98,6 +98,7 @@ const data: SectorPageData = {
           'Failover and resilience for always-on retail operations',
           'Cost-efficient bandwidth utilisation across the estate',
         ],
+        image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80',
       },
       {
         icon: faShieldHalved,
@@ -109,6 +110,7 @@ const data: SectorPageData = {
           'Compliance documentation and evidence gathering support',
           'Ongoing managed compliance monitoring and alerting',
         ],
+        image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80',
       },
       {
         icon: faWifi,
@@ -120,6 +122,7 @@ const data: SectorPageData = {
           'IoT device onboarding and lifecycle management',
           'Footfall and dwell time analytics from Wi-Fi infrastructure',
         ],
+        image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80',
       },
     ],
   },

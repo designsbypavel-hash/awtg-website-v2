@@ -98,6 +98,7 @@ const data: SectorPageData = {
           'Connectivity for remote and technically demanding locations',
           'Secure access for distributed engineering teams',
         ],
+        image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=1200&q=80',
       },
       {
         icon: faMicrochip,
@@ -109,6 +110,7 @@ const data: SectorPageData = {
           'Data collection and platform integration',
           'Dashboards and reporting for engineering decision making',
         ],
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
       },
       {
         icon: faNetworkWired,
@@ -120,6 +122,7 @@ const data: SectorPageData = {
           'Secure infrastructure for technical environments',
           'ESA and public sector innovation programme experience',
         ],
+        image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80',
       },
     ],
   },
