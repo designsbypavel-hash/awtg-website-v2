@@ -1,6 +1,7 @@
-<svg viewBox="0 0 220 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- "now" compact wordmark — the recognisable ServiceNow short-form -->
-  <text x="8" y="76" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="72" font-weight="700" fill="#293E40" letter-spacing="-2">now</text>
-  <!-- Green speech-bubble dot above the "o" — ServiceNow brand motif -->
-  <circle cx="200" cy="18" r="14" fill="#62D84E"/>
+<svg viewBox="0 0 200 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Two-line stacked wordmark for compact 2:1 aspect -->
+  <text x="6" y="48" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="44" font-weight="700" fill="#293E40" letter-spacing="-0.5">service</text>
+  <text x="6" y="98" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="44" font-weight="700" fill="#293E40" letter-spacing="-0.5">now</text>
+  <!-- Signature green dot (speech-bubble motif) -->
+  <circle cx="185" cy="68" r="13" fill="#62D84E"/>
 </svg>

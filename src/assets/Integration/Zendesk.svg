@@ -1,6 +1,7 @@
-<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Upper D-shape: right-facing half-disc, upper-left quadrant -->
-  <path d="M8,8 H50 A26,26 0 0,1 50,60 H8 Z" fill="#03363D"/>
-  <!-- Lower D-shape: left-facing half-disc, lower-right quadrant -->
-  <path d="M112,60 H70 A26,26 0 0,0 70,112 H112 Z" fill="#03363D"/>
+<svg viewBox="0 0 200 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Z icon: upper D-shape (right-facing), lower D-shape (left-facing) -->
+  <path d="M6,6 H36 A24,24 0 0,1 36,54 H6 Z" fill="#03363D"/>
+  <path d="M66,54 H36 A24,24 0 0,0 36,102 H66 Z" fill="#03363D"/>
+  <!-- "endesk" wordmark -->
+  <text x="80" y="78" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#03363D" letter-spacing="-1">endesk</text>
 </svg>
