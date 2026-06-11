@@ -1824,7 +1824,7 @@ export default function KaiPage() {
               {
                 num: '02',
                 pill: 'KNOWLEDGE',
-                label: 'Connect your Knowledge Base',
+                label: 'Define Agent Behaviour',
                 desc: 'Connect your knowledge sources by uploading files, adding links, or integrating a database via API. End-to-end data privacy and control, encrypted at rest and in transit, CREST-certified and ISO 42001 compliant.',
               },
               {
