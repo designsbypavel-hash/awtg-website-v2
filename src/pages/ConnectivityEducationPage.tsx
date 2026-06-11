@@ -98,7 +98,7 @@ const data: SectorPageData = {
           'Seamless roaming across campus buildings and zones',
           'Separate networks for staff, students and guests',
         ],
-        image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faShield,
@@ -110,7 +110,7 @@ const data: SectorPageData = {
           'Separate traffic handling for different user categories',
           'Audit logging to support safeguarding investigations',
         ],
-        image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faCloud,
@@ -122,7 +122,7 @@ const data: SectorPageData = {
           'Bandwidth management for teaching and learning priorities',
           'Proactive maintenance during school holidays where possible',
         ],
-        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },

@@ -99,7 +99,7 @@ const data: SectorPageData = {
           'Exception handling with escalation pathways',
           'Integration with existing systems and platforms',
         ],
-        image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faDatabase,
@@ -111,7 +111,7 @@ const data: SectorPageData = {
           'Version control and content governance',
           'Usage analytics to identify gaps and improve content',
         ],
-        image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faChartLine,
@@ -123,7 +123,7 @@ const data: SectorPageData = {
           'Predictive signals for operational planning',
           'Executive reporting on transformation progress',
         ],
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },

@@ -98,7 +98,7 @@ const data: SectorPageData = {
           'Traffic segmentation for different data classifications',
           'High-availability design for critical government services',
         ],
-        image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faCloud,
@@ -110,7 +110,7 @@ const data: SectorPageData = {
           'Bandwidth management for cloud-dependent applications',
           'Integration with existing PSN and HSCN connectivity where relevant',
         ],
-        image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faShield,
@@ -122,7 +122,7 @@ const data: SectorPageData = {
           'Vulnerability management and patching support',
           'Incident response and service restoration',
         ],
-        image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },
