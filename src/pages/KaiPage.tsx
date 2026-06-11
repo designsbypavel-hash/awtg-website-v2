@@ -240,7 +240,7 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
 
       <img
         src="/images/kai-globe-transparent-4k.png"
-        alt="KAi global reach network globe"
+        alt="Kai global reach network globe"
         style={{
           width: 'min(100%, 560px)',
           height: 'auto',
@@ -991,12 +991,12 @@ function KaiChatDemo() {
               padding: '6px 0 14px',
             }}>
 
-              {/* ── TOP: KAi VOICE label + live transcript ── */}
+              {/* ── TOP: Kai VOICE label + live transcript ── */}
               <div style={{ padding: '0 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
                   <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.42)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>
-                    KAi VOICE
+                    Kai VOICE
                   </span>
                 </div>
 
@@ -1059,9 +1059,9 @@ function KaiChatDemo() {
               </div>
             </div>
 
-            {/* KAi label — bottom left */}
+            {/* Kai label — bottom left */}
             <div style={{ position: 'absolute', bottom: 66, left: 22 }}>
-              <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', fontFamily: 'Roboto,sans-serif' }}>KAi</span>
+              <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', fontFamily: 'Roboto,sans-serif' }}>Kai</span>
             </div>
 
             {/* Voice input bar — minimal, buttons only */}
@@ -1289,7 +1289,7 @@ function EscalationChart() {
 //   • dot-grid section background
 //   • 7 channel icon squares in a 3-column grid (matching panels below)
 //   • SVG connector: stubs → horizontal bar → 3 drops → panel tops
-//   • Three panels: Telegram | KAi Web Chat | Gmail
+//   • Three panels: Telegram | Kai Web Chat | Gmail
 //
 // SVG coordinate system  viewBox="0 0 1000 80"  preserveAspectRatio="none"
 //   Column centres: 160 | 500 | 840   (same proportions as CSS grid cols)
@@ -1310,7 +1310,7 @@ function OmnichannelSection() {
     { from:'user', text:'Brilliant, thank you!',                                                              time:'09:43', ticks:'✓✓' },
   ]
 
-  // ─── KAi web messages ───────────────────────────────────────────────────
+  // ─── Kai web messages ───────────────────────────────────────────────────
   const kaiMsgs: { from:'ai'|'user'; text:string; meta?:string; signal?:string }[] = [
     { from:'ai',   text:"Hi there! 👋\nWhat can I help you with today?" },
     { from:'user', text:"I'd like to upgrade my subscription to the Pro plan." },
@@ -1412,7 +1412,7 @@ function OmnichannelSection() {
               </ChIcon>
             </div>
 
-            {/* Centre: KAi (glowing) */}
+            {/* Centre: Kai (glowing) */}
             <div className="flex justify-center items-center">
               <ChIcon color="#228DC1" bg="rgba(34,141,193,0.10)" glow>
                 <img src={integrationLogos.kaiHoriz} alt="Kai" style={{ width:46, height:24, objectFit:'contain' }}
@@ -1527,11 +1527,11 @@ function OmnichannelSection() {
               </div>
             </div>
 
-            {/* ════ CENTRE: KAi WEB CHAT ════ */}
+            {/* ════ CENTRE: Kai WEB CHAT ════ */}
             <div className="omni-panel-center" style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, display:'flex', flexDirection:'column' }}>
               <div style={{ borderRadius:15, background:'#fff', overflow:'hidden', flex:1, display:'flex', flexDirection:'column' }}>
 
-                {/* KAi header */}
+                {/* Kai header */}
                 <div style={{ background:KAI_HDR_GRAD, padding:'13px 16px', display:'flex', alignItems:'center', gap:8, flexShrink:0 }}>
                   <div style={{ width:32, height:32, background:'#fff', borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
                     <img src="/kai-logo.svg" alt="Kai" style={{ width:20, height:20 }}
@@ -1623,7 +1623,7 @@ function OmnichannelSection() {
                 </div>
               </div>
 
-              {/* KAi reply — expanded */}
+              {/* Kai reply — expanded */}
               <div style={{ padding:'12px 14px', flex:1 }}>
                 <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:9 }}>
                   <div style={{ width:30, height:30, borderRadius:'50%', background:'#228DC1', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
@@ -1664,7 +1664,7 @@ function OmnichannelSection() {
         </div>{/* end desktop block */}
 
         {/* ═══════════════════════════════════════════════════════════════════
-            MOBILE: channel pills + KAi widget
+            MOBILE: channel pills + Kai widget
         ══════════════════════════════════════════════════════════════════════ */}
         <div className="lg:hidden flex flex-wrap justify-center gap-2 mb-10">
           {['WhatsApp','Telegram','Teams','Web Chat','Gmail','Outlook','Telegram'].map((ch, i) => (
@@ -1932,7 +1932,7 @@ export default function KaiPage() {
       {/* -- Integrations -- */}
       <IntegrationsSection />
 
-      {/* -- Omnichannel (Telegram / KAi / Gmail) -- */}
+      {/* -- Omnichannel (Telegram / Kai / Gmail) -- */}
       <OmnichannelSection />
 
       {/* -- How Kai Works -- */}
@@ -1954,7 +1954,7 @@ export default function KaiPage() {
           {/* Heading */}
           <div className="mb-16">
             <h2 className="font-heading text-white mb-4">
-              Build your KAi Agent
+              Build your Kai Agent
             </h2>
             <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
               Kai connects with your customers across web, messaging, and chat channels, resolving their pain points wherever the conversation starts.
