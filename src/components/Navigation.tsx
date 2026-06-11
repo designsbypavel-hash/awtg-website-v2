@@ -62,6 +62,11 @@ const navItems: NavEntry[] = [
           { label: 'Public Sector', desc: 'PSN-aligned networks and managed connectivity', href: '/connectivity/public-sector' },
           { label: 'Space & Defence', desc: 'Mission-critical and SATCOM connectivity', href: '/connectivity/space-defence' },
           { label: 'Education', desc: 'Campus wireless and safeguarding-compliant networks', href: '/connectivity/education' },
+        ],
+      },
+      {
+        heading: '',
+        items: [
           { label: 'Government', desc: 'PSN, GovWifi and secure government networking', href: '/connectivity/government' },
           { label: 'Commerce', desc: 'SD-WAN, PCI DSS and customer Wi-Fi', href: '/connectivity/commerce' },
           { label: 'Manufacturing', desc: 'Private wireless, IoT and industrial connectivity', href: '/connectivity/manufacturing' },
@@ -376,9 +381,11 @@ export default function Navigation() {
                     <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-8' : 'grid-cols-2 gap-8 xl:gap-10'}`}>
                       {nav.groups.map((group) => (
                         <div key={group.heading}>
-                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/45 mb-5 px-1">
-                            {group.heading}
-                          </p>
+                          {group.heading && (
+                            <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/45 mb-5 px-1">
+                              {group.heading}
+                            </p>
+                          )}
                           <div className="space-y-4">
                             {group.items.map((item) => (
                               <Link
