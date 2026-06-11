@@ -1814,15 +1814,15 @@ export default function KaiPage() {
               },
               {
                 num: '02',
-                pill: 'KNOWLEDGE',
-                label: 'Define Agent Behaviour',
-                desc: 'Connect your knowledge sources by uploading files, adding links, or integrating a database via API. End-to-end data privacy and control, encrypted at rest and in transit, CREST-certified and ISO 42001 compliant.',
+                pill: 'CONFIGURATION',
+                label: 'Set Objectives & Guardrails',
+                desc: 'Set clear objectives for your agent, implement guardrails to keep responses on track, and establish the rules, tone, and behaviour that define how it engages with your customers.',
               },
               {
                 num: '03',
-                pill: 'SYSTEMS',
-                label: 'Activate your channel',
-                desc: 'Kai triggers systems automatically and integrates with your existing tools. Closed loop resolution: raise, route, resolve. Outcomes, not just chat.',
+                pill: 'KNOWLEDGE',
+                label: 'Define Agent Behaviour',
+                desc: 'Connect your knowledge sources by uploading files, adding links, or integrating a database via API. End-to-end data privacy and control, encrypted at rest and in transit, CREST-certified and ISO 42001 compliant.',
               },
             ].map((step, i) => (
               <div
