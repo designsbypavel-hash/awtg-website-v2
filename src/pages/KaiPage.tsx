@@ -1754,7 +1754,7 @@ export default function KaiPage() {
                   {[
                     'Advanced Sentiment Analysis',
                     'Deep Contextual Knowledge',
-                    'Conversation Design',
+                    'Optimise Conversation Design',
                   ].map((label, i) => (
                     <div key={i} style={{ flex:1, display:'flex', alignItems:'center', gap:8, padding:'10px 13px', background:'rgba(34,141,193,0.05)', borderRadius:6, border:'1px solid rgba(34,141,193,0.14)' }}>
                       <span style={{ width:6, height:6, borderRadius:'50%', background:'#228DC1', flexShrink:0 }} />
