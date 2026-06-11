@@ -542,24 +542,16 @@ function SecurityComplianceSection() {
                     Governance, access control and auditability are built in from day one.
                   </p>
                 </div>
-                <div className="rounded-[18px] border border-white/[0.12] bg-white/[0.07] px-5 py-5 flex items-center gap-4">
-                  {/* ISO 42001 */}
-                  <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <img src={certISO42001} alt="ISO 42001" style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0 }} />
-                    <div className="min-w-0">
-                      <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.16em] leading-none mb-1">Certified</p>
-                      <p className="text-[13px] font-semibold text-white/90 leading-tight">ISO 42001</p>
-                    </div>
+                <div className="rounded-[18px] border border-white/[0.12] bg-white/[0.07] px-6 py-5 flex items-center gap-5">
+                  <img src={certISO42001} alt="ISO 42001" style={{ width: 76, height: 76, objectFit: 'contain', flexShrink: 0 }} />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] leading-none mb-2">Certified</p>
+                    <p className="text-[17px] font-semibold text-white/95 leading-tight mb-1">ISO 42001</p>
+                    <p className="text-[12px] text-white/50 leading-snug">AI Management System</p>
                   </div>
-                  {/* Divider */}
-                  <div className="w-px self-stretch bg-white/[0.12]" />
-                  {/* CREST */}
-                  <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <img src={certCREST} alt="CREST" style={{ width: 64, height: 64, objectFit: 'contain', flexShrink: 0 }} />
-                    <div className="min-w-0">
-                      <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.16em] leading-none mb-1">Certified</p>
-                      <p className="text-[13px] font-semibold text-white/90 leading-tight">CREST</p>
-                    </div>
+                  <div className="flex items-center gap-1.5 bg-white/[0.08] border border-white/[0.1] rounded-full px-3 py-1.5 shrink-0">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 3L5 9L2 6" stroke="#4ade80" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.05em' }}>Verified</span>
                   </div>
                 </div>
               </div>
