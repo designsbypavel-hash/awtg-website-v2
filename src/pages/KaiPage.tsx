@@ -1734,9 +1734,12 @@ export default function KaiPage() {
             {/* Right: chart card — Intercom-style */}
             <div style={{ border:'1px solid #e4e8ed', background:'#fafaf7' }}>
               {/* Card header */}
-              <div style={{ padding:'18px 20px 10px' }}>
-                <p className="type-label" style={{ color:'rgba(10,22,40,0.4)', letterSpacing:'0.14em' }}>
-                  Escalation rate reduction over time
+              <div style={{ padding:'20px 22px 12px' }}>
+                <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#0a1628', lineHeight:1.35, fontFamily:'Roboto,sans-serif', letterSpacing:'-0.01em' }}>
+                  Escalation rate reduced from{' '}
+                  <span style={{ color:'#228DC1' }}>40%</span> to{' '}
+                  <span style={{ color:'#228DC1' }}>10%</span>{' '}
+                  <span style={{ fontWeight:400, color:'rgba(10,22,40,0.50)', fontSize:14 }}>over time</span>
                 </p>
               </div>
 
@@ -1764,44 +1767,6 @@ export default function KaiPage() {
                 </div>
               </div>
 
-              {/* Result callout */}
-              <div style={{
-                borderTop: '1px solid rgba(34,141,193,0.14)',
-                padding: '14px 20px 16px',
-                background: 'linear-gradient(90deg, rgba(34,141,193,0.07) 0%, transparent 80%)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 14,
-              }}>
-                <div style={{
-                  width: 3, minHeight: 40,
-                  background: 'linear-gradient(180deg, #228DC1 0%, #0e6a9a 100%)',
-                  borderRadius: 2,
-                  flexShrink: 0,
-                }} />
-                <p style={{ margin: 0, lineHeight: 1.55 }}>
-                  <span style={{
-                    display: 'block',
-                    fontWeight: 800, fontSize: 15,
-                    color: '#0a1628',
-                    letterSpacing: '-0.02em',
-                  }}>
-                    Escalation rate reduced from{' '}
-                    <span style={{ color: '#228DC1' }}>40%</span>
-                    {' '}to{' '}
-                    <span style={{ color: '#228DC1' }}>10%</span>
-                  </span>
-                  <span style={{
-                    display: 'block',
-                    fontSize: 12.5,
-                    color: 'rgba(10,22,40,0.50)',
-                    fontWeight: 400,
-                    marginTop: 2,
-                  }}>
-                    on average for all our users
-                  </span>
-                </p>
-              </div>
 
             </div>
 
