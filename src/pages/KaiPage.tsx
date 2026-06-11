@@ -1634,6 +1634,7 @@ export default function KaiPage() {
           { src: '/logos/clients/kai-frame3.svg',          alt: 'Retail Hub' },
           { src: '/logos/clients/kai-leicester.svg',       alt: 'Leicester City Council' },
           { src: '/logos/clients/kai-frame2.svg',          alt: 'TVRA Rural Action' },
+          { src: '/logos/partners/ESA.svg',               alt: 'ESA' },
         ]
         const all = [...items, ...items]
         return (
