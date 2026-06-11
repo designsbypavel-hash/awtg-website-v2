@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
+﻿import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faBuildingColumns, faChartLine, faCity,
