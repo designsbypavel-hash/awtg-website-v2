@@ -1652,19 +1652,28 @@ export default function KaiPage() {
               </div>
 
               {/* Feature chips: what drove the reduction */}
-              <div style={{ padding:'0 16px 16px' }}>
-                <p style={{ margin:'12px 0 10px', fontSize:9.5, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(10,22,40,0.32)', fontFamily:'Roboto,sans-serif' }}>
+              <div style={{ padding:'0 16px 18px' }}>
+                <p style={{ margin:'10px 0 10px', fontSize:9.5, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(10,22,40,0.50)', fontFamily:'Roboto,sans-serif' }}>
                   What drove this reduction
                 </p>
                 <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:8 }}>
                   {[
-                    { label:'Advanced Sentiment Analysis', detail:'Detects tone shifts before a handover is needed.' },
-                    { label:'Deep Contextual Knowledge', detail:'Uses richer conversation history to resolve accurately.' },
-                    { label:'Conversation Design', detail:'Guides users through clearer, structured journeys.' },
+                    {
+                      label: 'Advanced Sentiment Analysis',
+                      detail: 'Kai reads emotional cues in real-time — sensing frustration before it builds — and adapts its response to de-escalate rather than defer.',
+                    },
+                    {
+                      label: 'Deep Contextual Knowledge',
+                      detail: 'By retaining full conversation and account context, Kai resolves queries that previously required a human agent, closing loops automatically.',
+                    },
+                    {
+                      label: 'Conversation Design',
+                      detail: 'Structured dialogue flows steer users toward answers efficiently, cutting the ambiguity that most often triggers an escalation request.',
+                    },
                   ].map((item, i) => (
-                    <div key={i} style={{ padding:'11px 12px 12px', background:'rgba(34,141,193,0.04)', borderRadius:6, border:'1px solid rgba(34,141,193,0.13)', borderTop:'2px solid #228DC1' }}>
-                      <p style={{ margin:'0 0 4px', fontSize:11.5, fontWeight:800, color:'#0a1628', lineHeight:1.3, fontFamily:'Roboto,sans-serif' }}>{item.label}</p>
-                      <p style={{ margin:0, fontSize:10.5, color:'rgba(10,22,40,0.46)', lineHeight:1.5, fontFamily:'Roboto,sans-serif' }}>{item.detail}</p>
+                    <div key={i} style={{ padding:'12px 14px 14px', background:'#fff', borderRadius:6, border:'1px solid rgba(34,141,193,0.20)', borderTop:'2px solid #228DC1', boxShadow:'0 1px 4px rgba(10,22,40,0.06)' }}>
+                      <p style={{ margin:'0 0 5px', fontSize:11.5, fontWeight:800, color:'#0a1628', lineHeight:1.3, fontFamily:'Roboto,sans-serif' }}>{item.label}</p>
+                      <p style={{ margin:0, fontSize:10.5, color:'rgba(10,22,40,0.62)', lineHeight:1.6, fontFamily:'Roboto,sans-serif' }}>{item.detail}</p>
                     </div>
                   ))}
                 </div>
