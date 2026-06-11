@@ -480,9 +480,6 @@ export default function ServicesEngineeringPage() {
             <h1 className="font-serif-display mb-3 leading-[1.02] text-[#0a1628]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
               SCAP
             </h1>
-            <p className="mb-3 text-[16px] font-medium text-[#0a1628]/55">
-              Service Correlation Assurance Platform
-            </p>
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
               A multi-vendor network management and service assurance platform for telecom, private 5G, Open RAN and hybrid network environments. Combines SMO, PM, CM and FM in one integrated platform.
             </p>
@@ -495,18 +492,6 @@ export default function ServicesEngineeringPage() {
               >
                 Request a Demo
               </button>
-              <a href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-7 py-3.5 text-[14px] font-semibold text-[#0a1628]/70 transition-all hover:border-gray-300 hover:text-[#0a1628] hover:-translate-y-0.5">
-                Talk to an engineer
-              </a>
-            </div>
-            {/* Protocol chips */}
-            <div className="mt-10 flex flex-wrap gap-2">
-              {protocols.map(p => (
-                <span key={p} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-[11px] font-semibold text-[#0a1628]/50">
-                  {p}
-                </span>
-              ))}
             </div>
           </div>
 
