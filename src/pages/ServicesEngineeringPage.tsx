@@ -356,24 +356,20 @@ export default function ServicesEngineeringPage() {
       />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #07111f 0%, #0d1c31 55%, #0a1628 100%)' }}>
-        <div className="absolute inset-0 pointer-events-none opacity-20"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(34,141,193,0.5) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 68% 38%, rgba(34,141,193,0.18) 0, transparent 55%)' }} />
+      <section className="relative overflow-hidden pt-32 pb-20 bg-white">
+        <div className="absolute inset-0 pointer-events-none opacity-40"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(34,141,193,0.12) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 72% 40%, rgba(34,141,193,0.07) 0, transparent 55%)' }} />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-8 lg:grid-cols-[1fr_1.1fr] lg:px-12">
           <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#228DC1]/30 bg-[#228DC1]/10 px-4 py-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#228DC1]" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#228DC1]">Network Management Platform</span>
-            </div>
-            <h1 className="font-serif-display mb-3 leading-[1.02] text-white" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
+            <h1 className="font-serif-display mb-3 leading-[1.02] text-[#0a1628]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
               SCAP
             </h1>
-            <p className="mb-3 text-[16px] font-medium text-white/55">
+            <p className="mb-3 text-[16px] font-medium text-[#0a1628]/55">
               Service Correlation Assurance Platform
             </p>
-            <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.78] text-white/65">
+            <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
               A multi-vendor network management and service assurance platform for telecom, private 5G, Open RAN and hybrid network environments. Combines SMO, PM, CM and FM in one integrated platform.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -381,19 +377,19 @@ export default function ServicesEngineeringPage() {
                 type="button"
                 onClick={() => setIsDemoOpen(true)}
                 className="inline-flex items-center gap-2 rounded-xl bg-[#228DC1] px-7 py-3.5 text-[14px] font-semibold text-white transition-all hover:bg-[#1a6e99] hover:-translate-y-0.5"
-                style={{ boxShadow: '0 6px 24px rgba(34,141,193,0.35)' }}
+                style={{ boxShadow: '0 6px 24px rgba(34,141,193,0.28)' }}
               >
                 Request a Demo
               </button>
               <a href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-7 py-3.5 text-[14px] font-semibold text-white/80 transition-all hover:border-white/40 hover:text-white hover:-translate-y-0.5">
+                className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-7 py-3.5 text-[14px] font-semibold text-[#0a1628]/70 transition-all hover:border-gray-300 hover:text-[#0a1628] hover:-translate-y-0.5">
                 Talk to an engineer
               </a>
             </div>
             {/* Protocol chips */}
             <div className="mt-10 flex flex-wrap gap-2">
               {protocols.map(p => (
-                <span key={p} className="rounded-full border border-white/12 bg-white/6 px-3 py-1 text-[11px] font-semibold text-white/50">
+                <span key={p} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-[11px] font-semibold text-[#0a1628]/50">
                   {p}
                 </span>
               ))}
@@ -448,13 +444,11 @@ export default function ServicesEngineeringPage() {
         <div ref={mvRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
             <div style={reveal(mvInView, 0)}>
-              <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-[#228DC1]">Integration</p>
               <h2 className="font-heading mb-6 text-white">Built for real-world multi-vendor environments.</h2>
               <p className="mb-8 text-[16px] font-normal leading-[1.78] text-white/60">
                 SCAP integrates equipment, systems and network functions from different suppliers through standards-based interfaces and extensible adapters. Support for new vendors can be implemented and added as network requirements evolve.
               </p>
               <div className="mb-8">
-                <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">Supported interfaces</p>
                 <div className="flex flex-wrap gap-2">
                   {protocols.map(p => (
                     <span key={p} className="rounded-full border border-[#228DC1]/30 bg-[#228DC1]/10 px-3.5 py-1.5 text-[12px] font-semibold text-[#228DC1]">
@@ -466,7 +460,6 @@ export default function ServicesEngineeringPage() {
             </div>
 
             <div style={reveal(mvInView, 160)}>
-              <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">Example integrated vendors</p>
               <div className="grid grid-cols-2 gap-3">
                 {vendors.map((v) => (
                   <div key={v.name}
@@ -505,7 +498,6 @@ export default function ServicesEngineeringPage() {
                   <FontAwesomeIcon icon={d.icon} className="h-5 w-5" style={{ color: d.color }} />
                 </div>
                 <div>
-                  <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: d.color }}>{d.label}</p>
                   <h3 className="mb-3 text-[17px] font-semibold leading-[1.3] text-[#0a1628]">{d.title}</h3>
                   <p className="text-[14px] font-normal leading-[1.75] text-[#0a1628]/60">{d.desc}</p>
                 </div>
