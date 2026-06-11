@@ -112,7 +112,7 @@ function GlobePanel({ visible }: { visible: boolean }) {
   ]
 
   return (
-    <div style={{ position: 'relative', maxWidth: 360, margin: '0 auto', width: '100%' }}>
+    <div style={{ position: 'relative', width: '100%' }}>
       <style>{`
         @keyframes awtg-globe-pulse {
           0%   { transform: scale(1);   opacity: 0.65; }
@@ -217,59 +217,60 @@ function GlobePanel({ visible }: { visible: boolean }) {
   )
 }
 
-// -- Redesigned global reach — two-column, text left / animated globe right ---
+// -- Redesigned global reach — two-column, text+stats left / globe right ---
 function GlobalReachSection() {
   const [ref, inView] = useInView(0.15)
 
-  return (
-    <section className="bg-[#f8fafc] border-b border-gray-100 py-16">
-      <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+  const stats = [
+    { prefix: '',  num: 250, suffix: 'k+',  label: 'Production reach',  note: 'Users supported monthly',  delay: 0   },
+    { prefix: '+', num: 17,  suffix: '%',    label: 'CSAT uplift',       note: 'User satisfaction',        delay: 120 },
+    { prefix: '',  num: 150, suffix: '+',    label: 'Countries reached', note: 'Global enterprise reach',  delay: 240 },
+    { prefix: '',  num: 38,  suffix: ' sec', label: 'Avg handle time',   note: 'vs 4+ min industry avg',   delay: 360 },
+  ] as const
 
-          {/* Left — text content */}
+  return (
+    <section className="bg-[#f8fafc] border-b border-gray-100 py-20">
+      <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
+
+          {/* Left — heading, body, stat cards */}
           <div style={reveal(inView, 0)}>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Global reach. Measurable customer outcomes.
             </h2>
-            <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] mb-8">
+            <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] mb-10">
               Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from week one.
             </p>
+
+            {/* 2 × 2 stat grid — flush with text, no extra margin */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map((stat, i) => (
+                <div key={i} style={{
+                  background: 'white',
+                  border: '1px solid rgba(15,23,42,0.09)',
+                  borderRadius: 12,
+                  boxShadow: '0 4px 18px rgba(15,23,42,0.07)',
+                  padding: '20px 22px',
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? 'translateY(0)' : 'translateY(14px)',
+                  transition: `opacity 0.5s ease ${400 + stat.delay}ms, transform 0.5s ease ${400 + stat.delay}ms`,
+                }}>
+                  <p style={{ fontSize: 28, fontWeight: 800, letterSpacing: '-0.03em', background: 'linear-gradient(135deg, #228DC1, #0e6a9a)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1.1, margin: '0 0 5px' }}>
+                    <GlobeCountUp num={stat.num} prefix={stat.prefix} suffix={stat.suffix} visible={inView} delay={stat.delay + 200} />
+                  </p>
+                  <p style={{ fontSize: 12.5, fontWeight: 700, color: '#0a1628', margin: '0 0 2px' }}>{stat.label}</p>
+                  <p style={{ fontSize: 11.5, color: 'rgba(10,22,40,0.50)', margin: 0 }}>{stat.note}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right — animated globe panel */}
+          {/* Right — globe fills the full column */}
           <div style={reveal(inView, 200)}>
             <GlobePanel visible={inView} />
           </div>
 
         </div>
-
-        {/* Stat cards row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-          {([
-            { prefix: '',  num: 250, suffix: 'k+',   label: 'Production reach',  note: 'Users supported monthly',  delay: 0   },
-            { prefix: '+', num: 17,  suffix: '%',     label: 'CSAT uplift',       note: 'User satisfaction',        delay: 120 },
-            { prefix: '',  num: 150, suffix: '+',     label: 'Countries reached', note: 'Global enterprise reach',  delay: 240 },
-            { prefix: '',  num: 38,  suffix: ' sec',  label: 'Avg handle time',   note: 'vs 4+ min industry avg',   delay: 360 },
-          ] as const).map((stat, i) => (
-            <div key={i} style={{
-              background: 'white',
-              border: '1px solid rgba(15,23,42,0.09)',
-              borderRadius: 12,
-              boxShadow: '0 4px 20px rgba(15,23,42,0.07)',
-              padding: '22px 24px',
-              opacity: inView ? 1 : 0,
-              transform: inView ? 'translateY(0)' : 'translateY(14px)',
-              transition: `opacity 0.5s ease ${700 + stat.delay}ms, transform 0.5s ease ${700 + stat.delay}ms`,
-            }}>
-              <p style={{ fontSize: 28, fontWeight: 800, letterSpacing: '-0.03em', background: 'linear-gradient(135deg, #228DC1, #0e6a9a)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1.1, margin: '0 0 5px' }}>
-                <GlobeCountUp num={stat.num} prefix={stat.prefix} suffix={stat.suffix} visible={inView} delay={stat.delay + 200} />
-              </p>
-              <p style={{ fontSize: 12.5, fontWeight: 700, color: '#0a1628', margin: '0 0 2px' }}>{stat.label}</p>
-              <p style={{ fontSize: 11.5, color: 'rgba(10,22,40,0.50)', margin: 0 }}>{stat.note}</p>
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   )
