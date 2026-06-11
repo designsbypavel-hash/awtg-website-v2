@@ -91,6 +91,70 @@ function GlobeCountUp({ num, prefix = '', suffix = '', visible, delay = 0 }: {
   return <>{prefix}{display}{suffix}</>
 }
 
+const GLOBE_COUNTRIES = [
+  { flag: '🇬🇧', name: 'United Kingdom'  },
+  { flag: '🇺🇸', name: 'United States'   },
+  { flag: '🇮🇳', name: 'India'           },
+  { flag: '🇸🇬', name: 'Singapore'       },
+  { flag: '🇧🇷', name: 'Brazil'          },
+  { flag: '🇦🇪', name: 'UAE'             },
+  { flag: '🇿🇦', name: 'South Africa'    },
+  { flag: '🇩🇪', name: 'Germany'         },
+  { flag: '🇫🇷', name: 'France'          },
+  { flag: '🇯🇵', name: 'Japan'           },
+  { flag: '🇦🇺', name: 'Australia'       },
+  { flag: '🇨🇦', name: 'Canada'          },
+  { flag: '🇰🇷', name: 'South Korea'     },
+  { flag: '🇳🇬', name: 'Nigeria'         },
+  { flag: '🇸🇦', name: 'Saudi Arabia'    },
+  { flag: '🇳🇱', name: 'Netherlands'     },
+  { flag: '🇸🇪', name: 'Sweden'          },
+  { flag: '🇨🇭', name: 'Switzerland'     },
+  { flag: '🇵🇱', name: 'Poland'          },
+  { flag: '🇲🇽', name: 'Mexico'          },
+  { flag: '🇦🇷', name: 'Argentina'       },
+  { flag: '🇮🇱', name: 'Israel'          },
+  { flag: '🇹🇷', name: 'Turkey'          },
+  { flag: '🇳🇿', name: 'New Zealand'     },
+  { flag: '🇮🇩', name: 'Indonesia'       },
+  { flag: '🇵🇭', name: 'Philippines'     },
+  { flag: '🇰🇪', name: 'Kenya'           },
+  { flag: '🇬🇭', name: 'Ghana'           },
+  { flag: '🇪🇸', name: 'Spain'           },
+  { flag: '🇮🇹', name: 'Italy'           },
+  { flag: '🇵🇹', name: 'Portugal'        },
+  { flag: '🇧🇪', name: 'Belgium'         },
+  { flag: '🇫🇮', name: 'Finland'         },
+  { flag: '🇩🇰', name: 'Denmark'         },
+  { flag: '🇳🇴', name: 'Norway'          },
+  { flag: '🇵🇰', name: 'Pakistan'        },
+  { flag: '🇲🇾', name: 'Malaysia'        },
+  { flag: '🇹🇭', name: 'Thailand'        },
+  { flag: '🇻🇳', name: 'Vietnam'         },
+  { flag: '🇪🇬', name: 'Egypt'           },
+  { flag: '🇲🇦', name: 'Morocco'         },
+  { flag: '🇨🇴', name: 'Colombia'        },
+  { flag: '🇨🇱', name: 'Chile'           },
+  { flag: '🇷🇴', name: 'Romania'         },
+  { flag: '🇺🇦', name: 'Ukraine'         },
+  { flag: '🇭🇺', name: 'Hungary'         },
+  { flag: '🇨🇿', name: 'Czech Republic'  },
+  { flag: '🇦🇹', name: 'Austria'         },
+  { flag: '🇬🇷', name: 'Greece'          },
+  { flag: '🇷🇸', name: 'Serbia'          },
+]
+
+// Each slot is anchored to a globe node; dx/dy offset in SVG viewBox units
+const FLAG_SLOTS = [
+  { cx: 152, cy: 168, dx: -90, dy: -14 },
+  { cx: 210, cy: 135, dx: -88, dy: -36 },
+  { cx: 278, cy: 165, dx:  12, dy: -36 },
+  { cx: 328, cy: 200, dx:  14, dy: -16 },
+  { cx: 320, cy: 252, dx:  14, dy:  12 },
+  { cx: 162, cy: 262, dx: -90, dy:  12 },
+  { cx: 228, cy: 218, dx: -14, dy:  44 },
+]
+
 function GlobePanel({ visible }: { visible: boolean }) {
   const nodes: Array<{ cx: number; cy: number }> = [
     { cx: 152, cy: 168 },
@@ -111,6 +175,41 @@ function GlobePanel({ visible }: { visible: boolean }) {
     { d: 'M 228,218 Q 245,168 210,135', delay: 500 },
   ]
 
+  const [slotCountries, setSlotCountries] = useState<number[]>(
+    () => FLAG_SLOTS.map((_, i) => i % GLOBE_COUNTRIES.length)
+  )
+  const [fadingSlots, setFadingSlots] = useState<Set<number>>(new Set())
+  const [chipIn, setChipIn] = useState<boolean[]>(Array(FLAG_SLOTS.length).fill(false))
+
+  // Pop chips in one by one after globe becomes visible
+  useEffect(() => {
+    if (!visible) return
+    const timers = FLAG_SLOTS.map((_, i) =>
+      window.setTimeout(() => setChipIn(prev => {
+        const next = [...prev]; next[i] = true; return next
+      }), 1000 + i * 320)
+    )
+    return () => timers.forEach(window.clearTimeout)
+  }, [visible])
+
+  // Cycle countries through slots
+  useEffect(() => {
+    if (!visible) return
+    const iv = window.setInterval(() => {
+      const slot = Math.floor(Math.random() * FLAG_SLOTS.length)
+      setFadingSlots(s => new Set(s).add(slot))
+      window.setTimeout(() => {
+        setSlotCountries(prev => {
+          const next = [...prev]
+          next[slot] = (prev[slot] + Math.floor(Math.random() * 5) + FLAG_SLOTS.length) % GLOBE_COUNTRIES.length
+          return next
+        })
+        setFadingSlots(s => { const n = new Set(s); n.delete(slot); return n })
+      }, 420)
+    }, 2000)
+    return () => window.clearInterval(iv)
+  }, [visible])
+
   return (
     <div style={{ position: 'relative', width: '100%' }}>
       <style>{`
@@ -118,14 +217,8 @@ function GlobePanel({ visible }: { visible: boolean }) {
           0%   { transform: scale(1);   opacity: 0.65; }
           100% { transform: scale(3.8); opacity: 0;    }
         }
-        .awtg-p1 {
-          transform-box: fill-box; transform-origin: center;
-          animation: awtg-globe-pulse 2.8s ease-out infinite;
-        }
-        .awtg-p2 {
-          transform-box: fill-box; transform-origin: center;
-          animation: awtg-globe-pulse 2.8s ease-out 1.4s infinite;
-        }
+        .awtg-p1 { transform-box: fill-box; transform-origin: center; animation: awtg-globe-pulse 2.8s ease-out infinite; }
+        .awtg-p2 { transform-box: fill-box; transform-origin: center; animation: awtg-globe-pulse 2.8s ease-out 1.4s infinite; }
       `}</style>
 
       <svg width="100%" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -135,28 +228,18 @@ function GlobePanel({ visible }: { visible: boolean }) {
           </clipPath>
         </defs>
 
-        {/* Globe outer ring */}
         <circle cx="240" cy="240" r="145" stroke="#228DC1" strokeOpacity="0.18" strokeWidth="1.5" />
 
-        {/* World map continents — equirectangular, clipped to globe */}
         <g clipPath="url(#globe-map-clip)" fill="#228DC1" fillOpacity="0.09">
-          {/* North America */}
           <path d="M103,124 L106,151 L135,151 L142,163 L146,188 L168,216 L174,224 L180,224 L190,222 L187,209 L176,200 L176,188 L180,168 L198,164 L195,148 L189,139 L172,122 L159,122 L143,124 L127,127 Z" />
-          {/* Greenland */}
           <path d="M188,111 L200,106 L220,107 L226,118 L216,122 L205,143 L196,130 L185,119 Z" />
-          {/* South America */}
           <path d="M176,221 L190,222 L196,234 L212,253 L210,277 L201,293 L192,304 L189,329 L184,329 L180,321 L180,301 L182,269 L180,248 L177,240 Z" />
-          {/* Europe */}
           <path d="M232,179 L232,170 L236,147 L240,157 L252,145 L265,126 L266,135 L263,143 L264,151 L256,151 L251,160 L253,168 L268,172 L269,180 L264,180 L251,180 L239,171 L236,182 Z" />
-          {/* Africa */}
           <path d="M226,179 L240,179 L248,180 L258,183 L270,216 L280,222 L272,251 L267,280 L254,296 L240,300 L226,295 L226,216 Z" />
-          {/* Asia (incl. Middle East & Indian subcontinent) */}
           <path d="M261,172 L270,171 L272,180 L276,172 L285,168 L288,156 L296,172 L300,195 L305,226 L300,240 L304,256 L321,256 L325,232 L325,208 L337,208 L337,184 L345,176 L357,168 L353,153 L349,147 L353,124 L341,122 L325,121 L305,121 L288,122 L272,124 L264,130 L261,133 L263,151 L261,159 Z" />
-          {/* Australia */}
           <path d="M331,275 L345,259 L355,256 L363,282 L361,300 L351,296 L334,296 L331,282 Z" />
         </g>
 
-        {/* Globe latitude / longitude grid */}
         <ellipse cx="240" cy="240" rx="145" ry="12"  stroke="#228DC1" strokeOpacity="0.12" strokeWidth="1" />
         <ellipse cx="240" cy="168" rx="125" ry="11"  stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
         <ellipse cx="240" cy="312" rx="125" ry="11"  stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
@@ -165,47 +248,35 @@ function GlobePanel({ visible }: { visible: boolean }) {
         <ellipse cx="240" cy="240" rx="73"  ry="145" stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
         <ellipse cx="240" cy="240" rx="126" ry="145" stroke="#228DC1" strokeOpacity="0.07" strokeWidth="1" />
 
-        {/* Animated connection routes */}
         {lines.map((line, i) => (
-          <path
-            key={i}
-            d={line.d}
-            stroke="#228DC1"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeOpacity="0.72"
-            strokeDasharray="500"
+          <path key={i} d={line.d} stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round"
+            strokeOpacity="0.72" strokeDasharray="500"
             strokeDashoffset={visible ? 0 : 500}
-            style={{
-              transition: visible
-                ? `stroke-dashoffset 1.8s cubic-bezier(0.25,1,0.5,1) ${line.delay}ms`
-                : 'none',
-            }}
+            style={{ transition: visible ? `stroke-dashoffset 1.8s cubic-bezier(0.25,1,0.5,1) ${line.delay}ms` : 'none' }}
           />
         ))}
 
-        {/* Nodes with pulsing rings */}
+        {/* Connector lines from nodes to flag chips */}
+        {FLAG_SLOTS.map((slot, i) => (
+          <line key={i}
+            x1={slot.cx} y1={slot.cy}
+            x2={slot.cx + slot.dx + (slot.dx < 0 ? 82 : 0)}
+            y2={slot.cy + slot.dy + 11}
+            stroke="#228DC1" strokeWidth="0.9" strokeDasharray="3,3"
+            opacity={chipIn[i] && !fadingSlots.has(i) ? 0.38 : 0}
+            style={{ transition: 'opacity 0.4s ease' }}
+          />
+        ))}
+
         {nodes.map((n, i) => (
           <g key={i}>
             {visible && (
               <>
-                <circle
-                  cx={n.cx} cy={n.cy} r="5"
-                  stroke="#228DC1" strokeWidth="1.2" fill="none" strokeOpacity="0.55"
-                  className="awtg-p1"
-                  style={{ animationDelay: `${(i * 0.38).toFixed(2)}s` }}
-                />
-                <circle
-                  cx={n.cx} cy={n.cy} r="5"
-                  stroke="#228DC1" strokeWidth="0.8" fill="none" strokeOpacity="0.35"
-                  className="awtg-p2"
-                  style={{ animationDelay: `${(i * 0.38).toFixed(2)}s` }}
-                />
+                <circle cx={n.cx} cy={n.cy} r="5" stroke="#228DC1" strokeWidth="1.2" fill="none" strokeOpacity="0.55" className="awtg-p1" style={{ animationDelay: `${(i * 0.38).toFixed(2)}s` }} />
+                <circle cx={n.cx} cy={n.cy} r="5" stroke="#228DC1" strokeWidth="0.8" fill="none" strokeOpacity="0.35" className="awtg-p2" style={{ animationDelay: `${(i * 0.38).toFixed(2)}s` }} />
               </>
             )}
-            <circle
-              cx={n.cx} cy={n.cy} r="4"
-              fill="#228DC1"
+            <circle cx={n.cx} cy={n.cy} r="4" fill="#228DC1"
               fillOpacity={visible ? 0.9 : 0}
               style={{ transition: `fill-opacity 0.4s ease ${200 + i * 100}ms` }}
             />
@@ -213,6 +284,42 @@ function GlobePanel({ visible }: { visible: boolean }) {
         ))}
       </svg>
 
+      {/* Flag chips */}
+      {FLAG_SLOTS.map((slot, i) => {
+        const country = GLOBE_COUNTRIES[slotCountries[i]]
+        const isIn  = chipIn[i]
+        const isFading = fadingSlots.has(i)
+        return (
+          <div key={i} style={{
+            position: 'absolute',
+            left: `${(slot.cx + slot.dx) / 480 * 100}%`,
+            top:  `${(slot.cy + slot.dy) / 480 * 100}%`,
+            transform: `translateY(-50%) scale(${isIn && !isFading ? 1 : 0.78})`,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 5,
+            background: 'white',
+            border: '1px solid rgba(34,141,193,0.22)',
+            borderRadius: 20,
+            padding: '4px 10px 4px 6px',
+            boxShadow: '0 2px 12px rgba(10,22,40,0.10)',
+            fontSize: 10.5,
+            fontWeight: 600,
+            color: '#0a1628',
+            fontFamily: 'Roboto, sans-serif',
+            whiteSpace: 'nowrap',
+            opacity: isIn && !isFading ? 1 : 0,
+            transition: isFading
+              ? 'opacity 0.35s ease, transform 0.35s ease'
+              : 'opacity 0.45s cubic-bezier(0.34,1.56,0.64,1), transform 0.45s cubic-bezier(0.34,1.56,0.64,1)',
+            pointerEvents: 'none',
+            zIndex: 2,
+          }}>
+            <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{country.flag}</span>
+            <span>{country.name}</span>
+          </div>
+        )
+      })}
     </div>
   )
 }
