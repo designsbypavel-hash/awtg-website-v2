@@ -470,11 +470,6 @@ function Industries() {
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#050a12]/95 via-[#050a12]/45 to-[#050a12]/10 transition-opacity duration-300" />
-            <div className="relative z-10 p-8 pb-0">
-              <span className="inline-block text-[11px] font-bold uppercase tracking-[0.22em] text-white/60 bg-white/10 border border-white/15 px-3 py-1.5 backdrop-blur-sm">
-                {card.tag}
-              </span>
-            </div>
             <div className="relative z-10 mt-auto p-8 lg:p-10">
               <h3 className="font-h4 text-white mb-3 leading-snug">{card.title}</h3>
               <p className="text-white/55 text-sm leading-[1.7] font-normal mb-6 max-w-[280px]">
