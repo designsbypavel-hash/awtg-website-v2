@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChartLine, faCircleCheck, faLayerGroup, faServer,
   faTriangleExclamation, faShieldHalved, faNetworkWired,
-  faBolt, faCubes, faEye, faGaugeHigh, faCodeBranch,
+  faCubes, faEye, faGaugeHigh, faCodeBranch,
   faArrowsRotate, faFilter,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
