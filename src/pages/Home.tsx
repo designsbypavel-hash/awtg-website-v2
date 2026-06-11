@@ -149,6 +149,7 @@ const tickerLogos = [
   { id: 'cityguilds',  src: '/logos/partners/Frame 567.png',               alt: 'City & Guilds' },
   { id: 'limerick',    src: '/logos/partners/Frame 568.png',               alt: 'Limerick Youth Service' },
   { id: 'youthwork',   src: '/logos/partners/Youth Work.png',              alt: 'Youth Work Ireland' },
+  { id: 'esa',         src: '/logos/partners/ESA.svg',                    alt: 'ESA' },
 ]
 
 // --- HERO (Harvey-inspired) --------------------------------------------------
