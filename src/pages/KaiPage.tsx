@@ -501,8 +501,8 @@ function IntegrationsSection() {
                       <img src={item.logo ?? undefined} alt={item.label}
                         style={{
                           width: 'auto', height: 'auto', objectFit: 'contain',
-                          maxWidth: item.label === 'HubSpot' ? '92%' : '84%',
-                          maxHeight: item.label === 'HubSpot' ? 76 : 68,
+                          maxWidth: ({ HubSpot: '92%', Zendesk: '95%', ServiceNow: '95%', Freshworks: '95%' } as Record<string,string>)[item.label] ?? '84%',
+                          maxHeight: ({ HubSpot: 76, Zendesk: 58, ServiceNow: 50, Freshworks: 54 } as Record<string,number>)[item.label] ?? 68,
                         }}
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
                     </>
