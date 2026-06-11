@@ -29,7 +29,6 @@ const reveal = (inView: boolean, delay = 0): CSSProperties => ({
 })
 
 const certISO42001 = new URL('../assets/cert-iso42001.svg', import.meta.url).href
-const certCREST    = new URL('../assets/cert-crest.svg',    import.meta.url).href
 
 const integrationLogos = {
   appleMail: new URL('../assets/Integration/Apple Mail.svg', import.meta.url).href,
