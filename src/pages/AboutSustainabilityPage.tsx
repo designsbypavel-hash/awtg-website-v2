@@ -56,7 +56,7 @@ const socialValueSections = [
   {
     title: 'Employment and Skills',
     icon: faGraduationCap,
-    image: '/images/insights/education.jpg',
+    image: '/images/insights/ai-lab.jpg',
     accent: '#228DC1',
     items: [
       'Enabling local and community members to achieve the skills needed to access employment.',
@@ -70,7 +70,7 @@ const socialValueSections = [
   {
     title: 'Local Business and Economy',
     icon: faBuilding,
-    image: '/images/insights/city-infrastructure.jpg',
+    image: '/images/insights/ports-logistics.jpg',
     accent: '#059669',
     items: [
       'AWTG is an accredited Living Wage Employer.',
@@ -83,7 +83,7 @@ const socialValueSections = [
   {
     title: 'Community Engagement',
     icon: faPeopleGroup,
-    image: '/images/insights/conference.jpg',
+    image: '/images/insights/public-sector.jpg',
     accent: '#7c3aed',
     items: [
       'Providing technological capabilities to communities through our CSR programme.',
@@ -96,7 +96,7 @@ const socialValueSections = [
   {
     title: 'Environment',
     icon: faLeaf,
-    image: '/images/insights/smart-city.jpg',
+    image: '/images/insights/urban-rail.jpg',
     accent: '#16a34a',
     items: [
       'Committing to NetZero by 2045 as outlined in our carbon reduction plan.',
@@ -109,7 +109,7 @@ const socialValueSections = [
   {
     title: 'Governance, Measurement and Reporting',
     icon: faScaleBalanced,
-    image: '/images/insights/research-papers.jpg',
+    image: '/images/insights/data-centre.jpg',
     accent: '#0a1628',
     items: [
       'Monitoring and reporting our social value and environmental impact using recognised independent tools and reporting platforms.',
@@ -198,7 +198,7 @@ export default function AboutSustainabilityPage() {
             </div>
           </div>
           <div className="relative overflow-hidden lg:order-1" style={{ minHeight: 420, background: '#0a1628' }}>
-            <img src="/images/insights/smart-city.jpg" alt="Net Zero commitment" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <img src="/images/insights/cloud-network.jpg" alt="Net Zero commitment" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.2) 0%, transparent 40%)' }} />
           </div>
         </div>
@@ -206,7 +206,7 @@ export default function AboutSustainabilityPage() {
         {/* Panel 2 — Emissions data */}
         <div className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 540 }}>
           <div className="relative overflow-hidden" style={{ minHeight: 420, background: '#0a1628' }}>
-            <img src="/images/insights/lab-testing.jpg" alt="Emissions reporting" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <img src="/images/insights/performance-testing.jpg" alt="Emissions reporting" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to left, rgba(10,22,40,0.2) 0%, transparent 40%)' }} />
           </div>
           <div className="flex items-center bg-white" style={{ padding: '72px clamp(28px, 5vw, 88px)' }}>
@@ -282,7 +282,7 @@ export default function AboutSustainabilityPage() {
             </div>
           </div>
           <div className="relative overflow-hidden lg:order-1" style={{ minHeight: 420, background: '#0a1628' }}>
-            <img src="/images/insights/engineering-team.jpg" alt="Reduction projects" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <img src="/images/insights/safety-network.jpg" alt="Reduction projects" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.2) 0%, transparent 40%)' }} />
           </div>
         </div>
