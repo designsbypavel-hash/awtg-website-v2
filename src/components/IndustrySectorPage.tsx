@@ -35,7 +35,7 @@ export interface SectorPageData {
 }
 
 export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
-  const { hero, challenges, supports, useCases, outcomes, proof, cta } = data
+  const { hero, supports, useCases, outcomes, proof, cta } = data
   const accent = hero.accentColor ?? '#228DC1'
 
   return (
@@ -98,23 +98,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          CHALLENGES
-      ══════════════════════════════════════════════════════ */}
-      <section className="py-24" style={{ background: '#f8fafc' }}>
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <IndustrySectionHeader
-            heading={challenges.heading}
-            intro={challenges.intro}
-            className="mb-14"
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {challenges.items.map((c, i) => (
-              <IndustryCard key={c.title} icon={c.icon} title={c.title} desc={c.desc} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════════
           SUPPORTS — "What AWTG delivers for ___"
