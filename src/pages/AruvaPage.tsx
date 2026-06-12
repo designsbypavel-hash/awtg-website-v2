@@ -1311,7 +1311,7 @@ function MMImageDemo() {
       <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'14px 16px', background:'#f8fafc' }}>
         <div style={{ position:'relative', width:'100%', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
           <img
-            src="/images/aruva-photosynthesis-realistic.png"
+            src="/images/aruva-cell-diagram.png"
             alt="Generated biochemistry lecture diagram"
             style={{
               display:'block', width:'100%', height:'auto', aspectRatio:'280 / 178', objectFit:'cover',
@@ -1326,7 +1326,7 @@ function MMImageDemo() {
             boxShadow: revealWidth > 0 && revealWidth < 100 ? '12px 0 24px rgba(5,150,105,0.10)' : 'none',
           }}>
             <img
-              src="/images/aruva-photosynthesis-realistic.png"
+              src="/images/aruva-cell-diagram.png"
               alt=""
               aria-hidden="true"
               style={{
