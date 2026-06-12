@@ -103,12 +103,6 @@ export default function AboutOverviewPage() {
               { icon: faHandshake, stat: '45k+', label: 'RAN Sites Delivered', text: 'Government projects, network deployment and consultancy-centric programmes.' },
             ].map((item) => (
               <div key={item.label} className="relative overflow-hidden px-10 py-14 lg:px-14 group">
-                <span
-                  className="pointer-events-none select-none absolute -top-2 right-2 font-black leading-none text-[#0a1628]/[0.04]"
-                  style={{ fontSize: 'clamp(80px, 10vw, 130px)' }}
-                >
-                  {item.stat}
-                </span>
                 <div className="h-0.5 w-10 bg-[#228DC1] mb-9 transition-all duration-300 group-hover:w-16" />
                 <div className="flex items-center gap-3 mb-5">
                   <div className="h-9 w-9 flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.08)' }}>
