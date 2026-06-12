@@ -191,17 +191,18 @@ export default function InsightsBlogPage() {
                     <Link
                       key={post.slug}
                       to={`/insights/blog/${post.slug}`}
-                      className="group lg:col-span-2 md:col-span-2 relative overflow-hidden min-h-[380px] flex flex-col justify-end"
-                    >
-                      <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
-                      <div className="relative p-8">
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block bg-white/15 text-white border border-white/25">
+                    className="group lg:col-span-2 md:col-span-2 bg-white border border-gray-100 hover:border-[#228DC1] overflow-hidden transition-all hover:shadow-md"
+                  >
+                      <div className="h-72 relative overflow-hidden bg-gray-100">
+                        <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      </div>
+                      <div className="p-8">
+                        <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                           {post.tag}
                         </span>
-                        <h3 className="font-h4 text-white mb-3 group-hover:text-[#7ac4e0] transition-colors">{post.title}</h3>
-                        <p className="text-white/70 text-sm leading-relaxed mb-4 max-w-lg">{post.excerpt}</p>
-                        <div className="flex items-center gap-2 text-white/50 text-xs">
+                        <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">{post.title}</h3>
+                        <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-5 max-w-2xl">{post.excerpt}</p>
+                        <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
                           <span>{post.date}</span>
                           <span>·</span>
                           <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
@@ -217,15 +218,18 @@ export default function InsightsBlogPage() {
                     <Link
                       key={post.slug}
                       to={`/insights/blog/${post.slug}`}
-                      className="group bg-[#0a1628] flex flex-col p-8 min-h-[320px]"
+                      className="group bg-white border border-gray-100 hover:border-[#228DC1] flex flex-col overflow-hidden transition-all hover:shadow-md"
                     >
-                      <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-auto inline-block bg-white/10 text-white/80 self-start">
-                        {post.tag}
-                      </span>
-                      <div className="mt-12">
-                        <h3 className="font-h5 text-white mb-4 group-hover:text-[#7ac4e0] transition-colors">{post.title}</h3>
-                        <p className="text-white/60 text-sm leading-relaxed mb-6">{post.excerpt}</p>
-                        <div className="flex items-center gap-2 text-white/40 text-xs pt-4 border-t border-white/10">
+                      <div className="h-48 relative overflow-hidden bg-gray-100">
+                        <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                      <div className="p-6 flex flex-col flex-1">
+                        <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-4 inline-block self-start ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+                          {post.tag}
+                        </span>
+                        <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">{post.title}</h3>
+                        <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
+                        <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
                           <span>{post.date}</span>
                           <span>·</span>
                           <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
@@ -244,7 +248,6 @@ export default function InsightsBlogPage() {
                   >
                     <div className="h-48 relative overflow-hidden">
                       <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </div>
                     <div className="p-6 flex flex-col flex-1">
                       <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-4 inline-block self-start ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>

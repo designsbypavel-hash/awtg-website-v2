@@ -1409,8 +1409,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
             </div>
             <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
               Enterprise Customer<br />
-              Service AI that <span style={{ color: '#0a1628' }}>resolves,</span><br />
-              no just responds.
+              Service AI that <span style={{ color: '#0a1628' }}>resolves.</span>
             </h1>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
               Kai resolves customer requests, qualifies leads, triggers workflows, and improves every customer interaction.
@@ -1550,7 +1549,7 @@ export default function KaiPage() {
               {/* Card header */}
               <div style={{ padding:'20px 22px 12px' }}>
                 <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#0a1628', lineHeight:1.35, fontFamily:'Roboto,sans-serif', letterSpacing:'-0.01em' }}>
-                  Client Escalation rate reduced from{' '}
+                  Client Escalation rate reduce from{' '}
                   <span style={{ color:'#228DC1' }}>40%</span> to{' '}
                   <span style={{ color:'#228DC1' }}>10%</span>
                 </p>

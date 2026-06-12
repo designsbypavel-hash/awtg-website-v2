@@ -668,24 +668,25 @@ export default function InsightsNewsPage() {
                   <Link
                     key={`${item.title}-${item.date}`}
                     to={getNewsHref(item)}
-                    className="group xl:col-span-2 md:col-span-2 relative overflow-hidden min-h-[360px] flex flex-col justify-end"
+                    className="group xl:col-span-2 md:col-span-2 bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden hover:shadow-md"
                   >
-                    <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
-                    {hasVideo && (
-                      <div className="absolute top-5 left-5 h-10 w-10 bg-white/15 border border-white/25 flex items-center justify-center">
-                        <FontAwesomeIcon icon={faPlay} className="w-4 h-4 text-white" />
-                      </div>
-                    )}
-                    <div className="relative p-8">
+                    <div className="h-72 relative overflow-hidden bg-gray-100">
+                      <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      {hasVideo && (
+                        <div className="absolute top-5 left-5 h-10 w-10 bg-white/90 flex items-center justify-center text-[#228DC1] shadow-sm">
+                          <FontAwesomeIcon icon={faPlay} className="w-4 h-4" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-8">
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-white/15 text-white border border-white/25">
+                        <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                           {item.category}
                         </span>
-                        <span className="text-white/50 text-xs">{item.date}</span>
+                        <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
                       </div>
-                      <h3 className="font-h4 text-white mb-3 group-hover:text-[#7ac4e0] transition-colors">{cleanText(item.title)}</h3>
-                      <p className="text-white/70 text-sm leading-relaxed max-w-xl">{cleanText(item.excerpt)}</p>
+                      <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">{cleanText(item.title)}</h3>
+                      <p className="text-[#0a1628]/60 text-sm leading-relaxed max-w-2xl">{cleanText(item.excerpt)}</p>
                     </div>
                   </Link>
                 )
@@ -696,18 +697,26 @@ export default function InsightsNewsPage() {
                   <Link
                     key={`${item.title}-${item.date}`}
                     to={getNewsHref(item)}
-                    className="group bg-[#0a1628] flex flex-col p-8 min-h-[300px]"
+                    className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden hover:shadow-md"
                   >
-                    <div className="flex items-center gap-3 mb-auto">
-                      {hasVideo && <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5 text-[#7ac4e0]" />}
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.14em] px-2 py-0.5 bg-white/10 text-white/80">
-                        {item.category}
-                      </span>
+                    <div className="h-44 relative overflow-hidden bg-gray-100">
+                      <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      {hasVideo && (
+                        <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#228DC1]">
+                          <FontAwesomeIcon icon={faPlay} className="w-4 h-4" />
+                        </div>
+                      )}
                     </div>
-                    <div className="mt-10">
-                      <h3 className="font-h5 text-white mb-3 group-hover:text-[#7ac4e0] transition-colors">{cleanText(item.title)}</h3>
-                      <p className="text-white/60 text-[13px] leading-[1.7] mb-5">{cleanText(item.excerpt)}</p>
-                      <div className="flex items-center gap-2 text-[#7ac4e0] text-xs font-semibold pt-4 border-t border-white/10">
+                    <div className="p-6">
+                      <div className="flex flex-wrap items-center gap-3 mb-4">
+                        <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+                          {item.category}
+                        </span>
+                        <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
+                      </div>
+                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">{cleanText(item.title)}</h3>
+                      <p className="text-[#0a1628]/60 text-[13px] leading-[1.7] mb-5">{cleanText(item.excerpt)}</p>
+                      <div className="flex items-center gap-2 text-[#228DC1] text-xs font-semibold pt-4 border-t border-gray-100">
                         {hasVideo ? 'Watch story' : 'Read story'}
                       </div>
                     </div>
@@ -723,7 +732,6 @@ export default function InsightsNewsPage() {
                 >
                   <div className="h-44 relative overflow-hidden">
                     <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#228DC1]">
                       <FontAwesomeIcon icon={hasVideo ? faPlay : faNewspaper} className="w-4 h-4" />
                     </div>

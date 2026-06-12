@@ -193,10 +193,11 @@ export default function InsightsWhitePapersPage() {
                   Read whitepaper                </span>
               </div>
             </div>
-            <div className="lg:col-span-2 relative overflow-hidden min-h-[360px]">
-              <InsightImage src={getWhitePaperImage(featuredPaper.slug, featuredPaper.topic)} alt={featuredPaper.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-[#0a1628]/75" />
-              <div className="relative h-full p-8 lg:p-10 flex flex-col justify-between min-h-[360px]">
+            <div className="lg:col-span-2 bg-[#0a1628] flex flex-col">
+              <div className="h-52 overflow-hidden bg-gray-100">
+                <InsightImage src={getWhitePaperImage(featuredPaper.slug, featuredPaper.topic)} alt={featuredPaper.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              </div>
+              <div className="p-8 lg:p-10 flex flex-col justify-between flex-1">
                 <div>
                   <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#7ac4e0] mb-8" />
                   <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#7ac4e0] mb-5">AWTG Research</p>
@@ -235,16 +236,15 @@ export default function InsightsWhitePapersPage() {
               <Link key={paper.slug} to={getWhitePaperHref(paper)} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden">
                 <div className="h-44 relative overflow-hidden">
                   <InsightImage src={getWhitePaperImage(paper.slug, paper.topic)} alt={paper.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute top-4 right-4 h-10 w-10 bg-white/90 flex items-center justify-center text-[#228DC1]">
                     <FontAwesomeIcon icon={faFilePdf} className="w-4 h-4" />
                   </div>
-                  <p className="absolute left-4 bottom-3 font-mono text-[12px] text-white/60">
-                    {String(index + 1).padStart(2, '0')}
-                  </p>
                 </div>
                 <div className="p-6">
                   <div className="flex flex-wrap items-center gap-3 mb-4">
+                    <span className="font-mono text-[12px] text-[#0a1628]/40">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                     <span className="text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-[#228DC1]/10 text-[#228DC1]">
                       {paper.topic}
                     </span>
