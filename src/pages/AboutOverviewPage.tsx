@@ -94,19 +94,35 @@ export default function AboutOverviewPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 grid md:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
-          {[
-            { icon: faBuilding, title: 'Founded in 2006', text: 'Built to serve the specific needs of the telecommunications industry.' },
-            { icon: faGlobe, title: 'Three continents', text: 'Thousands of 4G and 5G sites deployed across three continents.' },
-            { icon: faHandshake, title: 'Trusted delivery', text: 'Government projects, network deployment and consultancy-centric programmes.' },
-          ].map((item) => (
-            <div key={item.title} className="bg-white p-7">
-              <FontAwesomeIcon icon={item.icon} className="w-5 h-5 text-[#228DC1] mb-5" />
-              <h2 className="font-h5 text-[#0a1628] mb-2">{item.title}</h2>
-              <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal">{item.text}</p>
-            </div>
-          ))}
+      <section className="bg-[#0a1628]">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
+            {[
+              { icon: faBuilding, stat: '2006', label: 'Founded', text: 'Built to serve the specific needs of the telecommunications industry.' },
+              { icon: faGlobe, stat: '3', label: 'Continents', text: 'Thousands of 4G and 5G sites deployed across three continents.' },
+              { icon: faHandshake, stat: '45k+', label: 'RAN Sites Delivered', text: 'Government projects, network deployment and consultancy-centric programmes.' },
+            ].map((item) => (
+              <div key={item.label} className="relative overflow-hidden px-10 py-14 lg:px-14">
+                <span
+                  className="pointer-events-none select-none absolute -top-2 right-4 font-black leading-none text-white/[0.04]"
+                  style={{ fontSize: 'clamp(80px, 10vw, 130px)' }}
+                >
+                  {item.stat}
+                </span>
+                <div className="h-10 w-10 flex items-center justify-center mb-8" style={{ background: 'rgba(34,141,193,0.15)' }}>
+                  <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#228DC1]" />
+                </div>
+                <p
+                  className="font-black text-[#228DC1] mb-1 leading-none"
+                  style={{ fontSize: 'clamp(36px, 4vw, 52px)', letterSpacing: '-0.03em' }}
+                >
+                  {item.stat}
+                </p>
+                <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-white/40 mb-5">{item.label}</p>
+                <p className="text-white/55 text-[14px] leading-[1.78] max-w-xs">{item.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
