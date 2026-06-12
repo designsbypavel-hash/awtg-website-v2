@@ -253,7 +253,7 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
         }}
       />
 
-      {KAI_GLOBE_LABEL_SLOTS.map((slot, i) => {
+      {KAI_GLOBE_LABEL_SLOTS.map((_slot, i) => {
         const country = KAI_GLOBE_COUNTRIES[(activeStep + i) % KAI_GLOBE_COUNTRIES.length]
         const isVisible = visible && shownCount > i
         const isActive = i === 0 || i === 3
