@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleCheck, faChevronLeft, faChevronRight, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
 
 // --- BRAND SVG LOGOS --------------------------------------------------------
 
@@ -821,75 +821,88 @@ export function PNaaS() {
 
 const testimonials = [
   {
-    company: 'UK Public Sector',
-    name: 'Head of Digital Transformation',
-    org: 'Leading UK Public Sector Organisation',
-    quote: "AWTG's technology team brought a level of innovation and commercial pragmatism that we hadn't found elsewhere. Their AI solutions delivered tangible ROI well ahead of schedule.",
+    name: 'Rayan Krab',
+    role: 'Partner',
+    company: 'Juris Legal Advisors',
+    accent: '#228DC1',
+    quote: 'Kai has been a huge help for my legal services website. It perfectly communicates relevant information to clients and prospects, saving them from digging through multiple pages. Since we started using Kai, our client inquiries have soared, and we couldn\'t be happier. Kai has completely transformed our online presence and customer engagement.',
   },
   {
-    company: 'UK Telecoms Operator',
-    name: 'Chief Technology Officer',
-    org: 'UK Telecoms Operator',
-    quote: 'The private 5G network AWTG deployed for us transformed our operations completely. From deployment speed to ongoing support, they exceeded every expectation.',
+    name: 'Oscar Mrad',
+    role: 'CEO',
+    company: 'OM Media',
+    accent: '#0ea472',
+    quote: 'I recently added AWTG\'s Kai AI on my website, and it\'s been incredibly useful! Setup was a breeze, it is intuitive, responsive, and it helps visitors find exactly what they need immediately. As a web agency owner, I\'m impressed by how well Kai fits into my site and improves both user engagement and satisfaction. If you want to level up your customer experience, I highly recommend Kai.',
   },
   {
-    company: 'NHS Foundation Trust',
-    name: 'Director of Innovation',
-    org: 'NHS Foundation Trust',
-    quote: 'Bringing AWTG in to design our connectivity infrastructure was one of the best decisions we made. Their understanding of public sector requirements is unmatched.',
+    name: 'Pouria Tehran',
+    role: 'Managing Director',
+    company: 'Infinite Ocean',
+    accent: '#f59e0b',
+    quote: 'Introducing Kai as our AI assistant has been a game-changer for our website. Kai is an invaluable resource; it\'s guiding customers through our products\' eco-friendly features from certified 100% recycled materials to home compostable bags. Its plug-and-play functionality allowed us to integrate it seamlessly into our site and begin training the model in no time. Thank you, AWTG, for helping us make sustainability accessible and engaging for all!',
+  },
+  {
+    name: 'Rasha Fard',
+    role: 'Practice Development Manager',
+    company: 'Fard Solicitors',
+    accent: '#a78bfa',
+    quote: 'Kai has been an invaluable asset to our law firm\'s website. It effortlessly delivers essential information to clients and prospects, saving them from the hassle of navigating multiple pages. Beyond that, its ability to process hundreds of documents and provide requested information has been a game-changer. Since implementing Kai, we are confident we will see a remarkable increase in client inquiries. The results have far exceeded our expectations.',
   },
 ]
 
-const CARDS_PER_PAGE = 3
-
 function ClientVoices() {
-  const [offset, setOffset] = useState(0)
-  const canPrev = offset > 0
-  const canNext = offset + CARDS_PER_PAGE < testimonials.length
-  const visible = testimonials.slice(offset, offset + CARDS_PER_PAGE)
   return (
     <section className="py-28 bg-[#f7f9fc]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-        {/* Header row */}
-        <div className="flex items-start justify-between gap-8 mb-12">
-          <div>
-            <h2 className="font-serif-display text-[#0a1628] leading-tight">Customer <span className="text-[#228DC1]">testimonials</span></h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-3 max-w-lg">
-              Discover how organisations across telecoms, health and public sector deliver outcomes with AWTG.
-            </p>
-          </div>
-          <div className="flex gap-2 shrink-0 mt-1">
-            <button
-              onClick={() => setOffset((o) => o - 1)}
-              disabled={!canPrev}
-              aria-label="Previous testimonials"
-              className="w-10 h-10 border border-gray-200 flex items-center justify-center text-[#0a1628]/50 hover:border-[#228DC1] hover:text-[#228DC1] disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-150 rounded-full"
-            >
-              <FontAwesomeIcon icon={faChevronLeft} className="w-3 h-3" />
-            </button>
-            <button
-              onClick={() => setOffset((o) => o + 1)}
-              disabled={!canNext}
-              aria-label="Next testimonials"
-              className="w-10 h-10 border border-gray-200 flex items-center justify-center text-[#0a1628]/50 hover:border-[#228DC1] hover:text-[#228DC1] disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-150 rounded-full"
-            >
-              <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
-            </button>
-          </div>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="font-serif-display text-[#0a1628] leading-tight">
+            What our <span className="text-[#228DC1]">clients say</span>
+          </h2>
+          <p className="text-[#0a1628]/55 text-[17px] font-normal leading-[1.7] mt-4 max-w-xl mx-auto">
+            Real results from organisations deploying AWTG AI solutions.
+          </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-5">
-          {visible.map((t, i) => (
-            <div key={offset + i} className="bg-white border border-gray-100 p-8 flex flex-col min-h-[320px]">
-              <p className="font-h4 text-[#0a1628] mb-10">{t.company}</p>
-              <blockquote className="text-[#0a1628]/70 text-sm leading-[1.85] font-normal flex-1">
-                "{t.quote}"
+        {/* 2x2 grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="bg-white rounded-2xl border border-gray-100 p-8 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-200"
+            >
+              {/* Quote mark */}
+              <div
+                className="text-[56px] leading-none font-black mb-4 select-none"
+                style={{ color: t.accent, opacity: 0.18 }}
+              >
+                &ldquo;
+              </div>
+
+              {/* Quote text */}
+              <blockquote className="text-[#0a1628]/70 text-[15px] leading-[1.8] font-normal flex-1">
+                {t.quote}
               </blockquote>
-              <div className="mt-8 pt-6 border-t border-gray-100">
-                <p className="text-[#0a1628] font-semibold text-[13px]">{t.name}</p>
-                <p className="text-[#0a1628]/50 text-[12px] font-normal mt-0.5">{t.org}</p>
+
+              {/* Divider */}
+              <div className="mt-7 pt-6 border-t border-gray-100 flex items-center gap-4">
+                {/* Avatar */}
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-[14px] shrink-0"
+                  style={{ backgroundColor: t.accent }}
+                >
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-[#0a1628] font-semibold text-[14px] leading-tight">{t.name}</p>
+                  <p className="text-[#0a1628]/50 text-[12px] font-normal mt-0.5">
+                    {t.role}{' '}
+                    <span style={{ color: t.accent }} className="font-medium">
+                      @ {t.company}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           ))}
