@@ -659,11 +659,82 @@ function MasteryStoryVisual() {
 
         <div className="rounded-2xl border border-gray-100 bg-[#fbfcfe] p-5 flex flex-col justify-between">
           <div>
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-4">Bloom mastery</p>
-            <div className="mx-auto mb-5 h-40 w-40 rounded-full border border-[#228DC1]/15 bg-white flex items-center justify-center">
-              <div className="h-24 w-24 rounded-[28px] bg-[#1e2d7d]/70 rotate-45 shadow-[0_10px_30px_rgba(30,45,125,0.22)]" />
-            </div>
-            <p className="text-[13px] font-semibold text-[#0a1628]/70">Weakest areas: <span className="text-[#0a1628]">Create, Evaluate</span></p>
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-3">Bloom mastery</p>
+            {/* Mini radar — 6 Bloom levels */}
+            {(() => {
+              const vals = [45, 30, 22, 18, 12, 15]
+              const labels = ['Rem','Und','App','Ana','Eva','Cre']
+              const CX2 = 110, CY2 = 110, R2 = 68
+              const pt2 = (i: number, pct: number) => {
+                const a = (i / 6) * Math.PI * 2 - Math.PI / 2
+                return { x: CX2 + R2 * (pct/100) * Math.cos(a), y: CY2 + R2 * (pct/100) * Math.sin(a) }
+              }
+              const poly2 = (data: number[]) => data.map((v,i) => `${pt2(i,v).x},${pt2(i,v).y}`).join(' ')
+              const lab2 = (i: number) => {
+                const a = (i / 6) * Math.PI * 2 - Math.PI / 2
+                return { x: CX2 + (R2 + 18) * Math.cos(a), y: CY2 + (R2 + 18) * Math.sin(a) }
+              }
+              const cohort = [58, 52, 48, 40, 35, 42]
+              return (
+                <svg viewBox="0 0 220 220" className="w-full max-w-[200px] mx-auto mb-3 overflow-visible">
+                  <defs>
+                    <radialGradient id="mfill" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#228DC1" stopOpacity="0.45"/>
+                      <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.12"/>
+                    </radialGradient>
+                    <filter id="mglow" x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="3" result="b"/>
+                      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                  {/* Rings */}
+                  {[33, 66, 100].map(pct => (
+                    <polygon key={pct}
+                      points={labels.map((_,i) => `${pt2(i,pct).x},${pt2(i,pct).y}`).join(' ')}
+                      fill="none"
+                      stroke={pct===100 ? 'rgba(10,22,40,0.13)' : 'rgba(10,22,40,0.06)'}
+                      strokeWidth={pct===100 ? 1.2 : 0.8}
+                      strokeDasharray={pct < 100 ? '3 3' : undefined}
+                    />
+                  ))}
+                  {/* Spokes */}
+                  {labels.map((_,i) => (
+                    <line key={i} x1={CX2} y1={CY2} x2={pt2(i,100).x} y2={pt2(i,100).y}
+                      stroke="rgba(10,22,40,0.07)" strokeWidth="0.8" />
+                  ))}
+                  {/* Cohort avg dashed */}
+                  <polygon points={poly2(cohort)} fill="rgba(34,141,193,0.06)"
+                    stroke="#228DC1" strokeWidth="1.2" strokeDasharray="4 3"
+                    strokeLinejoin="round" opacity="0.7" />
+                  {/* Student fill */}
+                  <polygon points={poly2(vals)} fill="url(#mfill)" stroke="none" />
+                  <polygon points={poly2(vals)} fill="none"
+                    stroke="#7c3aed" strokeWidth="1.8" strokeLinejoin="round"
+                    strokeLinecap="round" filter="url(#mglow)" opacity="0.9" />
+                  <polygon points={poly2(vals)} fill="none"
+                    stroke="rgba(255,255,255,0.8)" strokeWidth="0.7" strokeLinejoin="round" />
+                  {/* Vertex dots */}
+                  {vals.map((v,i) => (
+                    <circle key={i} cx={pt2(i,v).x} cy={pt2(i,v).y} r="3"
+                      fill="white" stroke={v < 20 ? '#ef4444' : '#7c3aed'} strokeWidth="1.5" />
+                  ))}
+                  {/* Axis labels */}
+                  {labels.map((lbl,i) => {
+                    const p = lab2(i)
+                    const isWeak = vals[i] < 20
+                    return (
+                      <text key={lbl} x={p.x} y={p.y} textAnchor="middle" dominantBaseline="middle"
+                        fontSize="10.5" fontFamily="system-ui,sans-serif"
+                        fontWeight={isWeak ? '800' : '600'}
+                        fill={isWeak ? '#ef4444' : 'rgba(10,22,40,0.55)'}>
+                        {lbl}
+                      </text>
+                    )
+                  })}
+                </svg>
+              )
+            })()}
+            <p className="text-[12px] font-semibold text-[#0a1628]/60">Weakest areas: <span className="text-[#ef4444] font-bold">Create, Evaluate</span></p>
           </div>
           <div className="mt-5 rounded-xl bg-[#e8f4fc] border border-[#b8ddf0] px-4 py-3">
             <p className="text-[13px] font-bold text-[#228DC1]">Insight captured</p>
