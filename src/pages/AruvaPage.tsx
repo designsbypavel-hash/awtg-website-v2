@@ -1896,6 +1896,31 @@ function MultimodalSection() {
           </div>
 
         </div>
+
+        {/* Caption — shown only when Text tab is active (index 1) */}
+        {active === 1 && (
+          <div style={{
+            marginTop: 20,
+            padding: '18px 24px',
+            borderRadius: 14,
+            background: 'linear-gradient(135deg, #f0f7fb 0%, #f5f3ff 100%)',
+            border: '1px solid rgba(34,141,193,0.16)',
+            display: 'flex', alignItems: 'flex-start', gap: 16,
+            opacity: 0, animation: 'mmCardIn 0.4s ease 0.1s forwards',
+          }}>
+            <div style={{ display:'flex', gap:6, flexShrink:0, paddingTop:2 }}>
+              <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:26, height:26, borderRadius:8, background:'#f59e0b', color:'#fff', fontSize:10, fontWeight:900 }}>MG</span>
+              <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:26, height:26, borderRadius:8, background:'#7c3aed', color:'#fff', fontSize:10, fontWeight:900 }}>ER</span>
+            </div>
+            <div>
+              <p style={{ fontSize:11, fontWeight:900, letterSpacing:'0.14em', textTransform:'uppercase', color:'rgba(10,22,40,0.38)', marginBottom:5 }}>What you're seeing</p>
+              <p style={{ fontSize:13, color:'rgba(10,22,40,0.68)', lineHeight:1.65 }}>
+                Two students ask about the same biology topic. Maria is analogy-oriented — Aruva answers with a city power metaphor. Elena is analytical — Aruva shifts to structured reasoning. Same question, two completely different personalised responses.
+              </p>
+            </div>
+          </div>
+        )}
+
       </div>
     </section>
   )
