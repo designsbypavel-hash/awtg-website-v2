@@ -213,7 +213,7 @@ function Hero() {
             </span>
           </div>
           <div className="overflow-hidden flex-1">
-            <div className="ticker-track" aria-hidden="true">
+            <div className="ticker-track" aria-hidden="true" style={{ animationDuration: '160s' }}>
               {[...tickerLogos, ...tickerLogos].map((logo, i) => (
                 <div
                   key={`${logo.id}-${i}`}
@@ -223,7 +223,7 @@ function Hero() {
                     src={logo.src}
                     alt={logo.alt}
                     className="w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    style={{ height: logo.height ?? '40px', maxWidth: '200px' }}
+                    style={{ height: logo.height ?? '44px', maxWidth: '200px' }}
                   />
                 </div>
               ))}
