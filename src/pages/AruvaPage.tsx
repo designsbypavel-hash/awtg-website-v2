@@ -1657,7 +1657,7 @@ function MultimodalSection() {
   const activeM = MM_MODALITIES[active]
 
   return (
-    <section ref={sectionRef} style={{ background:'#f8fafc', padding:'96px 0', borderTop:'1px solid #e8ecf2', borderBottom:'1px solid #e8ecf2' }}>
+    <section ref={sectionRef} style={{ background:'#f8fafc', padding:'96px 0 56px', borderTop:'1px solid #e8ecf2', borderBottom:'1px solid #e8ecf2' }}>
       <style>{`
         @keyframes mmCardIn    { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
         @keyframes mmCursor    { 0%,100%{opacity:1} 50%{opacity:0} }
@@ -1906,7 +1906,7 @@ function MultimodalSection() {
                 <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:28, height:28, borderRadius:8, background:'#f59e0b', color:'#fff', fontSize:10, fontWeight:900, border:'2px solid #f8fafc' }}>MG</span>
                 <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:28, height:28, borderRadius:8, background:'#7c3aed', color:'#fff', fontSize:10, fontWeight:900, border:'2px solid #f8fafc', marginLeft:-6 }}>ER</span>
               </div>
-              <p style={{ fontSize:13, color:'rgba(10,22,40,0.50)', lineHeight:1.6, fontStyle:'italic' }}>
+              <p style={{ fontSize:13, color:'rgba(10,22,40,0.72)', lineHeight:1.65 }}>
                 Comparing Student A and Student B — two different learning profiles, the same question. See how Aruva tailors every response to each student's way of understanding.
               </p>
             </div>
