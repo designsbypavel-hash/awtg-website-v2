@@ -1729,6 +1729,7 @@ function MultimodalSection() {
             })}
           </div>
 
+          <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
           {/* RIGHT â€” single large demo card, remounts on each modality change */}
           <div style={{
             borderRadius:20, overflow:'hidden',
@@ -1897,7 +1898,6 @@ function MultimodalSection() {
           {/* Caption — grid column 2, sits below the demo card */}
           {active === 1 && (
             <div style={{
-              gridColumn: '2',
               display: 'flex', alignItems: 'center', gap: 14,
               marginTop: 10,
               opacity: 0, animation: 'mmCardIn 0.4s ease 0.1s forwards',
@@ -1911,6 +1911,7 @@ function MultimodalSection() {
               </p>
             </div>
           )}
+          </div>
 
         </div>
 
@@ -2128,6 +2129,7 @@ function BloomInsightSection() {
                   </button>
                 )
               })}
+          </div>
             </div>
           </div>
 
