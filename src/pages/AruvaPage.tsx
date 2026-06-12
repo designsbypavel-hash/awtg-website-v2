@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
+import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faShield, faArrowsRotate, faWandSparkles, faCircleCheck, faMicrophone, faPen, faImage, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import ProductDemoModal from '@/components/ProductDemoModal'
@@ -2129,7 +2129,6 @@ function BloomInsightSection() {
                   </button>
                 )
               })}
-          </div>
             </div>
           </div>
 
