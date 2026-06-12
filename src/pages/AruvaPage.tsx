@@ -24,29 +24,39 @@ function AruvaHeroDashboard() {
   }, [])
 
   React.useEffect(() => {
-    const id = setInterval(() => setActive(p => (p + 1) % HERO_SCREENS.length), 2600)
+    const id = setInterval(() => setActive(p => (p + 1) % HERO_SCREENS.length), 3400)
     return () => clearInterval(id)
   }, [])
 
-  const screen = HERO_SCREENS[active]
-
   return (
-    <div className="relative w-full max-w-[820px]" style={{ opacity: entered ? 1 : 0, transform: entered ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)' }}>
-      <style>{`
-        @keyframes fadeSlide { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
-      `}</style>
-
+    <div
+      className="relative w-full max-w-[980px]"
+      style={{
+        opacity: entered ? 1 : 0,
+        transform: entered ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
+      }}
+    >
       <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background:'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }}/>
 
-      <div style={{ borderRadius:14, overflow:'hidden', boxShadow:'0 38px 86px rgba(10,22,40,0.20), 0 10px 30px rgba(10,22,40,0.10)', background:'transparent' }}>
-        <div style={{ position:'relative', background:'transparent' }}>
+      {/* All images stacked in the same grid cell — preloaded at mount, crossfade with no gap */}
+      <div style={{ borderRadius:14, overflow:'hidden', boxShadow:'0 38px 86px rgba(10,22,40,0.20), 0 10px 30px rgba(10,22,40,0.10)', display:'grid' }}>
+        {HERO_SCREENS.map((s, i) => (
           <img
-            key={active}
-            src={screen.src}
-            alt={screen.label}
-            style={{ width:'100%', height:'auto', display:'block', animation:'fadeSlide 0.45s ease both' }}
+            key={s.src}
+            src={s.src}
+            alt={s.label}
+            style={{
+              gridRow: '1 / 2',
+              gridColumn: '1 / 2',
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              opacity: active === i ? 1 : 0,
+              transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
+            }}
           />
-        </div>
+        ))}
       </div>
     </div>
   )
