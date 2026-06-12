@@ -1256,7 +1256,7 @@ function MMImageDemo() {
     : stage >= 2
       ? `rendering image tile ${stage - 1}/3`
       : stage >= 1
-        ? 'prompt accepted: photosynthesis lesson diagram'
+        ? 'prompt accepted: biochemistry lecture diagram'
         : 'waiting for student prompt'
 
   React.useEffect(() => {
@@ -1278,7 +1278,7 @@ function MMImageDemo() {
             borderRadius:'14px 14px 4px 14px', fontSize:12.5, fontWeight:700, lineHeight:1.45,
             boxShadow:'0 8px 18px rgba(245,158,11,0.18)',
           }}>
-            Generate a clear photosynthesis diagram for my biology lesson.
+            Generate a detailed diagram of the electron transport chain and ATP synthesis for my biochemistry module.
           </div>
         </div>
 
@@ -1312,7 +1312,7 @@ function MMImageDemo() {
         <div style={{ position:'relative', width:'100%', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
           <img
             src="/images/aruva-photosynthesis-realistic.png"
-            alt="Generated photosynthesis lesson diagram"
+            alt="Generated biochemistry lecture diagram"
             style={{
               display:'block', width:'100%', height:'auto', aspectRatio:'280 / 178', objectFit:'cover',
               opacity:0.18,
@@ -1379,7 +1379,7 @@ function MMImageDemo() {
                 <p style={{ fontSize:11, fontWeight:900, color:'#0a1628', lineHeight:1 }}>
                   {stage >= 2 ? `Generating ${Math.round(revealWidth)}%` : 'Preparing canvas'}
                 </p>
-                <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.48)', lineHeight:1.25, marginTop:3 }}>Rendering visual lesson diagram</p>
+                <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.48)', lineHeight:1.25, marginTop:3 }}>Rendering academic lecture diagram</p>
               </div>
             </div>
           )}
@@ -1746,7 +1746,7 @@ function MultimodalSection() {
               <div>
                 <p style={{ fontSize:13, fontWeight:700, color:'#0a1628', lineHeight:1 }}>{activeM.label} Generation</p>
                 <p style={{ fontSize:11, color:'rgba(10,22,40,0.45)', marginTop:3 }}>
-                  {active===0?'Pythagorean Theorem narrated':active===1?'Algebra solution written':active===2?'Educational illustration generated':'Graphing calculator'}
+                  {active===0?'Pythagorean Theorem narrated':active===1?'Algebra solution written':active===2?'Academic diagram generated':'Graphing calculator'}
                 </p>
               </div>
               <div style={{ flex:1 }}/>
