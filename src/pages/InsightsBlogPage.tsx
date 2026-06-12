@@ -102,21 +102,8 @@ const tagColour: Record<string, string> = {
   'Education': 'bg-indigo-50 text-indigo-700',
 }
 
-const TOPIC_IMAGES: Record<string, string> = {
-  'AI': 'photo-1518770660439-4636190af475',
-  '5G': 'photo-1451187580459-43490279c0fa',
-  'Private 5G': 'photo-1558618666-fcd25c85cd64',
-  'Private Networks': 'photo-1558618666-fcd25c85cd64',
-  'Smart Cities': 'photo-1477959858617-67f85cf4f1df',
-  'Rail': 'photo-1474487548417-781cb6d646ca',
-  'Transport': 'photo-1474487548417-781cb6d646ca',
-  'Infrastructure': 'photo-1486325212027-8081e485255e',
-  'Education': 'photo-1503676260728-1c00da094a0b',
-}
-
-function getTopicImage(tag: string): string {
-  const id = TOPIC_IMAGES[tag] ?? 'photo-1451187580459-43490279c0fa'
-  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`
+function getPostImage(slug: string): string {
+  return `https://picsum.photos/seed/${slug}/900/600`
 }
 
 export default function InsightsBlogPage() {
@@ -186,7 +173,7 @@ export default function InsightsBlogPage() {
               </div>
               <div className="lg:col-span-2 relative overflow-hidden min-h-[320px]">
                 <img
-                  src={getTopicImage(featured.tag)}
+                  src={getPostImage(featured.slug)}
                   alt=""
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -205,7 +192,7 @@ export default function InsightsBlogPage() {
               {rest.map((post, i) => {
                 const isWide = i === 0
                 const isAccent = i === 3
-                const img = getTopicImage(post.tag)
+                const img = getPostImage(post.slug)
 
                 if (isWide) {
                   return (

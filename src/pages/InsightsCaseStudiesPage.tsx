@@ -25,20 +25,8 @@ const tagAccent: Record<string, string> = {
   'Site Acquisition': 'bg-slate-400',
 }
 
-const TOPIC_IMAGES: Record<string, string> = {
-  'Open RAN Security': 'photo-1518770660439-4636190af475',
-  'Network Economics': 'photo-1551288049-bebda4e38f71',
-  'Public Sector': 'photo-1477959858617-67f85cf4f1df',
-  'Mobile Networks': 'photo-1451187580459-43490279c0fa',
-  'Capacity Planning': 'photo-1551288049-bebda4e38f71',
-  'Performance Testing': 'photo-1486325212027-8081e485255e',
-  'Mobile Services': 'photo-1518770660439-4636190af475',
-  'Site Acquisition': 'photo-1486325212027-8081e485255e',
-}
-
-function getTopicImage(tag: string): string {
-  const id = TOPIC_IMAGES[tag] ?? 'photo-1451187580459-43490279c0fa'
-  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`
+function getStudyImage(slug: string): string {
+  return `https://picsum.photos/seed/${slug}/900/600`
 }
 
 const featured = {
@@ -142,7 +130,7 @@ export default function InsightsCaseStudiesPage() {
             {/* Image strip */}
             <div className="relative h-52 overflow-hidden">
               <img
-                src={getTopicImage(featured.tag)}
+                src={getStudyImage(featured.slug)}
                 alt=""
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -195,7 +183,7 @@ export default function InsightsCaseStudiesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredStudies.map((cs, index) => {
               const isAccent = index === 2 || index === 5
-              const img = getTopicImage(cs.tag)
+              const img = getStudyImage(cs.slug)
 
               if (isAccent) {
                 return (

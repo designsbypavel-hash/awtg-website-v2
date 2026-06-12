@@ -548,21 +548,8 @@ export const categoryColours: Record<string, string> = {
   Telecommunications: 'bg-sky-50 text-sky-700',
 }
 
-const TOPIC_IMAGES: Record<string, string> = {
-  'Artificial Intelligence': 'photo-1518770660439-4636190af475',
-  'Awards': 'photo-1451187580459-43490279c0fa',
-  'Engineering': 'photo-1486325212027-8081e485255e',
-  'Health Tech': 'photo-1486325212027-8081e485255e',
-  'Innovation': 'photo-1451187580459-43490279c0fa',
-  'News': 'photo-1477959858617-67f85cf4f1df',
-  'Private Networks': 'photo-1558618666-fcd25c85cd64',
-  'Public Sector': 'photo-1477959858617-67f85cf4f1df',
-  'Telecommunications': 'photo-1451187580459-43490279c0fa',
-}
-
-function getTopicImage(category: string): string {
-  const id = TOPIC_IMAGES[category] ?? 'photo-1451187580459-43490279c0fa'
-  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`
+function getNewsItemImage(item: NewsItem): string {
+  return `https://picsum.photos/seed/${createNewsSlug(item.title)}/900/600`
 }
 
 const featured = newsItems[0]
@@ -676,7 +663,7 @@ export default function InsightsNewsPage() {
             {visibleNews.map((item, index) => {
               const isWide = index === 0
               const isAccent = index === 4 || index === 10 || index === 16
-              const img = getTopicImage(item.category)
+              const img = getNewsItemImage(item)
               const hasVideo = !!getNewsVideoUrl(item)
 
               if (isWide) {

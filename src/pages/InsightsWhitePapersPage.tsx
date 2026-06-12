@@ -136,26 +136,8 @@ const featuredPaper = whitePapers.find((paper) => paper.featured) ?? whitePapers
 
 export const getWhitePaperHref = (paper: WhitePaper) => `/insights/white-papers/${paper.slug}`
 
-const TOPIC_IMAGES: Record<string, string> = {
-  'Open RAN': 'photo-1518770660439-4636190af475',
-  'RAN Intelligence': 'photo-1518770660439-4636190af475',
-  'Public Services': 'photo-1477959858617-67f85cf4f1df',
-  'Asset Management': 'photo-1486325212027-8081e485255e',
-  'Rail Infrastructure': 'photo-1474487548417-781cb6d646ca',
-  'Public Sector': 'photo-1477959858617-67f85cf4f1df',
-  'AI Infrastructure': 'photo-1518770660439-4636190af475',
-  'Private Networks': 'photo-1558618666-fcd25c85cd64',
-  '5G Strategy': 'photo-1451187580459-43490279c0fa',
-  'Public Safety': 'photo-1477959858617-67f85cf4f1df',
-  '5G Research': 'photo-1451187580459-43490279c0fa',
-  'Small Cells': 'photo-1518770660439-4636190af475',
-  'Mobile Strategy': 'photo-1518770660439-4636190af475',
-  'Future Networks': 'photo-1558618666-fcd25c85cd64',
-}
-
-function getTopicImage(topic: string): string {
-  const id = TOPIC_IMAGES[topic] ?? 'photo-1451187580459-43490279c0fa'
-  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`
+function getPaperImage(slug: string): string {
+  return `https://picsum.photos/seed/${slug}/900/600`
 }
 
 export default function InsightsWhitePapersPage() {
@@ -215,7 +197,7 @@ export default function InsightsWhitePapersPage() {
             </div>
             <div className="lg:col-span-2 relative overflow-hidden min-h-[360px]">
               <img
-                src={getTopicImage(featuredPaper.topic)}
+                src={getPaperImage(featuredPaper.slug)}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -259,7 +241,7 @@ export default function InsightsWhitePapersPage() {
               <Link key={paper.slug} to={getWhitePaperHref(paper)} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden">
                 <div className="h-44 relative overflow-hidden">
                   <img
-                    src={getTopicImage(paper.topic)}
+                    src={getPaperImage(paper.slug)}
                     alt=""
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
