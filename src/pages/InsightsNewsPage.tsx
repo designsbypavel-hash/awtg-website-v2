@@ -670,7 +670,7 @@ export default function InsightsNewsPage() {
                     to={getNewsHref(item)}
                     className="group xl:col-span-2 md:col-span-2 relative overflow-hidden min-h-[360px] flex flex-col justify-end"
                   >
-                    <InsightImage src={getNewsImage(item.category)} alt={cleanText(item.title)} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
                     {hasVideo && (
                       <div className="absolute top-5 left-5 h-10 w-10 bg-white/15 border border-white/25 flex items-center justify-center">
@@ -722,7 +722,7 @@ export default function InsightsNewsPage() {
                   className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
                 >
                   <div className="h-44 relative overflow-hidden">
-                    <InsightImage src={getNewsImage(item.category)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#228DC1]">
                       <FontAwesomeIcon icon={hasVideo ? faPlay : faNewspaper} className="w-4 h-4" />

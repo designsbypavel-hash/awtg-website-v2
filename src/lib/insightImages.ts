@@ -84,6 +84,25 @@ const newsCategoryImages: Record<string, string> = {
   Telecommunications: image('mobile-networks.jpg'),
 }
 
+const newsImageRotation = [
+  image('ai-innovation.jpg'),
+  image('conference.jpg'),
+  image('engineering-team.jpg'),
+  image('lab-testing.jpg'),
+  image('urban-rail.jpg'),
+  image('smart-city.jpg'),
+  image('cloud-network.jpg'),
+  image('telecom-tower.jpg'),
+  image('private-networks.jpg'),
+  image('public-sector.jpg'),
+  image('future-networks.jpg'),
+  image('mobile-networks.jpg'),
+  image('open-ran.jpg'),
+  image('data-centre.jpg'),
+  image('ports-logistics.jpg'),
+  image('research-papers.jpg'),
+]
+
 export function getBlogImage(slug: string, tag: string) {
   return blogSlugImages[slug] ?? newsCategoryImages[tag] ?? insightFallbackImage
 }
@@ -96,6 +115,7 @@ export function getWhitePaperImage(slug: string, topic: string) {
   return whitePaperSlugImages[slug] ?? whitePaperTopicFallbacks[topic] ?? insightFallbackImage
 }
 
-export function getNewsImage(category: string) {
+export function getNewsImage(category: string, index = -1) {
+  if (index >= 0) return newsImageRotation[index % newsImageRotation.length]
   return newsCategoryImages[category] ?? insightFallbackImage
 }
