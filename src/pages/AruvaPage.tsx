@@ -40,7 +40,7 @@ function AruvaHeroDashboard() {
       <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background:'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }}/>
 
       {/* All images stacked in the same grid cell — preloaded at mount, crossfade with no gap */}
-      <div style={{ borderRadius:14, overflow:'hidden', boxShadow:'0 38px 86px rgba(10,22,40,0.20), 0 10px 30px rgba(10,22,40,0.10)', display:'grid' }}>
+      <div style={{ borderRadius:14, overflow:'hidden', boxShadow:'0 38px 86px rgba(10,22,40,0.20), 0 10px 30px rgba(10,22,40,0.10)', display:'grid', clipPath:'inset(0 0 4% 0 round 14px)' }}>
         {HERO_SCREENS.map((s, i) => (
           <img
             key={s.src}
