@@ -549,7 +549,7 @@ function Industries() {
     <section className="bg-white pt-16">
       <div className="max-w-7xl mx-auto px-8 lg:px-12 mb-14">
         <SectionHeader
-          title={<>Powering transformation<br />across every sector.</>}
+          title={<>Powering transformation<br /><span className="text-[#228DC1]">across every sector.</span></>}
           description="From enterprise campuses to NHS trusts and government bodies, AWTG delivers technology built specifically for your world."
         />
       </div>
@@ -711,7 +711,7 @@ function WhyAWTG() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <SectionHeader
           className="mb-14"
-          title="The experience to deliver, and the team to stay with you."
+          title={<>The experience to deliver, and the<br /><span className="text-[#228DC1]">team to stay with you.</span></>}
           description="Crown Commercial Service approved. ISO 9001, 27001, 14001, 45001 and 42001 certified. Cyber Essentials Plus. SC and DV cleared engineers."
         />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#e7edf3] border border-[#e7edf3]">
@@ -834,7 +834,7 @@ function ClientVoices() {
         {/* Header row */}
         <div className="flex items-start justify-between gap-8 mb-12">
           <div>
-            <h2 className="font-serif-display text-[#0a1628] leading-tight">Customer testimonials</h2>
+            <h2 className="font-serif-display text-[#0a1628] leading-tight">Customer <span className="text-[#228DC1]">testimonials</span></h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mt-3 max-w-lg">
               Discover how organisations across telecoms, health and public sector deliver outcomes with AWTG.
             </p>
@@ -971,7 +971,7 @@ function Insights() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <SectionHeader
           className="mb-14"
-          title={<>Explore the latest<br />from AWTG.</>}
+          title={<>Explore the latest<br /><span className="text-[#228DC1]">from AWTG.</span></>}
           description="Insight, analysis and perspectives from AWTG's engineers and sector specialists."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
