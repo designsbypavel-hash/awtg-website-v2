@@ -58,8 +58,8 @@ const SECTION_IMAGES = [
   '/images/insights/engineering-team.jpg',
   '/images/insights/telecom-tower.jpg',
   '/images/insights/open-ran.jpg',
-  '/images/insights/conference.jpg',
-  '/images/insights/education.jpg',
+  '/images/insights/ai-innovation.jpg',
+  '/images/insights/city-infrastructure.jpg',
   '/images/insights/smart-city.jpg',
 ]
 
