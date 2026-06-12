@@ -268,11 +268,11 @@ function WhatWeDo() {
       bg: 'rgba(34,141,193,0.05)',
       tag: 'Generative AI',
       icon: (
-        <svg width=”28” height=”28” viewBox=”0 0 28 28” fill=”none”>
-          <rect width=”28” height=”28” rx=”8” fill=”rgba(34,141,193,0.12)”/>
-          <path d=”M14 7v7l4 2” stroke=”#228DC1” strokeWidth=”1.8” strokeLinecap=”round” strokeLinejoin=”round”/>
-          <circle cx=”14” cy=”14” r=”6.5” stroke=”#228DC1” strokeWidth=”1.5”/>
-          <circle cx=”14” cy=”14” r=”2” fill=”#228DC1”/>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="rgba(34,141,193,0.12)"/>
+          <path d="M14 7v7l4 2" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="14" cy="14" r="6.5" stroke="#228DC1" strokeWidth="1.5"/>
+          <circle cx="14" cy="14" r="2" fill="#228DC1"/>
         </svg>
       ),
     },
@@ -285,11 +285,11 @@ function WhatWeDo() {
       bg: 'rgba(14,164,114,0.05)',
       tag: '4G / 5G',
       icon: (
-        <svg width=”28” height=”28” viewBox=”0 0 28 28” fill=”none”>
-          <rect width=”28” height=”28” rx=”8” fill=”rgba(14,164,114,0.12)”/>
-          <path d=”M7 19c0-3.87 3.13-7 7-7s7 3.13 7 7” stroke=”#0ea472” strokeWidth=”1.6” strokeLinecap=”round”/>
-          <path d=”M4 19c0-5.52 4.48-10 10-10s10 4.48 10 10” stroke=”#0ea472” strokeWidth=”1.4” strokeLinecap=”round” opacity=”0.45”/>
-          <circle cx=”14” cy=”19” r=”1.8” fill=”#0ea472”/>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="rgba(14,164,114,0.12)"/>
+          <path d="M7 19c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#0ea472" strokeWidth="1.6" strokeLinecap="round"/>
+          <path d="M4 19c0-5.52 4.48-10 10-10s10 4.48 10 10" stroke="#0ea472" strokeWidth="1.4" strokeLinecap="round" opacity="0.45"/>
+          <circle cx="14" cy="19" r="1.8" fill="#0ea472"/>
         </svg>
       ),
     },
@@ -302,75 +302,75 @@ function WhatWeDo() {
       bg: 'rgba(124,58,237,0.05)',
       tag: 'Global Delivery',
       icon: (
-        <svg width=”28” height=”28” viewBox=”0 0 28 28” fill=”none”>
-          <rect width=”28” height=”28” rx=”8” fill=”rgba(124,58,237,0.12)”/>
-          <path d=”M8 20l4-8 4 5 2-3 2 6” stroke=”#7c3aed” strokeWidth=”1.7” strokeLinecap=”round” strokeLinejoin=”round”/>
-          <circle cx=”8” cy=”20” r=”1.2” fill=”#7c3aed”/>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="rgba(124,58,237,0.12)"/>
+          <path d="M8 20l4-8 4 5 2-3 2 6" stroke="#7c3aed" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="8" cy="20" r="1.2" fill="#7c3aed"/>
         </svg>
       ),
     },
   ]
 
   return (
-    <section className=”py-24 bg-white border-t border-gray-100”>
-      <div className=”max-w-7xl mx-auto px-8 lg:px-12”>
+    <section className="py-24 bg-white border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Header */}
-        <div className=”mb-14 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4”>
+        <div className="mb-14 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <div>
-            <p className=”type-label text-[#228DC1] mb-3”>What We Do</p>
-            <h2 className=”font-heading text-[#0a1628] max-w-lg”>
+            <p className="type-label text-[#228DC1] mb-3">What We Do</p>
+            <h2 className="font-heading text-[#0a1628] max-w-lg">
               Three capabilities.<br/>
-              <span className=”text-[#228DC1]”>One partner.</span>
+              <span className="text-[#228DC1]">One partner.</span>
             </h2>
           </div>
-          <Link to=”/solutions/overview” className=”text-sm font-semibold text-[#228DC1] hover:underline shrink-0”>
+          <Link to="/solutions/overview" className="text-sm font-semibold text-[#228DC1] hover:underline shrink-0">
             See all solutions →
           </Link>
         </div>
 
         {/* Cards */}
-        <div className=”grid md:grid-cols-3 gap-6”>
+        <div className="grid md:grid-cols-3 gap-6">
           {cards.map((c) => (
             <Link
               key={c.num}
               to={c.href}
-              className=”group relative flex flex-col rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-transparent”
+              className="group relative flex flex-col rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-transparent"
               style={{ background: '#fff' }}
             >
               {/* Top accent bar */}
-              <div className=”h-[3px] w-full” style={{ background: c.accent }} />
+              <div className="h-[3px] w-full" style={{ background: c.accent }} />
 
-              <div className=”flex flex-col flex-1 p-7”>
+              <div className="flex flex-col flex-1 p-7">
                 {/* Icon + number row */}
-                <div className=”flex items-center justify-between mb-6”>
+                <div className="flex items-center justify-between mb-6">
                   {c.icon}
-                  <span className=”text-[11px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded-full border”
+                  <span className="text-[11px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded-full border"
                     style={{ color: c.accent, borderColor: c.accent + '33', background: c.bg }}>
                     {c.tag}
                   </span>
                 </div>
 
                 {/* Text */}
-                <h3 className=”font-card-heading text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors duration-200”>
+                <h3 className="font-card-heading text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors duration-200">
                   {c.label}
                 </h3>
-                <p className=”text-[#0a1628]/55 text-[14px] font-normal leading-[1.75] flex-1”>
+                <p className="text-[#0a1628]/55 text-[14px] font-normal leading-[1.75] flex-1">
                   {c.line}
                 </p>
 
                 {/* CTA */}
-                <div className=”flex items-center gap-1.5 mt-6 text-[13px] font-semibold transition-colors duration-200”
+                <div className="flex items-center gap-1.5 mt-6 text-[13px] font-semibold transition-colors duration-200"
                   style={{ color: c.accent }}>
                   Learn more
-                  <svg width=”14” height=”14” viewBox=”0 0 14 14” fill=”none” className=”transition-transform duration-200 group-hover:translate-x-1”>
-                    <path d=”M3 7h8M8 4l3 3-3 3” stroke=”currentColor” strokeWidth=”1.6” strokeLinecap=”round” strokeLinejoin=”round”/>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-200 group-hover:translate-x-1">
+                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
               </div>
 
               {/* Large background number */}
-              <span className=”absolute bottom-4 right-5 text-[72px] font-black leading-none select-none pointer-events-none transition-opacity duration-300 opacity-[0.035] group-hover:opacity-[0.06]”
+              <span className="absolute bottom-4 right-5 text-[72px] font-black leading-none select-none pointer-events-none transition-opacity duration-300 opacity-[0.035] group-hover:opacity-[0.06]"
                 style={{ color: c.accent }}>
                 {c.num}
               </span>
