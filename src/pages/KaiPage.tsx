@@ -98,12 +98,14 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
     <div style={{ position: 'relative', width: '100%', minHeight: 430, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <style>{`
         @keyframes kaiGlobeFloat {
-          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-          50% { transform: translate3d(0, -10px, 0) scale(1.01); }
+          0%,  100% { transform: translate3d(0,    0px,  0) scale(1)    rotate(0deg);   }
+          25%        { transform: translate3d(7px, -18px, 0) scale(1.03) rotate(0.9deg);  }
+          50%        { transform: translate3d(0,  -28px, 0) scale(1.045) rotate(0deg);   }
+          75%        { transform: translate3d(-7px,-18px, 0) scale(1.03) rotate(-0.9deg); }
         }
         @keyframes kaiGlobeGlow {
-          0%, 100% { opacity: 0.28; transform: translate(-50%, -50%) scale(0.96); }
-          50% { opacity: 0.52; transform: translate(-50%, -50%) scale(1.05); }
+          0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(0.93); }
+          50%       { opacity: 0.72; transform: translate(-50%, -50%) scale(1.10); }
         }
       `}</style>
 
@@ -114,9 +116,9 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
         width: '76%',
         height: '76%',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(34,141,193,0.18), rgba(34,141,193,0) 68%)',
-        filter: 'blur(10px)',
-        animation: 'kaiGlobeGlow 5.4s ease-in-out infinite',
+        background: 'radial-gradient(circle, rgba(34,141,193,0.22), rgba(34,141,193,0) 68%)',
+        filter: 'blur(12px)',
+        animation: 'kaiGlobeGlow 3.6s ease-in-out infinite',
         pointerEvents: 'none',
       }} />
 
@@ -127,8 +129,8 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
           width: 'min(100%, 560px)',
           height: 'auto',
           display: 'block',
-          filter: 'drop-shadow(0 26px 48px rgba(34,141,193,0.15))',
-          animation: visible ? 'kaiGlobeFloat 7s ease-in-out infinite' : 'none',
+          filter: 'drop-shadow(0 32px 56px rgba(34,141,193,0.22))',
+          animation: visible ? 'kaiGlobeFloat 4.8s ease-in-out infinite' : 'none',
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.96)',
           transition: 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)',
