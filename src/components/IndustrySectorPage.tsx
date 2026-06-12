@@ -242,18 +242,92 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       {/* ══════════════════════════════════════════════════════
           OUTCOMES — asymmetric: sticky heading left + 2×2 grid right
       ══════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-16 items-start">
-            <div className="lg:sticky lg:top-32">
-              <h2 className="font-heading text-[#0a1628] mb-5 leading-tight">{outcomes.heading}</h2>
-              <p className="text-[#0a1628]/55 text-[15px] leading-[1.75]">{outcomes.intro}</p>
+      <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24">
+        <div
+          className="absolute inset-x-0 top-0 h-[58%] pointer-events-none"
+          style={{ background: 'linear-gradient(135deg, #07162b 0%, #0a2038 54%, #0b2e47 100%)' }}
+        />
+        <div
+          className="absolute inset-x-0 top-0 h-[58%] pointer-events-none opacity-25"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)',
+            backgroundSize: '44px 44px',
+          }}
+        />
+
+        <div className="relative mx-auto max-w-7xl px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
+            <div className="pb-2">
+              <div className="mb-7 flex items-center gap-3">
+                <span className="h-px w-12" style={{ background: accent }} />
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/55">
+                  Measurable outcomes
+                </p>
+              </div>
+              <h2 className="font-heading mb-6 max-w-xl leading-tight text-white">
+                {outcomes.heading}
+              </h2>
+              <p className="max-w-xl text-[15px] leading-[1.82] text-white/62">
+                {outcomes.intro}
+              </p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-5">
-              {outcomes.items.map((o, i) => (
-                <IndustryCard key={o.title} icon={o.icon} title={o.title} desc={o.desc} index={i} />
-              ))}
+
+            <div className="rounded-lg border border-white/10 bg-white/[0.06] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur">
+              <div className="grid gap-px overflow-hidden rounded-md border border-white/10 bg-white/10 sm:grid-cols-4">
+                {outcomes.items.map((o, i) => (
+                  <div key={o.title} className="bg-[#0d1c31] p-5">
+                    <p className="mb-8 text-[11px] font-bold uppercase tracking-[0.16em] text-white/35">
+                      0{i + 1}
+                    </p>
+                    <div
+                      className="mb-4 flex h-10 w-10 items-center justify-center rounded-sm"
+                      style={{ background: `${accent}24` }}
+                    >
+                      <FontAwesomeIcon icon={o.icon} className="h-4 w-4" style={{ color: accent }} />
+                    </div>
+                    <p className="text-[13px] font-semibold leading-[1.3] text-white">{o.title}</p>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {outcomes.items.map((o, i) => (
+              <article
+                key={o.title}
+                className="group relative flex min-h-[260px] flex-col overflow-hidden rounded-lg border border-gray-200 bg-white p-7 shadow-[0_10px_34px_rgba(10,22,40,0.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(10,22,40,0.13)]"
+              >
+                <div className="absolute left-0 top-0 h-full w-1 transition-all duration-300 group-hover:w-1.5" style={{ background: accent }} />
+                <div className="mb-8 flex items-start justify-between gap-5">
+                  <div
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm"
+                    style={{ background: `${accent}12` }}
+                  >
+                    <FontAwesomeIcon icon={o.icon} className="h-5 w-5" style={{ color: accent }} />
+                  </div>
+                  <span className="text-[38px] font-black leading-none text-[#0a1628]/[0.06]">
+                    0{i + 1}
+                  </span>
+                </div>
+                <h3 className="mb-4 text-[17px] font-semibold leading-[1.28] text-[#0a1628]">
+                  {o.title}
+                </h3>
+                <p className="text-[14px] font-normal leading-[1.78] text-[#0a1628]/58">
+                  {o.desc}
+                </p>
+                <div className="mt-auto pt-7">
+                  <div className="h-px w-full bg-gray-100" />
+                  <div className="mt-4 flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} />
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0a1628]/36">
+                      Outcome layer
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
