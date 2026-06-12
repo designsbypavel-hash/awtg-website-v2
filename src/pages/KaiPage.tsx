@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type CSSProperties } from 'react'
+﻿import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faXmark, faChevronDown, faPaperPlane, faMicrophone, faRobot, faArrowRightFromBracket, faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
@@ -92,70 +92,6 @@ function GlobeCountUp({ num, prefix = '', suffix = '', visible, delay = 0 }: {
   return <>{prefix}{display}{suffix}</>
 }
 
-const GLOBE_COUNTRIES = [
-  { flag: '🇬🇧', name: 'United Kingdom'  },
-  { flag: '🇺🇸', name: 'United States'   },
-  { flag: '🇮🇳', name: 'India'           },
-  { flag: '🇸🇬', name: 'Singapore'       },
-  { flag: '🇧🇷', name: 'Brazil'          },
-  { flag: '🇦🇪', name: 'UAE'             },
-  { flag: '🇿🇦', name: 'South Africa'    },
-  { flag: '🇩🇪', name: 'Germany'         },
-  { flag: '🇫🇷', name: 'France'          },
-  { flag: '🇯🇵', name: 'Japan'           },
-  { flag: '🇦🇺', name: 'Australia'       },
-  { flag: '🇨🇦', name: 'Canada'          },
-  { flag: '🇰🇷', name: 'South Korea'     },
-  { flag: '🇳🇬', name: 'Nigeria'         },
-  { flag: '🇸🇦', name: 'Saudi Arabia'    },
-  { flag: '🇳🇱', name: 'Netherlands'     },
-  { flag: '🇸🇪', name: 'Sweden'          },
-  { flag: '🇨🇭', name: 'Switzerland'     },
-  { flag: '🇵🇱', name: 'Poland'          },
-  { flag: '🇲🇽', name: 'Mexico'          },
-  { flag: '🇦🇷', name: 'Argentina'       },
-  { flag: '🇮🇱', name: 'Israel'          },
-  { flag: '🇹🇷', name: 'Turkey'          },
-  { flag: '🇳🇿', name: 'New Zealand'     },
-  { flag: '🇮🇩', name: 'Indonesia'       },
-  { flag: '🇵🇭', name: 'Philippines'     },
-  { flag: '🇰🇪', name: 'Kenya'           },
-  { flag: '🇬🇭', name: 'Ghana'           },
-  { flag: '🇪🇸', name: 'Spain'           },
-  { flag: '🇮🇹', name: 'Italy'           },
-  { flag: '🇵🇹', name: 'Portugal'        },
-  { flag: '🇧🇪', name: 'Belgium'         },
-  { flag: '🇫🇮', name: 'Finland'         },
-  { flag: '🇩🇰', name: 'Denmark'         },
-  { flag: '🇳🇴', name: 'Norway'          },
-  { flag: '🇵🇰', name: 'Pakistan'        },
-  { flag: '🇲🇾', name: 'Malaysia'        },
-  { flag: '🇹🇭', name: 'Thailand'        },
-  { flag: '🇻🇳', name: 'Vietnam'         },
-  { flag: '🇪🇬', name: 'Egypt'           },
-  { flag: '🇲🇦', name: 'Morocco'         },
-  { flag: '🇨🇴', name: 'Colombia'        },
-  { flag: '🇨🇱', name: 'Chile'           },
-  { flag: '🇷🇴', name: 'Romania'         },
-  { flag: '🇺🇦', name: 'Ukraine'         },
-  { flag: '🇭🇺', name: 'Hungary'         },
-  { flag: '🇨🇿', name: 'Czech Republic'  },
-  { flag: '🇦🇹', name: 'Austria'         },
-  { flag: '🇬🇷', name: 'Greece'          },
-  { flag: '🇷🇸', name: 'Serbia'          },
-]
-
-// Each slot is anchored to a globe node; dx/dy offset in SVG viewBox units
-const FLAG_SLOTS = [
-  { cx: 152, cy: 168, dx: -90, dy: -14 },
-  { cx: 210, cy: 135, dx: -88, dy: -36 },
-  { cx: 278, cy: 165, dx:  12, dy: -36 },
-  { cx: 328, cy: 200, dx:  14, dy: -16 },
-  { cx: 320, cy: 252, dx:  14, dy:  12 },
-  { cx: 162, cy: 262, dx: -90, dy:  12 },
-  { cx: 228, cy: 218, dx: -14, dy:  44 },
-]
-
 
 function RealisticGlobePanel({ visible }: { visible: boolean }) {
   return (
@@ -204,176 +140,9 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
 
 function GlobePanel({ visible }: { visible: boolean }) {
   return <RealisticGlobePanel visible={visible} />
-
-  const nodes: Array<{ cx: number; cy: number }> = [
-    { cx: 152, cy: 168 },
-    { cx: 210, cy: 135 },
-    { cx: 278, cy: 165 },
-    { cx: 328, cy: 200 },
-    { cx: 320, cy: 252 },
-    { cx: 162, cy: 262 },
-    { cx: 228, cy: 218 },
-  ]
-
-  const lines: Array<{ d: string; delay: number }> = [
-    { d: 'M 152,168 Q 180,108 210,135', delay: 0 },
-    { d: 'M 210,135 Q 246,118 278,165', delay: 350 },
-    { d: 'M 278,165 Q 310,158 328,200', delay: 700 },
-    { d: 'M 328,200 Q 340,228 320,252', delay: 1050 },
-    { d: 'M 152,168 Q 138,218 162,262', delay: 200 },
-    { d: 'M 228,218 Q 245,168 210,135', delay: 500 },
-  ]
-
-  const [slotCountries, setSlotCountries] = useState<number[]>(
-    () => FLAG_SLOTS.map((_, i) => i % GLOBE_COUNTRIES.length)
-  )
-  const [fadingSlots, setFadingSlots] = useState<Set<number>>(new Set())
-  const [chipIn, setChipIn] = useState<boolean[]>(Array(FLAG_SLOTS.length).fill(false))
-
-  // Pop chips in one by one after globe becomes visible
-  useEffect(() => {
-    if (!visible) return
-    const timers = FLAG_SLOTS.map((_, i) =>
-      window.setTimeout(() => setChipIn(prev => {
-        const next = [...prev]; next[i] = true; return next
-      }), 1000 + i * 320)
-    )
-    return () => timers.forEach(window.clearTimeout)
-  }, [visible])
-
-  // Cycle countries through slots
-  useEffect(() => {
-    if (!visible) return
-    const iv = window.setInterval(() => {
-      const slot = Math.floor(Math.random() * FLAG_SLOTS.length)
-      setFadingSlots(s => new Set(s).add(slot))
-      window.setTimeout(() => {
-        setSlotCountries(prev => {
-          const next = [...prev]
-          next[slot] = (prev[slot] + Math.floor(Math.random() * 5) + FLAG_SLOTS.length) % GLOBE_COUNTRIES.length
-          return next
-        })
-        setFadingSlots(s => { const n = new Set(s); n.delete(slot); return n })
-      }, 420)
-    }, 2000)
-    return () => window.clearInterval(iv)
-  }, [visible])
-
-  return (
-    <div style={{ position: 'relative', width: '100%' }}>
-      <style>{`
-        @keyframes awtg-globe-pulse {
-          0%   { transform: scale(1);   opacity: 0.65; }
-          100% { transform: scale(3.8); opacity: 0;    }
-        }
-        .awtg-p1 { transform-box: fill-box; transform-origin: center; animation: awtg-globe-pulse 2.8s ease-out infinite; }
-        .awtg-p2 { transform-box: fill-box; transform-origin: center; animation: awtg-globe-pulse 2.8s ease-out 1.4s infinite; }
-      `}</style>
-
-      <svg width="100%" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <clipPath id="globe-map-clip">
-            <circle cx="240" cy="240" r="144" />
-          </clipPath>
-        </defs>
-
-        <circle cx="240" cy="240" r="145" stroke="#228DC1" strokeOpacity="0.18" strokeWidth="1.5" />
-
-        <g clipPath="url(#globe-map-clip)" fill="#228DC1" fillOpacity="0.09">
-          <path d="M103,124 L106,151 L135,151 L142,163 L146,188 L168,216 L174,224 L180,224 L190,222 L187,209 L176,200 L176,188 L180,168 L198,164 L195,148 L189,139 L172,122 L159,122 L143,124 L127,127 Z" />
-          <path d="M188,111 L200,106 L220,107 L226,118 L216,122 L205,143 L196,130 L185,119 Z" />
-          <path d="M176,221 L190,222 L196,234 L212,253 L210,277 L201,293 L192,304 L189,329 L184,329 L180,321 L180,301 L182,269 L180,248 L177,240 Z" />
-          <path d="M232,179 L232,170 L236,147 L240,157 L252,145 L265,126 L266,135 L263,143 L264,151 L256,151 L251,160 L253,168 L268,172 L269,180 L264,180 L251,180 L239,171 L236,182 Z" />
-          <path d="M226,179 L240,179 L248,180 L258,183 L270,216 L280,222 L272,251 L267,280 L254,296 L240,300 L226,295 L226,216 Z" />
-          <path d="M261,172 L270,171 L272,180 L276,172 L285,168 L288,156 L296,172 L300,195 L305,226 L300,240 L304,256 L321,256 L325,232 L325,208 L337,208 L337,184 L345,176 L357,168 L353,153 L349,147 L353,124 L341,122 L325,121 L305,121 L288,122 L272,124 L264,130 L261,133 L263,151 L261,159 Z" />
-          <path d="M331,275 L345,259 L355,256 L363,282 L361,300 L351,296 L334,296 L331,282 Z" />
-        </g>
-
-        <ellipse cx="240" cy="240" rx="145" ry="12"  stroke="#228DC1" strokeOpacity="0.12" strokeWidth="1" />
-        <ellipse cx="240" cy="168" rx="125" ry="11"  stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
-        <ellipse cx="240" cy="312" rx="125" ry="11"  stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
-        <ellipse cx="240" cy="115" rx="73"  ry="7"   stroke="#228DC1" strokeOpacity="0.07" strokeWidth="1" />
-        <ellipse cx="240" cy="365" rx="73"  ry="7"   stroke="#228DC1" strokeOpacity="0.07" strokeWidth="1" />
-        <ellipse cx="240" cy="240" rx="73"  ry="145" stroke="#228DC1" strokeOpacity="0.10" strokeWidth="1" />
-        <ellipse cx="240" cy="240" rx="126" ry="145" stroke="#228DC1" strokeOpacity="0.07" strokeWidth="1" />
-
-        {lines.map((line, i) => (
-          <path key={i} d={line.d} stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round"
-            strokeOpacity="0.72" strokeDasharray="500"
-            strokeDashoffset={visible ? 0 : 500}
-            style={{ transition: visible ? `stroke-dashoffset 1.8s cubic-bezier(0.25,1,0.5,1) ${line.delay}ms` : 'none' }}
-          />
-        ))}
-
-        {/* Connector lines from nodes to flag chips */}
-        {FLAG_SLOTS.map((slot, i) => (
-          <line key={i}
-            x1={slot.cx} y1={slot.cy}
-            x2={slot.cx + slot.dx + (slot.dx < 0 ? 82 : 0)}
-            y2={slot.cy + slot.dy + 11}
-            stroke="#228DC1" strokeWidth="0.9" strokeDasharray="3,3"
-            opacity={chipIn[i] && !fadingSlots.has(i) ? 0.38 : 0}
-            style={{ transition: 'opacity 0.4s ease' }}
-          />
-        ))}
-
-        {nodes.map((n, i) => (
-          <g key={i}>
-            {visible && (
-              <>
-                <circle cx={n.cx} cy={n.cy} r="5" stroke="#228DC1" strokeWidth="1.2" fill="none" strokeOpacity="0.55" className="awtg-p1" style={{ animationDelay: `${(i * 0.38).toFixed(2)}s` }} />
-                <circle cx={n.cx} cy={n.cy} r="5" stroke="#228DC1" strokeWidth="0.8" fill="none" strokeOpacity="0.35" className="awtg-p2" style={{ animationDelay: `${(i * 0.38).toFixed(2)}s` }} />
-              </>
-            )}
-            <circle cx={n.cx} cy={n.cy} r="4" fill="#228DC1"
-              fillOpacity={visible ? 0.9 : 0}
-              style={{ transition: `fill-opacity 0.4s ease ${200 + i * 100}ms` }}
-            />
-          </g>
-        ))}
-      </svg>
-
-      {/* Flag chips */}
-      {FLAG_SLOTS.map((slot, i) => {
-        const country = GLOBE_COUNTRIES[slotCountries[i]]
-        const isIn  = chipIn[i]
-        const isFading = fadingSlots.has(i)
-        return (
-          <div key={i} style={{
-            position: 'absolute',
-            left: `${(slot.cx + slot.dx) / 480 * 100}%`,
-            top:  `${(slot.cy + slot.dy) / 480 * 100}%`,
-            transform: `translateY(-50%) scale(${isIn && !isFading ? 1 : 0.78})`,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 5,
-            background: 'white',
-            border: '1px solid rgba(34,141,193,0.22)',
-            borderRadius: 20,
-            padding: '4px 10px 4px 6px',
-            boxShadow: '0 2px 12px rgba(10,22,40,0.10)',
-            fontSize: 10.5,
-            fontWeight: 600,
-            color: '#0a1628',
-            fontFamily: 'Roboto, sans-serif',
-            whiteSpace: 'nowrap',
-            opacity: isIn && !isFading ? 1 : 0,
-            transition: isFading
-              ? 'opacity 0.35s ease, transform 0.35s ease'
-              : 'opacity 0.45s cubic-bezier(0.34,1.56,0.64,1), transform 0.45s cubic-bezier(0.34,1.56,0.64,1)',
-            pointerEvents: 'none',
-            zIndex: 2,
-          }}>
-            <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{country.flag}</span>
-            <span>{country.name}</span>
-          </div>
-        )
-      })}
-    </div>
-  )
 }
 
-// -- Redesigned global reach — two-column, text+stats left / globe right ---
+// -- Redesigned global reach â€” two-column, text+stats left / globe right ---
 function GlobalReachSection() {
   const [ref, inView] = useInView(0.15)
 
@@ -389,7 +158,7 @@ function GlobalReachSection() {
       <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
 
-          {/* Left — heading, body, stat cards */}
+          {/* Left â€” heading, body, stat cards */}
           <div style={reveal(inView, 0)}>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Global reach. Measurable customer outcomes.
@@ -398,7 +167,7 @@ function GlobalReachSection() {
               Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from day 1.
             </p>
 
-            {/* 2 × 2 stat grid — flush with text, no extra margin */}
+            {/* 2 Ã— 2 stat grid â€” flush with text, no extra margin */}
             <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, i) => (
                 <div key={i} style={{
@@ -421,7 +190,7 @@ function GlobalReachSection() {
             </div>
           </div>
 
-          {/* Right — globe fills the full column */}
+          {/* Right â€” globe fills the full column */}
           <div style={reveal(inView, 200)}>
             <GlobePanel visible={inView} />
           </div>
@@ -432,11 +201,11 @@ function GlobalReachSection() {
   )
 }
 
-// -- Integrations — Kai as glowing hub ----------------------------------------
+// -- Integrations â€” Kai as glowing hub ----------------------------------------
 function IntegrationsSection() {
   const [ref, inView] = useInView(0.08)
 
-  // 5 � 3 grid = 15 slots; Kai sits at index 7 (row 1, col 2 � dead centre)
+  // 5 ï¿½ 3 grid = 15 slots; Kai sits at index 7 (row 1, col 2 ï¿½ dead centre)
   type Item = { label: string; category: string; logo: string | null; isKai?: true }
   const items: Item[] = [
     { label: 'HubSpot',      category: 'CRM',        logo: integrationLogos.hubspot },
@@ -489,7 +258,7 @@ function IntegrationsSection() {
             </div>
           </div>
 
-          {/* Right: 5 � 3 hub grid */}
+          {/* Right: 5 ï¿½ 3 hub grid */}
           <div ref={ref} className="grid grid-cols-5 gap-2">
             {items.map((item, i) => {
               const d = dist(i)
@@ -525,7 +294,7 @@ function IntegrationsSection() {
                       {/* Pulse ring 1 */}
                       <div className="absolute inset-0 pointer-events-none rounded-sm"
                         style={{ border: '1.5px solid rgba(144,62,142,0.35)', animation: 'kaiPulseRing 2.4s ease-out infinite' }} />
-                      {/* Pulse ring 2 — offset */}
+                      {/* Pulse ring 2 â€” offset */}
                       <div className="absolute inset-0 pointer-events-none rounded-sm"
                         style={{ border: '1.5px solid rgba(144,62,142,0.20)', animation: 'kaiPulseRing 2.4s ease-out 1.2s infinite' }} />
                     </>
@@ -540,7 +309,7 @@ function IntegrationsSection() {
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                       />
                       <span className="relative text-[8px] font-semibold text-[#903E8E] bg-[#903E8E]/10 border border-[#903E8E]/30 px-1.5 py-0.5 rounded-sm">
-                        AI Agent · MCP
+                        AI Agent Â· MCP
                       </span>
                     </>
                   ) : (
@@ -642,7 +411,7 @@ function SecurityComplianceSection() {
   )
 }
 
-// ─── Figma design tokens (node 2691:17369) ───────────────────────────────────
+// â”€â”€â”€ Figma design tokens (node 2691:17369) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const KAI_HDR_GRAD = 'linear-gradient(126deg,#4C97C3 0%,#6AC1EF 28.5%,#BEF3FF 43.36%,#67D7E4 50.91%,#6AC1EF 64.5%)'
 // const KAI_BORDER   = '#4c97c3'          // gradient border handled by wrapper padding
 const KAI_MSG_AI   = '#f4fbff'          // AI message row bg
@@ -663,23 +432,23 @@ const VOICE_SCRIPT: VoiceTurn[] = [
   { speaker: 'ai',   text: "Yes! I've updated the address. You'll receive a confirmation shortly." },
 ]
 
-// ─── Voice script (drives the animated voice phase) ──────────────────────────
-// ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
+// â”€â”€â”€ Voice script (drives the animated voice phase) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€â”€ Chat script (mirrors voice, revealed all at once after voice ends) â”€â”€â”€â”€â”€â”€â”€
 type ChatRole = 'ai' | 'user' | 'signal' | 'map' | 'chips'
 const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
-  { role: 'ai',     text: "Hi there! 👋\nHow can I help you today?" },
+  { role: 'ai',     text: "Hi there! ðŸ‘‹\nHow can I help you today?" },
   { role: 'user',   text: "Where's my parcel? It's been 5 days." },
-  { role: 'ai',     text: "Found it! Order #48291 is out for delivery, arriving today before 6 PM.", meta: 'Order #48291 · GPS active' },
+  { role: 'ai',     text: "Found it! Order #48291 is out for delivery, arriving today before 6 PM.", meta: 'Order #48291 Â· GPS active' },
   { role: 'map',    text: '' },
   { role: 'user',   text: "How far away is the driver?" },
-  { role: 'ai',     text: "Just 2.4 miles away. They'll be with you before 6 PM. 📦" },
+  { role: 'ai',     text: "Just 2.4 miles away. They'll be with you before 6 PM. ðŸ“¦" },
   { role: 'user',   text: "Can I change the delivery address?" },
-  { role: 'ai',     text: "Yes! I've updated the address. You'll receive a confirmation shortly. ✅" },
-  { role: 'signal', text: 'Resolved · 52s · CSAT sent' },
+  { role: 'ai',     text: "Yes! I've updated the address. You'll receive a confirmation shortly. âœ…" },
+  { role: 'signal', text: 'Resolved Â· 52s Â· CSAT sent' },
   { role: 'chips',  text: '' },
 ]
 
-// ─── Delivery map widget ──────────────────────────────────────────────────────
+// â”€â”€â”€ Delivery map widget â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function MapWidget() {
   // Street colour and block colours match the reference screenshot
   const STREET  = '#f5f2ec'
@@ -692,39 +461,39 @@ function MapWidget() {
         {/* Base */}
         <rect width="360" height="142" fill="#ece7dc"/>
 
-        {/* ── Vertical streets ── */}
+        {/* â”€â”€ Vertical streets â”€â”€ */}
         {[0, 94, 188, 282, 351].map(x => (
           <rect key={x} x={x} width="9" height="142" fill={STREET}/>
         ))}
 
-        {/* ── Horizontal streets ── */}
+        {/* â”€â”€ Horizontal streets â”€â”€ */}
         <rect y="0"   width="360" height="9"  fill={STREET}/>
         <rect y="59"  width="360" height="16" fill={STREET}/>   {/* route street */}
         <rect y="113" width="360" height="9"  fill={STREET}/>
         <rect y="133" width="360" height="9"  fill={STREET}/>
 
-        {/* ── Row 1 blocks  (y 9–59) ── */}
+        {/* â”€â”€ Row 1 blocks  (y 9â€“59) â”€â”€ */}
         <rect x="9"   y="9" width="85" height="50" fill={BLOCK}/>  {/* Col1 tan  */}
         <rect x="103" y="9" width="85" height="50" fill={GREEN}/>  {/* Col2 GREEN */}
         <rect x="197" y="9" width="85" height="50" fill={BLOCK}/>  {/* Col3 tan  */}
         <rect x="291" y="9" width="60" height="50" fill={BLOCK}/>  {/* Col4 tan  */}
 
-        {/* ── Row 2 blocks  (y 75–113) ── */}
+        {/* â”€â”€ Row 2 blocks  (y 75â€“113) â”€â”€ */}
         <rect x="9"   y="75" width="85" height="38" fill={GREEN}/>  {/* Col1 GREEN */}
         <rect x="103" y="75" width="85" height="38" fill={BLOCK}/>  {/* Col2 tan  */}
         <rect x="197" y="75" width="85" height="38" fill={BLOCK}/>  {/* Col3 tan  */}
         <rect x="291" y="75" width="60" height="38" fill={BLOCK}/>  {/* Col4 tan  */}
 
-        {/* ── Row 3 strip  (y 122–133) ── */}
+        {/* â”€â”€ Row 3 strip  (y 122â€“133) â”€â”€ */}
         {[9, 103, 197, 291].map((x, i) => (
           <rect key={i} x={x} y="122" width={i === 3 ? 60 : 85} height="11" fill={BLOCK}/>
         ))}
 
-        {/* ── Route line ── */}
+        {/* â”€â”€ Route line â”€â”€ */}
         <line x1="38" y1="67" x2="287" y2="67"
               stroke="#1a73e8" strokeWidth="2.5" strokeLinecap="round"/>
 
-        {/* ── Arrow chevrons along route ── */}
+        {/* â”€â”€ Arrow chevrons along route â”€â”€ */}
         {[108, 183, 248].map(x => (
           <polyline key={x}
             points={`${x-6},62 ${x},67 ${x-6},72`}
@@ -732,10 +501,10 @@ function MapWidget() {
             strokeLinecap="round" strokeLinejoin="round" opacity="0.75"/>
         ))}
 
-        {/* ── Current position — hollow blue ring ── */}
+        {/* â”€â”€ Current position â€” hollow blue ring â”€â”€ */}
         <circle cx="38" cy="67" r="9" fill="white" stroke="#1a73e8" strokeWidth="2.5"/>
 
-        {/* ── Destination — classic map pin (pointed bottom, circle top) ──
+        {/* â”€â”€ Destination â€” classic map pin (pointed bottom, circle top) â”€â”€
              Tip at (287, 75), circle centre at (287, 46), radius 17        */}
         <path
           d="M287,75 C276,67 270,57 270,46 A17,17,0,1,1,304,46 C304,57 298,67 287,75 Z"
@@ -743,19 +512,19 @@ function MapWidget() {
         />
         <circle cx="287" cy="44" r="7" fill="white" opacity="0.92"/>
 
-        {/* ── ETA badge ── */}
+        {/* â”€â”€ ETA badge â”€â”€ */}
         <rect x="183" y="116" width="172" height="21" rx="4" fill="white" opacity="0.93"/>
         <circle cx="196" cy="126.5" r="4" fill="#E53935"/>
         <text x="204" y="131" fontSize="10.5" fill="#374151"
               fontFamily="system-ui,sans-serif" fontWeight="500">
-          2.4 mi · ETA 6 PM
+          2.4 mi Â· ETA 6 PM
         </text>
       </svg>
     </div>
   )
 }
 
-// ─── Voice + Chat demo ────────────────────────────────────────────────────────
+// â”€â”€â”€ Voice + Chat demo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 type OrbMode   = 'listen' | 'user' | 'ai'
 type DemoPhase = 'voice' | 'chat' | 'csat' | 'csat-out'
 
@@ -847,7 +616,7 @@ function KaiChatDemo() {
       <div style={{ width: '100%', height: '100%', padding: 7, borderRadius: 33, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
         <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 30, overflow: 'hidden', background: KAI_HDR_GRAD }}>
 
-          {/* ── SHARED HEADER — always on top, never transitions ── */}
+          {/* â”€â”€ SHARED HEADER â€” always on top, never transitions â”€â”€ */}
           <div style={{
             position: 'absolute', top: 0, left: 0, right: 0, height: 73,
             background: KAI_HDR_GRAD,
@@ -863,7 +632,7 @@ function KaiChatDemo() {
             <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: KAI_ICON_DARK, opacity: 0.72, marginLeft: 7 }} />
           </div>
 
-          {/* ── VOICE VIEW ── */}
+          {/* â”€â”€ VOICE VIEW â”€â”€ */}
           <div style={{
             position: 'absolute', inset: 0,
             background: 'linear-gradient(180deg, #071220 0%, #0c1b30 55%, #08152a 100%)',
@@ -873,14 +642,14 @@ function KaiChatDemo() {
             zIndex: 1,
           }}>
 
-            {/* ── Main body: transcript TOP, orb BOTTOM ── */}
+            {/* â”€â”€ Main body: transcript TOP, orb BOTTOM â”€â”€ */}
             <div style={{
               position: 'absolute', top: 73, left: 0, right: 0, bottom: 58,
               display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
               padding: '6px 0 14px',
             }}>
 
-              {/* ── TOP: Kai VOICE label + live transcript ── */}
+              {/* â”€â”€ TOP: Kai VOICE label + live transcript â”€â”€ */}
               <div style={{ padding: '0 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
@@ -889,7 +658,7 @@ function KaiChatDemo() {
                   </span>
                 </div>
 
-                {/* Previous turn — dimmed */}
+                {/* Previous turn â€” dimmed */}
                 {prevTurn && (
                   <div style={{ marginBottom: 18, opacity: 0.32 }}>
                     <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 5px',
@@ -902,7 +671,7 @@ function KaiChatDemo() {
                   </div>
                 )}
 
-                {/* Current turn — typing out */}
+                {/* Current turn â€” typing out */}
                 {currentTurn && (
                   <div>
                     <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 7px',
@@ -910,7 +679,7 @@ function KaiChatDemo() {
                       {currentTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
                     </p>
                     {showListeningLabel
-                      ? <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.04em', margin: 0 }}>Listening…</p>
+                      ? <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.04em', margin: 0 }}>Listeningâ€¦</p>
                       : <p style={{ fontSize: 16, color: '#fff', lineHeight: 1.65, margin: 0, letterSpacing: '-0.01em' }}>{transcript}</p>
                     }
                   </div>
@@ -918,11 +687,11 @@ function KaiChatDemo() {
 
                 {/* Pre-first-turn placeholder */}
                 {!currentTurn && !prevTurn && (
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.14)', margin: 0, letterSpacing: '0.06em' }}>…</p>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.14)', margin: 0, letterSpacing: '0.06em' }}>â€¦</p>
                 )}
               </div>
 
-              {/* ── BOTTOM: Orb + waveform + status ── */}
+              {/* â”€â”€ BOTTOM: Orb + waveform + status â”€â”€ */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 112, height: 112, borderRadius: '50%',
@@ -943,17 +712,17 @@ function KaiChatDemo() {
                 </div>
 
                 <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.06em', color: orbMode === 'user' ? 'rgba(52,199,138,0.75)' : 'rgba(255,255,255,0.30)', margin: 0, fontFamily: 'Roboto,sans-serif', transition: 'color 0.4s ease' }}>
-                  {orbMode === 'ai' ? 'Speaking…' : 'Listening…'}
+                  {orbMode === 'ai' ? 'Speakingâ€¦' : 'Listeningâ€¦'}
                 </p>
               </div>
             </div>
 
-            {/* Kai label — bottom left */}
+            {/* Kai label â€” bottom left */}
             <div style={{ position: 'absolute', bottom: 66, left: 22 }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', fontFamily: 'Roboto,sans-serif' }}>Kai</span>
             </div>
 
-            {/* Voice input bar — minimal, buttons only */}
+            {/* Voice input bar â€” minimal, buttons only */}
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0,
               background: '#fff', borderRadius: '0 0 30px 30px',
@@ -976,7 +745,7 @@ function KaiChatDemo() {
             </div>
           </div>
 
-          {/* ── CHAT VIEW (full conversation revealed at once) ── */}
+          {/* â”€â”€ CHAT VIEW (full conversation revealed at once) â”€â”€ */}
           <div style={{
             position: 'absolute', inset: 0,
             background: KAI_HDR_GRAD,
@@ -985,7 +754,7 @@ function KaiChatDemo() {
             pointerEvents: isChat ? 'auto' : 'none',
             zIndex: 2,
           }}>
-            {/* Chat area — starts just below the shared header */}
+            {/* Chat area â€” starts just below the shared header */}
             <div style={{ position: 'absolute', top: 73, left: 0, right: 0, bottom: 0, background: '#fff', borderRadius: 30, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
               {/* All messages visible at once */}
               <div className="kai-chat-scroll" style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
@@ -994,7 +763,7 @@ function KaiChatDemo() {
                   if (msg.role === 'signal') return (
                     <div key={i} style={{ display: 'flex', justifyContent: 'center', padding: '10px 12px' }}>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, color: '#059669', background: 'rgba(5,150,105,0.12)', borderRadius: 99, padding: '4px 14px' }}>
-                        ✓&nbsp;{msg.text}
+                        âœ“&nbsp;{msg.text}
                       </span>
                     </div>
                   )
@@ -1014,7 +783,7 @@ function KaiChatDemo() {
                       <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(0,0,0,0.87)', margin: 0, whiteSpace: 'pre-line' }}>{msg.text}</p>
                       {msg.meta && isAI && (
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, alignSelf: 'flex-start', fontSize: 10, fontWeight: 600, color: '#228DC1', background: 'rgba(34,141,193,0.10)', borderRadius: 4, padding: '2px 8px' }}>
-                          ⚡ {msg.meta}
+                          âš¡ {msg.meta}
                         </span>
                       )}
                     </div>
@@ -1022,7 +791,7 @@ function KaiChatDemo() {
                 })}
               </div>
 
-              {/* CSAT rating overlay — eases in over messages at end */}
+              {/* CSAT rating overlay â€” eases in over messages at end */}
               {isCsat && (
                 <div style={{
                   position: 'absolute', inset: 0, zIndex: 5,
@@ -1041,7 +810,7 @@ function KaiChatDemo() {
                       Rate your experience to help us improve!
                     </p>
                     <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
-                      {[{ e: '👍', l: 'Satisfied' }, { e: '👎', l: 'Dissatisfied' }].map(b => (
+                      {[{ e: 'ðŸ‘', l: 'Satisfied' }, { e: 'ðŸ‘Ž', l: 'Dissatisfied' }].map(b => (
                         <div key={b.l} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, padding: '10px 8px', border: '1px solid #e5e7eb', borderRadius: 10, background: '#fff', fontSize: 13, fontWeight: 600, color: '#0a1628', cursor: 'default' }}>
                           <span style={{ fontSize: 16 }}>{b.e}</span>{b.l}
                         </div>
@@ -1054,7 +823,7 @@ function KaiChatDemo() {
                 </div>
               )}
 
-              {/* Input bar — matches voice bar layout */}
+              {/* Input bar â€” matches voice bar layout */}
               <div style={{ borderTop: '0.5px solid #e5e7eb', padding: '11px 16px 14px', display: 'flex', alignItems: 'center', gap: 10, background: '#fff', flexShrink: 0 }}>
                 <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15, color: 'rgba(10,22,40,0.35)', userSelect: 'none' }}>
                   Type here...
@@ -1175,40 +944,40 @@ function EscalationChart() {
 // -- Omnichannel Section -------------------------------------------------------
 //
 // Layout mirrors the Intercom "Fin" showcase:
-//   • dot-grid section background
-//   • 7 channel icon squares in a 3-column grid (matching panels below)
-//   • SVG connector: stubs → horizontal bar → 3 drops → panel tops
-//   • Three panels: Telegram | Kai Web Chat | Gmail
+//   â€¢ dot-grid section background
+//   â€¢ 7 channel icon squares in a 3-column grid (matching panels below)
+//   â€¢ SVG connector: stubs â†’ horizontal bar â†’ 3 drops â†’ panel tops
+//   â€¢ Three panels: Telegram | Kai Web Chat | Gmail
 //
 // SVG coordinate system  viewBox="0 0 1000 80"  preserveAspectRatio="none"
 //   Column centres: 160 | 500 | 840   (same proportions as CSS grid cols)
 //   Left icon stubs  x = 120, 160, 200   Right icon stubs  x = 800, 840, 880
-//   Bar  y = 38   Drops  y = 38 → 80
+//   Bar  y = 38   Drops  y = 38 â†’ 80
 // ---------------------------------------------------------------------------
 
 function OmnichannelSection() {
-  // ─── Design tokens ──────────────────────────────────────────────────────
+  // â”€â”€â”€ Design tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const OMNI_BG  = '#f4f4ff'
   const CONN_CLR = '#4c97c3'
 
-  // ─── Telegram messages ──────────────────────────────────────────────────
+  // â”€â”€â”€ Telegram messages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const tgMsgs = [
-    { from:'bot',  text:"Hi! I'm Kai 👋\nHow can I help you today?",                                        time:'09:41' },
-    { from:'user', text:'I need help raising a complaint about a missed delivery',                            time:'09:42', ticks:'✓✓' },
-    { from:'bot',  text:"Got it! I've raised case #7823 and notified the delivery team.\nExpect a callback within 2 hours. ✅", time:'09:42' },
-    { from:'user', text:'Brilliant, thank you!',                                                              time:'09:43', ticks:'✓✓' },
+    { from:'bot',  text:"Hi! I'm Kai ðŸ‘‹\nHow can I help you today?",                                        time:'09:41' },
+    { from:'user', text:'I need help raising a complaint about a missed delivery',                            time:'09:42', ticks:'âœ“âœ“' },
+    { from:'bot',  text:"Got it! I've raised case #7823 and notified the delivery team.\nExpect a callback within 2 hours. âœ…", time:'09:42' },
+    { from:'user', text:'Brilliant, thank you!',                                                              time:'09:43', ticks:'âœ“âœ“' },
   ]
 
-  // ─── Kai web messages ───────────────────────────────────────────────────
+  // â”€â”€â”€ Kai web messages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const kaiMsgs: { from:'ai'|'user'; text:string; meta?:string; signal?:string }[] = [
-    { from:'ai',   text:"Hi there! 👋\nWhat can I help you with today?" },
+    { from:'ai',   text:"Hi there! ðŸ‘‹\nWhat can I help you with today?" },
     { from:'user', text:"I'd like to upgrade my subscription to the Pro plan." },
-    { from:'ai',   text:"Your current plan is Starter. Pro unlocks unlimited agents, priority support and full analytics.", meta:'Account #10284 · CRM synced' },
+    { from:'ai',   text:"Your current plan is Starter. Pro unlocks unlimited agents, priority support and full analytics.", meta:'Account #10284 Â· CRM synced' },
     { from:'user', text:'What does it cost per month?' },
-    { from:'ai',   text:"Pro is £299/month. I've emailed a full comparison and a one-click upgrade link.", signal:'Upgraded · 44s · CSAT sent' },
+    { from:'ai',   text:"Pro is Â£299/month. I've emailed a full comparison and a one-click upgrade link.", signal:'Upgraded Â· 44s Â· CSAT sent' },
   ]
 
-  // ─── Channel icon box ────────────────────────────────────────────────
+  // â”€â”€â”€ Channel icon box â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const ChIcon = ({
     children,
   }: { color?:string; bg?:string; glow?:boolean; children:React.ReactNode }) => (
@@ -1223,7 +992,7 @@ function OmnichannelSection() {
     </div>
   )
 
-  // ─── Telegram icon path ───────────────────────────────────────────────
+  // â”€â”€â”€ Telegram icon path â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const TgPath = ({ size = 20, fill = '#229ED9' }: { size?:number; fill?:string }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={fill}>
       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
@@ -1269,23 +1038,23 @@ function OmnichannelSection() {
     >
       <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-20">
 
-        {/* ── Centred heading ── */}
+        {/* â”€â”€ Centred heading â”€â”€ */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="font-heading text-[#0a1628] mb-5">One AI. Every channel.</h2>
           <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-            Kai meets customers on Telegram, your website or email — with the same intelligence, context and resolution on every channel.
+            Kai meets customers on Telegram, your website or email â€” with the same intelligence, context and resolution on every channel.
           </p>
         </div>
 
-        {/* ═══════════════════════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             DESKTOP ROUTING DIAGRAM
-        ══════════════════════════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="hidden lg:block">
 
-          {/* ── Channel icon row (3-col grid matching panels) ── */}
+          {/* â”€â”€ Channel icon row (3-col grid matching panels) â”€â”€ */}
           <div className="grid grid-cols-3 gap-6 mb-0">
 
-            {/* Left: WhatsApp · Telegram · Teams */}
+            {/* Left: WhatsApp Â· Telegram Â· Teams */}
             <div className="flex justify-center items-center gap-2">
               <ChIcon color="#25D366" bg="rgba(37,211,102,0.10)">
                 <img src={integrationLogos.whatsapp} alt="WhatsApp" style={{ width:32, height:32, objectFit:'contain' }}
@@ -1309,7 +1078,7 @@ function OmnichannelSection() {
               </ChIcon>
             </div>
 
-            {/* Right: Gmail · Outlook · Apple Mail */}
+            {/* Right: Gmail Â· Outlook Â· Apple Mail */}
             <div className="flex justify-center items-center gap-2">
               <ChIcon color="#EA4335" bg="rgba(234,67,53,0.10)">
                 <img src={integrationLogos.gmail} alt="Gmail" style={{ width:32, height:32, objectFit:'contain' }}
@@ -1326,7 +1095,7 @@ function OmnichannelSection() {
             </div>
           </div>
 
-          {/* ── SVG connector ── */}
+          {/* â”€â”€ SVG connector â”€â”€ */}
           <svg
             width="100%" height="80"
             viewBox="0 0 1000 80"
@@ -1352,10 +1121,10 @@ function OmnichannelSection() {
             ))}
           </svg>
 
-          {/* ── Three channel panels ── */}
+          {/* â”€â”€ Three channel panels â”€â”€ */}
           <div className="grid grid-cols-3 gap-6">
 
-            {/* ════ LEFT: TELEGRAM ════ */}
+            {/* â•â•â•â• LEFT: TELEGRAM â•â•â•â• */}
             <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff' }}>
 
               {/* Header */}
@@ -1365,7 +1134,7 @@ function OmnichannelSection() {
                 </div>
                 <div style={{ flex:1 }}>
                   <p style={{ color:'white', fontSize:13, fontWeight:600, lineHeight:1.2 }}>Kai Support Bot</p>
-                  <p style={{ color:'rgba(255,255,255,0.65)', fontSize:11, marginTop:1 }}>bot · online</p>
+                  <p style={{ color:'rgba(255,255,255,0.65)', fontSize:11, marginTop:1 }}>bot Â· online</p>
                 </div>
                 <div style={{ display:'flex', gap:2, alignItems:'flex-end' }}>
                   {[9,13,17].map((h,i) => (
@@ -1400,7 +1169,7 @@ function OmnichannelSection() {
                 )}
                 <div style={{ display:'flex', justifyContent:'center', marginTop:6 }}>
                   <span style={{ background:'rgba(0,0,0,0.09)', borderRadius:20, padding:'4px 12px', fontSize:11, color:'rgba(0,0,0,0.45)', fontFamily:'Roboto,sans-serif' }}>
-                    ✓ Case raised · 28s
+                    âœ“ Case raised Â· 28s
                   </span>
                 </div>
               </div>
@@ -1416,7 +1185,7 @@ function OmnichannelSection() {
               </div>
             </div>
 
-            {/* ════ CENTRE: Kai WEB CHAT ════ */}
+            {/* â•â•â•â• CENTRE: Kai WEB CHAT â•â•â•â• */}
             <div className="omni-panel-center" style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, display:'flex', flexDirection:'column' }}>
               <div style={{ borderRadius:15, background:'#fff', overflow:'hidden', flex:1, display:'flex', flexDirection:'column' }}>
 
@@ -1440,12 +1209,12 @@ function OmnichannelSection() {
                         <p style={{ fontSize:13, color:'rgba(0,0,0,0.87)', lineHeight:1.55, whiteSpace:'pre-line', margin:0 }}>{msg.text}</p>
                         {msg.meta && (
                           <span style={{ display:'inline-flex', alignItems:'center', gap:4, fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px', alignSelf:'flex-start' }}>
-                            ⚡ {msg.meta}
+                            âš¡ {msg.meta}
                           </span>
                         )}
                         {msg.signal && (
                           <span style={{ display:'inline-flex', alignItems:'center', gap:5, fontSize:11, fontWeight:600, color:'#059669', background:'rgba(5,150,105,0.10)', borderRadius:99, padding:'4px 14px', alignSelf:'center', marginTop:4 }}>
-                            ✓ {msg.signal}
+                            âœ“ {msg.signal}
                           </span>
                         )}
                       </div>
@@ -1466,7 +1235,7 @@ function OmnichannelSection() {
               </div>
             </div>
 
-            {/* ════ RIGHT: GMAIL ════ */}
+            {/* â•â•â•â• RIGHT: GMAIL â•â•â•â• */}
             <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff' }}>
 
               {/* Gmail toolbar */}
@@ -1485,7 +1254,7 @@ function OmnichannelSection() {
               {/* Thread header */}
               <div style={{ padding:'12px 14px 8px', borderBottom:'1px solid #f0f0f0', flexShrink:0 }}>
                 <p style={{ fontSize:14, fontWeight:600, color:'#202124', marginBottom:3, fontFamily:'Roboto,sans-serif' }}>
-                  RE: Subscription Upgrade — Pro Plan
+                  RE: Subscription Upgrade â€” Pro Plan
                 </p>
                 <div style={{ display:'flex', alignItems:'center', gap:5 }}>
                   <span style={{ fontSize:11, color:'rgba(10,22,40,0.45)', fontFamily:'Roboto,sans-serif' }}>2 messages</span>
@@ -1494,7 +1263,7 @@ function OmnichannelSection() {
                 </div>
               </div>
 
-              {/* Customer email — collapsed */}
+              {/* Customer email â€” collapsed */}
               <div style={{ padding:'9px 14px', borderBottom:'1px solid #f5f5f5', background:'#fafafa', flexShrink:0 }}>
                 <div style={{ display:'flex', alignItems:'center', gap:8 }}>
                   <div style={{ width:28, height:28, borderRadius:'50%', background:'#dde2e8', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
@@ -1512,7 +1281,7 @@ function OmnichannelSection() {
                 </div>
               </div>
 
-              {/* Kai reply — expanded */}
+              {/* Kai reply â€” expanded */}
               <div style={{ padding:'12px 14px', flex:1 }}>
                 <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:9 }}>
                   <div style={{ width:30, height:30, borderRadius:'50%', background:'#228DC1', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
@@ -1526,19 +1295,19 @@ function OmnichannelSection() {
                       </div>
                       <span style={{ fontSize:11, color:'rgba(10,22,40,0.4)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
                     </div>
-                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.42)', fontFamily:'Roboto,sans-serif' }}>kai@awtg.co.uk → james.h@email.com</span>
+                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.42)', fontFamily:'Roboto,sans-serif' }}>kai@awtg.co.uk â†’ james.h@email.com</span>
                   </div>
                 </div>
 
                 <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif' }}>
-                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics — at <strong>£299/month</strong>.
+                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics â€” at <strong>Â£299/month</strong>.
                 </p>
                 <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif', marginTop:6 }}>
                   I've sent a one-click upgrade link to your inbox. Let me know if you have any questions!
                 </p>
                 <div style={{ marginTop:9 }}>
                   <span style={{ fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px', fontFamily:'Roboto,sans-serif' }}>
-                    ⚡ Account #10284 · CRM synced
+                    âš¡ Account #10284 Â· CRM synced
                   </span>
                 </div>
               </div>
@@ -1552,9 +1321,9 @@ function OmnichannelSection() {
           </div>{/* end panels grid */}
         </div>{/* end desktop block */}
 
-        {/* ═══════════════════════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             MOBILE: channel pills + Kai widget
-        ══════════════════════════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="lg:hidden flex flex-wrap justify-center gap-2 mb-10">
           {['WhatsApp','Telegram','Teams','Web Chat','Gmail','Outlook','Telegram'].map((ch, i) => (
             <span key={`${ch}-${i}`} className="text-[11px] font-semibold text-[#228DC1] bg-white border border-[#228DC1]/20 px-3 py-1.5 rounded-full shadow-sm">
@@ -1776,7 +1545,7 @@ export default function KaiPage() {
               </div>
             </div>
 
-            {/* Right: chart card — Intercom-style */}
+            {/* Right: chart card â€” Intercom-style */}
             <div style={{ border:'1px solid #e4e8ed', background:'#fafaf7' }}>
               {/* Card header */}
               <div style={{ padding:'20px 22px 12px' }}>
@@ -1787,7 +1556,7 @@ export default function KaiPage() {
                 </p>
               </div>
 
-              {/* SVG chart — hover-interactive */}
+              {/* SVG chart â€” hover-interactive */}
               <div style={{ padding:'4px 16px 0' }}>
                 <EscalationChart />
               </div>
@@ -1868,7 +1637,7 @@ export default function KaiPage() {
               {
                 num: '03',
                 pill: 'KNOWLEDGE',
-                label: 'Define Agent Behaviour',
+                label: 'Connect your Knowledge Base',
                 desc: 'Connect your knowledge sources by uploading files, adding links, or integrating a database via API. End-to-end data privacy and control, encrypted at rest and in transit, CREST-certified and ISO 42001 compliant.',
               },
             ].map((step, i) => (
