@@ -242,92 +242,94 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       {/* ══════════════════════════════════════════════════════
           OUTCOMES — asymmetric: sticky heading left + 2×2 grid right
       ══════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24">
+      <section className="relative overflow-hidden border-t border-gray-100 bg-[#f6f9fc] py-24">
         <div
-          className="absolute inset-x-0 top-0 h-[58%] pointer-events-none"
-          style={{ background: 'linear-gradient(135deg, #07162b 0%, #0a2038 54%, #0b2e47 100%)' }}
-        />
-        <div
-          className="absolute inset-x-0 top-0 h-[58%] pointer-events-none opacity-25"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)',
-            backgroundSize: '44px 44px',
-          }}
+          className="absolute inset-x-0 top-0 h-72 pointer-events-none"
+          style={{ background: 'linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0) 100%)' }}
         />
 
         <div className="relative mx-auto max-w-7xl px-8 lg:px-12">
-          <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
-            <div className="pb-2">
-              <div className="mb-7 flex items-center gap-3">
+          <div className="mb-14 grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+            <div>
+              <div className="mb-6 flex items-center gap-3">
                 <span className="h-px w-12" style={{ background: accent }} />
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/55">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/45">
                   Measurable outcomes
                 </p>
               </div>
-              <h2 className="font-heading mb-6 max-w-xl leading-tight text-white">
+              <h2 className="font-heading max-w-xl leading-tight text-[#0a1628]">
                 {outcomes.heading}
               </h2>
-              <p className="max-w-xl text-[15px] leading-[1.82] text-white/62">
-                {outcomes.intro}
-              </p>
             </div>
-
-            <div className="rounded-lg border border-white/10 bg-white/[0.06] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur">
-              <div className="grid gap-px overflow-hidden rounded-md border border-white/10 bg-white/10 sm:grid-cols-4">
-                {outcomes.items.map((o, i) => (
-                  <div key={o.title} className="bg-[#0d1c31] p-5">
-                    <p className="mb-8 text-[11px] font-bold uppercase tracking-[0.16em] text-white/35">
-                      0{i + 1}
-                    </p>
-                    <div
-                      className="mb-4 flex h-10 w-10 items-center justify-center rounded-sm"
-                      style={{ background: `${accent}24` }}
-                    >
-                      <FontAwesomeIcon icon={o.icon} className="h-4 w-4" style={{ color: accent }} />
-                    </div>
-                    <p className="text-[13px] font-semibold leading-[1.3] text-white">{o.title}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <p className="max-w-2xl text-[16px] leading-[1.82] text-[#0a1628]/58 lg:justify-self-end">
+              {outcomes.intro}
+            </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {outcomes.items.map((o, i) => (
-              <article
-                key={o.title}
-                className="group relative flex min-h-[260px] flex-col overflow-hidden rounded-lg border border-gray-200 bg-white p-7 shadow-[0_10px_34px_rgba(10,22,40,0.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(10,22,40,0.13)]"
-              >
-                <div className="absolute left-0 top-0 h-full w-1 transition-all duration-300 group-hover:w-1.5" style={{ background: accent }} />
-                <div className="mb-8 flex items-start justify-between gap-5">
-                  <div
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm"
-                    style={{ background: `${accent}12` }}
-                  >
-                    <FontAwesomeIcon icon={o.icon} className="h-5 w-5" style={{ color: accent }} />
-                  </div>
-                  <span className="text-[38px] font-black leading-none text-[#0a1628]/[0.06]">
-                    0{i + 1}
-                  </span>
-                </div>
-                <h3 className="mb-4 text-[17px] font-semibold leading-[1.28] text-[#0a1628]">
-                  {o.title}
-                </h3>
-                <p className="text-[14px] font-normal leading-[1.78] text-[#0a1628]/58">
-                  {o.desc}
-                </p>
-                <div className="mt-auto pt-7">
-                  <div className="h-px w-full bg-gray-100" />
-                  <div className="mt-4 flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} />
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0a1628]/36">
-                      Outcome layer
+          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-[0_24px_70px_rgba(10,22,40,0.10)]">
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
+              <div className="relative min-h-[360px] overflow-hidden bg-[#0a1628] lg:min-h-[660px]">
+                {hero.heroImage ? (
+                  <img
+                    src={hero.heroImage}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${accent}22, #0a1628)` }} />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/88 via-[#07162b]/42 to-transparent" />
+                <div className="absolute inset-0 opacity-35" style={{ background: `linear-gradient(135deg, ${accent}66 0%, transparent 42%)` }} />
+
+                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
+                  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-4 py-2 backdrop-blur">
+                    <span className="h-2 w-2 rounded-full" style={{ background: accent }} />
+                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/74">
+                      Sector evidence
                     </span>
                   </div>
+                  <p className="max-w-md text-[28px] font-semibold leading-[1.16] text-white lg:text-[34px]">
+                    Outcomes connected to real operating environments.
+                  </p>
                 </div>
-              </article>
-            ))}
+              </div>
+
+              <div className="p-5 sm:p-7 lg:p-8">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {outcomes.items.map((o, i) => (
+                    <article
+                      key={o.title}
+                      className="group relative flex min-h-[286px] flex-col overflow-hidden rounded-md border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#0a1628]/15 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
+                    >
+                      <div className="mb-7 flex items-start justify-between gap-5">
+                        <div
+                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm"
+                          style={{ background: `${accent}12` }}
+                        >
+                          <FontAwesomeIcon icon={o.icon} className="h-5 w-5" style={{ color: accent }} />
+                        </div>
+                        <span className="text-[12px] font-black uppercase tracking-[0.16em] text-[#0a1628]/20">
+                          0{i + 1}
+                        </span>
+                      </div>
+                      <h3 className="mb-4 text-[18px] font-semibold leading-[1.25] text-[#0a1628]">
+                        {o.title}
+                      </h3>
+                      <p className="text-[14px] font-normal leading-[1.78] text-[#0a1628]/58">
+                        {o.desc}
+                      </p>
+                      <div className="mt-auto pt-7">
+                        <div className="flex items-center gap-3">
+                          <span className="h-px flex-1 bg-gray-100" />
+                          <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} />
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
