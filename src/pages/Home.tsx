@@ -316,17 +316,11 @@ function WhatWeDo() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Header */}
-        <div className="mb-14 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-          <div>
-            <p className="type-label text-[#228DC1] mb-3">What We Do</p>
-            <h2 className="font-heading text-[#0a1628] max-w-lg">
-              Three capabilities.<br/>
-              <span className="text-[#228DC1]">One partner.</span>
-            </h2>
-          </div>
-          <Link to="/solutions/overview" className="text-sm font-semibold text-[#228DC1] hover:underline shrink-0">
-            See all solutions →
-          </Link>
+        <div className="mb-14">
+          <h2 className="font-heading text-[#0a1628] max-w-lg">
+            Three capabilities.<br/>
+            <span className="text-[#228DC1]">One partner.</span>
+          </h2>
         </div>
 
         {/* Cards */}
