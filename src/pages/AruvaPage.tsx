@@ -1419,18 +1419,18 @@ function AnimatedGraphPath({ d, color, animKey }: { d: string; color: string; an
 
 function MMGraphDemo() {
   const GW = 320, GH = 210, CX = 160, CY = 105, XS = 20, YS = 22
-  const DEMO_DISPLAY = 'e^(-0.18x^2) * sin(4x) + 0.35cos(7x)'
-  const DEMO_EVAL    = 'e^(-0.18*x^2) * sin(4*x) + 0.35*cos(7*x)'
+  const DEMO_DISPLAY = '3e^(-x^2/2)'
+  const DEMO_EVAL    = '3*e^(-x^2/2)'
   const EXAMPLES     = [
     { display:'e^(-0.18x^2) * sin(4x)', eval:'e^(-0.18*x^2) * sin(4*x)' },
     { display:'ln(x^2+1) - cos(3x)', eval:'ln(x^2+1) - cos(3*x)' },
-    { display:'sin(x^2)/(1+x^2/8)', eval:'sin(x^2)/(1+x^2/8)' },
+    { display:'3e^(-x^2/2)', eval:'3*e^(-x^2/2)' },
     { display:'sqrt(abs(x)) * cos(2x)', eval:'sqrt(abs(x)) * cos(2*x)' },
   ]
   const AUTO_GRAPHS  = [
+    { display:'3e^(-x^2/2)', eval:'3*e^(-x^2/2)' },
     { display:'e^(-0.18x^2) * sin(4x) + 0.35cos(7x)', eval:'e^(-0.18*x^2) * sin(4*x) + 0.35*cos(7*x)' },
     { display:'ln(x^2+1) - cos(3x)', eval:'ln(x^2+1) - cos(3*x)' },
-    { display:'sin(x^2)/(1+x^2/8)', eval:'sin(x^2)/(1+x^2/8)' },
     { display:'sqrt(abs(x)) * cos(2x)', eval:'sqrt(abs(x)) * cos(2*x)' },
   ]
   const [userFormula, setUserFormula] = React.useState('')
