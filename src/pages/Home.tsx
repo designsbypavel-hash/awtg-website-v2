@@ -835,13 +835,6 @@ const testimonials = [
     quote: 'I recently added AWTG\'s Kai AI on my website, and it\'s been incredibly useful! Setup was a breeze, it is intuitive, responsive, and it helps visitors find exactly what they need immediately. As a web agency owner, I\'m impressed by how well Kai fits into my site and improves both user engagement and satisfaction. If you want to level up your customer experience, I highly recommend Kai.',
   },
   {
-    name: 'Pouria Tehran',
-    role: 'Managing Director',
-    company: 'Infinite Ocean',
-    accent: '#f59e0b',
-    quote: 'Introducing Kai as our AI assistant has been a game-changer for our website. Kai is an invaluable resource; it\'s guiding customers through our products\' eco-friendly features from certified 100% recycled materials to home compostable bags. Its plug-and-play functionality allowed us to integrate it seamlessly into our site and begin training the model in no time. Thank you, AWTG, for helping us make sustainability accessible and engaging for all!',
-  },
-  {
     name: 'Rasha Fard',
     role: 'Practice Development Manager',
     company: 'Fard Solicitors',
@@ -851,9 +844,12 @@ const testimonials = [
 ]
 
 function ClientVoices() {
+  const [active, setActive] = useState(0)
+  const t = testimonials[active]
+
   return (
-    <section className="py-28 bg-[#f7f9fc]">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+    <section className="py-28 bg-[#f7f9fc] overflow-hidden">
+      <div className="max-w-5xl mx-auto px-8 lg:px-12">
 
         {/* Header */}
         <div className="text-center mb-16">
@@ -865,46 +861,81 @@ function ClientVoices() {
           </p>
         </div>
 
-        {/* 2x2 grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {testimonials.map((t) => (
+        {/* Carousel card */}
+        <div className="relative bg-white rounded-3xl shadow-lg border border-gray-100 px-10 py-12 md:px-16 md:py-14">
+
+          {/* Large decorative quote */}
+          <div
+            className="absolute top-8 left-10 text-[120px] leading-none font-black select-none pointer-events-none"
+            style={{ color: t.accent, opacity: 0.08 }}
+          >
+            &ldquo;
+          </div>
+
+          {/* Accent top bar */}
+          <div
+            className="absolute top-0 left-12 right-12 h-[3px] rounded-b-full"
+            style={{ backgroundColor: t.accent }}
+          />
+
+          {/* Quote */}
+          <blockquote className="relative text-[#0a1628]/75 text-[18px] md:text-[20px] leading-[1.75] font-normal text-center max-w-3xl mx-auto mt-4 mb-12">
+            {t.quote}
+          </blockquote>
+
+          {/* Author */}
+          <div className="flex flex-col items-center gap-3">
             <div
-              key={t.name}
-              className="bg-white rounded-2xl border border-gray-100 p-8 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-200"
+              className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-[20px] shadow-md"
+              style={{ backgroundColor: t.accent }}
             >
-              {/* Quote mark */}
-              <div
-                className="text-[56px] leading-none font-black mb-4 select-none"
-                style={{ color: t.accent, opacity: 0.18 }}
-              >
-                &ldquo;
-              </div>
-
-              {/* Quote text */}
-              <blockquote className="text-[#0a1628]/70 text-[15px] leading-[1.8] font-normal flex-1">
-                {t.quote}
-              </blockquote>
-
-              {/* Divider */}
-              <div className="mt-7 pt-6 border-t border-gray-100 flex items-center gap-4">
-                {/* Avatar */}
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-[14px] shrink-0"
-                  style={{ backgroundColor: t.accent }}
-                >
-                  {t.name.charAt(0)}
-                </div>
-                <div>
-                  <p className="text-[#0a1628] font-semibold text-[14px] leading-tight">{t.name}</p>
-                  <p className="text-[#0a1628]/50 text-[12px] font-normal mt-0.5">
-                    {t.role}{' '}
-                    <span style={{ color: t.accent }} className="font-medium">
-                      @ {t.company}
-                    </span>
-                  </p>
-                </div>
-              </div>
+              {t.name.charAt(0)}
             </div>
+            <div className="text-center">
+              <p className="text-[#0a1628] font-bold text-[16px]">{t.name}</p>
+              <p className="text-[#0a1628]/50 text-[13px] mt-0.5">
+                {t.role},{' '}
+                <span style={{ color: t.accent }} className="font-semibold">{t.company}</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Prev / Next arrows */}
+          <button
+            onClick={() => setActive((a) => (a - 1 + testimonials.length) % testimonials.length)}
+            aria-label="Previous"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/40 hover:text-[#228DC1] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
+          >
+            <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 16l-6-6 6-6"/></svg>
+          </button>
+          <button
+            onClick={() => setActive((a) => (a + 1) % testimonials.length)}
+            aria-label="Next"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/40 hover:text-[#228DC1] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
+          >
+            <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 4l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-2.5 mt-8">
+          {testimonials.map((item, i) => (
+            <button
+              key={item.name}
+              onClick={() => setActive(i)}
+              aria-label={`Go to testimonial ${i + 1}`}
+              className="transition-all duration-200"
+            >
+              <div
+                className="rounded-full transition-all duration-200"
+                style={{
+                  width: active === i ? 24 : 8,
+                  height: 8,
+                  backgroundColor: active === i ? '#228DC1' : '#0a1628',
+                  opacity: active === i ? 1 : 0.18,
+                }}
+              />
+            </button>
           ))}
         </div>
 
