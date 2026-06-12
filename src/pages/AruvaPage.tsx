@@ -30,7 +30,7 @@ function AruvaHeroDashboard() {
 
   return (
     <div
-      className="relative w-full max-w-[1120px]"
+      className="relative w-full max-w-[1020px]"
       style={{
         opacity: entered ? 1 : 0,
         transform: entered ? 'translateY(0)' : 'translateY(20px)',
@@ -2685,8 +2685,8 @@ export default function AruvaPage() {
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(34,141,193,0.12) 0, transparent 55%)' }} />
 
-        <div className="relative max-w-[1400px] mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[0.58fr_1.42fr] gap-12 items-center">
+        <div className="relative max-w-[1320px] mx-auto px-8 lg:px-12">
+          <div className="grid lg:grid-cols-[0.68fr_1.32fr] gap-14 items-center">
             <div>
               {/* Aruva logo â€” full wordmark vector */}
               <div className="mb-8">
