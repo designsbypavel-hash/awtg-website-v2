@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import CTASection from '@/components/CTASection'
+import InsightVisual from '@/components/InsightVisual'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
 
 const tagColour: Record<string, string> = {
@@ -23,10 +24,6 @@ const tagAccent: Record<string, string> = {
   'Performance Testing': 'bg-orange-400',
   'Mobile Services': 'bg-indigo-500',
   'Site Acquisition': 'bg-slate-400',
-}
-
-function getStudyImage(slug: string): string {
-  return `https://picsum.photos/seed/${slug}/900/600`
 }
 
 const featured = {
@@ -129,11 +126,7 @@ export default function InsightsCaseStudiesPage() {
           >
             {/* Image strip */}
             <div className="relative h-52 overflow-hidden">
-              <img
-                src={getStudyImage(featured.slug)}
-                alt=""
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
+              <InsightVisual title={featured.title} topic={featured.tag} className="w-full h-full group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a1628]/60" />
               <div className="absolute bottom-4 left-10 lg:left-14">
                 <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[featured.tag]}`}>
@@ -183,8 +176,6 @@ export default function InsightsCaseStudiesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredStudies.map((cs, index) => {
               const isAccent = index === 2 || index === 5
-              const img = getStudyImage(cs.slug)
-
               if (isAccent) {
                 return (
                   <Link
@@ -213,7 +204,7 @@ export default function InsightsCaseStudiesPage() {
                   className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all flex flex-col overflow-hidden"
                 >
                   <div className="h-44 relative overflow-hidden">
-                    <img src={img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <InsightVisual title={cs.title} topic={cs.tag} index={index} className="w-full h-full group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className={`absolute bottom-0 left-0 w-full h-0.5 ${tagAccent[cs.tag] ?? 'bg-[#228DC1]'}`} />
                   </div>

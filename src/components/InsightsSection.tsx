@@ -1,6 +1,7 @@
 ﻿import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
+import InsightVisual from './InsightVisual'
 
 const posts = [
   {
@@ -10,7 +11,6 @@ const posts = [
     date: 'October 20, 2025',
     readTime: '5 min read',
     slug: 'wifi-to-private-5g-tourism-connectivity',
-    img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80&auto=format&fit=crop',
   },
   {
     category: 'Blog',
@@ -19,7 +19,6 @@ const posts = [
     date: 'September 22, 2025',
     readTime: '6 min read',
     slug: 'designing-invisible-infrastructure-cities-connectivity',
-    img: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&q=80&auto=format&fit=crop',
   },
   {
     category: 'Blog',
@@ -28,7 +27,6 @@ const posts = [
     date: 'September 15, 2025',
     readTime: '6 min read',
     slug: '5g-connected-ports-smarter-trade',
-    img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&auto=format&fit=crop',
   },
 ]
 
@@ -56,14 +54,14 @@ export default function InsightsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <Link
               key={post.slug}
               to={`/insights/blog/${post.slug}`}
               className="group bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow border border-gray-100"
             >
               <div className="relative h-48 overflow-hidden bg-gray-100">
-                <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <InsightVisual title={post.title} topic={post.category} index={index} className="h-full w-full group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-6">
                 <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3 ${categoryColors[post.category]}`}>
