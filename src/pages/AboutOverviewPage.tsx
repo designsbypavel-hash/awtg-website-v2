@@ -54,6 +54,15 @@ const contentSections = [
   },
 ]
 
+const SECTION_IMAGES = [
+  '/images/insights/engineering-team.jpg',
+  '/images/insights/telecom-tower.jpg',
+  '/images/insights/open-ran.jpg',
+  '/images/insights/conference.jpg',
+  '/images/insights/education.jpg',
+  '/images/insights/smart-city.jpg',
+]
+
 const trustCategories = [
   { label: 'Government', icon: faLandmark },
   { label: 'Health and Care', icon: faHospital },
@@ -123,31 +132,68 @@ export default function AboutOverviewPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="space-y-0 border-y border-gray-100">
-            {contentSections.map((section, index) => (
-              <article key={section.label} className="grid lg:grid-cols-[320px_minmax(0,1fr)] gap-8 lg:gap-14 py-12 border-b border-gray-100 last:border-b-0">
-                <div>
-                  <p className="type-label text-[#228DC1] mb-3">{String(index + 1).padStart(2, '0')}</p>
-                  <h2 className="font-h5 text-[#0a1628]">{section.label}</h2>
-                </div>
-                <div>
-                  <p className="font-h2 text-[#0a1628] mb-6">
+      {/* Capgemini-style alternating panels */}
+      <section className="border-t border-gray-100 overflow-hidden">
+        {contentSections.map((section, index) => {
+          const isReversed = index % 2 === 1
+          return (
+            <div key={section.label} className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 560 }}>
+
+              {/* Text panel */}
+              <div
+                className={`flex items-center bg-white ${isReversed ? 'lg:order-2' : ''}`}
+                style={{ padding: '72px clamp(32px, 5.5vw, 96px)' }}
+              >
+                <div style={{ maxWidth: 520 }}>
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="h-px w-8 bg-[#228DC1]/35" />
+                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">
+                      {section.label}
+                    </span>
+                  </div>
+                  <h2
+                    className="font-heading text-[#0a1628] leading-[1.16] mb-7"
+                    style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}
+                  >
                     {section.title}
-                  </p>
+                  </h2>
                   <div className="space-y-5">
                     {section.paragraphs.map((paragraph) => (
-                      <p key={paragraph} className="text-[#0a1628]/68 text-[16px] leading-[1.85] font-normal">
+                      <p key={paragraph} className="text-[#0a1628]/58 text-[15px] leading-[1.88] font-normal">
                         {paragraph}
                       </p>
                     ))}
                   </div>
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
+              </div>
+
+              {/* Image panel — no text on image */}
+              <div
+                className={`relative overflow-hidden ${isReversed ? 'lg:order-1' : ''}`}
+                style={{ minHeight: 420, background: '#0a1628' }}
+              >
+                <img
+                  src={SECTION_IMAGES[index]}
+                  alt={section.label}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: isReversed
+                      ? 'linear-gradient(to right, rgba(10,22,40,0.18) 0%, transparent 40%)'
+                      : 'linear-gradient(to left, rgba(10,22,40,0.18) 0%, transparent 40%)',
+                  }}
+                />
+              </div>
+
+            </div>
+          )
+        })}
       </section>
 
       <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
