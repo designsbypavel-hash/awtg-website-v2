@@ -1,7 +1,8 @@
 ﻿import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
-import InsightVisual from './InsightVisual'
+import InsightImage from './InsightImage'
+import { getBlogImage } from '@/lib/insightImages'
 
 const posts = [
   {
@@ -54,14 +55,14 @@ export default function InsightsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
+          {posts.map((post) => (
             <Link
               key={post.slug}
               to={`/insights/blog/${post.slug}`}
               className="group bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow border border-gray-100"
             >
               <div className="relative h-48 overflow-hidden bg-gray-100">
-                <InsightVisual title={post.title} topic={post.category} index={index} className="h-full w-full group-hover:scale-105 transition-transform duration-500" />
+                <InsightImage src={getBlogImage(post.slug, post.category)} alt={post.title} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-6">
                 <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3 ${categoryColors[post.category]}`}>

@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
-import InsightVisual from '@/components/InsightVisual'
+import InsightImage from '@/components/InsightImage'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
+import { getWhitePaperImage } from '@/lib/insightImages'
 
 export type WhitePaper = {
   slug: string
@@ -193,7 +194,7 @@ export default function InsightsWhitePapersPage() {
               </div>
             </div>
             <div className="lg:col-span-2 relative overflow-hidden min-h-[360px]">
-              <InsightVisual title={featuredPaper.title} topic={featuredPaper.topic} className="absolute inset-0 group-hover:scale-105 transition-transform duration-700" />
+              <InsightImage src={getWhitePaperImage(featuredPaper.slug, featuredPaper.topic)} alt={featuredPaper.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-[#0a1628]/75" />
               <div className="relative h-full p-8 lg:p-10 flex flex-col justify-between min-h-[360px]">
                 <div>
@@ -233,7 +234,7 @@ export default function InsightsWhitePapersPage() {
             {visiblePapers.map((paper, index) => (
               <Link key={paper.slug} to={getWhitePaperHref(paper)} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden">
                 <div className="h-44 relative overflow-hidden">
-                  <InsightVisual title={paper.title} topic={paper.topic} index={index} className="w-full h-full group-hover:scale-105 transition-transform duration-500" />
+                  <InsightImage src={getWhitePaperImage(paper.slug, paper.topic)} alt={paper.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute top-4 right-4 h-10 w-10 bg-white/90 flex items-center justify-center text-[#228DC1]">
                     <FontAwesomeIcon icon={faFilePdf} className="w-4 h-4" />

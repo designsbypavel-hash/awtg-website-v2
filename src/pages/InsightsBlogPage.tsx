@@ -2,8 +2,9 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
-import InsightVisual from '@/components/InsightVisual'
+import InsightImage from '@/components/InsightImage'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
+import { getBlogImage } from '@/lib/insightImages'
 
 const posts = [
   {
@@ -169,7 +170,7 @@ export default function InsightsBlogPage() {
                 </div>
               </div>
               <div className="lg:col-span-2 relative overflow-hidden min-h-[320px]">
-                <InsightVisual title={featured.title} topic={featured.tag} className="absolute inset-0 group-hover:scale-105 transition-transform duration-700" />
+                <InsightImage src={getBlogImage(featured.slug, featured.tag)} alt={featured.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/40 to-transparent" />
               </div>
             </Link>
@@ -192,7 +193,7 @@ export default function InsightsBlogPage() {
                       to={`/insights/blog/${post.slug}`}
                       className="group lg:col-span-2 md:col-span-2 relative overflow-hidden min-h-[380px] flex flex-col justify-end"
                     >
-                      <InsightVisual title={post.title} topic={post.tag} index={i} className="absolute inset-0 group-hover:scale-105 transition-transform duration-700" />
+                      <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
                       <div className="relative p-8">
                         <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block bg-white/15 text-white border border-white/25">
@@ -242,7 +243,7 @@ export default function InsightsBlogPage() {
                     className="group bg-white border border-gray-100 hover:border-[#228DC1] flex flex-col overflow-hidden transition-all hover:shadow-md"
                   >
                     <div className="h-48 relative overflow-hidden">
-                      <InsightVisual title={post.title} topic={post.tag} index={i} className="w-full h-full group-hover:scale-105 transition-transform duration-500" />
+                      <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </div>
                     <div className="p-6 flex flex-col flex-1">
