@@ -17,7 +17,7 @@ type CertGroup = { label: string; image: string; items: CertItem[] }
 const certificationGroups: CertGroup[] = [
   {
     label: 'ISO & Cyber Security',
-    image: '/images/insights/data-centre.jpg',
+    image: '/images/insights/defence-network.jpg',
     items: [
       { name: 'ISO 9001: 2015',         icon: faAward,        desc: 'ISO 9001 is a globally accepted standard for Quality Management Systems (QMS). Organisations that adhere to it are demonstrating their capacity to continually supply products and services that satisfy both customer and governmental needs. This is the most commonly adopted QMS around the world.' },
       { name: 'ISO IEC 27001',           icon: faLock,         desc: 'ISO/IEC 27001 is a globally-recognised standard of security for information systems. Its principles of best-practice provide organisations the guidance they need to create an ISMS and properly secure the people, processes, and technology of their business.' },
@@ -32,7 +32,7 @@ const certificationGroups: CertGroup[] = [
   },
   {
     label: 'Supplier Accreditation',
-    image: '/images/insights/public-sector.jpg',
+    image: '/images/insights/lab-testing.jpg',
     items: [
       { name: 'JOSCAR',                           icon: faPlane,    desc: 'JOSCAR is the accreditation and compliance system for the defence aerospace sectors including prime contractors, civil aviation and security.' },
       { name: 'Crown Commercial Service Supplier', icon: faLandmark, desc: 'The Crown Commercial Service is the biggest public procurement organisation in the UK that acts as the central purchasing body for the government and across the public and third sectors.' },
@@ -41,7 +41,7 @@ const certificationGroups: CertGroup[] = [
   },
   {
     label: 'Membership',
-    image: '/images/insights/conference.jpg',
+    image: '/images/insights/smart-city.jpg',
     items: [
       { name: 'TMForum',            icon: faNetworkWired,   desc: 'TMforum is an alliance of 850+ global companies working together to break down technology and cultural barriers between digital service providers, technology suppliers, consultancies and systems integrators.' },
       { name: 'Living Wage Employer', icon: faMoneyBillWave, desc: 'The real Living Wage is the only UK wage rate based on the cost of living. It is voluntarily paid by over 13,000 UK businesses who believe their staff deserve a wage which meets everyday needs.' },
@@ -50,7 +50,7 @@ const certificationGroups: CertGroup[] = [
   },
   {
     label: 'Ratings',
-    image: '/images/insights/performance-testing.jpg',
+    image: '/images/insights/research-papers.jpg',
     items: [
       { name: 'Cybervadis Gold', icon: faMedal,      desc: 'CyberVadis Gold Medal is awarded to organizations with exceptional cybersecurity practices, with AWTG scoring 918/1000 in the latest assessment, achieving a Mature rating demonstrating commitment to ISO 27001, NIST and GDPR.' },
       { name: 'EcoVadis',        icon: faLeaf,        desc: 'EcoVadis provides a collaborative web-based rating platform assessing the non-financial global performance of organisations, working towards increased insight into the sustainability performance of their suppliers.' },
@@ -59,7 +59,7 @@ const certificationGroups: CertGroup[] = [
   },
   {
     label: 'Partnerships',
-    image: '/images/insights/connectivity.jpg',
+    image: '/images/insights/future-networks.jpg',
     items: [
       { name: 'Flex-5G',                            icon: faTowerCell,       desc: 'Flex-5G is a complete 5G Stand Alone network providing lower prices, improved scalability and private network options expected to bring public benefits across health, education and entertainment.' },
       { name: 'TUDOR',                               icon: faGlobe,           desc: 'TUDOR is an ambitious research project aiming to develop economically viable full geographic coverage and eliminate the digital divide, contributing to UK strategy of diversification of telecom vendors.' },
