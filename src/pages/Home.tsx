@@ -326,17 +326,16 @@ function WhatWeDo() {
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-6">
           {cards.map((c) => (
-            <Link
+            <div
               key={c.num}
-              to={c.href}
-              className="group relative flex flex-col rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-transparent"
+              className="relative flex flex-col rounded-2xl border border-gray-100 overflow-hidden"
               style={{ background: '#fff' }}
             >
               {/* Top accent bar */}
               <div className="h-[3px] w-full" style={{ background: c.accent }} />
 
               <div className="flex flex-col flex-1 p-7">
-                {/* Icon + number row */}
+                {/* Icon + tag row */}
                 <div className="flex items-center justify-between mb-6">
                   {c.icon}
                   <span className="text-[11px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded-full border"
@@ -346,29 +345,20 @@ function WhatWeDo() {
                 </div>
 
                 {/* Text */}
-                <h3 className="font-card-heading text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors duration-200">
+                <h3 className="font-card-heading text-[#0a1628] mb-3">
                   {c.label}
                 </h3>
                 <p className="text-[#0a1628]/55 text-[14px] font-normal leading-[1.75] flex-1">
                   {c.line}
                 </p>
-
-                {/* CTA */}
-                <div className="flex items-center gap-1.5 mt-6 text-[13px] font-semibold transition-colors duration-200"
-                  style={{ color: c.accent }}>
-                  Learn more
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-200 group-hover:translate-x-1">
-                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
               </div>
 
               {/* Large background number */}
-              <span className="absolute bottom-4 right-5 text-[72px] font-black leading-none select-none pointer-events-none transition-opacity duration-300 opacity-[0.035] group-hover:opacity-[0.06]"
+              <span className="absolute bottom-4 right-5 text-[72px] font-black leading-none select-none pointer-events-none opacity-[0.035]"
                 style={{ color: c.accent }}>
                 {c.num}
               </span>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
