@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBuilding, faGlobe, faHandshake, faPeopleGroup } from '@fortawesome/free-solid-svg-icons'
+import { faBuilding, faGlobe, faHandshake, faHospital, faIndustry, faLandmark, faMicroscope, faPuzzlePiece, faServer, faSignal } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
 const contentSections = [
@@ -55,13 +55,13 @@ const contentSections = [
 ]
 
 const trustCategories = [
-  'Government',
-  'Health and Care',
-  'Industry Bodies',
-  'MNOs',
-  'Researchers',
-  'Technology Vendors',
-  'Vertical Applications',
+  { label: 'Government', icon: faLandmark },
+  { label: 'Health and Care', icon: faHospital },
+  { label: 'Industry Bodies', icon: faIndustry },
+  { label: 'MNOs', icon: faSignal },
+  { label: 'Researchers', icon: faMicroscope },
+  { label: 'Technology Vendors', icon: faServer },
+  { label: 'Vertical Applications', icon: faPuzzlePiece },
 ]
 
 const aboutLinks = [
@@ -137,18 +137,23 @@ export default function AboutOverviewPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
+      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex items-end justify-between gap-8 mb-10">
-            <div>
-              <h2 className="font-heading text-[#0a1628]">The organisations and communities we serve.</h2>
-            </div>
-            <FontAwesomeIcon icon={faPeopleGroup} className="hidden md:block w-8 h-8 text-[#228DC1]" />
+          <div className="mb-14">
+            <p className="type-label text-[#228DC1] mb-3">Who we work with</p>
+            <h2 className="font-heading text-[#0a1628] max-w-lg">The organisations and communities we serve.</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
-            {trustCategories.map((category) => (
-              <div key={category} className="bg-[#f8fafc] p-6">
-                <p className="font-card-heading text-[#0a1628] text-[14px]">{category}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {trustCategories.map(({ label, icon }) => (
+              <div
+                key={label}
+                className="group bg-white border border-gray-100 p-7 hover:border-[#228DC1]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+                <div className="h-11 w-11 flex items-center justify-center mb-6" style={{ background: 'rgba(34,141,193,0.10)' }}>
+                  <FontAwesomeIcon icon={icon} className="w-5 h-5 text-[#228DC1]" />
+                </div>
+                <p className="font-semibold text-[#0a1628] text-[15px] leading-snug">{label}</p>
+                <div className="mt-4 h-0.5 w-0 group-hover:w-8 transition-all duration-300 bg-[#228DC1]" />
               </div>
             ))}
           </div>
