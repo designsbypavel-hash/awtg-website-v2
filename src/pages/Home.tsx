@@ -124,7 +124,7 @@ const tickerLogos = [
   { id: 'mobily',      src: '/logos/partners/Mobily.png',                  alt: 'Mobily' },
   { id: 'nao',         src: '/logos/partners/NAO.png',                     alt: 'National Audit Office' },
   { id: 'nokia',       src: '/logos/partners/Nokia.png',                   alt: 'Nokia' },
-  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2', height: '52px' },
+  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2' },
   { id: 'oracle',      src: '/logos/partners/Oracle.png',                  alt: 'Oracle' },
   { id: 'qinetiq',     src: '/logos/partners/Qinetic.png',                 alt: 'QinetiQ' },
   { id: 'quickline',   src: '/logos/partners/Quickline Broadband.png',     alt: 'Quickline Broadband' },
@@ -223,7 +223,7 @@ function Hero() {
                     src={logo.src}
                     alt={logo.alt}
                     className="w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    style={{ height: logo.height ?? '72px', maxWidth: '220px' }}
+                    style={{ height: '80px', maxWidth: '150px' }}
                   />
                 </div>
               ))}
