@@ -1671,7 +1671,7 @@ function MultimodalSection() {
       <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
 
         {/* Two-column: left = title + tabs, right = demo */}
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:14, alignItems:'start' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:0, alignItems:'start' }}>
 
           {/* LEFT â€” title, brief, then tabs */}
           <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
@@ -1899,6 +1899,7 @@ function MultimodalSection() {
             <div style={{
               gridColumn: '2',
               display: 'flex', alignItems: 'center', gap: 14,
+              marginTop: 10,
               opacity: 0, animation: 'mmCardIn 0.4s ease 0.1s forwards',
             }}>
               <div style={{ display:'flex', flexShrink:0 }}>
