@@ -307,12 +307,6 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center gap-2">
               <Link
                 to="/contact"
-                className={`px-4 py-2 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
-              >
-                Contact
-              </Link>
-              <Link
-                to="/contact"
                 className={`px-5 py-2 text-[14px] font-medium border rounded-lg transition-all duration-200 ${
                   scrolled || activeDropdown || !isHome
                     ? 'border-[#228DC1] text-[#228DC1] hover:bg-[#228DC1] hover:text-white'

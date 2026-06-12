@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChartLine, faCircleCheck, faLayerGroup, faServer,
   faTriangleExclamation, faShieldHalved, faNetworkWired,
-  faCubes, faEye, faGaugeHigh, faCodeBranch,
+  faCubes, faGaugeHigh, faCodeBranch,
   faArrowsRotate, faFilter,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
+import VisualInsightCard from '@/components/VisualInsightCard'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -424,11 +425,11 @@ const vendors = [
 
 // -- Use cases ----------------------------------------------------------------
 const useCases = [
-  { icon: faServer,          title: 'Mobile Network Operators',   desc: 'Unified assurance and orchestration for O-RAN and multi-vendor RAN environments with full SMO and PM capability.' },
-  { icon: faNetworkWired,    title: 'Private Network Providers',  desc: 'End-to-end visibility, fault management and configuration governance for private 5G deployments.' },
-  { icon: faShieldHalved,    title: 'Neutral Host Networks',      desc: 'Multi-tenant network management with vendor-agnostic integration and service-level assurance.' },
-  { icon: faCubes,           title: 'System Integrators',         desc: 'A flexible platform layer that connects equipment, software and operational workflows across complex multi-vendor programmes.' },
-  { icon: faEye,             title: 'Enterprise Telecom',         desc: 'Network operations modernisation through automation, assurance and orchestration for enterprise telecom environments.' },
+  { image: '/images/insights/mobile-networks.jpg', eyebrow: 'Operators', title: 'Mobile Network Operators',   desc: 'Unified assurance and orchestration for O-RAN and multi-vendor RAN environments with full SMO and PM capability.' },
+  { image: '/images/insights/private-networks.jpg', eyebrow: 'Private 5G', title: 'Private Network Providers',  desc: 'End-to-end visibility, fault management and configuration governance for private 5G deployments.' },
+  { image: '/images/insights/telecom-tower.jpg', eyebrow: 'Neutral host', title: 'Neutral Host Networks',      desc: 'Multi-tenant network management with vendor-agnostic integration and service-level assurance.' },
+  { image: '/images/insights/engineering-team.jpg', eyebrow: 'Delivery', title: 'System Integrators',         desc: 'A flexible platform layer that connects equipment, software and operational workflows across complex multi-vendor programmes.' },
+  { image: '/images/insights/data-centre.jpg', eyebrow: 'Enterprise', title: 'Enterprise Telecom',         desc: 'Network operations modernisation through automation, assurance and orchestration for enterprise telecom environments.' },
 ]
 
 // -- Section header helper ----------------------------------------------------
@@ -644,19 +645,18 @@ export default function ServicesEngineeringPage() {
               </p>
             </div>
           </div>
-          <div className="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
             {useCases.map((uc, i) => (
-              <div
+              <VisualInsightCard
                 key={uc.title}
-                className="min-h-[240px] bg-[#0d1c31] p-7 transition-colors hover:bg-[#10243d]"
+                dark
+                accent="#7ac4e0"
+                eyebrow={uc.eyebrow}
+                title={uc.title}
+                description={uc.desc}
+                image={uc.image}
                 style={reveal(ucInView, i * 60)}
-              >
-                <div className="mb-5 flex h-10 w-10 items-center justify-center bg-[#228DC1]/15">
-                  <FontAwesomeIcon icon={uc.icon} className="h-4 w-4 text-[#7ac4e0]" />
-                </div>
-                <h3 className="mb-3 text-[14px] font-semibold leading-[1.3] text-white">{uc.title}</h3>
-                <p className="text-[13px] font-normal leading-[1.72] text-white/50">{uc.desc}</p>
-              </div>
+              />
             ))}
           </div>
         </div>

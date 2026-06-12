@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Polygon, useMap } from 'react-leaflet'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleCheck, faMap, faTowerBroadcast, faChartBar, faGlobe, faLayerGroup, faBullseye, faSignal, faChartLine, faDatabase, faMapLocationDot, faCrosshairs, faRoute, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faMap, faTowerBroadcast, faChartBar, faGlobe, faLayerGroup, faBullseye, faSignal, faChartLine, faDatabase, faMapLocationDot, faCrosshairs, faRoute, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
+import VisualInsightCard from '@/components/VisualInsightCard'
 import 'leaflet/dist/leaflet.css'
 import type { LatLngExpression } from 'leaflet'
 
@@ -321,6 +322,7 @@ const capabilities = [
 const useCases = [
   {
     label: 'Network operators',
+    image: '/images/insights/mobile-networks.jpg',
     headline: 'Plan, benchmark and optimise live networks.',
     desc: 'Give engineering and planning teams a single map for coverage quality, weak zones and investment priorities.',
     points: [
@@ -331,6 +333,7 @@ const useCases = [
   },
   {
     label: 'Regulators and local authorities',
+    image: '/images/insights/public-sector.jpg',
     headline: 'Turn coverage evidence into public action.',
     desc: 'Track commitments, understand digital exclusion and build a defensible view of where connectivity fails.',
     points: [
@@ -341,6 +344,7 @@ const useCases = [
   },
   {
     label: 'Smart infrastructure teams',
+    image: '/images/insights/smart-city.jpg',
     headline: 'Accelerate connected-place programmes.',
     desc: 'Plan connectivity across transport corridors, towns, campuses and infrastructure programmes with geospatial context.',
     points: [
@@ -351,6 +355,7 @@ const useCases = [
   },
   {
     label: 'Enterprise estates',
+    image: '/images/insights/private-networks.jpg',
     headline: 'Manage private and operational networks.',
     desc: 'Help organisations understand site-level performance across offices, venues, campuses and operational environments.',
     points: [
@@ -820,21 +825,17 @@ export default function IcmapPage() {
               From national coverage obligations to private network estates, iCMAP helps teams see the same evidence and decide where to act next.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {useCases.map((uc) => (
-              <div key={uc.label} className="bg-white p-8 min-h-[350px] flex flex-col">
-                <p className="type-label text-[#228DC1] mb-5">{uc.label}</p>
-                <h3 className="text-[#0a1628] font-semibold text-[18px] leading-[1.25] mb-4">{uc.headline}</h3>
-                <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7] mb-7">{uc.desc}</p>
-                <div className="space-y-3 mt-auto pt-6 border-t border-gray-100">
-                  {uc.points.map((point) => (
-                    <div key={point} className="flex items-start gap-3">
-                      <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#228DC1] shrink-0 mt-0.5" />
-                      <p className="text-[#0a1628]/72 text-[13px] font-normal leading-snug">{point}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <VisualInsightCard
+                key={uc.label}
+                eyebrow={uc.label}
+                title={uc.headline}
+                description={uc.desc}
+                image={uc.image}
+                points={uc.points}
+                accent="#228DC1"
+              />
             ))}
           </div>
         </div>

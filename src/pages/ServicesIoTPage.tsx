@@ -1,15 +1,16 @@
 ﻿import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faBuildingColumns, faChartLine, faCity,
+  faBuildingColumns, faChartLine,
   faClipboardCheck, faLayerGroup,
   faMapLocationDot, faNetworkWired, faRoute,
   faSearchLocation, faShieldHalved, faSitemap,
-  faTowerBroadcast, faWater, faLocationCrosshairs,
+  faTowerBroadcast, faLocationCrosshairs,
   faDatabase,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
+import VisualInsightCard from '@/components/VisualInsightCard'
 
 // â”€â”€ Scroll utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function useInView(threshold = 0.1) {
@@ -214,6 +215,18 @@ const audiences = [
   },
 ]
 
+const idamsUseCases = [
+  { image: '/images/insights/telecom-tower.jpg', eyebrow: 'Connectivity', title: '5G & Small Cell', desc: '5G and small cell deployment across urban and rural environments.' },
+  { image: '/images/insights/city-infrastructure.jpg', eyebrow: 'Acquisition', title: 'Site Acquisition', desc: 'Mobile and neutral host site acquisition with structured workflows.' },
+  { image: '/images/insights/smart-city.jpg', eyebrow: 'Energy', title: 'EV Charging', desc: 'EV charging infrastructure siting and asset acquisition.' },
+  { image: '/images/insights/cloud-network.jpg', eyebrow: 'IoT estate', title: 'IoT Infrastructure', desc: 'IoT sensor and device infrastructure discovery and management.' },
+  { image: '/images/insights/public-sector.jpg', eyebrow: 'Public sector', title: 'Public Asset Monetisation', desc: 'Councils monetising public assets for connectivity and services.' },
+  { image: '/images/insights/urban-rail.jpg', eyebrow: 'Urban assets', title: 'Smart City Assets', desc: 'Advertising, smart city, and street furniture asset reuse.' },
+  { image: '/images/insights/ports-logistics.jpg', eyebrow: 'Property', title: 'Land & Property', desc: 'Public and private land or property assets for infrastructure use.' },
+  { image: '/images/insights/connectivity.jpg', eyebrow: 'Street estate', title: 'Street Furniture', desc: 'Street furniture reuse and repurposing for network deployment.' },
+  { image: '/images/insights/conference.jpg', eyebrow: 'Governance', title: 'Multi-stakeholder Approvals', desc: 'Multi-stakeholder asset approval workflows with full audit trail.' },
+]
+
 // â”€â”€ Main page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function ServicesIoTPage() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
@@ -374,29 +387,18 @@ export default function ServicesIoTPage() {
               </p>
             </div>
           </div>
-          <div className="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
-            {[
-              { icon: faTowerBroadcast, title: '5G & Small Cell', desc: '5G and small cell deployment across urban and rural environments.' },
-              { icon: faLocationCrosshairs, title: 'Site Acquisition', desc: 'Mobile and neutral host site acquisition with structured workflows.' },
-              { icon: faCity, title: 'EV Charging', desc: 'EV charging infrastructure siting and asset acquisition.' },
-              { icon: faNetworkWired, title: 'IoT Infrastructure', desc: 'IoT sensor and device infrastructure discovery and management.' },
-              { icon: faBuildingColumns, title: 'Public Asset Monetisation', desc: 'Councils monetising public assets for connectivity and services.' },
-              { icon: faMapLocationDot, title: 'Smart City Assets', desc: 'Advertising, smart city, and street furniture asset reuse.' },
-              { icon: faWater, title: 'Land & Property', desc: 'Public and private land or property assets for infrastructure use.' },
-              { icon: faRoute, title: 'Street Furniture', desc: 'Street furniture reuse and repurposing for network deployment.' },
-              { icon: faClipboardCheck, title: 'Multi-stakeholder Approvals', desc: 'Multi-stakeholder asset approval workflows with full audit trail.' },
-            ].map((uc, i) => (
-              <div
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {idamsUseCases.map((uc, i) => (
+              <VisualInsightCard
                 key={uc.title}
-                className="min-h-[180px] bg-[#0d1c31] p-7 transition-colors hover:bg-[#10243d]"
+                dark
+                accent="#7ac4e0"
+                eyebrow={uc.eyebrow}
+                title={uc.title}
+                description={uc.desc}
+                image={uc.image}
                 style={reveal(ucInView, i * 50)}
-              >
-                <div className="mb-4 flex h-9 w-9 items-center justify-center bg-[#228DC1]/15">
-                  <FontAwesomeIcon icon={uc.icon} className="h-4 w-4 text-[#7ac4e0]" />
-                </div>
-                <h3 className="mb-2 text-[13px] font-semibold text-white">{uc.title}</h3>
-                <p className="text-[12px] font-normal leading-[1.68] text-white/45">{uc.desc}</p>
-              </div>
+              />
             ))}
           </div>
         </div>
