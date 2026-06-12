@@ -954,7 +954,7 @@ const articles = [
     readTime: '5 min read',
     title: 'KAI: How AI Agents Are Transforming Customer Engagement in Telecoms',
     excerpt: 'How AWTG\'s KAI platform deploys conversational AI at scale — reducing escalations, improving CSAT and handling complex queries end-to-end.',
-    img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80&auto=format&fit=crop',
     href: '/products/kai',
   },
   {
@@ -965,7 +965,7 @@ const articles = [
     readTime: '6 min read',
     title: 'Aruva: Bringing Multimodal AI Tutoring to Universities and Colleges',
     excerpt: 'How higher education institutions are using Aruva to deliver personalised voice, text, image and graph-based learning at scale.',
-    img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80&auto=format&fit=crop',
     href: '/products/aruva',
   },
   {
@@ -976,7 +976,7 @@ const articles = [
     readTime: '6 min read',
     title: 'IDAMS: Unlocking Street Asset Value for Mobile Network Operators',
     excerpt: 'How AWTG\'s asset discovery platform helps MNOs and asset owners identify, acquire and monetise street infrastructure for small cell deployment.',
-    img: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=600&q=80&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80&auto=format&fit=crop',
     href: '/services/iot',
   },
   {
@@ -987,7 +987,7 @@ const articles = [
     readTime: '7 min read',
     title: 'SCAP: AI-Driven RAN Management Across Multi-Vendor Networks',
     excerpt: 'How AWTG\'s Service Correlation Assurance Platform gives operators unified performance management, fault detection and configuration control.',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop',
     href: '/services/engineering',
   },
 ]
