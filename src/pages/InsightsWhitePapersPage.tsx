@@ -136,6 +136,28 @@ const featuredPaper = whitePapers.find((paper) => paper.featured) ?? whitePapers
 
 export const getWhitePaperHref = (paper: WhitePaper) => `/insights/white-papers/${paper.slug}`
 
+const TOPIC_IMAGES: Record<string, string> = {
+  'Open RAN': 'photo-1518770660439-4636190af475',
+  'RAN Intelligence': 'photo-1518770660439-4636190af475',
+  'Public Services': 'photo-1477959858617-67f85cf4f1df',
+  'Asset Management': 'photo-1486325212027-8081e485255e',
+  'Rail Infrastructure': 'photo-1474487548417-781cb6d646ca',
+  'Public Sector': 'photo-1477959858617-67f85cf4f1df',
+  'AI Infrastructure': 'photo-1518770660439-4636190af475',
+  'Private Networks': 'photo-1558618666-fcd25c85cd64',
+  '5G Strategy': 'photo-1451187580459-43490279c0fa',
+  'Public Safety': 'photo-1477959858617-67f85cf4f1df',
+  '5G Research': 'photo-1451187580459-43490279c0fa',
+  'Small Cells': 'photo-1518770660439-4636190af475',
+  'Mobile Strategy': 'photo-1518770660439-4636190af475',
+  'Future Networks': 'photo-1558618666-fcd25c85cd64',
+}
+
+function getTopicImage(topic: string): string {
+  const id = TOPIC_IMAGES[topic] ?? 'photo-1451187580459-43490279c0fa'
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`
+}
+
 export default function InsightsWhitePapersPage() {
   const [activeTopic, setActiveTopic] = useState('All')
 
@@ -191,15 +213,23 @@ export default function InsightsWhitePapersPage() {
                   Read whitepaper                </span>
               </div>
             </div>
-            <div className="lg:col-span-2 bg-[#0a1628] text-white p-8 lg:p-10 min-h-[360px] flex flex-col justify-between">
-              <div>
-                <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#7ac4e0] mb-8" />
-                <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#7ac4e0] mb-5">AWTG Research</p>
-                <p className="font-h3 text-white">
-                  Open RAN transformation, security and deployment insight.
-                </p>
+            <div className="lg:col-span-2 relative overflow-hidden min-h-[360px]">
+              <img
+                src={getTopicImage(featuredPaper.topic)}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-[#0a1628]/75" />
+              <div className="relative h-full p-8 lg:p-10 flex flex-col justify-between min-h-[360px]">
+                <div>
+                  <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#7ac4e0] mb-8" />
+                  <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#7ac4e0] mb-5">AWTG Research</p>
+                  <p className="font-h3 text-white">
+                    Open RAN transformation, security and deployment insight.
+                  </p>
+                </div>
+                <p className="text-white/60 text-sm leading-relaxed mt-10">Dedicated PDF viewer and download available on the whitepaper page.</p>
               </div>
-              <p className="text-white/58 text-sm leading-relaxed mt-10">Dedicated PDF viewer and download available on the whitepaper page.</p>
             </div>
           </Link>
         </div>
@@ -226,13 +256,18 @@ export default function InsightsWhitePapersPage() {
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {visiblePapers.map((paper, index) => (
-              <Link key={paper.slug} to={getWhitePaperHref(paper)} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all">
-                <div className="h-36 bg-[#eef5f9] relative overflow-hidden border-b border-gray-100">
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,141,193,0.18),rgba(10,22,40,0.04))]" />
-                  <div className="absolute left-6 top-6 h-11 w-11 bg-white flex items-center justify-center text-[#228DC1]">
-                    <FontAwesomeIcon icon={faFilePdf} className="w-5 h-5" />
+              <Link key={paper.slug} to={getWhitePaperHref(paper)} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden">
+                <div className="h-44 relative overflow-hidden">
+                  <img
+                    src={getTopicImage(paper.topic)}
+                    alt=""
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute top-4 right-4 h-10 w-10 bg-white/90 flex items-center justify-center text-[#228DC1]">
+                    <FontAwesomeIcon icon={faFilePdf} className="w-4 h-4" />
                   </div>
-                  <p className="absolute right-6 bottom-5 font-mono text-[13px] text-[#0a1628]/35">
+                  <p className="absolute left-4 bottom-3 font-mono text-[12px] text-white/60">
                     {String(index + 1).padStart(2, '0')}
                   </p>
                 </div>
@@ -250,7 +285,8 @@ export default function InsightsWhitePapersPage() {
                     {paper.desc}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
-                    Open whitepaper                  </span>
+                    Open whitepaper
+                  </span>
                 </div>
               </Link>
             ))}

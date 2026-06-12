@@ -25,6 +25,22 @@ const tagAccent: Record<string, string> = {
   'Site Acquisition': 'bg-slate-400',
 }
 
+const TOPIC_IMAGES: Record<string, string> = {
+  'Open RAN Security': 'photo-1518770660439-4636190af475',
+  'Network Economics': 'photo-1551288049-bebda4e38f71',
+  'Public Sector': 'photo-1477959858617-67f85cf4f1df',
+  'Mobile Networks': 'photo-1451187580459-43490279c0fa',
+  'Capacity Planning': 'photo-1551288049-bebda4e38f71',
+  'Performance Testing': 'photo-1486325212027-8081e485255e',
+  'Mobile Services': 'photo-1518770660439-4636190af475',
+  'Site Acquisition': 'photo-1486325212027-8081e485255e',
+}
+
+function getTopicImage(tag: string): string {
+  const id = TOPIC_IMAGES[tag] ?? 'photo-1451187580459-43490279c0fa'
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`
+}
+
 const featured = {
   slug: 'itrustric-open-ran-security',
   tag: 'Open RAN Security',
@@ -123,14 +139,25 @@ export default function InsightsCaseStudiesPage() {
             to={`/insights/case-studies/${featured.slug}`}
             className="group block bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
           >
+            {/* Image strip */}
+            <div className="relative h-52 overflow-hidden">
+              <img
+                src={getTopicImage(featured.tag)}
+                alt=""
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a1628]/60" />
+              <div className="absolute bottom-4 left-10 lg:left-14">
+                <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[featured.tag]}`}>
+                  {featured.tag}
+                </span>
+              </div>
+            </div>
             <div className="grid lg:grid-cols-[1fr_360px]">
               {/* Left: content */}
               <div className="p-10 lg:p-14 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[featured.tag]}`}>
-                      {featured.tag}
-                    </span>
                     <span className="text-[#0a1628]/40 text-xs">{featured.date}</span>
                   </div>
                   <h2 className="font-h2 text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-5">
@@ -141,7 +168,8 @@ export default function InsightsCaseStudiesPage() {
                   </p>
                 </div>
                 <div className="mt-10 flex items-center gap-2 text-[#228DC1] text-sm font-semibold">
-                  Read case study                </div>
+                  Read case study
+                </div>
               </div>
               {/* Right: stats panel */}
               <div className="bg-[#0a1628] p-10 lg:p-14 flex flex-col justify-between">
@@ -165,32 +193,62 @@ export default function InsightsCaseStudiesPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <p className="type-label text-[#0a1628]/50 mb-10">All case studies</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredStudies.map(cs => (
-              <Link
-                key={cs.slug}
-                to={`/insights/case-studies/${cs.slug}`}
-                className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all flex flex-col overflow-hidden"
-              >
-                {/* Colour accent bar */}
-                <div className={`h-1 w-full ${tagAccent[cs.tag] ?? 'bg-[#228DC1]'}`} />
-                <div className="p-7 flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-5">
-                    <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${tagColour[cs.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+            {filteredStudies.map((cs, index) => {
+              const isAccent = index === 2 || index === 5
+              const img = getTopicImage(cs.tag)
+
+              if (isAccent) {
+                return (
+                  <Link
+                    key={cs.slug}
+                    to={`/insights/case-studies/${cs.slug}`}
+                    className="group bg-[#0a1628] flex flex-col p-8 min-h-[300px]"
+                  >
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-auto inline-block bg-white/10 text-white/80 self-start">
                       {cs.tag}
                     </span>
-                    <span className="text-[#0a1628]/40 text-[11px]">{cs.date.split(' ').pop()}</span>
+                    <div className="mt-10">
+                      <h3 className="font-h5 text-white mb-3 group-hover:text-[#7ac4e0] transition-colors">{cs.title}</h3>
+                      <p className="text-white/60 text-[13px] font-normal leading-[1.7] mb-6">{cs.excerpt}</p>
+                      <div className="flex items-center gap-2 text-[#7ac4e0] text-[12px] font-semibold pt-4 border-t border-white/10">
+                        Read case study
+                      </div>
+                    </div>
+                  </Link>
+                )
+              }
+
+              return (
+                <Link
+                  key={cs.slug}
+                  to={`/insights/case-studies/${cs.slug}`}
+                  className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all flex flex-col overflow-hidden"
+                >
+                  <div className="h-44 relative overflow-hidden">
+                    <img src={img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className={`absolute bottom-0 left-0 w-full h-0.5 ${tagAccent[cs.tag] ?? 'bg-[#228DC1]'}`} />
                   </div>
-                  <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">
-                    {cs.title}
-                  </h3>
-                  <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-6">
-                    {cs.excerpt}
-                  </p>
-                  <div className="flex items-center gap-2 text-[#228DC1] text-[12px] font-semibold mt-auto">
-                    Read case study                  </div>
-                </div>
-              </Link>
-            ))}
+                  <div className="p-7 flex flex-col flex-1">
+                    <div className="flex items-center justify-between mb-5">
+                      <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${tagColour[cs.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+                        {cs.tag}
+                      </span>
+                      <span className="text-[#0a1628]/40 text-[11px]">{cs.date.split(' ').pop()}</span>
+                    </div>
+                    <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">
+                      {cs.title}
+                    </h3>
+                    <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-6">
+                      {cs.excerpt}
+                    </p>
+                    <div className="flex items-center gap-2 text-[#228DC1] text-[12px] font-semibold mt-auto">
+                      Read case study
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

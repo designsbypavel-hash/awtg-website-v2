@@ -548,6 +548,23 @@ export const categoryColours: Record<string, string> = {
   Telecommunications: 'bg-sky-50 text-sky-700',
 }
 
+const TOPIC_IMAGES: Record<string, string> = {
+  'Artificial Intelligence': 'photo-1518770660439-4636190af475',
+  'Awards': 'photo-1451187580459-43490279c0fa',
+  'Engineering': 'photo-1486325212027-8081e485255e',
+  'Health Tech': 'photo-1486325212027-8081e485255e',
+  'Innovation': 'photo-1451187580459-43490279c0fa',
+  'News': 'photo-1477959858617-67f85cf4f1df',
+  'Private Networks': 'photo-1558618666-fcd25c85cd64',
+  'Public Sector': 'photo-1477959858617-67f85cf4f1df',
+  'Telecommunications': 'photo-1451187580459-43490279c0fa',
+}
+
+function getTopicImage(category: string): string {
+  const id = TOPIC_IMAGES[category] ?? 'photo-1451187580459-43490279c0fa'
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`
+}
+
 const featured = newsItems[0]
 const spotlight = newsItems.slice(1, 4)
 
@@ -655,36 +672,98 @@ export default function InsightsNewsPage() {
             <p className="text-[#0a1628]/60 text-sm">{filteredNews.length} items</p>
           </div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {visibleNews.map((item, index) => (
-              <Link key={`${item.title}-${item.date}`} to={getNewsHref(item)} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all">
-                <div className="h-36 bg-[#eef5f9] relative overflow-hidden border-b border-gray-100">
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,141,193,0.18),rgba(10,22,40,0.04))]" />
-                  <div className="absolute left-6 top-6 h-11 w-11 bg-white flex items-center justify-center text-[#228DC1]">
-                    <FontAwesomeIcon icon={getNewsVideoUrl(item) ? faPlay : faNewspaper} className="w-5 h-5" />
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+            {visibleNews.map((item, index) => {
+              const isWide = index === 0
+              const isAccent = index === 4 || index === 10 || index === 16
+              const img = getTopicImage(item.category)
+              const hasVideo = !!getNewsVideoUrl(item)
+
+              if (isWide) {
+                return (
+                  <Link
+                    key={`${item.title}-${item.date}`}
+                    to={getNewsHref(item)}
+                    className="group xl:col-span-2 md:col-span-2 relative overflow-hidden min-h-[360px] flex flex-col justify-end"
+                  >
+                    <img src={img} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+                    {hasVideo && (
+                      <div className="absolute top-5 left-5 h-10 w-10 bg-white/15 border border-white/25 flex items-center justify-center">
+                        <FontAwesomeIcon icon={faPlay} className="w-4 h-4 text-white" />
+                      </div>
+                    )}
+                    <div className="relative p-8">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-white/15 text-white border border-white/25">
+                          {item.category}
+                        </span>
+                        <span className="text-white/50 text-xs">{item.date}</span>
+                      </div>
+                      <h3 className="font-h4 text-white mb-3 group-hover:text-[#7ac4e0] transition-colors">{cleanText(item.title)}</h3>
+                      <p className="text-white/70 text-sm leading-relaxed max-w-xl">{cleanText(item.excerpt)}</p>
+                    </div>
+                  </Link>
+                )
+              }
+
+              if (isAccent) {
+                return (
+                  <Link
+                    key={`${item.title}-${item.date}`}
+                    to={getNewsHref(item)}
+                    className="group bg-[#0a1628] flex flex-col p-8 min-h-[300px]"
+                  >
+                    <div className="flex items-center gap-3 mb-auto">
+                      {hasVideo && <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5 text-[#7ac4e0]" />}
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.14em] px-2 py-0.5 bg-white/10 text-white/80">
+                        {item.category}
+                      </span>
+                    </div>
+                    <div className="mt-10">
+                      <h3 className="font-h5 text-white mb-3 group-hover:text-[#7ac4e0] transition-colors">{cleanText(item.title)}</h3>
+                      <p className="text-white/60 text-[13px] leading-[1.7] mb-5">{cleanText(item.excerpt)}</p>
+                      <div className="flex items-center gap-2 text-[#7ac4e0] text-xs font-semibold pt-4 border-t border-white/10">
+                        {hasVideo ? 'Watch story' : 'Read story'}
+                      </div>
+                    </div>
+                  </Link>
+                )
+              }
+
+              return (
+                <Link
+                  key={`${item.title}-${item.date}`}
+                  to={getNewsHref(item)}
+                  className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
+                >
+                  <div className="h-44 relative overflow-hidden">
+                    <img src={img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#228DC1]">
+                      <FontAwesomeIcon icon={hasVideo ? faPlay : faNewspaper} className="w-4 h-4" />
+                    </div>
                   </div>
-                  <p className="absolute right-6 bottom-5 font-mono text-[13px] text-[#0a1628]/35">
-                    {String(index + 1).padStart(2, '0')}
-                  </p>
-                </div>
-                <div className="p-6">
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                      {item.category}
+                  <div className="p-6">
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+                        {item.category}
+                      </span>
+                      <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
+                    </div>
+                    <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">
+                      {cleanText(item.title)}
+                    </h3>
+                    <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
+                      {cleanText(item.excerpt)}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
+                      {hasVideo ? 'Watch story' : 'Read story'}
                     </span>
-                    <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
                   </div>
-                  <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">
-                    {cleanText(item.title)}
-                  </h3>
-                  <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
-                    {cleanText(item.excerpt)}
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
-                    {getNewsVideoUrl(item) ? 'Watch story' : 'Read story'}                  </span>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

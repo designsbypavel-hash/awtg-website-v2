@@ -102,6 +102,23 @@ const tagColour: Record<string, string> = {
   'Education': 'bg-indigo-50 text-indigo-700',
 }
 
+const TOPIC_IMAGES: Record<string, string> = {
+  'AI': 'photo-1518770660439-4636190af475',
+  '5G': 'photo-1451187580459-43490279c0fa',
+  'Private 5G': 'photo-1558618666-fcd25c85cd64',
+  'Private Networks': 'photo-1558618666-fcd25c85cd64',
+  'Smart Cities': 'photo-1477959858617-67f85cf4f1df',
+  'Rail': 'photo-1474487548417-781cb6d646ca',
+  'Transport': 'photo-1474487548417-781cb6d646ca',
+  'Infrastructure': 'photo-1486325212027-8081e485255e',
+  'Education': 'photo-1503676260728-1c00da094a0b',
+}
+
+function getTopicImage(tag: string): string {
+  const id = TOPIC_IMAGES[tag] ?? 'photo-1451187580459-43490279c0fa'
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`
+}
+
 export default function InsightsBlogPage() {
   const [activeTag, setActiveTag] = useState('All')
 
@@ -139,7 +156,7 @@ export default function InsightsBlogPage() {
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <Link
               to={`/insights/blog/${featured.slug}`}
-              className="group grid lg:grid-cols-5 gap-0 border border-gray-100 hover:border-[#228DC1] transition-all"
+              className="group grid lg:grid-cols-5 gap-0 border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
             >
               <div className="lg:col-span-3 p-10 lg:p-14 flex flex-col justify-between">
                 <div>
@@ -167,13 +184,13 @@ export default function InsightsBlogPage() {
                     Read article                  </span>
                 </div>
               </div>
-              <div className="lg:col-span-2 bg-[#f8fafc] min-h-[280px] flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10"
-                  style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #228DC1 0%, transparent 60%)' }}
+              <div className="lg:col-span-2 relative overflow-hidden min-h-[320px]">
+                <img
+                  src={getTopicImage(featured.tag)}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <p className="font-h5 text-[#0a1628]/60 text-center px-8 italic">
-                  "{featured.excerpt.split('.')[0]}."
-                </p>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/40 to-transparent" />
               </div>
             </Link>
           </div>
@@ -184,43 +201,89 @@ export default function InsightsBlogPage() {
       <section className="py-20 bg-[#f7f8fa]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           {rest.length > 0 && (
-            <ul role="list" className="space-y-0">
-              {rest.map((post, i) => (
-                <li key={post.slug} role="listitem">
-                <Link
-                  to={`/insights/blog/${post.slug}`}
-                  className={`group grid lg:grid-cols-4 gap-8 py-8 items-center border-t border-gray-200 hover:bg-white transition-all px-4 -mx-4 ${i === rest.length - 1 ? 'border-b' : ''}`}
-                >
-                  <div className="lg:col-span-3 flex items-start gap-8">
-                    <div className="shrink-0 pt-1">
-                      <p className="text-[14px] font-semibold text-[#0a1628]/20 font-mono">
-                        {String(i + 2).padStart(2, '0')}
-                      </p>
-                    </div>
-                    <div>
-                      <span className={`text-[14px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-3 inline-block ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {rest.map((post, i) => {
+                const isWide = i === 0
+                const isAccent = i === 3
+                const img = getTopicImage(post.tag)
+
+                if (isWide) {
+                  return (
+                    <Link
+                      key={post.slug}
+                      to={`/insights/blog/${post.slug}`}
+                      className="group lg:col-span-2 md:col-span-2 relative overflow-hidden min-h-[380px] flex flex-col justify-end"
+                    >
+                      <img src={img} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+                      <div className="relative p-8">
+                        <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block bg-white/15 text-white border border-white/25">
+                          {post.tag}
+                        </span>
+                        <h3 className="font-h4 text-white mb-3 group-hover:text-[#7ac4e0] transition-colors">{post.title}</h3>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4 max-w-lg">{post.excerpt}</p>
+                        <div className="flex items-center gap-2 text-white/50 text-xs">
+                          <span>{post.date}</span>
+                          <span>·</span>
+                          <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
+                          <span>{post.readTime} read</span>
+                        </div>
+                      </div>
+                    </Link>
+                  )
+                }
+
+                if (isAccent) {
+                  return (
+                    <Link
+                      key={post.slug}
+                      to={`/insights/blog/${post.slug}`}
+                      className="group bg-[#0a1628] flex flex-col p-8 min-h-[320px]"
+                    >
+                      <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-auto inline-block bg-white/10 text-white/80 self-start">
                         {post.tag}
                       </span>
-                      <h2 className="font-h5 text-[#0a1628] mb-2 group-hover:text-[#228DC1] transition-colors">
-                        {post.title}
-                      </h2>
-                      <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
-                        {post.excerpt}
-                      </p>
+                      <div className="mt-12">
+                        <h3 className="font-h5 text-white mb-4 group-hover:text-[#7ac4e0] transition-colors">{post.title}</h3>
+                        <p className="text-white/60 text-sm leading-relaxed mb-6">{post.excerpt}</p>
+                        <div className="flex items-center gap-2 text-white/40 text-xs pt-4 border-t border-white/10">
+                          <span>{post.date}</span>
+                          <span>·</span>
+                          <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
+                          <span>{post.readTime} read</span>
+                        </div>
+                      </div>
+                    </Link>
+                  )
+                }
+
+                return (
+                  <Link
+                    key={post.slug}
+                    to={`/insights/blog/${post.slug}`}
+                    className="group bg-white border border-gray-100 hover:border-[#228DC1] flex flex-col overflow-hidden transition-all hover:shadow-md"
+                  >
+                    <div className="h-48 relative overflow-hidden">
+                      <img src={img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </div>
-                  </div>
-                  <div className="flex lg:flex-col lg:items-end gap-4 lg:gap-2">
-                    <span className="text-[#0a1628]/60 text-xs">{post.date}</span>
-                    <span className="text-[#0a1628]/60 text-xs flex items-center gap-1.5">
-                      <FontAwesomeIcon icon={faClock} className="w-3 h-3" /> {post.readTime} read
-                    </span>
-                    <span className="text-[#228DC1] text-xs font-semibold uppercase tracking-[0.1em] flex items-center gap-1 group-hover:gap-2 transition-all ml-auto">
-                      Read                    </span>
-                  </div>
-                </Link>
-                </li>
-              ))}
-            </ul>
+                    <div className="p-6 flex flex-col flex-1">
+                      <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-4 inline-block self-start ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+                        {post.tag}
+                      </span>
+                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">{post.title}</h3>
+                      <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
+                      <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
+                        <span>{post.date}</span>
+                        <span>·</span>
+                        <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
+                        <span>{post.readTime} read</span>
+                      </div>
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
           )}
 
           {filtered.length === 0 && (
