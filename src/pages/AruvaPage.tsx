@@ -1897,6 +1897,22 @@ function MultimodalSection() {
 
         </div>
 
+        {active === 1 && (
+          <div style={{
+            marginTop: 22,
+            display: 'flex', alignItems: 'center', gap: 16,
+            padding: '0 4px',
+            opacity: 0, animation: 'mmCardIn 0.4s ease 0.1s forwards',
+          }}>
+            <div style={{ display:'flex', gap:-4, flexShrink:0 }}>
+              <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:28, height:28, borderRadius:8, background:'#f59e0b', color:'#fff', fontSize:10, fontWeight:900, border:'2px solid #f8fafc' }}>MG</span>
+              <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:28, height:28, borderRadius:8, background:'#7c3aed', color:'#fff', fontSize:10, fontWeight:900, border:'2px solid #f8fafc', marginLeft:-6 }}>ER</span>
+            </div>
+            <p style={{ fontSize:13, color:'rgba(10,22,40,0.50)', lineHeight:1.6, fontStyle:'italic' }}>
+              Comparing Student A and Student B — two different learning profiles, the same question. See how Aruva tailors every response to each student's way of understanding.
+            </p>
+          </div>
+        )}
 
       </div>
     </section>
