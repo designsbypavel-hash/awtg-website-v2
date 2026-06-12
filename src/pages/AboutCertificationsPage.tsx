@@ -3,8 +3,8 @@ import {
   faAward, faLock, faLeaf, faUserShield, faServer, faMicrochip,
   faShieldHalved, faShield, faUserSecret,
   faPlane, faLandmark, faCloud,
-  faUsers, faMoneyBillWave, faNetworkWired,
-  faMedal, faChartLine, faRocket,
+  faMoneyBillWave, faNetworkWired,
+  faMedal, faRocket,
   faTowerCell, faGlobe, faWifi, faLink, faSignal, faVrCardboard,
   faLocationDot, faBroadcastTower,
 } from '@fortawesome/free-solid-svg-icons'
@@ -27,7 +27,7 @@ const certificationGroups: CertGroup[] = [
       { name: 'ISO/IEC 42001 – AI Management System', icon: faMicrochip, desc: 'ISO/IEC 42001 provides the framework and requirements for organisations to establish, implement and maintain responsible, ethical, and risk-based governance of AI systems, ensuring transparency, accountability and trust.' },
       { name: 'Cyber Essentials',        icon: faShieldHalved, desc: 'Cyber Essentials Basic is an assessment tool that helps companies evaluate and adjust their digital security measures to the baseline standards of Cyber Essentials, identifying potential vulnerabilities in devices, networks and protocols.' },
       { name: 'Cyber Essentials Plus',   icon: faShield,       desc: "Cyber Essentials Plus goes beyond the standard self-assessment questionnaire and requires an audit of IT systems by a certified auditor to ensure appropriate controls are in place across the organisation's network." },
-      { name: 'CREST Penetration Testing', icon: faUserSecret, desc: 'This certificate confirms that AWTG's Vulnerability Assessment and Penetration Test for the Kai Application was conducted in line with industry best practices, including OWASP, NIST, ISO 27001:2022 and CREST.' },
+      { name: 'CREST Penetration Testing', icon: faUserSecret, desc: "This certificate confirms that AWTG's Vulnerability Assessment and Penetration Test for the Kai Application was conducted in line with industry best practices, including OWASP, NIST, ISO 27001:2022 and CREST." },
     ],
   },
   {
@@ -66,7 +66,7 @@ const certificationGroups: CertGroup[] = [
       { name: 'Flexi-DAS',                           icon: faWifi,            desc: 'Flexi-DAS Consortium aims to develop highly flexible Distributed Antenna System (DAS) radio heads based on field-programmable flexible radio chipsets and Radio Frequency Identification cards.' },
       { name: 'CORE HDD',                            icon: faBroadcastTower,  desc: 'The CORE project aims to develop a 5G Open RAN platform for High Demand Density areas, with the goal of accelerating 5G deployment in similar regions in the UK.' },
       { name: 'SCONDA',                              icon: faNetworkWired,    desc: 'SCONDA is a project that aims to address technical and commercial challenges in high-density areas by integrating ORAN and Traditional RAN to effectively handle live traffic.' },
-      { name: 'Spirit Project EU',                   icon: faVrCardboard,     desc: 'Eight of Europe's most cutting-edge companies and universities in the field of telepresence applications are at work in SPIRIT, bringing advanced expertise in extended reality (XR) and multimedia communications.' },
+      { name: 'Spirit Project EU',                   icon: faVrCardboard,     desc: "Eight of Europe's most cutting-edge companies and universities in the field of telepresence applications are at work in SPIRIT, bringing advanced expertise in extended reality (XR) and multimedia communications." },
       { name: 'Hiper-RAN',                           icon: faSignal,          desc: "The 'Highly Intelligent, Highly Performing RAN (HiPer-RAN)' project is a ground-breaking initiative aimed at overcoming key challenges in software automation and efficiency in the UK's mobile infrastructure." },
       { name: 'Borderlands 5G Innovation Region',    icon: faLocationDot,     desc: 'The Borderlands Inclusive Growth Deal aims to deliver sustainable improvements to boost potential and opportunities for residents, visitors and businesses.' },
       { name: 'UKI-FNI',                             icon: faLink,            desc: 'The UK-India Future Networks Initiative (UKI-FNI) explores advanced innovations in supply chains for hardware and software systems, providing connectivity for future digital networks and a joint vision in Beyond 5G and 6G.' },
