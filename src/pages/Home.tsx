@@ -124,7 +124,7 @@ const tickerLogos = [
   { id: 'mobily',      src: '/logos/partners/Mobily.png',                  alt: 'Mobily' },
   { id: 'nao',         src: '/logos/partners/NAO.png',                     alt: 'National Audit Office' },
   { id: 'nokia',       src: '/logos/partners/Nokia.png',                   alt: 'Nokia' },
-  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2', height: '112px' },
+  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2', height: '40px' },
   { id: 'oracle',      src: '/logos/partners/Oracle.png',                  alt: 'Oracle' },
   { id: 'qinetiq',     src: '/logos/partners/Qinetic.png',                 alt: 'QinetiQ' },
   { id: 'quickline',   src: '/logos/partners/Quickline Broadband.png',     alt: 'Quickline Broadband' },
@@ -204,29 +204,34 @@ function Hero() {
 
       </div>
 
-      {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
-      <div className="relative border-t border-gray-100 bg-white overflow-hidden">
-        <div className="flex items-center">
-          <div className="shrink-0 px-8 py-4 border-r border-black/10">
-            <span className="text-[#0a1628]/60 text-[14px] font-semibold tracking-[0.22em] uppercase whitespace-nowrap">
-              Trusted by
-            </span>
-          </div>
-          <div className="overflow-hidden flex-1">
-            <div className="ticker-track" aria-hidden="true">
-              {[...tickerLogos, ...tickerLogos].map((logo, i) => (
-                <div
-                  key={`${logo.id}-${i}`}
-                  className="flex items-center justify-center px-8 py-5 shrink-0"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    style={{ height: logo.height ?? '172px', width: '220px', objectFit: 'contain', objectPosition: 'center' }}
-                  />
-                </div>
-              ))}
-            </div>
+      {/* -- Logo ticker bar -- */}
+      <div className="border-t border-gray-100 bg-white py-10 overflow-hidden">
+        <p className="text-center text-[11px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/30 mb-9">
+          Trusted by leading organisations
+        </p>
+        <div className="relative">
+          <div
+            className="absolute left-0 top-0 bottom-0 w-36 z-10 pointer-events-none"
+            style={{ background: 'linear-gradient(to right, white, transparent)' }}
+          />
+          <div
+            className="absolute right-0 top-0 bottom-0 w-36 z-10 pointer-events-none"
+            style={{ background: 'linear-gradient(to left, white, transparent)' }}
+          />
+          <div className="ticker-track" aria-hidden="true">
+            {[...tickerLogos, ...tickerLogos].map((logo, i) => (
+              <div
+                key={`${logo.id}-${i}`}
+                className="inline-flex items-center justify-center px-10 shrink-0"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  style={{ height: logo.height ?? '40px', maxWidth: '180px' }}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
