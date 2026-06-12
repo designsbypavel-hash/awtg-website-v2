@@ -242,33 +242,30 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       {/* ══════════════════════════════════════════════════════
           OUTCOMES — asymmetric: sticky heading left + 2×2 grid right
       ══════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden border-t border-gray-100 bg-[#f6f9fc] py-24">
+      <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24">
         <div
-          className="absolute inset-x-0 top-0 h-72 pointer-events-none"
-          style={{ background: 'linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0) 100%)' }}
+          className="absolute inset-y-0 right-0 hidden w-[46%] pointer-events-none lg:block"
+          style={{ background: '#f6f9fc' }}
         />
 
         <div className="relative mx-auto max-w-7xl px-8 lg:px-12">
-          <div className="mb-14 grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+          <div className="grid gap-14 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
             <div>
-              <div className="mb-6 flex items-center gap-3">
+              <div className="mb-8 flex items-center gap-3">
                 <span className="h-px w-12" style={{ background: accent }} />
                 <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/45">
                   Measurable outcomes
                 </p>
               </div>
-              <h2 className="font-heading max-w-xl leading-tight text-[#0a1628]">
+
+              <h2 className="font-heading mb-7 max-w-xl leading-tight text-[#0a1628]">
                 {outcomes.heading}
               </h2>
-            </div>
-            <p className="max-w-2xl text-[16px] leading-[1.82] text-[#0a1628]/58 lg:justify-self-end">
-              {outcomes.intro}
-            </p>
-          </div>
+              <p className="mb-10 max-w-xl text-[16px] leading-[1.82] text-[#0a1628]/58">
+                {outcomes.intro}
+              </p>
 
-          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-[0_24px_70px_rgba(10,22,40,0.10)]">
-            <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
-              <div className="relative min-h-[360px] overflow-hidden bg-[#0a1628] lg:min-h-[660px]">
+              <div className="relative overflow-hidden rounded-sm bg-[#0a1628] shadow-[0_24px_70px_rgba(10,22,40,0.16)]" style={{ aspectRatio: '4 / 3' }}>
                 {hero.heroImage ? (
                   <img
                     src={hero.heroImage}
@@ -279,55 +276,51 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 ) : (
                   <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${accent}22, #0a1628)` }} />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/88 via-[#07162b]/42 to-transparent" />
-                <div className="absolute inset-0 opacity-35" style={{ background: `linear-gradient(135deg, ${accent}66 0%, transparent 42%)` }} />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/82 via-[#07162b]/24 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-                  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-4 py-2 backdrop-blur">
-                    <span className="h-2 w-2 rounded-full" style={{ background: accent }} />
-                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/74">
-                      Sector evidence
-                    </span>
-                  </div>
-                  <p className="max-w-md text-[28px] font-semibold leading-[1.16] text-white lg:text-[34px]">
-                    Outcomes connected to real operating environments.
+                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/58">
+                    Sector evidence
+                  </p>
+                  <p className="max-w-md text-[26px] font-semibold leading-[1.16] text-white lg:text-[32px]">
+                    Real-world context, measurable operational change.
                   </p>
                 </div>
               </div>
+            </div>
 
-              <div className="p-5 sm:p-7 lg:p-8">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {outcomes.items.map((o, i) => (
-                    <article
-                      key={o.title}
-                      className="group relative flex min-h-[286px] flex-col overflow-hidden rounded-md border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#0a1628]/15 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
-                    >
-                      <div className="mb-7 flex items-start justify-between gap-5">
-                        <div
-                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm"
-                          style={{ background: `${accent}12` }}
-                        >
-                          <FontAwesomeIcon icon={o.icon} className="h-5 w-5" style={{ color: accent }} />
-                        </div>
-                        <span className="text-[12px] font-black uppercase tracking-[0.16em] text-[#0a1628]/20">
-                          0{i + 1}
-                        </span>
-                      </div>
-                      <h3 className="mb-4 text-[18px] font-semibold leading-[1.25] text-[#0a1628]">
+            <div className="lg:pl-4">
+              <div className="border-y border-[#0a1628]/10">
+                {outcomes.items.map((o, i) => (
+                  <article
+                    key={o.title}
+                    className="group grid gap-5 border-b border-[#0a1628]/10 py-8 last:border-b-0 sm:grid-cols-[88px_1fr]"
+                  >
+                    <div>
+                      <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#0a1628]/28">
+                        0{i + 1}
+                      </p>
+                      <div className="mt-4 h-px w-14 transition-all duration-300 group-hover:w-20" style={{ background: accent }} />
+                    </div>
+                    <div>
+                      <h3 className="mb-3 text-[22px] font-semibold leading-[1.18] text-[#0a1628]">
                         {o.title}
                       </h3>
-                      <p className="text-[14px] font-normal leading-[1.78] text-[#0a1628]/58">
+                      <p className="max-w-xl text-[15px] font-normal leading-[1.78] text-[#0a1628]/58">
                         {o.desc}
                       </p>
-                      <div className="mt-auto pt-7">
-                        <div className="flex items-center gap-3">
-                          <span className="h-px flex-1 bg-gray-100" />
-                          <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} />
-                        </div>
+                      <div className="mt-5 flex gap-1.5">
+                        {[0, 1, 2].map((dot) => (
+                          <span
+                            key={dot}
+                            className="h-1 w-6 rounded-full"
+                            style={{ background: dot === 0 ? accent : 'rgba(10,22,40,0.10)' }}
+                          />
+                        ))}
                       </div>
-                    </article>
-                  ))}
-                </div>
+                    </div>
+                  </article>
+                ))}
               </div>
             </div>
           </div>
