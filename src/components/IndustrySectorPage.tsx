@@ -276,16 +276,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 ) : (
                   <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${accent}22, #0a1628)` }} />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/82 via-[#07162b]/24 to-transparent" />
-
-                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/58">
-                    Sector evidence
-                  </p>
-                  <p className="max-w-md text-[26px] font-semibold leading-[1.16] text-white lg:text-[32px]">
-                    Real-world context, measurable operational change.
-                  </p>
-                </div>
               </div>
             </div>
 
