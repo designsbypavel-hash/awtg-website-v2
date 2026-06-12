@@ -1735,7 +1735,6 @@ function MultimodalSection() {
             border:'1px solid #e2e8f0',
             background:'#ffffff',
             boxShadow:'0 8px 40px rgba(10,22,40,0.08), 0 0 0 1px rgba(10,22,40,0.03)',
-            minHeight:420,
             display:'flex', flexDirection:'column',
             opacity: inView?1:0, transform: inView?'translateY(0)':'translateY(24px)',
             transition:'opacity 0.65s ease 0.15s, transform 0.65s ease 0.15s',
