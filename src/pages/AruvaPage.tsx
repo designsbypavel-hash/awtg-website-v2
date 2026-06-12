@@ -1671,7 +1671,7 @@ function MultimodalSection() {
       <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
 
         {/* Two-column: left = title + tabs, right = demo */}
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', gap:56, alignItems:'start' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:14, alignItems:'start' }}>
 
           {/* LEFT â€” title, brief, then tabs */}
           <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
