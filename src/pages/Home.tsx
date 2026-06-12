@@ -398,35 +398,63 @@ const solutionPanels = [
 // --- AI PROOF POINTS ---------------------------------------------------------
 
 function AIProofPoints() {
+  const stats = [
+    { stat: '2016', label: 'AI in production since', accent: '#228DC1' },
+    { stat: 'Live', label: 'Not a pilot', accent: '#0ea472' },
+    { stat: '3', label: 'AI products shipped', accent: '#f59e0b' },
+    { stat: 'Enterprise', label: 'Grade governance', accent: '#a78bfa' },
+  ]
   return (
-    <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-16 items-center">
+    <section className="relative overflow-hidden py-24" style={{ background: '#0a1628' }}>
+      {/* Background glow */}
+      <div style={{ position: 'absolute', top: '-120px', right: '-80px', width: '560px', height: '560px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(34,141,193,0.13) 0%, transparent 68%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-80px', left: '10%', width: '360px', height: '360px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(34,141,193,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+      <div className="max-w-7xl mx-auto px-8 lg:px-12 relative">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
+
+          {/* Left */}
           <div>
-            <h2 className="font-heading text-[#0a1628] mb-4">
+            {/* Case study badge */}
+            <div className="inline-flex items-center gap-2.5 rounded-full px-4 py-2 mb-8 border"
+              style={{ background: 'rgba(34,141,193,0.12)', borderColor: 'rgba(34,141,193,0.25)' }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#228DC1', display: 'inline-block', boxShadow: '0 0 6px #228DC1' }} />
+              <span className="text-[11px] font-extrabold tracking-widest uppercase" style={{ color: '#228DC1' }}>Case Study</span>
+            </div>
+
+            <h2 className="font-heading mb-6" style={{ color: '#fff' }}>
               British Council.<br />
-              <span className="text-[#228DC1]">AI handling learner support at scale.</span>
+              <span style={{ color: '#228DC1' }}>AI handling learner<br />support at scale.</span>
             </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-8">
-              We deployed Kai directly into British Council English Online. Customer satisfaction is up. Escalations are down. It's live, not a demo.
-            </p>
-            <Link to="/contact" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+
+            {/* Quote */}
+            <div className="relative pl-5 mb-8" style={{ borderLeft: '3px solid rgba(34,141,193,0.5)' }}>
+              <p className="text-[16px] font-normal leading-[1.75]" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                We deployed Kai directly into British Council English Online. Customer satisfaction is up. Escalations are down. It's live, not a demo.
+              </p>
+            </div>
+
+            <Link to="/contact" className="inline-flex items-center gap-2 text-[13px] font-semibold transition-all hover:gap-3"
+              style={{ color: '#228DC1' }}>
               Discuss a similar project
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-px bg-gray-200 border border-gray-200 shrink-0">
-            {[
-              { stat: 'Since 2016', label: 'AI in production' },
-              { stat: 'Live', label: 'Not a pilot' },
-              { stat: '3', label: 'AI products shipped' },
-              { stat: 'Enterprise', label: 'Grade governance' },
-            ].map((item) => (
-              <div key={item.label} className="bg-white px-8 py-7 text-center">
-                <p className="font-h3 text-[#0a1628] mb-1">{item.stat}</p>
-                <p className="type-label text-[#0a1628]/60">{item.label}</p>
+
+          {/* Right — stat cards */}
+          <div className="grid grid-cols-2 gap-4">
+            {stats.map((s) => (
+              <div key={s.label} className="rounded-2xl p-6 flex flex-col gap-2 transition-transform duration-300 hover:-translate-y-1"
+                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)' }}>
+                <div className="w-8 h-1 rounded-full mb-1" style={{ background: s.accent }} />
+                <p className="text-[28px] font-black leading-none" style={{ color: '#fff' }}>{s.stat}</p>
+                <p className="text-[11px] font-bold tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.45)' }}>{s.label}</p>
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
