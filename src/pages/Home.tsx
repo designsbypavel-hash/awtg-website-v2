@@ -717,43 +717,40 @@ function WhyAWTG() {
     <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-        {/* Top row: heading left, cert badges right */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 mb-16">
-          <div className="max-w-xl">
-            <h2 className="font-heading text-[#0a1628] mb-4">
-              The experience to deliver, and the<br />
-              <span className="text-[#228DC1]">team to stay with you.</span>
-            </h2>
-            <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75]">
-              Crown Commercial Service approved. SC and DV cleared engineers. Built for the most demanding environments.
-            </p>
-          </div>
-          {/* Cert pills */}
-          <div className="flex flex-wrap gap-2 lg:max-w-xs lg:justify-end">
-            {certs.map(c => (
-              <span key={c} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide border bg-white"
-                style={{ color: '#228DC1', borderColor: 'rgba(34,141,193,0.25)' }}>
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                  <circle cx="4" cy="4" r="3.5" stroke="#228DC1" strokeWidth="1"/>
-                  <path d="M2.5 4l1 1 2-2" stroke="#228DC1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                {c}
-              </span>
-            ))}
-            <Link to="/about/certifications"
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide border border-gray-200 bg-white text-[#0a1628]/50 hover:text-[#228DC1] hover:border-[#228DC1]/30 transition-colors">
-              View all →
-            </Link>
-          </div>
+        {/* Heading */}
+        <div className="mb-10 max-w-2xl">
+          <h2 className="font-heading text-[#0a1628] mb-4">
+            The experience to deliver, and the{' '}
+            <span className="text-[#228DC1]">team to stay with you.</span>
+          </h2>
+          <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75]">
+            Crown Commercial Service approved. SC and DV cleared engineers. Built for the most demanding environments.
+          </p>
+        </div>
+
+        {/* Cert pills row */}
+        <div className="flex flex-wrap items-center gap-2 mb-12">
+          {certs.map(c => (
+            <span key={c} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide border bg-white"
+              style={{ color: '#228DC1', borderColor: 'rgba(34,141,193,0.25)' }}>
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <circle cx="4" cy="4" r="3.5" stroke="#228DC1" strokeWidth="1"/>
+                <path d="M2.5 4l1 1 2-2" stroke="#228DC1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              {c}
+            </span>
+          ))}
+          <Link to="/about/certifications"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide border border-gray-200 bg-white text-[#0a1628]/50 hover:text-[#228DC1] transition-colors">
+            View all →
+          </Link>
         </div>
 
         {/* Stat cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
           {stats.map((s) => (
             <div key={s.label} className="relative rounded-2xl bg-white border border-gray-100 shadow-sm p-7 overflow-hidden group hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-              {/* Accent bar */}
               <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style={{ background: s.accent }} />
-              {/* Ghost large value */}
               <div className="absolute -bottom-3 -right-2 text-[80px] font-black leading-none select-none pointer-events-none opacity-[0.04] group-hover:opacity-[0.07] transition-opacity"
                 style={{ color: s.accent }}>{s.value}</div>
               <p className="text-[40px] font-black leading-none text-[#0a1628] mb-2">{s.value}</p>
