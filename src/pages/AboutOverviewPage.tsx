@@ -94,32 +94,35 @@ export default function AboutOverviewPage() {
         </div>
       </section>
 
-      <section className="bg-[#0a1628]">
+      <section className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
+          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
             {[
               { icon: faBuilding, stat: '2006', label: 'Founded', text: 'Built to serve the specific needs of the telecommunications industry.' },
               { icon: faGlobe, stat: '3', label: 'Continents', text: 'Thousands of 4G and 5G sites deployed across three continents.' },
               { icon: faHandshake, stat: '45k+', label: 'RAN Sites Delivered', text: 'Government projects, network deployment and consultancy-centric programmes.' },
             ].map((item) => (
-              <div key={item.label} className="relative overflow-hidden px-10 py-14 lg:px-14">
+              <div key={item.label} className="relative overflow-hidden px-10 py-14 lg:px-14 group">
                 <span
-                  className="pointer-events-none select-none absolute -top-2 right-4 font-black leading-none text-white/[0.04]"
+                  className="pointer-events-none select-none absolute -top-2 right-2 font-black leading-none text-[#0a1628]/[0.04]"
                   style={{ fontSize: 'clamp(80px, 10vw, 130px)' }}
                 >
                   {item.stat}
                 </span>
-                <div className="h-10 w-10 flex items-center justify-center mb-8" style={{ background: 'rgba(34,141,193,0.15)' }}>
-                  <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#228DC1]" />
+                <div className="h-0.5 w-10 bg-[#228DC1] mb-9 transition-all duration-300 group-hover:w-16" />
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="h-9 w-9 flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.08)' }}>
+                    <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#228DC1]" />
+                  </div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/45">{item.label}</p>
                 </div>
                 <p
-                  className="font-black text-[#228DC1] mb-1 leading-none"
-                  style={{ fontSize: 'clamp(36px, 4vw, 52px)', letterSpacing: '-0.03em' }}
+                  className="font-black text-[#0a1628] leading-none mb-5"
+                  style={{ fontSize: 'clamp(40px, 4.5vw, 58px)', letterSpacing: '-0.03em' }}
                 >
                   {item.stat}
                 </p>
-                <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-white/40 mb-5">{item.label}</p>
-                <p className="text-white/55 text-[14px] leading-[1.78] max-w-xs">{item.text}</p>
+                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78] max-w-xs">{item.text}</p>
               </div>
             ))}
           </div>
