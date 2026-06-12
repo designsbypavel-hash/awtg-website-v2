@@ -284,28 +284,6 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
                 animation: `kaiNodePulse 2.4s ease-out ${i * 0.18}s infinite`,
               }} />
             </span>
-            <div style={{
-              position: 'absolute',
-              left: `${slot.x}%`,
-              top: `${slot.y}%`,
-              transform: `${slot.align === 'right' ? 'translate(-100%, -50%)' : 'translate(0, -50%)'} scale(${isVisible ? 1 : 0.82})`,
-              opacity: isVisible ? 1 : 0,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              background: 'rgba(255,255,255,0.94)',
-              border: '1px solid rgba(34,141,193,0.18)',
-              borderRadius: 999,
-              padding: '7px 11px',
-              boxShadow: '0 8px 24px rgba(10,22,40,0.12)',
-              color: '#0a1628',
-              fontFamily: 'Roboto, sans-serif',
-              whiteSpace: 'nowrap',
-              transition: 'opacity 0.45s ease, transform 0.45s cubic-bezier(0.34,1.56,0.64,1)',
-            }}>
-              <span style={{ fontSize: 10, fontWeight: 900, color: '#228DC1', letterSpacing: '0.04em' }}>{country.code}</span>
-              <span style={{ fontSize: 11, fontWeight: 800 }}>{country.name}</span>
-            </div>
           </div>
         )
       })}
