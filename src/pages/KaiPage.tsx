@@ -156,58 +156,8 @@ const FLAG_SLOTS = [
   { cx: 228, cy: 218, dx: -14, dy:  44 },
 ]
 
-const KAI_GLOBE_COUNTRIES = [
-  { code: 'GB', name: 'United Kingdom', x: 47, y: 43 },
-  { code: 'US', name: 'United States',   x: 17, y: 41 },
-  { code: 'BR', name: 'Brazil',          x: 29, y: 69 },
-  { code: 'ZA', name: 'South Africa',    x: 48, y: 80 },
-  { code: 'AE', name: 'UAE',             x: 62, y: 53 },
-  { code: 'IN', name: 'India',           x: 74, y: 56 },
-  { code: 'SG', name: 'Singapore',       x: 88, y: 66 },
-  { code: 'JP', name: 'Japan',           x: 87, y: 48 },
-  { code: 'BE', name: 'Belgium',         x: 52, y: 38 },
-  { code: 'MA', name: 'Morocco',         x: 44, y: 52 },
-  { code: 'MY', name: 'Malaysia',        x: 80, y: 62 },
-  { code: 'NG', name: 'Nigeria',         x: 52, y: 60 },
-  { code: 'PL', name: 'Poland',          x: 56, y: 35 },
-  { code: 'FR', name: 'France',          x: 45, y: 40 },
-]
-
-const KAI_GLOBE_LABEL_SLOTS = [
-  { x: 30, y: 17, align: 'left' as const },
-  { x: 70, y: 18, align: 'left' as const },
-  { x: 84, y: 31, align: 'left' as const },
-  { x: 78, y: 54, align: 'left' as const },
-  { x: 67, y: 75, align: 'left' as const },
-  { x: 20, y: 72, align: 'right' as const },
-  { x: 13, y: 50, align: 'right' as const },
-  { x: 18, y: 31, align: 'right' as const },
-]
 
 function RealisticGlobePanel({ visible }: { visible: boolean }) {
-  const [activeStep, setActiveStep] = useState(0)
-  const [shownCount, setShownCount] = useState(0)
-
-  useEffect(() => {
-    if (!visible) {
-      setActiveStep(0)
-      setShownCount(0)
-      return
-    }
-
-    const revealTimers = KAI_GLOBE_LABEL_SLOTS.map((_, i) =>
-      window.setTimeout(() => setShownCount(i + 1), 550 + i * 180)
-    )
-    const cycle = window.setInterval(() => {
-      setActiveStep(current => (current + 1) % KAI_GLOBE_COUNTRIES.length)
-    }, 1450)
-
-    return () => {
-      revealTimers.forEach(window.clearTimeout)
-      window.clearInterval(cycle)
-    }
-  }, [visible])
-
   return (
     <div style={{ position: 'relative', width: '100%', minHeight: 430, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <style>{`
@@ -218,10 +168,6 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
         @keyframes kaiGlobeGlow {
           0%, 100% { opacity: 0.28; transform: translate(-50%, -50%) scale(0.96); }
           50% { opacity: 0.52; transform: translate(-50%, -50%) scale(1.05); }
-        }
-        @keyframes kaiNodePulse {
-          0% { transform: translate(-50%, -50%) scale(0.65); opacity: 0.7; }
-          100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
         }
       `}</style>
 
@@ -252,41 +198,6 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
           transition: 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)',
         }}
       />
-
-      {KAI_GLOBE_LABEL_SLOTS.map((_slot, i) => {
-        const country = KAI_GLOBE_COUNTRIES[(activeStep + i) % KAI_GLOBE_COUNTRIES.length]
-        const isVisible = visible && shownCount > i
-        const isActive = i === 0 || i === 3
-        return (
-          <div key={`${country.code}-${i}`} style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-            <span style={{
-              position: 'absolute',
-              left: `${country.x}%`,
-              top: `${country.y}%`,
-              width: 11,
-              height: 11,
-              borderRadius: 999,
-              background: isActive ? '#0ea5e9' : '#228DC1',
-              border: '2px solid rgba(255,255,255,0.92)',
-              boxShadow: '0 0 18px rgba(34,141,193,0.55)',
-              opacity: isVisible ? 1 : 0,
-              transform: 'translate(-50%, -50%)',
-              transition: 'opacity 0.35s ease',
-            }}>
-              <span style={{
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
-                width: 24,
-                height: 24,
-                borderRadius: 999,
-                border: '1px solid rgba(14,165,233,0.55)',
-                animation: `kaiNodePulse 2.4s ease-out ${i * 0.18}s infinite`,
-              }} />
-            </span>
-          </div>
-        )
-      })}
     </div>
   )
 }
