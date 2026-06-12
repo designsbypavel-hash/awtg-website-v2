@@ -353,11 +353,6 @@ function WhatWeDo() {
                 </p>
               </div>
 
-              {/* Large background number */}
-              <span className="absolute bottom-4 right-5 text-[72px] font-black leading-none select-none pointer-events-none opacity-[0.035]"
-                style={{ color: c.accent }}>
-                {c.num}
-              </span>
             </div>
           ))}
         </div>
@@ -749,10 +744,8 @@ function WhyAWTG() {
         {/* Stat cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
           {stats.map((s) => (
-            <div key={s.label} className="relative rounded-2xl bg-white border border-gray-100 shadow-sm p-7 overflow-hidden group hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-              <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style={{ background: s.accent }} />
-              <div className="absolute -bottom-3 -right-2 text-[80px] font-black leading-none select-none pointer-events-none opacity-[0.04] group-hover:opacity-[0.07] transition-opacity"
-                style={{ color: s.accent }}>{s.value}</div>
+            <div key={s.label} className="rounded-2xl bg-white border border-gray-100 shadow-sm p-7 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+              <div className="w-8 h-[3px] rounded-full mb-5" style={{ background: s.accent }} />
               <p className="text-[40px] font-black leading-none text-[#0a1628] mb-2">{s.value}</p>
               <p className="text-[11px] font-extrabold uppercase tracking-widest mb-1" style={{ color: s.accent }}>{s.label}</p>
               <p className="text-[13px] text-[#0a1628]/50 font-normal">{s.sub}</p>
