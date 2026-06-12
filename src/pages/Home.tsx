@@ -217,13 +217,13 @@ function Hero() {
               {[...tickerLogos, ...tickerLogos].map((logo, i) => (
                 <div
                   key={`${logo.id}-${i}`}
-                  className="flex items-center justify-center px-14 py-5 shrink-0"
+                  className="flex items-center justify-center px-14 py-8 shrink-0"
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     className="w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    style={{ height: logo.height ?? '44px', maxWidth: '200px' }}
+                    style={{ height: logo.height ?? '56px', maxWidth: '200px' }}
                   />
                 </div>
               ))}
