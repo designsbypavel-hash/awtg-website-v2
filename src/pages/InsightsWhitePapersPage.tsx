@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilePdf, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import InsightImage from '@/components/InsightImage'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
@@ -275,28 +275,7 @@ export default function InsightsWhitePapersPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 grid lg:grid-cols-[360px_minmax(0,1fr)] gap-12 items-center">
-          <div>
-            <FontAwesomeIcon icon={faLayerGroup} className="w-8 h-8 text-[#228DC1] mb-6" />
-            <p className="type-label text-[#228DC1] mb-3">Resource Hub</p>
-            <h2 className="font-serif-display text-[#0a1628] leading-tight">Explore more AWTG insights.</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
-            {[
-              { label: 'Blog', href: '/insights/blog' },
-              { label: 'Case Studies', href: '/insights/case-studies' },
-              { label: 'Newsroom', href: '/insights' },
-            ].map((item) => (
-              <Link key={item.href} to={item.href} className="bg-white p-7 hover:bg-[#f7f8fa] transition-colors group">
-                <p className="font-card-heading text-[#0a1628] text-sm group-hover:text-[#228DC1] transition-colors">{item.label}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTASection
+<CTASection
         title="Want Research Tailored to Your Sector?"
         subtitle="Our strategy team produces bespoke research and market analysis for clients. Get in touch to discuss your requirements."
         primaryLabel="Get in Touch"
