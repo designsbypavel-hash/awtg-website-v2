@@ -696,7 +696,7 @@ export default function IcmapPage() {
               Every area. Every technology. Clear coverage decisions.
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              iCMAP brings live coverage, signal strength, population, and infrastructure data into one interactive map. Teams can filter by network generation, inspect local performance, identify weak zones, and prioritise improvements using AI powered scoring.
+              iCMAP brings coverage data, signal strength, population and infrastructure context into one interactive map. Teams can filter by network generation, inspect local coverage, identify weak zones, and prioritise improvements using configurable scoring.
             </p>
           </div>
           <CoverageMap />
