@@ -223,7 +223,7 @@ function Hero() {
                     src={logo.src}
                     alt={logo.alt}
                     className="w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    style={{ height: '80px', maxWidth: '150px' }}
+                    style={{ height: '120px', maxWidth: '240px' }}
                   />
                 </div>
               ))}
