@@ -286,52 +286,85 @@ const whatWeDoItems = [
 ]
 
 function WhatWeDo() {
+  const [lead, ...supporting] = whatWeDoItems
+
   return (
-    <section className="py-24 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
+    <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24">
+      <div className="absolute inset-y-0 right-0 hidden w-[42%] bg-[#f6f9fc] lg:block" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Header */}
-        <div className="max-w-2xl mb-14">
-          <h2 className="font-heading text-[#0a1628] mb-4">
+        <div className="relative mb-14 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+          <div>
+            <div className="mb-6 flex items-center gap-3">
+              <span className="h-px w-12 bg-[#228DC1]" />
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#0a1628]/45">
+                What we do
+              </p>
+            </div>
+            <h2 className="font-heading text-[#0a1628]">
             Three capabilities.<br />
             <span className="text-[#1a7aab]">One partner.</span>
           </h2>
-          <p className="text-[#0a1628]/50 text-[16px] leading-[1.8]">
+          </div>
+          <p className="max-w-2xl text-[#0a1628]/60 text-[16px] leading-[1.8] lg:justify-self-end">
             End-to-end delivery across AI, private networks and engineering — under one accountable partner.
           </p>
         </div>
 
-        {/* Cards: image on top, text below — static, no hover actions */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {whatWeDoItems.map((item) => (
-            <div
-              key={item.label}
-              className="flex flex-col bg-white border border-gray-100 overflow-hidden"
-            >
-              {/* Image — pure photo, no text overlay */}
-              <div className="relative overflow-hidden" style={{ height: 260 }}>
-                <div className="absolute top-0 left-0 right-0 h-[3px] z-10" style={{ background: item.accent }} />
-                <img
-                  src={item.image}
-                  alt={item.label}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Text block — fully separate from image */}
-              <div className="flex flex-col flex-1 px-7 pt-6 pb-8">
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] mb-4" style={{ color: item.accent }}>
-                  {item.tag}
-                </p>
-                <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
-                  {item.label}
-                </h3>
-                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78]">
-                  {item.line}
-                </p>
-              </div>
+        <div className="relative grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <article className="group relative min-h-[540px] overflow-hidden rounded-lg bg-[#0a1628] shadow-[0_24px_70px_rgba(10,22,40,0.13)]">
+            <img
+              src={lead.image}
+              alt={lead.label}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/90 via-[#07162b]/34 to-transparent" />
+            <div className="absolute left-0 top-0 h-1.5 w-full" style={{ background: lead.accent }} />
+            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
+              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-white/62">
+                {lead.tag}
+              </p>
+              <h3 className="mb-4 max-w-md text-[30px] font-semibold leading-[1.12] text-white lg:text-[38px]">
+                {lead.label}
+              </h3>
+              <p className="max-w-md text-[15px] leading-[1.78] text-white/68">
+                {lead.line}
+              </p>
             </div>
-          ))}
+          </article>
+
+          <div className="grid gap-6">
+            {supporting.map((item, index) => (
+              <article
+                key={item.label}
+                className="grid overflow-hidden rounded-lg border border-gray-200 bg-white shadow-[0_12px_34px_rgba(10,22,40,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_54px_rgba(10,22,40,0.11)] sm:grid-cols-[0.95fr_1.05fr]"
+              >
+                <div className="relative min-h-[220px] overflow-hidden bg-[#0a1628] sm:min-h-full">
+                  <img
+                    src={item.image}
+                    alt={item.label}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/42 to-transparent" />
+                  <div className="absolute left-0 top-0 h-full w-1.5" style={{ background: item.accent }} />
+                </div>
+                <div className="flex min-h-[250px] flex-col justify-center p-7">
+                  <p className="mb-4 text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: item.accent }}>
+                    0{index + 2} / {item.tag}
+                  </p>
+                  <h3 className="mb-3 text-[21px] font-semibold leading-[1.22] text-[#0a1628]">
+                    {item.label}
+                  </h3>
+                  <p className="text-[14px] leading-[1.78] text-[#0a1628]/60">
+                    {item.line}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
 
       </div>
@@ -473,7 +506,7 @@ function Industries() {
             Powering transformation<br />
             <span className="text-[#1a7aab]">across every sector.</span>
           </h2>
-          <p className="text-[#0a1628]/50 text-[16px] leading-[1.8]">
+          <p className="text-[#0a1628]/60 text-[16px] leading-[1.8]">
             From enterprise campuses to NHS trusts and government bodies, AWTG delivers technology built specifically for your world.
           </p>
         </div>
@@ -503,7 +536,7 @@ function Industries() {
                 <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
                   {card.title}
                 </h3>
-                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78] flex-1 mb-7">
+                <p className="text-[#0a1628]/60 text-[14px] leading-[1.78] flex-1 mb-7">
                   {card.desc}
                 </p>
                 <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1a7aab] group-hover:gap-3 transition-all duration-200">
@@ -637,66 +670,6 @@ export function TechSolutions() {
   )
 }
 
-// --- WHY AWTG ----------------------------------------------------------------
-
-function WhyAWTG() {
-  const stats = [
-    { value: '19+', label: 'Years', sub: 'Engineering since 2006', accent: '#228DC1' },
-    { value: '1,000+', label: 'Sites', sub: 'Deployed globally', accent: '#0ea472' },
-    { value: '100+', label: 'Experts', sub: 'Engineers & specialists', accent: '#f59e0b' },
-    { value: '8', label: 'Sectors', sub: 'Public & private', accent: '#a78bfa' },
-  ]
-  const certs = ['ISO 9001', 'ISO 27001', 'ISO 14001', 'ISO 45001', 'ISO 42001', 'Cyber Essentials+', 'CCS Approved']
-  return (
-    <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
-
-        {/* Heading */}
-        <div className="mb-10 max-w-2xl">
-          <h2 className="font-heading text-[#0a1628] mb-4">
-            The experience to deliver, and the{' '}
-            <span className="text-[#1a7aab]">team to stay with you.</span>
-          </h2>
-          <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75]">
-            Crown Commercial Service approved. SC and DV cleared engineers. Built for the most demanding environments.
-          </p>
-        </div>
-
-        {/* Cert pills row */}
-        <div className="flex flex-wrap items-center gap-2 mb-12">
-          {certs.map(c => (
-            <span key={c} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide border bg-white"
-              style={{ color: '#228DC1', borderColor: 'rgba(34,141,193,0.25)' }}>
-              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                <circle cx="4" cy="4" r="3.5" stroke="#228DC1" strokeWidth="1"/>
-                <path d="M2.5 4l1 1 2-2" stroke="#228DC1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              {c}
-            </span>
-          ))}
-          <Link to="/about/certifications"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide border border-gray-200 bg-white text-[#0a1628]/50 hover:text-[#1a7aab] transition-colors">
-            View all →
-          </Link>
-        </div>
-
-        {/* Stat cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-          {stats.map((s) => (
-            <div key={s.label} className="rounded-2xl bg-white border border-gray-100 shadow-sm p-7 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-              <div className="w-8 h-[3px] rounded-full mb-5" style={{ background: s.accent }} />
-              <p className="text-[40px] font-black leading-none text-[#0a1628] mb-2">{s.value}</p>
-              <p className="text-[11px] font-extrabold uppercase tracking-widest mb-1" style={{ color: s.accent }}>{s.label}</p>
-              <p className="text-[13px] text-[#0a1628]/50 font-normal">{s.sub}</p>
-            </div>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  )
-}
-
 // --- PNAAS --------------------------------------------------------------------
 
 const pnaasFeatures = [
@@ -795,7 +768,7 @@ function ClientVoices() {
           <h2 className="font-serif-display text-[#0a1628] leading-tight">
             What our <span className="text-[#1a7aab]">clients say</span>
           </h2>
-          <p className="text-[#0a1628]/55 text-[17px] font-normal leading-[1.7] mt-4 max-w-xl mx-auto">
+          <p className="text-[#0a1628]/60 text-[17px] font-normal leading-[1.7] mt-4 max-w-xl mx-auto">
             Real results from organisations deploying AWTG AI solutions.
           </p>
         </div>
@@ -832,7 +805,7 @@ function ClientVoices() {
             </div>
             <div className="text-center">
               <p className="text-[#0a1628] font-bold text-[16px]">{t.name}</p>
-              <p className="text-[#0a1628]/50 text-[13px] mt-0.5">
+              <p className="text-[#0a1628]/60 text-[13px] mt-0.5">
                 {t.role},{' '}
                 <span style={{ color: t.accent }} className="font-semibold">{t.company}</span>
               </p>
@@ -843,14 +816,14 @@ function ClientVoices() {
           <button
             onClick={() => setActive((a) => (a - 1 + testimonials.length) % testimonials.length)}
             aria-label="Previous"
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/40 hover:text-[#1a7aab] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/60 hover:text-[#1a7aab] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
           >
             <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 16l-6-6 6-6"/></svg>
           </button>
           <button
             onClick={() => setActive((a) => (a + 1) % testimonials.length)}
             aria-label="Next"
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/40 hover:text-[#1a7aab] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/60 hover:text-[#1a7aab] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
           >
             <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 4l6 6-6 6"/></svg>
           </button>
@@ -996,12 +969,12 @@ function Insights() {
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center justify-between mb-4">
                   <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${a.tagPill}`}>{a.tag}</span>
-                  <span className="text-[#0a1628]/40 text-[11px]">{a.date}</span>
+                  <span className="text-[#0a1628]/60 text-[11px]">{a.date}</span>
                 </div>
                 <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors leading-[1.4]">{a.title}</h3>
-                <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-5 line-clamp-2 flex-1">{a.excerpt}</p>
+                <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.7] mb-5 line-clamp-2 flex-1">{a.excerpt}</p>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-[#0a1628]/40 text-[11px]">{a.readTime}</span>
+                  <span className="text-[#0a1628]/60 text-[11px]">{a.readTime}</span>
                   <span className="text-[#1a7aab] text-[12px] font-semibold inline-flex items-center gap-1">
                     Read more
                     <svg className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -1055,7 +1028,7 @@ function ContactCTA() {
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Phone</p>
               <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#1a7aab] transition-colors font-medium text-sm">+44 (0) 20 3515 5151</a>
-              <p className="text-xs text-[#0a1628]/45 mt-1 font-normal">Mon–Fri, 9am–6pm GMT</p>
+              <p className="text-xs text-[#0a1628]/60 mt-1 font-normal">Mon–Fri, 9am–6pm GMT</p>
             </div>
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Offices</p>
@@ -1078,7 +1051,6 @@ export default function Home() {
         <Hero />
         <WhatWeDo />
         <Industries />
-        <WhyAWTG />
         <ClientVoices />
         <Insights />
         <ContactCTA />
