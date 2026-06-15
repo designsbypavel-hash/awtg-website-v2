@@ -35,7 +35,7 @@ const footerCols = [
       { label: 'Kai — Sales & Customer Services', href: '/products/kai' },
       { label: 'Aruva — AI for Education', href: '/products/aruva' },
       { label: 'Generative AI', href: '/solutions/generative-ai' },
-      { label: 'Digital Transformation', href: '/services/consultancy' },
+      { label: 'Digital Transformation', href: '/services/digital-transformation' },
     ],
   },
   {
@@ -46,7 +46,7 @@ const footerCols = [
       { label: 'iDAMS', href: '/services/iot' },
       { label: 'Telecoms AI', href: '/solutions/telecoms-ai' },
       { label: 'Private Networks', href: '/solutions/mobile-private-networks' },
-      { label: 'Space & Defence', href: '/industries/defence' },
+      { label: 'Space & Defence', href: '/connectivity/space-defence' },
     ],
   },
   {
