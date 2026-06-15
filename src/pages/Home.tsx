@@ -140,7 +140,7 @@ const tickerLogos = [
   { id: 'virginO2',    src: '/logos/partners/Virgin 02.png',               alt: 'Virgin Media O2' },
   { id: 'vodafone',    src: '/logos/partners/Vodafone.png',                alt: 'Vodafone' },
   { id: 'vodxone',     src: '/logos/partners/VOdafonexone.png',            alt: 'Vodafone Xone' },
-  { id: 'westlondon',  src: '/logos/partners/West London.png',             alt: 'West London Alliance' },
+  { id: 'westlondon',  src: '/logos/partners/West London.png',             alt: 'West London Alliance',  h: 150 },
   { id: 'wifi',        src: '/logos/partners/Wifi.png',                    alt: 'Wi-Fi Powered by The Cloud' },
   { id: 'ww5g',        src: '/logos/partners/WW 5G.png',                   alt: 'WM 5G' },
   { id: 'cisco',       src: '/logos/partners/Communication.png',           alt: 'Cisco' },
