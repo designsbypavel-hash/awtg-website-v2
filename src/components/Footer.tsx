@@ -44,7 +44,6 @@ const footerCols = [
       { label: 'iCMAP', href: '/products/icmap' },
       { label: 'SCAP', href: '/services/engineering' },
       { label: 'iDAMS', href: '/services/iot' },
-      { label: 'Telecoms AI', href: '/solutions/telecoms-ai' },
       { label: 'Private Networks', href: '/solutions/mobile-private-networks' },
       { label: 'Space & Defence', href: '/connectivity/space-defence' },
     ],
