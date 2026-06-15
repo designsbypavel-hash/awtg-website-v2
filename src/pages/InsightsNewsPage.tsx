@@ -16,7 +16,7 @@ type NewsItem = {
 export type { NewsItem }
 
 export const cleanText = (value: string) => value
-  .replace(/[’‘]/g, "'")
+  .replace(/['']/g, "'")
   .replace(/[“”]/g, '"')
   .replace(/[–—]/g, '-')
   .replace(/â€™/g, "'")
@@ -35,17 +35,17 @@ export const getNewsHref = (item: NewsItem) => `/insights/news/${createNewsSlug(
 
 export const newsItems: NewsItem[] = [
   {
-    title: 'The Future of Learning is Here: Inside Aruva, AWTG’s Educational AI Platform',
+    title: "The Future of Learning is Here: Inside Aruva, AWTG's Educational AI Platform",
     date: 'May 4, 2026',
     category: 'Artificial Intelligence',
-    excerpt: 'Shaping the future of education with Aruva, AWTG’s AI-powered platform designed to connect institutions, educators and learners through smarter collaboration and digital-first learning.',
+    excerpt: "Shaping the future of education with Aruva, AWTG's AI-powered platform designed to connect institutions, educators and learners through smarter collaboration and digital-first learning.",
     youtubeEmbedUrl: 'https://www.youtube.com/embed/L20VwApk4q4?feature=oembed',
   },
   {
-    title: 'AWTG’s AI Journey: From Innovation to Expansion',
+    title: "AWTG's AI Journey: From Innovation to Expansion",
     date: 'April 29, 2026',
     category: 'Artificial Intelligence',
-    excerpt: 'From early innovation to where AWTG is today, the company’s AI journey continues to push the boundaries of what is possible with technology, clarity and real-world impact.',
+    excerpt: "From early innovation to where AWTG is today, the company's AI journey continues to push the boundaries of what is possible with technology, clarity and real-world impact.",
     youtubeEmbedUrl: 'https://www.youtube.com/embed/BAvyHUxvlfM?feature=oembed',
   },
   {
@@ -58,27 +58,27 @@ export const newsItems: NewsItem[] = [
     title: 'AWTG Appointed to Crown Commercial Service Technology Services 4 Framework',
     date: 'December 23, 2025',
     category: 'Public Sector',
-    excerpt: 'AWTG has been selected as a supplier on Crown Commercial Service’s Technology Services 4 framework, securing positions across key lots for public sector technology delivery.',
+    excerpt: "AWTG has been selected as a supplier on Crown Commercial Service's Technology Services 4 framework, securing positions across key lots for public sector technology delivery.",
   },
   {
-    title: 'Innovator’s Table Episode 5: Matt Moayedi, AWTG Director of Engineering',
+    title: "Innovator's Table Episode 5: Matt Moayedi, AWTG Director of Engineering",
     date: 'December 16, 2025',
     category: 'Engineering',
     excerpt: 'Matt Moayedi shares how AWTG builds flexible, future-ready digital infrastructure across sectors from smart cities and public networks to edge computing and AI.',
     youtubeEmbedUrl: 'https://www.youtube.com/embed/jd4rkMayo_U?feature=oembed',
   },
   {
-    title: 'Innovator’s Table Episode 4: Peter Najm, AWTG AI Product Manager',
+    title: "Innovator's Table Episode 4: Peter Najm, AWTG AI Product Manager",
     date: 'December 8, 2025',
     category: 'Artificial Intelligence',
     excerpt: 'Peter Najm discusses how AWTG uses AI to drive efficiency, automation and transparency across customer service, smart cities and other operational settings.',
     youtubeEmbedUrl: 'https://www.youtube.com/embed/bupY1MLSTBw?feature=oembed',
   },
   {
-    title: 'AWTG is Ready to Showcase AI-Centric Innovation at Telecom Review Leaders’ Summit 2025',
+    title: "AWTG is Ready to Showcase AI-Centric Innovation at Telecom Review Leaders' Summit 2025",
     date: 'November 28, 2025',
     category: 'Artificial Intelligence',
-    excerpt: 'AWTG joined the global technology community as a Gold Sponsor at Telecom Review Leaders’ Summit 2025 in Dubai, highlighting AI-led innovation across connectivity and digital transformation.',
+    excerpt: "AWTG joined the global technology community as a Gold Sponsor at Telecom Review Leaders' Summit 2025 in Dubai, highlighting AI-led innovation across connectivity and digital transformation.",
   },
   {
     title: 'AWTG to Showcase DSIT-Funded 5G and AI Innovation at the Future Network Programmes Event',
@@ -87,34 +87,34 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG prepared to demonstrate 5G solutions and AI-powered platforms at the Future Network Programmes: Legacy and Launchpad event in London.',
   },
   {
-    title: 'Innovator’s Table Episode 3: Craig Bower, Oxfordshire County Council',
+    title: "Innovator's Table Episode 3: Craig Bower, Oxfordshire County Council",
     date: 'November 25, 2025',
     category: 'Public Sector',
-    excerpt: 'Craig Bower discusses how 5G trials along a major rail corridor can help shape the UK’s digital transport future, with AWTG as technology and delivery partner.',
+    excerpt: "Craig Bower discusses how 5G trials along a major rail corridor can help shape the UK's digital transport future, with AWTG as technology and delivery partner.",
   },
   {
-    title: 'Innovator’s Table Episode 2: Pete Compton, DSIT Programme Manager',
+    title: "Innovator's Table Episode 2: Pete Compton, DSIT Programme Manager",
     date: 'November 19, 2025',
     category: 'Telecommunications',
     excerpt: 'Pete Compton shares insights on Open RAN deployment at scale in dense UK cities and the public-private collaboration behind the SCONDA project.',
   },
   {
-    title: 'Innovator’s Table Episode 1: Dr. Mike Short, AWTG’s Executive Chairman',
+    title: "Innovator's Table Episode 1: Dr. Mike Short, AWTG's Executive Chairman",
     date: 'November 18, 2025',
     category: 'Innovation',
     excerpt: 'Dr. Mike Short shares his vision for inclusive, sustainable digital transformation, from long-term social value to Open RAN, AI and national connectivity.',
   },
   {
-    title: 'AWTG to Showcase AI Innovation at Telecom Review Leaders’ Summit 2025',
+    title: "AWTG to Showcase AI Innovation at Telecom Review Leaders' Summit 2025",
     date: 'November 10, 2025',
     category: 'Artificial Intelligence',
-    excerpt: 'AWTG announced its participation at Telecom Review Leaders’ Summit 2025, demonstrating how AI-powered platforms are transforming operations across telecoms and public services.',
+    excerpt: "AWTG announced its participation at Telecom Review Leaders' Summit 2025, demonstrating how AI-powered platforms are transforming operations across telecoms and public services.",
   },
   {
     title: 'AWTG at Connected Britain 2025: Showcasing Innovation, Collaboration, and the Future of Connectivity',
     date: 'October 29, 2025',
     category: 'Telecommunications',
-    excerpt: 'Connected Britain 2025 brought AWTG’s technology to life through private 5G, FlexRAN and Kai AI demonstrations focused on practical connectivity outcomes.',
+    excerpt: "Connected Britain 2025 brought AWTG's technology to life through private 5G, FlexRAN and Kai AI demonstrations focused on practical connectivity outcomes.",
   },
   {
     title: 'AWTG Featured in Open Access Government October 2025 Edition',
@@ -132,7 +132,7 @@ export const newsItems: NewsItem[] = [
     title: 'SCONDA Project Closure Event',
     date: 'October 1, 2025',
     category: 'Telecommunications',
-    excerpt: 'The SCONDA consortium celebrated the successful completion of the UK’s first dense urban Open RAN small cell deployment in Glasgow city centre.',
+    excerpt: "The SCONDA consortium celebrated the successful completion of the UK's first dense urban Open RAN small cell deployment in Glasgow city centre.",
   },
   {
     title: 'AWTG Celebrates Success at Connected Britain 2025',
@@ -150,13 +150,13 @@ export const newsItems: NewsItem[] = [
     title: 'AWTG Leads on Multiple Shortlisted Innovation Projects at Connected Britain Awards 2025',
     date: 'September 18, 2025',
     category: 'Innovation',
-    excerpt: 'Four major projects involving AWTG were shortlisted at Connected Britain Awards 2025, reflecting the company’s role in digital infrastructure innovation.',
+    excerpt: "Four major projects involving AWTG were shortlisted at Connected Britain Awards 2025, reflecting the company's role in digital infrastructure innovation.",
   },
   {
     title: 'Public-Private Partnerships: Accelerating Rural Rail Digital Transformation',
     date: 'September 9, 2025',
     category: 'Public Sector',
-    excerpt: 'The England’s Connected Heartland 5G Railway initiative shows how local government coordination, national funding and private-sector expertise can transform rural rail connectivity.',
+    excerpt: "The England's Connected Heartland 5G Railway initiative shows how local government coordination, national funding and private-sector expertise can transform rural rail connectivity.",
   },
   {
     title: 'AWTG at EuroXR 2025: Driving Innovation in XR, AI, and Next-Generation Connectivity',
@@ -168,7 +168,7 @@ export const newsItems: NewsItem[] = [
     title: 'AWTG Appoints Dr. Mike Short CBE as Chairman',
     date: 'August 19, 2025',
     category: 'News',
-    excerpt: 'AWTG announced Dr. Mike Short CBE as Chairman, bringing global telecommunications, satcomms, innovation and research experience to the company’s next phase.',
+    excerpt: "AWTG announced Dr. Mike Short CBE as Chairman, bringing global telecommunications, satcomms, innovation and research experience to the company's next phase.",
   },
   {
     title: 'AWTG Leads Milestone Open RAN Deployment in Glasgow',
@@ -201,10 +201,10 @@ export const newsItems: NewsItem[] = [
     excerpt: 'The Cambridgeshire Open RAN Ecosystem consortium was shortlisted for the Smart Places Award, with AWTG supporting as technical lead partner.',
   },
   {
-    title: 'Driving the Future of Rail: England’s Connected Heartland Shortlisted for Industrial Innovation Award',
+    title: "Driving the Future of Rail: England's Connected Heartland Shortlisted for Industrial Innovation Award",
     date: 'August 6, 2025',
     category: 'Private Networks',
-    excerpt: 'England’s Connected Heartland was shortlisted for Industrial Innovation, demonstrating how 5G can improve rail, transport and rural infrastructure.',
+    excerpt: "England's Connected Heartland was shortlisted for Industrial Innovation, demonstrating how 5G can improve rail, transport and rural infrastructure.",
   },
   {
     title: 'From Barrier-Breaking to Energy-Saving: SCONDA Shortlisted Twice at Connected Britain Awards 2025',
@@ -222,10 +222,10 @@ export const newsItems: NewsItem[] = [
     title: 'AWTG Demonstrates 5G Excellence at Millbrook Proving Ground',
     date: 'July 29, 2025',
     category: 'Private Networks',
-    excerpt: 'AWTG demonstrated 5G mobile private network capabilities at Millbrook Proving Ground as technology and delivery partner for England’s Connected Heartland.',
+    excerpt: "AWTG demonstrated 5G mobile private network capabilities at Millbrook Proving Ground as technology and delivery partner for England's Connected Heartland.",
   },
   {
-    title: 'AWTG Led the Real-World Validation of ECH’s 5G Railway Network During High-Speed Millbrook Trials',
+    title: "AWTG Led the Real-World Validation of ECH's 5G Railway Network During High-Speed Millbrook Trials",
     date: 'July 17, 2025',
     category: 'Private Networks',
     excerpt: 'AWTG led high-speed 5G railway network validation at Millbrook, demonstrating the potential of advanced connectivity for the future of rail.',
@@ -237,7 +237,7 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG hosted a milestone event at Glasgow City Chambers to showcase dense urban Open RAN technology integrated into an existing brownfield network.',
   },
   {
-    title: 'AWTG’s Impact in the CORE HDD Project: Accelerating 5G Open RAN for High-Density Urban Areas',
+    title: "AWTG's Impact in the CORE HDD Project: Accelerating 5G Open RAN for High-Density Urban Areas",
     date: 'June 6, 2025',
     category: 'Telecommunications',
     excerpt: 'AWTG supported CORE HDD, a DSIT-funded initiative delivering a multi-vendor 5G Open RAN neutral host platform for high-demand urban areas.',
@@ -258,10 +258,10 @@ export const newsItems: NewsItem[] = [
     title: 'Abbey Alidoosti to Share Insights as Panelist at Small Cells World Summit 2025',
     date: 'May 21, 2025',
     category: 'Telecommunications',
-    excerpt: 'AWTG’s CEO Abbey Alidoosti joined a deployment best practice panel focused on collaborative work with local authorities.',
+    excerpt: "AWTG's CEO Abbey Alidoosti joined a deployment best practice panel focused on collaborative work with local authorities.",
   },
   {
-    title: 'Introducing AWTG’s Evolved Network-in-a-Box – Powered by RAN Automation',
+    title: "Introducing AWTG's Evolved Network-in-a-Box – Powered by RAN Automation",
     date: 'May 20, 2025',
     category: 'Private Networks',
     excerpt: 'AWTG introduced an evolved Network-in-a-Box and Cells on Wheels solution for events, pop-up venues, rural communities and temporary deployments.',
@@ -273,10 +273,10 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG joined the ECHAlliance gathering to discuss smart health, generative AI for healthcare and GDPR-compliant solutions for practitioners and hospitals.',
   },
   {
-    title: 'Exclusive with AWTG CEO: Building the Middle East’s Future through Smart Connectivity',
+    title: "Exclusive with AWTG CEO: Building the Middle East's Future through Smart Connectivity",
     date: 'May 8, 2025',
     category: 'News',
-    excerpt: 'AWTG CEO Abbey Alidoosti discussed engineering services, technology solutions and the company’s strategic focus on the Middle East with Telecom Review.',
+    excerpt: "AWTG CEO Abbey Alidoosti discussed engineering services, technology solutions and the company's strategic focus on the Middle East with Telecom Review.",
   },
   {
     title: 'AWTG to Exhibit at SCWS 2025, Showcasing Cutting-Edge Innovations in Connectivity and AI',
@@ -285,16 +285,16 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG announced its participation at Small Cells World Summit 2025, showcasing DSIT-funded work in national connectivity and AI.',
   },
   {
-    title: 'HiPer-RAN: Advancing Mobile Networks with AWTG’s Expertise',
+    title: "HiPer-RAN: Advancing Mobile Networks with AWTG's Expertise",
     date: 'April 11, 2025',
     category: 'Telecommunications',
     excerpt: 'HiPer-RAN, led by the University of Surrey with AWTG expertise, advanced mobile network infrastructure through intelligent and high-performing RAN innovation.',
   },
   {
-    title: 'Unlocking the Future of Enterprise Connectivity with AWTG’s Private Network as a Service',
+    title: "Unlocking the Future of Enterprise Connectivity with AWTG's Private Network as a Service",
     date: 'April 7, 2025',
     category: 'Private Networks',
-    excerpt: 'AWTG’s PNaaS combines radio access, core, transport and enterprise IT network layers to simplify secure enterprise mobile connectivity.',
+    excerpt: "AWTG's PNaaS combines radio access, core, transport and enterprise IT network layers to simplify secure enterprise mobile connectivity.",
   },
   {
     title: 'AWTG Celebrates Key Role in Successful Completion of HiPer-RAN Project',
@@ -303,13 +303,13 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG marked its role as technical work packages lead in the successful completion of the HiPer-RAN project and Open RAN automation work.',
   },
   {
-    title: 'AWTG’s DSIT Projects Recognised at The Future Networks Awards',
+    title: "AWTG's DSIT Projects Recognised at The Future Networks Awards",
     date: 'March 25, 2025',
     category: 'Awards',
     excerpt: 'Several DSIT-funded projects involving AWTG were recognised at The Future Networks Awards, including HiPer-RAN winning the Incremental Innovation Award.',
   },
   {
-    title: 'AWTG Supports DSIT’s Connected Reflections Live',
+    title: "AWTG Supports DSIT's Connected Reflections Live",
     date: 'March 18, 2025',
     category: 'Innovation',
     excerpt: 'AWTG supported Connected Reflections Live, a DSIT and UKTIN event exploring the UK innovation ecosystem and future network technology.',
@@ -318,19 +318,19 @@ export const newsItems: NewsItem[] = [
     title: 'AWTG Showcases 5G and AI Innovations in TechForge Media Interview at IoT Tech Expo 2025',
     date: 'March 13, 2025',
     category: 'Artificial Intelligence',
-    excerpt: 'Ian Vernon discussed AWTG’s 5G, generative AI and private network technologies in a TechForge Media interview at IoT Tech Expo 2025.',
+    excerpt: "Ian Vernon discussed AWTG's 5G, generative AI and private network technologies in a TechForge Media interview at IoT Tech Expo 2025.",
   },
   {
-    title: 'AWTG Celebrates Excellence at Cambridgeshire County Council’s Employee Spotlight Awards',
+    title: "AWTG Celebrates Excellence at Cambridgeshire County Council's Employee Spotlight Awards",
     date: 'March 13, 2025',
     category: 'Public Sector',
-    excerpt: 'AWTG served as headline sponsor of Cambridgeshire County Council’s Employee Spotlight Awards, recognising local public service achievements.',
+    excerpt: "AWTG served as headline sponsor of Cambridgeshire County Council's Employee Spotlight Awards, recognising local public service achievements.",
   },
   {
     title: 'AWTG Supports Historic First 5G Augmented Reality Live Concert in Cambridge',
     date: 'March 12, 2025',
     category: 'Innovation',
-    excerpt: 'AWTG supported the first augmented reality live concert at Cambridge Corn Exchange through the CORE project’s 5G and Open RAN technology.',
+    excerpt: "AWTG supported the first augmented reality live concert at Cambridge Corn Exchange through the CORE project's 5G and Open RAN technology.",
   },
   {
     title: 'AWTG Launches 5G Open RAN Lab',
@@ -369,10 +369,10 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG hosted the Borderlands 5GIR programme team at its laboratory, demonstrating advanced technologies aligned to DSIT-funded project objectives.',
   },
   {
-    title: 'Collaboration and Innovation: AWTG and ECH’s 5G Rail Project Meeting over Luncheon',
+    title: "Collaboration and Innovation: AWTG and ECH's 5G Rail Project Meeting over Luncheon",
     date: 'February 4, 2025',
     category: 'Private Networks',
-    excerpt: 'AWTG hosted England’s Connected Heartland partners at its lab to discuss 5G rail project goals, future plans and private network capabilities.',
+    excerpt: "AWTG hosted England's Connected Heartland partners at its lab to discuss 5G rail project goals, future plans and private network capabilities.",
   },
   {
     title: 'AWTG as Silver Sponsor at 2025 IoT Tech Expo Global in London',
@@ -387,19 +387,19 @@ export const newsItems: NewsItem[] = [
     excerpt: 'Dr. Sanaz Soltani joined an IoT Tech Expo panel to discuss how AI and 5G are driving innovation for customers and connected industries.',
   },
   {
-    title: 'AWTG to Represent Projects at DSIT and UKTIN’s The Role of Connectivity in Transforming the UK Event',
+    title: "AWTG to Represent Projects at DSIT and UKTIN's The Role of Connectivity in Transforming the UK Event",
     date: 'January 23, 2025',
     category: 'Public Sector',
-    excerpt: 'AWTG represented the Borderlands 5G Innovation Region at a DSIT and UKTIN event on connectivity’s role in transforming UK industries and services.',
+    excerpt: "AWTG represented the Borderlands 5G Innovation Region at a DSIT and UKTIN event on connectivity's role in transforming UK industries and services.",
   },
   {
     title: 'AWTG Successfully Showcased Cutting-edge Innovations at Lamma 2025',
     date: 'January 20, 2025',
     category: 'Innovation',
-    excerpt: 'AWTG showcased DSIT-funded projects at Lamma 2025, including Borderlands 5GIR and England’s Connected Heartland railway innovation.',
+    excerpt: "AWTG showcased DSIT-funded projects at Lamma 2025, including Borderlands 5GIR and England's Connected Heartland railway innovation.",
   },
   {
-    title: 'AWTG’s Kai AI Assistant Empowers SMEs Through Cutting-Edge AI Solutions',
+    title: "AWTG's Kai AI Assistant Empowers SMEs Through Cutting-Edge AI Solutions",
     date: 'January 16, 2025',
     category: 'Artificial Intelligence',
     excerpt: 'AWTG highlighted how Kai helps SMEs tackle complex challenges and apply transformative AI across multiple industries.',
@@ -417,7 +417,7 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG announced plans to showcase O-RAN innovations and SCONDA consortium work at Mobile World Congress 2025.',
   },
   {
-    title: 'AWTG’s Annual Christmas Dinner Celebrates Success and Partnership',
+    title: "AWTG's Annual Christmas Dinner Celebrates Success and Partnership",
     date: 'December 20, 2024',
     category: 'News',
     excerpt: 'AWTG hosted its annual Christmas Dinner at Home House in London, bringing together teams and clients to celebrate partnership and success.',
@@ -429,13 +429,13 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG and the Borderlands 5GIR team implemented a 5G O-RAN pop-up site at Kielder Observatory to demonstrate regional connectivity use cases.',
   },
   {
-    title: 'AWTG to Deploy 5G Connectivity for England’s Connected Heartland Rail Project',
+    title: "AWTG to Deploy 5G Connectivity for England's Connected Heartland Rail Project",
     date: 'December 11, 2024',
     category: 'Private Networks',
-    excerpt: 'AWTG was selected to deliver 5G broadband connectivity along the Bicester Village to Bletchley railway line for England’s Connected Heartland.',
+    excerpt: "AWTG was selected to deliver 5G broadband connectivity along the Bicester Village to Bletchley railway line for England's Connected Heartland.",
   },
   {
-    title: 'Borderlands 5G Innovation Region Team’s Cutting-Edge Connectivity at Glebe Park Christmas Market',
+    title: "Borderlands 5G Innovation Region Team's Cutting-Edge Connectivity at Glebe Park Christmas Market",
     date: 'December 4, 2024',
     category: 'Public Sector',
     excerpt: 'AWTG and Borderlands 5GIR partners showcased wireless technology at Glebe Park Christmas Market as part of the DSIT-funded innovation region.',
@@ -453,19 +453,19 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG announced approval as a G-Cloud 14 supplier, supporting streamlined cloud procurement for UK public sector organisations.',
   },
   {
-    title: 'Dr. Sanaz Soltani Featured in DSIT’s Woman in Digital Infrastructure Newsletter',
+    title: "Dr. Sanaz Soltani Featured in DSIT's Woman in Digital Infrastructure Newsletter",
     date: 'November 1, 2024',
     category: 'News',
-    excerpt: 'AWTG recognised Dr. Sanaz Soltani’s feature in DSIT’s Women in Digital Infrastructure newsletter and her contribution to DSIT-funded projects.',
+    excerpt: "AWTG recognised Dr. Sanaz Soltani's feature in DSIT's Women in Digital Infrastructure newsletter and her contribution to DSIT-funded projects.",
   },
   {
-    title: 'AWTG’s AI with New Features Help Businesses Thrive',
+    title: "AWTG's AI with New Features Help Businesses Thrive",
     date: 'October 24, 2024',
     category: 'Artificial Intelligence',
     excerpt: 'AWTG unveiled new Kai capabilities designed to help businesses make smarter decisions, automate workflows and optimise operations.',
   },
   {
-    title: 'From Busy to Breezy: AWTG’s Kai is Supercharging Businesses',
+    title: "From Busy to Breezy: AWTG's Kai is Supercharging Businesses",
     date: 'October 24, 2024',
     category: 'Artificial Intelligence',
     excerpt: 'Kai introduced customisation features that allow businesses to tailor their AI assistant persona, colours, logo and customer-facing experience.',
@@ -480,7 +480,7 @@ export const newsItems: NewsItem[] = [
     title: 'AWTG to Speak in Smart and Connected Social Places – Glasgow',
     date: 'October 17, 2024',
     category: 'Telecommunications',
-    excerpt: 'AWTG announced speaker participation at Glasgow’s Smart and Connected Social Places event, discussing SCONDA and urban connectivity.',
+    excerpt: "AWTG announced speaker participation at Glasgow's Smart and Connected Social Places event, discussing SCONDA and urban connectivity.",
   },
   {
     title: 'AWTG is Leading the Charge in O-RAN Innovation with DSIT Projects',
@@ -495,7 +495,7 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG exhibited private and enterprise network innovations across telecoms, AI and IoT at PortComms 2024.',
   },
   {
-    title: 'iTRUSTRIC – Securing Open RAN with AWTG’s Advanced Solution',
+    title: "iTRUSTRIC – Securing Open RAN with AWTG's Advanced Solution",
     date: 'October 7, 2024',
     category: 'Telecommunications',
     excerpt: 'AWTG introduced iTRUSTRIC, a security solution designed to protect Open RAN networks, improve visibility and support compliance.',
@@ -531,7 +531,7 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG participated in Cambridge Tech Week as a consortium partner and technical lead of the CORE Open RAN project.',
   },
   {
-    title: 'Inside AWTG’s London Lab: A 5G and O-RAN Lab Creating Innovations for Unrivaled Quality of Service',
+    title: "Inside AWTG's London Lab: A 5G and O-RAN Lab Creating Innovations for Unrivaled Quality of Service",
     date: 'September 2, 2024',
     category: 'Telecommunications',
     excerpt: 'AWTG highlighted its London lab and work in 5G O-RAN systems integration, quality of service and next-generation telecom innovation.',
@@ -589,7 +589,7 @@ export default function InsightsNewsPage() {
         />
         <div
           className="absolute inset-0"
-          style={{ background: ‘linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.74) 30%, rgba(10,22,40,0.32) 58%, rgba(10,22,40,0.06) 74%, transparent 88%)’ }}
+          style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.74) 30%, rgba(10,22,40,0.32) 58%, rgba(10,22,40,0.06) 74%, transparent 88%)' }}
         />
         <div
           className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
@@ -599,12 +599,12 @@ export default function InsightsNewsPage() {
             <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">News</p>
             <h1
               className="font-serif-display text-white leading-[1.06] mb-6"
-              style={{ fontSize: ‘clamp(34px, 4vw, 52px)’ }}
+              style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
             >
               News
             </h1>
             <p className="text-white/65 text-[17px] font-normal leading-[1.8]" style={{ maxWidth: 500 }}>
-              Company announcements, project milestones, awards, media coverage and event updates from AWTG’s work across AI, 5G, Open RAN, private networks and public sector innovation.
+              Company announcements, project milestones, awards, media coverage and event updates from AWTG's work across AI, 5G, Open RAN, private networks and public sector innovation.
             </p>
           </div>
         </div>
@@ -774,10 +774,10 @@ export default function InsightsNewsPage() {
           <div>
             <p className="type-label text-[#228DC1] mb-4">Talk to AWTG</p>
             <h2 className="font-h2 text-[#0a1628]">
-              Don’t see what<br />you’re looking for?
+              Don't see what<br />you're looking for?
             </h2>
             <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-4 max-w-xl">
-              Speak to the team about media enquiries, project updates, partnerships or the latest work across AWTG’s innovation portfolio.
+              Speak to the team about media enquiries, project updates, partnerships or the latest work across AWTG's innovation portfolio.
             </p>
           </div>
           <Link

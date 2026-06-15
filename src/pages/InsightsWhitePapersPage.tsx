@@ -23,7 +23,7 @@ export const whitePapers: WhitePaper[] = [
     title: 'Open RAN Innovations',
     date: 'August 16, 2024',
     topic: 'Open RAN',
-    desc: 'A practical view of Open RAN transformation, covering flexibility, integration challenges, security protocols and AWTG’s role in advancing more open radio access networks.',
+    desc: "A practical view of Open RAN transformation, covering flexibility, integration challenges, security protocols and AWTG's role in advancing more open radio access networks.",
     pdf: '/white-papers/AWTG-White-Paper-Open-RAN-Innovations.pdf',
     featured: true,
   },
