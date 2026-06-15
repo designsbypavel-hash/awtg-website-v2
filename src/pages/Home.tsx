@@ -181,7 +181,7 @@ function Hero() {
         <h1
           className="home-hero-reveal font-serif-display text-white mb-6"
         >
-          Helping organisations to thrive<br />
+          Helping organisations thrive<br />
           through AI and connectivity.
         </h1>
 
