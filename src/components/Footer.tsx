@@ -45,8 +45,8 @@ const footerCols = [
     title: 'Connectivity',
     links: [
       { label: 'iCMAP', href: '/products/icmap' },
-      { label: 'SCAP', href: '/contact' },
-      { label: 'iDAMS', href: '/contact' },
+      { label: 'SCAP', href: '/services/engineering' },
+      { label: 'iDAMS', href: '/services/iot' },
       { label: 'Health', href: '/connectivity/health' },
       { label: 'Public Sector', href: '/connectivity/public-sector' },
       { label: 'Space & Defence', href: '/connectivity/space-defence' },

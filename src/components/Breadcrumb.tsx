@@ -9,6 +9,8 @@ const PATH_LABELS: Record<string, string> = {
   '/products/aruva':                     'AI for Education',
   // ── Products (Connectivity section) ───────────────────────────────
   '/products/icmap':                     'iCMAP',
+  '/services/engineering':               'SCAP',
+  '/services/iot':                       'iDAMS',
   // ── Industries ────────────────────────────────────────────────────
   '/industries/enterprise':             'Enterprise',
   '/industries/telecoms':              'Telecoms',
@@ -105,7 +107,7 @@ export default function Breadcrumb() {
             <Link
               to="/"
               aria-label="Home"
-              className="flex items-center gap-1.5 text-[11px] font-medium text-[#0a1628]/40 hover:text-[#1a7aab] transition-colors duration-150"
+              className="flex items-center gap-1.5 text-[11px] font-medium text-[#0a1628]/60 hover:text-[#1a7aab] transition-colors duration-150"
             >
               <svg width="11" height="11" viewBox="0 0 20 20" fill="currentColor" className="shrink-0 -mt-px">
                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -134,7 +136,7 @@ export default function Breadcrumb() {
               ) : (
                 <Link
                   to={crumb.path}
-                  className="text-[11px] font-medium text-[#0a1628]/40 hover:text-[#1a7aab] transition-colors duration-150"
+                  className="text-[11px] font-medium text-[#0a1628]/60 hover:text-[#1a7aab] transition-colors duration-150"
                 >
                   {crumb.name}
                 </Link>

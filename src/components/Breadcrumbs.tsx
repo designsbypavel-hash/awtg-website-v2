@@ -60,6 +60,14 @@ const LABELS: Record<string, string> = {
 }
 
 const PATH_CRUMBS: Record<string, Omit<Crumb, 'isLast'>[]> = {
+  '/services/engineering': [
+    { label: 'Connectivity' },
+    { href: '/services/engineering', label: 'SCAP' },
+  ],
+  '/services/iot': [
+    { label: 'Connectivity' },
+    { href: '/services/iot', label: 'iDAMS' },
+  ],
 }
 
 function toLabel(segment: string): string {
@@ -101,7 +109,7 @@ export default function Breadcrumbs() {
           <li className="flex items-center shrink-0">
             <Link
               to="/"
-              className="text-xs font-medium text-[#0a1628]/45 hover:text-[#1a7aab] transition-colors duration-150 whitespace-nowrap"
+              className="text-xs font-medium text-[#0a1628]/60 hover:text-[#1a7aab] transition-colors duration-150 whitespace-nowrap"
             >
               Home
             </Link>
@@ -123,12 +131,12 @@ export default function Breadcrumbs() {
               ) : crumb.href ? (
                 <Link
                   to={crumb.href}
-                  className="text-xs font-medium text-[#0a1628]/45 hover:text-[#1a7aab] transition-colors duration-150 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]"
+                  className="text-xs font-medium text-[#0a1628]/60 hover:text-[#1a7aab] transition-colors duration-150 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]"
                 >
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-xs font-medium text-[#0a1628]/40 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">
+                <span className="text-xs font-medium text-[#0a1628]/60 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">
                   {crumb.label}
                 </span>
               )}

@@ -47,6 +47,8 @@ import IndustriesDefencePage from './pages/IndustriesDefencePage'
 import AruvaPage from './pages/AruvaPage'
 import KaiPage from './pages/KaiPage'
 import IcmapPage from './pages/IcmapPage'
+import ServicesEngineeringPage from './pages/ServicesEngineeringPage'
+import ServicesIoTPage from './pages/ServicesIoTPage'
 
 // About
 import AboutOverviewPage from './pages/AboutOverviewPage'
@@ -88,6 +90,8 @@ export default function App() {
         <Route path="products/aruva" element={<AruvaPage />} />
         <Route path="products/kai" element={<KaiPage />} />
         <Route path="products/icmap" element={<IcmapPage />} />
+        <Route path="services/engineering" element={<ServicesEngineeringPage />} />
+        <Route path="services/iot" element={<ServicesIoTPage />} />
 
         {/* Solutions */}
 

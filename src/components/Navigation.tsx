@@ -51,8 +51,8 @@ const navItems: NavEntry[] = [
         heading: 'Products',
         items: [
           { label: 'iCMAP', desc: 'Intelligent 5G coverage mapping and network gap analysis', href: '/products/icmap' },
-          { label: 'SCAP', desc: 'Spectrum and capacity analysis platform for network planning', href: '/contact' },
-          { label: 'iDAMS', desc: 'Intelligent data and asset management system', href: '/contact' },
+          { label: 'SCAP', desc: 'Spectrum and capacity analysis platform for network planning', href: '/services/engineering' },
+          { label: 'iDAMS', desc: 'Intelligent data and asset management system', href: '/services/iot' },
         ],
       },
       {
@@ -375,7 +375,7 @@ export default function Navigation() {
                     <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-8' : 'grid-cols-2 gap-8 xl:gap-10'}`}>
                       {nav.groups.map((group) => (
                         <div key={group.heading}>
-                          <p className={`text-[11px] font-bold uppercase tracking-[0.24em] mb-5 px-1 ${group.heading ? 'text-[#0a1628]/45' : 'invisible'}`}>
+                          <p className={`text-[11px] font-bold uppercase tracking-[0.24em] mb-5 px-1 ${group.heading ? 'text-[#0a1628]/60' : 'invisible'}`}>
                             {group.heading || 'Industries'}
                           </p>
                           <div className="space-y-4">
@@ -395,7 +395,7 @@ export default function Navigation() {
                                   <p className="text-[#0a1628] text-[13.5px] font-semibold group-hover:text-[#1a7aab] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
                                     {item.label}
                                   </p>
-                                  <p className="text-[#0a1628]/55 text-xs font-normal leading-relaxed">
+                                  <p className="text-[#0a1628]/60 text-xs font-normal leading-relaxed">
                                     {item.desc}
                                   </p>
                                 </div>
