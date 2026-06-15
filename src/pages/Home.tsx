@@ -124,7 +124,7 @@ const tickerLogos = [
   { id: 'mobily',      src: '/logos/partners/Mobily.png',                  alt: 'Mobily' },
   { id: 'nao',         src: '/logos/partners/NAO.png',                     alt: 'National Audit Office' },
   { id: 'nokia',       src: '/logos/partners/Nokia.png',                   alt: 'Nokia' },
-  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2',           h: 52 },
+  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2',           h: 36 },
   { id: 'oracle',      src: '/logos/partners/Oracle.png',                  alt: 'Oracle' },
   { id: 'qinetiq',     src: '/logos/partners/Qinetic.png',                 alt: 'QinetiQ' },
   { id: 'quickline',   src: '/logos/partners/Quickline Broadband.png',     alt: 'Quickline Broadband' },
@@ -132,7 +132,7 @@ const tickerLogos = [
   { id: 'kingston',    src: '/logos/partners/Royal Thames.png',            alt: 'Royal Borough of Kingston upon Thames' },
   { id: 'ruckus',      src: '/logos/partners/Ruckus.png',                  alt: 'Ruckus' },
   { id: 'scotland5g',  src: '/logos/partners/Scotland 5G.png',             alt: 'The Scotland 5G Centre' },
-  { id: 'stc',         src: '/logos/partners/STC.png',                     alt: 'STC' },
+  { id: 'stc',         src: '/logos/partners/STC.png',                     alt: 'STC',              h: 142 },
   { id: 'strathclyde', src: '/logos/partners/Straighclyde.png',            alt: 'University of Strathclyde' },
   { id: 'surrey',      src: '/logos/partners/Surrey.png',                  alt: 'University of Surrey' },
   { id: 'tot',         src: '/logos/partners/TOT.png',                     alt: 'TOT' },
@@ -1086,4 +1086,3 @@ export default function Home() {
     </>
   )
 }
-
