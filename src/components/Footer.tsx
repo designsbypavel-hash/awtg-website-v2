@@ -34,8 +34,11 @@ const footerCols = [
     links: [
       { label: 'Kai — Sales & Customer Services', href: '/products/kai' },
       { label: 'Aruva — AI for Education', href: '/products/aruva' },
-      { label: 'Generative AI', href: '/products/kai' },
-      { label: 'Digital Transformation', href: '/about' },
+      { label: 'Education', href: '/ai/education' },
+      { label: 'Health Tech', href: '/industries/health-tech' },
+      { label: 'Commerce', href: '/ai/commerce' },
+      { label: 'Digital Transformation', href: '/ai/digital-transformation' },
+      { label: 'Public Sector', href: '/ai/public-sector' },
     ],
   },
   {
@@ -44,7 +47,14 @@ const footerCols = [
       { label: 'iCMAP', href: '/products/icmap' },
       { label: 'SCAP', href: '/contact' },
       { label: 'iDAMS', href: '/contact' },
+      { label: 'Health', href: '/connectivity/health' },
+      { label: 'Public Sector', href: '/connectivity/public-sector' },
       { label: 'Space & Defence', href: '/connectivity/space-defence' },
+      { label: 'Education', href: '/connectivity/education' },
+      { label: 'Government', href: '/connectivity/government' },
+      { label: 'Commerce', href: '/connectivity/commerce' },
+      { label: 'Manufacturing', href: '/connectivity/manufacturing' },
+      { label: 'Engineering', href: '/connectivity/engineering' },
     ],
   },
   {
