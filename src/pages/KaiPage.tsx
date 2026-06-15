@@ -829,9 +829,9 @@ function KaiChatDemo() {
                       Rate your experience to help us improve!
                     </p>
                     <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
-                      {[{ e: '', l: 'Satisfied' }, { e: '', l: 'Dissatisfied' }].map(b => (
-                        <div key={b.l} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, padding: '10px 8px', border: '1px solid #e5e7eb', borderRadius: 10, background: '#fff', fontSize: 13, fontWeight: 600, color: '#0a1628', cursor: 'default' }}>
-                          <span style={{ fontSize: 16 }}>{b.e}</span>{b.l}
+                      {['Satisfied', 'Dissatisfied'].map(label => (
+                        <div key={label} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 8px', border: '1px solid #e5e7eb', borderRadius: 10, background: '#fff', fontSize: 13, fontWeight: 600, color: '#0a1628', cursor: 'default' }}>
+                          {label}
                         </div>
                       ))}
                     </div>
