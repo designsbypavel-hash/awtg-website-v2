@@ -455,10 +455,41 @@ export default function ServicesEngineeringPage() {
       />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-32 pb-20 bg-white">
-        <div className="absolute inset-0 pointer-events-none opacity-40"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(34,141,193,0.12) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 72% 40%, rgba(34,141,193,0.07) 0, transparent 55%)' }} />
+      <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
+
+        {/* Diagonal dot-grid */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="scapGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <circle cx="1" cy="1" r="1" fill="rgba(34,141,193,0.35)" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#scapGrid)" />
+          </svg>
+        </div>
+
+        {/* Diagonal connecting lines */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.10 }}>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="scapLines" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="40" x2="80" y2="40" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
+                <line x1="40" y1="0" x2="40" y2="80" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#scapLines)" />
+          </svg>
+        </div>
+
+        {/* Decorative + crosses */}
+        {[{ top:'18%', left:'5%' }, { top:'55%', left:'3%' }, { top:'75%', left:'8%' }, { top:'32%', left:'44%' }].map((pos, i) => (
+          <div key={i} className="absolute pointer-events-none select-none text-[#228DC1]"
+            style={{ top: pos.top, left: pos.left, fontSize: 18, opacity: 0.30, fontWeight: 300, lineHeight: 1 }}>+</div>
+        ))}
+
+        {/* Radial glow */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 72% 35%, rgba(34,141,193,0.14) 0, transparent 55%)' }} />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-8 lg:grid-cols-[1fr_1.1fr] lg:px-12">
           <div>

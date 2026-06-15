@@ -246,10 +246,41 @@ export default function ServicesIoTPage() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-white pt-32 pb-20">
-        <div className="absolute inset-0 pointer-events-none opacity-35"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(61,77,158,0.12) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 40%, rgba(61,77,158,0.06) 0, transparent 55%)' }} />
+      <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #eceef8 0%, #dde0f4 40%, #cdd2ef 100%)' }}>
+
+        {/* Diagonal dot-grid */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="idamsGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <circle cx="1" cy="1" r="1" fill="rgba(61,77,158,0.38)" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#idamsGrid)" />
+          </svg>
+        </div>
+
+        {/* Diagonal connecting lines */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.10 }}>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="idamsLines" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="40" x2="80" y2="40" stroke="rgba(61,77,158,1)" strokeWidth="0.5" />
+                <line x1="40" y1="0" x2="40" y2="80" stroke="rgba(61,77,158,1)" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#idamsLines)" />
+          </svg>
+        </div>
+
+        {/* Decorative + crosses */}
+        {[{ top:'16%', left:'5%' }, { top:'54%', left:'3%' }, { top:'74%', left:'9%' }, { top:'30%', left:'43%' }].map((pos, i) => (
+          <div key={i} className="absolute pointer-events-none select-none text-[#3d4d9e]"
+            style={{ top: pos.top, left: pos.left, fontSize: 18, opacity: 0.30, fontWeight: 300, lineHeight: 1 }}>+</div>
+        ))}
+
+        {/* Radial glow */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 35%, rgba(61,77,158,0.12) 0, transparent 55%)' }} />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
           <div>
@@ -323,7 +354,7 @@ export default function ServicesIoTPage() {
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: `${aud.color}14` }}>
                   <FontAwesomeIcon icon={aud.icon} className="h-5 w-5" style={{ color: aud.color }} />
                 </div>
-                <p className="mb-1 text-[12px] font-medium text-[#0a1628]/45">{aud.who}</p>
+                <p className="mb-1 text-[12px] font-medium text-[#0a1628]/60">{aud.who}</p>
                 <h3 className="mb-4 text-[18px] font-semibold leading-[1.3] text-[#0a1628]">{aud.title}</h3>
                 <p className="mb-6 text-[14px] font-normal leading-[1.75] text-[#0a1628]/60">{aud.desc}</p>
                 <div className="space-y-2.5 border-t border-gray-100 pt-6">
