@@ -609,29 +609,59 @@ export default function IcmapPage() {
         </div>
       </section>
 
-      {/* -- Feature summary cards -- */}
-      <section className="bg-white border-t border-gray-100 py-10">
+      {/* -- Feature summary -- */}
+      <section className="bg-white border-t border-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { icon: faLayerGroup, stat: 'Filter',     label: 'by 2G, 3G, and 5G',                   note: 'view coverage by technology in one place' },
-              { icon: faMap,        stat: 'Overlay',    label: 'population and terrain data',          note: 'Add real world context to each coverage area' },
-              { icon: faChartBar,   stat: 'Assess',     label: 'weak zones by severity and impact',    note: 'Understand which gaps matter most' },
-              { icon: faBullseye,   stat: 'Prioritise', label: 'investment and deployment decisions',  note: 'Move from insight to action'       },
-            ].map((item) => (
-              <div
-                key={item.stat}
-                className="bg-white rounded-xl border border-gray-200 px-6 py-6 shadow-[0_1px_8px_rgba(10,22,40,0.04)] hover:shadow-[0_8px_28px_rgba(10,22,40,0.09)] hover:-translate-y-1 transition-all duration-300"
-                style={{ borderTop: '2.5px solid #228DC1' }}
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#228DC1]/10 flex items-center justify-center mb-5">
-                  <FontAwesomeIcon icon={item.icon} style={{ color: '#228DC1', fontSize: '15px' }} />
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+
+            {/* Left: image with stat overlay */}
+            <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', height: 460 }}>
+              <img
+                src="/images/insights/mobile-networks.jpg"
+                alt="iCMAP network coverage analysis"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,22,40,0.06) 0%, transparent 40%, rgba(10,22,40,0.65) 100%)' }} />
+              <div style={{ position: 'absolute', bottom: 28, left: 28, right: 28 }}>
+                <div style={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.50)', background: 'rgba(255,255,255,0.95)', padding: '18px 22px', boxShadow: '0 16px 48px rgba(10,22,40,0.18)', backdropFilter: 'blur(12px)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+                    <div style={{ flexShrink: 0 }}>
+                      <p style={{ fontSize: 28, fontWeight: 900, lineHeight: 1, color: '#228DC1', margin: 0 }}>3G → 5G</p>
+                      <p style={{ marginTop: 4, fontSize: 12, fontWeight: 700, color: '#0a1628', margin: '4px 0 0' }}>Multi-generation coverage</p>
+                    </div>
+                    <div style={{ width: 1, height: 40, flexShrink: 0, background: '#e5e7eb' }} />
+                    <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.55, color: 'rgba(10,22,40,0.60)', margin: 0 }}>
+                      Map, filter and compare network coverage across all technologies in one view
+                    </p>
+                  </div>
                 </div>
-                <p className="font-bold text-[#0a1628] text-2xl leading-none mb-2 tracking-tight">{item.stat}</p>
-                <p className="text-[#0a1628] text-[13px] font-semibold mb-1">{item.label}</p>
-                <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.note}</p>
               </div>
-            ))}
+            </div>
+
+            {/* Right: stacked feature cards */}
+            <div className="flex flex-col gap-3">
+              {[
+                { icon: faLayerGroup, stat: 'Filter',     label: 'by 2G, 3G, and 5G',                  note: 'View coverage by technology in one place',     color: '#228DC1' },
+                { icon: faMap,        stat: 'Overlay',    label: 'population and terrain data',         note: 'Add real world context to each coverage area', color: '#059669' },
+                { icon: faChartBar,   stat: 'Assess',     label: 'weak zones by severity and impact',   note: 'Understand which gaps matter most',             color: '#7c3aed' },
+                { icon: faBullseye,   stat: 'Prioritise', label: 'investment and deployment decisions', note: 'Move from insight to action',                  color: '#d97706' },
+              ].map((item) => (
+                <div
+                  key={item.stat}
+                  className="group flex gap-5 rounded-xl border border-gray-100 bg-[#f9fafb] p-6 transition-all duration-300 hover:border-[#228DC1]/20 hover:bg-white hover:shadow-[0_8px_32px_rgba(34,141,193,0.08)]"
+                >
+                  <div style={{ display: 'flex', height: 44, width: 44, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: 12, background: `${item.color}12`, border: `1px solid ${item.color}22` }}>
+                    <FontAwesomeIcon icon={item.icon} style={{ color: item.color, fontSize: 15 }} />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: 21, fontWeight: 800, color: '#0a1628', lineHeight: 1, margin: '0 0 4px' }}>{item.stat}</p>
+                    <p style={{ fontSize: 13, fontWeight: 600, color: '#0a1628', margin: '0 0 3px' }}>{item.label}</p>
+                    <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.65, color: 'rgba(10,22,40,0.60)', margin: 0 }}>{item.note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
