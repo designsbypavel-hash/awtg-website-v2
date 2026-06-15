@@ -207,7 +207,7 @@ function CoverageMap() {
                 <span className="text-[14px] font-medium text-[#0a1628]/60">{v.label}</span>
               </div>
             ))}
-            <span className="text-[14px] text-[#0a1628]/25 ml-auto">Click a zone for details</span>
+            <span className="text-[14px] text-[#0a1628]/60 ml-auto">Click a zone for details</span>
           </div>
         </div>
 

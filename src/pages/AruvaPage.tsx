@@ -536,7 +536,7 @@ function SyllabusVisual() {
         </div>
       </div>
       {/* Parsed weeks */}
-      <p className="text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-3">Business Strategy 101: Parsed</p>
+      <p className="text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-3">Business Strategy 101: Parsed</p>
       <div className="space-y-2 mb-5">
         {[
           { week: 'Week 3', topic: "Porter's Five Forces", mode: 'Socratic only', color: '#228DC1' },
@@ -544,7 +544,7 @@ function SyllabusVisual() {
           { week: 'Week 5', topic: 'Market Segmentation',    mode: 'Open tutor',    color: '#059669' },
         ].map(row => (
           <div key={row.week} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f8fafc] border border-gray-100" style={{ borderLeft: `2px solid ${row.color}` }}>
-            <span className="text-[#0a1628]/35 text-[14px] font-semibold w-12 shrink-0">{row.week}</span>
+            <span className="text-[#0a1628]/60 text-[14px] font-semibold w-12 shrink-0">{row.week}</span>
             <span className="text-[#0a1628]/70 text-[14px] font-medium flex-1">{row.topic}</span>
             <span className="text-[14px] px-2 py-0.5 rounded-full font-semibold" style={{ background: row.color + '12', color: row.color, border: '1px solid ' + row.color + '25' }}>{row.mode}</span>
           </div>
@@ -575,7 +575,7 @@ function AlignVisual() {
     <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
       {/* Header */}
       <div className="mb-5">
-        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1">Policy Compilation</p>
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-1">Policy Compilation</p>
         <p className="text-[#0a1628] font-semibold text-sm">Course inputs → compiled AI policy</p>
       </div>
 
@@ -583,7 +583,7 @@ function AlignVisual() {
       <div className="flex items-center gap-4 mb-5">
         {/* Inputs */}
         <div className="flex-1 space-y-2">
-          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Course Inputs</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60 mb-2">Course Inputs</p>
           {inputs.map(row => (
             <div key={row.label} className="px-3 py-2 rounded-lg bg-[#f8fafc] border border-gray-100 text-[13px] font-semibold text-[#0a1628]/70" style={{ borderLeft: `2px solid ${row.color}` }}>
               {row.label}
@@ -601,7 +601,7 @@ function AlignVisual() {
 
         {/* Outputs */}
         <div className="flex-1 space-y-2">
-          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Policy Outputs</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60 mb-2">Policy Outputs</p>
           {outputs.map(row => (
             <div key={row.label} className="px-3 py-2 rounded-lg bg-[#f8fafc] border border-gray-100 text-[13px] font-semibold text-[#0a1628]/70" style={{ borderLeft: `2px solid ${row.color}` }}>
               {row.label}
@@ -629,12 +629,12 @@ function MasteryStoryVisual() {
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
       <div className="px-6 py-5 bg-[#f8fafc] border-b border-gray-100 flex items-start justify-between">
         <div>
-          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-2">Skill Mastery</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60 mb-2">Skill Mastery</p>
           <h3 className="text-[#0a1628] text-2xl font-black leading-tight">Aruva turns learning into signals</h3>
           <p className="text-[13px] text-[#0a1628]/55 mt-2">Real-time quantification of academic competency and cognitive growth.</p>
         </div>
         <div className="rounded-2xl bg-white px-5 py-3 text-center border border-gray-200 shadow-[0_6px_18px_rgba(10,22,40,0.06)]">
-          <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/35">Global mastery</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/60">Global mastery</p>
           <p className="text-[24px] font-black text-[#0a1628] leading-none mt-1">22%</p>
         </div>
       </div>
@@ -659,7 +659,7 @@ function MasteryStoryVisual() {
 
         <div className="rounded-2xl border border-gray-100 bg-[#fbfcfe] p-5 flex flex-col justify-between">
           <div>
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/35 mb-3">Bloom mastery</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60 mb-3">Bloom mastery</p>
             {/* Mini radar — matches BloomInsightSection visual style */}
             {(() => {
               const vals   = [45, 30, 22, 18, 12, 15]
@@ -1029,7 +1029,7 @@ function PlatformDiagram() {
       {label && (
         <>
           <div style={{ padding:'4px 10px', borderRadius:6, background: active ? '#f8fafc' : '#f1f5f9', border:`1px solid ${active ? '#cbd5e1' : '#e2e8f0'}`, transition:'all 0.3s ease' }}>
-            <span style={{ fontSize:10, fontWeight:700, color: active ? '#64748b' : '#94a3b8', letterSpacing:'0.1em', textTransform:'uppercase' }}>{label}</span>
+            <span style={{ fontSize:11, fontWeight:700, color: active ? '#64748b' : '#94a3b8', letterSpacing:'0.1em', textTransform:'uppercase' }}>{label}</span>
           </div>
           <div style={{ width:2, height:20, background: active ? '#94a3b8' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
         </>
@@ -1084,7 +1084,7 @@ function PlatformDiagram() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p style={{ fontSize:10, fontWeight:800, color:'#94a3b8', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>VLE / LMS</p>
+                    <p style={{ fontSize:11, fontWeight:800, color:'#94a3b8', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>VLE / LMS</p>
                     <div className="flex flex-wrap gap-1.5">
                       {lms.map(l => (
                         <div key={l.name} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white"
@@ -1096,7 +1096,7 @@ function PlatformDiagram() {
                     </div>
                   </div>
                   <div>
-                    <p style={{ fontSize:10, fontWeight:800, color:'#94a3b8', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>Data Sources</p>
+                    <p style={{ fontSize:11, fontWeight:800, color:'#94a3b8', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>Data Sources</p>
                     <div className="flex flex-wrap gap-1.5">
                       {dataSrc.map(d => (
                         <span key={d} style={{ padding:'3px 10px', borderRadius:6, background:'#f8fafc', border:'1px solid #e2e8f0', fontSize:11, fontWeight:500, color:'#475569' }}>{d}</span>
@@ -1164,7 +1164,7 @@ function PlatformDiagram() {
                         transition:`opacity 0.4s ease ${i*60}ms, transform 0.4s ease ${i*60}ms, background 0.3s ease, border-top-color 0.3s ease`,
                       }}>
                       <p style={{ fontSize:12, fontWeight:700, color:'#0f172a', lineHeight:1.3 }}>{s.label}</p>
-                      <p style={{ fontSize:10.5, color:'#94a3b8', marginTop:3, lineHeight:1.4 }}>{s.desc}</p>
+                      <p style={{ fontSize:11, color:'#94a3b8', marginTop:3, lineHeight:1.4 }}>{s.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -1398,7 +1398,7 @@ function MMImageDemo() {
           transition:'opacity 0.32s ease, transform 0.32s ease',
         }}>
           <div style={{ display:'flex', alignItems:'center', gap:9, minWidth:0 }}>
-            <div style={{ width:26, height:26, borderRadius:8, background:'#ecfdf5', border:'1px solid #bbf7d0', display:'flex', alignItems:'center', justifyContent:'center', color:'#059669', fontSize:10, fontWeight:900, flexShrink:0 }}>
+            <div style={{ width:26, height:26, borderRadius:8, background:'#ecfdf5', border:'1px solid #bbf7d0', display:'flex', alignItems:'center', justifyContent:'center', color:'#059669', fontSize:11, fontWeight:900, flexShrink:0 }}>
               A
             </div>
             <span style={{ fontSize:11, color:'rgba(10,22,40,0.52)', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:600, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
@@ -1489,7 +1489,7 @@ function MMImageDemo() {
                 <p style={{ fontSize:11, fontWeight:900, color:'#0a1628', lineHeight:1 }}>
                   {stage >= 2 ? `Generating ${Math.round(revealWidth)}%` : 'Preparing canvas'}
                 </p>
-                <p style={{ fontSize:10.5, color:'rgba(10,22,40,0.48)', lineHeight:1.25, marginTop:3 }}>Rendering academic lecture diagram</p>
+                <p style={{ fontSize:11, color:'rgba(10,22,40,0.48)', lineHeight:1.25, marginTop:3 }}>Rendering academic lecture diagram</p>
               </div>
             </div>
           )}
@@ -1498,7 +1498,7 @@ function MMImageDemo() {
             <div style={{
               position:'absolute', right:14, bottom:14,
               background:'rgba(5,150,105,0.92)', color:'#ffffff', borderRadius:999,
-              padding:'7px 11px', fontSize:10, fontWeight:900, letterSpacing:'0.08em', textTransform:'uppercase',
+              padding:'7px 11px', fontSize:11, fontWeight:900, letterSpacing:'0.08em', textTransform:'uppercase',
               boxShadow:'0 10px 22px rgba(5,150,105,0.24)',
               opacity:0, animation:'mmCardIn 0.32s ease 0.12s forwards',
             }}>
@@ -1684,7 +1684,7 @@ function MMGraphDemo() {
           <div style={{ position:'absolute', bottom:8, left:10, right:10, display:'flex', gap:5, flexWrap:'wrap' }}>
             {EXAMPLES.map(ex => (
               <button key={ex.display} onClick={() => handleExample(ex)} style={{
-                fontSize:10, padding:'3px 9px', borderRadius:12,
+                fontSize:11, padding:'3px 9px', borderRadius:12,
                 border:'1px solid rgba(217,119,6,0.25)', background:'rgba(217,119,6,0.07)',
                 color:'#92400e', cursor:'pointer', fontFamily:"'Roboto Mono',monospace",
                 transition:'background 0.2s',
@@ -1890,8 +1890,8 @@ function MultimodalSection() {
                     </div>
                     <div style={{
                       padding:'6px 10px', borderRadius:999, background:'rgba(34,141,193,0.08)',
-                      border:'1px solid rgba(34,141,193,0.18)', color:'#228DC1',
-                      fontSize:10, fontWeight:900, letterSpacing:'0.13em', textTransform:'uppercase',
+                      border:'1px solid rgba(34,141,193,0.18)', color:'#1a7aab',
+                      fontSize:11, fontWeight:900, letterSpacing:'0.13em', textTransform:'uppercase',
                     }}>
                       AI listening
                     </div>
@@ -1911,7 +1911,7 @@ function MultimodalSection() {
                       </div>
 
                       <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.45s forwards' }}>
-                        <p style={{ fontSize:10, fontWeight:900, color:'#059669', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>AI responding</p>
+                        <p style={{ fontSize:11, fontWeight:900, color:'#059669', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>AI responding</p>
                         <div style={{
                           background:'#ffffff', border:'1px solid #e6edf3', borderRadius:'14px 14px 14px 4px',
                           padding:'13px 15px', boxShadow:'0 8px 22px rgba(10,22,40,0.06)',
@@ -2219,7 +2219,7 @@ function BloomInsightSection() {
 
                     {s.delta
                       ? <p className="text-[12px] font-bold" style={{ color: s.accent }}>{s.delta} from S1</p>
-                      : <p className="text-[12px] font-medium text-[#0a1628]/30">Baseline</p>}
+                      : <p className="text-[12px] font-medium text-[#0a1628]/60">Baseline</p>}
 
                     {isActive && (
                       <div className="absolute bottom-0 left-0 right-0 h-[2px]">
@@ -2419,7 +2419,7 @@ function BloomInsightSection() {
                             style={{ color: val >= 75 ? '#059669' : 'rgba(10,22,40,0.72)' }}>
                             {label}
                           </span>
-                          <span className="text-[13px] text-[#0a1628]/35 hidden sm:inline">{BLOOM_SIMPLE[i]}</span>
+                          <span className="text-[13px] text-[#0a1628]/60 hidden sm:inline">{BLOOM_SIMPLE[i]}</span>
                         </div>
                         <span className="text-[16px] font-black tabular-nums shrink-0 ml-3"
                           style={{ color: barColor }}>
@@ -2878,7 +2878,7 @@ export default function AruvaPage() {
           </div>
           <div className="grid lg:grid-cols-2 gap-5">
             <div className="border border-gray-200 rounded-2xl p-8 bg-gray-50/80">
-              <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/30 mb-6">Generic AI platforms</p>
+              <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-6">Generic AI platforms</p>
               <div className="space-y-4">
                 {['Answers student questions from the open web','No awareness of your syllabus, rubric or course week','End of term grade is the only signal of progress','Learning gaps surface after the exam, too late to act','No control over how the AI behaves in your courses','No critical thinking scaffolding, one-size-fits-all responses for every student'].map(item => (
                   <div key={item} className="flex items-start gap-3.5">

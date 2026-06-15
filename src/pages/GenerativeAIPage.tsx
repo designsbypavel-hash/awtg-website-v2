@@ -172,7 +172,7 @@ export default function GenerativeAIPage() {
             </div>
             {/* Card body */}
             <div className="px-8 py-8">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/35 mb-2">KAI</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#0a1628]/60 mb-2">KAI</p>
               <h3 className="font-semibold text-[#0a1628] text-2xl leading-[1.3] mb-3">
                 AI for Sales and Customer Services
               </h3>

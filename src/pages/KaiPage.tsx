@@ -327,7 +327,7 @@ function IntegrationsSection() {
                         className="relative w-24 object-contain"
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                       />
-                      <span className="relative text-[8px] font-semibold text-[#903E8E] bg-[#903E8E]/10 border border-[#903E8E]/30 px-1.5 py-0.5 rounded-sm">
+                      <span className="relative text-[11px] font-semibold text-[#903E8E] bg-[#903E8E]/10 border border-[#903E8E]/30 px-1.5 py-0.5 rounded-sm">
                         AI Agent Â· MCP
                       </span>
                     </>
@@ -380,7 +380,7 @@ function SecurityComplianceSection() {
                 <div className="rounded-[18px] border border-white/[0.12] bg-white/[0.07] px-6 py-5 flex items-center gap-5">
                   <img src={certISO42001} alt="ISO 42001" style={{ width: 76, height: 76, objectFit: 'contain', flexShrink: 0 }} />
                   <div className="flex-1 min-w-0">
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] leading-none mb-2">Certified</p>
+                    <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.2em] leading-none mb-2">Certified</p>
                     <p className="text-[17px] font-semibold text-white/95 leading-tight mb-1">ISO 42001</p>
                     <p className="text-[12px] text-white/50 leading-snug">AI Management System</p>
                   </div>
@@ -418,7 +418,7 @@ function SecurityComplianceSection() {
                 { label: 'Deployment', value: 'Your choice' },
               ].map((item) => (
                 <div key={item.label} className="bg-[#f8fafc] border border-gray-200 px-5 py-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/35 mb-1">{item.label}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-1">{item.label}</p>
                   <p className="text-[#0a1628] text-[13px] font-semibold">{item.value}</p>
                 </div>
               ))}
@@ -1496,7 +1496,7 @@ export default function KaiPage() {
         const all = [...items, ...items]
         return (
           <div className="bg-white border-y border-gray-100 py-10 overflow-hidden">
-            <p className="text-center text-[11px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/30 mb-9">
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/60 mb-9">
               Trusted by leading organisations
             </p>
             <div className="relative">

@@ -270,7 +270,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     className="group grid gap-5 border-b border-[#0a1628]/10 py-8 last:border-b-0 sm:grid-cols-[88px_1fr]"
                   >
                     <div>
-                      <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#0a1628]/28">
+                      <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60">
                         0{i + 1}
                       </p>
                       <div className="mt-4 h-px w-14 transition-all duration-300 group-hover:w-20" style={{ background: accent }} />
@@ -312,7 +312,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 <p className="text-[#0a1628]/40 text-[13px] font-semibold uppercase tracking-wider">
                   {proof.author}
                   {proof.context && (
-                    <span className="font-normal normal-case tracking-normal text-[#0a1628]/35">
+                    <span className="font-normal normal-case tracking-normal text-[#0a1628]/60">
                       {' '}— {proof.context}
                     </span>
                   )}

@@ -96,7 +96,7 @@ export default function ProductDemoModal({
               </p>
 
               <div className="mt-14">
-                <p className="mb-5 text-[11px] font-black uppercase tracking-[0.22em] text-[#0a1628]/35">
+                <p className="mb-5 text-[11px] font-black uppercase tracking-[0.22em] text-[#0a1628]/60">
                   What you can expect
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -134,7 +134,7 @@ export default function ProductDemoModal({
                   <input
                     type={field.type}
                     placeholder={field.placeholder}
-                    className="h-[52px] w-full rounded-[7px] border border-gray-300 bg-white px-4 text-sm text-[#0a1628] outline-none transition-colors placeholder:text-[#0a1628]/35 focus:border-[#228DC1] focus:ring-4 focus:ring-[#228DC1]/10"
+                    className="h-[52px] w-full rounded-[7px] border border-gray-300 bg-white px-4 text-sm text-[#0a1628] outline-none transition-colors placeholder:text-[#0a1628]/60 focus:border-[#228DC1] focus:ring-4 focus:ring-[#228DC1]/10"
                   />
                 </label>
               ))}
@@ -155,7 +155,7 @@ export default function ProductDemoModal({
                 <textarea
                   placeholder={`Tell us what you want to achieve with ${productName}`}
                   rows={4}
-                  className="w-full resize-none rounded-[7px] border border-gray-300 bg-white px-4 py-3 text-sm text-[#0a1628] outline-none transition-colors placeholder:text-[#0a1628]/35 focus:border-[#228DC1] focus:ring-4 focus:ring-[#228DC1]/10"
+                  className="w-full resize-none rounded-[7px] border border-gray-300 bg-white px-4 py-3 text-sm text-[#0a1628] outline-none transition-colors placeholder:text-[#0a1628]/60 focus:border-[#228DC1] focus:ring-4 focus:ring-[#228DC1]/10"
                 />
               </label>
 

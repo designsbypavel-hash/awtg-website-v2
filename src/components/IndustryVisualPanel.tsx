@@ -65,7 +65,7 @@ export default function IndustryVisualPanel({
           style={{ background: '#05966910', border: '1px solid #05966922' }}
         >
           <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#059669' }} />
-          <span className="text-[10px] font-bold" style={{ color: '#059669' }}>
+          <span className="text-[11px] font-bold" style={{ color: '#059669' }}>
             Live
           </span>
         </div>

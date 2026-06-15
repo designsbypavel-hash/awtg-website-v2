@@ -253,7 +253,7 @@ export default function CareersPage() {
                       <span className="inline-flex rounded-full bg-[#228DC1]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#1a7aab]">
                         {role.dept}
                       </span>
-                      <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0a1628]/35">
+                      <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0a1628]/60">
                         {role.type}
                       </span>
                     </div>

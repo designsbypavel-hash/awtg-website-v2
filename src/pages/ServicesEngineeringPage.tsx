@@ -247,7 +247,7 @@ function ScapDashboardVisual() {
               </svg>
               <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>
                 {[0,4,8,11,15].map(i => (
-                  <span key={i} style={{ fontSize:7, color:'#ccc' }}>{dates[i]}</span>
+                  <span key={i} style={{ fontSize:11, color:'#ccc' }}>{dates[i]}</span>
                 ))}
               </div>
             </div>
@@ -291,7 +291,7 @@ function ScapDashboardVisual() {
               </svg>
               <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>
                 {[0,4,8,11,15].map(i => (
-                  <span key={i} style={{ fontSize:7, color:'#ccc' }}>{dates[i]}</span>
+                  <span key={i} style={{ fontSize:11, color:'#ccc' }}>{dates[i]}</span>
                 ))}
               </div>
             </div>
@@ -303,7 +303,7 @@ function ScapDashboardVisual() {
         <div style={s.statusBar}>
           <div style={{ width:6, height:6, borderRadius:'50%', background:'#22c55e',
                         boxShadow:'0 0 5px #22c55e', flexShrink:0 }} />
-          <span style={{ fontSize:9, color:'#bbb' }}>
+          <span style={{ fontSize:11, color:'#bbb' }}>
             Platform operational · 5G O-RAN · AWTG RAN · Data refreshed just now
           </span>
         </div>
