@@ -388,9 +388,9 @@ const steps = [
   {
     num: '03',
     icon: faCrosshairs,
-    label: 'Score weak zones',
-    desc: 'Surface underserved areas and rank them by severity and impact.',
-    detailLabel: 'AI scoring',
+    label: 'Assess weak zones',
+    desc: 'Identify underserved areas and rank them by coverage quality, severity and impact.',
+    detailLabel: 'Scoring',
     detail: 'Scoring combines coverage quality, terrain and population need.',
   },
   {
