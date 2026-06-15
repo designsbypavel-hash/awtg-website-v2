@@ -291,23 +291,22 @@ function WhatWeDo() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Header */}
-        <div className="mb-14">
+        <div className="max-w-2xl mb-14">
           <h2 className="font-heading text-[#0a1628] mb-4">
             Three capabilities.<br />
             <span className="text-[#228DC1]">One partner.</span>
           </h2>
-          <p className="text-[#0a1628]/50 text-[15px] leading-[1.8] max-w-lg">
+          <p className="text-[#0a1628]/50 text-[16px] leading-[1.8]">
             End-to-end delivery across AI, private networks and engineering — under one accountable partner.
           </p>
         </div>
 
-        {/* Cards: image on top, text below — no text over image */}
+        {/* Cards: image on top, text below — static, no hover actions */}
         <div className="grid md:grid-cols-3 gap-6">
           {whatWeDoItems.map((item) => (
-            <Link
+            <div
               key={item.label}
-              to={item.href}
-              className="group flex flex-col bg-white border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-[0_8px_40px_rgba(10,22,40,0.10)] transition-all duration-300"
+              className="flex flex-col bg-white border border-gray-100 overflow-hidden"
             >
               {/* Image — pure photo, no text overlay */}
               <div className="relative overflow-hidden" style={{ height: 260 }}>
@@ -315,7 +314,7 @@ function WhatWeDo() {
                 <img
                   src={item.image}
                   alt={item.label}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
@@ -327,20 +326,11 @@ function WhatWeDo() {
                 <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
                   {item.label}
                 </h3>
-                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78] flex-1 mb-7">
+                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78]">
                   {item.line}
                 </p>
-                <span
-                  className="inline-flex items-center gap-2 text-[13px] font-semibold group-hover:gap-3 transition-all duration-200"
-                  style={{ color: item.accent }}
-                >
-                  Explore
-                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
