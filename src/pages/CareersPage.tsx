@@ -293,9 +293,6 @@ export default function CareersPage() {
           style={{ padding: '80px clamp(28px, 5.5vw, 88px)' }}>
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#228DC1]/10 rounded-full blur-[80px] pointer-events-none" />
           <div className="relative" style={{ maxWidth: 500 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1] mb-5">
-              Speculative Applications
-            </p>
             <h2 className="font-heading text-white leading-tight mb-5"
               style={{ fontSize: 'clamp(24px, 2.4vw, 32px)' }}>
               Don't see the right role?
