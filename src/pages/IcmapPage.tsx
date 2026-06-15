@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Polygon, useMap } from 'react-leaflet'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMap, faTowerBroadcast, faChartBar, faGlobe, faLayerGroup, faBullseye, faSignal, faChartLine, faDatabase, faMapLocationDot, faCrosshairs, faRoute, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faMap, faChartBar, faGlobe, faLayerGroup, faBullseye, faSignal, faChartLine, faDatabase, faMapLocationDot, faCrosshairs, faRoute, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import VisualInsightCard from '@/components/VisualInsightCard'
 import 'leaflet/dist/leaflet.css'
@@ -265,58 +265,6 @@ function CoverageMap() {
     </div>
   )
 }
-
-// -- Capabilities -------------------------------------------------------------
-const capabilities = [
-  {
-    icon: faMap,
-    label: 'Interactive Coverage Mapping',
-    desc: 'Explore live and historical coverage across mobile, broadband, Wi-Fi, IoT and private networks.',
-    color: '#228DC1',
-  },
-  {
-    icon: faGlobe,
-    label: 'Multi-Network Analytics',
-    desc: 'Compare operators, technologies, frequency bands and network generations across any geography.',
-    color: '#7c3aed',
-  },
-  {
-    icon: faTowerBroadcast,
-    label: 'Signal & Performance Insights',
-    desc: 'Track signal strength, quality, latency, throughput and service experience in one view.',
-    color: '#059669',
-  },
-  {
-    icon: faBullseye,
-    label: 'Coverage Gap Identification',
-    desc: 'Find underserved zones and rank improvements using AI powered severity and impact scoring.',
-    color: '#d97706',
-  },
-  {
-    icon: faLayerGroup,
-    label: 'Infrastructure & Asset Visualisation',
-    desc: 'Map towers, antennas, fibre, small cells, IoT gateways and connected assets together.',
-    color: '#dc2626',
-  },
-  {
-    icon: faChartBar,
-    label: 'Geospatial Intelligence & Layers',
-    desc: 'Overlay population, terrain, transport, venue, boundary and environmental datasets.',
-    color: '#0891b2',
-  },
-  {
-    icon: faMap,
-    label: 'Custom Dashboards & Reporting',
-    desc: 'Create operational dashboards, executive reports and stakeholder-ready coverage views.',
-    color: '#228DC1',
-  },
-  {
-    icon: faGlobe,
-    label: 'API & Data Integration',
-    desc: 'Connect telecom datasets, GIS layers, crowdsourced measurements and external data sources.',
-    color: '#7c3aed',
-  },
-]
 
 // -- Use cases -----------------------------------------------------------------
 const useCases = [
@@ -783,31 +731,6 @@ export default function IcmapPage() {
                     <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.65]">{step.detail}</p>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* -- Capabilities -- */}
-      <section className="py-28 bg-[#0a1628] border-t border-[#0d2442]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14">
-            <h2 className="font-heading text-white mb-5">
-              Coverage intelligence across every operational layer
-            </h2>
-            <p className="text-white/62 text-[16px] font-normal leading-[1.75] max-w-2xl">
-              iCMAP combines mapping, analytics, infrastructure visibility and reporting into one secure platform for modern connectivity programmes.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
-            {capabilities.map((cap) => (
-              <div key={cap.label} className="bg-[#0d1c31] p-7 min-h-[230px] hover:bg-[#10243d] transition-colors">
-                <div className="w-9 h-9 flex items-center justify-center mb-6" style={{ backgroundColor: `${cap.color}24` }}>
-                  <FontAwesomeIcon icon={cap.icon} className="w-4 h-4" style={{ color: cap.color }} />
-                </div>
-                <h3 className="text-white font-semibold text-sm leading-[1.3] mb-3">{cap.label}</h3>
-                <p className="text-white/56 text-[13px] font-normal leading-[1.7]">{cap.desc}</p>
               </div>
             ))}
           </div>
