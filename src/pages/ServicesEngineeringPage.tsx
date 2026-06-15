@@ -321,11 +321,7 @@ const coreModules = [
     title: 'Service Management & Orchestration',
     color: '#228DC1',
     capabilities: [
-      'O-RAN O1 integration',
-      'NETCONF/YANG management',
-      'Telemetry and event collection',
-      'NE onboarding and middleware collection',
-      'Northbound APIs and NonRT RIC integration',
+      'Coordinate service management and orchestration across multi-vendor network environments.',
     ],
   },
   {
@@ -334,11 +330,7 @@ const coreModules = [
     title: 'Performance Management',
     color: '#059669',
     capabilities: [
-      'KPI monitoring and dashboards',
-      'Trend analysis and degradation detection',
-      'KPI alerts and threshold management',
-      'Reporting and data exports',
-      'SLA and service quality visibility',
+      'Monitor KPIs, trends and service quality across vendors, technologies and sites.',
     ],
   },
   {
@@ -347,11 +339,7 @@ const coreModules = [
     title: 'Configuration Management',
     color: '#7c3aed',
     capabilities: [
-      'YANG schema management',
-      'Configuration viewing and comparison',
-      'Change monitoring and history',
-      'Consistency checks and golden templates',
-      'Controlled configuration updates',
+      'Manage network configuration changes, parameters and operational settings with better control.',
     ],
   },
   {
@@ -360,11 +348,7 @@ const coreModules = [
     title: 'Fault Management',
     color: '#d97706',
     capabilities: [
-      'Active alarms and alarm history',
-      'Acknowledgement and clearing workflows',
-      'Alarm filtering and classification',
-      'Custom platform alarms',
-      'Fault correlation across modules',
+      'Detect, prioritise and manage alarms before they become wider service issues.',
     ],
   },
 ]
@@ -509,8 +493,8 @@ export default function ServicesEngineeringPage() {
         <div ref={modulesRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(modulesInView, 0)}>
             <SectionHeader
-              title="Four integrated modules, one platform"
-              desc="SCAP combines SMO, PM, CM and FM into one unified platform — helping operators monitor network health, manage configuration, detect service-impacting issues and automate operational workflows."
+              title="Manage network operations from one platform"
+              desc="SCAP brings together the core operational modules needed to monitor, manage and assure modern telecom networks. From performance dashboards to fault alerts and configuration workflows, teams can work from the same operational view and respond faster to service impacting issues."
             />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
