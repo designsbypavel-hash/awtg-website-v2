@@ -400,32 +400,8 @@ export default function ServicesIoTPage() {
                 alt="iDAMS asset marketplace"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
-              {/* Dark gradient overlay */}
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(61,77,158,0.25) 0%, transparent 45%, rgba(10,22,40,0.72) 100%)' }} />
-
-              {/* Top badge */}
-              <div style={{ position: 'absolute', top: 22, left: 22 }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, borderRadius: 100, border: '1px solid rgba(255,255,255,0.35)', background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', padding: '6px 14px' }}>
-                  <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#7ac4e0', boxShadow: '0 0 0 2px rgba(122,196,224,0.35)' }} />
-                  <span style={{ fontSize: 11, fontWeight: 600, color: '#fff', letterSpacing: '0.04em' }}>iDAMS Platform</span>
-                </div>
-              </div>
-
-              {/* Bottom stat card */}
-              <div style={{ position: 'absolute', bottom: 24, left: 24, right: 24 }}>
-                <div style={{ borderRadius: 16, border: '1px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.96)', padding: '18px 22px', boxShadow: '0 20px 60px rgba(10,22,40,0.22)', backdropFilter: 'blur(16px)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-                    <div style={{ flexShrink: 0 }}>
-                      <p style={{ fontSize: 28, fontWeight: 900, lineHeight: 1, color: '#3d4d9e', margin: 0 }}>2-sided</p>
-                      <p style={{ fontSize: 12, fontWeight: 700, color: '#0a1628', margin: '5px 0 0' }}>Asset marketplace</p>
-                    </div>
-                    <div style={{ width: 1, height: 40, flexShrink: 0, background: '#e5e7eb' }} />
-                    <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.6, color: 'rgba(10,22,40,0.58)', margin: 0 }}>
-                      One platform connecting asset owners with operators who need access
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {/* Subtle gradient overlay */}
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(61,77,158,0.15) 0%, transparent 60%)' }} />
             </div>
 
           </div>
