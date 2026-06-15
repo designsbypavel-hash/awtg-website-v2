@@ -311,9 +311,10 @@ export default function ServicesIoTPage() {
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
             <div>
-              <h2 className="font-heading mb-6 text-white">Turning assets into opportunities.</h2>
+              <h2 className="font-heading mb-6 text-white">Turning infrastructure assets into usable digital records.</h2>
               <p className="text-[16px] font-normal leading-[1.78] text-white/60">
-                Many organisations hold valuable infrastructure assets but manage them through spreadsheets, disconnected systems, manual approvals, and slow communication channels. IDAMS replaces fragmented processes with a single digital platform.
+                Many organisations hold valuable telecom and public infrastructure assets, but the information is often spread across spreadsheets, disconnected systems, emails and manual approval processes.
+                iDAMS brings asset discovery, ownership details, requests, approvals and reporting into one secure map-based platform, helping teams manage assets more clearly and move from enquiry to action faster.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
