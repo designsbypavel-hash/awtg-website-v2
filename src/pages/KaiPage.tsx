@@ -144,7 +144,7 @@ function GlobePanel({ visible }: { visible: boolean }) {
   return <RealisticGlobePanel visible={visible} />
 }
 
-// -- Redesigned global reach â€” two-column, text+stats left / globe right ---
+// -- Redesigned global reach ” two-column, text+stats left / globe right ---
 function GlobalReachSection() {
   const [ref, inView] = useInView(0.15)
 
@@ -160,7 +160,7 @@ function GlobalReachSection() {
       <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
 
-          {/* Left â€” heading, body, stat cards */}
+          {/* Left ” heading, body, stat cards */}
           <div style={reveal(inView, 0)}>
             <h2 className="font-heading text-[#0a1628] mb-5">
               Global reach. Measurable customer outcomes.
@@ -169,7 +169,7 @@ function GlobalReachSection() {
               Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from day 1.
             </p>
 
-            {/* 2 Ã— 2 stat grid â€” flush with text, no extra margin */}
+            {/* 2 Ã— 2 stat grid ” flush with text, no extra margin */}
             <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, i) => (
                 <div key={i} style={{
@@ -192,7 +192,7 @@ function GlobalReachSection() {
             </div>
           </div>
 
-          {/* Right â€” globe fills the full column */}
+          {/* Right ” globe fills the full column */}
           <div style={reveal(inView, 200)}>
             <GlobePanel visible={inView} />
           </div>
@@ -203,7 +203,7 @@ function GlobalReachSection() {
   )
 }
 
-// -- Integrations â€” Kai as glowing hub ----------------------------------------
+// -- Integrations ” Kai as glowing hub ----------------------------------------
 function IntegrationsSection() {
   const [ref, inView] = useInView(0.08)
 
@@ -296,7 +296,7 @@ function IntegrationsSection() {
                       {/* Pulse ring 1 */}
                       <div className="absolute inset-0 pointer-events-none rounded-sm"
                         style={{ border: '1.5px solid rgba(144,62,142,0.35)', animation: 'kaiPulseRing 2.4s ease-out infinite' }} />
-                      {/* Pulse ring 2 â€” offset */}
+                      {/* Pulse ring 2 ” offset */}
                       <div className="absolute inset-0 pointer-events-none rounded-sm"
                         style={{ border: '1.5px solid rgba(144,62,142,0.20)', animation: 'kaiPulseRing 2.4s ease-out 1.2s infinite' }} />
                     </>
@@ -413,7 +413,7 @@ function SecurityComplianceSection() {
   )
 }
 
-// â”€â”€â”€ Figma design tokens (node 2691:17369) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Figma design tokens (node 2691:17369) ───────────────────────────────────
 const KAI_HDR_GRAD = 'linear-gradient(126deg,#4C97C3 0%,#6AC1EF 28.5%,#BEF3FF 43.36%,#67D7E4 50.91%,#6AC1EF 64.5%)'
 // const KAI_BORDER   = '#4c97c3'          // gradient border handled by wrapper padding
 const KAI_MSG_AI   = '#f4fbff'          // AI message row bg
@@ -434,8 +434,8 @@ const VOICE_SCRIPT: VoiceTurn[] = [
   { speaker: 'ai',   text: "Yes! I've updated the address. You'll receive a confirmation shortly." },
 ]
 
-// â”€â”€â”€ Voice script (drives the animated voice phase) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// â”€â”€â”€ Chat script (mirrors voice, revealed all at once after voice ends) â”€â”€â”€â”€â”€â”€â”€
+// ─── Voice script (drives the animated voice phase) ──────────────────────────
+// ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
 type ChatRole = 'ai' | 'user' | 'signal' | 'map' | 'chips'
 const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
   { role: 'ai',     text: "Hi there! ðŸ‘‹\nHow can I help you today?" },
@@ -445,12 +445,12 @@ const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
   { role: 'user',   text: "How far away is the driver?" },
   { role: 'ai',     text: "Just 2.4 miles away. They'll be with you before 6 PM. ðŸ“¦" },
   { role: 'user',   text: "Can I change the delivery address?" },
-  { role: 'ai',     text: "Yes! I've updated the address. You'll receive a confirmation shortly. âœ…" },
+  { role: 'ai',     text: "Yes! I've updated the address. You'll receive a confirmation shortly. ✅" },
   { role: 'signal', text: 'Resolved Â· 52s Â· CSAT sent' },
   { role: 'chips',  text: '' },
 ]
 
-// â”€â”€â”€ Delivery map widget â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Delivery map widget ──────────────────────────────────────────────────────
 function MapWidget() {
   // Street colour and block colours match the reference screenshot
   const STREET  = '#f5f2ec'
@@ -463,39 +463,39 @@ function MapWidget() {
         {/* Base */}
         <rect width="360" height="142" fill="#ece7dc"/>
 
-        {/* â”€â”€ Vertical streets â”€â”€ */}
+        {/* ── Vertical streets ── */}
         {[0, 94, 188, 282, 351].map(x => (
           <rect key={x} x={x} width="9" height="142" fill={STREET}/>
         ))}
 
-        {/* â”€â”€ Horizontal streets â”€â”€ */}
+        {/* ── Horizontal streets ── */}
         <rect y="0"   width="360" height="9"  fill={STREET}/>
         <rect y="59"  width="360" height="16" fill={STREET}/>   {/* route street */}
         <rect y="113" width="360" height="9"  fill={STREET}/>
         <rect y="133" width="360" height="9"  fill={STREET}/>
 
-        {/* â”€â”€ Row 1 blocks  (y 9â€“59) â”€â”€ */}
+        {/* ── Row 1 blocks  (y 9“59) ── */}
         <rect x="9"   y="9" width="85" height="50" fill={BLOCK}/>  {/* Col1 tan  */}
         <rect x="103" y="9" width="85" height="50" fill={GREEN}/>  {/* Col2 GREEN */}
         <rect x="197" y="9" width="85" height="50" fill={BLOCK}/>  {/* Col3 tan  */}
         <rect x="291" y="9" width="60" height="50" fill={BLOCK}/>  {/* Col4 tan  */}
 
-        {/* â”€â”€ Row 2 blocks  (y 75â€“113) â”€â”€ */}
+        {/* ── Row 2 blocks  (y 75“113) ── */}
         <rect x="9"   y="75" width="85" height="38" fill={GREEN}/>  {/* Col1 GREEN */}
         <rect x="103" y="75" width="85" height="38" fill={BLOCK}/>  {/* Col2 tan  */}
         <rect x="197" y="75" width="85" height="38" fill={BLOCK}/>  {/* Col3 tan  */}
         <rect x="291" y="75" width="60" height="38" fill={BLOCK}/>  {/* Col4 tan  */}
 
-        {/* â”€â”€ Row 3 strip  (y 122â€“133) â”€â”€ */}
+        {/* ── Row 3 strip  (y 122“133) ── */}
         {[9, 103, 197, 291].map((x, i) => (
           <rect key={i} x={x} y="122" width={i === 3 ? 60 : 85} height="11" fill={BLOCK}/>
         ))}
 
-        {/* â”€â”€ Route line â”€â”€ */}
+        {/* ── Route line ── */}
         <line x1="38" y1="67" x2="287" y2="67"
               stroke="#1a73e8" strokeWidth="2.5" strokeLinecap="round"/>
 
-        {/* â”€â”€ Arrow chevrons along route â”€â”€ */}
+        {/* ── Arrow chevrons along route ── */}
         {[108, 183, 248].map(x => (
           <polyline key={x}
             points={`${x-6},62 ${x},67 ${x-6},72`}
@@ -503,10 +503,10 @@ function MapWidget() {
             strokeLinecap="round" strokeLinejoin="round" opacity="0.75"/>
         ))}
 
-        {/* â”€â”€ Current position â€” hollow blue ring â”€â”€ */}
+        {/* ── Current position ” hollow blue ring ── */}
         <circle cx="38" cy="67" r="9" fill="white" stroke="#1a73e8" strokeWidth="2.5"/>
 
-        {/* â”€â”€ Destination â€” classic map pin (pointed bottom, circle top) â”€â”€
+        {/* ── Destination ” classic map pin (pointed bottom, circle top) ──
              Tip at (287, 75), circle centre at (287, 46), radius 17        */}
         <path
           d="M287,75 C276,67 270,57 270,46 A17,17,0,1,1,304,46 C304,57 298,67 287,75 Z"
@@ -514,7 +514,7 @@ function MapWidget() {
         />
         <circle cx="287" cy="44" r="7" fill="white" opacity="0.92"/>
 
-        {/* â”€â”€ ETA badge â”€â”€ */}
+        {/* ── ETA badge ── */}
         <rect x="183" y="116" width="172" height="21" rx="4" fill="white" opacity="0.93"/>
         <circle cx="196" cy="126.5" r="4" fill="#E53935"/>
         <text x="204" y="131" fontSize="10.5" fill="#374151"
@@ -526,7 +526,7 @@ function MapWidget() {
   )
 }
 
-// â”€â”€â”€ Voice + Chat demo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Voice + Chat demo ────────────────────────────────────────────────────────
 type OrbMode   = 'listen' | 'user' | 'ai'
 type DemoPhase = 'voice' | 'chat' | 'csat' | 'csat-out'
 
@@ -618,7 +618,7 @@ function KaiChatDemo() {
       <div style={{ width: '100%', height: '100%', padding: 7, borderRadius: 33, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
         <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 30, overflow: 'hidden', background: KAI_HDR_GRAD }}>
 
-          {/* â”€â”€ SHARED HEADER â€” always on top, never transitions â”€â”€ */}
+          {/* ── SHARED HEADER ” always on top, never transitions ── */}
           <div style={{
             position: 'absolute', top: 0, left: 0, right: 0, height: 73,
             background: KAI_HDR_GRAD,
@@ -634,7 +634,7 @@ function KaiChatDemo() {
             <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: KAI_ICON_DARK, opacity: 0.72, marginLeft: 7 }} />
           </div>
 
-          {/* â”€â”€ VOICE VIEW â”€â”€ */}
+          {/* ── VOICE VIEW ── */}
           <div style={{
             position: 'absolute', inset: 0,
             background: 'linear-gradient(180deg, #071220 0%, #0c1b30 55%, #08152a 100%)',
@@ -644,14 +644,14 @@ function KaiChatDemo() {
             zIndex: 1,
           }}>
 
-            {/* â”€â”€ Main body: transcript TOP, orb BOTTOM â”€â”€ */}
+            {/* ── Main body: transcript TOP, orb BOTTOM ── */}
             <div style={{
               position: 'absolute', top: 73, left: 0, right: 0, bottom: 58,
               display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
               padding: '6px 0 14px',
             }}>
 
-              {/* â”€â”€ TOP: Kai VOICE label + live transcript â”€â”€ */}
+              {/* ── TOP: Kai VOICE label + live transcript ── */}
               <div style={{ padding: '0 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
@@ -660,7 +660,7 @@ function KaiChatDemo() {
                   </span>
                 </div>
 
-                {/* Previous turn â€” dimmed */}
+                {/* Previous turn ” dimmed */}
                 {prevTurn && (
                   <div style={{ marginBottom: 18, opacity: 0.32 }}>
                     <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 5px',
@@ -673,7 +673,7 @@ function KaiChatDemo() {
                   </div>
                 )}
 
-                {/* Current turn â€” typing out */}
+                {/* Current turn ” typing out */}
                 {currentTurn && (
                   <div>
                     <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 7px',
@@ -681,7 +681,7 @@ function KaiChatDemo() {
                       {currentTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
                     </p>
                     {showListeningLabel
-                      ? <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.04em', margin: 0 }}>Listeningâ€¦</p>
+                      ? <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.04em', margin: 0 }}>Listening…</p>
                       : <p style={{ fontSize: 16, color: '#fff', lineHeight: 1.65, margin: 0, letterSpacing: '-0.01em' }}>{transcript}</p>
                     }
                   </div>
@@ -689,11 +689,11 @@ function KaiChatDemo() {
 
                 {/* Pre-first-turn placeholder */}
                 {!currentTurn && !prevTurn && (
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.14)', margin: 0, letterSpacing: '0.06em' }}>â€¦</p>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.14)', margin: 0, letterSpacing: '0.06em' }}>…</p>
                 )}
               </div>
 
-              {/* â”€â”€ BOTTOM: Orb + waveform + status â”€â”€ */}
+              {/* ── BOTTOM: Orb + waveform + status ── */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 112, height: 112, borderRadius: '50%',
@@ -714,17 +714,17 @@ function KaiChatDemo() {
                 </div>
 
                 <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: '0.06em', color: orbMode === 'user' ? 'rgba(52,199,138,0.75)' : 'rgba(255,255,255,0.30)', margin: 0, fontFamily: 'Roboto,sans-serif', transition: 'color 0.4s ease' }}>
-                  {orbMode === 'ai' ? 'Speakingâ€¦' : 'Listeningâ€¦'}
+                  {orbMode === 'ai' ? 'Speaking…' : 'Listening…'}
                 </p>
               </div>
             </div>
 
-            {/* Kai label â€” bottom left */}
+            {/* Kai label ” bottom left */}
             <div style={{ position: 'absolute', bottom: 66, left: 22 }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', fontFamily: 'Roboto,sans-serif' }}>Kai</span>
             </div>
 
-            {/* Voice input bar â€” minimal, buttons only */}
+            {/* Voice input bar ” minimal, buttons only */}
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0,
               background: '#fff', borderRadius: '0 0 30px 30px',
@@ -747,7 +747,7 @@ function KaiChatDemo() {
             </div>
           </div>
 
-          {/* â”€â”€ CHAT VIEW (full conversation revealed at once) â”€â”€ */}
+          {/* ── CHAT VIEW (full conversation revealed at once) ── */}
           <div style={{
             position: 'absolute', inset: 0,
             background: KAI_HDR_GRAD,
@@ -756,7 +756,7 @@ function KaiChatDemo() {
             pointerEvents: isChat ? 'auto' : 'none',
             zIndex: 2,
           }}>
-            {/* Chat area â€” starts just below the shared header */}
+            {/* Chat area ” starts just below the shared header */}
             <div style={{ position: 'absolute', top: 73, left: 0, right: 0, bottom: 0, background: '#fff', borderRadius: 30, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
               {/* All messages visible at once */}
               <div className="kai-chat-scroll" style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
@@ -765,7 +765,7 @@ function KaiChatDemo() {
                   if (msg.role === 'signal') return (
                     <div key={i} style={{ display: 'flex', justifyContent: 'center', padding: '10px 12px' }}>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, color: '#059669', background: 'rgba(5,150,105,0.12)', borderRadius: 99, padding: '4px 14px' }}>
-                        âœ“&nbsp;{msg.text}
+                        ✓&nbsp;{msg.text}
                       </span>
                     </div>
                   )
@@ -785,7 +785,7 @@ function KaiChatDemo() {
                       <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(0,0,0,0.87)', margin: 0, whiteSpace: 'pre-line' }}>{msg.text}</p>
                       {msg.meta && isAI && (
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, alignSelf: 'flex-start', fontSize: 10, fontWeight: 600, color: '#228DC1', background: 'rgba(34,141,193,0.10)', borderRadius: 4, padding: '2px 8px' }}>
-                          âš¡ {msg.meta}
+                          ⚡ {msg.meta}
                         </span>
                       )}
                     </div>
@@ -793,7 +793,7 @@ function KaiChatDemo() {
                 })}
               </div>
 
-              {/* CSAT rating overlay â€” eases in over messages at end */}
+              {/* CSAT rating overlay ” eases in over messages at end */}
               {isCsat && (
                 <div style={{
                   position: 'absolute', inset: 0, zIndex: 5,
@@ -825,7 +825,7 @@ function KaiChatDemo() {
                 </div>
               )}
 
-              {/* Input bar â€” matches voice bar layout */}
+              {/* Input bar ” matches voice bar layout */}
               <div style={{ borderTop: '0.5px solid #e5e7eb', padding: '11px 16px 14px', display: 'flex', alignItems: 'center', gap: 10, background: '#fff', flexShrink: 0 }}>
                 <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15, color: 'rgba(10,22,40,0.35)', userSelect: 'none' }}>
                   Type here...
@@ -948,29 +948,29 @@ function EscalationChart() {
 // Layout mirrors the Intercom "Fin" showcase:
 //   â€¢ dot-grid section background
 //   â€¢ 7 channel icon squares in a 3-column grid (matching panels below)
-//   â€¢ SVG connector: stubs â†’ horizontal bar â†’ 3 drops â†’ panel tops
+//   â€¢ SVG connector: stubs → horizontal bar → 3 drops → panel tops
 //   â€¢ Three panels: Telegram | Kai Web Chat | Gmail
 //
 // SVG coordinate system  viewBox="0 0 1000 80"  preserveAspectRatio="none"
 //   Column centres: 160 | 500 | 840   (same proportions as CSS grid cols)
 //   Left icon stubs  x = 120, 160, 200   Right icon stubs  x = 800, 840, 880
-//   Bar  y = 38   Drops  y = 38 â†’ 80
+//   Bar  y = 38   Drops  y = 38 → 80
 // ---------------------------------------------------------------------------
 
 function OmnichannelSection() {
-  // â”€â”€â”€ Design tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Design tokens ──────────────────────────────────────────────────────
   const OMNI_BG  = '#f4f4ff'
   const CONN_CLR = '#4c97c3'
 
-  // â”€â”€â”€ Telegram messages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Telegram messages ──────────────────────────────────────────────────
   const tgMsgs = [
     { from:'bot',  text:"Hi! I'm Kai ðŸ‘‹\nHow can I help you today?",                                        time:'09:41' },
-    { from:'user', text:'I need help raising a complaint about a missed delivery',                            time:'09:42', ticks:'âœ“âœ“' },
-    { from:'bot',  text:"Got it! I've raised case #7823 and notified the delivery team.\nExpect a callback within 2 hours. âœ…", time:'09:42' },
-    { from:'user', text:'Brilliant, thank you!',                                                              time:'09:43', ticks:'âœ“âœ“' },
+    { from:'user', text:'I need help raising a complaint about a missed delivery',                            time:'09:42', ticks:'✓✓' },
+    { from:'bot',  text:"Got it! I've raised case #7823 and notified the delivery team.\nExpect a callback within 2 hours. ✅", time:'09:42' },
+    { from:'user', text:'Brilliant, thank you!',                                                              time:'09:43', ticks:'✓✓' },
   ]
 
-  // â”€â”€â”€ Kai web messages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Kai web messages ───────────────────────────────────────────────────
   const kaiMsgs: { from:'ai'|'user'; text:string; meta?:string; signal?:string }[] = [
     { from:'ai',   text:"Hi there! ðŸ‘‹\nWhat can I help you with today?" },
     { from:'user', text:"I'd like to upgrade my subscription to the Pro plan." },
@@ -979,7 +979,7 @@ function OmnichannelSection() {
     { from:'ai',   text:"Pro is Â£299/month. I've emailed a full comparison and a one-click upgrade link.", signal:'Upgraded Â· 44s Â· CSAT sent' },
   ]
 
-  // â”€â”€â”€ Channel icon box â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Channel icon box ────────────────────────────────────────────────
   const ChIcon = ({
     children,
   }: { color?:string; bg?:string; glow?:boolean; children:React.ReactNode }) => (
@@ -994,7 +994,7 @@ function OmnichannelSection() {
     </div>
   )
 
-  // â”€â”€â”€ Telegram icon path â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Telegram icon path ───────────────────────────────────────────────
   const TgPath = ({ size = 20, fill = '#229ED9' }: { size?:number; fill?:string }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={fill}>
       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
@@ -1040,11 +1040,11 @@ function OmnichannelSection() {
     >
       <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-20">
 
-        {/* â”€â”€ Centred heading â”€â”€ */}
+        {/* ── Centred heading ── */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="font-heading text-[#0a1628] mb-5">One AI. Every channel.</h2>
           <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-            Kai meets customers on Telegram, your website or email â€” with the same intelligence, context and resolution on every channel.
+            Kai meets customers on Telegram, your website or email ” with the same intelligence, context and resolution on every channel.
           </p>
         </div>
 
@@ -1053,7 +1053,7 @@ function OmnichannelSection() {
         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="hidden lg:block">
 
-          {/* â”€â”€ Channel icon row (3-col grid matching panels) â”€â”€ */}
+          {/* ── Channel icon row (3-col grid matching panels) ── */}
           <div className="grid grid-cols-3 gap-6 mb-0">
 
             {/* Left: WhatsApp Â· Telegram Â· Teams */}
@@ -1097,7 +1097,7 @@ function OmnichannelSection() {
             </div>
           </div>
 
-          {/* â”€â”€ SVG connector â”€â”€ */}
+          {/* ── SVG connector ── */}
           <svg
             width="100%" height="80"
             viewBox="0 0 1000 80"
@@ -1123,7 +1123,7 @@ function OmnichannelSection() {
             ))}
           </svg>
 
-          {/* â”€â”€ Three channel panels â”€â”€ */}
+          {/* ── Three channel panels ── */}
           <div className="grid grid-cols-3 gap-6">
 
             {/* â•â•â•â• LEFT: TELEGRAM â•â•â•â• */}
@@ -1171,7 +1171,7 @@ function OmnichannelSection() {
                 )}
                 <div style={{ display:'flex', justifyContent:'center', marginTop:6 }}>
                   <span style={{ background:'rgba(0,0,0,0.09)', borderRadius:20, padding:'4px 12px', fontSize:11, color:'rgba(0,0,0,0.45)', fontFamily:'Roboto,sans-serif' }}>
-                    âœ“ Case raised Â· 28s
+                    ✓ Case raised Â· 28s
                   </span>
                 </div>
               </div>
@@ -1211,12 +1211,12 @@ function OmnichannelSection() {
                         <p style={{ fontSize:13, color:'rgba(0,0,0,0.87)', lineHeight:1.55, whiteSpace:'pre-line', margin:0 }}>{msg.text}</p>
                         {msg.meta && (
                           <span style={{ display:'inline-flex', alignItems:'center', gap:4, fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px', alignSelf:'flex-start' }}>
-                            âš¡ {msg.meta}
+                            ⚡ {msg.meta}
                           </span>
                         )}
                         {msg.signal && (
                           <span style={{ display:'inline-flex', alignItems:'center', gap:5, fontSize:11, fontWeight:600, color:'#059669', background:'rgba(5,150,105,0.10)', borderRadius:99, padding:'4px 14px', alignSelf:'center', marginTop:4 }}>
-                            âœ“ {msg.signal}
+                            ✓ {msg.signal}
                           </span>
                         )}
                       </div>
@@ -1256,7 +1256,7 @@ function OmnichannelSection() {
               {/* Thread header */}
               <div style={{ padding:'12px 14px 8px', borderBottom:'1px solid #f0f0f0', flexShrink:0 }}>
                 <p style={{ fontSize:14, fontWeight:600, color:'#202124', marginBottom:3, fontFamily:'Roboto,sans-serif' }}>
-                  RE: Subscription Upgrade â€” Pro Plan
+                  RE: Subscription Upgrade ” Pro Plan
                 </p>
                 <div style={{ display:'flex', alignItems:'center', gap:5 }}>
                   <span style={{ fontSize:11, color:'rgba(10,22,40,0.45)', fontFamily:'Roboto,sans-serif' }}>2 messages</span>
@@ -1265,7 +1265,7 @@ function OmnichannelSection() {
                 </div>
               </div>
 
-              {/* Customer email â€” collapsed */}
+              {/* Customer email ” collapsed */}
               <div style={{ padding:'9px 14px', borderBottom:'1px solid #f5f5f5', background:'#fafafa', flexShrink:0 }}>
                 <div style={{ display:'flex', alignItems:'center', gap:8 }}>
                   <div style={{ width:28, height:28, borderRadius:'50%', background:'#dde2e8', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
@@ -1283,7 +1283,7 @@ function OmnichannelSection() {
                 </div>
               </div>
 
-              {/* Kai reply â€” expanded */}
+              {/* Kai reply ” expanded */}
               <div style={{ padding:'12px 14px', flex:1 }}>
                 <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:9 }}>
                   <div style={{ width:30, height:30, borderRadius:'50%', background:'#228DC1', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
@@ -1297,19 +1297,19 @@ function OmnichannelSection() {
                       </div>
                       <span style={{ fontSize:11, color:'rgba(10,22,40,0.4)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
                     </div>
-                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.42)', fontFamily:'Roboto,sans-serif' }}>kai@awtg.co.uk â†’ james.h@email.com</span>
+                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.42)', fontFamily:'Roboto,sans-serif' }}>kai@awtg.co.uk → james.h@email.com</span>
                   </div>
                 </div>
 
                 <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif' }}>
-                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics â€” at <strong>Â£299/month</strong>.
+                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics ” at <strong>Â£299/month</strong>.
                 </p>
                 <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif', marginTop:6 }}>
                   I've sent a one-click upgrade link to your inbox. Let me know if you have any questions!
                 </p>
                 <div style={{ marginTop:9 }}>
                   <span style={{ fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px', fontFamily:'Roboto,sans-serif' }}>
-                    âš¡ Account #10284 Â· CRM synced
+                    ⚡ Account #10284 Â· CRM synced
                   </span>
                 </div>
               </div>
@@ -1546,7 +1546,7 @@ export default function KaiPage() {
               </div>
             </div>
 
-            {/* Right: chart card â€” Intercom-style */}
+            {/* Right: chart card ” Intercom-style */}
             <div style={{ border:'1px solid #e4e8ed', background:'#fafaf7' }}>
               {/* Card header */}
               <div style={{ padding:'20px 22px 12px' }}>
@@ -1557,7 +1557,7 @@ export default function KaiPage() {
                 </p>
               </div>
 
-              {/* SVG chart â€” hover-interactive */}
+              {/* SVG chart ” hover-interactive */}
               <div style={{ padding:'4px 16px 0' }}>
                 <EscalationChart />
               </div>

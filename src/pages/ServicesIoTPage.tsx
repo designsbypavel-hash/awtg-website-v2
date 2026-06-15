@@ -12,7 +12,7 @@ import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import VisualInsightCard from '@/components/VisualInsightCard'
 
-// â”€â”€ Scroll utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Scroll utilities ──────────────────────────────────────────────────────────
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(false)
@@ -43,7 +43,7 @@ function ScrollProgress() {
   )
 }
 
-// â”€â”€ IDAMS Map Visual â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── IDAMS Map Visual ──────────────────────────────────────────────────────────
 function IdamsMapVisual() {
   const [activeSignal, setActiveSignal] = useState(0)
 
@@ -150,7 +150,7 @@ function IdamsMapVisual() {
     </div>
   )
 }
-// â”€â”€ Section header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Section header ────────────────────────────────────────────────────────────
 function SectionHeader({ title, desc }: { title: string; desc: string }) {
   return (
     <div className="mb-14 max-w-3xl">
@@ -160,7 +160,7 @@ function SectionHeader({ title, desc }: { title: string; desc: string }) {
   )
 }
 
-// â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Data ──────────────────────────────────────────────────────────────────────
 const capabilities = [
   { icon: faMapLocationDot, title: 'Interactive Asset Map',       color: '#228DC1', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
   { icon: faSearchLocation,  title: 'Advanced Search & Filtering', color: '#059669', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
@@ -227,7 +227,7 @@ const idamsUseCases = [
   { image: '/images/insights/conference.jpg', eyebrow: 'Governance', title: 'Multi-stakeholder Approvals', desc: 'Multi-stakeholder asset approval workflows with full audit trail.' },
 ]
 
-// â”€â”€ Main page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Main page ─────────────────────────────────────────────────────────────────
 export default function ServicesIoTPage() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
   const [capRef,    capInView]    = useInView(0.08)
@@ -254,7 +254,7 @@ export default function ServicesIoTPage() {
         ]}
       />
 
-      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white pt-32 pb-20">
         <div className="absolute inset-0 pointer-events-none opacity-35"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(61,77,158,0.12) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
@@ -284,7 +284,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* â”€â”€ TURNING ASSETS INTO OPPORTUNITIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── TURNING ASSETS INTO OPPORTUNITIES ────────────────────────────── */}
       <section className="border-t border-[#0d2442] bg-[#0a1628] py-24">
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
@@ -313,7 +313,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* â”€â”€ BUILT FOR TWO AUDIENCES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── BUILT FOR TWO AUDIENCES ──────────────────────────────────────── */}
       <section className="border-t border-gray-100 bg-white py-24">
         <div ref={audRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(audInView, 0)}>
@@ -349,7 +349,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* â”€â”€ KEY PLATFORM CAPABILITIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── KEY PLATFORM CAPABILITIES ────────────────────────────────────── */}
       <section className="border-t border-gray-100 bg-[#f8fafc] py-24">
         <div ref={capRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(capInView, 0)}>
@@ -376,7 +376,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* â”€â”€ USE CASES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── USE CASES ────────────────────────────────────────────────────── */}
       <section className="border-t border-[#0d2442] bg-[#0a1628] py-24">
         <div ref={ucRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(ucInView, 0)}>
@@ -404,7 +404,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* â”€â”€ WHY IDAMS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── WHY IDAMS ────────────────────────────────────────────────────── */}
       <section className="border-t border-gray-100 bg-white py-24">
         <div ref={whyRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(whyInView, 0)}>

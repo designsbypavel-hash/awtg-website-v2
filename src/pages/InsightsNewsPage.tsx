@@ -19,10 +19,10 @@ export const cleanText = (value: string) => value
   .replace(/['']/g, "'")
   .replace(/[“”]/g, '"')
   .replace(/[–—]/g, '-')
-  .replace(/â€™/g, "'")
+  .replace(/™/g, "'")
   .replace(/â€˜/g, "'")
   .replace(/â€œ|â€�/g, '"')
-  .replace(/â€“|â€”/g, '-')
+  .replace(/“|”/g, '-')
   .replace(/Â/g, '')
 
 export const createNewsSlug = (title: string) => cleanText(title)
