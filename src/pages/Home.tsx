@@ -181,8 +181,8 @@ function Hero() {
         <h1
           className="home-hero-reveal font-serif-display text-white mb-6"
         >
-          Helping organisations<br />
-          put AI to work.
+          Helping organisations succeed<br />
+          in AI and Connectivity.
         </h1>
 
         {/* One-liner, StoryBrand: customer is the hero, AWTG is the guide */}
