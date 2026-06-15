@@ -76,28 +76,6 @@ const navItems: NavEntry[] = [
     ],
   },
   {
-    label: 'Industries',
-    key: 'industries',
-    groups: [
-      {
-        heading: 'Sector',
-        items: [
-          { label: 'Enterprise & Connected Industries', desc: 'Private 5G, IoT and AI-powered operations for manufacturing and campuses', href: '/industries/enterprise' },
-          { label: 'Health Tech', desc: 'NHS-grade connectivity, clinical AI and digital health infrastructure', href: '/industries/health-tech' },
-          { label: 'Education', desc: 'Campus wireless, safeguarding-compliant networks and EdTech AI', href: '/industries/education' },
-        ],
-      },
-      {
-        heading: '',
-        items: [
-          { label: 'Public Sector & Government', desc: 'Smart cities, citizen-facing AI and secure connectivity for government', href: '/industries/public-sector' },
-          { label: 'Space & Defence', desc: 'Mission-critical, SATCOM and secure defence networks', href: '/industries/defence' },
-          { label: 'Telecoms', desc: 'Open RAN, network testing and operator infrastructure services', href: '/industries/telecoms' },
-        ],
-      },
-    ],
-  },
-  {
     label: 'About',
     key: 'about',
     groups: [
@@ -153,23 +131,6 @@ const featuredPanels: Record<string, FeaturedPanel> = {
         href: '/insights/case-studies/tot-service-assurance',
         badge: 'Case Study',
         image: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-        imageFit: 'cover',
-      },
-    ],
-  },
-  industries: {
-    eyebrow: 'Featured',
-    title: 'Technology for your sector',
-    desc: 'From NHS trusts to enterprise campuses and government bodies, AWTG delivers technology built specifically for your world.',
-    href: '/industries/enterprise',
-    cta: 'Explore industries',
-    items: [
-      {
-        label: 'Enterprise & Connected Industries',
-        desc: 'Private 5G, IoT and AI-powered operations for manufacturing, logistics and enterprise campuses.',
-        href: '/industries/enterprise',
-        badge: 'Enterprise',
-        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80&auto=format&fit=crop',
         imageFit: 'cover',
       },
     ],
