@@ -1583,7 +1583,7 @@ function MMGraphDemo() {
   function safeEval(expr: string, x: number): number | null {
     try {
       const s = expr
-        .replace(//g,'*').replace(/×/g,'*').replace(/÷/g,'/')
+        .replace(/×/g,'*').replace(/÷/g,'/')
         .replace(/\bsin\b/g,'Math.sin').replace(/\bcos\b/g,'Math.cos')
         .replace(/\btan\b/g,'Math.tan').replace(/\bsqrt\b/g,'Math.sqrt')
         .replace(/\babs\b/g,'Math.abs').replace(/\bln\b/g,'Math.log')
