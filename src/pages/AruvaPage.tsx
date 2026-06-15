@@ -132,7 +132,7 @@ function CurriculumAgnosticSection() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[0.82fr_1fr] gap-16 items-center">
 
-          {/* LEFT ” text */}
+          {/* LEFT - text */}
           <div style={reveal(inView, 0)}>
             <h2 className="font-heading text-[#0a1628] mb-5">
               One central Aruva layer.<br />
@@ -151,7 +151,7 @@ function CurriculumAgnosticSection() {
             </div>
           </div>
 
-          {/* RIGHT ” orbital visual */}
+          {/* RIGHT - orbital visual */}
           <div className="flex items-center justify-center" style={reveal(inView, 120)}>
             <div style={{ position:'relative', width:SIZE, height:SIZE, flexShrink:0 }}>
 
@@ -185,7 +185,7 @@ function CurriculumAgnosticSection() {
                 pointerEvents:'none',
               }}/>
 
-              {/* Connection beam SVG ” always points upward from center, beam appears for top card */}
+              {/* Connection beam SVG - always points upward from center, beam appears for top card */}
               <svg style={{ position:'absolute', inset:0, width:SIZE, height:SIZE, pointerEvents:'none' }} viewBox={`0 0 ${SIZE} ${SIZE}`}>
                 <line
                   x1={SIZE/2} y1={SIZE/2}
@@ -200,7 +200,7 @@ function CurriculumAgnosticSection() {
                   style={{ animation:'connectionPulse 2s ease-in-out infinite' }}/>
               </svg>
 
-              {/* CENTER ” Aruva logo */}
+              {/* CENTER - Aruva logo */}
               <div style={{
                 position:'absolute',
                 top:'50%', left:'50%',
@@ -225,7 +225,7 @@ function CurriculumAgnosticSection() {
                 }}>Centralised AI</span>
               </div>
 
-              {/* ORBITING CARDS ” single container rotates, cards counter-rotate + scale */}
+              {/* ORBITING CARDS - single container rotates, cards counter-rotate + scale */}
               <div style={{
                 position:'absolute', inset:0,
                 animation: inView ? `orbitSpin ${ORBIT_DUR}s linear infinite` : 'none',
@@ -269,7 +269,7 @@ function CurriculumAgnosticSection() {
                             </div>
                             <span style={{ fontSize:12, fontWeight:700, color:'#0a1628', whiteSpace:'nowrap' }}>{subj.name}</span>
                           </div>
-                          <span style={{ fontSize:9.5, color:'rgba(10,22,40,0.48)', lineHeight:1.3, paddingLeft:30 }}>{subj.signal}</span>
+                          <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', lineHeight:1.3, paddingLeft:30 }}>{subj.signal}</span>
                         </div>
                       </div>
                     </div>
@@ -384,7 +384,7 @@ const audiences = [
 
 // -- Platform pillars ----------------------------------------------------------
 
-// -- How It Works ” accordion LEFT, visual RIGHT (Intercom-style) --------------
+// -- How It Works - accordion LEFT, visual RIGHT (Intercom-style) --------------
 function HowItWorksSection() {
   const [active, setActive] = React.useState(0)
   const [isPaused, setIsPaused] = React.useState(false)
@@ -424,14 +424,14 @@ function HowItWorksSection() {
           </p>
         </div>
 
-        {/* accordion LEFT + visual RIGHT ” both pinned to top */}
+        {/* accordion LEFT + visual RIGHT - both pinned to top */}
         <div
           className="grid lg:grid-cols-[440px_1fr] gap-16 items-start"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
 
-          {/* LEFT ” active step always at top, inactive steps below */}
+          {/* LEFT - active step always at top, inactive steps below */}
           <div style={reveal(inView, 100)}>
             {howItWorksSteps.map((s, index) => {
               const isActive = index === active
@@ -468,7 +468,7 @@ function HowItWorksSection() {
             })}
           </div>
 
-          {/* RIGHT ” visual aligned to top, smooth ease-in on swap */}
+          {/* RIGHT - visual aligned to top, smooth ease-in on swap */}
           <div key={active} className="self-start" style={{ animation:'hiwVisual 0.45s cubic-bezier(0.4,0,0.2,1) both', ...reveal(inView, 160) }}>
             <Visual />
           </div>
@@ -631,7 +631,7 @@ function MasteryStoryVisual() {
         <div>
           <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60 mb-2">Skill Mastery</p>
           <h3 className="text-[#0a1628] text-2xl font-black leading-tight">Aruva turns learning into signals</h3>
-          <p className="text-[13px] text-[#0a1628]/55 mt-2">Real-time quantification of academic competency and cognitive growth.</p>
+          <p className="text-[13px] text-[#0a1628]/60 mt-2">Real-time quantification of academic competency and cognitive growth.</p>
         </div>
         <div className="rounded-2xl bg-white px-5 py-3 text-center border border-gray-200 shadow-[0_6px_18px_rgba(10,22,40,0.06)]">
           <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/60">Global mastery</p>
@@ -767,7 +767,7 @@ function MasteryStoryVisual() {
           </div>
           <div className="mt-5 rounded-xl bg-[#e8f4fc] border border-[#b8ddf0] px-4 py-3">
             <p className="text-[13px] font-bold text-[#1a7aab]">Insight captured</p>
-            <p className="text-[12px] text-[#0a1628]/50 mt-1">Next tutor prompt adapts to the detected gap.</p>
+            <p className="text-[12px] text-[#0a1628]/60 mt-1">Next tutor prompt adapts to the detected gap.</p>
           </div>
         </div>
       </div>
@@ -778,9 +778,9 @@ function MasteryStoryVisual() {
 function TutorVisual() {
   const messages = [
     { role: 'student', text: "Can you just solve Porter's Five Forces for me?" },
-    { role: 'aruva',   text: "Let's build that understanding together. Which of the five forces do you think has the strongest impact here ” start with your instinct." },
+    { role: 'aruva',   text: "Let's build that understanding together. Which of the five forces do you think has the strongest impact here - start with your instinct." },
     { role: 'student', text: "Maybe buyer power? Because there are lots of alternatives?" },
-    { role: 'aruva',   text: "Good instinct. Now think about what actually gives buyers that power ” is it the number of alternatives, switching costs, or something else?" },
+    { role: 'aruva',   text: "Good instinct. Now think about what actually gives buyers that power - is it the number of alternatives, switching costs, or something else?" },
     { role: 'student', text: "I think it's switching costs. If it's easy to switch, buyers have more leverage." },
   ]
   const signal = { label: 'Mastery signal captured', sub: 'Apply level - Bloom taxonomy updated', color: '#228DC1', bg: '#e8f4fc', border: '#b8ddf0' }
@@ -796,7 +796,7 @@ function TutorVisual() {
           </div>
           <span className="text-[14px] font-semibold text-[#0a1628]/60">Adaptive Tutor</span>
           <span className="text-[#0a1628]/20 mx-1">|</span>
-          <span className="text-[13px] text-[#0a1628]/40">Business Strategy 101 - Week 3</span>
+          <span className="text-[13px] text-[#0a1628]/60">Business Strategy 101 - Week 3</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">Socratic mode</span>
@@ -808,11 +808,11 @@ function TutorVisual() {
         <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: '#f59e0b' }}>MG</div>
         <div>
           <p className="text-[13px] font-semibold text-[#0a1628] leading-none">Maria Garcia</p>
-          <p className="text-[11px] text-[#0a1628]/45 mt-0.5">Business Strategy 101 - Analogy-oriented learner</p>
+          <p className="text-[11px] text-[#0a1628]/60 mt-0.5">Business Strategy 101 - Analogy-oriented learner</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fef3c7] border border-[#d97706]/20">
           <div className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
-          <span className="text-[11px] font-semibold text-[#d97706]">Week 3 ” Porter's Five Forces</span>
+          <span className="text-[11px] font-semibold text-[#d97706]">Week 3 - Porter's Five Forces</span>
         </div>
       </div>
 
@@ -851,7 +851,7 @@ function TutorVisual() {
           </div>
           <div>
             <p className="text-[12px] font-bold" style={{ color: signal.color }}>{signal.label}</p>
-            <p className="text-[11px] text-[#0a1628]/50">{signal.sub}</p>
+            <p className="text-[11px] text-[#0a1628]/60">{signal.sub}</p>
           </div>
         </div>
       </div>
@@ -864,12 +864,12 @@ function AnalyticsVisual() {
     <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
       <div className="flex items-start justify-between mb-5 pb-4 border-b border-gray-100">
         <div>
-          <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#0a1628]/40 mb-1">Professor Dashboard</p>
+          <p className="text-[14px] font-semibold uppercase tracking-[0.16em] text-[#0a1628]/60 mb-1">Professor Dashboard</p>
           <p className="text-[#0a1628] font-semibold text-[14px]">Business Strategy 101, Week 3</p>
         </div>
         <div className="text-right">
           <p className="font-black text-2xl leading-none text-[#059669]">87%</p>
-          <p className="text-[14px] text-[#0a1628]/40 mt-0.5">Engagement</p>
+          <p className="text-[14px] text-[#0a1628]/60 mt-0.5">Engagement</p>
         </div>
       </div>
       <div className="space-y-3 mb-5">
@@ -880,7 +880,7 @@ function AnalyticsVisual() {
         ].map(item => (
           <div key={item.label}>
             <div className="flex justify-between items-center mb-1.5">
-              <p className="text-[#0a1628]/55 text-[14px] font-medium">{item.label}</p>
+              <p className="text-[#0a1628]/60 text-[14px] font-medium">{item.label}</p>
               <div className="flex items-center gap-2">
                 {item.gap && <span className="text-[14px] font-semibold px-1.5 py-0.5 rounded text-[#d97706] bg-[#fef3c7] border border-[#d97706]/20">Gap</span>}
                 <span className="text-[#0a1628] text-[14px] font-semibold">{item.pct}%</span>
@@ -918,8 +918,8 @@ function TutorVisualOld() {
             />
           </div>
           <span className="text-[#0a1628]/60 text-[14px] font-semibold">Tutor</span>
-          <span className="text-[#0a1628]/20 text-[14px]">Â·</span>
-          <span className="text-[#0a1628]/40 text-[14px]">Week 3 Â· Socratic mode</span>
+          <span className="text-[#0a1628]/20 text-[14px]"></span>
+          <span className="text-[#0a1628]/60 text-[14px]">Week 3 Socratic mode</span>
         </div>
         <span className="text-[14px] font-semibold px-2 py-0.5 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">No direct answers</span>
       </div>
@@ -1025,13 +1025,13 @@ function PlatformDiagram() {
   // Workflow node connector
   const NodeConnector = ({ active, label }: { active: boolean; label?: string }) => (
     <div className="flex flex-col items-center gap-0" style={{ padding:'4px 0' }}>
-      <div style={{ width:2, height:20, background: active ? '#94a3b8' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
+      <div style={{ width:2, height:20, background: active ? '#596779' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
       {label && (
         <>
           <div style={{ padding:'4px 10px', borderRadius:6, background: active ? '#f8fafc' : '#f1f5f9', border:`1px solid ${active ? '#cbd5e1' : '#e2e8f0'}`, transition:'all 0.3s ease' }}>
-            <span style={{ fontSize:11, fontWeight:700, color: active ? '#64748b' : '#94a3b8', letterSpacing:'0.1em', textTransform:'uppercase' }}>{label}</span>
+            <span style={{ fontSize:11, fontWeight:700, color: active ? '#64748b' : '#596779', letterSpacing:'0.1em', textTransform:'uppercase' }}>{label}</span>
           </div>
-          <div style={{ width:2, height:20, background: active ? '#94a3b8' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
+          <div style={{ width:2, height:20, background: active ? '#596779' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
         </>
       )}
       <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: active ? 1 : 0.2, transition:'opacity 0.4s ease' }}>
@@ -1054,7 +1054,7 @@ function PlatformDiagram() {
                   <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
                 </h2>
                 <p className="text-[#0a1628]/60 text-[16px] leading-[1.75]">
-                  Not a bundle of tools. One connected system where every layer talks to the next ” from your LMS through to every student interface.
+                  Not a bundle of tools. One connected system where every layer talks to the next - from your LMS through to every student interface.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -1084,7 +1084,7 @@ function PlatformDiagram() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p style={{ fontSize:11, fontWeight:800, color:'#94a3b8', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>VLE / LMS</p>
+                    <p style={{ fontSize:11, fontWeight:800, color:'#596779', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>VLE / LMS</p>
                     <div className="flex flex-wrap gap-1.5">
                       {lms.map(l => (
                         <div key={l.name} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white"
@@ -1096,7 +1096,7 @@ function PlatformDiagram() {
                     </div>
                   </div>
                   <div>
-                    <p style={{ fontSize:11, fontWeight:800, color:'#94a3b8', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>Data Sources</p>
+                    <p style={{ fontSize:11, fontWeight:800, color:'#596779', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:8 }}>Data Sources</p>
                     <div className="flex flex-wrap gap-1.5">
                       {dataSrc.map(d => (
                         <span key={d} style={{ padding:'3px 10px', borderRadius:6, background:'#f8fafc', border:'1px solid #e2e8f0', fontSize:11, fontWeight:500, color:'#475569' }}>{d}</span>
@@ -1127,7 +1127,7 @@ function PlatformDiagram() {
                     }}>
                     <div style={{ width:160, flexShrink:0 }}>
                       <p style={{ fontSize:13, fontWeight:700, color:'#0a1628', lineHeight:1.25 }}>{layer.label}</p>
-                      <p style={{ fontSize:11, color:'#94a3b8', marginTop:2 }}>{layer.sub}</p>
+                      <p style={{ fontSize:11, color:'#596779', marginTop:2 }}>{layer.sub}</p>
                     </div>
                     <div style={{ display:'flex', flexWrap:'wrap', gap:6, flex:1 }}>
                       {layer.chips.map(chip => (
@@ -1164,7 +1164,7 @@ function PlatformDiagram() {
                         transition:`opacity 0.4s ease ${i*60}ms, transform 0.4s ease ${i*60}ms, background 0.3s ease, border-top-color 0.3s ease`,
                       }}>
                       <p style={{ fontSize:12, fontWeight:700, color:'#0f172a', lineHeight:1.3 }}>{s.label}</p>
-                      <p style={{ fontSize:11, color:'#94a3b8', marginTop:3, lineHeight:1.4 }}>{s.desc}</p>
+                      <p style={{ fontSize:11, color:'#596779', marginTop:3, lineHeight:1.4 }}>{s.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -1226,7 +1226,7 @@ const DOK_LABELS  = ['DOK 1','DOK 2','DOK 3','DOK 4']
 const DOK_NAMES   = ['Recall & Reproduce','Skills & Concepts','Strategic Thinking','Extended Thinking']
 const DOK_SIMPLE  = ['Recall, define, identify','Classify, infer, estimate','Analyse, hypothesise, cite evidence','Design, connect, synthesise']
 const DOK_COLORS  = ['#60a5fa','#34d399','#f59e0b','#a78bfa']
-// WCAG AA-compliant text colours (â‰¥4.5:1 on white) ” darker shade of each DOK colour
+// WCAG AA-compliant text colours (>=4.5:1 on white) - darker shade of each DOK colour
 const DOK_TEXT_COLORS = ['#1565a8','#0a7550','#a05a00','#5b21b6']
 const DOK_KEYWORDS = [
   ['Recall','Define','State','Identify','List','Name','Quote','Measure'],
@@ -1315,7 +1315,7 @@ function MMTextDemo() {
         {MM_TEXT_CONVERSATIONS.map((student, index) => (
           <button key={student.name} type="button" onClick={() => setActive(index)}
             style={{ display:'flex', alignItems:'center', gap:10, textAlign:'left', padding:'10px 12px', borderRadius:14, background: active === index ? student.soft : '#f8fafc', border:`1px solid ${active === index ? student.border : '#e5e7eb'}`, boxShadow: active === index ? `0 10px 24px ${student.accent}22` : 'none', transition:'all 0.25s ease' }}>
-            <span style={{ width:34, height:34, borderRadius:10, background: active === index ? student.accent : '#e5e7eb', color: active === index ? '#fff' : '#94a3b8', display:'flex', alignItems:'center', justifyContent:'center', fontSize:11, fontWeight:900, flexShrink:0 }}>{student.initials}</span>
+            <span style={{ width:34, height:34, borderRadius:10, background: active === index ? student.accent : '#e5e7eb', color: active === index ? '#fff' : '#596779', display:'flex', alignItems:'center', justifyContent:'center', fontSize:11, fontWeight:900, flexShrink:0 }}>{student.initials}</span>
             <span style={{ minWidth:0 }}>
               <span style={{ display:'block', fontSize:11, fontWeight:900, color: active === index ? student.accent : 'rgba(10,22,40,0.42)', letterSpacing:'0.12em', textTransform:'uppercase', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{student.name}</span>
               <span style={{ display:'block', fontSize:12, fontWeight:700, color:'rgba(10,22,40,0.62)', whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>{student.style}</span>
@@ -1342,12 +1342,12 @@ function MMTextDemo() {
         </div>
         <div style={{ display:'flex', flexDirection:'column', justifyContent:'center', gap:12, padding:'12px', borderRadius:14, background:activeStudent.soft, border:`1px solid ${activeStudent.border}` }}>
           <div>
-            <p style={{ fontSize:9, color:'rgba(10,22,40,0.42)', fontWeight:900, textTransform:'uppercase', letterSpacing:'0.12em', marginBottom:4 }}>Result</p>
+            <p style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontWeight:900, textTransform:'uppercase', letterSpacing:'0.12em', marginBottom:4 }}>Result</p>
             <p style={{ fontSize:13, color:activeStudent.accent, fontWeight:900, lineHeight:1.25 }}>{activeStudent.result}</p>
           </div>
           <div>
             <p style={{ fontSize:22, color:activeStudent.accent, fontWeight:900, lineHeight:1 }}>{score}%</p>
-            <p style={{ fontSize:9, color:'rgba(10,22,40,0.40)', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.08em', marginTop:2 }}>confidence</p>
+            <p style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.08em', marginTop:2 }}>confidence</p>
           </div>
           <div style={{ width:'100%', height:7, borderRadius:999, background:'rgba(10,22,40,0.08)', overflow:'hidden' }}>
             <div style={{ height:'100%', width:`${score}%`, borderRadius:999, background:activeStudent.accent, transition:'width 0.18s ease' }}/>
@@ -1401,7 +1401,7 @@ function MMImageDemo() {
             <div style={{ width:26, height:26, borderRadius:8, background:'#ecfdf5', border:'1px solid #bbf7d0', display:'flex', alignItems:'center', justifyContent:'center', color:'#059669', fontSize:11, fontWeight:900, flexShrink:0 }}>
               A
             </div>
-            <span style={{ fontSize:11, color:'rgba(10,22,40,0.52)', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:600, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
+            <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:600, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
               {imageStatus}
             </span>
           </div>
@@ -1489,7 +1489,7 @@ function MMImageDemo() {
                 <p style={{ fontSize:11, fontWeight:900, color:'#0a1628', lineHeight:1 }}>
                   {stage >= 2 ? `Generating ${Math.round(revealWidth)}%` : 'Preparing canvas'}
                 </p>
-                <p style={{ fontSize:11, color:'rgba(10,22,40,0.48)', lineHeight:1.25, marginTop:3 }}>Rendering academic lecture diagram</p>
+                <p style={{ fontSize:11, color:'rgba(10,22,40,0.60)', lineHeight:1.25, marginTop:3 }}>Rendering academic lecture diagram</p>
               </div>
             </div>
           )}
@@ -1510,7 +1510,7 @@ function MMImageDemo() {
     </div>
   )
 }
-// Animated SVG path ” remounts on key change so draw animation restarts
+// Animated SVG path - remounts on key change so draw animation restarts
 function AnimatedGraphPath({ d, color, animKey }: { d: string; color: string; animKey: number }) {
   const [revealed, setRevealed] = React.useState(false)
   React.useEffect(() => {
@@ -1583,7 +1583,7 @@ function MMGraphDemo() {
   function safeEval(expr: string, x: number): number | null {
     try {
       const s = expr
-        .replace(/Â·/g,'*').replace(/Ã—/g,'*').replace(/Ã·/g,'/')
+        .replace(//g,'*').replace(/×/g,'*').replace(/÷/g,'/')
         .replace(/\bsin\b/g,'Math.sin').replace(/\bcos\b/g,'Math.cos')
         .replace(/\btan\b/g,'Math.tan').replace(/\bsqrt\b/g,'Math.sqrt')
         .replace(/\babs\b/g,'Math.abs').replace(/\bln\b/g,'Math.log')
@@ -1707,7 +1707,7 @@ function MultimodalSection() {
   const pauseRef  = React.useRef(false)
   const CYCLE = 7600
 
-  // RAF-driven auto-cycle ” starts when section scrolls into view
+  // RAF-driven auto-cycle - starts when section scrolls into view
   React.useEffect(() => {
     if (!inView) return
     startRef.current = performance.now()
@@ -1731,7 +1731,7 @@ function MultimodalSection() {
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
   }, [inView])
 
-  // Manual tab click ” jumps to that modality and resets the cycle timer
+  // Manual tab click - jumps to that modality and resets the cycle timer
   const handleTab = (i: number) => {
     activeRef.current = i
     setActive(i)
@@ -1773,7 +1773,7 @@ function MultimodalSection() {
         {/* Two-column: left = title + tabs, right = demo */}
         <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:0, alignItems:'start' }}>
 
-          {/* LEFT ” title, brief, then tabs */}
+          {/* LEFT - title, brief, then tabs */}
           <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
 
             {/* Section header inside left column */}
@@ -1785,7 +1785,7 @@ function MultimodalSection() {
               <h2 style={{ fontFamily:'Roboto,system-ui,sans-serif', fontWeight:700, fontSize:36, letterSpacing:'-0.02em', lineHeight:1.12, color:'#0a1628' }}>
                 One AI. Every way <span style={{ color:'#228DC1' }}>students learn.</span>
               </h2>
-              <p style={{ fontSize:16, color:'rgba(10,22,40,0.58)', lineHeight:1.75, marginTop:14 }}>
+              <p style={{ fontSize:16, color:'rgba(10,22,40,0.60)', lineHeight:1.75, marginTop:14 }}>
                 Aruva speaks, writes, draws and graphs, meeting every student exactly where their understanding breaks down, in whichever format makes it click.
               </p>
             </div>
@@ -1830,7 +1830,7 @@ function MultimodalSection() {
           </div>
 
           <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
-          {/* RIGHT ” single large demo card, remounts on each modality change */}
+          {/* RIGHT - single large demo card, remounts on each modality change */}
           <div style={{
             borderRadius:20, overflow:'hidden',
             border:'1px solid #e2e8f0',
@@ -1840,7 +1840,7 @@ function MultimodalSection() {
             opacity: inView?1:0, transform: inView?'translateY(0)':'translateY(24px)',
             transition:'opacity 0.65s ease 0.15s, transform 0.65s ease 0.15s',
           }}>
-            {/* Card header ” updates smoothly on tab switch */}
+            {/* Card header - updates smoothly on tab switch */}
             <div style={{
               padding:'14px 20px', borderBottom:'1px solid #f0f4f8',
               background:'#fafbfc', display:'flex', alignItems:'center', gap:12,
@@ -1855,14 +1855,14 @@ function MultimodalSection() {
               </div>
               <div>
                 <p style={{ fontSize:13, fontWeight:700, color:'#0a1628', lineHeight:1 }}>{activeM.label} Generation</p>
-                <p style={{ fontSize:11, color:'rgba(10,22,40,0.45)', marginTop:3 }}>
+                <p style={{ fontSize:11, color:'rgba(10,22,40,0.60)', marginTop:3 }}>
                   {active===0?'Pythagorean Theorem narrated':active===1?'Algebra solution written':active===2?'Academic diagram generated':'Graphing calculator'}
                 </p>
               </div>
               <div style={{ flex:1 }}/>
             </div>
 
-            {/* Demo content ” key forces remount so animations restart on each cycle */}
+            {/* Demo content - key forces remount so animations restart on each cycle */}
             <div key={`${active}-${cycleCount}`} style={{
               flex:1, display:'flex', flexDirection:'column',
               opacity:0, animation:'mmCardIn 0.4s ease forwards',
@@ -1885,7 +1885,7 @@ function MultimodalSection() {
                       </div>
                       <div>
                         <p style={{ fontSize:13, fontWeight:800, color:'#0a1628', lineHeight:1 }}>Aruva Voice Tutor</p>
-                        <p style={{ fontSize:11, color:'rgba(10,22,40,0.46)', marginTop:4 }}>Listening, transcribing and responding</p>
+                        <p style={{ fontSize:11, color:'rgba(10,22,40,0.60)', marginTop:4 }}>Listening, transcribing and responding</p>
                       </div>
                     </div>
                     <div style={{
@@ -1958,7 +1958,7 @@ function MultimodalSection() {
                       </div>
                       <div style={{ textAlign:'center' }}>
                         <p style={{ fontSize:12, fontWeight:900, color:'#0a1628', marginBottom:4 }}>Listening...</p>
-                        <p style={{ fontSize:11, color:'rgba(10,22,40,0.48)', lineHeight:1.45 }}>Transcript updates as the student speaks.</p>
+                        <p style={{ fontSize:11, color:'rgba(10,22,40,0.60)', lineHeight:1.45 }}>Transcript updates as the student speaks.</p>
                       </div>
                     </div>
                   </div>
@@ -1968,7 +1968,7 @@ function MultimodalSection() {
               {active === 1 && <MMTextDemo />}
               {false && (
                 <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'32px 36px' }}>
-                  <p style={{ fontSize:12, color:'rgba(10,22,40,0.42)', fontWeight:600, marginBottom:4 }}>Solving: x² − 5x + 6 = 0</p>
+                  <p style={{ fontSize:12, color:'rgba(10,22,40,0.60)', fontWeight:600, marginBottom:4 }}>Solving: x² − 5x + 6 = 0</p>
                   {MM_STEPS.map((s, i) => (
                     <div key={s.label} style={{
                       display:'flex', alignItems:'center', gap:10,
@@ -1981,7 +1981,7 @@ function MultimodalSection() {
                   ))}
                   <div style={{ display:'flex', alignItems:'center', gap:6, marginTop:6 }}>
                     <div style={{ width:2, height:16, background:'#7c3aed', borderRadius:1, animation:'mmCursor 1s step-end infinite' }}/>
-                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.38)' }}>AI solving step by step…</span>
+                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)' }}>AI solving step by step…</span>
                   </div>
                 </div>
               )}
@@ -2140,7 +2140,7 @@ function BloomInsightSection() {
   }
   const dokSem = DOK_SEMS[dokActive]
 
-  // Radar geometry ” 300Ã—300 viewBox with generous label clearance
+  // Radar geometry - 300×300 viewBox with generous label clearance
   const CX = 150, CY = 150, R = 98
   const ang  = (i: number) => (i * 60 - 90) * Math.PI / 180
   const pt   = (i: number, v: number) => ({ x: CX + (v/100)*R*Math.cos(ang(i)), y: CY + (v/100)*R*Math.sin(ang(i)) })
@@ -2245,7 +2245,7 @@ function BloomInsightSection() {
               className={`px-5 py-2 rounded-lg text-[13px] font-semibold transition-all duration-200 ${
                 activeTab === i
                   ? 'bg-[#228DC1] text-white shadow-[0_2px_8px_rgba(34,141,193,0.25)]'
-                  : 'text-[#0a1628]/50 hover:text-[#0a1628]/80'
+                  : 'text-[#0a1628]/60 hover:text-[#0a1628]/80'
               }`}
               style={{ transition: 'all 0.2s cubic-bezier(0.34,1.2,0.64,1)' }}>
               {tab.label}
@@ -2257,7 +2257,7 @@ function BloomInsightSection() {
         {activeTab === 0 && (
         <div className="tab-panel-enter">
 
-          {/* RIGHT ” Bloom profile card */}
+          {/* RIGHT - Bloom profile card */}
           <div className="bg-white border border-gray-200 rounded-2xl shadow-[0_2px_20px_rgba(10,22,40,0.05)] p-8 flex flex-col">
 
             {/* Card header */}
@@ -2272,7 +2272,7 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[11px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile - compared with class average</p>
+                    <p className="text-[11px] font-semibold text-[#0a1628]/60 leading-none mt-1">Student profile - compared with class average</p>
                   </div>
                 </div>
               </div>
@@ -2333,7 +2333,7 @@ function BloomInsightSection() {
                       stroke="rgba(10,22,40,0.06)" strokeWidth="1" />
                   ))}
 
-                  {/* Cohort average ” amber dashed polygon */}
+                  {/* Cohort average - amber dashed polygon */}
                   <polygon points={poly(sem.cohortAvg)} fill={`url(#ravgFill-${active})`}
                     stroke={`url(#ravg-${active})`} strokeWidth="2.5"
                     strokeDasharray="7 4" strokeLinejoin="round" strokeLinecap="round"
@@ -2452,7 +2452,7 @@ function BloomInsightSection() {
             <div className="rounded-xl p-5 border transition-colors duration-300"
               style={{ background: sem.accent + '07', borderColor: sem.accent + '20' }}>
               <p className="text-[16px] font-semibold text-[#0a1628] mb-1.5 leading-snug">{sem.headline}</p>
-              <p className="text-sm text-[#0a1628]/55 leading-relaxed">{sem.detail}</p>
+              <p className="text-sm text-[#0a1628]/60 leading-relaxed">{sem.detail}</p>
             </div>
           </div>
         </div>
@@ -2462,7 +2462,7 @@ function BloomInsightSection() {
         {activeTab === 1 && (
         <div className="tab-panel-enter">
 
-          {/* RIGHT ” DOK profile card */}
+          {/* RIGHT - DOK profile card */}
           <div className="bg-white border border-gray-200 rounded-2xl shadow-[0_2px_20px_rgba(10,22,40,0.05)] p-8 flex flex-col">
             <div className="flex items-start justify-between mb-6">
               <div>
@@ -2475,7 +2475,7 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[11px] font-semibold text-[#0a1628]/42 leading-none mt-1">Student profile - compared with class average</p>
+                    <p className="text-[11px] font-semibold text-[#0a1628]/60 leading-none mt-1">Student profile - compared with class average</p>
                   </div>
                 </div>
               </div>
@@ -2522,7 +2522,7 @@ function BloomInsightSection() {
                       {/* Class avg marker */}
                       <div className="absolute -top-[4px] -bottom-[4px] w-[2px] rounded-full"
                         style={{ left: `${cavg}%`, background: 'linear-gradient(180deg,#cbd5e1,#64748b)', boxShadow: '0 0 0 3px rgba(148,163,184,0.12)' }} />
-                      <div className="absolute top-1/2 w-[7px] h-[7px] rounded-full border border-white bg-[#94a3b8] shadow-sm"
+                      <div className="absolute top-1/2 w-[7px] h-[7px] rounded-full border border-white bg-[#596779] shadow-sm"
                         style={{ left: `calc(${cavg}% - 3px)`, transform: 'translateY(-50%)' }} />
                     </div>
                     <div className="flex flex-wrap gap-1 mt-2 items-center justify-between">
@@ -2534,7 +2534,7 @@ function BloomInsightSection() {
                           </span>
                         ))}
                       </div>
-                      <p className="text-[11px] font-medium shrink-0 ml-2" style={{ color: 'rgba(10,22,40,0.35)' }}>
+                      <p className="text-[11px] font-medium shrink-0 ml-2" style={{ color: 'rgba(10,22,40,0.60)' }}>
                         Class avg {cavg}%
                       </p>
                     </div>
@@ -2546,7 +2546,7 @@ function BloomInsightSection() {
             <div className="rounded-xl p-5 border transition-colors duration-300"
               style={{ background: dokSem.accent + '07', borderColor: dokSem.accent + '20' }}>
               <p className="text-[16px] font-semibold text-[#0a1628] mb-1.5 leading-snug">{dokSem.headline}</p>
-              <p className="text-sm text-[#0a1628]/55 leading-relaxed">{dokSem.detail}</p>
+              <p className="text-sm text-[#0a1628]/60 leading-relaxed">{dokSem.detail}</p>
             </div>
           </div>
         </div>
@@ -2616,7 +2616,7 @@ function AudienceCard({ a, i, inView, onDemoClick }: {
           <span style={{ fontSize:10, fontWeight:800, letterSpacing:'0.16em', textTransform:'uppercase', color:a.color }}>{a.label}</span>
         </div>
         <h3 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize:20 }}>{a.headline}</h3>
-        <p className="text-[#0a1628]/55 text-[13px] leading-relaxed mb-6">{a.desc}</p>
+        <p className="text-[#0a1628]/60 text-[13px] leading-relaxed mb-6">{a.desc}</p>
         <div className="space-y-2.5 flex-1">
           {a.points.map(pt => (
             <div key={pt} className="flex items-start gap-2.5">
@@ -2654,9 +2654,9 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           {/* Card 1 */}
           <div className="flex-1 flex flex-col"><AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} /></div>
 
-          {/* Connector 1â†”2 */}
+          {/* Connector 1-2 */}
           <div className="hidden lg:flex flex-col items-center justify-center gap-3 shrink-0" style={{ width:56 }}>
-            {/* â† card2 to card1 */}
+            {/*  card2 to card1 */}
             <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block' }}>
               <line x1="44" y1="9" x2="12" y2="9" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round"/>
               <polyline points="18,3 6,9 18,15" stroke={audiences[1].color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
@@ -2673,7 +2673,7 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
           {/* Card 2 */}
           <div className="flex-1 flex flex-col"><AudienceCard a={audiences[1]} i={1} inView={inView} onDemoClick={onDemoClick} /></div>
 
-          {/* Connector 2â†”3 */}
+          {/* Connector 2-3 */}
           <div className="hidden lg:flex flex-col items-center justify-center gap-3 shrink-0" style={{ width:56 }}>
             {/* → card2 to card3 */}
             <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block' }}>
@@ -2682,7 +2682,7 @@ function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
             </svg>
             {/* divider */}
             <div style={{ width:20, height:1, background: audiences[1].color, opacity:0.2, borderRadius:1 }}/>
-            {/* â† card3 to card2 */}
+            {/*  card3 to card2 */}
             <svg width="48" height="18" viewBox="0 0 48 18" fill="none" style={{ display:'block', opacity:0.4 }}>
               <line x1="44" y1="9" x2="12" y2="9" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeDasharray="5 3"/>
               <polyline points="18,3 6,9 18,15" stroke={audiences[1].color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
@@ -2807,7 +2807,7 @@ export default function AruvaPage() {
         <div className="relative max-w-[1320px] mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-[0.68fr_1.32fr] gap-14 items-center">
             <div>
-              {/* Aruva logo ” full wordmark vector */}
+              {/* Aruva logo - full wordmark vector */}
               <div className="mb-8">
                 <img
                   src="/aruva-logo-vector.svg"
@@ -2846,7 +2846,7 @@ export default function AruvaPage() {
       {/* Curriculum agnostic */}
       <CurriculumAgnosticSection />
 
-      {/* Bloom + DOK ” Learning Intelligence */}
+      {/* Bloom + DOK - Learning Intelligence */}
       <BloomInsightSection />
 
       {/* Multimodal */}
@@ -2883,7 +2883,7 @@ export default function AruvaPage() {
                 {['Answers student questions from the open web','No awareness of your syllabus, rubric or course week','End of term grade is the only signal of progress','Learning gaps surface after the exam, too late to act','No control over how the AI behaves in your courses','No critical thinking scaffolding, one-size-fits-all responses for every student'].map(item => (
                   <div key={item} className="flex items-start gap-3.5">
                     <div className="w-[18px] h-[18px] rounded-full border-2 border-gray-300 mt-0.5 shrink-0 flex items-center justify-center"><div className="w-2 h-0.5 bg-gray-300" /></div>
-                    <p className="text-[14px] text-[#0a1628]/45 leading-snug">{item}</p>
+                    <p className="text-[14px] text-[#0a1628]/60 leading-snug">{item}</p>
                   </div>
                 ))}
               </div>
@@ -2952,7 +2952,7 @@ export default function AruvaPage() {
                       <span className="type-label text-[#1a7aab]">{item.tag}</span>
                     </div>
                     <p className="font-semibold text-[#0a1628] text-[14px] mb-1.5">{item.title}</p>
-                    <p className="text-[#0a1628]/55 text-[12px] leading-relaxed">{item.desc}</p>
+                    <p className="text-[#0a1628]/60 text-[12px] leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
