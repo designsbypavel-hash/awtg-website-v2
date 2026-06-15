@@ -2,10 +2,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faBuildingColumns, faChartLine,
-  faClipboardCheck, faLayerGroup,
-  faMapLocationDot, faNetworkWired, faRoute,
-  faSearchLocation, faShieldHalved, faSitemap,
-  faTowerBroadcast, faLocationCrosshairs,
+  faClipboardCheck,
+  faMapLocationDot, faNetworkWired,
+  faSearchLocation,
+  faTowerBroadcast,
   faDatabase,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
@@ -190,14 +190,6 @@ const operatorBenefits = [
 ]
 
 
-const whyIdams = [
-  { icon: faLocationCrosshairs, color: '#228DC1', title: 'Faster Deployment',            desc: 'Reduce the time required to identify, assess, and request suitable assets for infrastructure deployment.' },
-  { icon: faSitemap,            color: '#059669', title: 'Better Collaboration',          desc: 'Bring asset owners, operators, local authorities, and commercial partners into one shared digital process.' },
-  { icon: faShieldHalved,       color: '#7c3aed', title: 'Stronger Governance',           desc: 'Track requests, approvals, data changes, and asset status in a controlled platform instead of relying on emails and spreadsheets.' },
-  { icon: faRoute,              color: '#d97706', title: 'Configurable to Your Organisation', desc: 'IDAMS can be adapted to different asset types, approval processes, user roles, and reporting needs.' },
-  { icon: faLayerGroup,         color: '#dc2626', title: 'Secure and Scalable',           desc: 'The platform is designed for secure cloud delivery, role-based access, data protection, and scalable asset management.' },
-]
-
 const audiences = [
   {
     icon: faBuildingColumns, color: '#228DC1',
@@ -233,7 +225,6 @@ export default function ServicesIoTPage() {
   const [capRef,    capInView]    = useInView(0.08)
   const [audRef,    audInView]    = useInView(0.08)
   const [ucRef,     ucInView]     = useInView(0.08)
-  const [whyRef,    whyInView]    = useInView(0.08)
 
   return (
     <>
@@ -399,35 +390,6 @@ export default function ServicesIoTPage() {
                 image={uc.image}
                 style={reveal(ucInView, i * 50)}
               />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHY IDAMS ────────────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-white py-24">
-        <div ref={whyRef} className="mx-auto max-w-7xl px-8 lg:px-12">
-          <div style={reveal(whyInView, 0)}>
-            <SectionHeader
-              title="Why IDAMS?"
-              desc="From asset register to digital marketplace, IDAMS creates a practical bridge between organisations that own assets and those that need access to them."
-            />
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {whyIdams.map((w, i) => (
-              <div
-                key={w.title}
-                className="flex gap-5 rounded-2xl border border-gray-200 bg-white p-7 shadow-[0_1px_8px_rgba(10,22,40,0.04)] transition-all hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(10,22,40,0.09)]"
-                style={reveal(whyInView, i * 70)}
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" style={{ background: `${w.color}12`, border: `1px solid ${w.color}20` }}>
-                  <FontAwesomeIcon icon={w.icon} className="h-4 w-4" style={{ color: w.color }} />
-                </div>
-                <div>
-                  <h3 className="mb-2 text-[15px] font-semibold leading-[1.3] text-[#0a1628]">{w.title}</h3>
-                  <p className="text-[13px] font-normal leading-[1.72] text-[#0a1628]/60">{w.desc}</p>
-                </div>
-              </div>
             ))}
           </div>
         </div>
