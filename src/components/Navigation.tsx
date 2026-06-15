@@ -140,7 +140,7 @@ const featuredPanels: Record<string, FeaturedPanel> = {
     title: 'Meet AWTG',
     desc: 'See how our teams combine telecoms engineering, software and AI delivery across public and private sector programmes.',
     href: '/about',
-    cta: 'About AWTG',
+    cta: '',
     items: [
       {
         label: 'Leadership',
