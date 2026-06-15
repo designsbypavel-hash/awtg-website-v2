@@ -18,11 +18,11 @@ export default function HeroSection() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-[#228DC1]/10 border border-[#228DC1]/30 rounded-full px-4 py-1.5 mb-8">
             <span className="w-2 h-2 bg-[#228DC1] rounded-full animate-pulse" />
-            <span className="text-[#228DC1] text-sm font-medium">Next-Generation Telecoms Solutions</span>
+            <span className="text-[#1a7aab] text-sm font-medium">Next-Generation Telecoms Solutions</span>
           </div>
 
           <h1 className="font-serif-display text-[#0a1628] mb-6">
-            Connecting the <span className="text-[#228DC1]">Future</span> of Enterprise Networks
+            Connecting the <span className="text-[#1a7aab]">Future</span> of Enterprise Networks
           </h1>
 
           <p className="text-[16px] text-[#0a1628]/60 leading-[1.7] mb-10 max-w-2xl">

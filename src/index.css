@@ -423,7 +423,15 @@
 /* Uniform button treatment across pages */
 :root {
   --awtg-button-radius: 6px;
+  /* WCAG AA-compliant brand blue for text on white/light backgrounds.
+     #228DC1 = 3.44:1 (fails AA for normal text).
+     #1a7aab = 4.77:1 (passes AA for all text sizes). */
+  --awtg-blue: #228DC1;
+  --awtg-blue-accessible: #1a7aab;
 }
+
+/* Use this class for any brand-blue text on white/light backgrounds */
+.text-brand-accessible { color: #1a7aab; }
 
 button,
 [role="button"],

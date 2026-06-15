@@ -52,7 +52,7 @@ function FieldLabel({ children, required }: { children: React.ReactNode; require
   return (
     <label className="block text-[12px] font-bold uppercase tracking-[0.1em] text-[#0a1628]/60 mb-2">
       {children}
-      {required && <span className="text-[#228DC1] ml-1">*</span>}
+      {required && <span className="text-[#1a7aab] ml-1">*</span>}
     </label>
   )
 }
@@ -165,15 +165,15 @@ export default function CareerApplyPage() {
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <Link
               to={getRoleHref(role.slug)}
-              className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#228DC1] transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
             >
               Back to role
             </Link>
             <div className="max-w-xl">
               <div className="w-14 h-14 bg-[#228DC1]/10 flex items-center justify-center mb-8">
-                <FontAwesomeIcon icon={faCircleCheck} className="w-7 h-7 text-[#228DC1]" />
+                <FontAwesomeIcon icon={faCircleCheck} className="w-7 h-7 text-[#1a7aab]" />
               </div>
-              <p className="type-label text-[#228DC1] mb-4">Application Received</p>
+              <p className="type-label text-[#1a7aab] mb-4">Application Received</p>
               <h1 className="font-h2 text-[#0a1628] mb-5">Thank you, {form.firstName}.</h1>
               <p className="text-[#0a1628]/60 text-[16px] leading-[1.8] mb-8">
                 We've received your application for <strong className="text-[#0a1628]">{role.title}</strong>. Our team will review it and get back to you within 5 business days.
@@ -193,7 +193,7 @@ export default function CareerApplyPage() {
                 </Link>
                 <Link
                   to="/"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-gray-200 text-[#0a1628] text-[14px] font-semibold hover:border-[#228DC1] hover:text-[#228DC1] transition-colors"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-gray-200 text-[#0a1628] text-[14px] font-semibold hover:border-[#228DC1] hover:text-[#1a7aab] transition-colors"
                 >
                   Back to Home
                 </Link>
@@ -212,21 +212,21 @@ export default function CareerApplyPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <Link
             to={getRoleHref(role.slug)}
-            className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#228DC1] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
           >
             Back to role
           </Link>
-          <p className="type-label text-[#228DC1] mb-3">Apply</p>
+          <p className="type-label text-[#1a7aab] mb-3">Apply</p>
           <h1 className="font-h1 text-[#0a1628] mb-4">{role.title}</h1>
           <div className="flex flex-wrap items-center gap-5 text-[13px] text-[#0a1628]/55">
             <span className="flex items-center gap-1.5">
-              <FontAwesomeIcon icon={faBuilding} className="w-3 h-3 text-[#228DC1]" /> {role.dept}
+              <FontAwesomeIcon icon={faBuilding} className="w-3 h-3 text-[#1a7aab]" /> {role.dept}
             </span>
             <span className="flex items-center gap-1.5">
-              <FontAwesomeIcon icon={faLocationDot} className="w-3 h-3 text-[#228DC1]" /> {role.location}
+              <FontAwesomeIcon icon={faLocationDot} className="w-3 h-3 text-[#1a7aab]" /> {role.location}
             </span>
             <span className="flex items-center gap-1.5">
-              <FontAwesomeIcon icon={faBriefcase} className="w-3 h-3 text-[#228DC1]" /> {role.type}
+              <FontAwesomeIcon icon={faBriefcase} className="w-3 h-3 text-[#1a7aab]" /> {role.type}
             </span>
           </div>
         </div>
@@ -310,7 +310,7 @@ export default function CareerApplyPage() {
                       {form.cvFile ? (
                         <div className="flex items-center justify-center gap-4">
                           <div className="w-10 h-10 bg-[#228DC1]/10 flex items-center justify-center">
-                            <FontAwesomeIcon icon={faFile} className="w-5 h-5 text-[#228DC1]" />
+                            <FontAwesomeIcon icon={faFile} className="w-5 h-5 text-[#1a7aab]" />
                           </div>
                           <div className="text-left">
                             <p className="text-[14px] font-semibold text-[#0a1628]">{form.cvFile.name}</p>
@@ -329,10 +329,10 @@ export default function CareerApplyPage() {
                       ) : (
                         <div>
                           <div className="w-12 h-12 bg-[#228DC1]/8 flex items-center justify-center mx-auto mb-4">
-                            <FontAwesomeIcon icon={faCloudArrowUp} className="w-6 h-6 text-[#228DC1]" />
+                            <FontAwesomeIcon icon={faCloudArrowUp} className="w-6 h-6 text-[#1a7aab]" />
                           </div>
                           <p className="text-[14px] font-semibold text-[#0a1628] mb-1">
-                            Drop your CV here, or <span className="text-[#228DC1]">browse</span>
+                            Drop your CV here, or <span className="text-[#1a7aab]">browse</span>
                           </p>
                           <p className="text-[12px] text-[#0a1628]/40">PDF, DOC or DOCX · Max 10 MB</p>
                         </div>
@@ -403,7 +403,7 @@ export default function CareerApplyPage() {
                 <div className="bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)] px-8 py-7">
                   <p className="text-[12px] text-[#0a1628]/45 leading-[1.8] mb-7">
                     By submitting this application you consent to AWTG Limited processing your personal data for recruitment purposes in accordance with our{' '}
-                    <Link to="/privacy" className="text-[#228DC1] hover:underline">Privacy Policy</Link>.
+                    <Link to="/privacy" className="text-[#1a7aab] hover:underline">Privacy Policy</Link>.
                     {' '}Your data will be stored securely and retained for up to 12 months.
                   </p>
                   <button
@@ -421,7 +421,7 @@ export default function CareerApplyPage() {
 
                 {/* Job summary */}
                 <div className="bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)] p-7">
-                  <p className="type-label text-[#228DC1] mb-4">You're applying for</p>
+                  <p className="type-label text-[#1a7aab] mb-4">You're applying for</p>
                   <h3 className="font-h5 text-[#0a1628] mb-5">{role.title}</h3>
                   <div className="space-y-3 pb-5 border-b border-gray-100">
                     {[
@@ -430,14 +430,14 @@ export default function CareerApplyPage() {
                       { icon: faBriefcase, value: role.type },
                     ].map(({ icon, value }) => (
                       <div key={value} className="flex items-center gap-2.5 text-[13px] text-[#0a1628]/60">
-                        <FontAwesomeIcon icon={icon} className="w-3.5 h-3.5 text-[#228DC1] shrink-0" />
+                        <FontAwesomeIcon icon={icon} className="w-3.5 h-3.5 text-[#1a7aab] shrink-0" />
                         {value}
                       </div>
                     ))}
                   </div>
                   <Link
                     to={getRoleHref(role.slug)}
-                    className="mt-5 flex items-center gap-2 text-[#228DC1] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
+                    className="mt-5 flex items-center gap-2 text-[#1a7aab] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
                     View full job description
                   </Link>
@@ -445,7 +445,7 @@ export default function CareerApplyPage() {
 
                 {/* What to expect */}
                 <div className="bg-[#f8fafc] border border-gray-100 p-7">
-                  <p className="type-label text-[#228DC1] mb-4">What happens next</p>
+                  <p className="type-label text-[#1a7aab] mb-4">What happens next</p>
                   <div className="space-y-4">
                     {[
                       { step: '01', text: 'We review your application within 5 business days.' },
@@ -454,7 +454,7 @@ export default function CareerApplyPage() {
                       { step: '04', text: 'Final decision and offer.' },
                     ].map(({ step, text }) => (
                       <div key={step} className="flex items-start gap-3">
-                        <span className="text-[11px] font-bold text-[#228DC1] tabular-nums shrink-0 mt-0.5">{step}</span>
+                        <span className="text-[11px] font-bold text-[#1a7aab] tabular-nums shrink-0 mt-0.5">{step}</span>
                         <p className="text-[13px] text-[#0a1628]/60 leading-[1.7]">{text}</p>
                       </div>
                     ))}
@@ -468,7 +468,7 @@ export default function CareerApplyPage() {
                   </p>
                   <a
                     href="mailto:info@awtg.co.uk"
-                    className="inline-flex items-center gap-2 text-[#228DC1] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
+                    className="inline-flex items-center gap-2 text-[#1a7aab] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
                     info@awtg.co.uk
                   </a>

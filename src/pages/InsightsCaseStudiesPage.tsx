@@ -6,7 +6,7 @@ import InsightsResourceNav from '@/components/InsightsResourceNav'
 import { getCaseStudyImage } from '@/lib/insightImages'
 
 const tagColour: Record<string, string> = {
-  'Open RAN Security': 'bg-[#228DC1]/10 text-[#228DC1]',
+  'Open RAN Security': 'bg-[#228DC1]/10 text-[#1a7aab]',
   'Network Economics': 'bg-emerald-50 text-emerald-700',
   'Public Sector': 'bg-violet-50 text-violet-700',
   'Mobile Networks': 'bg-sky-50 text-sky-700',
@@ -117,7 +117,7 @@ export default function InsightsCaseStudiesPage() {
           style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
         >
           <div style={{ maxWidth: 600 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">Case Studies</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#1a7aab] mb-5">Case Studies</p>
             <h1
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
@@ -159,14 +159,14 @@ export default function InsightsCaseStudiesPage() {
                     </span>
                     <span className="text-[#0a1628]/40 text-xs">{featured.date}</span>
                   </div>
-                  <h2 className="font-h2 text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-5">
+                  <h2 className="font-h2 text-[#0a1628] group-hover:text-[#1a7aab] transition-colors mb-5">
                     {featured.title}
                   </h2>
                   <p className="text-[#0a1628]/60 text-sm font-normal leading-[1.75] max-w-lg">
                     {featured.excerpt}
                   </p>
                 </div>
-                <div className="mt-10 flex items-center gap-2 text-[#228DC1] text-sm font-semibold">
+                <div className="mt-10 flex items-center gap-2 text-[#1a7aab] text-sm font-semibold">
                   Read case study
                 </div>
               </div>
@@ -212,9 +212,9 @@ export default function InsightsCaseStudiesPage() {
                         </span>
                         <span className="text-[#0a1628]/40 text-[11px]">{cs.date.split(' ').pop()}</span>
                       </div>
-                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">{cs.title}</h3>
+                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">{cs.title}</h3>
                       <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-6">{cs.excerpt}</p>
-                      <div className="flex items-center gap-2 text-[#228DC1] text-[12px] font-semibold mt-auto">
+                      <div className="flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold mt-auto">
                         Read case study
                       </div>
                     </div>
@@ -239,13 +239,13 @@ export default function InsightsCaseStudiesPage() {
                       </span>
                       <span className="text-[#0a1628]/40 text-[11px]">{cs.date.split(' ').pop()}</span>
                     </div>
-                    <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">
+                    <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">
                       {cs.title}
                     </h3>
                     <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-6">
                       {cs.excerpt}
                     </p>
-                    <div className="flex items-center gap-2 text-[#228DC1] text-[12px] font-semibold mt-auto">
+                    <div className="flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold mt-auto">
                       Read case study
                     </div>
                   </div>

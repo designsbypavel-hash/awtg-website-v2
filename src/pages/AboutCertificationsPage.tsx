@@ -75,7 +75,7 @@ const certificationGroups: CertGroup[] = [
 ]
 
 const GROUP_COLORS: Record<string, string> = {
-  'ISO & Cyber Security':   '#228DC1',
+  'ISO & Cyber Security':   '#1a7aab',
   'Supplier Accreditation': '#059669',
   'Membership':             '#7c3aed',
   'Ratings':                '#d97706',
@@ -114,7 +114,7 @@ export default function AboutCertificationsPage() {
               <a
                 key={group.label}
                 href={`#${group.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-                className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#228DC1] hover:bg-[#f8fafc] transition-colors"
+                className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors"
               >
                 {group.label}
               </a>

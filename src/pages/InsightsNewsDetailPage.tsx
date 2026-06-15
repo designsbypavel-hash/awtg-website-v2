@@ -36,10 +36,10 @@ export default function InsightsNewsDetailPage() {
   if (!item) {
     return (
       <div className="pt-32 pb-24 max-w-3xl mx-auto px-6 text-center">
-        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">404</p>
+        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">404</p>
         <h1 className="text-4xl font-bold text-[#0a1628] mb-4">News Story Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This news story does not exist or may have been moved.</p>
-        <Link to="/insights" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
+        <Link to="/insights" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
           Back to Newsroom
         </Link>
       </div>
@@ -53,7 +53,7 @@ export default function InsightsNewsDetailPage() {
           <div className="flex flex-wrap items-center gap-4 mb-8">
             <Link
               to="/insights"
-              className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#228DC1] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
+              className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#1a7aab] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
               Newsroom
             </Link>
@@ -119,7 +119,7 @@ export default function InsightsNewsDetailPage() {
           </div>
 
           <div className="pt-8 border-t border-gray-100">
-            <Link to="/insights" className="inline-flex items-center gap-2 text-[#228DC1] text-sm font-semibold hover:text-[#0a1628] transition-colors">
+            <Link to="/insights" className="inline-flex items-center gap-2 text-[#1a7aab] text-sm font-semibold hover:text-[#0a1628] transition-colors">
               Back to all news
             </Link>
           </div>
@@ -136,11 +136,11 @@ export default function InsightsNewsDetailPage() {
                   <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block ${categoryColours[newsItem.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                     {newsItem.category}
                   </span>
-                  <h3 className="text-[#0a1628] text-[14px] font-semibold leading-[1.3] mb-3 group-hover:text-[#228DC1] transition-colors">
+                  <h3 className="text-[#0a1628] text-[14px] font-semibold leading-[1.3] mb-3 group-hover:text-[#1a7aab] transition-colors">
                     {cleanText(newsItem.title)}
                   </h3>
                   <p className="text-[#0a1628]/60 text-xs mb-5">{newsItem.date}</p>
-                  <span className="inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
+                  <span className="inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em]">
                     Read                  </span>
                 </Link>
               ))}

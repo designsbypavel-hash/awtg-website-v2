@@ -294,7 +294,7 @@ function WhatWeDo() {
         <div className="max-w-2xl mb-14">
           <h2 className="font-heading text-[#0a1628] mb-4">
             Three capabilities.<br />
-            <span className="text-[#228DC1]">One partner.</span>
+            <span className="text-[#1a7aab]">One partner.</span>
           </h2>
           <p className="text-[#0a1628]/50 text-[16px] leading-[1.8]">
             End-to-end delivery across AI, private networks and engineering — under one accountable partner.
@@ -375,7 +375,7 @@ export function OurSolutions() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-16">
         <SectionHeader
           className="mb-16"
-          title={<>Advancing connectivity for the{' '}<span className="text-[#228DC1]">technology supercycle.</span></>}
+          title={<>Advancing connectivity for the{' '}<span className="text-[#1a7aab]">technology supercycle.</span></>}
           description="Whether you're a mobile operator, enterprise CIO, or public sector leader, AWTG delivers the connectivity, intelligence, and software your organisation needs to lead."
         />
       </div>
@@ -387,7 +387,7 @@ export function OurSolutions() {
                 <div className="p-12 lg:p-16 flex flex-col justify-center">
                   <h3 className="font-h3 text-[#0a1628] mb-4">{panel.title}</h3>
                   <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-6 font-normal">{panel.desc}</p>
-                  <Link to={panel.href} className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+                  <Link to={panel.href} className="text-sm font-medium text-[#1a7aab] hover:underline transition-all">
                     {panel.link}
                   </Link>
                 </div>
@@ -403,7 +403,7 @@ export function OurSolutions() {
                 <div className="p-12 lg:p-16 flex flex-col justify-center">
                   <h3 className="font-h3 text-[#0a1628] mb-4">{panel.title}</h3>
                   <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-6 font-normal">{panel.desc}</p>
-                  <Link to={panel.href} className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+                  <Link to={panel.href} className="text-sm font-medium text-[#1a7aab] hover:underline transition-all">
                     {panel.link}
                   </Link>
                 </div>
@@ -424,9 +424,9 @@ export function Vision() {
       <div className="max-w-5xl mx-auto px-8 lg:px-12 text-center">
         <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
           The next wave of connectivity will{' '}
-          <span className="text-[#228DC1]">transform businesses</span>
+          <span className="text-[#1a7aab]">transform businesses</span>
           {', '}unlock new network value, and{' '}
-          <span className="text-[#228DC1]">empower communities</span>{' '}
+          <span className="text-[#1a7aab]">empower communities</span>{' '}
           worldwide.
         </h2>
         <div className="mt-10 w-10 h-0.5 bg-[#228DC1] mx-auto" />
@@ -471,7 +471,7 @@ function Industries() {
         <div className="max-w-2xl mb-14">
           <h2 className="font-heading text-[#0a1628] mb-4">
             Powering transformation<br />
-            <span className="text-[#228DC1]">across every sector.</span>
+            <span className="text-[#1a7aab]">across every sector.</span>
           </h2>
           <p className="text-[#0a1628]/50 text-[16px] leading-[1.8]">
             From enterprise campuses to NHS trusts and government bodies, AWTG delivers technology built specifically for your world.
@@ -497,7 +497,7 @@ function Industries() {
 
               {/* Text below image */}
               <div className="flex flex-col flex-1 px-7 pt-6 pb-8">
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1] mb-4">
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab] mb-4">
                   {card.tag}
                 </p>
                 <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
@@ -506,7 +506,7 @@ function Industries() {
                 <p className="text-[#0a1628]/55 text-[14px] leading-[1.78] flex-1 mb-7">
                   {card.desc}
                 </p>
-                <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#228DC1] group-hover:gap-3 transition-all duration-200">
+                <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1a7aab] group-hover:gap-3 transition-all duration-200">
                   {card.cta}
                   <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
                     <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -594,7 +594,7 @@ export function TechSolutions() {
           </span>
           <h2 className="font-heading text-[#0a1628]">
             AI-Powered Technology{' '}
-            <span className="text-[#228DC1]">Solutions</span>
+            <span className="text-[#1a7aab]">Solutions</span>
           </h2>
         </div>
         <div className="flex flex-wrap justify-center gap-2 mb-14">
@@ -605,7 +605,7 @@ export function TechSolutions() {
               className={`px-5 py-2.5 rounded-full text-sm font-medium border transition-all ${
                 activeTab === i
                   ? 'bg-[#228DC1] text-white border-[#228DC1]'
-                  : 'bg-white text-[#0a1628]/60 border-gray-200 hover:border-[#228DC1] hover:text-[#228DC1]'
+                  : 'bg-white text-[#0a1628]/60 border-gray-200 hover:border-[#228DC1] hover:text-[#1a7aab]'
               }`}
             >
               {t.label}
@@ -622,7 +622,7 @@ export function TechSolutions() {
             <ul className="space-y-3 mb-8">
               {tab.features.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm text-[#0a1628]/75">
-                  <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#228DC1] mt-0.5 shrink-0" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#1a7aab] mt-0.5 shrink-0" />
                   {f}
                 </li>
               ))}
@@ -655,7 +655,7 @@ function WhyAWTG() {
         <div className="mb-10 max-w-2xl">
           <h2 className="font-heading text-[#0a1628] mb-4">
             The experience to deliver, and the{' '}
-            <span className="text-[#228DC1]">team to stay with you.</span>
+            <span className="text-[#1a7aab]">team to stay with you.</span>
           </h2>
           <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75]">
             Crown Commercial Service approved. SC and DV cleared engineers. Built for the most demanding environments.
@@ -675,7 +675,7 @@ function WhyAWTG() {
             </span>
           ))}
           <Link to="/about/certifications"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide border border-gray-200 bg-white text-[#0a1628]/50 hover:text-[#228DC1] transition-colors">
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide border border-gray-200 bg-white text-[#0a1628]/50 hover:text-[#1a7aab] transition-colors">
             View all →
           </Link>
         </div>
@@ -720,7 +720,7 @@ export function PNaaS() {
             </span>
             <h2 className="font-heading text-[#0a1628] mb-6">
               Transforming the future of connectivity{' '}
-              <span className="text-[#228DC1]">and beyond.</span>
+              <span className="text-[#1a7aab]">and beyond.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-10 font-normal">
               AWTG's Private Network as a Service delivers enterprise-grade 4G/5G connectivity, fully managed, infinitely scalable, built around your operations.
@@ -740,7 +740,7 @@ export function PNaaS() {
             {pnaasFeatures.map(({ icon, title, desc }) => (
               <div key={title} className="flex items-start gap-5 bg-white/[0.04] hover:bg-white/[0.07] p-6 border border-gray-100 transition-colors">
                 <div className="w-10 h-10 bg-[#228DC1]/15 flex items-center justify-center shrink-0">
-                  <FontAwesomeIcon icon={icon} className="w-5 h-5 text-[#228DC1]" />
+                  <FontAwesomeIcon icon={icon} className="w-5 h-5 text-[#1a7aab]" />
                 </div>
                 <div>
                   <p className="text-[#0a1628] font-semibold mb-1">{title}</p>
@@ -793,7 +793,7 @@ function ClientVoices() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="font-serif-display text-[#0a1628] leading-tight">
-            What our <span className="text-[#228DC1]">clients say</span>
+            What our <span className="text-[#1a7aab]">clients say</span>
           </h2>
           <p className="text-[#0a1628]/55 text-[17px] font-normal leading-[1.7] mt-4 max-w-xl mx-auto">
             Real results from organisations deploying AWTG AI solutions.
@@ -843,14 +843,14 @@ function ClientVoices() {
           <button
             onClick={() => setActive((a) => (a - 1 + testimonials.length) % testimonials.length)}
             aria-label="Previous"
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/40 hover:text-[#228DC1] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/40 hover:text-[#1a7aab] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
           >
             <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 16l-6-6 6-6"/></svg>
           </button>
           <button
             onClick={() => setActive((a) => (a + 1) % testimonials.length)}
             aria-label="Next"
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/40 hover:text-[#228DC1] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#0a1628]/40 hover:text-[#1a7aab] hover:border-[#228DC1] transition-all duration-150 shadow-sm"
           >
             <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 4l6 6-6 6"/></svg>
           </button>
@@ -924,7 +924,7 @@ export function Partners() {
 const articles = [
   {
     tag: 'Generative AI',
-    tagPill: 'bg-[#228DC1]/10 text-[#228DC1]',
+    tagPill: 'bg-[#228DC1]/10 text-[#1a7aab]',
     accent: 'bg-[#228DC1]',
     date: 'Jun 2026',
     readTime: '5 min read',
@@ -974,7 +974,7 @@ function Insights() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <SectionHeader
           className="mb-14"
-          title={<>Explore the latest<br /><span className="text-[#228DC1]">from AWTG.</span></>}
+          title={<>Explore the latest<br /><span className="text-[#1a7aab]">from AWTG.</span></>}
           description="Insight, analysis and perspectives from AWTG's engineers and sector specialists."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -998,11 +998,11 @@ function Insights() {
                   <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${a.tagPill}`}>{a.tag}</span>
                   <span className="text-[#0a1628]/40 text-[11px]">{a.date}</span>
                 </div>
-                <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors leading-[1.4]">{a.title}</h3>
+                <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors leading-[1.4]">{a.title}</h3>
                 <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-5 line-clamp-2 flex-1">{a.excerpt}</p>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <span className="text-[#0a1628]/40 text-[11px]">{a.readTime}</span>
-                  <span className="text-[#228DC1] text-[12px] font-semibold inline-flex items-center gap-1">
+                  <span className="text-[#1a7aab] text-[12px] font-semibold inline-flex items-center gap-1">
                     Read more
                     <svg className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -1016,7 +1016,7 @@ function Insights() {
         <div className="mt-10 flex justify-center">
           <Link
             to="/insights"
-            className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#0a1628]/20 text-[#0a1628]/70 text-sm font-medium hover:border-[#228DC1] hover:text-[#228DC1] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#0a1628]/20 text-[#0a1628]/70 text-sm font-medium hover:border-[#228DC1] hover:text-[#1a7aab] transition-all duration-200"
           >
             View all insights
           </Link>
@@ -1036,7 +1036,7 @@ function ContactCTA() {
           <div>
             <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-4">
               Ready to build<br />
-              <span className="text-[#228DC1]">something that matters?</span>
+              <span className="text-[#1a7aab]">something that matters?</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-10">
               No pitch. No jargon. Just honest advice from engineers who've done it before.
@@ -1050,11 +1050,11 @@ function ContactCTA() {
           <div className="space-y-6">
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Email</p>
-              <a href="mailto:info@awtg.co.uk" className="text-[#0a1628] hover:text-[#228DC1] transition-colors font-medium text-sm">info@awtg.co.uk</a>
+              <a href="mailto:info@awtg.co.uk" className="text-[#0a1628] hover:text-[#1a7aab] transition-colors font-medium text-sm">info@awtg.co.uk</a>
             </div>
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Phone</p>
-              <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#228DC1] transition-colors font-medium text-sm">+44 (0) 20 3515 5151</a>
+              <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#1a7aab] transition-colors font-medium text-sm">+44 (0) 20 3515 5151</a>
               <p className="text-xs text-[#0a1628]/45 mt-1 font-normal">Mon–Fri, 9am–6pm GMT</p>
             </div>
             <div className="border-t border-gray-200 pt-6">

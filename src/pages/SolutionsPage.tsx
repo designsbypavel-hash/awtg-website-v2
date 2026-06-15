@@ -77,7 +77,7 @@ export default function SolutionsPage() {
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-6 h-px bg-[#228DC1]" />
-            <span className="text-[#228DC1] text-[14px] font-bold uppercase tracking-[0.3em]">Our Solutions</span>
+            <span className="text-[#1a7aab] text-[14px] font-bold uppercase tracking-[0.3em]">Our Solutions</span>
           </div>
           <h1
             className="font-serif-display text-[#0a1628] leading-[1.1] mb-6 max-w-3xl"
@@ -85,7 +85,7 @@ export default function SolutionsPage() {
           >
             Technology solutions<br />
             built for the{' '}
-            <span className="italic text-[#228DC1]">AI era.</span>
+            <span className="italic text-[#1a7aab]">AI era.</span>
           </h1>
           <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] max-w-xl font-normal">
             From private 5G networks to enterprise AI deployment, AWTG delivers end-to-end technology solutions for UK enterprises and public sector, built to perform.
@@ -120,21 +120,21 @@ export default function SolutionsPage() {
               >
                 {s.title}
               </h2>
-              <p className="text-[#228DC1] text-sm font-medium italic mb-5">{s.headline}</p>
+              <p className="text-[#1a7aab] text-sm font-medium italic mb-5">{s.headline}</p>
               <p className="text-[#0a1628]/75 text-[16px] leading-[1.7] mb-8 font-normal">
                 {s.description}
               </p>
               <ul className="space-y-2.5 mb-10">
                 {s.highlights.map((h) => (
                   <li key={h} className="flex items-start gap-3 text-sm text-[#0a1628]/75 font-normal">
-                    <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#228DC1] shrink-0 mt-0.5" />
+                    <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#1a7aab] shrink-0 mt-0.5" />
                     {h}
                   </li>
                 ))}
               </ul>
               <Link
                 to={s.href}
-                className="text-sm font-medium text-[#228DC1] hover:underline transition-all duration-200 w-fit"
+                className="text-sm font-medium text-[#1a7aab] hover:underline transition-all duration-200 w-fit"
               >
                 Explore {s.title}
               </Link>
@@ -146,13 +146,13 @@ export default function SolutionsPage() {
       {/* ── CTA ── */}
       <section className="py-28 bg-white">
         <div className="max-w-4xl mx-auto px-8 lg:px-12 text-center">
-          <p className="text-[14px] font-bold uppercase tracking-[0.25em] text-[#228DC1] mb-6">Ready to get started?</p>
+          <p className="text-[14px] font-bold uppercase tracking-[0.25em] text-[#1a7aab] mb-6">Ready to get started?</p>
           <h2
             className="font-serif-display text-[#0a1628] leading-[1.1] mb-6"
            
           >
             Not sure which solution<br />
-            <span className="italic text-[#228DC1]">fits your challenge?</span>
+            <span className="italic text-[#1a7aab]">fits your challenge?</span>
           </h2>
           <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-10 font-normal max-w-xl mx-auto">
             Our engineers will scope the right approach for your organisation. No obligation, just honest technical advice from people who have done it before.

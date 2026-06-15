@@ -14,7 +14,7 @@ export default function IndustriesSection() {
     <section className="py-24 bg-[#f5f7fa]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-[#228DC1] font-semibold text-sm uppercase tracking-widest mb-3">Industries</p>
+          <p className="text-[#1a7aab] font-semibold text-sm uppercase tracking-widest mb-3">Industries</p>
           <h2 className="font-heading text-[#0a1628] mb-4">Sectors We Serve</h2>
           <p className="text-[#0a1628]/60 text-[18px] max-w-2xl mx-auto">
             We bring deep domain expertise across critical industries that demand reliable, secure connectivity.

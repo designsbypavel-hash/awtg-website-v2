@@ -355,7 +355,7 @@ const allPosts = [
 ]
 
 const tagColour: Record<string, string> = {
-  'AI': 'bg-[#228DC1]/10 text-[#228DC1]',
+  'AI': 'bg-[#228DC1]/10 text-[#1a7aab]',
   '5G': 'bg-[#0a1628]/8 text-[#0a1628]',
   'Case Study': 'bg-emerald-50 text-emerald-700',
   'Private 5G': 'bg-emerald-50 text-emerald-700',
@@ -376,10 +376,10 @@ export default function InsightsBlogPostPage() {
   if (!post) {
     return (
       <div className="pt-32 pb-24 max-w-3xl mx-auto px-6 text-center">
-        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">404</p>
+        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">404</p>
         <h1 className="text-4xl font-bold text-[#0a1628] mb-4">Article Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This article doesn't exist or may have been moved.</p>
-        <Link to="/insights/blog" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
+        <Link to="/insights/blog" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
           Back to Blog
         </Link>
       </div>
@@ -394,7 +394,7 @@ export default function InsightsBlogPostPage() {
           <div className="flex items-center gap-4 mb-8">
             <Link
               to="/insights/blog"
-              className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#228DC1] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
+              className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#1a7aab] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
               Blog
             </Link>
@@ -493,7 +493,7 @@ export default function InsightsBlogPostPage() {
       <section className="py-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Talk to AWTG</p>
+            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">Talk to AWTG</p>
             <h2 className="font-serif-display text-[#0a1628] leading-tight">
               Want to go further<br />than the article?
             </h2>
@@ -528,7 +528,7 @@ export default function InsightsBlogPostPage() {
                 <span className={`text-[14px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block ${tagColour[r.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                   {r.tag}
                 </span>
-                <h3 className="text-[#0a1628] text-[14px] font-semibold leading-[1.3] mb-3 group-hover:text-[#228DC1] transition-colors">
+                <h3 className="text-[#0a1628] text-[14px] font-semibold leading-[1.3] mb-3 group-hover:text-[#1a7aab] transition-colors">
                   {r.title}
                 </h3>
                 <p className="text-[#0a1628]/60 text-xs">{r.date}</p>

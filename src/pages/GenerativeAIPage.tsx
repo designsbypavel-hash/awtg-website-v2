@@ -77,7 +77,7 @@ export default function GenerativeAIPage() {
               <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-colors">
                 Request a Demo
               </Link>
-              <Link to="/" className="inline-flex items-center gap-2 px-7 py-3.5 text-[#0a1628]/60 hover:text-[#228DC1] text-sm font-medium transition-colors">
+              <Link to="/" className="inline-flex items-center gap-2 px-7 py-3.5 text-[#0a1628]/60 hover:text-[#1a7aab] text-sm font-medium transition-colors">
                 View all solutions
               </Link>
             </div>
@@ -106,7 +106,7 @@ export default function GenerativeAIPage() {
       {/* FEATURED – Kai */}
       <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-8">Featured</p>
+          <p className="type-label text-[#1a7aab] mb-8">Featured</p>
           <div className="bg-white border border-gray-100 overflow-hidden shadow-[0_2px_24px_rgba(10,22,40,0.06)]">
             {/* Code editor mockup */}
             <div className="border-b border-gray-100 overflow-hidden bg-white" style={{ fontFamily: "'SF Mono', 'Fira Code', 'Consolas', monospace" }}>
@@ -179,7 +179,7 @@ export default function GenerativeAIPage() {
               <p className="text-[#0a1628]/60 text-sm leading-[1.7] font-normal mb-5 max-w-2xl">
                 Kai helps teams respond faster, govern handoffs and improve customer operations.
               </p>
-              <Link to="/products/kai" className="text-sm font-medium text-[#228DC1] hover:underline transition-all">
+              <Link to="/products/kai" className="text-sm font-medium text-[#1a7aab] hover:underline transition-all">
                 Explore Kai
               </Link>
             </div>
@@ -190,7 +190,7 @@ export default function GenerativeAIPage() {
       {/* AI Products */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">Our AI Products</p>
+          <p className="type-label text-[#1a7aab] mb-4">Our AI Products</p>
           <h2 className="font-heading text-[#0a1628] mb-16">
             Built and shipped.<br />Not theoretical.
           </h2>
@@ -211,13 +211,13 @@ export default function GenerativeAIPage() {
                     <div className="grid sm:grid-cols-2 gap-3">
                       {p.features.map((f) => (
                         <div key={f} className="flex items-start gap-2.5">
-                          <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 shrink-0 mt-0.5 text-[#228DC1]" />
+                          <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 shrink-0 mt-0.5 text-[#1a7aab]" />
                           <span className="text-[#0a1628]/75 text-[14px] font-normal">{f}</span>
                         </div>
                       ))}
                     </div>
                     {p.href && (
-                      <span className="inline-block mt-5 text-sm font-medium text-[#228DC1]">
+                      <span className="inline-block mt-5 text-sm font-medium text-[#1a7aab]">
                         Explore {p.name} →
                       </span>
                     )}
@@ -241,19 +241,19 @@ export default function GenerativeAIPage() {
       {/* Case Studies */}
       <section className="py-24 bg-[#f7f8fa]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">Delivered</p>
+          <p className="type-label text-[#1a7aab] mb-4">Delivered</p>
           <h2 className="font-heading text-[#0a1628] mb-16">
             Proof points, not promises.
           </h2>
           <div className="grid lg:grid-cols-2 gap-px bg-gray-100 border border-gray-100">
             {caseStudies.map((cs) => (
               <div key={cs.client} className="bg-white p-10">
-                <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#228DC1] mb-2">{cs.client}</p>
+                <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#1a7aab] mb-2">{cs.client}</p>
                 <h3 className="font-semibold text-[#0a1628] text-[20px] mb-4 leading-[1.3]">{cs.project}</h3>
                 <p className="text-[#0a1628]/75 text-[14px] leading-[1.7] font-normal mb-6">{cs.outcome}</p>
                 <div className="flex flex-wrap gap-2">
                   {cs.tags.map((t) => (
-                    <span key={t} className="text-[14px] font-semibold uppercase tracking-[0.12em] px-3 py-1 bg-[#228DC1]/8 text-[#228DC1]">{t}</span>
+                    <span key={t} className="text-[14px] font-semibold uppercase tracking-[0.12em] px-3 py-1 bg-[#228DC1]/8 text-[#1a7aab]">{t}</span>
                   ))}
                 </div>
               </div>
@@ -265,7 +265,7 @@ export default function GenerativeAIPage() {
       {/* Capabilities */}
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#228DC1] mb-4">What we build</p>
+          <p className="type-label text-[#1a7aab] mb-4">What we build</p>
           <h2 className="font-heading text-[#0a1628] mb-12">
             Built to work in your organisation.
           </h2>
@@ -277,7 +277,7 @@ export default function GenerativeAIPage() {
               { title: 'Safe Deployment', desc: 'Deployed on your infrastructure or in a private cloud. You stay in control of your data, with full observability from day one.' },
             ].map((c) => (
               <div key={c.title} className="bg-white p-8 hover:bg-[#f7f8fa] transition-colors">
-                <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#228DC1] mb-5" />
+                <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#1a7aab] mb-5" />
                 <h3 className="text-[#0a1628] font-semibold mb-2 text-[14px]">{c.title}</h3>
                 <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">{c.desc}</p>
               </div>
@@ -289,7 +289,7 @@ export default function GenerativeAIPage() {
       {/* CTA */}
       <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-8 lg:px-12 text-center">
-          <p className="type-label text-[#228DC1] mb-6">Get in Touch</p>
+          <p className="type-label text-[#1a7aab] mb-6">Get in Touch</p>
           <h2 className="font-heading text-[#0a1628] mb-6">
             Ready to build AI that actually works in your organisation?
           </h2>
@@ -300,7 +300,7 @@ export default function GenerativeAIPage() {
             <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] hover:bg-[#1a6e99] text-white text-sm font-medium transition-colors">
               Request a conversation
             </Link>
-            <Link to="/" className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1]/40 hover:border-[#228DC1] text-[#228DC1] text-sm font-medium transition-colors">
+            <Link to="/" className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1]/40 hover:border-[#228DC1] text-[#1a7aab] text-sm font-medium transition-colors">
               View all solutions
             </Link>
           </div>

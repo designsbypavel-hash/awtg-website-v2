@@ -303,7 +303,7 @@ const allStudies = [
 ]
 
 const tagColour: Record<string, string> = {
-  'Open RAN Security': 'bg-[#228DC1]/10 text-[#228DC1]',
+  'Open RAN Security': 'bg-[#228DC1]/10 text-[#1a7aab]',
   'Network Economics': 'bg-emerald-50 text-emerald-700',
   'Public Sector': 'bg-violet-50 text-violet-700',
   'Mobile Networks': 'bg-sky-50 text-sky-700',
@@ -321,10 +321,10 @@ export default function InsightsCaseStudyDetailPage() {
   if (!study) {
     return (
       <div className="pt-32 pb-24 max-w-3xl mx-auto px-6 text-center">
-        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">404</p>
+        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">404</p>
         <h1 className="text-4xl font-bold text-[#0a1628] mb-4">Case Study Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This case study does not exist or may have been moved.</p>
-        <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
+        <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
           Back to Case Studies
         </Link>
       </div>
@@ -339,7 +339,7 @@ export default function InsightsCaseStudyDetailPage() {
           <div className="flex items-center gap-4 mb-8">
             <Link
               to="/insights/case-studies"
-              className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#228DC1] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
+              className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#1a7aab] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
               Case Studies
             </Link>
@@ -430,7 +430,7 @@ export default function InsightsCaseStudyDetailPage() {
       <section className="py-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">Talk to AWTG</p>
+            <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">Talk to AWTG</p>
             <h2 className="font-serif-display text-[#0a1628] leading-tight">
               Want to explore<br />this further?
             </h2>
@@ -459,7 +459,7 @@ export default function InsightsCaseStudyDetailPage() {
                 <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block ${tagColour[r.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                   {r.tag}
                 </span>
-                <h3 className="text-[#0a1628] text-[14px] font-semibold leading-[1.3] mb-3 group-hover:text-[#228DC1] transition-colors">
+                <h3 className="text-[#0a1628] text-[14px] font-semibold leading-[1.3] mb-3 group-hover:text-[#1a7aab] transition-colors">
                   {r.title}
                 </h3>
                 <p className="text-[#0a1628]/60 text-xs">{r.date}</p>

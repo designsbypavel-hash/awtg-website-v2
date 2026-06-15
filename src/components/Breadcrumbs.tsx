@@ -101,7 +101,7 @@ export default function Breadcrumbs() {
           <li className="flex items-center shrink-0">
             <Link
               to="/"
-              className="text-xs font-medium text-[#0a1628]/45 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap"
+              className="text-xs font-medium text-[#0a1628]/45 hover:text-[#1a7aab] transition-colors duration-150 whitespace-nowrap"
             >
               Home
             </Link>
@@ -115,7 +115,7 @@ export default function Breadcrumbs() {
               />
               {crumb.isLast ? (
                 <span
-                  className="text-xs font-medium text-[#228DC1] whitespace-nowrap overflow-hidden text-ellipsis max-w-[360px]"
+                  className="text-xs font-medium text-[#1a7aab] whitespace-nowrap overflow-hidden text-ellipsis max-w-[360px]"
                   aria-current="page"
                 >
                   {crumb.label}
@@ -123,7 +123,7 @@ export default function Breadcrumbs() {
               ) : crumb.href ? (
                 <Link
                   to={crumb.href}
-                  className="text-xs font-medium text-[#0a1628]/45 hover:text-[#228DC1] transition-colors duration-150 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]"
+                  className="text-xs font-medium text-[#0a1628]/45 hover:text-[#1a7aab] transition-colors duration-150 whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]"
                 >
                   {crumb.label}
                 </Link>

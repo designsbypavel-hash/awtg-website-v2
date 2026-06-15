@@ -147,7 +147,7 @@ function CoverageMap() {
               key={btn.key}
               onClick={() => setActiveLayer(btn.key)}
               className={`px-3 py-1.5 text-[14px] font-bold uppercase tracking-[0.12em] transition-colors ${
-                activeLayer === btn.key ? 'bg-[#228DC1] text-white' : 'text-[#0a1628]/60 hover:text-[#228DC1]'
+                activeLayer === btn.key ? 'bg-[#228DC1] text-white' : 'text-[#0a1628]/60 hover:text-[#1a7aab]'
               }`}
             >
               {btn.label}
@@ -496,7 +496,7 @@ function IcmapHeroDemo() {
           </div>
           <div style={{
             flex: 1, background: '#fff', borderRadius: 5, padding: '3px 10px',
-            fontSize: 10, color: '#555', fontFamily: 'sans-serif',
+            fontSize: 11, color: '#555', fontFamily: 'sans-serif',
             border: '1px solid rgba(0,0,0,0.12)', display: 'flex', alignItems: 'center', gap: 5,
           }}>
             <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
@@ -526,31 +526,31 @@ function IcmapHeroDemo() {
                 </div>
                 <span style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>iCMAP</span>
               </div>
-              <div style={{ fontSize: 7, color: '#aaa', marginTop: 3, fontFamily: 'sans-serif' }}>Coverage Intelligence</div>
+              <div style={{ fontSize: 11, color: '#aaa', marginTop: 3, fontFamily: 'sans-serif' }}>Coverage Intelligence</div>
             </div>
 
             {/* Layers */}
             <div>
-              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
               {HERO_LAYERS.map((l, i) => (
                 <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4, padding: '3px 5px', borderRadius: 4, background: layerIdx === i ? '#f0f7ff' : 'transparent', transition: 'background 0.35s' }}>
                   <div style={{ width: 11, height: 11, borderRadius: '50%', flexShrink: 0, background: layerIdx === i ? '#228DC1' : '#fff', border: `1.5px solid ${layerIdx === i ? '#228DC1' : '#d0d0d0'}`, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {layerIdx === i && <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#fff' }} />}
                   </div>
-                  <span style={{ fontSize: 9, fontFamily: 'sans-serif', fontWeight: layerIdx === i ? 600 : 400, color: layerIdx === i ? '#228DC1' : '#666', transition: 'color 0.3s' }}>{l}</span>
+                  <span style={{ fontSize: 11, fontFamily: 'sans-serif', fontWeight: layerIdx === i ? 600 : 400, color: layerIdx === i ? '#1a7aab' : '#666', transition: 'color 0.3s' }}>{l}</span>
                 </div>
               ))}
             </div>
 
             {/* Legend — from zoneStyle */}
             <div style={{ flex: 1 }}>
-              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
               {HERO_QUALITY_LEVELS.map((quality, index) => {
                 const isActive = zoneIdx % HERO_QUALITY_LEVELS.length === index
                 return (
                   <div key={quality.label} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 5, opacity: isActive ? 1 : 0.52, transition: 'opacity 0.4s' }}>
                     <div style={{ width: 14, height: 9, borderRadius: 2, background: quality.fill, flexShrink: 0 }} />
-                    <span style={{ fontSize: 9, color: '#333', fontFamily: 'sans-serif', fontWeight: isActive ? 600 : 400 }}>{quality.label}</span>
+                    <span style={{ fontSize: 11, color: '#333', fontFamily: 'sans-serif', fontWeight: isActive ? 600 : 400 }}>{quality.label}</span>
                   </div>
                 )
               })}
@@ -558,10 +558,10 @@ function IcmapHeroDemo() {
 
             {/* Active zone card */}
             <div style={{ background: '#f8fafc', borderRadius: 5, padding: '5px 7px', border: `1px solid ${activeQuality.fill}66`, transition: 'border-color 0.4s' }}>
-              <div style={{ fontSize: 7, color: '#aaa', fontFamily: 'sans-serif', marginBottom: 2, textTransform: 'uppercase' }}>Coverage zone</div>
-              <div style={{ fontSize: 10, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>{activeQuality.label}</div>
-              <div style={{ fontSize: 8, color: activeQuality.stroke, fontFamily: 'sans-serif', marginTop: 1, fontWeight: 600 }}>{activeQuality.signal}</div>
-              <div style={{ fontSize: 8, color: '#777', fontFamily: 'sans-serif' }}>{activeZone.population}</div>
+              <div style={{ fontSize: 11, color: '#aaa', fontFamily: 'sans-serif', marginBottom: 2, textTransform: 'uppercase' }}>Coverage zone</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>{activeQuality.label}</div>
+              <div style={{ fontSize: 11, color: activeQuality.stroke, fontFamily: 'sans-serif', marginTop: 1, fontWeight: 600 }}>{activeQuality.signal}</div>
+              <div style={{ fontSize: 11, color: '#777', fontFamily: 'sans-serif' }}>{activeZone.population}</div>
             </div>
           </div>
 
@@ -585,10 +585,10 @@ function IcmapHeroDemo() {
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               borderTop: '1px solid rgba(0,0,0,0.06)',
             }}>
-              <span style={{ fontSize: 7, color: '#bbb', fontFamily: 'sans-serif' }}>OpenStreetMap - CartoDB Light</span>
+              <span style={{ fontSize: 11, color: '#bbb', fontFamily: 'sans-serif' }}>OpenStreetMap - CartoDB Light</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#22c55e' }} />
-                <span style={{ fontSize: 7, color: '#22c55e', fontFamily: 'sans-serif', fontWeight: 600 }}>LIVE</span>
+                <span style={{ fontSize: 11, color: '#22c55e', fontFamily: 'sans-serif', fontWeight: 600 }}>LIVE</span>
               </div>
             </div>
           </div>
@@ -779,7 +779,7 @@ export default function IcmapPage() {
                   <h3 className="text-[#0a1628] font-semibold text-base leading-[1.3] mb-3">{step.label}</h3>
                   <p className="text-[#0a1628]/58 text-[14px] font-normal leading-[1.75] mb-8">{step.desc}</p>
                   <div className="mt-auto pt-5 border-t border-gray-100">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#228DC1] mb-2">{step.detailLabel}</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#1a7aab] mb-2">{step.detailLabel}</p>
                     <p className="text-[#0a1628]/48 text-[13px] font-normal leading-[1.65]">{step.detail}</p>
                   </div>
                 </div>

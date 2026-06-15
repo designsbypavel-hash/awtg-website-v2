@@ -27,14 +27,14 @@ function UtilityPage({
     <>
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">{eyebrow}</p>
+          <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">{eyebrow}</p>
           <h1 className="font-serif-display text-[#0a1628] leading-tight mb-6">
             {title}
           </h1>
           <p className="text-[#0a1628]/60 text-lg max-w-2xl font-normal leading-relaxed">{intro}</p>
           <Link
             to={primaryHref}
-            className="inline-flex items-center gap-2 mt-8 px-7 py-3.5 border border-[#228DC1] text-[#228DC1] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 mt-8 px-7 py-3.5 border border-[#228DC1] text-[#1a7aab] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-colors"
           >
             {primaryLabel}
           </Link>
@@ -50,11 +50,11 @@ function UtilityPage({
                 to={card.href}
                 className="group p-7 border border-gray-100 hover:border-[#228DC1]/30 hover:shadow-md transition-all bg-white"
               >
-                <h2 className="text-xl font-semibold text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">
+                <h2 className="text-xl font-semibold text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">
                   {card.title}
                 </h2>
                 <p className="text-[#0a1628]/75 text-sm leading-relaxed font-normal mb-6">{card.desc}</p>
-                <span className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1]">
+                <span className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab]">
                   Explore
                 </span>
               </Link>

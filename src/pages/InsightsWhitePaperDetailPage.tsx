@@ -13,10 +13,10 @@ export default function InsightsWhitePaperDetailPage() {
   if (!paper) {
     return (
       <div className="pt-32 pb-24 max-w-3xl mx-auto px-6 text-center">
-        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">404</p>
+        <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">404</p>
         <h1 className="text-4xl font-bold text-[#0a1628] mb-4">Whitepaper Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This whitepaper does not exist or may have been moved.</p>
-        <Link to="/insights/white-papers" className="inline-flex items-center gap-2 text-sm font-medium text-[#228DC1] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
+        <Link to="/insights/white-papers" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
           Back to Whitepapers
         </Link>
       </div>
@@ -31,12 +31,12 @@ export default function InsightsWhitePaperDetailPage() {
             <div className="flex flex-wrap items-center gap-4 mb-8">
               <Link
                 to="/insights/white-papers"
-                className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#228DC1] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
+                className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#1a7aab] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
               >
                 Whitepapers
               </Link>
               <span className="text-[#0a1628]/30">/</span>
-              <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 bg-[#228DC1]/10 text-[#228DC1]">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 bg-[#228DC1]/10 text-[#1a7aab]">
                 {paper.topic}
               </span>
             </div>
@@ -61,7 +61,7 @@ export default function InsightsWhitePaperDetailPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-8">
             <div>
-              <p className="type-label text-[#228DC1] mb-2">PDF Viewer</p>
+              <p className="type-label text-[#1a7aab] mb-2">PDF Viewer</p>
               <h2 className="font-card-heading text-[#0a1628] text-[20px]">Read the full whitepaper.</h2>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -76,7 +76,7 @@ export default function InsightsWhitePaperDetailPage() {
               <a
                 href={paper.pdf}
                 download
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#228DC1] text-[#228DC1] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#228DC1] text-[#1a7aab] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-all"
               >
                 Download <FontAwesomeIcon icon={faDownload} className="w-3.5 h-3.5" />
               </a>
@@ -86,7 +86,7 @@ export default function InsightsWhitePaperDetailPage() {
           <div className="border border-gray-100 bg-[#f8fafc]">
             <object data={paper.pdf} type="application/pdf" className="h-[80vh] min-h-[640px] w-full">
               <div className="p-8 text-center">
-                <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#228DC1] mb-5" />
+                <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#1a7aab] mb-5" />
                 <p className="text-[#0a1628]/70 text-sm leading-[1.7] mb-5">
                   Your browser cannot display this PDF inline.
                 </p>
@@ -106,14 +106,14 @@ export default function InsightsWhitePaperDetailPage() {
             <div className="grid md:grid-cols-3 gap-6">
               {related.map((item) => (
                 <Link key={item.slug} to={getWhitePaperHref(item)} className="group bg-white border border-gray-100 p-6 hover:border-[#228DC1] transition-all">
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block bg-[#228DC1]/10 text-[#228DC1]">
+                  <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block bg-[#228DC1]/10 text-[#1a7aab]">
                     {item.topic}
                   </span>
-                  <h3 className="text-[#0a1628] text-[14px] font-semibold leading-[1.3] mb-3 group-hover:text-[#228DC1] transition-colors">
+                  <h3 className="text-[#0a1628] text-[14px] font-semibold leading-[1.3] mb-3 group-hover:text-[#1a7aab] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-[#0a1628]/60 text-xs mb-5">{item.date}</p>
-                  <span className="inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
+                  <span className="inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em]">
                     Open                  </span>
                 </Link>
               ))}

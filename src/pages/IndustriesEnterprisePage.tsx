@@ -95,7 +95,7 @@ export default function IndustriesEnterprisePage() {
             </p>
             <Link
               to="/insights/case-studies"
-              className="inline-flex items-center gap-2 mt-6 text-[#228DC1] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
+              className="inline-flex items-center gap-2 mt-6 text-[#1a7aab] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
             >
               View Case Studies
             </Link>

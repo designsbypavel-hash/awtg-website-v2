@@ -26,7 +26,7 @@ export default function ProcessSection() {
     <section className="py-24 bg-[#f8fafc]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-[#228DC1] font-semibold text-[14px] uppercase tracking-widest mb-3">Our Process</p>
+          <p className="text-[#1a7aab] font-semibold text-[14px] uppercase tracking-widest mb-3">Our Process</p>
           <h2 className="font-heading text-[#0a1628] mb-4">How We Work</h2>
           <p className="text-[#0a1628]/60 text-[18px] max-w-2xl mx-auto">
             A proven methodology that delivers results, from initial consultation to long-term managed service.
@@ -40,7 +40,7 @@ export default function ProcessSection() {
                 <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-[#228DC1]/8 z-0" />
               )}
               <div className="relative z-10">
-                <div className="text-5xl font-bold text-[#228DC1]/20 mb-4">{step.number}</div>
+                <div className="text-5xl font-bold text-[#1a7aab]/20 mb-4">{step.number}</div>
                 <div className="w-10 h-1 bg-[#228DC1] mb-4 rounded" />
                 <h3 className="text-[20px] font-semibold text-[#0a1628] mb-3">{step.title}</h3>
                 <p className="text-[#0a1628]/60 leading-[1.7] text-[14px]">{step.description}</p>

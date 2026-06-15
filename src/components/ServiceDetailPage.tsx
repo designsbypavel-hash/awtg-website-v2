@@ -72,7 +72,7 @@ export default function ServiceDetailPage({
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 grid lg:grid-cols-[0.9fr_1.1fr] gap-16">
           <div>
-            <p className="type-label text-[#228DC1] mb-4">What you get</p>
+            <p className="type-label text-[#1a7aab] mb-4">What you get</p>
             {/* L2 — section heading */}
             <h2 className="font-heading text-[#0a1628] mb-6">
               {overviewTitle}
@@ -83,7 +83,7 @@ export default function ServiceDetailPage({
           <div className="grid sm:grid-cols-2 gap-4">
             {capabilities.map((capability) => (
               <div key={capability.title} className="border border-gray-100 p-6 hover:border-[#228DC1]/30 hover:shadow-sm transition-all bg-white">
-                <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#228DC1] mb-4" />
+                <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#1a7aab] mb-4" />
                 {/* L3 — card heading */}
                 <h3 className="font-card-heading text-[#0a1628] text-sm mb-2">{capability.title}</h3>
                 {/* L4 — body */}
@@ -98,7 +98,7 @@ export default function ServiceDetailPage({
       <section className="py-24 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-2xl mb-14">
-            <p className="type-label text-[#228DC1] mb-4">Delivery model</p>
+            <p className="type-label text-[#1a7aab] mb-4">Delivery model</p>
             <h2 className="font-heading text-[#0a1628]">
               Clear work. Clear ownership.
             </h2>
@@ -106,7 +106,7 @@ export default function ServiceDetailPage({
           <div className="grid lg:grid-cols-3 gap-6">
             {steps.map((step, index) => (
               <div key={step.title} className="bg-white border border-gray-100 p-7">
-                <p className="type-label text-[#228DC1] mb-8">0{index + 1}</p>
+                <p className="type-label text-[#1a7aab] mb-8">0{index + 1}</p>
                 {/* L3 — card heading */}
                 <h3 className="font-card-heading text-[#0a1628] text-[20px] mb-3">{step.title}</h3>
                 {/* L4 — body */}

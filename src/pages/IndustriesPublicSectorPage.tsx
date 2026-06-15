@@ -91,7 +91,7 @@ export default function IndustriesPublicSectorPage() {
             </p>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 mt-6 text-[#228DC1] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
+              className="inline-flex items-center gap-2 mt-6 text-[#1a7aab] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
             >
               About AWTG
             </Link>

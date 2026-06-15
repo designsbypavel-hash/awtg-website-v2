@@ -447,7 +447,7 @@ function HowItWorksSection() {
                       {isActive && (
                         <>
                           <p style={{ fontSize:14, color:'rgba(10,22,40,0.65)', lineHeight:1.75, marginBottom: s.detail ? 10 : 0 }}>{s.desc}</p>
-                          {s.detail && <p style={{ fontSize:13, color:'#228DC1', fontStyle:'italic', lineHeight:1.55 }}>{s.detail}</p>}
+                          {s.detail && <p style={{ fontSize:13, color:'#1a7aab', fontStyle:'italic', lineHeight:1.55 }}>{s.detail}</p>}
                           <div style={{ height:2, marginTop:16, background:'rgba(34,141,193,0.12)', overflow:'hidden', transformOrigin:'left' }}>
                             <div
                               key={`${active}-${isPaused ? 'paused' : 'running'}`}
@@ -531,7 +531,7 @@ function SyllabusVisual() {
           <span className="text-[14px] font-medium text-gray-400">Upload .xlsx</span>
         </div>
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h14M11 2l4 4-4 4" stroke="#228DC1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[14px] font-bold" style={{ background: '#228DC115', border: '1px solid #228DC130', color: '#228DC1' }}>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[14px] font-bold" style={{ background: '#1a7aab15', border: '1px solid #1a7aab30', color: '#1a7aab' }}>
           Smart Syllabus
         </div>
       </div>
@@ -552,7 +552,7 @@ function SyllabusVisual() {
       </div>
       {/* Status */}
       <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#e5f4fa] border border-[#228DC1]/20">
-        <span className="text-[14px] text-[#228DC1] font-semibold">Policy layer compiled. AI is ready to teach</span>
+        <span className="text-[14px] text-[#1a7aab] font-semibold">Policy layer compiled. AI is ready to teach</span>
       </div>
     </div>
   )
@@ -596,7 +596,7 @@ function AlignVisual() {
           <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
             <path d="M1 8h28M22 2l8 6-8 6" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#228DC1]/70">compile</span>
+          <span className="text-[11px] font-black uppercase tracking-[0.12em] text-[#1a7aab]/70">compile</span>
         </div>
 
         {/* Outputs */}
@@ -766,7 +766,7 @@ function MasteryStoryVisual() {
             <p className="text-[12px] font-semibold text-[#0a1628]/60">Weakest areas: <span className="text-[#ef4444] font-bold">Create, Evaluate</span></p>
           </div>
           <div className="mt-5 rounded-xl bg-[#e8f4fc] border border-[#b8ddf0] px-4 py-3">
-            <p className="text-[13px] font-bold text-[#228DC1]">Insight captured</p>
+            <p className="text-[13px] font-bold text-[#1a7aab]">Insight captured</p>
             <p className="text-[12px] text-[#0a1628]/50 mt-1">Next tutor prompt adapts to the detected gap.</p>
           </div>
         </div>
@@ -836,7 +836,7 @@ function TutorVisual() {
                 {i === 1 && (
                   <div className="flex items-center gap-1.5 mt-2.5 pt-2.5 border-t border-gray-100">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#228DC1" strokeWidth="2.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.1-1.1m-.757-4.9a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" strokeLinecap="round"/></svg>
-                    <span className="text-[11px] font-semibold text-[#228DC1]">Porter (2008), Ch. 2 ” cited source</span>
+                    <span className="text-[11px] font-semibold text-[#1a7aab]">Porter (2008), Ch. 2 " cited source</span>
                   </div>
                 )}
               </div>
@@ -941,7 +941,7 @@ function TutorVisualOld() {
           </div>
           <div className="flex-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white border border-gray-100 shadow-sm">
             <p className="text-[#0a1628]/80 text-[14px] leading-relaxed mb-2.5">Which of the five forces has the strongest impact here? Start with your instinct.</p>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[14px] font-semibold text-[#228DC1] bg-[#e5f4fa] border border-[#228DC1]/20">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[14px] font-semibold text-[#1a7aab] bg-[#e5f4fa] border border-[#1a7aab]/20">
               <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.1-1.1m-.757-4.9a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" strokeLinecap="round" strokeLinejoin="round"/></svg>
               Porter, 2008, Ch.2
             </div>
@@ -1900,7 +1900,7 @@ function MultimodalSection() {
                   <div style={{ flex:1, display:'grid', gridTemplateColumns:'1fr 220px', gap:22, minHeight:0, alignItems:'stretch' }}>
                     <div style={{ display:'flex', flexDirection:'column', gap:13, minWidth:0 }}>
                       <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.05s forwards' }}>
-                        <p style={{ fontSize:10, fontWeight:900, color:'#228DC1', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>Student transcript</p>
+                        <p style={{ fontSize:11, fontWeight:900, color:'#1a7aab', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>Student transcript</p>
                         <div style={{
                           background:'#fff7ed', border:'1px solid rgba(245,158,11,0.22)', color:'#0a1628',
                           padding:'12px 14px', borderRadius:'14px 14px 4px 14px', fontSize:13,
@@ -1918,7 +1918,7 @@ function MultimodalSection() {
                           fontSize:13, color:'rgba(10,22,40,0.76)', lineHeight:1.55,
                         }}>
                           Start with buyer power. What would give customers leverage here: many alternatives, low switching cost, or something else?
-                          <div style={{ marginTop:10, paddingTop:10, borderTop:'1px solid #eef2f6', color:'#228DC1', fontSize:11, fontWeight:800 }}>
+                          <div style={{ marginTop:10, paddingTop:10, borderTop:'1px solid #eef2f6', color:'#1a7aab', fontSize:11, fontWeight:800 }}>
                             Cited source: Porter (2008), Ch. 2
                           </div>
                         </div>
@@ -2949,7 +2949,7 @@ export default function AruvaPage() {
                       <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background:'#228DC1' }}>
                         <FontAwesomeIcon icon={faCircleCheck} style={{ width:12, height:12, color:'white' }} />
                       </div>
-                      <span className="type-label text-[#228DC1]">{item.tag}</span>
+                      <span className="type-label text-[#1a7aab]">{item.tag}</span>
                     </div>
                     <p className="font-semibold text-[#0a1628] text-[14px] mb-1.5">{item.title}</p>
                     <p className="text-[#0a1628]/55 text-[12px] leading-relaxed">{item.desc}</p>
@@ -2960,7 +2960,7 @@ export default function AruvaPage() {
               {/* Platform quality tags */}
               <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden divide-x divide-gray-200 bg-white shadow-[0_1px_6px_rgba(10,22,40,0.05)]">
                 {[
-                  { label: 'Traceable',   color: '#228DC1' },
+                  { label: 'Traceable',   color: '#1a7aab' },
                   { label: 'Auditable',   color: '#7c3aed' },
                   { label: 'Explainable', color: '#059669' },
                   { label: 'Measurable',  color: '#d97706' },

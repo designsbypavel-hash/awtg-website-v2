@@ -73,7 +73,7 @@ export default function ProductDemoModal({
             <button
               type="button"
               onClick={onClose}
-              className="mb-10 inline-flex items-center border-b border-[#0a1628]/35 pb-1 text-[14px] font-medium text-[#0a1628]/75 transition-colors hover:border-[#228DC1] hover:text-[#228DC1]"
+              className="mb-10 inline-flex items-center border-b border-[#0a1628]/35 pb-1 text-[14px] font-medium text-[#0a1628]/75 transition-colors hover:border-[#228DC1] hover:text-[#1a7aab]"
             >
               Back
             </button>

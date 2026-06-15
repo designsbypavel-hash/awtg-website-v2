@@ -160,8 +160,8 @@ export default function AboutSustainabilityPage() {
       <section className="bg-white border-b border-gray-100 sticky top-0 z-20">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-wrap gap-0 divide-x divide-gray-100">
-            <a href="#carbon-reduction-plan"   className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#228DC1] hover:bg-[#f8fafc] transition-colors">Carbon Reduction Plan</a>
-            <a href="#social-value-statement"  className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#228DC1] hover:bg-[#f8fafc] transition-colors">Social Value Statement</a>
+            <a href="#carbon-reduction-plan"   className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors">Carbon Reduction Plan</a>
+            <a href="#social-value-statement"  className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors">Social Value Statement</a>
           </div>
         </div>
       </section>
@@ -174,7 +174,7 @@ export default function AboutSustainabilityPage() {
           <div className="flex items-center bg-white" style={{ padding: '72px clamp(28px, 5vw, 88px)' }}>
             <div style={{ maxWidth: 520 }}>
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1]">01</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">01</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Carbon Reduction Plan</span>
               </div>
@@ -212,7 +212,7 @@ export default function AboutSustainabilityPage() {
           <div className="flex items-center bg-white" style={{ padding: '72px clamp(28px, 5vw, 88px)' }}>
             <div style={{ maxWidth: 540 }}>
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1]">02</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">02</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Emissions Reporting</span>
               </div>
@@ -221,7 +221,7 @@ export default function AboutSustainabilityPage() {
               </h2>
               <div className="grid grid-cols-2 gap-5">
                 <div className="bg-[#f8fafc] border border-gray-100 p-5">
-                  <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.14em] mb-4">Baseline 2019</p>
+                  <p className="text-[#1a7aab] text-[11px] font-bold uppercase tracking-[0.14em] mb-4">Baseline 2019</p>
                   <div className="space-y-3">
                     {baselineEmissions.map((item) => (
                       <div key={item.scope} className="flex items-center justify-between">
@@ -232,7 +232,7 @@ export default function AboutSustainabilityPage() {
                   </div>
                 </div>
                 <div className="bg-[#edf5fb] border border-[#228DC1]/15 p-5">
-                  <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.14em] mb-4">Reporting 2024</p>
+                  <p className="text-[#1a7aab] text-[11px] font-bold uppercase tracking-[0.14em] mb-4">Reporting 2024</p>
                   <div className="space-y-3">
                     {currentEmissions.map((item) => (
                       <div key={item.scope} className="flex items-center justify-between">
@@ -255,7 +255,7 @@ export default function AboutSustainabilityPage() {
           <div className="flex items-start bg-white" style={{ padding: '72px clamp(28px, 5vw, 88px)' }}>
             <div style={{ maxWidth: 560 }}>
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1]">03</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">03</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Action Plan</span>
               </div>
@@ -291,7 +291,7 @@ export default function AboutSustainabilityPage() {
         <div className="bg-[#f8fafc] border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-8 lg:px-12 py-16">
             <div className="border-l-[3px] border-[#228DC1] pl-8 max-w-4xl">
-              <p className="text-[#228DC1] text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Declaration and Sign Off</p>
+              <p className="text-[#1a7aab] text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Declaration and Sign Off</p>
               <h3 className="font-h5 text-[#0a1628] mb-5">Carbon Reduction Plan Compliance</h3>
               <p className="text-[#0a1628]/60 text-sm leading-[1.85] mb-4">
                 This Carbon Reduction Plan has been completed in accordance with PPN 06/21 and associated guidance and reporting standard for Carbon Reduction Plans. Emissions have been reported and recorded in accordance with the GHG Reporting Protocol corporate standard and uses the appropriate Government emission conversion factors for greenhouse gas company reporting.
@@ -318,7 +318,7 @@ export default function AboutSustainabilityPage() {
           <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
             <div className="grid lg:grid-cols-2 gap-12 items-end">
               <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1] mb-4">Social Value Statement</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab] mb-4">Social Value Statement</p>
                 <h2 className="font-heading text-[#0a1628] leading-tight">
                   Supporting communities, enabling growth and economic wellbeing
                 </h2>

@@ -309,7 +309,7 @@ export default function Navigation() {
                 to="/contact"
                 className={`px-5 py-2 text-[14px] font-medium border rounded-lg transition-all duration-200 ${
                   scrolled || activeDropdown || !isHome
-                    ? 'border-[#228DC1] text-[#228DC1] hover:bg-[#228DC1] hover:text-white'
+                    ? 'border-[#228DC1] text-[#1a7aab] hover:bg-[#228DC1] hover:text-white'
                     : 'border-white text-white hover:bg-white hover:text-[#0a1628]'
                 }`}
               >
@@ -357,7 +357,7 @@ export default function Navigation() {
                         onClick={closeDropdownNow}
                       >
                         <div>
-                          <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
+                          <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#1a7aab] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
                             {item.label}
                           </p>
                           <p className="text-[#0a1628]/60 text-xs font-normal leading-relaxed">
@@ -392,7 +392,7 @@ export default function Navigation() {
                                 onClick={closeDropdownNow}
                               >
                                 <div>
-                                  <p className="text-[#0a1628] text-[13.5px] font-semibold group-hover:text-[#228DC1] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
+                                  <p className="text-[#0a1628] text-[13.5px] font-semibold group-hover:text-[#1a7aab] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
                                     {item.label}
                                   </p>
                                   <p className="text-[#0a1628]/55 text-xs font-normal leading-relaxed">
@@ -411,7 +411,7 @@ export default function Navigation() {
                       const item = panel.items[featuredIndex % panel.items.length]
                       return (
                         <div className="pt-1">
-                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#228DC1] mb-4">
+                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#1a7aab] mb-4">
                             {panel.eyebrow}
                           </p>
                           <Link
@@ -443,7 +443,7 @@ export default function Navigation() {
                             <Link
                               to={panel.href}
                               onClick={closeDropdownNow}
-                              className="mt-4 inline-flex items-center text-[12px] font-semibold text-[#228DC1] hover:text-[#0a1628] transition-colors"
+                              className="mt-4 inline-flex items-center text-[12px] font-semibold text-[#1a7aab] hover:text-[#0a1628] transition-colors"
                             >
                               {panel.cta} <span className="ml-1.5">→</span>
                             </Link>
@@ -499,7 +499,7 @@ export default function Navigation() {
             <Link to="/insights" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">News</Link>
             <Link to="/careers" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Careers</Link>
             <div className="pt-4 flex flex-col gap-2">
-              <Link to="/contact" className="w-full py-2.5 text-center text-sm border border-[#228DC1] text-[#228DC1] hover:bg-[#228DC1] hover:text-white transition-colors rounded-lg">
+              <Link to="/contact" className="w-full py-2.5 text-center text-sm border border-[#228DC1] text-[#1a7aab] hover:bg-[#228DC1] hover:text-white transition-colors rounded-lg">
                 Request a Demo
               </Link>
             </div>

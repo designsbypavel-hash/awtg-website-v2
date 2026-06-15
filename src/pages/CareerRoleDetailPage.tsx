@@ -249,7 +249,7 @@ function BulletList({ items }: { items: string[] }) {
     <ul className="space-y-3 mt-4">
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3 text-[#0a1628]/70 text-sm leading-[1.85] font-normal">
-          <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#228DC1] shrink-0 mt-[3px]" />
+          <FontAwesomeIcon icon={faCircleCheck} className="w-4 h-4 text-[#1a7aab] shrink-0 mt-[3px]" />
           <span>{item}</span>
         </li>
       ))}
@@ -272,25 +272,25 @@ export default function CareerRoleDetailPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <Link
             to="/careers"
-            className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#228DC1] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
           >
             Back to Careers
           </Link>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div>
-              <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#228DC1] bg-[#228DC1]/8 px-2.5 py-1 mb-5">
+              <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a7aab] bg-[#228DC1]/8 px-2.5 py-1 mb-5">
                 {role.dept}
               </span>
               <h1 className="font-serif-display text-[#0a1628] mb-5">{role.title}</h1>
               <div className="flex flex-wrap items-center gap-5 text-[14px] text-[#0a1628]/55 font-normal">
                 <span className="flex items-center gap-1.5">
-                  <FontAwesomeIcon icon={faLocationDot} className="w-3.5 h-3.5 text-[#228DC1]" /> {role.location}
+                  <FontAwesomeIcon icon={faLocationDot} className="w-3.5 h-3.5 text-[#1a7aab]" /> {role.location}
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <FontAwesomeIcon icon={faBriefcase} className="w-3.5 h-3.5 text-[#228DC1]" /> {role.type}
+                  <FontAwesomeIcon icon={faBriefcase} className="w-3.5 h-3.5 text-[#1a7aab]" /> {role.type}
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <FontAwesomeIcon icon={faCalendarDays} className="w-3.5 h-3.5 text-[#228DC1]" /> Posted {role.postedDate}
+                  <FontAwesomeIcon icon={faCalendarDays} className="w-3.5 h-3.5 text-[#1a7aab]" /> Posted {role.postedDate}
                 </span>
               </div>
             </div>
@@ -342,7 +342,7 @@ export default function CareerRoleDetailPage() {
 
               {/* Apply CTA inline */}
               <div className="bg-[#f7f9fc] border border-gray-100 p-8">
-                <p className="type-label text-[#228DC1] mb-3">Ready to apply?</p>
+                <p className="type-label text-[#1a7aab] mb-3">Ready to apply?</p>
                 <h3 className="font-h4 text-[#0a1628] mb-3">Send us your application</h3>
                 <p className="text-[#0a1628]/60 text-[14px] leading-[1.75] mb-6">
                   Complete your application in a few minutes. Upload your CV, add a covering note, and our team will be in touch.
@@ -371,7 +371,7 @@ export default function CareerRoleDetailPage() {
                   ].map(({ icon, label, value }) => (
                     <div key={label} className="flex items-start gap-3">
                       <div className="w-8 h-8 bg-white border border-[#228DC1]/15 flex items-center justify-center shrink-0">
-                        <FontAwesomeIcon icon={icon} className="w-3.5 h-3.5 text-[#228DC1]" />
+                        <FontAwesomeIcon icon={icon} className="w-3.5 h-3.5 text-[#1a7aab]" />
                       </div>
                       <div>
                         <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#0a1628]/40 mb-0.5">{label}</p>
@@ -392,13 +392,13 @@ export default function CareerRoleDetailPage() {
 
               {/* Speculative */}
               <div className="border border-gray-100 p-7">
-                <p className="type-label text-[#228DC1] mb-3">Not the right fit?</p>
+                <p className="type-label text-[#1a7aab] mb-3">Not the right fit?</p>
                 <p className="text-[#0a1628]/60 text-[13px] leading-[1.75] mb-5">
                   We welcome speculative applications from talented people. Send your CV and tell us how you can contribute.
                 </p>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 text-[#228DC1] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
+                  className="inline-flex items-center gap-2 text-[#1a7aab] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                 >
                   Send Speculative CV
                 </Link>
@@ -415,15 +415,15 @@ export default function CareerRoleDetailPage() {
                         to={getRoleHref(r.slug)}
                         className="group block border-t border-gray-100 pt-4 first:border-t-0 first:pt-0"
                       >
-                        <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#228DC1] mb-1">{r.dept}</p>
-                        <p className="text-[14px] font-semibold text-[#0a1628] group-hover:text-[#228DC1] transition-colors leading-[1.3]">{r.title}</p>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#1a7aab] mb-1">{r.dept}</p>
+                        <p className="text-[14px] font-semibold text-[#0a1628] group-hover:text-[#1a7aab] transition-colors leading-[1.3]">{r.title}</p>
                         <p className="text-[12px] text-[#0a1628]/45 mt-1">{r.location}</p>
                       </Link>
                     ))}
                   </div>
                   <Link
                     to="/careers"
-                    className="mt-5 pt-5 border-t border-gray-100 flex items-center gap-2 text-[#228DC1] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
+                    className="mt-5 pt-5 border-t border-gray-100 flex items-center gap-2 text-[#1a7aab] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
                     View all positions
                   </Link>
@@ -439,10 +439,10 @@ export default function CareerRoleDetailPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex items-end justify-between gap-6 mb-10">
             <div>
-              <p className="type-label text-[#228DC1] mb-3">Keep Exploring</p>
+              <p className="type-label text-[#1a7aab] mb-3">Keep Exploring</p>
               <h2 className="font-h3 text-[#0a1628]">More open positions</h2>
             </div>
-            <Link to="/careers" className="text-[#228DC1] text-sm font-semibold hover:text-[#1a7fa8] transition-colors flex items-center gap-1.5">
+            <Link to="/careers" className="text-[#1a7aab] text-sm font-semibold hover:text-[#1a7fa8] transition-colors flex items-center gap-1.5">
               All roles
             </Link>
           </div>
@@ -453,12 +453,12 @@ export default function CareerRoleDetailPage() {
                 to={getRoleHref(r.slug)}
                 className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-[0_4px_20px_rgba(34,141,193,0.1)] transition-all p-7"
               >
-                <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#228DC1] bg-[#228DC1]/8 px-2.5 py-1 mb-4">
+                <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a7aab] bg-[#228DC1]/8 px-2.5 py-1 mb-4">
                   {r.dept}
                 </span>
-                <h3 className="font-h5 text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-3">{r.title}</h3>
+                <h3 className="font-h5 text-[#0a1628] group-hover:text-[#1a7aab] transition-colors mb-3">{r.title}</h3>
                 <p className="text-[#0a1628]/55 text-[13px] mb-5">{r.location} · {r.type}</p>
-                <span className="inline-flex items-center gap-2 text-[#228DC1] text-[12px] font-semibold uppercase tracking-[0.1em]">
+                <span className="inline-flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold uppercase tracking-[0.1em]">
                   View Role
                 </span>
               </Link>

@@ -146,7 +146,7 @@ export default function AboutOverviewPage() {
               >
                 <div style={{ maxWidth: 520 }}>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1]">
+                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="h-px w-8 bg-[#228DC1]/35" />
@@ -199,7 +199,7 @@ export default function AboutOverviewPage() {
       <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14">
-            <p className="type-label text-[#228DC1] mb-3">Who we work with</p>
+            <p className="type-label text-[#1a7aab] mb-3">Who we work with</p>
             <h2 className="font-heading text-[#0a1628] max-w-lg">The organisations and communities we serve.</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -224,9 +224,9 @@ export default function AboutOverviewPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100">
             {aboutLinks.map((link) => (
               <Link key={link.href} to={link.href} className="group bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
-                <h3 className="font-card-heading text-[#0a1628] text-[14px] mb-2 group-hover:text-[#228DC1] transition-colors">{link.label}</h3>
+                <h3 className="font-card-heading text-[#0a1628] text-[14px] mb-2 group-hover:text-[#1a7aab] transition-colors">{link.label}</h3>
                 <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal mb-5">{link.desc}</p>
-                <span className="inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.14em]">
+                <span className="inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.14em]">
                   Explore
                 </span>
               </Link>

@@ -539,7 +539,7 @@ export const newsItems: NewsItem[] = [
 ]
 
 export const categoryColours: Record<string, string> = {
-  'Artificial Intelligence': 'bg-[#228DC1]/10 text-[#228DC1]',
+  'Artificial Intelligence': 'bg-[#228DC1]/10 text-[#1a7aab]',
   Awards: 'bg-amber-50 text-amber-700',
   Engineering: 'bg-slate-100 text-slate-700',
   'Health Tech': 'bg-rose-50 text-rose-700',
@@ -596,7 +596,7 @@ export default function InsightsNewsPage() {
           style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
         >
           <div style={{ maxWidth: 600 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">News</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#1a7aab] mb-5">News</p>
             <h1
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
@@ -621,7 +621,7 @@ export default function InsightsNewsPage() {
                   {featured.category}
                 </span>
               </div>
-              <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#228DC1] transition-colors">
+              <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#1a7aab] transition-colors">
                 {cleanText(featured.title)}
               </h2>
               <p className="text-[#0a1628]/70 text-[16px] font-normal leading-[1.8] max-w-2xl mb-9">
@@ -631,23 +631,23 @@ export default function InsightsNewsPage() {
                 <span className="inline-flex items-center gap-2">
                   <FontAwesomeIcon icon={faCalendarDays} className="w-3 h-3" /> {featured.date}
                 </span>
-                <span className="inline-flex items-center gap-2 text-[#228DC1] font-semibold uppercase tracking-[0.12em]">
+                <span className="inline-flex items-center gap-2 text-[#1a7aab] font-semibold uppercase tracking-[0.12em]">
                   Read story                </span>
               </div>
             </Link>
             <div className="lg:col-span-2 bg-[#f0f7fc] border border-[#228DC1]/15 p-8 lg:p-10 flex flex-col justify-between min-h-[360px]">
               <div>
-                <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#228DC1] mb-7">Latest briefings</p>
+                <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#1a7aab] mb-7">Latest briefings</p>
                 <div className="space-y-6">
                   {spotlight.map((item) => (
                     <Link key={item.title} to={getNewsHref(item)} className="group block border-t border-[#228DC1]/15 pt-5">
                       <p className="text-[#0a1628]/45 text-xs mb-2">{item.date}</p>
-                      <h3 className="font-h5 text-[#0a1628] group-hover:text-[#228DC1] transition-colors">{cleanText(item.title)}</h3>
+                      <h3 className="font-h5 text-[#0a1628] group-hover:text-[#1a7aab] transition-colors">{cleanText(item.title)}</h3>
                     </Link>
                   ))}
                 </div>
               </div>
-              <Link to="/contact" className="mt-10 inline-flex items-center gap-2 text-[#228DC1] text-sm font-semibold hover:text-[#1a7fa8] transition-colors">
+              <Link to="/contact" className="mt-10 inline-flex items-center gap-2 text-[#1a7aab] text-sm font-semibold hover:text-[#1a7fa8] transition-colors">
                 Media enquiries              </Link>
             </div>
           </div>
@@ -682,7 +682,7 @@ export default function InsightsNewsPage() {
                     <div className="h-72 relative overflow-hidden bg-gray-100">
                       <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       {hasVideo && (
-                        <div className="absolute top-5 left-5 h-10 w-10 bg-white/90 flex items-center justify-center text-[#228DC1] shadow-sm">
+                        <div className="absolute top-5 left-5 h-10 w-10 bg-white/90 flex items-center justify-center text-[#1a7aab] shadow-sm">
                           <FontAwesomeIcon icon={faPlay} className="w-4 h-4" />
                         </div>
                       )}
@@ -694,7 +694,7 @@ export default function InsightsNewsPage() {
                         </span>
                         <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
                       </div>
-                      <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">{cleanText(item.title)}</h3>
+                      <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">{cleanText(item.title)}</h3>
                       <p className="text-[#0a1628]/60 text-sm leading-relaxed max-w-2xl">{cleanText(item.excerpt)}</p>
                     </div>
                   </Link>
@@ -711,7 +711,7 @@ export default function InsightsNewsPage() {
                     <div className="h-44 relative overflow-hidden bg-gray-100">
                       <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       {hasVideo && (
-                        <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#228DC1]">
+                        <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#1a7aab]">
                           <FontAwesomeIcon icon={faPlay} className="w-4 h-4" />
                         </div>
                       )}
@@ -723,9 +723,9 @@ export default function InsightsNewsPage() {
                         </span>
                         <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
                       </div>
-                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">{cleanText(item.title)}</h3>
+                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">{cleanText(item.title)}</h3>
                       <p className="text-[#0a1628]/60 text-[13px] leading-[1.7] mb-5">{cleanText(item.excerpt)}</p>
-                      <div className="flex items-center gap-2 text-[#228DC1] text-xs font-semibold pt-4 border-t border-gray-100">
+                      <div className="flex items-center gap-2 text-[#1a7aab] text-xs font-semibold pt-4 border-t border-gray-100">
                         {hasVideo ? 'Watch story' : 'Read story'}
                       </div>
                     </div>
@@ -741,7 +741,7 @@ export default function InsightsNewsPage() {
                 >
                   <div className="h-44 relative overflow-hidden">
                     <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#228DC1]">
+                    <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#1a7aab]">
                       <FontAwesomeIcon icon={hasVideo ? faPlay : faNewspaper} className="w-4 h-4" />
                     </div>
                   </div>
@@ -752,13 +752,13 @@ export default function InsightsNewsPage() {
                       </span>
                       <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
                     </div>
-                    <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">
+                    <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">
                       {cleanText(item.title)}
                     </h3>
                     <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
                       {cleanText(item.excerpt)}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
+                    <span className="mt-5 inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em]">
                       {hasVideo ? 'Watch story' : 'Read story'}
                     </span>
                   </div>
@@ -772,7 +772,7 @@ export default function InsightsNewsPage() {
       <section className="py-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <p className="type-label text-[#228DC1] mb-4">Talk to AWTG</p>
+            <p className="type-label text-[#1a7aab] mb-4">Talk to AWTG</p>
             <h2 className="font-h2 text-[#0a1628]">
               Don't see what<br />you're looking for?
             </h2>

@@ -33,7 +33,7 @@ const sections = [
         <div className="bg-[#f8fafc] border border-gray-100 p-6 space-y-2">
           <p className="text-[#0a1628] text-sm font-semibold">AWTG Limited</p>
           <p className="text-[#0a1628]/70 text-sm">8 Canham Mews, Canham Road, London, W3 7SR, United Kingdom</p>
-          <a href="mailto:info@awtg.website" className="block text-[#228DC1] text-sm hover:underline">info@awtg.website</a>
+          <a href="mailto:info@awtg.website" className="block text-[#1a7aab] text-sm hover:underline">info@awtg.website</a>
         </div>
         <Para>
           In this Policy, "AWTG", "we", "us" or "our" means AWTG Limited. The term "Services" refers to the act of providing you with the opportunity to use the named AWTG Products, AWTG Software ("Software") or related Account ("Account"), any of our other products and services (including support services, forums) related to the AWTG Products.
@@ -325,7 +325,7 @@ export default function PrivacyPolicyPage() {
               <a
                 key={s.num}
                 href={`#section-${s.num}`}
-                className="px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.1em] bg-[#f8fafc] text-[#0a1628]/55 border border-gray-100 hover:border-[#228DC1] hover:text-[#228DC1] transition-colors"
+                className="px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.1em] bg-[#f8fafc] text-[#0a1628]/55 border border-gray-100 hover:border-[#228DC1] hover:text-[#1a7aab] transition-colors"
               >
                 {s.num}
               </a>
@@ -345,7 +345,7 @@ export default function PrivacyPolicyPage() {
                 className="grid lg:grid-cols-[260px_minmax(0,1fr)] gap-8 lg:gap-16 py-14 border-t border-gray-100 scroll-mt-24"
               >
                 <div className="lg:pt-1">
-                  <p className="type-label text-[#228DC1] mb-3">{section.num}</p>
+                  <p className="type-label text-[#1a7aab] mb-3">{section.num}</p>
                   <h2 className="font-h4 text-[#0a1628]">{section.title}</h2>
                 </div>
                 <div>{section.content}</div>
@@ -359,11 +359,11 @@ export default function PrivacyPolicyPage() {
       <section className="py-16 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div>
-            <p className="type-label text-[#228DC1] mb-3">Privacy Enquiries</p>
+            <p className="type-label text-[#1a7aab] mb-3">Privacy Enquiries</p>
             <h2 className="font-h2 text-[#0a1628]">Questions about your data?</h2>
             <p className="text-[#0a1628]/60 text-sm mt-3 max-w-xl leading-[1.75]">
               Contact AWTG at{' '}
-              <a href="mailto:info@awtg.co.uk" className="text-[#228DC1] hover:underline">info@awtg.co.uk</a>{' '}
+              <a href="mailto:info@awtg.co.uk" className="text-[#1a7aab] hover:underline">info@awtg.co.uk</a>{' '}
               or write to us at 8 Canham Mews, Canham Road, London, W3 7SR, United Kingdom.
             </p>
           </div>

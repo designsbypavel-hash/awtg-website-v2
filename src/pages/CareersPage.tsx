@@ -55,7 +55,7 @@ export default function CareersPage() {
           style={{ minHeight: 680, paddingTop: 140, paddingBottom: 88 }}
         >
           <div style={{ maxWidth: 640 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">
+            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#1a7aab] mb-5">
               Careers at AWTG
             </p>
             <h1
@@ -99,7 +99,7 @@ export default function CareersPage() {
                 <div className="h-0.5 w-10 bg-[#228DC1] mb-9 transition-all duration-300 group-hover:w-16" />
                 <div className="flex items-center gap-3 mb-5">
                   <div className="h-9 w-9 flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.08)' }}>
-                    <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#228DC1]" />
+                    <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#1a7aab]" />
                   </div>
                   <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/45">{item.label}</p>
                 </div>
@@ -122,7 +122,7 @@ export default function CareersPage() {
           <div className="flex items-center bg-white" style={{ padding: '80px clamp(28px, 5.5vw, 96px)' }}>
             <div style={{ maxWidth: 520 }}>
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1]">01</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">01</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Why AWTG</span>
               </div>
@@ -135,7 +135,7 @@ export default function CareersPage() {
                   <div key={v.title} className="flex items-start gap-4">
                     <div className="h-9 w-9 flex items-center justify-center shrink-0 mt-0.5"
                       style={{ background: 'rgba(34,141,193,0.09)' }}>
-                      <FontAwesomeIcon icon={v.icon} className="w-3.5 h-3.5 text-[#228DC1]" />
+                      <FontAwesomeIcon icon={v.icon} className="w-3.5 h-3.5 text-[#1a7aab]" />
                     </div>
                     <div>
                       <p className="text-[14px] font-bold text-[#0a1628] mb-1">{v.title}</p>
@@ -165,7 +165,7 @@ export default function CareersPage() {
           <div className="flex items-center bg-white" style={{ padding: '80px clamp(28px, 5.5vw, 96px)' }}>
             <div style={{ maxWidth: 540 }}>
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1]">02</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">02</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Benefits &amp; Perks</span>
               </div>
@@ -178,7 +178,7 @@ export default function CareersPage() {
                   <div key={b.title} className="flex items-start gap-3 py-5 border-b border-gray-100 last:border-b-0">
                     <div className="h-8 w-8 flex items-center justify-center shrink-0 mt-0.5"
                       style={{ background: 'rgba(34,141,193,0.09)' }}>
-                      <FontAwesomeIcon icon={b.icon} className="w-3.5 h-3.5 text-[#228DC1]" />
+                      <FontAwesomeIcon icon={b.icon} className="w-3.5 h-3.5 text-[#1a7aab]" />
                     </div>
                     <div>
                       <p className="text-[13px] font-bold text-[#0a1628] mb-0.5">{b.title}</p>
@@ -198,7 +198,7 @@ export default function CareersPage() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[300px] bg-gradient-to-tr from-[#228DC1]/08 to-transparent pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-3xl">
-            <div className="text-[#228DC1] text-[72px] font-serif leading-none mb-4 opacity-30 select-none">&ldquo;</div>
+            <div className="text-[#1a7aab] text-[72px] font-serif leading-none mb-4 opacity-30 select-none">&ldquo;</div>
             <p className="text-white text-xl lg:text-2xl font-light leading-[1.65] mb-8">
               At AWTG, your work connects communities, powers smart cities and shapes the future of communications — across three continents and counting.
             </p>
@@ -215,7 +215,7 @@ export default function CareersPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-[minmax(0,1fr)_auto] gap-8 items-end mb-12">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1] mb-3">Open Positions</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab] mb-3">Open Positions</p>
               <h2 className="font-heading text-[#0a1628]">Join the team</h2>
             </div>
             <p className="text-[#0a1628]/50 text-sm pb-1">{openRoles.length} open positions</p>
@@ -250,23 +250,23 @@ export default function CareersPage() {
                   <div className="absolute inset-y-0 left-0 w-1 bg-[#228DC1] opacity-70 transition-all duration-300 group-hover:w-1.5 group-hover:opacity-100" />
                   <div className="pl-2">
                     <div className="mb-4 flex flex-wrap items-center gap-3">
-                      <span className="inline-flex rounded-full bg-[#228DC1]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#228DC1]">
+                      <span className="inline-flex rounded-full bg-[#228DC1]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#1a7aab]">
                         {role.dept}
                       </span>
                       <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0a1628]/35">
                         {role.type}
                       </span>
                     </div>
-                    <h3 className="mb-4 text-[20px] font-semibold leading-snug text-[#0a1628] transition-colors group-hover:text-[#228DC1]">
+                    <h3 className="mb-4 text-[20px] font-semibold leading-snug text-[#0a1628] transition-colors group-hover:text-[#1a7aab]">
                       {role.title}
                     </h3>
                     <div className="flex flex-wrap items-center gap-3 text-[13px] text-[#0a1628]/55">
                       <span className="inline-flex items-center gap-2 rounded-full bg-[#f3f7fb] px-3 py-1.5">
-                        <FontAwesomeIcon icon={faLocationDot} className="h-3 w-3 text-[#228DC1]" />
+                        <FontAwesomeIcon icon={faLocationDot} className="h-3 w-3 text-[#1a7aab]" />
                         {role.location}
                       </span>
                       <span className="inline-flex items-center gap-2 rounded-full bg-[#f3f7fb] px-3 py-1.5">
-                        <FontAwesomeIcon icon={faBriefcase} className="h-3 w-3 text-[#228DC1]" />
+                        <FontAwesomeIcon icon={faBriefcase} className="h-3 w-3 text-[#1a7aab]" />
                         {role.type}
                       </span>
                     </div>

@@ -78,7 +78,7 @@
       {/* Hero */}
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#228DC1] mb-4">
+          <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">
             Design Rationale
           </p>
           <h1
@@ -141,7 +141,7 @@
                 className="grid lg:grid-cols-3 gap-8 py-10 border-t border-gray-100"
               >
                 <div className="lg:col-span-1">
-                  <p className="text-[14px] font-semibold text-[#228DC1] uppercase tracking-widest mb-2">
+                  <p className="text-[14px] font-semibold text-[#1a7aab] uppercase tracking-widest mb-2">
                     {String(i + 1).padStart(2, '0')}
                   </p>
                   <h3 className="font-serif-display text-[#0a1628] text-lg leading-snug mb-3">
@@ -173,7 +173,7 @@
           </div>
           <a
             href="/"
-            className="inline-block px-6 py-3 border border-[#228DC1] text-[#228DC1] text-[14px] font-medium hover:bg-[#228DC1] hover:text-white transition-all"
+            className="inline-block px-6 py-3 border border-[#228DC1] text-[#1a7aab] text-[14px] font-medium hover:bg-[#228DC1] hover:text-white transition-all"
           >
             View the Website →
           </a>

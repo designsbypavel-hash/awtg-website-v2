@@ -551,7 +551,7 @@ export default function ServicesEngineeringPage() {
               <div className="mb-8">
                 <div className="flex flex-wrap gap-2">
                   {protocols.map(p => (
-                    <span key={p} className="rounded-full border border-[#228DC1]/30 bg-[#228DC1]/10 px-3.5 py-1.5 text-[12px] font-semibold text-[#228DC1]">
+                    <span key={p} className="rounded-full border border-[#1a7aab]/30 bg-[#1a7aab]/10 px-3.5 py-1.5 text-[12px] font-semibold text-[#1a7aab]">
                       {p}
                     </span>
                   ))}

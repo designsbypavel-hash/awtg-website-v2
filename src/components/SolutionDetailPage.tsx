@@ -79,7 +79,7 @@ export default function SolutionDetailPage({
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 grid lg:grid-cols-[0.9fr_1.1fr] gap-16">
           <div>
-            <p className="type-label text-[#228DC1] mb-4">What it solves</p>
+            <p className="type-label text-[#1a7aab] mb-4">What it solves</p>
             {/* L2 — section heading */}
             <h2 className="font-heading text-[#0a1628] mb-6">
               {overviewTitle}
@@ -90,7 +90,7 @@ export default function SolutionDetailPage({
           <div className="grid sm:grid-cols-2 gap-4">
             {capabilities.map((capability) => (
               <div key={capability.title} className="border border-gray-100 p-6 hover:border-[#228DC1]/30 hover:shadow-sm transition-all bg-white">
-                <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#228DC1] mb-4" />
+                <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-[#1a7aab] mb-4" />
                 {/* L3 — card heading */}
                 <h3 className="font-card-heading text-[#0a1628] text-sm mb-2">{capability.title}</h3>
                 {/* L4 — body */}
@@ -105,7 +105,7 @@ export default function SolutionDetailPage({
       <section className="py-24 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-2xl mb-14">
-            <p className="type-label text-[#228DC1] mb-4">How we work</p>
+            <p className="type-label text-[#1a7aab] mb-4">How we work</p>
             <h2 className="font-heading text-[#0a1628]">
               From ambition to production.
             </h2>
@@ -113,7 +113,7 @@ export default function SolutionDetailPage({
           <div className="grid lg:grid-cols-3 gap-6">
             {steps.map((step, index) => (
               <div key={step.title} className="bg-white border border-gray-100 p-7">
-                <p className="type-label text-[#228DC1] mb-8">0{index + 1}</p>
+                <p className="type-label text-[#1a7aab] mb-8">0{index + 1}</p>
                 {/* L3 — card heading */}
                 <h3 className="font-card-heading text-[#0a1628] text-[20px] mb-3">{step.title}</h3>
                 {/* L4 — body */}
@@ -138,7 +138,7 @@ export default function SolutionDetailPage({
             <p className="type-label text-[#0a1628]/60 mb-6">Related pages</p>
             <div className="space-y-3">
               {related.map((link) => (
-                <Link key={link.href} to={link.href} className="flex items-center justify-between border-b border-gray-100 pb-3 text-[#0a1628]/70 hover:text-[#228DC1] font-normal text-[14px] transition-colors">
+                <Link key={link.href} to={link.href} className="flex items-center justify-between border-b border-gray-100 pb-3 text-[#0a1628]/70 hover:text-[#1a7aab] font-normal text-[14px] transition-colors">
                   {link.label}
                 </Link>
               ))}

@@ -404,7 +404,7 @@ function SecurityComplianceSection() {
                 { badge: 'AI governance', title: 'Auditable AI', detail: 'Rules for access, consent and escalation.' },
               ].map((item, i) => (
                 <div key={item.badge} className="group bg-white border border-gray-200 p-6 shadow-[0_1px_8px_rgba(10,22,40,0.03)] hover:shadow-[0_16px_40px_rgba(10,22,40,0.07)] hover:-translate-y-0.5 transition-all" style={reveal(gridInView, i * 80)}>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#228DC1] mb-5">{item.badge}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a7aab] mb-5">{item.badge}</p>
                   <h3 className="text-[#0a1628] text-[14px] font-semibold mb-2">{item.title}</h3>
                   <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.detail}</p>
                 </div>
@@ -534,7 +534,7 @@ function MapWidget() {
         {/* ── ETA badge ── */}
         <rect x="183" y="116" width="172" height="21" rx="4" fill="white" opacity="0.93"/>
         <circle cx="196" cy="126.5" r="4" fill="#E53935"/>
-        <text x="204" y="131" fontSize="10.5" fill="#374151"
+        <text x="204" y="131" fontSize="11" fill="#374151"
               fontFamily="system-ui,sans-serif" fontWeight="500">
           2.4 mi Â· ETA 6 PM
         </text>
@@ -672,7 +672,7 @@ function KaiChatDemo() {
               <div style={{ padding: '0 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.42)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.42)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>
                     Kai VOICE
                   </span>
                 </div>
@@ -680,7 +680,7 @@ function KaiChatDemo() {
                 {/* Previous turn ” dimmed */}
                 {prevTurn && (
                   <div style={{ marginBottom: 18, opacity: 0.32 }}>
-                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 5px',
+                    <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 5px',
                       color: prevTurn.speaker === 'ai' ? 'rgba(106,193,239,0.9)' : 'rgba(255,255,255,0.7)' }}>
                       {prevTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
                     </p>
@@ -693,7 +693,7 @@ function KaiChatDemo() {
                 {/* Current turn ” typing out */}
                 {currentTurn && (
                   <div>
-                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 7px',
+                    <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 7px',
                       color: currentTurn.speaker === 'ai' ? 'rgba(106,193,239,1)' : 'rgba(255,255,255,0.65)' }}>
                       {currentTurn.speaker === 'ai' ? 'AI Assistant' : 'You'}
                     </p>
@@ -738,7 +738,7 @@ function KaiChatDemo() {
 
             {/* Kai label ” bottom left */}
             <div style={{ position: 'absolute', bottom: 66, left: 22 }}>
-              <span style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', fontFamily: 'Roboto,sans-serif' }}>Kai</span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.22em', fontFamily: 'Roboto,sans-serif' }}>Kai</span>
             </div>
 
             {/* Voice input bar ” minimal, buttons only */}
@@ -789,7 +789,7 @@ function KaiChatDemo() {
                   if (msg.role === 'chips') return (
                     <div key={i} style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '6px 12px 12px' }}>
                       {['Track my order', 'Reset my password', 'Contact support'].map(chip => (
-                        <div key={chip} style={{ border: '1px solid #228DC1', borderRadius: 8, padding: '5px 10px', fontSize: 11, color: '#228DC1', background: '#fff', cursor: 'default', whiteSpace: 'nowrap' }}>
+                        <div key={chip} style={{ border: '1px solid #1a7aab', borderRadius: 8, padding: '5px 10px', fontSize: 11, color: '#1a7aab', background: '#fff', cursor: 'default', whiteSpace: 'nowrap' }}>
                           {chip}
                         </div>
                       ))}
@@ -801,7 +801,7 @@ function KaiChatDemo() {
                       <span style={{ fontSize: 12, fontWeight: 700, color: '#000', lineHeight: 1 }}>{isAI ? 'AI Assistant' : 'You'}</span>
                       <p style={{ fontSize: 14, lineHeight: 1.65, color: 'rgba(0,0,0,0.87)', margin: 0, whiteSpace: 'pre-line' }}>{msg.text}</p>
                       {msg.meta && isAI && (
-                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, alignSelf: 'flex-start', fontSize: 10, fontWeight: 600, color: '#228DC1', background: 'rgba(34,141,193,0.10)', borderRadius: 4, padding: '2px 8px' }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, alignSelf: 'flex-start', fontSize: 11, fontWeight: 600, color: '#1a7aab', background: 'rgba(26,122,171,0.10)', borderRadius: 4, padding: '2px 8px' }}>
                           ⚡ {msg.meta}
                         </span>
                       )}
@@ -1227,7 +1227,7 @@ function OmnichannelSection() {
                         <span style={{ fontSize:11, fontWeight:700, color:'#000', lineHeight:1 }}>AI Assistant</span>
                         <p style={{ fontSize:13, color:'rgba(0,0,0,0.87)', lineHeight:1.55, whiteSpace:'pre-line', margin:0 }}>{msg.text}</p>
                         {msg.meta && (
-                          <span style={{ display:'inline-flex', alignItems:'center', gap:4, fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px', alignSelf:'flex-start' }}>
+                          <span style={{ display:'inline-flex', alignItems:'center', gap:4, fontSize:11, fontWeight:600, color:'#1a7aab', background:'rgba(26,122,171,0.10)', borderRadius:4, padding:'2px 8px', alignSelf:'flex-start' }}>
                             ⚡ {msg.meta}
                           </span>
                         )}
@@ -1310,7 +1310,7 @@ function OmnichannelSection() {
                     <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                       <div style={{ display:'flex', alignItems:'center', gap:5 }}>
                         <span style={{ fontSize:13, fontWeight:600, color:'#202124', fontFamily:'Roboto,sans-serif' }}>Kai</span>
-                        <span style={{ fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'1px 6px' }}>AI Agent</span>
+                        <span style={{ fontSize:11, fontWeight:600, color:'#1a7aab', background:'rgba(26,122,171,0.10)', borderRadius:4, padding:'1px 6px' }}>AI Agent</span>
                       </div>
                       <span style={{ fontSize:11, color:'rgba(10,22,40,0.4)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
                     </div>
@@ -1325,7 +1325,7 @@ function OmnichannelSection() {
                   I've sent a one-click upgrade link to your inbox. Let me know if you have any questions!
                 </p>
                 <div style={{ marginTop:9 }}>
-                  <span style={{ fontSize:10, fontWeight:600, color:'#228DC1', background:'rgba(34,141,193,0.10)', borderRadius:4, padding:'2px 8px', fontFamily:'Roboto,sans-serif' }}>
+                  <span style={{ fontSize:11, fontWeight:600, color:'#1a7aab', background:'rgba(26,122,171,0.10)', borderRadius:4, padding:'2px 8px', fontFamily:'Roboto,sans-serif' }}>
                     ⚡ Account #10284 Â· CRM synced
                   </span>
                 </div>
@@ -1345,7 +1345,7 @@ function OmnichannelSection() {
         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="lg:hidden flex flex-wrap justify-center gap-2 mb-10">
           {['WhatsApp','Telegram','Teams','Web Chat','Gmail','Outlook','Telegram'].map((ch, i) => (
-            <span key={`${ch}-${i}`} className="text-[11px] font-semibold text-[#228DC1] bg-white border border-[#228DC1]/20 px-3 py-1.5 rounded-full shadow-sm">
+            <span key={`${ch}-${i}`} className="text-[11px] font-semibold text-[#1a7aab] bg-white border border-[#1a7aab]/20 px-3 py-1.5 rounded-full shadow-sm">
               {ch}
             </span>
           ))}
@@ -1569,8 +1569,8 @@ export default function KaiPage() {
               <div style={{ padding:'20px 22px 12px' }}>
                 <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#0a1628', lineHeight:1.35, fontFamily:'Roboto,sans-serif', letterSpacing:'-0.01em' }}>
                   Client Escalation rate reduce from{' '}
-                  <span style={{ color:'#228DC1' }}>40%</span> to{' '}
-                  <span style={{ color:'#228DC1' }}>10%</span>
+                  <span style={{ color:'#1a7aab' }}>40%</span> to{' '}
+                  <span style={{ color:'#1a7aab' }}>10%</span>
                 </p>
               </div>
 

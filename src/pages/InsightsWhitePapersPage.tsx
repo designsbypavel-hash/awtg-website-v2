@@ -165,7 +165,7 @@ export default function InsightsWhitePapersPage() {
           style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
         >
           <div style={{ maxWidth: 600 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">White Papers</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#1a7aab] mb-5">White Papers</p>
             <h1
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
@@ -186,11 +186,11 @@ export default function InsightsWhitePapersPage() {
               <div className="flex flex-wrap items-center gap-3 mb-7">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60">Featured</span>
                 <span className="w-8 h-px bg-gray-200" />
-                <span className="text-[13px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-[#228DC1]/10 text-[#228DC1]">
+                <span className="text-[13px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-[#228DC1]/10 text-[#1a7aab]">
                   {featuredPaper.topic}
                 </span>
               </div>
-              <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#228DC1] transition-colors">
+              <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#1a7aab] transition-colors">
                 {featuredPaper.title}
               </h2>
               <p className="text-[#0a1628]/70 text-[16px] font-normal leading-[1.8] max-w-2xl mb-9">
@@ -198,7 +198,7 @@ export default function InsightsWhitePapersPage() {
               </p>
               <div className="flex flex-wrap items-center justify-between gap-4 text-[#0a1628]/60 text-xs border-t border-gray-100 pt-7">
                 <span>{featuredPaper.date}</span>
-                <span className="inline-flex items-center gap-2 text-[#228DC1] font-semibold uppercase tracking-[0.12em]">
+                <span className="inline-flex items-center gap-2 text-[#1a7aab] font-semibold uppercase tracking-[0.12em]">
                   Read whitepaper                </span>
               </div>
             </div>
@@ -245,7 +245,7 @@ export default function InsightsWhitePapersPage() {
               <Link key={paper.slug} to={getWhitePaperHref(paper)} className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden">
                 <div className="h-44 relative overflow-hidden">
                   <InsightImage src={getWhitePaperImage(paper.slug, paper.topic)} alt={paper.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute top-4 right-4 h-10 w-10 bg-white/90 flex items-center justify-center text-[#228DC1]">
+                  <div className="absolute top-4 right-4 h-10 w-10 bg-white/90 flex items-center justify-center text-[#1a7aab]">
                     <FontAwesomeIcon icon={faFilePdf} className="w-4 h-4" />
                   </div>
                 </div>
@@ -254,18 +254,18 @@ export default function InsightsWhitePapersPage() {
                     <span className="font-mono text-[12px] text-[#0a1628]/40">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <span className="text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-[#228DC1]/10 text-[#228DC1]">
+                    <span className="text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-[#228DC1]/10 text-[#1a7aab]">
                       {paper.topic}
                     </span>
                     <span className="text-[#0a1628]/50 text-xs">{paper.date}</span>
                   </div>
-                  <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">
+                  <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">
                     {paper.title}
                   </h3>
                   <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
                     {paper.desc}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-[#228DC1] text-xs font-semibold uppercase tracking-[0.12em]">
+                  <span className="mt-5 inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em]">
                     Open whitepaper
                   </span>
                 </div>
