@@ -439,28 +439,28 @@ export function Vision() {
 
 const industryCards = [
   {
-    tag: 'Enterprise',
-    title: 'Enterprise & Connected Industries',
-    desc: 'Private 5G, IoT and AI-powered operations for manufacturing, logistics and enterprise campuses.',
-    cta: 'Explore enterprise',
-    href: '/industries/enterprise',
-    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=85&auto=format&fit=crop',
-  },
-  {
     tag: 'Health & Life Sciences',
-    title: 'Health & Life Sciences',
-    desc: 'NHS-grade connectivity, clinical AI and digital infrastructure built around patient outcomes and care delivery.',
+    title: 'Health Tech',
+    desc: 'NHS-grade connectivity, clinical AI and digital health infrastructure built around patient outcomes and care delivery.',
     cta: 'Explore health tech',
     href: '/industries/health-tech',
-    img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=900&q=85&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=85&auto=format&fit=crop',
   },
   {
-    tag: 'Government',
-    title: 'Public Sector & Government',
-    desc: 'Smart cities, citizen-facing AI and secure connectivity for central and local government bodies.',
-    cta: 'Explore public sector',
-    href: '/industries/public-sector',
-    img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=85&auto=format&fit=crop',
+    tag: 'Public Sector',
+    title: 'Connectivity for the Public Sector',
+    desc: 'PSN-aligned network infrastructure, secure remote access and managed services for central and local government.',
+    cta: 'Explore connectivity',
+    href: '/connectivity/public-sector',
+    img: '/images/insights/public-sector.jpg',
+  },
+  {
+    tag: 'Education',
+    title: 'Education',
+    desc: 'Campus-wide Wi-Fi, 5G and safeguarding-compliant networks supporting universities, schools and research institutions.',
+    cta: 'Explore education',
+    href: '/industries/education',
+    img: '/images/insights/education.jpg',
   },
 ]
 
