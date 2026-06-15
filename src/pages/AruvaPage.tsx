@@ -2980,23 +2980,52 @@ export default function AruvaPage() {
       </section>
 
       {/* Pilot CTA */}
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100 text-center">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <p className="type-label text-[#228DC1] mb-4">Start Your Pilot</p>
-          <h2 className="font-heading text-[#0a1628] mb-6">
-            Ready to see Aruva<br />
-            <span className="text-[#228DC1]">in your courses?</span>
-          </h2>
-          <p className="text-[#0a1628]/60 text-[18px] mb-10 max-w-2xl mx-auto font-normal leading-[1.7]">
-            Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution.
-          </p>
-          <button
-            type="button"
-            onClick={openDemo}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white font-semibold hover:bg-[#1a6e99] transition-colors"
-          >
-            Request a Demo
-          </button>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="rounded-2xl overflow-hidden bg-[#0a1628] grid lg:grid-cols-[1fr_420px]">
+
+            {/* Left */}
+            <div className="p-12 lg:p-16 flex flex-col justify-between" style={{ minHeight: 400 }}>
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#228DC1] mb-6">Start Your Pilot</p>
+                <h2
+                  className="font-heading text-white leading-[1.08] mb-6"
+                  style={{ fontSize: 'clamp(26px, 2.8vw, 40px)', maxWidth: 480 }}
+                >
+                  Ready to see Aruva<br />
+                  <span className="text-[#228DC1]">in your courses?</span>
+                </h2>
+                <p className="text-white/50 text-[15px] leading-[1.85]" style={{ maxWidth: 420 }}>
+                  Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution.
+                </p>
+              </div>
+              <div className="mt-12">
+                <button
+                  type="button"
+                  onClick={openDemo}
+                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/25 text-white text-[14px] font-medium hover:bg-white hover:text-[#0a1628] hover:border-white transition-all duration-200"
+                >
+                  Request a Demo
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Right — image panel */}
+            <div className="p-5 lg:p-6">
+              <div className="rounded-xl overflow-hidden h-full relative" style={{ minHeight: 320 }}>
+                <img
+                  src="/images/insights/education.jpg"
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
