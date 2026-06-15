@@ -138,7 +138,7 @@ function ScapDashboardVisual() {
             <span style={{ fontSize:13, fontWeight:700, color:'#1a1f3c', letterSpacing:'-0.01em' }}>KPI Dashboard</span>
           </div>
           <div style={{ display:'flex', alignItems:'center', gap:5 }}>
-            <span style={{ fontSize:10, color:'#bbb' }}>Vendor</span>
+            <span style={{ fontSize:11, color:'#666' }}>Vendor</span>
             <span style={{ fontSize:11, fontWeight:700, color:'#3d4d9e', background:'#eef0f8',
                            padding:'2px 9px', borderRadius:5 }}>AWTG RAN</span>
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ opacity:0.45 }}>
@@ -153,7 +153,7 @@ function ScapDashboardVisual() {
           {/* Sidebar */}
           <div style={s.sidebar}>
             <div style={{ padding:'9px 12px 5px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-              <span style={{ fontSize:8, fontWeight:800, color:'#ccc', letterSpacing:'0.13em', textTransform:'uppercase' }}>Admin Panel</span>
+              <span style={{ fontSize:11, fontWeight:800, color:'#666', letterSpacing:'0.13em', textTransform:'uppercase' }}>Admin Panel</span>
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" style={{ opacity:0.35 }}>
                 <path d="M1 3h9M1 7h9" stroke="#555" strokeWidth="1.4" strokeLinecap="round"/>
               </svg>
@@ -209,7 +209,7 @@ function ScapDashboardVisual() {
                 <div key={label} style={{ padding:'6px 12px', display:'flex', alignItems:'center',
                                           justifyContent:'space-between', cursor:'pointer' }}>
                   <div style={{ display:'flex', alignItems:'center', gap:5 }}>
-                    <FontAwesomeIcon icon={icon} style={{ fontSize:9, color:'#bbb' }} />
+                    <FontAwesomeIcon icon={icon} style={{ fontSize:11, color:'#666' }} />
                     <span style={{ fontSize:10, fontWeight:500, color:'#aaa' }}>{label}</span>
                   </div>
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none" style={{ opacity:0.35 }}>
@@ -247,7 +247,7 @@ function ScapDashboardVisual() {
               </svg>
               <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>
                 {[0,4,8,11,15].map(i => (
-                  <span key={i} style={{ fontSize:11, color:'#ccc' }}>{dates[i]}</span>
+                  <span key={i} style={{ fontSize:11, color:'#666' }}>{dates[i]}</span>
                 ))}
               </div>
             </div>
@@ -291,7 +291,7 @@ function ScapDashboardVisual() {
               </svg>
               <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>
                 {[0,4,8,11,15].map(i => (
-                  <span key={i} style={{ fontSize:11, color:'#ccc' }}>{dates[i]}</span>
+                  <span key={i} style={{ fontSize:11, color:'#666' }}>{dates[i]}</span>
                 ))}
               </div>
             </div>
@@ -303,7 +303,7 @@ function ScapDashboardVisual() {
         <div style={s.statusBar}>
           <div style={{ width:6, height:6, borderRadius:'50%', background:'#22c55e',
                         boxShadow:'0 0 5px #22c55e', flexShrink:0 }} />
-          <span style={{ fontSize:11, color:'#bbb' }}>
+          <span style={{ fontSize:11, color:'#666' }}>
             Platform operational · 5G O-RAN · AWTG RAN · Data refreshed just now
           </span>
         </div>
@@ -482,7 +482,9 @@ export default function ServicesEngineeringPage() {
               SCAP
             </h1>
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              A multi-vendor network management and service assurance platform for telecom, private 5G, Open RAN and hybrid network environments. Combines SMO, PM, CM and FM in one integrated platform.
+              Unified network management for multi-vendor telecom environments.
+              SCAP helps operators monitor performance, manage configuration, detect faults and coordinate service management across 5G, private networks, Open RAN and hybrid network environments.
+              It brings SMO, performance management, configuration management and fault management into one operational platform, giving teams a clearer view of network health and service impact.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
