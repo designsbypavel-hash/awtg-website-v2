@@ -270,7 +270,7 @@ function IntegrationsSection() {
               return (
                 <div
                   key={item.label}
-                  className={`relative flex flex-col items-center justify-center gap-2 p-4 min-h-[120px] transition-all duration-200 select-none ${
+                  className={`relative flex flex-col items-center justify-center gap-2 p-4 min-h-[120px] transition-[transform,box-shadow,border-color,opacity] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform select-none ${
                     item.isKai
                       ? 'z-10 [&_span]:hidden'
                       : isAdjacent
