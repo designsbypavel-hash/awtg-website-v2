@@ -43,7 +43,7 @@ function ScrollProgress() {
   )
 }
 
-// ── IDAMS Map Visual ──────────────────────────────────────────────────────────
+// ── iDAMS Map Visual ──────────────────────────────────────────────────────────
 function IdamsMapVisual() {
   const [activeSignal, setActiveSignal] = useState(0)
 
@@ -85,7 +85,7 @@ function IdamsMapVisual() {
       }}>
         <img
           src="/idams-map-1.png"
-          alt="IDAMS interactive asset map showing selected Ealing assets"
+          alt="iDAMS interactive asset map showing selected Ealing assets"
           style={{
             display: 'block',
             width: '100%',
@@ -164,10 +164,10 @@ function SectionHeader({ title, desc }: { title: string; desc: string }) {
 const capabilities = [
   { icon: faMapLocationDot, title: 'Interactive Asset Map',       color: '#228DC1', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
   { icon: faSearchLocation,  title: 'Advanced Search & Filtering', color: '#059669', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
-  { icon: faDatabase,        title: 'Asset Data Management',       color: '#7c3aed', desc: 'Import, create, update, and manage asset records in one place. IDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
+  { icon: faDatabase,        title: 'Asset Data Management',       color: '#7c3aed', desc: 'Import, create, update, and manage asset records in one place. iDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
   { icon: faClipboardCheck,  title: 'Acquisition Workflow',        color: '#d97706', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications - keeping every request visible and accountable.' },
   { icon: faChartLine,       title: 'Reporting & Insights',        color: '#dc2626', desc: 'Use dashboards, reports, and exports to understand asset usage, acquisition progress, and operational performance across your estate.' },
-  { icon: faNetworkWired,    title: 'Integration-Ready Platform',  color: '#0891b2', desc: 'IDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
+  { icon: faNetworkWired,    title: 'Integration-Ready Platform',  color: '#0891b2', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
 ]
 
 const ownerBenefits = [
@@ -195,14 +195,14 @@ const audiences = [
     icon: faBuildingColumns, color: '#228DC1',
     title: 'Asset Owners',
     who: 'Local authorities, public bodies, landlords, and private organisations',
-    desc: 'IDAMS helps asset owners make their infrastructure visible and available for commercial or public-service use. Import asset data, manage records, define availability, review requests, and track the full acquisition process from enquiry to approval.',
+    desc: 'iDAMS helps asset owners make their infrastructure visible and available for commercial or public-service use. Import asset data, manage records, define availability, review requests, and track the full acquisition process from enquiry to approval.',
     benefits: ownerBenefits,
   },
   {
     icon: faTowerBroadcast, color: '#3d4d9e',
     title: 'Mobile Network Operators & Neutral Hosts',
     who: 'MNOs, neutral hosts, and telecom infrastructure providers',
-    desc: 'IDAMS helps operators identify suitable locations for network deployment more quickly. Search assets geographically, filter by metadata, select individual or multiple assets, and submit requests through a structured process.',
+    desc: 'iDAMS helps operators identify suitable locations for network deployment more quickly. Search assets geographically, filter by metadata, select individual or multiple assets, and submit requests through a structured process.',
     benefits: operatorBenefits,
   },
 ]
@@ -232,9 +232,9 @@ export default function ServicesIoTPage() {
       <ProductDemoModal
         isOpen={isDemoOpen}
         onClose={() => setIsDemoOpen(false)}
-        productName="IDAMS"
-        title="See IDAMS in action"
-        description="Request a demo to see how IDAMS helps asset owners, operators and infrastructure providers collaborate through one secure digital platform."
+        productName="iDAMS"
+        title="See iDAMS in action"
+        description="Request a demo to see how iDAMS helps asset owners, operators and infrastructure providers collaborate through one secure digital platform."
         logoSrc="/logo-icon.svg"
         accentColor="#3d4d9e"
         outcomes={[
@@ -285,10 +285,13 @@ export default function ServicesIoTPage() {
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
           <div>
             <h1 className="font-serif-display mb-6 leading-[1.02] text-[#0a1628]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
-              IDAMS
+              iDAMS
             </h1>
+            <h2 className="mb-5 max-w-xl text-[30px] font-semibold leading-[1.15] text-[#0a1628] lg:text-[40px]">
+              Digital asset management for smarter infrastructure sharing.
+            </h2>
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              Intelligent Digital Asset Management System. A secure, map-based marketplace that helps local authorities, operators, and infrastructure partners discover, request, and manage assets faster.
+              iDAMS helps local authorities, operators and infrastructure partners discover, assess and manage telecom and public assets through a secure map based platform. Teams can view available sites, check asset details, manage access requests and coordinate approvals from one shared workspace.
             </p>
             <button
               type="button"
@@ -342,7 +345,7 @@ export default function ServicesIoTPage() {
           <div style={reveal(audInView, 0)}>
             <SectionHeader
               title="Built for asset owners and asset consumers"
-              desc="IDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it."
+              desc="iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it."
             />
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
@@ -378,7 +381,7 @@ export default function ServicesIoTPage() {
           <div style={reveal(capInView, 0)}>
             <SectionHeader
               title="Key platform capabilities"
-              desc="IDAMS provides a complete set of tools for asset discovery, management, acquisition, and collaboration."
+              desc="iDAMS provides a complete set of tools for asset discovery, management, acquisition, and collaboration."
             />
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -406,7 +409,7 @@ export default function ServicesIoTPage() {
             <div className="mb-14 max-w-3xl">
               <h2 className="font-heading mb-5 text-white">Use cases</h2>
               <p className="text-[16px] font-normal leading-[1.75] text-white/60">
-                IDAMS is designed for organisations deploying connectivity and infrastructure assets across the public and private sector.
+                iDAMS is designed for organisations deploying connectivity and infrastructure assets across the public and private sector.
               </p>
             </div>
           </div>
@@ -429,7 +432,7 @@ export default function ServicesIoTPage() {
 
       <CTASection
         title="Ready to unlock the value of your assets?"
-        subtitle="Speak to AWTG to see how IDAMS can support your organisation's asset management, acquisition, and infrastructure deployment needs."
+        subtitle="Speak to AWTG to see how iDAMS can support your organisation's asset management, acquisition, and infrastructure deployment needs."
         primaryLabel="Request a Demo"
         primaryOnClick={() => setIsDemoOpen(true)}
       />
