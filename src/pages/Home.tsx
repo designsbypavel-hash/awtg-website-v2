@@ -466,42 +466,56 @@ const industryCards = [
 
 function Industries() {
   return (
-    <section className="bg-white pt-16">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12 mb-14">
-        <SectionHeader
-          title={<>Powering transformation<br /><span className="text-[#228DC1]">across every sector.</span></>}
-          description="From enterprise campuses to NHS trusts and government bodies, AWTG delivers technology built specifically for your world."
-        />
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3">
-        {industryCards.map((card) => (
-          <Link
-            key={card.title}
-            to={card.href}
-            className="relative group overflow-hidden h-[500px] flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#228DC1]"
-            aria-label={card.cta}
-          >
-            <img
-              src={card.img}
-              alt={card.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050a12]/95 via-[#050a12]/45 to-[#050a12]/10 transition-opacity duration-300" />
-            <div className="relative z-10 mt-auto p-8 lg:p-10">
-              <h3 className="font-h4 text-white mb-3 leading-snug">{card.title}</h3>
-              <p className="text-white/55 text-sm leading-[1.7] font-normal mb-6 max-w-[280px]">
-                {card.desc}
-              </p>
-              <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#228DC1] group-hover:gap-3.5 transition-all duration-300">
-                {card.cta}
-                <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </div>
-          </Link>
-        ))}
+    <section className="py-24 bg-white border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        <div className="max-w-2xl mb-14">
+          <h2 className="font-heading text-[#0a1628] mb-4">
+            Powering transformation<br />
+            <span className="text-[#228DC1]">across every sector.</span>
+          </h2>
+          <p className="text-[#0a1628]/50 text-[16px] leading-[1.8]">
+            From enterprise campuses to NHS trusts and government bodies, AWTG delivers technology built specifically for your world.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {industryCards.map((card) => (
+            <Link
+              key={card.title}
+              to={card.href}
+              className="group flex flex-col bg-white border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-[0_8px_40px_rgba(10,22,40,0.08)] transition-all duration-300"
+            >
+              {/* Pure image — no text overlay */}
+              <div className="overflow-hidden" style={{ height: 260 }}>
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Text below image */}
+              <div className="flex flex-col flex-1 px-7 pt-6 pb-8">
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#228DC1] mb-4">
+                  {card.tag}
+                </p>
+                <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
+                  {card.title}
+                </h3>
+                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78] flex-1 mb-7">
+                  {card.desc}
+                </p>
+                <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#228DC1] group-hover:gap-3 transition-all duration-200">
+                  {card.cta}
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   )
