@@ -50,7 +50,7 @@ function LogoNHS() {
 
 function LogoO2() {
   return (
-    <svg width="40" height="22" viewBox="0 0 52 28" xmlns="http://www.w3.org/2000/svg">
+    <svg width="32" height="18" viewBox="0 0 52 28" xmlns="http://www.w3.org/2000/svg">
       <text x="0" y="24" fill="#0019A5" fontSize="24" fontWeight="700" fontFamily="Arial,sans-serif">O</text>
       <text x="28" y="27" fill="#0019A5" fontSize="12" fontWeight="700" fontFamily="Arial,sans-serif">2</text>
     </svg>
