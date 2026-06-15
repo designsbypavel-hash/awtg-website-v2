@@ -2842,21 +2842,6 @@ export default function AruvaPage() {
         </div>
       </section>
 
-      {/* Marquee */}
-      <div className="bg-[#faf7f2] border-y border-amber-100 py-3.5 overflow-hidden">
-        <div className="flex gap-10 animate-[marquee_35s_linear_infinite] whitespace-nowrap w-max">
-          {[
-            'Russell Group Universities','Teaching and Learning Teams','Academic Quality Officers',
-            'Professors and Lecturers','UK Higher Education','Digital Transformation Teams',
-            'IT and Data Governance','Student Experience Teams','Russell Group Universities',
-            'Teaching and Learning Teams','Academic Quality Officers','Professors and Lecturers',
-          ].map((item, i) => (
-            <span key={i} className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/60 flex items-center gap-10">
-              {item}<span className="w-1.5 h-1.5 rounded-full bg-[#fbbf24]" />
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* Curriculum agnostic */}
       <CurriculumAgnosticSection />
