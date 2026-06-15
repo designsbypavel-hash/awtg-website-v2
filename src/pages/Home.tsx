@@ -50,7 +50,7 @@ function LogoNHS() {
 
 function LogoO2() {
   return (
-    <svg width="32" height="18" viewBox="0 0 52 28" xmlns="http://www.w3.org/2000/svg">
+    <svg width="26" height="14" viewBox="0 0 52 28" xmlns="http://www.w3.org/2000/svg">
       <text x="0" y="24" fill="#0019A5" fontSize="24" fontWeight="700" fontFamily="Arial,sans-serif">O</text>
       <text x="28" y="27" fill="#0019A5" fontSize="12" fontWeight="700" fontFamily="Arial,sans-serif">2</text>
     </svg>
@@ -124,7 +124,7 @@ const tickerLogos = [
   { id: 'mobily',      src: '/logos/partners/Mobily.png',                  alt: 'Mobily' },
   { id: 'nao',         src: '/logos/partners/NAO.png',                     alt: 'National Audit Office' },
   { id: 'nokia',       src: '/logos/partners/Nokia.png',                   alt: 'Nokia' },
-  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2' },
+  { id: 'o2',          src: '/logos/partners/O2.png',                      alt: 'O2',           h: 52 },
   { id: 'oracle',      src: '/logos/partners/Oracle.png',                  alt: 'Oracle' },
   { id: 'qinetiq',     src: '/logos/partners/Qinetic.png',                 alt: 'QinetiQ' },
   { id: 'quickline',   src: '/logos/partners/Quickline Broadband.png',     alt: 'Quickline Broadband' },
