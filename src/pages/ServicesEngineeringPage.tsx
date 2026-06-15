@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChartLine, faCircleCheck, faLayerGroup, faServer,
-  faTriangleExclamation, faShieldHalved, faNetworkWired,
+  faTriangleExclamation, faNetworkWired,
   faCubes, faGaugeHigh, faCodeBranch,
-  faArrowsRotate, faFilter,
+  faArrowsRotate,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
@@ -385,16 +385,6 @@ const differentiators = [
   },
 ]
 
-// -- Benefits -----------------------------------------------------------------
-const benefits = [
-  { icon: faLayerGroup,      title: 'Unified SMO, PM, CM and FM',              desc: 'One platform replaces fragmented point tools with integrated assurance, orchestration and fault management.' },
-  { icon: faCubes,           title: 'Flexible multi-vendor integration',         desc: 'Connects equipment and network functions from different suppliers through standards-based and extensible adapters.' },
-  { icon: faShieldHalved,    title: 'Reduced operational risk',                  desc: 'Configuration governance, change monitoring and correlation reduce the risk of undetected faults and misconfigurations.' },
-  { icon: faChartLine,       title: 'Improved KPI visibility',                   desc: 'Real-time performance dashboards with SLA tracking and degradation detection keep service quality visible.' },
-  { icon: faNetworkWired,    title: 'Standards-based interoperability',           desc: 'O-RAN O1, NETCONF/YANG, VES, SNMP, REST APIs, Kafka and file-based PM collection all supported.' },
-  { icon: faFilter,          title: 'Fault correlation at scale',                 desc: 'Cross-domain correlation links alarms to configuration changes and performance events to accelerate root-cause analysis.' },
-]
-
 // -- Integration protocols ----------------------------------------------------
 const protocols = [
   'O-RAN O1', 'NETCONF/YANG', 'VES', 'SNMP', 'REST APIs', 'Kafka', 'File-based PM',
@@ -432,7 +422,6 @@ export default function ServicesEngineeringPage() {
   const [modulesRef, modulesInView] = useInView(0.08)
   const [diffRef,    diffInView]    = useInView(0.08)
   const [mvRef,      mvInView]      = useInView(0.08)
-  const [benefitsRef, benefitsInView] = useInView(0.08)
   const [ucRef,      ucInView]      = useInView(0.08)
 
   return (
@@ -618,33 +607,6 @@ export default function ServicesEngineeringPage() {
                   <h3 className="mb-3 text-[17px] font-semibold leading-[1.3] text-[#0a1628]">{d.title}</h3>
                   <p className="text-[14px] font-normal leading-[1.75] text-[#0a1628]/60">{d.desc}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── KEY BENEFITS ──────────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-white py-24">
-        <div ref={benefitsRef} className="mx-auto max-w-7xl px-8 lg:px-12">
-          <div style={reveal(benefitsInView, 0)}>
-            <SectionHeader
-              title="Key benefits"
-              desc="SCAP delivers measurable operational improvements for network teams managing complex, multi-vendor telecom environments."
-            />
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((b, i) => (
-              <div
-                key={b.title}
-                className="rounded-xl border border-gray-200 bg-white p-6 shadow-[0_1px_8px_rgba(10,22,40,0.04)] transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(10,22,40,0.08)]"
-                style={reveal(benefitsInView, i * 60)}
-              >
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#228DC1]/10">
-                  <FontAwesomeIcon icon={b.icon} className="h-4 w-4 text-[#228DC1]" />
-                </div>
-                <h3 className="mb-2 text-[14px] font-semibold text-[#0a1628]">{b.title}</h3>
-                <p className="text-[13px] font-normal leading-[1.72] text-[#0a1628]/60">{b.desc}</p>
               </div>
             ))}
           </div>
