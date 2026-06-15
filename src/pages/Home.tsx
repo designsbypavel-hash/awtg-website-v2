@@ -259,104 +259,98 @@ function SectionHeader({
 // --- WHAT WE DO -------------------------------------------------------------
 
 function WhatWeDo() {
-  const cards = [
+  const panels = [
     {
-      num: '01',
       label: 'AI Products & Software',
       line: 'Kai, Aruva and bespoke AI — built for production, not proof of concept.',
       href: '/solutions/generative-ai',
       accent: '#228DC1',
-      bg: 'rgba(34,141,193,0.05)',
       tag: 'Generative AI',
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <rect width="28" height="28" rx="8" fill="rgba(34,141,193,0.12)"/>
-          <path d="M14 7v7l4 2" stroke="#228DC1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="14" cy="14" r="6.5" stroke="#228DC1" strokeWidth="1.5"/>
-          <circle cx="14" cy="14" r="2" fill="#228DC1"/>
-        </svg>
-      ),
+      image: '/images/insights/ai-innovation.jpg',
     },
     {
-      num: '02',
       label: 'Private Networks',
       line: 'Managed 4G/5G designed, deployed and monitored end-to-end. Live in weeks.',
       href: '/solutions/mobile-private-networks',
       accent: '#0ea472',
-      bg: 'rgba(14,164,114,0.05)',
       tag: '4G / 5G',
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <rect width="28" height="28" rx="8" fill="rgba(14,164,114,0.12)"/>
-          <path d="M7 19c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#0ea472" strokeWidth="1.6" strokeLinecap="round"/>
-          <path d="M4 19c0-5.52 4.48-10 10-10s10 4.48 10 10" stroke="#0ea472" strokeWidth="1.4" strokeLinecap="round" opacity="0.45"/>
-          <circle cx="14" cy="19" r="1.8" fill="#0ea472"/>
-        </svg>
-      ),
+      image: '/images/insights/connectivity.jpg',
     },
     {
-      num: '03',
       label: 'Engineering & Consultancy',
       line: '5G RF design, network testing and transformation strategy across 20+ countries.',
       href: '/services/engineering',
       accent: '#7c3aed',
-      bg: 'rgba(124,58,237,0.05)',
       tag: 'Global Delivery',
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <rect width="28" height="28" rx="8" fill="rgba(124,58,237,0.12)"/>
-          <path d="M8 20l4-8 4 5 2-3 2 6" stroke="#7c3aed" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="8" cy="20" r="1.2" fill="#7c3aed"/>
-        </svg>
-      ),
+      image: '/images/insights/telecom-tower.jpg',
     },
   ]
 
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
-
-        {/* Header */}
-        <div className="mb-14">
-          <h2 className="font-heading text-[#0a1628] max-w-lg">
+    <section className="bg-white border-t border-gray-100 overflow-hidden">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <h2 className="font-heading text-[#0a1628]">
             Three capabilities.<br/>
             <span className="text-[#228DC1]">One partner.</span>
           </h2>
+          <p className="text-[#0a1628]/50 text-[15px] leading-[1.75] max-w-sm lg:text-right pb-1">
+            End-to-end delivery across AI, private networks and engineering — under one accountable partner.
+          </p>
         </div>
+      </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {cards.map((c) => (
+      {/* Full-bleed image panels */}
+      <div className="grid md:grid-cols-3">
+        {panels.map((panel) => (
+          <Link
+            key={panel.label}
+            to={panel.href}
+            className="group relative overflow-hidden block"
+            style={{ minHeight: 520 }}
+          >
+            {/* Background image */}
+            <img
+              src={panel.image}
+              alt={panel.label}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Gradient overlay — strong at bottom for text legibility */}
             <div
-              key={c.num}
-              className="relative flex flex-col rounded-2xl border border-gray-100 overflow-hidden"
-              style={{ background: '#fff' }}
-            >
-              {/* Top accent bar */}
-              <div className="h-[3px] w-full" style={{ background: c.accent }} />
+              className="absolute inset-0"
+              style={{ background: 'linear-gradient(to top, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.70) 38%, rgba(10,22,40,0.22) 65%, transparent 100%)' }}
+            />
+            {/* Accent top bar */}
+            <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: panel.accent }} />
 
-              <div className="flex flex-col flex-1 p-7">
-                {/* Icon + tag row */}
-                <div className="flex items-center justify-between mb-6">
-                  {c.icon}
-                  <span className="text-[11px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded-full border"
-                    style={{ color: c.accent, borderColor: c.accent + '33', background: c.bg }}>
-                    {c.tag}
-                  </span>
-                </div>
-
-                {/* Text */}
-                <h3 className="font-card-heading text-[#0a1628] mb-3">
-                  {c.label}
-                </h3>
-                <p className="text-[#0a1628]/55 text-[14px] font-normal leading-[1.75] flex-1">
-                  {c.line}
-                </p>
-              </div>
-
+            {/* Content anchored to bottom */}
+            <div className="relative flex flex-col justify-end h-full p-8 lg:p-10" style={{ minHeight: 520 }}>
+              <p
+                className="text-[11px] font-black uppercase tracking-[0.22em] mb-4"
+                style={{ color: panel.accent }}
+              >
+                {panel.tag}
+              </p>
+              <h3 className="text-white font-semibold leading-[1.2] mb-3"
+                style={{ fontSize: 'clamp(18px, 1.8vw, 22px)' }}>
+                {panel.label}
+              </h3>
+              <p className="text-white/60 text-[14px] leading-[1.75] mb-7" style={{ maxWidth: 300 }}>
+                {panel.line}
+              </p>
+              <span
+                className="inline-flex items-center gap-2 text-[13px] font-semibold transition-all duration-200 group-hover:gap-3"
+                style={{ color: panel.accent }}
+              >
+                Explore
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
             </div>
-          ))}
-        </div>
+          </Link>
+        ))}
       </div>
     </section>
   )
