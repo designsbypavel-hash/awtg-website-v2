@@ -165,7 +165,7 @@ function GlobalReachSection() {
             <h2 className="font-heading text-[#0a1628] mb-5">
               Global reach. Measurable customer outcomes.
             </h2>
-            <p className="text-[#0a1628]/55 text-[16px] font-normal leading-[1.75] mb-10">
+            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] mb-10">
               Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from day 1.
             </p>
 
@@ -186,7 +186,7 @@ function GlobalReachSection() {
                     <GlobeCountUp num={stat.num} prefix={stat.prefix} suffix={stat.suffix} visible={inView} delay={stat.delay + 200} />
                   </p>
                   <p style={{ fontSize: 12.5, fontWeight: 700, color: '#0a1628', margin: '0 0 2px' }}>{stat.label}</p>
-                  <p style={{ fontSize: 11.5, color: 'rgba(10,22,40,0.50)', margin: 0 }}>{stat.note}</p>
+                  <p style={{ fontSize: 11.5, color: 'rgba(10,22,40,0.60)', margin: 0 }}>{stat.note}</p>
                 </div>
               ))}
             </div>
@@ -253,7 +253,7 @@ function IntegrationsSection() {
                   <div className="w-1.5 h-1.5 bg-[#228DC1] rounded-full shrink-0 mt-1.5" />
                   <div className="grid gap-1">
                     <span className="text-[#0a1628] text-[13px] font-semibold leading-tight">{item.label}</span>
-                    <span className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{item.value}</span>
+                    <span className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.value}</span>
                   </div>
                 </div>
               ))}
@@ -759,7 +759,7 @@ function KaiChatDemo() {
                 <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: orbMode === 'user' ? '#fff' : 'rgba(10,22,40,0.4)' }} />
               </div>
               <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <FontAwesomeIcon icon={faXmark} style={{ width: 14, height: 14, color: 'rgba(10,22,40,0.4)' }} />
+                <FontAwesomeIcon icon={faXmark} style={{ width: 14, height: 14, color: 'rgba(10,22,40,0.60)' }} />
               </div>
             </div>
           </div>
@@ -835,7 +835,7 @@ function KaiChatDemo() {
                         </div>
                       ))}
                     </div>
-                    <div style={{ border: '1px solid #e5e7eb', borderRadius: 10, padding: '10px 14px', color: 'rgba(10,22,40,0.32)', fontSize: 13, fontFamily: 'Roboto,sans-serif' }}>
+                    <div style={{ border: '1px solid #e5e7eb', borderRadius: 10, padding: '10px 14px', color: 'rgba(10,22,40,0.60)', fontSize: 13, fontFamily: 'Roboto,sans-serif' }}>
                       Leave a comment (optional)
                     </div>
                   </div>
@@ -844,12 +844,12 @@ function KaiChatDemo() {
 
               {/* Input bar ” matches voice bar layout */}
               <div style={{ borderTop: '0.5px solid #e5e7eb', padding: '11px 16px 14px', display: 'flex', alignItems: 'center', gap: 10, background: '#fff', flexShrink: 0 }}>
-                <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15, color: 'rgba(10,22,40,0.35)', userSelect: 'none' }}>
+                <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15, color: 'rgba(10,22,40,0.60)', userSelect: 'none' }}>
                   Type here...
                 </span>
                 {/* Mic button */}
                 <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: 'rgba(10,22,40,0.4)' }} />
+                  <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: 'rgba(10,22,40,0.60)' }} />
                 </div>
                 {/* Send button */}
                 <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#228DC1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -1276,9 +1276,9 @@ function OmnichannelSection() {
                   RE: Subscription Upgrade ” Pro Plan
                 </p>
                 <div style={{ display:'flex', alignItems:'center', gap:5 }}>
-                  <span style={{ fontSize:11, color:'rgba(10,22,40,0.45)', fontFamily:'Roboto,sans-serif' }}>2 messages</span>
+                  <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>2 messages</span>
                   <span style={{ width:3, height:3, borderRadius:'50%', background:'rgba(10,22,40,0.2)', display:'inline-block' }}/>
-                  <span style={{ fontSize:11, color:'rgba(10,22,40,0.45)', fontFamily:'Roboto,sans-serif' }}>Today</span>
+                  <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>Today</span>
                 </div>
               </div>
 
@@ -1291,9 +1291,9 @@ function OmnichannelSection() {
                   <div style={{ flex:1, minWidth:0 }}>
                     <div style={{ display:'flex', justifyContent:'space-between' }}>
                       <span style={{ fontSize:12, fontWeight:600, color:'#202124', fontFamily:'Roboto,sans-serif' }}>James Hargreaves</span>
-                      <span style={{ fontSize:11, color:'rgba(10,22,40,0.4)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
+                      <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
                     </div>
-                    <p style={{ fontSize:11, color:'rgba(10,22,40,0.5)', lineHeight:1.4, marginTop:1, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontFamily:'Roboto,sans-serif' }}>
+                    <p style={{ fontSize:11, color:'rgba(10,22,40,0.60)', lineHeight:1.4, marginTop:1, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontFamily:'Roboto,sans-serif' }}>
                       Hi, I'd like to upgrade from Starter to the Pro plan...
                     </p>
                   </div>
@@ -1312,9 +1312,9 @@ function OmnichannelSection() {
                         <span style={{ fontSize:13, fontWeight:600, color:'#202124', fontFamily:'Roboto,sans-serif' }}>Kai</span>
                         <span style={{ fontSize:11, fontWeight:600, color:'#1a7aab', background:'rgba(26,122,171,0.10)', borderRadius:4, padding:'1px 6px' }}>AI Agent</span>
                       </div>
-                      <span style={{ fontSize:11, color:'rgba(10,22,40,0.4)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
+                      <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
                     </div>
-                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.42)', fontFamily:'Roboto,sans-serif' }}>kai@awtg.co.uk → james.h@email.com</span>
+                    <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>kai@awtg.co.uk → james.h@email.com</span>
                   </div>
                 </div>
 
@@ -1333,7 +1333,7 @@ function OmnichannelSection() {
 
               {/* Reply input */}
               <div style={{ margin:'0 14px 12px', border:'1px solid #e4e8ed', borderRadius:8, padding:'8px 12px', flexShrink:0 }}>
-                <p style={{ fontSize:12, color:'rgba(10,22,40,0.30)', fontFamily:'Roboto,sans-serif' }}>Reply...</p>
+                <p style={{ fontSize:12, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>Reply...</p>
               </div>
             </div>
 
@@ -1556,7 +1556,7 @@ export default function KaiPage() {
                     </div>
                     <div>
                       <p className="text-[#0a1628] text-[14px] font-semibold leading-snug mb-0.5">{item.title}</p>
-                      <p className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{item.desc}</p>
+                      <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -1568,9 +1568,9 @@ export default function KaiPage() {
               {/* Card header */}
               <div style={{ padding:'20px 22px 12px' }}>
                 <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#0a1628', lineHeight:1.35, fontFamily:'Roboto,sans-serif', letterSpacing:'-0.01em' }}>
-                  Client Escalation rate reduce from{' '}
+                  Average client escalation rates drop from{' '}
                   <span style={{ color:'#1a7aab' }}>40%</span> to{' '}
-                  <span style={{ color:'#1a7aab' }}>10%</span>
+                  <span style={{ color:'#1a7aab' }}>10%</span> with Kai
                 </p>
               </div>
 
@@ -1581,7 +1581,7 @@ export default function KaiPage() {
 
               {/* Feature chips: what drove the reduction */}
               <div style={{ padding:'0 16px 18px' }}>
-                <p style={{ margin:'10px 0 10px', fontSize:9, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(10,22,40,0.38)', fontFamily:'Roboto,sans-serif' }}>
+                <p style={{ margin:'10px 0 10px', fontSize:11, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>
                   What drove this reduction
                 </p>
                 <div style={{ display:'flex', gap:8 }}>
