@@ -666,9 +666,9 @@ export default function IcmapPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { icon: faLayerGroup, stat: 'Filter',     label: 'by 2G, 3G, 4G, and 5G',               note: 'Compare every generation'         },
-              { icon: faMap,        stat: 'Overlay',    label: 'population and terrain data',          note: 'Add operational context'           },
-              { icon: faChartBar,   stat: 'Score',      label: 'gaps by severity and impact',          note: 'Quantify what matters most'        },
+              { icon: faLayerGroup, stat: 'Filter',     label: 'by 2G, 3G, and 5G',                   note: 'view coverage by technology in one place' },
+              { icon: faMap,        stat: 'Overlay',    label: 'population and terrain data',          note: 'Add real world context to each coverage area' },
+              { icon: faChartBar,   stat: 'Assess',     label: 'weak zones by severity and impact',    note: 'Understand which gaps matter most' },
               { icon: faBullseye,   stat: 'Prioritise', label: 'investment and deployment decisions',  note: 'Move from insight to action'       },
             ].map((item) => (
               <div
