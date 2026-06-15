@@ -270,14 +270,14 @@ function IntegrationsSection() {
               return (
                 <div
                   key={item.label}
-                  className={`relative flex flex-col items-center justify-center gap-2 p-4 min-h-[120px] transition-all duration-300 select-none ${
+                  className={`relative flex flex-col items-center justify-center gap-2 p-4 min-h-[120px] transition-all duration-200 select-none ${
                     item.isKai
                       ? 'z-10 [&_span]:hidden'
                       : isAdjacent
-                        ? 'bg-[#f9fcff] border border-[#228DC1]/18 hover:border-[#228DC1]/40 hover:shadow-sm cursor-default'
+                        ? 'bg-[#f9fcff] border border-[#228DC1]/18 hover:border-[#228DC1]/50 hover:shadow-[0_8px_24px_rgba(34,141,193,0.18)] hover:-translate-y-1.5 hover:scale-[1.06] hover:z-10 cursor-pointer'
                         : isCorner
-                          ? 'bg-white border border-gray-100 opacity-50 cursor-default'
-                          : 'bg-white border border-gray-100 hover:border-gray-200 hover:shadow-sm cursor-default'
+                          ? 'bg-white border border-gray-100 opacity-40 hover:opacity-80 hover:-translate-y-1 hover:scale-[1.05] hover:shadow-md hover:z-10 cursor-pointer'
+                          : 'bg-white border border-gray-100 hover:border-gray-200 hover:shadow-[0_8px_24px_rgba(0,0,0,0.10)] hover:-translate-y-1.5 hover:scale-[1.06] hover:z-10 cursor-pointer'
                   }`}
                   style={{
                     ...reveal(inView, d * 75),
