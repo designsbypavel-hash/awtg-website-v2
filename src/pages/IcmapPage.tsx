@@ -753,7 +753,7 @@ export default function IcmapPage() {
               From raw network data to coverage decisions
             </h2>
             <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.7] max-w-2xl">
-              iCMAP brings live and historical network data into one intelligent map, helping teams identify weak coverage, prioritise action, and plan investment where it will have the greatest impact.
+              iCMAP brings coverage, mapping and contextual data into one workspace, helping teams identify weak areas, understand local impact and plan improvements with clearer evidence.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
