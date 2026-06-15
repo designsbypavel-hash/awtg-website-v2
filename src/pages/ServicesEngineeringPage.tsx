@@ -588,17 +588,12 @@ export default function ServicesEngineeringPage() {
       <section className="border-t border-gray-100 bg-white py-24">
         <div ref={diffRef} className="mx-auto max-w-7xl px-8 lg:px-12">
 
-          {/* Eyebrow + two-column heading */}
-          <div style={reveal(diffInView, 0)} className="mb-14">
-            <span className="mb-5 block text-[11px] font-bold uppercase tracking-[0.22em] text-[#228DC1]">
-              Platform Differentiators
-            </span>
-            <div className="grid lg:grid-cols-2 gap-10 items-end">
-              <h2 className="font-heading text-[#0a1628] mb-0">Why SCAP is different</h2>
-              <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-                SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform.
-              </p>
-            </div>
+          {/* Heading + description */}
+          <div style={reveal(diffInView, 0)} className="mb-14 max-w-3xl">
+            <h2 className="font-heading text-[#0a1628] mb-5">Why SCAP is different</h2>
+            <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
+              SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform.
+            </p>
           </div>
 
           {/* Split: image left, feature cards right */}
