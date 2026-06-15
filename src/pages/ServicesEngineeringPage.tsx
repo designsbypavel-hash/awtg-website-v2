@@ -585,30 +585,76 @@ export default function ServicesEngineeringPage() {
       </section>
 
       {/* ── WHY SCAP IS DIFFERENT ─────────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-[#f8fafc] py-24">
+      <section className="border-t border-gray-100 bg-white py-24">
         <div ref={diffRef} className="mx-auto max-w-7xl px-8 lg:px-12">
-          <div style={reveal(diffInView, 0)}>
-            <SectionHeader
-              title="Why SCAP is different"
-              desc="SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform."
-            />
+
+          {/* Eyebrow + two-column heading */}
+          <div style={reveal(diffInView, 0)} className="mb-14">
+            <span className="mb-5 block text-[11px] font-bold uppercase tracking-[0.22em] text-[#228DC1]">
+              Platform Differentiators
+            </span>
+            <div className="grid lg:grid-cols-2 gap-10 items-end">
+              <h2 className="font-heading text-[#0a1628] mb-0">Why SCAP is different</h2>
+              <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
+                SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform.
+              </p>
+            </div>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {differentiators.map((d, i) => (
-              <div
-                key={d.label}
-                className="flex gap-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-[0_1px_8px_rgba(10,22,40,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(10,22,40,0.09)]"
-                style={reveal(diffInView, i * 80)}
-              >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl" style={{ background: `${d.color}12`, border: `1px solid ${d.color}20` }}>
-                  <FontAwesomeIcon icon={d.icon} className="h-5 w-5" style={{ color: d.color }} />
-                </div>
-                <div>
-                  <h3 className="mb-3 text-[17px] font-semibold leading-[1.3] text-[#0a1628]">{d.title}</h3>
-                  <p className="text-[14px] font-normal leading-[1.75] text-[#0a1628]/60">{d.desc}</p>
+
+          {/* Split: image left, feature cards right */}
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+
+            {/* Left: image with stat overlay */}
+            <div style={{ ...reveal(diffInView, 80), position: 'relative', borderRadius: 20, overflow: 'hidden', height: 480 }}>
+              <img
+                src="/images/insights/engineering-team.jpg"
+                alt="SCAP network operations team"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,22,40,0.06) 0%, transparent 40%, rgba(10,22,40,0.62) 100%)' }} />
+
+              {/* Floating stat card */}
+              <div style={{ position: 'absolute', bottom: 28, left: 28, right: 28 }}>
+                <div style={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.95)', padding: '20px 22px', boxShadow: '0 16px 48px rgba(10,22,40,0.18)', backdropFilter: 'blur(12px)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
+                    <div style={{ flexShrink: 0 }}>
+                      <p style={{ fontSize: 34, fontWeight: 900, lineHeight: 1, color: '#228DC1', margin: 0 }}>4-in-1</p>
+                      <p style={{ marginTop: 4, fontSize: 12, fontWeight: 700, color: '#0a1628', margin: '4px 0 0' }}>Integrated platform</p>
+                    </div>
+                    <div style={{ width: 1, height: 44, flexShrink: 0, background: '#e5e7eb' }} />
+                    <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.55, color: 'rgba(10,22,40,0.60)', margin: 0 }}>
+                      SMO, PM, CM and FM unified in a single operational view
+                    </p>
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Right: stacked feature cards */}
+            <div className="flex flex-col gap-3">
+              {differentiators.map((d, i) => (
+                <div
+                  key={d.label}
+                  className="group flex gap-5 rounded-xl border border-gray-100 bg-[#f9fafb] p-6 transition-all duration-300 hover:border-[#228DC1]/20 hover:bg-white hover:shadow-[0_8px_32px_rgba(34,141,193,0.08)]"
+                  style={reveal(diffInView, 120 + i * 80)}
+                >
+                  <div
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+                    style={{ background: `${d.color}12`, border: `1px solid ${d.color}22` }}
+                  >
+                    <FontAwesomeIcon icon={d.icon} className="h-4 w-4" style={{ color: d.color }} />
+                  </div>
+                  <div>
+                    <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: d.color }}>
+                      {d.label}
+                    </span>
+                    <h3 className="mb-1.5 text-[15px] font-semibold leading-[1.3] text-[#0a1628]">{d.title}</h3>
+                    <p className="text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">{d.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
