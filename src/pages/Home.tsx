@@ -258,120 +258,92 @@ function SectionHeader({
 
 // --- WHAT WE DO -------------------------------------------------------------
 
+const whatWeDoItems = [
+  {
+    label: 'AI Products & Software',
+    line: 'Kai, Aruva and bespoke AI — built for production, not proof of concept.',
+    href: '/solutions/generative-ai',
+    accent: '#228DC1',
+    tag: 'Generative AI',
+    image: '/images/insights/ai-innovation.jpg',
+  },
+  {
+    label: 'Private Networks',
+    line: 'Managed 4G/5G designed, deployed and monitored end-to-end. Live in weeks.',
+    href: '/solutions/mobile-private-networks',
+    accent: '#0ea472',
+    tag: '4G / 5G',
+    image: '/images/insights/private-networks.jpg',
+  },
+  {
+    label: 'Engineering & Consultancy',
+    line: '5G RF design, network testing and transformation strategy across 20+ countries.',
+    href: '/services/engineering',
+    accent: '#7c3aed',
+    tag: 'Global Delivery',
+    image: '/images/insights/engineering-team.jpg',
+  },
+]
+
 function WhatWeDo() {
   return (
-    <section className="bg-[#0a1628] py-24 border-t border-white/5 overflow-hidden">
+    <section className="py-24 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
-          <h2 className="font-heading text-white">
+          <h2 className="font-heading text-[#0a1628]">
             Three capabilities.<br />
             <span className="text-[#228DC1]">One partner.</span>
           </h2>
-          <p className="text-white/40 text-[15px] leading-[1.8] max-w-xs pb-1">
+          <p className="text-[#0a1628]/50 text-[15px] leading-[1.8] max-w-xs pb-1">
             End-to-end delivery across AI, private networks and engineering — under one accountable partner.
           </p>
         </div>
 
-        {/* Asymmetric grid: large left + two stacked right */}
-        <div className="grid lg:grid-cols-[1.5fr_1fr] gap-4">
-
-          {/* Large featured panel — AI */}
-          <Link
-            to="/solutions/generative-ai"
-            className="group relative overflow-hidden"
-            style={{ minHeight: 580 }}
-          >
-            <img
-              src="/images/insights/ai-innovation.jpg"
-              alt="AI Products & Software"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,22,40,0.96) 0%, rgba(10,22,40,0.65) 40%, rgba(10,22,40,0.18) 70%, transparent 100%)' }} />
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#228DC1]" />
-            <div className="relative flex flex-col justify-end h-full p-10 lg:p-12" style={{ minHeight: 580 }}>
-              <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-4">Generative AI</p>
-              <h3 className="text-white font-semibold leading-[1.15] mb-4" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
-                AI Products & Software
-              </h3>
-              <p className="text-white/60 text-[15px] leading-[1.75] mb-8" style={{ maxWidth: 420 }}>
-                Kai, Aruva and bespoke AI — built for production, not proof of concept.
-              </p>
-              <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#228DC1] group-hover:gap-3 transition-all duration-200">
-                Explore
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-            </div>
-          </Link>
-
-          {/* Right column — two stacked panels */}
-          <div className="flex flex-col gap-4">
-
-            {/* Private Networks */}
+        {/* Cards: image on top, text below — no text over image */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {whatWeDoItems.map((item) => (
             <Link
-              to="/solutions/mobile-private-networks"
-              className="group relative overflow-hidden flex-1"
-              style={{ minHeight: 283 }}
+              key={item.label}
+              to={item.href}
+              className="group flex flex-col bg-white border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-[0_8px_40px_rgba(10,22,40,0.10)] transition-all duration-300"
             >
-              <img
-                src="/images/insights/private-networks.jpg"
-                alt="Private Networks"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,22,40,0.96) 0%, rgba(10,22,40,0.60) 45%, rgba(10,22,40,0.15) 75%, transparent 100%)' }} />
-              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#0ea472]" />
-              <div className="relative flex flex-col justify-end h-full p-8" style={{ minHeight: 283 }}>
-                <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#0ea472] mb-3">4G / 5G</p>
-                <h3 className="text-white font-semibold leading-snug mb-2" style={{ fontSize: 'clamp(17px, 1.6vw, 20px)' }}>
-                  Private Networks
-                </h3>
-                <p className="text-white/55 text-[13px] leading-[1.7] mb-5">
-                  Managed 4G/5G designed, deployed and monitored end-to-end. Live in weeks.
+              {/* Image — pure photo, no text overlay */}
+              <div className="relative overflow-hidden" style={{ height: 260 }}>
+                <div className="absolute top-0 left-0 right-0 h-[3px] z-10" style={{ background: item.accent }} />
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Text block — fully separate from image */}
+              <div className="flex flex-col flex-1 px-7 pt-6 pb-8">
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] mb-4" style={{ color: item.accent }}>
+                  {item.tag}
                 </p>
-                <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#0ea472] group-hover:gap-3 transition-all duration-200">
+                <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
+                  {item.label}
+                </h3>
+                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78] flex-1 mb-7">
+                  {item.line}
+                </p>
+                <span
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold group-hover:gap-3 transition-all duration-200"
+                  style={{ color: item.accent }}
+                >
                   Explore
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
                     <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </span>
               </div>
             </Link>
-
-            {/* Engineering & Consultancy */}
-            <Link
-              to="/services/engineering"
-              className="group relative overflow-hidden flex-1"
-              style={{ minHeight: 283 }}
-            >
-              <img
-                src="/images/insights/engineering-team.jpg"
-                alt="Engineering & Consultancy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,22,40,0.96) 0%, rgba(10,22,40,0.60) 45%, rgba(10,22,40,0.15) 75%, transparent 100%)' }} />
-              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#7c3aed]" />
-              <div className="relative flex flex-col justify-end h-full p-8" style={{ minHeight: 283 }}>
-                <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#7c3aed] mb-3">Global Delivery</p>
-                <h3 className="text-white font-semibold leading-snug mb-2" style={{ fontSize: 'clamp(17px, 1.6vw, 20px)' }}>
-                  Engineering & Consultancy
-                </h3>
-                <p className="text-white/55 text-[13px] leading-[1.7] mb-5">
-                  5G RF design, network testing and transformation strategy across 20+ countries.
-                </p>
-                <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#7c3aed] group-hover:gap-3 transition-all duration-200">
-                  Explore
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </Link>
-
-          </div>
+          ))}
         </div>
+
       </div>
     </section>
   )
