@@ -526,12 +526,12 @@ function IcmapHeroDemo() {
                 </div>
                 <span style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>iCMAP</span>
               </div>
-              <div style={{ fontSize: 11, color: '#aaa', marginTop: 3, fontFamily: 'sans-serif' }}>Coverage Intelligence</div>
+              <div style={{ fontSize: 11, color: '#666', marginTop: 3, fontFamily: 'sans-serif' }}>Coverage Intelligence</div>
             </div>
 
             {/* Layers */}
             <div>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: '#666', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
               {HERO_LAYERS.map((l, i) => (
                 <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4, padding: '3px 5px', borderRadius: 4, background: layerIdx === i ? '#f0f7ff' : 'transparent', transition: 'background 0.35s' }}>
                   <div style={{ width: 11, height: 11, borderRadius: '50%', flexShrink: 0, background: layerIdx === i ? '#228DC1' : '#fff', border: `1.5px solid ${layerIdx === i ? '#228DC1' : '#d0d0d0'}`, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -544,7 +544,7 @@ function IcmapHeroDemo() {
 
             {/* Legend — from zoneStyle */}
             <div style={{ flex: 1 }}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: '#bbb', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: '#666', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
               {HERO_QUALITY_LEVELS.map((quality, index) => {
                 const isActive = zoneIdx % HERO_QUALITY_LEVELS.length === index
                 return (
@@ -558,10 +558,10 @@ function IcmapHeroDemo() {
 
             {/* Active zone card */}
             <div style={{ background: '#f8fafc', borderRadius: 5, padding: '5px 7px', border: `1px solid ${activeQuality.fill}66`, transition: 'border-color 0.4s' }}>
-              <div style={{ fontSize: 11, color: '#aaa', fontFamily: 'sans-serif', marginBottom: 2, textTransform: 'uppercase' }}>Coverage zone</div>
+              <div style={{ fontSize: 11, color: '#666', fontFamily: 'sans-serif', marginBottom: 2, textTransform: 'uppercase' }}>Coverage zone</div>
               <div style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>{activeQuality.label}</div>
               <div style={{ fontSize: 11, color: activeQuality.stroke, fontFamily: 'sans-serif', marginTop: 1, fontWeight: 600 }}>{activeQuality.signal}</div>
-              <div style={{ fontSize: 11, color: '#777', fontFamily: 'sans-serif' }}>{activeZone.population}</div>
+              <div style={{ fontSize: 11, color: '#666', fontFamily: 'sans-serif' }}>{activeZone.population}</div>
             </div>
           </div>
 
@@ -585,7 +585,7 @@ function IcmapHeroDemo() {
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               borderTop: '1px solid rgba(0,0,0,0.06)',
             }}>
-              <span style={{ fontSize: 11, color: '#bbb', fontFamily: 'sans-serif' }}>OpenStreetMap - CartoDB Light</span>
+              <span style={{ fontSize: 11, color: '#666', fontFamily: 'sans-serif' }}>OpenStreetMap - CartoDB Light</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#22c55e' }} />
                 <span style={{ fontSize: 11, color: '#22c55e', fontFamily: 'sans-serif', fontWeight: 600 }}>LIVE</span>
@@ -639,11 +639,11 @@ export default function IcmapPage() {
                 />
               </div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
-                Coverage Map intelligence<br />
-                that drives decisions.
+                Coverage intelligence for<br />
+                smarter network decisions.
               </h1>
               <p className="text-[#0a1628]/60 text-base font-normal leading-[1.7] max-w-xl mb-10">
-                iCMAP helps organisations monitor, manage, and optimise complex connectivity environments, giving teams real-time visibility, faster issue detection, and better control across network operations.
+                iCMAP helps organisations visualise, analyse and report on mobile network coverage across geographic areas. It brings coverage data, signal information and contextual layers into one map, so teams can identify weak zones, compare technologies and plan where to act next.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
@@ -681,7 +681,7 @@ export default function IcmapPage() {
                 </div>
                 <p className="font-bold text-[#0a1628] text-2xl leading-none mb-2 tracking-tight">{item.stat}</p>
                 <p className="text-[#0a1628] text-[13px] font-semibold mb-1">{item.label}</p>
-                <p className="text-[#0a1628]/55 text-[13px] font-normal leading-relaxed">{item.note}</p>
+                <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.note}</p>
               </div>
             ))}
           </div>
@@ -777,10 +777,10 @@ export default function IcmapPage() {
                     </span>
                   </div>
                   <h3 className="text-[#0a1628] font-semibold text-base leading-[1.3] mb-3">{step.label}</h3>
-                  <p className="text-[#0a1628]/58 text-[14px] font-normal leading-[1.75] mb-8">{step.desc}</p>
+                  <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.75] mb-8">{step.desc}</p>
                   <div className="mt-auto pt-5 border-t border-gray-100">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#1a7aab] mb-2">{step.detailLabel}</p>
-                    <p className="text-[#0a1628]/48 text-[13px] font-normal leading-[1.65]">{step.detail}</p>
+                    <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.65]">{step.detail}</p>
                   </div>
                 </div>
               </div>
