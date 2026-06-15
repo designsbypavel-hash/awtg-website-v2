@@ -34,16 +34,16 @@ const footerCols = [
     links: [
       { label: 'Kai — Sales & Customer Services', href: '/products/kai' },
       { label: 'Aruva — AI for Education', href: '/products/aruva' },
-      { label: 'Generative AI', href: '/services/ai-ml' },
-      { label: 'Digital Transformation', href: '/services/digital-transformation' },
+      { label: 'Generative AI', href: '/products/kai' },
+      { label: 'Digital Transformation', href: '/about' },
     ],
   },
   {
     title: 'Connectivity',
     links: [
       { label: 'iCMAP', href: '/products/icmap' },
-      { label: 'SCAP', href: '/services/engineering' },
-      { label: 'iDAMS', href: '/services/iot' },
+      { label: 'SCAP', href: '/contact' },
+      { label: 'iDAMS', href: '/contact' },
       { label: 'Space & Defence', href: '/connectivity/space-defence' },
     ],
   },

@@ -9,7 +9,6 @@ import {
   IBecomePage,
   InnovationPage,
   IYouthPage,
-  ServicesOverviewPage,
   TermsPage,
 } from './pages/UtilityPages'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
@@ -18,13 +17,6 @@ import CareerRoleDetailPage from './pages/CareerRoleDetailPage'
 import CareerApplyPage from './pages/CareerApplyPage'
 
 
-// Services
-import ServicesConsultancyPage from './pages/ServicesConsultancyPage'
-import ServicesEngineeringPage from './pages/ServicesEngineeringPage'
-import ServicesSoftwarePage from './pages/ServicesSoftwarePage'
-import ServicesDigitalTransformationPage from './pages/ServicesDigitalTransformationPage'
-import ServicesIoTPage from './pages/ServicesIoTPage'
-import ServicesAIMLPage from './pages/ServicesAIMLPage'
 
 // AI sector pages
 import AiEducationPage from './pages/AiEducationPage'
@@ -99,14 +91,6 @@ export default function App() {
 
         {/* Solutions */}
 
-        {/* Services */}
-        <Route path="services" element={<ServicesOverviewPage />} />
-        <Route path="services/consultancy" element={<ServicesConsultancyPage />} />
-        <Route path="services/engineering" element={<ServicesEngineeringPage />} />
-        <Route path="services/software" element={<ServicesSoftwarePage />} />
-        <Route path="services/digital-transformation" element={<ServicesDigitalTransformationPage />} />
-        <Route path="services/iot" element={<ServicesIoTPage />} />
-        <Route path="services/ai-ml" element={<ServicesAIMLPage />} />
 
         {/* AI sector pages */}
         <Route path="ai/education" element={<AiEducationPage />} />

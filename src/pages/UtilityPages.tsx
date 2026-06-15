@@ -73,12 +73,12 @@ export function ServicesOverviewPage() {
       title="How AWTG delivers AI, networks and software."
       intro="A single delivery partner for strategy, engineering, software, IoT and AI programmes that need to move from plan to production without losing control."
       cards={[
-        { title: 'Consultancy', desc: 'Strategic advisory, roadmaps and procurement support for complex technology decisions.', href: '/services/consultancy' },
-        { title: 'Engineering', desc: 'RF, 5G and network engineering delivered by teams used to critical environments.', href: '/services/engineering' },
-        { title: 'Software Development', desc: 'Custom platforms, dashboards and operational tools built around real workflows.', href: '/services/software' },
-        { title: 'Digital Transformation', desc: 'Modernisation programmes that connect people, systems and measurable outcomes.', href: '/services/digital-transformation' },
-        { title: 'IoT Platforms', desc: 'Device, sensor and data platforms for connected operations and public services.', href: '/services/iot' },
-        { title: 'AI/ML Solutions', desc: 'Models, agents and automation deployed safely inside enterprise environments.', href: '/services/ai-ml' },
+        { title: 'Consultancy', desc: 'Strategic advisory, roadmaps and procurement support for complex technology decisions.', href: '/contact' },
+        { title: 'Engineering', desc: 'RF, 5G and network engineering delivered by teams used to critical environments.', href: '/contact' },
+        { title: 'Software Development', desc: 'Custom platforms, dashboards and operational tools built around real workflows.', href: '/contact' },
+        { title: 'Digital Transformation', desc: 'Modernisation programmes that connect people, systems and measurable outcomes.', href: '/about' },
+        { title: 'IoT Platforms', desc: 'Device, sensor and data platforms for connected operations and public services.', href: '/contact' },
+        { title: 'AI/ML Solutions', desc: 'Models, agents and automation deployed safely inside enterprise environments.', href: '/products/kai' },
       ]}
     />
   )
@@ -94,7 +94,7 @@ export function InnovationPage() {
       cards={[
         { title: 'Kai — AI Agent', desc: 'Production-ready conversational AI for sales, support and customer services.', href: '/products/kai' },
         { title: 'Aruva — AI for Education', desc: 'AI-powered learning and administration platform built for schools and universities.', href: '/products/aruva' },
-        { title: 'iDAMS', desc: 'Connected infrastructure and IoT management for smart operations.', href: '/services/iot' },
+        { title: 'iDAMS', desc: 'Connected infrastructure and IoT management for smart operations.', href: '/contact' },
       ]}
     />
   )

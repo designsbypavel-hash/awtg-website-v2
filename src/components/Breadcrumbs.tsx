@@ -60,10 +60,6 @@ const LABELS: Record<string, string> = {
 }
 
 const PATH_CRUMBS: Record<string, Omit<Crumb, 'isLast'>[]> = {
-  '/services/engineering': [
-    { label: 'Connectivity' },
-    { href: '/services/engineering', label: 'SCAP' },
-  ],
 }
 
 function toLabel(segment: string): string {

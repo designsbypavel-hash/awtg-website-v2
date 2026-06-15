@@ -262,7 +262,7 @@ const whatWeDoItems = [
   {
     label: 'AI Products & Software',
     line: 'Kai, Aruva and bespoke AI — built for production, not proof of concept.',
-    href: '/services/ai-ml',
+    href: '/products/kai',
     accent: '#228DC1',
     tag: 'Generative AI',
     image: '/images/insights/ai-innovation.jpg',
@@ -270,7 +270,7 @@ const whatWeDoItems = [
   {
     label: 'Private Networks',
     line: 'Managed 4G/5G designed, deployed and monitored end-to-end. Live in weeks.',
-    href: '/services/engineering',
+    href: '/contact',
     accent: '#0ea472',
     tag: '4G / 5G',
     image: '/images/insights/private-networks.jpg',
@@ -278,7 +278,7 @@ const whatWeDoItems = [
   {
     label: 'Engineering & Consultancy',
     line: '5G RF design, network testing and transformation strategy across 20+ countries.',
-    href: '/services/engineering',
+    href: '/contact',
     accent: '#7c3aed',
     tag: 'Global Delivery',
     image: '/images/insights/engineering-team.jpg',
@@ -346,7 +346,7 @@ const solutionPanels = [
     title: 'Enabling the AI supercycle in wireless networks',
     desc: 'AWTG provides MNO-grade testing, RF optimisation, and AI-powered network intelligence to help operators and vendors deploy, validate, and scale 4G/5G networks with confidence.',
     link: 'Discover telecoms solutions',
-    href: '/services/ai-ml',
+    href: '/products/kai',
     img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&auto=format&fit=crop',
     flip: false,
   },
@@ -354,7 +354,7 @@ const solutionPanels = [
     title: 'Scale faster with private wireless and AI',
     desc: "Deliver enterprise-grade connectivity and intelligence without the infrastructure burden. AWTG's PNaaS and Generative AI platforms give your business a decisive operational edge.",
     link: 'Explore enterprise platforms',
-    href: '/services/engineering',
+    href: '/contact',
     img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80&auto=format&fit=crop',
     flip: true,
   },
@@ -534,7 +534,7 @@ const tabs = [
       'AI-driven KPI optimisation across 4G/5G estates',
       'Partnership with Lime Microsystems for AI/ML radio technology',
     ],
-    href: '/services/ai-ml',
+    href: '/products/kai',
     img: 'https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=700&q=80&auto=format&fit=crop',
     imgBg: '#1e1b4b',
   },
@@ -548,7 +548,7 @@ const tabs = [
       '99.99% uptime SLA guaranteed',
       'Scales seamlessly as your operations grow',
     ],
-    href: '/services/engineering',
+    href: '/contact',
     img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&q=80&auto=format&fit=crop',
     imgBg: '#0c2340',
   },
@@ -562,7 +562,7 @@ const tabs = [
       'Enterprise knowledge base and RAG pipelines',
       'Workflow automation and intelligent agents',
     ],
-    href: '/services/ai-ml',
+    href: '/products/kai',
     img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80&auto=format&fit=crop',
     imgBg: '#1a0030',
   },
@@ -726,7 +726,7 @@ export function PNaaS() {
               AWTG's Private Network as a Service delivers enterprise-grade 4G/5G connectivity, fully managed, infinitely scalable, built around your operations.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/services/engineering"
+              <Link to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 hover:border-[#228DC1] hover:bg-[#228DC1]/5 text-[#0a1628]/70 text-sm font-medium transition-all">
                 Explore PNaaS
               </Link>
@@ -953,7 +953,7 @@ const articles = [
     title: 'IDAMS: Unlocking Street Asset Value for Mobile Network Operators',
     excerpt: 'How AWTG\'s asset discovery platform helps MNOs and asset owners identify, acquire and monetise street infrastructure for small cell deployment.',
     img: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80&auto=format&fit=crop',
-    href: '/services/iot',
+    href: '/contact',
   },
   {
     tag: 'Telecoms AI',
@@ -964,7 +964,7 @@ const articles = [
     title: 'SCAP: AI-Driven RAN Management Across Multi-Vendor Networks',
     excerpt: 'How AWTG\'s Service Correlation Assurance Platform gives operators unified performance management, fault detection and configuration control.',
     img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop',
-    href: '/services/engineering',
+    href: '/contact',
   },
 ]
 

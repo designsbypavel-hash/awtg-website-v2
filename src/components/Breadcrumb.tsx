@@ -9,13 +9,6 @@ const PATH_LABELS: Record<string, string> = {
   '/products/aruva':                     'AI for Education',
   // ── Products (Connectivity section) ───────────────────────────────
   '/products/icmap':                     'iCMAP',
-  // ── Services ──────────────────────────────────────────────────────
-  '/services/consultancy':               'Digital Transformation',
-  '/services/engineering':               'Engineering',
-  '/services/software':                  'Software Development',
-  '/services/digital-transformation':    'Digital Transformation',
-  '/services/iot':                       'iDAMS',
-  '/services/ai-ml':                     'AI & ML',
   // ── Industries ────────────────────────────────────────────────────
   '/industries/enterprise':             'Enterprise',
   '/industries/telecoms':              'Telecoms',
