@@ -427,10 +427,6 @@ export default function Navigation() {
                                 className={`h-full w-full ${item.imageFit === 'contain' ? 'object-contain p-6' : 'object-cover'}`}
                               />
                               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(10,22,40,0.08)_100%)]" />
-                              <div className="absolute left-4 top-4 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-[#0a1628]">
-                                {item.badge}
-                              </div>
-                              <span className="absolute bottom-4 right-4 text-[#0a1628] transition-transform duration-200 group-hover:translate-x-1">→</span>
                             </div>
                             <h3 className="mt-4 text-[#0a1628] text-[14px] font-semibold tracking-[-0.01em]">
                               {item.label}
