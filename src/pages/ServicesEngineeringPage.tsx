@@ -530,9 +530,9 @@ export default function ServicesEngineeringPage() {
         <div ref={mvRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
             <div style={reveal(mvInView, 0)}>
-              <h2 className="font-heading mb-6 text-white">Built for real-world multi-vendor environments.</h2>
+              <h2 className="font-heading mb-6 text-white">Built for multi-vendor network environments.</h2>
               <p className="mb-8 text-[16px] font-normal leading-[1.78] text-white/60">
-                SCAP integrates equipment, systems and network functions from different suppliers through standards-based interfaces and extensible adapters. Support for new vendors can be implemented and added as network requirements evolve.
+                SCAP connects network equipment, systems and functions from different suppliers through standards-based interfaces and adaptable integration layers. It helps operators bring vendor data into one operational view, while allowing new integrations to be added as network requirements evolve.
               </p>
               <div className="mb-8">
                 <div className="flex flex-wrap gap-2">
