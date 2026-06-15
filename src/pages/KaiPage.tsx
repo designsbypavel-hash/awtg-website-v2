@@ -270,16 +270,33 @@ function IntegrationsSection() {
               return (
                 <div
                   key={item.label}
-                  className={`relative flex flex-col items-center justify-center gap-2 p-4 min-h-[120px] transition-[transform,box-shadow,border-color,opacity] duration-300 ease-out will-change-transform select-none ${
+                  className={`relative flex flex-col items-center justify-center gap-2 p-4 min-h-[120px] select-none ${
                     item.isKai
                       ? 'z-10 [&_span]:hidden'
                       : isAdjacent
-                        ? 'bg-[#f9fcff] border border-[#228DC1]/18 hover:border-[#228DC1]/50 hover:shadow-[0_8px_24px_rgba(34,141,193,0.18)] hover:-translate-y-1.5 hover:scale-[1.06] hover:z-10 cursor-pointer'
+                        ? 'bg-[#f9fcff] border border-[#228DC1]/18 cursor-pointer'
                         : isCorner
-                          ? 'bg-white border border-gray-100 opacity-40 hover:opacity-80 hover:-translate-y-1 hover:scale-[1.05] hover:shadow-md hover:z-10 cursor-pointer'
-                          : 'bg-white border border-gray-100 hover:border-gray-200 hover:shadow-[0_8px_24px_rgba(0,0,0,0.10)] hover:-translate-y-1.5 hover:scale-[1.06] hover:z-10 cursor-pointer'
+                          ? 'bg-white border border-gray-100 opacity-40 cursor-pointer'
+                          : 'bg-white border border-gray-100 cursor-pointer'
                   }`}
+                  onMouseEnter={item.isKai ? undefined : e => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.transform = 'translateY(-6px) scale(1.05)'
+                    el.style.boxShadow = isAdjacent
+                      ? '0 12px 28px rgba(34,141,193,0.20)'
+                      : isCorner
+                        ? '0 8px 20px rgba(0,0,0,0.10)'
+                        : '0 12px 28px rgba(0,0,0,0.12)'
+                    if (isCorner) el.style.opacity = '0.85'
+                  }}
+                  onMouseLeave={item.isKai ? undefined : e => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.transform = ''
+                    el.style.boxShadow = ''
+                    if (isCorner) el.style.opacity = ''
+                  }}
                   style={{
+                    transition: 'transform 420ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 420ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 420ms ease',
                     ...reveal(inView, d * 75),
                     ...(item.isKai ? {
                       background: '#ffffff',
