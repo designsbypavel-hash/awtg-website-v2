@@ -10,12 +10,7 @@ interface CTASectionProps {
   eyebrow?: string
 }
 
-const defaultStats = [
-  { label: 'Network uptime SLA', value: '99.99%', color: '#228DC1' },
-  { label: 'Projects delivered', value: '500+', color: '#0ea472' },
-  { label: 'Countries served', value: '40+', color: '#7c3aed' },
-  { label: 'Years of expertise', value: '20+', color: '#f59e0b' },
-]
+const DEFAULT_IMAGE = '/images/insights/connectivity.jpg'
 
 export default function CTASection({
   title = 'Ready to Transform Your Network?',
@@ -79,28 +74,12 @@ export default function CTASection({
           {/* Right — white inset panel */}
           <div className="p-5 lg:p-6">
             <div className="rounded-xl overflow-hidden h-full bg-white relative flex flex-col justify-center" style={{ minHeight: 320 }}>
-              {image ? (
                 <img
-                  src={image}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover"
-                  aria-hidden="true"
-                />
-              ) : (
-                <div className="px-6 py-8 space-y-3">
-                  {defaultStats.map(stat => (
-                    <div
-                      key={stat.label}
-                      className="flex items-center justify-between px-5 py-4 rounded-lg bg-[#f8fafc] border border-gray-100"
-                    >
-                      <span className="text-[#0a1628]/50 text-[13px] font-medium">{stat.label}</span>
-                      <span className="font-bold text-[20px] leading-none" style={{ color: stat.color }}>
-                        {stat.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
+                src={image ?? DEFAULT_IMAGE}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover"
+                aria-hidden="true"
+              />
             </div>
           </div>
 
