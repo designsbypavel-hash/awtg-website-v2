@@ -16,13 +16,6 @@ const PATH_LABELS: Record<string, string> = {
   '/services/digital-transformation':    'Digital Transformation',
   '/services/iot':                       'iDAMS',
   '/services/ai-ml':                     'AI & ML',
-  // ── Solutions ─────────────────────────────────────────────────────
-  '/solutions/mobile-private-networks':  'Mobile Private Networks',
-  '/solutions/telecoms-ai':             'Telecoms AI',
-  '/solutions/generative-ai':           'Generative AI',
-  '/solutions/smart-cities':            'Smart Cities',
-  '/solutions/industry-4':             'Manufacturing',
-  '/solutions/smart-health':           'Smart Health',
   // ── Industries ────────────────────────────────────────────────────
   '/industries/enterprise':             'Enterprise',
   '/industries/telecoms':              'Telecoms',

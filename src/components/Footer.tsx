@@ -34,7 +34,7 @@ const footerCols = [
     links: [
       { label: 'Kai — Sales & Customer Services', href: '/products/kai' },
       { label: 'Aruva — AI for Education', href: '/products/aruva' },
-      { label: 'Generative AI', href: '/solutions/generative-ai' },
+      { label: 'Generative AI', href: '/services/ai-ml' },
       { label: 'Digital Transformation', href: '/services/digital-transformation' },
     ],
   },

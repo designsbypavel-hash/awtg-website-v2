@@ -29,7 +29,7 @@ export default function ServicesSoftwarePage() {
       proofTitle="Software that belongs inside the operation."
       proof="The best platforms feel like part of the work. AWTG combines product thinking, systems integration and engineering discipline so software becomes useful quickly."
       related={[
-        { label: 'Generative AI', href: '/solutions/generative-ai' },
+        { label: 'Kai — AI Agent', href: '/products/kai' },
         { label: 'IoT Platforms', href: '/services/iot' },
         { label: 'Contact AWTG', href: '/contact' },
       ]}

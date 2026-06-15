@@ -262,7 +262,7 @@ const whatWeDoItems = [
   {
     label: 'AI Products & Software',
     line: 'Kai, Aruva and bespoke AI — built for production, not proof of concept.',
-    href: '/solutions/generative-ai',
+    href: '/services/ai-ml',
     accent: '#228DC1',
     tag: 'Generative AI',
     image: '/images/insights/ai-innovation.jpg',
@@ -270,7 +270,7 @@ const whatWeDoItems = [
   {
     label: 'Private Networks',
     line: 'Managed 4G/5G designed, deployed and monitored end-to-end. Live in weeks.',
-    href: '/solutions/mobile-private-networks',
+    href: '/services/engineering',
     accent: '#0ea472',
     tag: '4G / 5G',
     image: '/images/insights/private-networks.jpg',
@@ -346,7 +346,7 @@ const solutionPanels = [
     title: 'Enabling the AI supercycle in wireless networks',
     desc: 'AWTG provides MNO-grade testing, RF optimisation, and AI-powered network intelligence to help operators and vendors deploy, validate, and scale 4G/5G networks with confidence.',
     link: 'Discover telecoms solutions',
-    href: '/solutions/telecoms-ai',
+    href: '/services/ai-ml',
     img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&auto=format&fit=crop',
     flip: false,
   },
@@ -354,7 +354,7 @@ const solutionPanels = [
     title: 'Scale faster with private wireless and AI',
     desc: "Deliver enterprise-grade connectivity and intelligence without the infrastructure burden. AWTG's PNaaS and Generative AI platforms give your business a decisive operational edge.",
     link: 'Explore enterprise platforms',
-    href: '/solutions/mobile-private-networks',
+    href: '/services/engineering',
     img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80&auto=format&fit=crop',
     flip: true,
   },
@@ -362,7 +362,7 @@ const solutionPanels = [
     title: 'Intelligent infrastructure for the communities of tomorrow',
     desc: 'From NHS connectivity to iRegen urban platforms and smart education, AWTG delivers AI-driven public services that improve outcomes for citizens and communities.',
     link: 'Discover smart cities solutions',
-    href: '/solutions/smart-cities',
+    href: '/contact',
     img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop',
     flip: false,
   },
@@ -534,7 +534,7 @@ const tabs = [
       'AI-driven KPI optimisation across 4G/5G estates',
       'Partnership with Lime Microsystems for AI/ML radio technology',
     ],
-    href: '/solutions/telecoms-ai',
+    href: '/services/ai-ml',
     img: 'https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=700&q=80&auto=format&fit=crop',
     imgBg: '#1e1b4b',
   },
@@ -548,7 +548,7 @@ const tabs = [
       '99.99% uptime SLA guaranteed',
       'Scales seamlessly as your operations grow',
     ],
-    href: '/solutions/mobile-private-networks',
+    href: '/services/engineering',
     img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&q=80&auto=format&fit=crop',
     imgBg: '#0c2340',
   },
@@ -562,7 +562,7 @@ const tabs = [
       'Enterprise knowledge base and RAG pipelines',
       'Workflow automation and intelligent agents',
     ],
-    href: '/solutions/generative-ai',
+    href: '/services/ai-ml',
     img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80&auto=format&fit=crop',
     imgBg: '#1a0030',
   },
@@ -576,7 +576,7 @@ const tabs = [
       'NHS and public sector connectivity solutions',
       'Community digital inclusion programmes',
     ],
-    href: '/solutions/smart-cities',
+    href: '/contact',
     img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=700&q=80&auto=format&fit=crop',
     imgBg: '#001a10',
   },
@@ -726,7 +726,7 @@ export function PNaaS() {
               AWTG's Private Network as a Service delivers enterprise-grade 4G/5G connectivity, fully managed, infinitely scalable, built around your operations.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/solutions/mobile-private-networks"
+              <Link to="/services/engineering"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 hover:border-[#228DC1] hover:bg-[#228DC1]/5 text-[#0a1628]/70 text-sm font-medium transition-all">
                 Explore PNaaS
               </Link>

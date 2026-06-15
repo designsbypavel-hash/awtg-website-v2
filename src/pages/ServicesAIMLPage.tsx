@@ -29,8 +29,8 @@ export default function ServicesAIMLPage() {
       proofTitle="AI delivery needs governance and engineering."
       proof="AWTG brings together data science, software, infrastructure and domain expertise so intelligent systems can move safely into production."
       related={[
-        { label: 'Generative AI', href: '/solutions/generative-ai' },
-        { label: 'Telecoms AI', href: '/solutions/telecoms-ai' },
+        { label: 'Kai — AI Agent', href: '/products/kai' },
+        { label: 'Aruva — AI for Education', href: '/products/aruva' },
         { label: 'Consultancy', href: '/services/consultancy' },
       ]}
     />

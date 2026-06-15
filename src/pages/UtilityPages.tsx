@@ -92,9 +92,9 @@ export function InnovationPage() {
       title="Applied innovation, built for real-world deployment."
       intro="AWTG focuses innovation on systems that organisations can actually adopt: AI workflows, private networks, smart infrastructure and digital platforms with measurable value."
       cards={[
-        { title: 'Generative AI', desc: 'Production-ready GenAI for enterprise and public sector workflows.', href: '/solutions/generative-ai' },
-        { title: 'Telecoms AI', desc: 'AI-powered network intelligence and optimisation for operators and vendors.', href: '/solutions/telecoms-ai' },
-        { title: 'Smart Cities', desc: 'Connected infrastructure for better public services and urban operations.', href: '/solutions/smart-cities' },
+        { title: 'Kai — AI Agent', desc: 'Production-ready conversational AI for sales, support and customer services.', href: '/products/kai' },
+        { title: 'Aruva — AI for Education', desc: 'AI-powered learning and administration platform built for schools and universities.', href: '/products/aruva' },
+        { title: 'iDAMS', desc: 'Connected infrastructure and IoT management for smart operations.', href: '/services/iot' },
       ]}
     />
   )

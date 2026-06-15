@@ -17,13 +17,6 @@ import CookiePolicyPage from './pages/CookiePolicyPage'
 import CareerRoleDetailPage from './pages/CareerRoleDetailPage'
 import CareerApplyPage from './pages/CareerApplyPage'
 
-// Solutions
-import MobilePrivateNetworksPage from './pages/MobilePrivateNetworksPage'
-import TelecomsAIPage from './pages/TelecomsAIPage'
-import GenerativeAIPage from './pages/GenerativeAIPage'
-import SmartCitiesPage from './pages/SmartCitiesPage'
-import Industry4Page from './pages/Industry4Page'
-import SmartHealthPage from './pages/SmartHealthPage'
 
 // Services
 import ServicesConsultancyPage from './pages/ServicesConsultancyPage'
@@ -105,12 +98,6 @@ export default function App() {
         <Route path="products/icmap" element={<IcmapPage />} />
 
         {/* Solutions */}
-        <Route path="solutions/mobile-private-networks" element={<MobilePrivateNetworksPage />} />
-        <Route path="solutions/telecoms-ai" element={<TelecomsAIPage />} />
-        <Route path="solutions/generative-ai" element={<GenerativeAIPage />} />
-        <Route path="solutions/smart-cities" element={<SmartCitiesPage />} />
-        <Route path="solutions/industry-4" element={<Industry4Page />} />
-        <Route path="solutions/smart-health" element={<SmartHealthPage />} />
 
         {/* Services */}
         <Route path="services" element={<ServicesOverviewPage />} />
