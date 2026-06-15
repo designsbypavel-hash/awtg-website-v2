@@ -285,7 +285,7 @@ export default function CareersPage() {
       {/* ── SPECULATIVE / CTA — alternating panel with image ── */}
       <div className="grid lg:grid-cols-2 border-t border-gray-100" style={{ minHeight: 460 }}>
         <div className="relative overflow-hidden" style={{ background: '#0a1628', minHeight: 300 }}>
-          <img src="/images/insights/rail-transport.jpg" alt="Join AWTG"
+          <img src="/images/insights/ai-lab.jpg" alt="AI technology workspace at AWTG"
             className="absolute inset-0 w-full h-full object-cover opacity-40" loading="lazy" />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.4) 0%, rgba(10,22,40,0.1) 100%)' }} />
         </div>
