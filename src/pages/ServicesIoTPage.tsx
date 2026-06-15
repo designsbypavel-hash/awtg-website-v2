@@ -340,77 +340,95 @@ export default function ServicesIoTPage() {
       </section>
 
       {/* ── BUILT FOR TWO AUDIENCES ──────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-white py-24">
+      <section className="border-t border-gray-100 bg-[#f8fafc] py-24">
         <div ref={audRef} className="mx-auto max-w-7xl px-8 lg:px-12">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-stretch">
 
-          {/* Top: title + description left, image right */}
-          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-start mb-12">
+            {/* LEFT: heading + description + stacked audience cards */}
+            <div style={reveal(audInView, 0)} className="flex flex-col gap-7">
 
-            {/* Left: heading + description */}
-            <div style={reveal(audInView, 0)}>
-              <h2 className="font-heading text-[#0a1628] mb-5">
-                Built for asset owners and asset consumers
-              </h2>
-              <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-                iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it.
-              </p>
+              {/* Heading block */}
+              <div className="flex flex-col gap-4">
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                  <div style={{ width: 4, flexShrink: 0, alignSelf: 'stretch', borderRadius: 4, background: 'linear-gradient(180deg, #3d4d9e 0%, #228DC1 100%)', minHeight: 52 }} />
+                  <div>
+                    <h2 className="font-heading text-[#0a1628] mb-3">
+                      Built for asset owners and asset consumers
+                    </h2>
+                    <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
+                      iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Audience cards - stacked */}
+              <div className="flex flex-col gap-5 flex-1">
+                {audiences.map((aud, i) => (
+                  <div
+                    key={aud.title}
+                    className="group flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-7 transition-all duration-300 hover:border-[#3d4d9e]/20 hover:shadow-[0_8px_32px_rgba(61,77,158,0.08)]"
+                    style={{ ...reveal(audInView, 100 + i * 120), borderTop: `3px solid ${aud.color}` }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div style={{ display: 'flex', height: 46, width: 46, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: 12, background: `${aud.color}12`, border: `1px solid ${aud.color}22` }}>
+                        <FontAwesomeIcon icon={aud.icon} className="h-4 w-4" style={{ color: aud.color }} />
+                      </div>
+                      <div>
+                        <p className="mb-0.5 text-[11px] font-medium tracking-wide text-[#0a1628]/45 uppercase">{aud.who}</p>
+                        <h3 className="text-[17px] font-semibold leading-[1.3] text-[#0a1628]">{aud.title}</h3>
+                      </div>
+                    </div>
+                    <p className="text-[13px] font-normal leading-[1.75] text-[#0a1628]/60">{aud.desc}</p>
+                    <div className="grid grid-cols-2 gap-x-5 gap-y-2 border-t border-gray-100 pt-4">
+                      {aud.benefits.slice(0, 6).map(b => (
+                        <div key={b} className="flex items-start gap-2">
+                          <div className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: aud.color }} />
+                          <span className="text-[12px] leading-snug text-[#0a1628]/65">{b}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Right: image with stat overlay */}
-            <div style={{ ...reveal(audInView, 100), position: 'relative', borderRadius: 20, overflow: 'hidden', height: 320 }}>
+            {/* RIGHT: full-height image stretching to match left column */}
+            <div style={{ ...reveal(audInView, 250), position: 'relative', borderRadius: 24, overflow: 'hidden', minHeight: 500 }}>
               <img
                 src="/images/insights/city-infrastructure.jpg"
                 alt="iDAMS asset marketplace"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,22,40,0.04) 0%, transparent 40%, rgba(10,22,40,0.60) 100%)' }} />
+              {/* Dark gradient overlay */}
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(61,77,158,0.25) 0%, transparent 45%, rgba(10,22,40,0.72) 100%)' }} />
+
+              {/* Top badge */}
+              <div style={{ position: 'absolute', top: 22, left: 22 }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, borderRadius: 100, border: '1px solid rgba(255,255,255,0.35)', background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', padding: '6px 14px' }}>
+                  <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#7ac4e0', boxShadow: '0 0 0 2px rgba(122,196,224,0.35)' }} />
+                  <span style={{ fontSize: 11, fontWeight: 600, color: '#fff', letterSpacing: '0.04em' }}>iDAMS Platform</span>
+                </div>
+              </div>
+
+              {/* Bottom stat card */}
               <div style={{ position: 'absolute', bottom: 24, left: 24, right: 24 }}>
-                <div style={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.50)', background: 'rgba(255,255,255,0.95)', padding: '16px 20px', boxShadow: '0 16px 48px rgba(10,22,40,0.18)', backdropFilter: 'blur(12px)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+                <div style={{ borderRadius: 16, border: '1px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.96)', padding: '18px 22px', boxShadow: '0 20px 60px rgba(10,22,40,0.22)', backdropFilter: 'blur(16px)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
                     <div style={{ flexShrink: 0 }}>
-                      <p style={{ fontSize: 26, fontWeight: 900, lineHeight: 1, color: '#3d4d9e', margin: 0 }}>2-sided</p>
-                      <p style={{ marginTop: 4, fontSize: 12, fontWeight: 700, color: '#0a1628', margin: '4px 0 0' }}>Asset marketplace</p>
+                      <p style={{ fontSize: 28, fontWeight: 900, lineHeight: 1, color: '#3d4d9e', margin: 0 }}>2-sided</p>
+                      <p style={{ fontSize: 12, fontWeight: 700, color: '#0a1628', margin: '5px 0 0' }}>Asset marketplace</p>
                     </div>
-                    <div style={{ width: 1, height: 38, flexShrink: 0, background: '#e5e7eb' }} />
-                    <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.55, color: 'rgba(10,22,40,0.60)', margin: 0 }}>
+                    <div style={{ width: 1, height: 40, flexShrink: 0, background: '#e5e7eb' }} />
+                    <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.6, color: 'rgba(10,22,40,0.58)', margin: 0 }}>
                       One platform connecting asset owners with operators who need access
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Bottom: two audience cards */}
-          <div className="grid gap-5 lg:grid-cols-2">
-            {audiences.map((aud, i) => (
-              <div
-                key={aud.title}
-                className="group flex flex-col gap-5 rounded-xl border border-gray-100 bg-[#f9fafb] p-7 transition-all duration-300 hover:border-[#3d4d9e]/20 hover:bg-white hover:shadow-[0_8px_32px_rgba(61,77,158,0.08)]"
-                style={reveal(audInView, 200 + i * 100)}
-              >
-                <div className="flex items-start gap-4">
-                  <div style={{ display: 'flex', height: 44, width: 44, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: 12, background: `${aud.color}12`, border: `1px solid ${aud.color}22` }}>
-                    <FontAwesomeIcon icon={aud.icon} className="h-4 w-4" style={{ color: aud.color }} />
-                  </div>
-                  <div>
-                    <p className="mb-0.5 text-[11px] font-medium text-[#0a1628]/50">{aud.who}</p>
-                    <h3 className="text-[16px] font-semibold leading-[1.3] text-[#0a1628]">{aud.title}</h3>
-                  </div>
-                </div>
-                <p className="text-[13px] font-normal leading-[1.75] text-[#0a1628]/60">{aud.desc}</p>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-2 border-t border-gray-100 pt-5">
-                  {aud.benefits.slice(0, 6).map(b => (
-                    <div key={b} className="flex items-start gap-2">
-                      <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: aud.color }} />
-                      <span className="text-[12px] leading-snug text-[#0a1628]/65">{b}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
           </div>
-
         </div>
       </section>
 
