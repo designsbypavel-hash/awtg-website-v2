@@ -75,9 +75,7 @@ const footerCols = [
       { label: 'News', href: '/insights' },
       { label: 'Careers', href: '/careers' },
       { label: 'Contact', href: '/contact' },
-      { label: 'Public Sector', href: '/industries/public-sector' },
       { label: 'Health Tech', href: '/industries/health-tech' },
-      { label: 'Education', href: '/industries/education' },
     ],
   },
 ]
