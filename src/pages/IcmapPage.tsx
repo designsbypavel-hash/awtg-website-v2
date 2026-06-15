@@ -693,7 +693,7 @@ export default function IcmapPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-2xl mb-14">
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Every zone. Every generation. On a real map.
+              Every area. Every technology. Clear coverage decisions.
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
               iCMAP brings live coverage, signal strength, population, and infrastructure data into one interactive map. Teams can filter by network generation, inspect local performance, identify weak zones, and prioritise improvements using AI powered scoring.
