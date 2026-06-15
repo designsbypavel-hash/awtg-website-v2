@@ -222,50 +222,58 @@ export default function CareersPage() {
           </div>
 
           {/* Department filter tabs */}
-          <div className="flex flex-wrap gap-0 border-b border-gray-200 mb-10">
+          <div className="mb-10 rounded-xl border border-gray-200 bg-white p-2 shadow-[0_10px_34px_rgba(10,22,40,0.04)]">
+            <div className="flex flex-wrap gap-2">
             {departments.map((dept) => (
               <button
                 key={dept}
                 onClick={() => setActiveDept(dept)}
-                className={`px-5 py-3 text-[12px] font-bold uppercase tracking-[0.14em] border-b-2 transition-all ${
+                className={`rounded-lg px-4 py-2.5 text-[12px] font-bold uppercase tracking-[0.12em] transition-all ${
                   activeDept === dept
-                    ? 'border-[#228DC1] text-[#228DC1]'
-                    : 'border-transparent text-[#0a1628]/45 hover:text-[#0a1628] hover:border-gray-300'
+                    ? 'bg-[#0a1628] text-white shadow-[0_10px_24px_rgba(10,22,40,0.16)]'
+                    : 'text-[#0a1628]/48 hover:bg-[#f3f7fb] hover:text-[#0a1628]'
                 }`}
               >
                 {dept}
               </button>
             ))}
+            </div>
           </div>
 
-          <ul role="list" className="space-y-3">
+          <ul role="list" className="grid gap-4">
             {filtered.map((role) => (
               <li key={role.title}>
                 <Link
                   to={getRoleHref(role.slug)}
-                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-5 bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-[0_4px_24px_rgba(34,141,193,0.10)] transition-all p-7"
+                  className="group relative grid gap-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-[0_10px_30px_rgba(10,22,40,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#228DC1]/45 hover:shadow-[0_22px_54px_rgba(10,22,40,0.10)] sm:grid-cols-[1fr_auto] sm:items-center"
                 >
-                  <div>
-                    <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#228DC1] bg-[#228DC1]/8 px-2.5 py-1 mb-3">
-                      {role.dept}
-                    </span>
-                    <h3 className="text-[18px] font-semibold text-[#0a1628] group-hover:text-[#228DC1] transition-colors mb-2.5 leading-snug">
+                  <div className="absolute inset-y-0 left-0 w-1 bg-[#228DC1] opacity-70 transition-all duration-300 group-hover:w-1.5 group-hover:opacity-100" />
+                  <div className="pl-2">
+                    <div className="mb-4 flex flex-wrap items-center gap-3">
+                      <span className="inline-flex rounded-full bg-[#228DC1]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#228DC1]">
+                        {role.dept}
+                      </span>
+                      <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0a1628]/35">
+                        {role.type}
+                      </span>
+                    </div>
+                    <h3 className="mb-4 text-[20px] font-semibold leading-snug text-[#0a1628] transition-colors group-hover:text-[#228DC1]">
                       {role.title}
                     </h3>
-                    <div className="flex flex-wrap items-center gap-5 text-[13px] text-[#0a1628]/50">
-                      <span className="flex items-center gap-1.5">
-                        <FontAwesomeIcon icon={faLocationDot} className="w-3 h-3 text-[#228DC1]" />
+                    <div className="flex flex-wrap items-center gap-3 text-[13px] text-[#0a1628]/55">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-[#f3f7fb] px-3 py-1.5">
+                        <FontAwesomeIcon icon={faLocationDot} className="h-3 w-3 text-[#228DC1]" />
                         {role.location}
                       </span>
-                      <span className="flex items-center gap-1.5">
-                        <FontAwesomeIcon icon={faBriefcase} className="w-3 h-3 text-[#228DC1]" />
+                      <span className="inline-flex items-center gap-2 rounded-full bg-[#f3f7fb] px-3 py-1.5">
+                        <FontAwesomeIcon icon={faBriefcase} className="h-3 w-3 text-[#228DC1]" />
                         {role.type}
                       </span>
                     </div>
                   </div>
-                  <span className="shrink-0 inline-flex items-center gap-2 px-6 py-2.5 border border-[#228DC1] text-[#228DC1] text-[13px] font-semibold group-hover:bg-[#228DC1] group-hover:text-white transition-all">
+                  <span className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#228DC1] px-6 py-3 text-[13px] font-semibold text-white shadow-[0_10px_24px_rgba(34,141,193,0.22)] transition-all duration-300 group-hover:bg-[#1a7fa8] group-hover:shadow-[0_14px_30px_rgba(34,141,193,0.30)]">
                     View Role
-                    <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+                    <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
                 </Link>
               </li>
