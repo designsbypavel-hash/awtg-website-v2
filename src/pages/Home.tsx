@@ -114,11 +114,11 @@ const tickerLogos = [
   { id: 'cyber',       src: '/logos/partners/Cyber.png',                   alt: 'Cyber Essentials' },
   { id: 'de',          src: '/logos/partners/DE.png',                      alt: 'Department for the Economy' },
   { id: 'dundee',      src: '/logos/partners/Dundee.png',                  alt: 'Dundee City Council' },
-  { id: 'ealing',      src: '/logos/partners/Ealing.png',                  alt: 'Ealing Council' },
+  { id: 'ealing',      src: '/logos/partners/Ealing.png',                  alt: 'Ealing Council',   h: 72 },
   { id: 'fresh',       src: '/logos/partners/Fresh.png',                   alt: 'FreshWave' },
   { id: 'gamma',       src: '/logos/partners/Gamma.png',                   alt: 'Gamma' },
-  { id: 'homeoffice',  src: '/logos/partners/Home Office.png',             alt: 'Home Office' },
-  { id: 'huawei',      src: '/logos/partners/Huwawei.png',                 alt: 'Huawei' },
+  { id: 'homeoffice',  src: '/logos/partners/Home Office.png',             alt: 'Home Office',      h: 72 },
+  { id: 'huawei',      src: '/logos/partners/Huwawei.png',                 alt: 'Huawei',           h: 72 },
   { id: 'kings',       src: '/logos/partners/Kings COllege.png',           alt: "King's College London" },
   { id: 'liverpool',   src: '/logos/partners/Liverpool.png',               alt: 'Liverpool City Region' },
   { id: 'mobily',      src: '/logos/partners/Mobily.png',                  alt: 'Mobily' },
@@ -223,7 +223,7 @@ function Hero() {
                     src={logo.src}
                     alt={logo.alt}
                     className="w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    style={{ height: '120px', maxWidth: '240px' }}
+                    style={{ height: `${logo.h ?? 120}px`, maxWidth: '240px' }}
                   />
                 </div>
               ))}
