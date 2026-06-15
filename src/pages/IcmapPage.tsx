@@ -375,7 +375,7 @@ const steps = [
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
     detailLabel: 'Data sources',
-    detail: 'OSS/BSS feeds, drive tests, crowdsourced measurements and open datasets.',
+    detail: 'Shape files, bins, heat maps, drive tests, crowdsourced data and open datasets.',
   },
   {
     num: '02',
