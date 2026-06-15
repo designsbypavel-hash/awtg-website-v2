@@ -114,17 +114,32 @@ export default function InsightsBlogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <h1
-            className="font-serif-display text-[#0a1628] leading-[1.1] mb-6"
-           
-          >
-            Blog
-          </h1>
-          <p className="text-[#0a1628]/60 text-[18px] font-normal max-w-xl leading-[1.7]">
-            Expert perspectives on telecoms, AI, private networks, and the infrastructure decisions that define the next decade.
-          </p>
+      <section className="relative overflow-hidden" style={{ minHeight: 540 }}>
+        <img
+          src="/images/insights/conference.jpg"
+          alt="AWTG Blog"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.74) 30%, rgba(10,22,40,0.32) 58%, rgba(10,22,40,0.06) 74%, transparent 88%)' }}
+        />
+        <div
+          className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
+          style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
+        >
+          <div style={{ maxWidth: 600 }}>
+            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">Blog</p>
+            <h1
+              className="font-serif-display text-white leading-[1.06] mb-6"
+              style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
+            >
+              Blog
+            </h1>
+            <p className="text-white/65 text-[17px] font-normal leading-[1.8]" style={{ maxWidth: 500 }}>
+              Expert perspectives on telecoms, AI, private networks, and the infrastructure decisions that define the next decade.
+            </p>
+          </div>
         </div>
       </section>
 

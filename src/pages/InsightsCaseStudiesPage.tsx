@@ -102,12 +102,32 @@ export default function InsightsCaseStudiesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <h1 className="font-serif-display text-[#0a1628] mb-6">Case Studies</h1>
-          <p className="text-[#0a1628]/70 text-[16px] max-w-xl font-normal leading-[1.7]">
-            Real projects, measurable outcomes. Eight case studies spanning Open RAN security, network economics, mobile benchmarking and urban connectivity.
-          </p>
+      <section className="relative overflow-hidden" style={{ minHeight: 540 }}>
+        <img
+          src="/images/insights/education.jpg"
+          alt="AWTG Case Studies"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.74) 30%, rgba(10,22,40,0.32) 58%, rgba(10,22,40,0.06) 74%, transparent 88%)' }}
+        />
+        <div
+          className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
+          style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
+        >
+          <div style={{ maxWidth: 600 }}>
+            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">Case Studies</p>
+            <h1
+              className="font-serif-display text-white leading-[1.06] mb-6"
+              style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
+            >
+              Case Studies
+            </h1>
+            <p className="text-white/65 text-[17px] font-normal leading-[1.8]" style={{ maxWidth: 500 }}>
+              Real projects, measurable outcomes. Case studies spanning Open RAN security, network economics, mobile benchmarking and urban connectivity.
+            </p>
+          </div>
         </div>
       </section>
 

@@ -581,22 +581,31 @@ export default function InsightsNewsPage() {
 
   return (
     <>
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-10 lg:gap-16 items-end">
-            <div>
-              <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
-                Latest news from AWTG.
-              </h1>
-              <p className="text-[#0a1628]/60 text-[18px] font-normal max-w-2xl leading-[1.7]">
-                Company announcements, project milestones, awards, media coverage and event updates from AWTG’s work across AI, 5G, Open RAN, private networks and public sector innovation.
-              </p>
-            </div>
-            <div className="border-l-2 border-[#228DC1] pl-6 py-2">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Coverage</p>
-              <p className="font-h2 text-[#0a1628]">{newsItems.length}</p>
-              <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-2">news updates from the AWTG newsroom archive.</p>
-            </div>
+      <section className="relative overflow-hidden" style={{ minHeight: 540 }}>
+        <img
+          src="/images/insights/ai-lab.jpg"
+          alt="AWTG News"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: ‘linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.74) 30%, rgba(10,22,40,0.32) 58%, rgba(10,22,40,0.06) 74%, transparent 88%)’ }}
+        />
+        <div
+          className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
+          style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
+        >
+          <div style={{ maxWidth: 600 }}>
+            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">News</p>
+            <h1
+              className="font-serif-display text-white leading-[1.06] mb-6"
+              style={{ fontSize: ‘clamp(34px, 4vw, 52px)’ }}
+            >
+              News
+            </h1>
+            <p className="text-white/65 text-[17px] font-normal leading-[1.8]" style={{ maxWidth: 500 }}>
+              Company announcements, project milestones, awards, media coverage and event updates from AWTG’s work across AI, 5G, Open RAN, private networks and public sector innovation.
+            </p>
           </div>
         </div>
       </section>
