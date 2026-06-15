@@ -11,10 +11,10 @@ function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-function TwitterIcon(props: React.SVGProps<SVGSVGElement>) {
+function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
     </svg>
   )
 }
@@ -93,17 +93,17 @@ export default function Footer() {
               An end-to-end engineering services and technology solutions provider. Creating innovations that improve communities and deliver real ROI since 2006.
             </p>
             <div className="flex gap-2">
-              <a href="https://www.linkedin.com/company/awtg" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.linkedin.com/company/awtg-ltd/" target="_blank" rel="noopener noreferrer"
                 aria-label="AWTG on LinkedIn (opens in new tab)"
                 className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-colors">
                 <LinkedInIcon aria-hidden="true" />
               </a>
-              <a href="https://twitter.com/awtg_ltd" target="_blank" rel="noopener noreferrer"
-                aria-label="AWTG on X / Twitter (opens in new tab)"
+              <a href="https://www.facebook.com/awtglondon" target="_blank" rel="noopener noreferrer"
+                aria-label="AWTG on Facebook (opens in new tab)"
                 className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-colors">
-                <TwitterIcon aria-hidden="true" />
+                <FacebookIcon aria-hidden="true" />
               </a>
-              <a href="https://youtube.com/@awtg" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.youtube.com/@awtglimited" target="_blank" rel="noopener noreferrer"
                 aria-label="AWTG on YouTube (opens in new tab)"
                 className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-colors">
                 <YouTubeIcon aria-hidden="true" />
