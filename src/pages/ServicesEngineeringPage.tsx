@@ -359,28 +359,28 @@ const differentiators = [
     icon: faLayerGroup,
     label: 'More than SMO',
     title: 'Assurance beyond orchestration.',
-    desc: 'SCAP includes SMO but also provides performance monitoring, fault management and configuration governance in one integrated platform.',
+    desc: 'SCAP combines SMO with performance, fault and configuration management, giving teams a broader view of network health and service impact.',
     color: '#228DC1',
   },
   {
     icon: faArrowsRotate,
     label: 'Built around correlation',
-    title: 'Relationships, not just data.',
-    desc: 'SCAP helps operators understand the relationships between configuration changes, performance degradation and faults — not just surface individual signals.',
+    title: 'Operational correlation',
+    desc: 'SCAP helps teams connect configuration changes, KPI degradation and fault events, making it easier to understand what changed, what failed and what needs attention.',
     color: '#059669',
   },
   {
     icon: faGaugeHigh,
     label: 'Operationally focused',
-    title: 'Designed for the people who run networks.',
-    desc: 'SCAP is built for engineers, network operators, system integrators and service assurance teams who need actionable insight every day.',
+    title: 'Built for network operations teams',
+    desc: 'SCAP is designed for engineers, operators, system integrators and service assurance teams who need practical, actionable network insight.',
     color: '#7c3aed',
   },
   {
     icon: faCubes,
     label: 'Multi-vendor ready',
-    title: 'Standards-based, vendor-flexible.',
-    desc: 'SCAP supports standards-based integration while remaining flexible for vendor-specific and legacy systems as requirements evolve.',
+    title: 'Standards-based and vendor-flexible',
+    desc: 'SCAP supports standards-based integration while allowing vendor-specific and legacy systems to be connected as requirements evolve.',
     color: '#d97706',
   },
 ]
@@ -570,7 +570,7 @@ export default function ServicesEngineeringPage() {
           <div style={reveal(diffInView, 0)}>
             <SectionHeader
               title="Why SCAP is different"
-              desc="SCAP was built to address the gaps that traditional SMO and element management tools leave — correlation, operational focus and genuine multi-vendor flexibility."
+              desc="SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform."
             />
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
