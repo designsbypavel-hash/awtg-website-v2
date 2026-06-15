@@ -1,9 +1,8 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import InsightImage from '@/components/InsightImage'
-import InsightsResourceNav from '@/components/InsightsResourceNav'
 import { getBlogImage } from '@/lib/insightImages'
 
 const posts = [
@@ -109,200 +108,214 @@ export default function InsightsBlogPage() {
 
   const filtered = activeTag === 'All' ? posts : posts.filter(p => p.tag === activeTag)
   const featured = filtered.find(p => p.featured) ?? filtered[0]
-  const rest = filtered.filter(p => p.slug !== featured?.slug)
+  const grid = filtered.filter(p => p.slug !== featured?.slug).slice(0, 3)
+  const list = filtered.filter(p => p.slug !== featured?.slug).slice(3)
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden" style={{ minHeight: 540 }}>
-        <img
-          src="/images/insights/conference.jpg"
-          alt="AWTG Blog"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.74) 30%, rgba(10,22,40,0.32) 58%, rgba(10,22,40,0.06) 74%, transparent 88%)' }}
-        />
-        <div
-          className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
-          style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
-        >
-          <div style={{ maxWidth: 600 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#228DC1] mb-5">Blog</p>
-            <h1
-              className="font-serif-display text-white leading-[1.06] mb-6"
-              style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
-            >
-              Blog
-            </h1>
-            <p className="text-white/65 text-[17px] font-normal leading-[1.8]" style={{ maxWidth: 500 }}>
-              Expert perspectives on telecoms, AI, private networks, and the infrastructure decisions that define the next decade.
-            </p>
-          </div>
+      {/* Editorial header */}
+      <section className="bg-white border-b border-gray-100" style={{ paddingTop: 100 }}>
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 pb-14">
+          <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#228DC1] mb-5">Insights</p>
+          <h1
+            className="font-heading text-[#0a1628] leading-[1.05]"
+            style={{ fontSize: 'clamp(36px, 4.5vw, 60px)', maxWidth: 640 }}
+          >
+            The latest from AWTG
+          </h1>
         </div>
-      </section>
 
-      <InsightsResourceNav
-        activeResource="blog"
-        activeTopic={activeTag}
-        topics={tags}
-        onTopicChange={setActiveTag}
-      />
-
-      {/* Featured post */}
-      {featured && (
-        <section className="py-16 bg-white border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        {/* Featured article */}
+        {featured && (
+          <div className="max-w-7xl mx-auto px-8 lg:px-12 pb-16">
             <Link
               to={`/insights/blog/${featured.slug}`}
-              className="group grid lg:grid-cols-5 gap-0 border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
+              className="group grid lg:grid-cols-[1fr_1.1fr] gap-0 items-stretch"
             >
-              <div className="lg:col-span-3 p-10 lg:p-14 flex flex-col justify-between">
+              {/* Left: content */}
+              <div className="flex flex-col justify-between py-4 pr-0 lg:pr-16">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[14px] font-semibold uppercase tracking-[0.15em] text-[#0a1628]/60">Featured</span>
-                    <span className="w-8 h-px bg-gray-200" />
-                    <span className={`text-[14px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[featured.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+                    <span className="text-[11px] font-black uppercase tracking-[0.26em] text-[#0a1628]/40">Featured</span>
+                    <span className="w-6 h-px bg-gray-200" />
+                    <span className={`text-[11px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 ${tagColour[featured.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                       {featured.tag}
                     </span>
                   </div>
-                  <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#228DC1] transition-colors">
+                  <h2
+                    className="font-heading text-[#0a1628] group-hover:text-[#228DC1] transition-colors leading-[1.1] mb-6"
+                    style={{ fontSize: 'clamp(26px, 2.6vw, 38px)' }}
+                  >
                     {featured.title}
                   </h2>
-                  <p className="text-[#0a1628]/75 text-[16px] font-normal leading-[1.7] max-w-lg">
+                  <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.8]" style={{ maxWidth: 480 }}>
                     {featured.excerpt}
                   </p>
                 </div>
-                <div className="flex items-center justify-between mt-10 pt-8 border-t border-gray-100">
-                  <div className="flex items-center gap-4 text-[#0a1628]/60 text-xs">
-                    <span>{featured.date}</span>
-                    <span>·</span>
-                    <span className="flex items-center gap-1.5"><FontAwesomeIcon icon={faClock} className="w-3 h-3" /> {featured.readTime} read</span>
-                  </div>
-                  <span className="text-[#228DC1] text-xs font-semibold uppercase tracking-[0.1em] flex items-center gap-1.5 group-hover:gap-3 transition-all">
-                    Read article                  </span>
+                <div className="flex items-center gap-4 text-[#0a1628]/45 text-[12px] mt-10 pt-8 border-t border-gray-100">
+                  <span>{featured.date}</span>
+                  <span>·</span>
+                  <span className="flex items-center gap-1.5">
+                    <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
+                    {featured.readTime} read
+                  </span>
+                  <span className="ml-auto text-[#228DC1] font-semibold tracking-[0.06em] flex items-center gap-2 group-hover:gap-3 transition-all">
+                    Read article
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                      <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
                 </div>
               </div>
-              <div className="lg:col-span-2 relative overflow-hidden min-h-[320px]">
-                <InsightImage src={getBlogImage(featured.slug, featured.tag)} alt={featured.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/40 to-transparent" />
+
+              {/* Right: image */}
+              <div className="relative overflow-hidden bg-gray-100" style={{ minHeight: 380 }}>
+                <InsightImage
+                  src={getBlogImage(featured.slug, featured.tag)}
+                  alt={featured.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                />
               </div>
             </Link>
+          </div>
+        )}
+      </section>
+
+      {/* Filter tabs — minimal underline style */}
+      <div className="sticky top-[64px] z-10 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="flex items-center gap-0 overflow-x-auto scrollbar-none">
+            {tags.map(tag => (
+              <button
+                key={tag}
+                onClick={() => setActiveTag(tag)}
+                className={`shrink-0 px-4 py-4 text-[13px] font-medium transition-colors border-b-2 ${
+                  activeTag === tag
+                    ? 'border-[#0a1628] text-[#0a1628]'
+                    : 'border-transparent text-[#0a1628]/50 hover:text-[#0a1628] hover:border-gray-200'
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 3-column uniform card grid */}
+      {grid.length > 0 && (
+        <section className="py-14 bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-8 lg:px-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {grid.map(post => (
+                <Link
+                  key={post.slug}
+                  to={`/insights/blog/${post.slug}`}
+                  className="group flex flex-col"
+                >
+                  {/* Image */}
+                  <div className="relative overflow-hidden bg-gray-100 mb-5" style={{ height: 220 }}>
+                    <InsightImage
+                      src={getBlogImage(post.slug, post.tag)}
+                      alt={post.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-600"
+                    />
+                  </div>
+                  {/* Meta */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className={`text-[11px] font-bold uppercase tracking-[0.16em] px-2 py-0.5 ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+                      {post.tag}
+                    </span>
+                    <span className="text-[#0a1628]/35 text-[11px]">{post.date}</span>
+                  </div>
+                  {/* Title */}
+                  <h3
+                    className="text-[#0a1628] font-semibold leading-snug group-hover:text-[#228DC1] transition-colors mb-2"
+                    style={{ fontSize: 17 }}
+                  >
+                    {post.title}
+                  </h3>
+                  {/* Excerpt */}
+                  <p className="text-[#0a1628]/55 text-[13px] leading-[1.75] flex-1 mb-4">
+                    {post.excerpt}
+                  </p>
+                  {/* Read time */}
+                  <span className="flex items-center gap-1.5 text-[#0a1628]/40 text-[12px]">
+                    <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
+                    {post.readTime} read
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}
 
-      {/* Article grid */}
-      <section className="py-20 bg-[#f7f8fa]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          {rest.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {rest.map((post, i) => {
-                const isWide = i === 0
-                const isAccent = i === 3
-                if (isWide) {
-                  return (
-                    <Link
-                      key={post.slug}
-                      to={`/insights/blog/${post.slug}`}
-                    className="group lg:col-span-2 md:col-span-2 bg-white border border-gray-100 hover:border-[#228DC1] overflow-hidden transition-all hover:shadow-md"
-                  >
-                      <div className="h-72 relative overflow-hidden bg-gray-100">
-                        <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                      </div>
-                      <div className="p-8">
-                        <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                          {post.tag}
-                        </span>
-                        <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors">{post.title}</h3>
-                        <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-5 max-w-2xl">{post.excerpt}</p>
-                        <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
-                          <span>{post.date}</span>
-                          <span>·</span>
-                          <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
-                          <span>{post.readTime} read</span>
-                        </div>
-                      </div>
-                    </Link>
-                  )
-                }
-
-                if (isAccent) {
-                  return (
-                    <Link
-                      key={post.slug}
-                      to={`/insights/blog/${post.slug}`}
-                      className="group bg-white border border-gray-100 hover:border-[#228DC1] flex flex-col overflow-hidden transition-all hover:shadow-md"
-                    >
-                      <div className="h-48 relative overflow-hidden bg-gray-100">
-                        <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      </div>
-                      <div className="p-6 flex flex-col flex-1">
-                        <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-4 inline-block self-start ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                          {post.tag}
-                        </span>
-                        <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">{post.title}</h3>
-                        <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
-                        <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
-                          <span>{post.date}</span>
-                          <span>·</span>
-                          <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
-                          <span>{post.readTime} read</span>
-                        </div>
-                      </div>
-                    </Link>
-                  )
-                }
-
-                return (
-                  <Link
-                    key={post.slug}
-                    to={`/insights/blog/${post.slug}`}
-                    className="group bg-white border border-gray-100 hover:border-[#228DC1] flex flex-col overflow-hidden transition-all hover:shadow-md"
-                  >
-                    <div className="h-48 relative overflow-hidden">
-                      <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div className="p-6 flex flex-col flex-1">
-                      <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-4 inline-block self-start ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
+      {/* Side-by-side list rows */}
+      {list.length > 0 && (
+        <section className="py-14 bg-white">
+          <div className="max-w-7xl mx-auto px-8 lg:px-12">
+            <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#0a1628]/35 mb-10">More articles</p>
+            <div className="divide-y divide-gray-100">
+              {list.map(post => (
+                <Link
+                  key={post.slug}
+                  to={`/insights/blog/${post.slug}`}
+                  className="group grid grid-cols-[1fr_140px] gap-8 py-8 items-center hover:bg-[#fafbfd] -mx-4 px-4 transition-colors"
+                >
+                  {/* Text */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`text-[11px] font-bold uppercase tracking-[0.16em] px-2 py-0.5 ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                         {post.tag}
                       </span>
-                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#228DC1] transition-colors flex-1">{post.title}</h3>
-                      <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
-                      <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
-                        <span>{post.date}</span>
-                        <span>·</span>
-                        <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
-                        <span>{post.readTime} read</span>
-                      </div>
+                      <span className="text-[#0a1628]/35 text-[11px]">{post.date}</span>
                     </div>
-                  </Link>
-                )
-              })}
+                    <h3
+                      className="text-[#0a1628] font-semibold leading-snug group-hover:text-[#228DC1] transition-colors mb-2"
+                      style={{ fontSize: 16 }}
+                    >
+                      {post.title}
+                    </h3>
+                    <p className="text-[#0a1628]/55 text-[13px] leading-[1.7] line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  {/* Thumbnail */}
+                  <div className="relative overflow-hidden bg-gray-100 shrink-0" style={{ height: 90, width: 140 }}>
+                    <InsightImage
+                      src={getBlogImage(post.slug, post.tag)}
+                      alt={post.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-500"
+                    />
+                  </div>
+                </Link>
+              ))}
             </div>
-          )}
+          </div>
+        </section>
+      )}
 
-          {filtered.length === 0 && (
-            <div className="py-24 text-center">
-              <p className="text-[#0a1628]/60 font-normal">No articles in this category yet.</p>
-            </div>
-          )}
-        </div>
-      </section>
+      {filtered.length === 0 && (
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-8 lg:px-12 text-center">
+            <p className="text-[#0a1628]/50 text-[15px]">No articles in this category yet.</p>
+          </div>
+        </section>
+      )}
 
-      {/* Bottom CTA */}
-      <section className="py-20 bg-[#f8fafc]">
+      {/* CTA */}
+      <section className="py-20 bg-[#0a1628]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div>
-            <p className="type-label text-[#228DC1] mb-3">Work with AWTG</p>
-            <h2 className="font-h3 text-[#0a1628]">
+            <p className="text-[11px] font-black uppercase tracking-[0.26em] text-[#228DC1] mb-4">Work with AWTG</p>
+            <h2 className="text-white font-heading leading-snug" style={{ fontSize: 'clamp(24px, 2.8vw, 36px)' }}>
               Ready to talk about<br />your network?
             </h2>
           </div>
           <Link
             to="/contact"
-            className="shrink-0 px-8 py-4 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all"
+            className="shrink-0 px-8 py-4 border border-white/30 text-white text-[14px] font-medium hover:bg-white hover:text-[#0a1628] transition-all"
           >
             Request a conversation
           </Link>
