@@ -5,17 +5,6 @@ import InsightImage from '@/components/InsightImage'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
 import { getCaseStudyImage } from '@/lib/insightImages'
 
-const tagColour: Record<string, string> = {
-  'Open RAN Security': 'bg-[#228DC1]/10 text-[#1a7aab]',
-  'Network Economics': 'bg-emerald-50 text-emerald-700',
-  'Public Sector': 'bg-violet-50 text-violet-700',
-  'Mobile Networks': 'bg-sky-50 text-sky-700',
-  'Capacity Planning': 'bg-amber-50 text-amber-700',
-  'Performance Testing': 'bg-orange-50 text-orange-700',
-  'Mobile Services': 'bg-indigo-50 text-indigo-700',
-  'Site Acquisition': 'bg-slate-100 text-slate-700',
-}
-
 const tagAccent: Record<string, string> = {
   'Open RAN Security': 'bg-[#228DC1]',
   'Network Economics': 'bg-emerald-500',
@@ -154,10 +143,7 @@ export default function InsightsCaseStudiesPage() {
               <div className="p-10 lg:p-14 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[featured.tag]}`}>
-                      {featured.tag}
-                    </span>
-                    <span className="text-[#0a1628]/40 text-xs">{featured.date}</span>
+                    <span className="text-[#0a1628]/60 text-xs">{featured.date}</span>
                   </div>
                   <h2 className="font-h2 text-[#0a1628] group-hover:text-[#1a7aab] transition-colors mb-5">
                     {featured.title}
@@ -190,7 +176,7 @@ export default function InsightsCaseStudiesPage() {
       {/* Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <p className="type-label text-[#0a1628]/50 mb-10">All case studies</p>
+          <p className="type-label text-[#0a1628]/60 mb-10">All case studies</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredStudies.map((cs, index) => {
               const isAccent = index === 2 || index === 5
@@ -207,13 +193,10 @@ export default function InsightsCaseStudiesPage() {
                     </div>
                     <div className="p-7 flex flex-col flex-1">
                       <div className="flex items-center justify-between mb-5">
-                        <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${tagColour[cs.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                          {cs.tag}
-                        </span>
-                        <span className="text-[#0a1628]/40 text-[11px]">{cs.date.split(' ').pop()}</span>
+                        <span className="text-[#0a1628]/60 text-[11px]">{cs.date.split(' ').pop()}</span>
                       </div>
                       <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">{cs.title}</h3>
-                      <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-6">{cs.excerpt}</p>
+                      <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.7] mb-6">{cs.excerpt}</p>
                       <div className="flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold mt-auto">
                         Read case study
                       </div>
@@ -234,15 +217,12 @@ export default function InsightsCaseStudiesPage() {
                   </div>
                   <div className="p-7 flex flex-col flex-1">
                     <div className="flex items-center justify-between mb-5">
-                      <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${tagColour[cs.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                        {cs.tag}
-                      </span>
-                      <span className="text-[#0a1628]/40 text-[11px]">{cs.date.split(' ').pop()}</span>
+                      <span className="text-[#0a1628]/60 text-[11px]">{cs.date.split(' ').pop()}</span>
                     </div>
                     <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">
                       {cs.title}
                     </h3>
-                    <p className="text-[#0a1628]/55 text-[13px] font-normal leading-[1.7] mb-6">
+                    <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.7] mb-6">
                       {cs.excerpt}
                     </p>
                     <div className="flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold mt-auto">
