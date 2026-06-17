@@ -136,7 +136,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     {s.title}
                   </h3>
 
-                  <p style={{ color: 'rgba(10,22,40,0.55)', fontSize: 15, lineHeight: 1.88, marginBottom: 32 }}>
+                  <p style={{ color: 'rgba(10,22,40,0.60)', fontSize: 15, lineHeight: 1.88, marginBottom: 32 }}>
                     {s.desc}
                   </p>
 
@@ -234,17 +234,10 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
         <div className="relative mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid gap-14 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
             <div>
-              <div className="mb-8 flex items-center gap-3">
-                <span className="h-px w-12" style={{ background: accent }} />
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a1628]/45">
-                  Measurable outcomes
-                </p>
-              </div>
-
               <h2 className="font-heading mb-7 max-w-xl leading-tight text-[#0a1628]">
                 {outcomes.heading}
               </h2>
-              <p className="mb-10 max-w-xl text-[16px] leading-[1.82] text-[#0a1628]/58">
+              <p className="mb-10 max-w-xl text-[16px] leading-[1.82] text-[#0a1628]/60">
                 {outcomes.intro}
               </p>
 
@@ -279,7 +272,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                       <h3 className="mb-3 text-[22px] font-semibold leading-[1.18] text-[#0a1628]">
                         {o.title}
                       </h3>
-                      <p className="max-w-xl text-[15px] font-normal leading-[1.78] text-[#0a1628]/58">
+                      <p className="max-w-xl text-[15px] font-normal leading-[1.78] text-[#0a1628]/60">
                         {o.desc}
                       </p>
                       <div className="mt-5 flex gap-1.5">
@@ -309,7 +302,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 "{proof.quote}"
               </p>
               {proof.author && (
-                <p className="text-[#0a1628]/40 text-[13px] font-semibold uppercase tracking-wider">
+                <p className="text-[#0a1628]/60 text-[13px] font-semibold uppercase tracking-wider">
                   {proof.author}
                   {proof.context && (
                     <span className="font-normal normal-case tracking-normal text-[#0a1628]/60">
