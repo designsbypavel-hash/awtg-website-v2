@@ -934,7 +934,7 @@ function Insights() {
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10">
           <Link
             to="/news"
             className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1] text-[#1a7aab] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-all duration-200"
