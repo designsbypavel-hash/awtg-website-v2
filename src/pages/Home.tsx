@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
+import kaiMockup from '../assets/Mockup/KAi_Mockup.png'
+import idamsMockup from '../assets/Mockup/Conecctivity_iDAMS mockup.png'
 
 // --- BRAND SVG LOGOS --------------------------------------------------------
 
@@ -265,7 +267,8 @@ const whatWeDoItems = [
     href: '/products/kai',
     accent: '#228DC1',
     tag: 'Generative AI',
-    image: '/images/insights/ai-innovation.jpg',
+    image: kaiMockup,
+    imageFit: 'contain',
   },
   {
     label: 'Private Networks',
@@ -273,7 +276,8 @@ const whatWeDoItems = [
     href: '/contact',
     accent: '#0ea472',
     tag: '4G / 5G',
-    image: '/images/insights/private-networks.jpg',
+    image: idamsMockup,
+    imageFit: 'cover',
   },
 ]
 
@@ -310,11 +314,11 @@ function WhatWeDo() {
           {whatWeDoItems.map((item, index) => {
             const imageFirst = index % 2 === 1
             const image = (
-              <div className="group relative min-h-[320px] overflow-hidden bg-[#0a1628] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:min-h-[386px]">
+              <div className="group relative min-h-[320px] overflow-hidden bg-[#f6f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:min-h-[386px]">
                 <img
                   src={item.image}
                   alt={item.label}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                  className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.025] ${item.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/16 via-transparent to-transparent" />
