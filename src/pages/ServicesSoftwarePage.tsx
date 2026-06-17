@@ -30,7 +30,7 @@ export default function ServicesSoftwarePage() {
       proof="The best platforms feel like part of the work. AWTG combines product thinking, systems integration and engineering discipline so software becomes useful quickly."
       related={[
         { label: 'Kai — AI Agent', href: '/products/kai' },
-        { label: 'IoT Platforms', href: '/services/iot' },
+        { label: 'IoT Platforms', href: '/connectivity/idams' },
         { label: 'Contact AWTG', href: '/contact' },
       ]}
     />

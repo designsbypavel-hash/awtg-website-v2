@@ -64,13 +64,13 @@ const PATH_CRUMBS: Record<string, Omit<Crumb, 'isLast'>[]> = {
     { label: 'Connectivity' },
     { href: '/products/icmap', label: 'iCMAP' },
   ],
-  '/services/engineering': [
+  '/connectivity/scap': [
     { label: 'Connectivity' },
-    { href: '/services/engineering', label: 'SCAP' },
+    { href: '/connectivity/scap', label: 'SCAP' },
   ],
-  '/services/iot': [
+  '/connectivity/idams': [
     { label: 'Connectivity' },
-    { href: '/services/iot', label: 'iDAMS' },
+    { href: '/connectivity/idams', label: 'iDAMS' },
   ],
 }
 

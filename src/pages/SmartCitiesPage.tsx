@@ -30,7 +30,7 @@ export default function SmartCitiesPage() {
       proof="Smart city work needs more than devices. AWTG combines secure connectivity, platform delivery and public sector assurance so technology improves the lived experience."
       related={[
         { label: 'Public Sector', href: '/industries/public-sector' },
-        { label: 'IoT Services', href: '/services/iot' },
+        { label: 'IoT Services', href: '/connectivity/idams' },
         { label: 'Smart Health', href: '/solutions/smart-health' },
       ]}
     />

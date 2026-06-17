@@ -90,8 +90,8 @@ export default function App() {
         <Route path="products/aruva" element={<AruvaPage />} />
         <Route path="products/kai" element={<KaiPage />} />
         <Route path="products/icmap" element={<IcmapPage />} />
-        <Route path="services/engineering" element={<ServicesEngineeringPage />} />
-        <Route path="services/iot" element={<ServicesIoTPage />} />
+        <Route path="connectivity/scap" element={<ServicesEngineeringPage />} />
+        <Route path="connectivity/idams" element={<ServicesIoTPage />} />
 
         {/* Solutions */}
 

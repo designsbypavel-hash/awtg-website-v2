@@ -30,7 +30,7 @@ export default function Industry4Page() {
       proof="Factories cannot run on experiments. AWTG builds the network and intelligence layer together so AI has reliable data to work with."
       related={[
         { label: 'Private Network as a Service', href: '/solutions/mobile-private-networks' },
-        { label: 'IoT Services', href: '/services/iot' },
+        { label: 'IoT Services', href: '/connectivity/idams' },
         { label: 'Case Studies', href: '/insights/case-studies' },
       ]}
     />

@@ -9,8 +9,8 @@ const PATH_LABELS: Record<string, string> = {
   '/products/aruva':                     'AI for Education',
   // ── Products (Connectivity section) ───────────────────────────────
   '/products/icmap':                     'iCMAP',
-  '/services/engineering':               'SCAP',
-  '/services/iot':                       'iDAMS',
+  '/connectivity/scap':                  'SCAP',
+  '/connectivity/idams':                 'iDAMS',
   // ── Industries ────────────────────────────────────────────────────
   '/industries/enterprise':             'Enterprise',
   '/industries/telecoms':              'Telecoms',

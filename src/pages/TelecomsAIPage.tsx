@@ -30,7 +30,7 @@ export default function TelecomsAIPage() {
       proof="Telecoms AI only matters if it improves real operational performance. AWTG focuses on practical deployments that engineers can trust, audit and improve."
       related={[
         { label: 'Generative AI', href: '/solutions/generative-ai' },
-        { label: 'Engineering Services', href: '/services/engineering' },
+        { label: 'Engineering Services', href: '/connectivity/scap' },
         { label: 'Case Studies', href: '/insights/case-studies' },
       ]}
     />
