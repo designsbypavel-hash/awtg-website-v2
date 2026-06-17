@@ -320,6 +320,7 @@ const steps = [
   {
     num: '01',
     icon: faDatabase,
+    color: '#228DC1',
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
     detailLabel: 'Data sources',
@@ -328,6 +329,7 @@ const steps = [
   {
     num: '02',
     icon: faMapLocationDot,
+    color: '#3d4d9e',
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
     detailLabel: 'Mapping tools',
@@ -336,6 +338,7 @@ const steps = [
   {
     num: '03',
     icon: faCrosshairs,
+    color: '#059669',
     label: 'Assess weak zones',
     desc: 'Identify underserved areas and rank them by coverage quality, severity and impact.',
     detailLabel: 'Scoring',
@@ -344,6 +347,7 @@ const steps = [
   {
     num: '04',
     icon: faRoute,
+    color: '#d97706',
     label: 'Plan the next action',
     desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
     detailLabel: 'Outputs',
@@ -734,35 +738,40 @@ export default function IcmapPage() {
               iCMAP brings coverage, mapping and contextual data into one workspace, helping teams identify weak areas, understand local impact and plan improvements with clearer evidence.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {steps.map((step, i) => (
-              <div key={step.num} className="relative">
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:flex absolute -right-[16px] top-[50px] z-10 w-8 h-8 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm">
-                    <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 11, color: '#228DC1' }} />
-                  </div>
-                )}
-                <div
-                  className="bg-white border border-gray-100 p-8 flex flex-col h-full shadow-[0_2px_8px_rgba(10,22,40,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
-                  style={{ borderRadius: 20 }}
-                >
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="w-12 h-12 rounded-full bg-[#228DC1]/10 flex items-center justify-center flex-shrink-0">
-                      <FontAwesomeIcon icon={step.icon} style={{ fontSize: 17, color: '#228DC1' }} />
+          <div className="relative">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {steps.map((step, i) => (
+                <div key={step.num} className="relative">
+                  {i < steps.length - 1 && (
+                    <div className="hidden lg:flex absolute -right-[18px] top-[18px] z-10 w-7 h-7 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm">
+                      <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 10, color: '#0a1628', opacity: 0.35 }} />
                     </div>
-                    <span className="text-[12px] font-black tracking-[0.14em] tabular-nums text-[#0a1628]/20 mt-1">
-                      {step.num}
-                    </span>
-                  </div>
-                  <h3 className="text-[#0a1628] font-semibold text-base leading-[1.3] mb-3">{step.label}</h3>
-                  <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.75] mb-8">{step.desc}</p>
-                  <div className="mt-auto pt-5 border-t border-gray-100">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#1a7aab] mb-2">{step.detailLabel}</p>
-                    <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.65]">{step.detail}</p>
+                  )}
+                  <div
+                    className="relative bg-white border border-gray-100 p-7 flex flex-col h-full shadow-[0_2px_8px_rgba(10,22,40,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
+                    style={{ borderRadius: 20, borderTop: `3px solid ${step.color}` }}
+                  >
+                    <div className="mb-6 flex items-center gap-4">
+                      <div
+                        className="flex h-[60px] w-[60px] flex-shrink-0 items-center justify-center rounded-full"
+                        style={{ background: `${step.color}12`, border: `1.5px solid ${step.color}30` }}
+                      >
+                        <FontAwesomeIcon icon={step.icon} style={{ fontSize: 20, color: step.color }} />
+                      </div>
+                      <span className="text-[32px] font-black leading-none tabular-nums" style={{ color: `${step.color}22` }}>
+                        {step.num}
+                      </span>
+                    </div>
+                    <h3 className="text-[#0a1628] font-semibold text-base leading-[1.3] mb-3">{step.label}</h3>
+                    <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.75] mb-8">{step.desc}</p>
+                    <div className="mt-auto pt-5 border-t border-gray-100">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: step.color }}>{step.detailLabel}</p>
+                      <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.65]">{step.detail}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
