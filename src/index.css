@@ -129,39 +129,30 @@
 
 .home-ai-hero-glow {
   background:
-    radial-gradient(circle at 72% 24%, rgba(34, 141, 193, 0.72), transparent 34%),
-    radial-gradient(circle at 22% 72%, rgba(49, 87, 255, 0.54), transparent 38%),
-    radial-gradient(circle at 88% 78%, rgba(14, 164, 114, 0.28), transparent 28%),
-    linear-gradient(115deg, rgba(6, 18, 37, 0.10), rgba(6, 18, 37, 0.70));
+    radial-gradient(circle at 72% 24%, rgba(34, 141, 193, 0.88), transparent 34%),
+    radial-gradient(circle at 22% 72%, rgba(49, 87, 255, 0.68), transparent 38%),
+    radial-gradient(circle at 88% 78%, rgba(14, 164, 114, 0.40), transparent 28%),
+    linear-gradient(115deg, rgba(6, 18, 37, 0.04), rgba(6, 18, 37, 0.58));
   mix-blend-mode: screen;
   opacity: 1;
 }
 
-.home-ai-hero-grid {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.105) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.085) 1px, transparent 1px);
-  background-size: 68px 68px, 68px 68px;
-  mask-image: linear-gradient(110deg, transparent 0%, black 18%, black 88%, transparent 100%);
-  opacity: 0.58;
-}
-
 .home-page-ambient {
   background:
-    radial-gradient(circle at 7% 18%, rgba(34, 141, 193, 0.38), transparent 34%),
-    radial-gradient(circle at 88% 36%, rgba(49, 87, 255, 0.32), transparent 35%),
-    radial-gradient(circle at 45% 74%, rgba(14, 164, 114, 0.22), transparent 32%),
-    linear-gradient(180deg, #f3faff 0%, #e0f1ff 42%, #edf8ff 72%, #ffffff 100%);
+    radial-gradient(circle at 7% 18%, rgba(34, 141, 193, 0.52), transparent 34%),
+    radial-gradient(circle at 88% 36%, rgba(49, 87, 255, 0.44), transparent 35%),
+    radial-gradient(circle at 45% 74%, rgba(14, 164, 114, 0.30), transparent 32%),
+    linear-gradient(180deg, #edf8ff 0%, #d3ecff 42%, #e5f6ff 72%, #ffffff 100%);
 }
 
 .home-page-ambient > section:not(.home-hero) {
   position: relative;
   isolation: isolate;
-  background-color: rgba(232, 244, 255, 0.82) !important;
+  background-color: rgba(225, 241, 255, 0.76) !important;
 }
 
 .home-page-ambient > section:not(.home-hero):nth-of-type(odd) {
-  background-color: rgba(255, 255, 255, 0.72) !important;
+  background-color: rgba(255, 255, 255, 0.64) !important;
 }
 
 .home-page-ambient > section:not(.home-hero)::before {
@@ -171,12 +162,12 @@
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(34,141,193,0.16) 1px, transparent 1px),
-    linear-gradient(rgba(34,141,193,0.12) 1px, transparent 1px),
-    radial-gradient(circle at 82% 18%, rgba(34,141,193,0.32), transparent 30%),
-    radial-gradient(circle at 12% 80%, rgba(49,87,255,0.24), transparent 32%),
-    radial-gradient(circle at 50% 50%, rgba(34,141,193,0.24) 1px, transparent 2px);
-  background-size: 78px 78px, 78px 78px, auto, auto, 30px 30px;
+    linear-gradient(90deg, rgba(34,141,193,0.22) 1px, transparent 1px),
+    linear-gradient(rgba(34,141,193,0.17) 1px, transparent 1px),
+    radial-gradient(circle at 82% 18%, rgba(34,141,193,0.42), transparent 30%),
+    radial-gradient(circle at 12% 80%, rgba(49,87,255,0.34), transparent 32%),
+    radial-gradient(circle at 50% 50%, rgba(34,141,193,0.32) 1px, transparent 2px);
+  background-size: 68px 68px, 68px 68px, auto, auto, 26px 26px;
   opacity: 1;
   mask-image: linear-gradient(180deg, transparent 0%, black 4%, black 94%, transparent 100%);
 }

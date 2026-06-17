@@ -175,7 +175,6 @@ function Hero() {
         {/* Kore-style immersive AI/connectivity atmosphere */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#030915]/92 via-[#06172b]/72 to-[#102b46]/38" />
         <div className="home-ai-hero-glow absolute inset-0" />
-        <div className="home-ai-hero-grid absolute inset-0" />
       </div>
 
       {/* -- Content, Harvey layout: bottom-left, minimal copy -- */}
