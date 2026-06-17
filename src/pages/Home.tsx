@@ -294,17 +294,6 @@ function WhatWeDo() {
     <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24 lg:py-28">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-        {/* Header */}
-        <div className="mb-16 max-w-[760px] lg:mb-20">
-            <h2 className="font-heading text-[#0a1628]">
-              Three capabilities.<br />
-              <span className="text-[#1a7aab]">One partner.</span>
-            </h2>
-          <p className="mt-5 max-w-[620px] text-[#0a1628]/60 text-[16px] leading-[1.8]">
-            End-to-end delivery across AI, private networks and engineering — under one accountable partner.
-          </p>
-        </div>
-
         <div className="space-y-16 lg:space-y-0">
           {whatWeDoItems.map((item, index) => {
             const imageFirst = index % 2 === 1
