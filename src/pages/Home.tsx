@@ -835,45 +835,46 @@ function Insights() {
   return (
     <section className="py-28 bg-[#f7f8fa]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+        <div className="mb-8">
           <SectionHeader
             title={<>Explore the latest<br /><span className="text-[#1a7aab]">from AWTG.</span></>}
             description="Insight, analysis and perspectives from AWTG's engineers and sector specialists."
           />
-          <div className="flex gap-3">
-            <button
-              type="button"
-              onClick={() => scrollByCard(-1)}
-              disabled={!canPrev}
-              aria-label="Previous"
-              className="flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 disabled:cursor-not-allowed"
-              style={{
-                borderColor: canPrev ? '#228DC1' : 'rgba(34,141,193,0.25)',
-                color: canPrev ? '#1a7aab' : 'rgba(26,122,171,0.35)',
-                background: '#fff',
-              }}
-            >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollByCard(1)}
-              disabled={!canNext}
-              aria-label="Next"
-              className="flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 disabled:cursor-not-allowed"
-              style={{
-                borderColor: canNext ? '#228DC1' : 'rgba(34,141,193,0.25)',
-                color: canNext ? '#1a7aab' : 'rgba(26,122,171,0.35)',
-                background: '#fff',
-              }}
-            >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+        </div>
+
+        <div className="mb-8 flex gap-3">
+          <button
+            type="button"
+            onClick={() => scrollByCard(-1)}
+            disabled={!canPrev}
+            aria-label="Previous"
+            className="flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 disabled:cursor-not-allowed"
+            style={{
+              borderColor: canPrev ? '#228DC1' : 'rgba(34,141,193,0.25)',
+              color: canPrev ? '#1a7aab' : 'rgba(26,122,171,0.35)',
+              background: '#fff',
+            }}
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByCard(1)}
+            disabled={!canNext}
+            aria-label="Next"
+            className="flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 disabled:cursor-not-allowed"
+            style={{
+              borderColor: canNext ? '#228DC1' : 'rgba(34,141,193,0.25)',
+              color: canNext ? '#1a7aab' : 'rgba(26,122,171,0.35)',
+              background: '#fff',
+            }}
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
 
         <div
@@ -885,7 +886,7 @@ function Insights() {
             <Link
               key={a.title}
               to={a.href}
-              className="group flex shrink-0 flex-col overflow-hidden bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all"
+              className="group flex shrink-0 flex-col"
               style={{ width: 340, scrollSnapAlign: 'start' }}
             >
               <div className="h-48 overflow-hidden bg-gray-100">
@@ -896,23 +897,14 @@ function Insights() {
                   loading="lazy"
                 />
               </div>
-              <div className={`h-[3px] w-full ${a.accent}`} />
-              <div className="p-6 flex flex-col flex-1">
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 ${a.tagPill}`}>{a.tag}</span>
-                  <span className="text-[#0a1628]/60 text-[11px]">{a.date}</span>
-                </div>
-                <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors leading-[1.4]">{a.title}</h3>
-                <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.7] mb-5 line-clamp-2 flex-1">{a.excerpt}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-[#0a1628]/60 text-[11px]">{a.readTime}</span>
-                  <span className="text-[#1a7aab] text-[12px] font-semibold inline-flex items-center gap-1">
-                    Read more
-                    <svg className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </div>
+              <div className="flex flex-col pt-5">
+                <h3 className="text-[#0a1628] font-semibold leading-[1.4] mb-2 inline-flex items-start gap-1.5" style={{ fontSize: 17 }}>
+                  <span className="group-hover:text-[#1a7aab] transition-colors">{a.title}</span>
+                  <svg className="h-4 w-4 mt-1 shrink-0 text-[#1a7aab] transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </h3>
+                <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7] line-clamp-2">{a.excerpt}</p>
               </div>
             </Link>
           ))}
