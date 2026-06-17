@@ -292,20 +292,12 @@ function WhatWeDo() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Header */}
-        <div className="mb-16 grid gap-8 lg:mb-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div>
-            <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-12 bg-[#228DC1]" />
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#0a1628]/45">
-                What we do
-              </p>
-            </div>
+        <div className="mb-16 max-w-[760px] lg:mb-20">
             <h2 className="font-heading text-[#0a1628]">
               Three capabilities.<br />
               <span className="text-[#1a7aab]">One partner.</span>
             </h2>
-          </div>
-          <p className="max-w-[620px] text-[#0a1628]/60 text-[16px] leading-[1.8] lg:justify-self-end">
+          <p className="mt-5 max-w-[620px] text-[#0a1628]/60 text-[16px] leading-[1.8]">
             End-to-end delivery across AI, private networks and engineering — under one accountable partner.
           </p>
         </div>
