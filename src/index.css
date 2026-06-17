@@ -412,20 +412,22 @@
 .container-max { max-width: 80rem; margin-left: auto; margin-right: auto; }
 
 /* Wider-screen gutter polish: keeps existing layouts intact while giving
-   shared page containers a calmer, Legora-like amount of side breathing room. */
+   shared page containers a calmer, Legora-like distance from the browser edge. */
 @media (min-width: 1280px) {
   .max-w-7xl.mx-auto,
   .mx-auto.max-w-7xl {
-    padding-left: clamp(4.5rem, 6vw, 7rem) !important;
-    padding-right: clamp(4.5rem, 6vw, 7rem) !important;
+    max-width: 100% !important;
+    padding-left: clamp(5rem, 5.6vw, 6.75rem) !important;
+    padding-right: clamp(5rem, 5.6vw, 6.75rem) !important;
   }
 }
 
 @media (min-width: 1760px) {
   .max-w-7xl.mx-auto,
   .mx-auto.max-w-7xl {
-    padding-left: 7.5rem !important;
-    padding-right: 7.5rem !important;
+    max-width: 1920px !important;
+    padding-left: 6.75rem !important;
+    padding-right: 6.75rem !important;
   }
 }
 
