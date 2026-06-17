@@ -92,18 +92,6 @@ const posts = [
 
 const tags = ['All', '5G', 'Private 5G', 'Private Networks', 'Smart Cities', 'Rail', 'Transport', 'AI', 'Infrastructure', 'Education']
 
-const tagColour: Record<string, string> = {
-  'AI': 'bg-[#228DC1]/10 text-[#1a7aab]',
-  '5G': 'bg-[#0a1628]/8 text-[#0a1628]',
-  'Private 5G': 'bg-emerald-50 text-emerald-700',
-  'Private Networks': 'bg-violet-50 text-violet-700',
-  'Smart Cities': 'bg-sky-50 text-sky-700',
-  'Rail': 'bg-amber-50 text-amber-700',
-  'Transport': 'bg-orange-50 text-orange-700',
-  'Infrastructure': 'bg-slate-100 text-slate-700',
-  'Education': 'bg-indigo-50 text-indigo-700',
-}
-
 export default function InsightsBlogPage() {
   const [activeTag, setActiveTag] = useState('All')
 
@@ -162,10 +150,6 @@ export default function InsightsBlogPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <span className="text-[14px] font-semibold uppercase tracking-[0.15em] text-[#0a1628]/60">Featured</span>
-                    <span className="w-8 h-px bg-gray-200" />
-                    <span className={`text-[14px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[featured.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                      {featured.tag}
-                    </span>
                   </div>
                   <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#1a7aab] transition-colors">
                     {featured.title}
@@ -212,12 +196,9 @@ export default function InsightsBlogPage() {
                         <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       </div>
                       <div className="p-8">
-                        <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                          {post.tag}
-                        </span>
                         <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">{post.title}</h3>
                         <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-5 max-w-2xl">{post.excerpt}</p>
-                        <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
+                        <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
                           <span>{post.date}</span>
                           <span>·</span>
                           <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
@@ -239,12 +220,9 @@ export default function InsightsBlogPage() {
                         <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       </div>
                       <div className="p-6 flex flex-col flex-1">
-                        <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-4 inline-block self-start ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                          {post.tag}
-                        </span>
                         <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">{post.title}</h3>
                         <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
-                        <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
+                        <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
                           <span>{post.date}</span>
                           <span>·</span>
                           <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
@@ -265,12 +243,9 @@ export default function InsightsBlogPage() {
                       <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <span className={`text-[11px] font-semibold uppercase tracking-[0.15em] px-2 py-0.5 mb-4 inline-block self-start ${tagColour[post.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                        {post.tag}
-                      </span>
                       <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">{post.title}</h3>
                       <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
-                      <div className="flex items-center gap-2 text-[#0a1628]/50 text-xs pt-4 border-t border-gray-100">
+                      <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
                         <span>{post.date}</span>
                         <span>·</span>
                         <FontAwesomeIcon icon={faClock} className="w-3 h-3" />
