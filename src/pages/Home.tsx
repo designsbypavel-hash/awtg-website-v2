@@ -263,7 +263,11 @@ function SectionHeader({
 const whatWeDoItems = [
   {
     label: 'AI Products & Software',
-    line: 'Kai, Aruva and bespoke AI — built for production, not proof of concept.',
+    description: [
+      'AI is changing how organisations compete. AWTG helps clients lead that change.',
+      'We design and build intelligent software products that solve real operational challenges, improve decision making, and create new opportunities for growth. Our AI solutions are built with security, reliability, and usability at the core, so clients can adopt innovation with confidence.',
+      'From strategy to deployment, AWTG gives organisations the tools, technology, and expertise to win in an increasingly AI-driven world.',
+    ],
     href: '/products/kai',
     accent: '#228DC1',
     tag: 'Generative AI',
@@ -271,11 +275,15 @@ const whatWeDoItems = [
     imageFit: 'cover',
   },
   {
-    label: 'Private Networks',
-    line: 'Managed 4G/5G designed, deployed and monitored end-to-end. Live in weeks.',
+    label: 'Connectivity',
+    description: [
+      'Connectivity is the foundation of every modern organisation. AWTG helps clients build it with confidence.',
+      'We design and deliver telecoms and connectivity solutions that improve performance, expand coverage, and enable smarter operations. Whether supporting public sector transformation, enterprise networks, smart cities, transport, or critical infrastructure, our focus is on reliable technology that works in real environments.',
+      'With AWTG, clients gain a trusted partner for building stronger, faster, and more intelligent networks.',
+    ],
     href: '/contact',
     accent: '#0ea472',
-    tag: '4G / 5G',
+    tag: 'Connectivity',
     image: idamsMockup,
     imageFit: 'cover',
   },
@@ -284,7 +292,7 @@ const whatWeDoItems = [
 function WhatWeDo() {
   const ctaLabels: Record<string, string> = {
     'AI Products & Software': 'Discover AI products and software',
-    'Private Networks': 'Explore private network delivery',
+    'Connectivity': 'Explore connectivity solutions',
   }
 
   return (
@@ -324,9 +332,11 @@ function WhatWeDo() {
                 <h3 className="mb-4 text-[28px] font-normal leading-[1.18] tracking-[-0.01em] text-[#0a1628] lg:text-[34px]">
                   {item.label}
                 </h3>
-                <p className="max-w-[560px] text-[18px] font-normal leading-[1.65] text-[#0a1628]/72">
-                  {item.line}
-                </p>
+                <div className="max-w-[600px] space-y-4 text-[16px] font-normal leading-[1.72] text-[#0a1628]/72">
+                  {item.description.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
                 <Link
                   to={item.href}
                   className="mt-9 inline-flex w-fit items-center justify-center rounded-[4px] bg-[#3157ff] px-7 py-4 text-[14px] font-bold leading-none text-white transition-colors duration-200 hover:bg-[#2344dc]"
