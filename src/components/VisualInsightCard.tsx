@@ -40,7 +40,6 @@ export default function VisualInsightCard({
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
         />
         <div className={`absolute inset-0 ${dark ? 'bg-gradient-to-t from-[#0a1628]/50 via-transparent to-transparent' : 'bg-gradient-to-t from-[#0a1628]/20 via-transparent to-transparent'}`} />
-        <div className="absolute bottom-0 left-0 h-1 w-16" style={{ backgroundColor: accent }} />
       </div>
 
       <div className="flex flex-1 flex-col p-6">
