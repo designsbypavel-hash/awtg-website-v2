@@ -492,40 +492,77 @@ function Industries() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {industryCards.map((card) => (
-            <Link
-              key={card.title}
-              to={card.href}
-              className="group flex flex-col overflow-hidden bg-white shadow-[0_18px_55px_rgba(10,22,40,0.06)] ring-1 ring-[#e8edf3] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
-            >
-              {/* Pure image — no text overlay */}
-              <div className="overflow-hidden" style={{ height: 292 }}>
-                <img
-                  src={card.img}
-                  alt={card.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
+        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
 
-              {/* Text below image */}
-              <div className="flex flex-col flex-1 px-8 pt-8 pb-9">
-                <h3 className="text-[#0a1628] font-semibold leading-snug mb-4" style={{ fontSize: 21 }}>
-                  {card.title}
-                </h3>
-                <p className="text-[#0a1628]/62 text-[15px] leading-[1.75] flex-1 mb-8">
-                  {card.desc}
-                </p>
-                <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1a7aab] group-hover:gap-3 transition-all duration-200">
-                  {card.cta}
-                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </Link>
-          ))}
+          {/* Large featured card — first industry */}
+          {(() => {
+            const card = industryCards[0]
+            return (
+              <Link
+                key={card.title}
+                to={card.href}
+                className="group flex flex-col overflow-hidden bg-white shadow-[0_18px_55px_rgba(10,22,40,0.06)] ring-1 ring-[#e8edf3] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
+              >
+                <div className="overflow-hidden" style={{ height: 420 }}>
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col flex-1 px-8 pt-8 pb-9">
+                  <h3 className="text-[#0a1628] font-semibold leading-snug mb-4" style={{ fontSize: 21 }}>
+                    {card.title}
+                  </h3>
+                  <p className="text-[#0a1628]/62 text-[15px] leading-[1.75] flex-1 mb-8">
+                    {card.desc}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1a7aab] group-hover:gap-3 transition-all duration-200">
+                    {card.cta}
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                      <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            )
+          })()}
+
+          {/* Stacked smaller cards — remaining industries */}
+          <div className="flex flex-col gap-8">
+            {industryCards.slice(1).map((card) => (
+              <Link
+                key={card.title}
+                to={card.href}
+                className="group flex flex-1 flex-col overflow-hidden bg-white shadow-[0_18px_55px_rgba(10,22,40,0.06)] ring-1 ring-[#e8edf3] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
+              >
+                <div className="overflow-hidden" style={{ height: 168 }}>
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col flex-1 px-7 pt-6 pb-7">
+                  <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
+                    {card.title}
+                  </h3>
+                  <p className="text-[#0a1628]/62 text-[14px] leading-[1.7] flex-1 mb-6">
+                    {card.desc}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1a7aab] group-hover:gap-3 transition-all duration-200">
+                    {card.cta}
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                      <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
