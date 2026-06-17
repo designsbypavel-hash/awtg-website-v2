@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDays, faNewspaper, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import InsightImage from '@/components/InsightImage'
 import { getNewsImage } from '@/lib/insightImages'
 
@@ -641,7 +641,7 @@ export default function InsightsNewsPage() {
                 <div className="space-y-6">
                   {spotlight.map((item) => (
                     <Link key={item.title} to={getNewsHref(item)} className="group block border-t border-[#228DC1]/15 pt-5">
-                      <p className="text-[#0a1628]/45 text-xs mb-2">{item.date}</p>
+                      <p className="text-[#0a1628]/60 text-xs mb-2">{item.date}</p>
                       <h3 className="font-h5 text-[#0a1628] group-hover:text-[#1a7aab] transition-colors">{cleanText(item.title)}</h3>
                     </Link>
                   ))}
@@ -658,7 +658,7 @@ export default function InsightsNewsPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <p className="type-label text-[#0a1628]/55 mb-3">All News</p>
+              <p className="type-label text-[#0a1628]/60 mb-3">All News</p>
               <h2 className="font-h2 text-[#0a1628]">
                 {activeCategory === 'All' ? 'Media coverage and announcements.' : activeCategory}
               </h2>
@@ -681,18 +681,13 @@ export default function InsightsNewsPage() {
                   >
                     <div className="h-72 relative overflow-hidden bg-gray-100">
                       <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                      {hasVideo && (
-                        <div className="absolute top-5 left-5 h-10 w-10 bg-white/90 flex items-center justify-center text-[#1a7aab] shadow-sm">
-                          <FontAwesomeIcon icon={faPlay} className="w-4 h-4" />
-                        </div>
-                      )}
                     </div>
                     <div className="p-8">
                       <div className="flex items-center gap-3 mb-4">
                         <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                           {item.category}
                         </span>
-                        <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
+                        <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
                       </div>
                       <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">{cleanText(item.title)}</h3>
                       <p className="text-[#0a1628]/60 text-sm leading-relaxed max-w-2xl">{cleanText(item.excerpt)}</p>
@@ -710,18 +705,13 @@ export default function InsightsNewsPage() {
                   >
                     <div className="h-44 relative overflow-hidden bg-gray-100">
                       <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      {hasVideo && (
-                        <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#1a7aab]">
-                          <FontAwesomeIcon icon={faPlay} className="w-4 h-4" />
-                        </div>
-                      )}
                     </div>
                     <div className="p-6">
                       <div className="flex flex-wrap items-center gap-3 mb-4">
                         <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                           {item.category}
                         </span>
-                        <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
+                        <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
                       </div>
                       <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">{cleanText(item.title)}</h3>
                       <p className="text-[#0a1628]/60 text-[13px] leading-[1.7] mb-5">{cleanText(item.excerpt)}</p>
@@ -741,16 +731,13 @@ export default function InsightsNewsPage() {
                 >
                   <div className="h-44 relative overflow-hidden">
                     <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-4 left-4 h-9 w-9 bg-white/90 flex items-center justify-center text-[#1a7aab]">
-                      <FontAwesomeIcon icon={hasVideo ? faPlay : faNewspaper} className="w-4 h-4" />
-                    </div>
                   </div>
                   <div className="p-6">
                     <div className="flex flex-wrap items-center gap-3 mb-4">
                       <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                         {item.category}
                       </span>
-                      <span className="text-[#0a1628]/50 text-xs">{item.date}</span>
+                      <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
                     </div>
                     <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">
                       {cleanText(item.title)}
