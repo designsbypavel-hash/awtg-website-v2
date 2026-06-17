@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
@@ -805,20 +805,88 @@ const articles = [
 ]
 
 function Insights() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [canPrev, setCanPrev] = useState(false)
+  const [canNext, setCanNext] = useState(false)
+
+  const updateScrollState = () => {
+    const el = scrollRef.current
+    if (!el) return
+    setCanPrev(el.scrollLeft > 4)
+    setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 4)
+  }
+
+  useEffect(() => {
+    updateScrollState()
+    const el = scrollRef.current
+    if (!el) return
+    el.addEventListener('scroll', updateScrollState, { passive: true })
+    window.addEventListener('resize', updateScrollState)
+    return () => {
+      el.removeEventListener('scroll', updateScrollState)
+      window.removeEventListener('resize', updateScrollState)
+    }
+  }, [])
+
+  const scrollByCard = (dir: number) => {
+    scrollRef.current?.scrollBy({ left: dir * 360, behavior: 'smooth' })
+  }
+
   return (
     <section className="py-28 bg-[#f7f8fa]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <SectionHeader
-          className="mb-14"
-          title={<>Explore the latest<br /><span className="text-[#1a7aab]">from AWTG.</span></>}
-          description="Insight, analysis and perspectives from AWTG's engineers and sector specialists."
-        />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <SectionHeader
+            title={<>Explore the latest<br /><span className="text-[#1a7aab]">from AWTG.</span></>}
+            description="Insight, analysis and perspectives from AWTG's engineers and sector specialists."
+          />
+          <div className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => scrollByCard(-1)}
+              disabled={!canPrev}
+              aria-label="Previous"
+              className="flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 disabled:cursor-not-allowed"
+              style={{
+                borderColor: canPrev ? '#228DC1' : 'rgba(34,141,193,0.25)',
+                color: canPrev ? '#1a7aab' : 'rgba(26,122,171,0.35)',
+                background: '#fff',
+              }}
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByCard(1)}
+              disabled={!canNext}
+              aria-label="Next"
+              className="flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 disabled:cursor-not-allowed"
+              style={{
+                borderColor: canNext ? '#228DC1' : 'rgba(34,141,193,0.25)',
+                color: canNext ? '#1a7aab' : 'rgba(26,122,171,0.35)',
+                background: '#fff',
+              }}
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={scrollRef}
+          className="flex gap-5 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          style={{ scrollSnapType: 'x mandatory' }}
+        >
           {articles.map((a) => (
             <Link
               key={a.title}
               to={a.href}
-              className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all flex flex-col overflow-hidden"
+              className="group flex shrink-0 flex-col overflow-hidden bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all"
+              style={{ width: 340, scrollSnapAlign: 'start' }}
             >
               <div className="h-48 overflow-hidden bg-gray-100">
                 <img
@@ -849,10 +917,11 @@ function Insights() {
             </Link>
           ))}
         </div>
+
         <div className="mt-10 flex justify-center">
           <Link
             to="/news"
-            className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#0a1628]/20 text-[#0a1628]/70 text-sm font-medium hover:border-[#228DC1] hover:text-[#1a7aab] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1] text-[#1a7aab] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-all duration-200"
           >
             View all insights
           </Link>
