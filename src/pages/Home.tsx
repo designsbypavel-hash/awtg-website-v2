@@ -321,9 +321,6 @@ function WhatWeDo() {
             )
             const copy = (
               <div className="flex min-h-[320px] flex-col justify-center py-4 lg:min-h-[386px]">
-                <p className="mb-5 text-[11px] font-black uppercase tracking-[0.22em]" style={{ color: item.accent }}>
-                  0{index + 1} / {item.tag}
-                </p>
                 <h3 className="mb-4 text-[28px] font-normal leading-[1.18] tracking-[-0.01em] text-[#0a1628] lg:text-[34px]">
                   {item.label}
                 </h3>
