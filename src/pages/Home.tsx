@@ -510,10 +510,7 @@ function Industries() {
               </div>
 
               {/* Text below image */}
-              <div className="flex flex-col flex-1 px-7 pt-6 pb-8">
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab] mb-4">
-                  {card.tag}
-                </p>
+              <div className="flex flex-col flex-1 px-7 pt-7 pb-8">
                 <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
                   {card.title}
                 </h3>
