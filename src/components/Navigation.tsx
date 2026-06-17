@@ -252,6 +252,16 @@ export default function Navigation() {
 
   return (
     <>
+      {/* Backdrop overlay when dropdown is open */}
+      {activeDropdown && (
+        <div
+          className="fixed inset-x-0 bottom-0 z-[1800] bg-white/18 backdrop-blur-[10px] transition-opacity duration-200"
+          style={{ top: '64px' }}
+          onMouseEnter={closeDropdownSoon}
+          aria-hidden="true"
+        />
+      )}
+
       <header
         className={`fixed top-0 left-0 right-0 z-[2000] transition-colors duration-200 ${navBg}`}
         onMouseLeave={closeDropdownSoon}
@@ -502,15 +512,6 @@ export default function Navigation() {
           </div>
         )}
       </header>
-
-      {/* Backdrop overlay when dropdown is open */}
-      {activeDropdown && (
-        <div
-          className="fixed inset-0 z-[1900] bg-black/5 transition-opacity duration-200"
-          style={{ top: '64px' }}
-          onMouseEnter={closeDropdownSoon}
-        />
-      )}
     </>
   )
 }
