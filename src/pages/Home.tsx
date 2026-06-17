@@ -290,11 +290,6 @@ const whatWeDoItems = [
 ]
 
 function WhatWeDo() {
-  const ctaLabels: Record<string, string> = {
-    'AI Products & Software': 'Discover AI products and software',
-    'Connectivity': 'Explore connectivity solutions',
-  }
-
   return (
     <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24 lg:py-28">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
@@ -337,12 +332,6 @@ function WhatWeDo() {
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
-                <Link
-                  to={item.href}
-                  className="mt-9 inline-flex w-fit items-center justify-center rounded-[4px] bg-[#3157ff] px-7 py-4 text-[14px] font-bold leading-none text-white transition-colors duration-200 hover:bg-[#2344dc]"
-                >
-                  {ctaLabels[item.label] ?? 'Discover capability'}
-                </Link>
               </div>
             )
 
