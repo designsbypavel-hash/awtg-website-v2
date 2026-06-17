@@ -289,13 +289,13 @@ function WhatWeDo() {
   const [lead, ...supporting] = whatWeDoItems
 
   return (
-    <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24 lg:py-28">
-      <div className="absolute inset-y-0 right-0 hidden w-[43%] bg-[#f5f8fb] lg:block" aria-hidden="true" />
+    <section className="relative overflow-hidden border-t border-gray-100 bg-[#f7f9fc] py-24 lg:py-28">
+      <div className="absolute inset-x-0 top-0 hidden h-[52%] bg-white lg:block" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Header */}
-        <div className="relative mb-14 grid gap-10 lg:mb-16 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
-          <div>
+        <div className="relative mb-12 grid gap-8 lg:mb-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <div className="max-w-xl">
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-12 bg-[#228DC1]" />
               <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#0a1628]/45">
@@ -307,51 +307,53 @@ function WhatWeDo() {
               <span className="text-[#1a7aab]">One partner.</span>
             </h2>
           </div>
-          <p className="max-w-[620px] text-[#0a1628]/60 text-[16px] leading-[1.8] lg:justify-self-end lg:pr-10">
+          <p className="max-w-[560px] text-[#0a1628]/60 text-[16px] leading-[1.8] lg:justify-self-end lg:pt-11">
             End-to-end delivery across AI, private networks and engineering — under one accountable partner.
           </p>
         </div>
 
-        <div className="relative grid gap-7 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
-          <article className="group relative min-h-[500px] overflow-hidden rounded-[8px] bg-[#0a1628] shadow-[0_28px_80px_rgba(10,22,40,0.14)] lg:min-h-[560px]">
-            <img
-              src={lead.image}
-              alt={lead.label}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/92 via-[#07162b]/36 to-[#07162b]/4" />
-            <div className="absolute left-0 top-0 h-1 w-full" style={{ background: lead.accent }} />
-            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-white/62">
-                {lead.tag}
+        <div className="relative grid gap-7 lg:grid-cols-[1.14fr_0.86fr] lg:items-stretch">
+          <article className="group grid overflow-hidden rounded-[8px] bg-[#0a1628] shadow-[0_30px_90px_rgba(10,22,40,0.16)] lg:min-h-[590px] lg:grid-cols-[1.16fr_0.84fr]">
+            <div className="relative min-h-[360px] overflow-hidden lg:min-h-full">
+              <img
+                src={lead.image}
+                alt={lead.label}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/42 via-transparent to-transparent" />
+              <div className="absolute left-0 top-0 h-1 w-full" style={{ background: lead.accent }} />
+            </div>
+            <div className="flex min-h-[300px] flex-col justify-end bg-[#0a1628] p-8 lg:p-10">
+              <p className="mb-5 text-[11px] font-black uppercase tracking-[0.22em] text-white/55">
+                01 / {lead.tag}
               </p>
-              <h3 className="mb-4 max-w-md text-[30px] font-semibold leading-[1.12] text-white lg:text-[38px]">
+              <h3 className="mb-5 max-w-sm text-[30px] font-semibold leading-[1.12] text-white lg:text-[38px]">
                 {lead.label}
               </h3>
-              <p className="max-w-md text-[15px] leading-[1.78] text-white/68">
+              <p className="max-w-sm text-[15px] leading-[1.78] text-white/66">
                 {lead.line}
               </p>
             </div>
           </article>
 
-          <div className="grid gap-6 lg:gap-7">
+          <div className="grid gap-7">
             {supporting.map((item, index) => (
               <article
                 key={item.label}
-                className="grid overflow-hidden rounded-[8px] border border-gray-200 bg-white shadow-[0_14px_40px_rgba(10,22,40,0.07)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(10,22,40,0.12)] sm:grid-cols-[0.95fr_1.05fr]"
+                className="group overflow-hidden rounded-[8px] border border-gray-200 bg-white shadow-[0_16px_44px_rgba(10,22,40,0.07)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_64px_rgba(10,22,40,0.12)]"
               >
-                <div className="relative min-h-[230px] overflow-hidden bg-[#0a1628] sm:min-h-full">
+                <div className="relative h-[230px] overflow-hidden bg-[#0a1628]">
                   <img
                     src={item.image}
                     alt={item.label}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/40 to-transparent" />
-                  <div className="absolute left-0 top-0 h-full w-1" style={{ background: item.accent }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/34 to-transparent" />
+                  <div className="absolute left-0 top-0 h-1 w-full" style={{ background: item.accent }} />
                 </div>
-                <div className="flex min-h-[266px] flex-col justify-center p-7 lg:p-9">
+                <div className="min-h-[214px] p-7 lg:p-8">
                   <p className="mb-4 text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: item.accent }}>
                     0{index + 2} / {item.tag}
                   </p>
