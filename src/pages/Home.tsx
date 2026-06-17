@@ -264,7 +264,7 @@ function SectionHeader({
 
 const whatWeDoItems = [
   {
-    label: 'AI Products & Software',
+    label: 'AI Transformation',
     description: [
       'AI is changing how organisations compete. AWTG helps clients lead that change.',
       'We design and build intelligent software products that solve real operational challenges, improve decision making, and create new opportunities for growth. Our AI solutions are built with security, reliability, and usability at the core, so clients can adopt innovation with confidence.',
@@ -277,7 +277,7 @@ const whatWeDoItems = [
     imageFit: 'cover',
   },
   {
-    label: 'Connectivity',
+    label: 'Connectivity Solutions',
     description: [
       'Connectivity is the foundation of every modern organisation. AWTG helps clients build it with confidence.',
       'We design and deliver telecoms and connectivity solutions that improve performance, expand coverage, and enable smarter operations. Whether supporting public sector transformation, enterprise networks, smart cities, transport, or critical infrastructure, our focus is on reliable technology that works in real environments.',
