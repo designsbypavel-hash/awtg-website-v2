@@ -268,7 +268,7 @@ const whatWeDoItems = [
     accent: '#228DC1',
     tag: 'Generative AI',
     image: kaiMockup,
-    imageFit: 'contain',
+    imageFit: 'cover',
   },
   {
     label: 'Private Networks',
