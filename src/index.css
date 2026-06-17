@@ -416,16 +416,16 @@
 @media (min-width: 1280px) {
   .max-w-7xl.mx-auto,
   .mx-auto.max-w-7xl {
-    padding-left: clamp(3rem, 4.4vw, 5.25rem) !important;
-    padding-right: clamp(3rem, 4.4vw, 5.25rem) !important;
+    padding-left: clamp(4.5rem, 6vw, 7rem) !important;
+    padding-right: clamp(4.5rem, 6vw, 7rem) !important;
   }
 }
 
 @media (min-width: 1760px) {
   .max-w-7xl.mx-auto,
   .mx-auto.max-w-7xl {
-    padding-left: 5.75rem !important;
-    padding-right: 5.75rem !important;
+    padding-left: 7.5rem !important;
+    padding-right: 7.5rem !important;
   }
 }
 
