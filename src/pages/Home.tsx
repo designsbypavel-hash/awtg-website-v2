@@ -482,7 +482,7 @@ function Industries() {
   return (
     <section className="py-24 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-16">
           <h2 className="font-heading text-[#0a1628] mb-4">
             Powering transformation<br />
             <span className="text-[#1a7aab]">across every sector.</span>
@@ -492,15 +492,15 @@ function Industries() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           {industryCards.map((card) => (
             <Link
               key={card.title}
               to={card.href}
-              className="group flex flex-col bg-white border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-[0_8px_40px_rgba(10,22,40,0.08)] transition-all duration-300"
+              className="group flex flex-col overflow-hidden bg-white shadow-[0_18px_55px_rgba(10,22,40,0.06)] ring-1 ring-[#e8edf3] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
             >
               {/* Pure image — no text overlay */}
-              <div className="overflow-hidden" style={{ height: 260 }}>
+              <div className="overflow-hidden" style={{ height: 292 }}>
                 <img
                   src={card.img}
                   alt={card.title}
@@ -510,11 +510,11 @@ function Industries() {
               </div>
 
               {/* Text below image */}
-              <div className="flex flex-col flex-1 px-7 pt-7 pb-8">
-                <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
+              <div className="flex flex-col flex-1 px-8 pt-8 pb-9">
+                <h3 className="text-[#0a1628] font-semibold leading-snug mb-4" style={{ fontSize: 21 }}>
                   {card.title}
                 </h3>
-                <p className="text-[#0a1628]/60 text-[14px] leading-[1.78] flex-1 mb-7">
+                <p className="text-[#0a1628]/62 text-[15px] leading-[1.75] flex-1 mb-8">
                   {card.desc}
                 </p>
                 <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1a7aab] group-hover:gap-3 transition-all duration-200">
