@@ -275,21 +275,12 @@ const whatWeDoItems = [
     tag: '4G / 5G',
     image: '/images/insights/private-networks.jpg',
   },
-  {
-    label: 'Engineering & Consultancy',
-    line: '5G RF design, network testing and transformation strategy across 20+ countries.',
-    href: '/contact',
-    accent: '#7c3aed',
-    tag: 'Global Delivery',
-    image: '/images/insights/engineering-team.jpg',
-  },
 ]
 
 function WhatWeDo() {
   const ctaLabels: Record<string, string> = {
     'AI Products & Software': 'Discover AI products and software',
     'Private Networks': 'Explore private network delivery',
-    'Engineering & Consultancy': 'View engineering capability',
   }
 
   return (
