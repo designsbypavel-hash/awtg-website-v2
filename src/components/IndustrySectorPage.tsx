@@ -275,15 +275,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                       <p className="max-w-xl text-[15px] font-normal leading-[1.78] text-[#0a1628]/60">
                         {o.desc}
                       </p>
-                      <div className="mt-5 flex gap-1.5">
-                        {[0, 1, 2].map((dot) => (
-                          <span
-                            key={dot}
-                            className="h-1 w-6 rounded-full"
-                            style={{ background: dot === 0 ? accent : 'rgba(10,22,40,0.10)' }}
-                          />
-                        ))}
-                      </div>
                     </div>
                   </article>
                 ))}
