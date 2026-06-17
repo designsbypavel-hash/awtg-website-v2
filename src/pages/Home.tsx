@@ -179,7 +179,7 @@ function Hero() {
       </div>
 
       {/* -- Content, Harvey layout: bottom-left, minimal copy -- */}
-      <div className="relative flex flex-col justify-end pb-16 max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '85%' }}>
+      <div className="relative flex flex-col justify-end pb-16 max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '90%' }}>
 
         {/* Headline */}
         <h1
@@ -209,7 +209,7 @@ function Hero() {
       </div>
 
       {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
-      <div className="relative border-t border-gray-100 bg-white overflow-hidden" style={{ height: '15%' }}>
+      <div className="relative border-t border-gray-100 bg-white overflow-hidden" style={{ height: '10%' }}>
         <div className="flex items-center h-full">
           <div className="shrink-0 h-full flex items-center px-8 border-r border-black/10">
             <span className="text-[#0a1628]/60 text-[14px] font-semibold tracking-[0.22em] uppercase whitespace-nowrap">
