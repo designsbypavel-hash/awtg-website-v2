@@ -158,7 +158,7 @@ const tickerLogos = [
 
 function Hero() {
   return (
-    <section className="home-hero relative h-screen min-h-[700px] flex flex-col overflow-hidden">
+    <section className="home-hero home-ai-hero relative h-screen min-h-[700px] flex flex-col overflow-hidden">
 
       {/* -- Cinematic background (decorative, aria-hidden) -- */}
       <div className="absolute inset-0" aria-hidden="true">
@@ -172,8 +172,10 @@ function Hero() {
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        {/* Gradient: darkest bottom-left (where copy lives), lighter top-right */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/55 to-black/30" />
+        {/* Kore-style immersive AI/connectivity atmosphere */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#030915]/92 via-[#06172b]/72 to-[#102b46]/38" />
+        <div className="home-ai-hero-glow absolute inset-0" />
+        <div className="home-ai-hero-grid absolute inset-0" />
       </div>
 
       {/* -- Content, Harvey layout: bottom-left, minimal copy -- */}
@@ -802,6 +804,28 @@ const articles = [
     img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop',
     href: '/contact',
   },
+  {
+    tag: 'Network Intelligence',
+    tagPill: 'bg-[#0891b2]/10 text-[#0891b2]',
+    accent: 'bg-[#0891b2]',
+    date: 'Apr 2026',
+    readTime: '6 min read',
+    title: 'iCMAP: Turning Raw Coverage Data into Confident Investment Decisions',
+    excerpt: 'How AWTG\'s mapping platform helps operators identify weak zones, benchmark quality and prioritise network investment with clearer evidence.',
+    img: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&q=80&auto=format&fit=crop',
+    href: '/products/icmap',
+  },
+  {
+    tag: 'Health Tech',
+    tagPill: 'bg-[#dc2626]/10 text-[#dc2626]',
+    accent: 'bg-[#dc2626]',
+    date: 'Apr 2026',
+    readTime: '5 min read',
+    title: 'Building NHS-Grade Networks for Safer, Smarter Patient Care',
+    excerpt: 'How AWTG designs DSPT-compliant connectivity and clinical wireless infrastructure built around patient outcomes and care delivery.',
+    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop',
+    href: '/industries/health-tech',
+  },
 ]
 
 function Insights() {
@@ -971,7 +995,7 @@ export default function Home() {
   return (
     <>
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#228DC1] focus:text-white focus:text-sm">Skip to main content</a>
-      <main id="main-content">
+      <main id="main-content" className="home-page-ambient">
         <Hero />
         <WhatWeDo />
         <Industries />
