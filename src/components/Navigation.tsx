@@ -111,7 +111,7 @@ const featuredPanels: Record<string, FeaturedPanel> = {
       {
         label: 'The Future of Learning is Here: Inside Aruva',
         desc: "AWTG's educational AI platform connecting institutions, educators and learners through smarter collaboration.",
-        href: '/insights/news/the-future-of-learning-is-here-inside-aruva-awtg-s-educational-ai-platform',
+        href: '/news/the-future-of-learning-is-here-inside-aruva-awtg-s-educational-ai-platform',
         badge: 'News',
         image: 'https://img.youtube.com/vi/L20VwApk4q4/hqdefault.jpg',
         imageFit: 'cover',
@@ -290,7 +290,7 @@ export default function Navigation() {
                 </button>
               ))}
               <Link
-                to="/insights"
+                to="/news"
                 className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
               >
                 News
@@ -492,7 +492,7 @@ export default function Navigation() {
                 )}
               </div>
             ))}
-            <Link to="/insights" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">News</Link>
+            <Link to="/news" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">News</Link>
             <Link to="/careers" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Careers</Link>
             <div className="pt-4 flex flex-col gap-2">
               <Link to="/contact" className="w-full py-2.5 text-center text-sm border border-[#228DC1] text-[#1a7aab] hover:bg-[#228DC1] hover:text-white transition-colors rounded-lg">

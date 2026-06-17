@@ -31,7 +31,7 @@ export const createNewsSlug = (title: string) => cleanText(title)
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-+|-+$/g, '')
 
-export const getNewsHref = (item: NewsItem) => `/insights/news/${createNewsSlug(item.title)}`
+export const getNewsHref = (item: NewsItem) => `/news/${createNewsSlug(item.title)}`
 
 export const newsItems: NewsItem[] = [
   {

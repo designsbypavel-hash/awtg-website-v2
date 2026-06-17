@@ -72,7 +72,7 @@ const footerCols = [
   {
     title: 'Company',
     links: [
-      { label: 'News', href: '/insights' },
+      { label: 'News', href: '/news' },
       { label: 'Careers', href: '/careers' },
       { label: 'Contact', href: '/contact' },
       { label: 'Health Tech', href: '/industries/health-tech' },

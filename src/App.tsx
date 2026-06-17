@@ -132,9 +132,8 @@ export default function App() {
         <Route path="about/social-value-statement" element={<AboutSustainabilityPage />} />
 
         {/* Insights */}
-        <Route path="insights" element={<InsightsNewsPage />} />
-        <Route path="insights/news" element={<InsightsNewsPage />} />
-        <Route path="insights/news/:slug" element={<InsightsNewsDetailPage />} />
+        <Route path="news" element={<InsightsNewsPage />} />
+        <Route path="news/:slug" element={<InsightsNewsDetailPage />} />
         <Route path="insights/blog" element={<InsightsBlogPage />} />
         <Route path="insights/case-studies" element={<InsightsCaseStudiesPage />} />
         <Route path="insights/white-papers" element={<InsightsWhitePapersPage />} />

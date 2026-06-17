@@ -39,7 +39,7 @@ export default function InsightsNewsDetailPage() {
         <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">404</p>
         <h1 className="text-4xl font-bold text-[#0a1628] mb-4">News Story Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This news story does not exist or may have been moved.</p>
-        <Link to="/insights" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
+        <Link to="/news" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
           Back to Newsroom
         </Link>
       </div>
@@ -52,7 +52,7 @@ export default function InsightsNewsDetailPage() {
         <div className="max-w-3xl mx-auto px-8 lg:px-12">
           <div className="flex flex-wrap items-center gap-4 mb-8">
             <Link
-              to="/insights"
+              to="/news"
               className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#1a7aab] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
               Newsroom
@@ -119,7 +119,7 @@ export default function InsightsNewsDetailPage() {
           </div>
 
           <div className="pt-8 border-t border-gray-100">
-            <Link to="/insights" className="inline-flex items-center gap-2 text-[#1a7aab] text-sm font-semibold hover:text-[#0a1628] transition-colors">
+            <Link to="/news" className="inline-flex items-center gap-2 text-[#1a7aab] text-sm font-semibold hover:text-[#0a1628] transition-colors">
               Back to all news
             </Link>
           </div>
