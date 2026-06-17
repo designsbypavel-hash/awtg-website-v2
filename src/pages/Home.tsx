@@ -501,7 +501,7 @@ function Industries() {
               <Link
                 key={card.title}
                 to={card.href}
-                className="group flex flex-col overflow-hidden bg-white shadow-[0_18px_55px_rgba(10,22,40,0.06)] ring-1 ring-[#e8edf3] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
+                className="group flex flex-col overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
               >
                 <div className="overflow-hidden" style={{ height: 420 }}>
                   <img
@@ -511,19 +511,13 @@ function Industries() {
                     loading="lazy"
                   />
                 </div>
-                <div className="flex flex-col flex-1 px-8 pt-8 pb-9">
+                <div className="flex flex-col px-8 pt-8 pb-9">
                   <h3 className="text-[#0a1628] font-semibold leading-snug mb-4" style={{ fontSize: 21 }}>
                     {card.title}
                   </h3>
-                  <p className="text-[#0a1628]/62 text-[15px] leading-[1.75] flex-1 mb-8">
+                  <p className="text-[#0a1628]/62 text-[15px] leading-[1.75]">
                     {card.desc}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1a7aab] group-hover:gap-3 transition-all duration-200">
-                    {card.cta}
-                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                      <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
                 </div>
               </Link>
             )
@@ -535,7 +529,7 @@ function Industries() {
               <Link
                 key={card.title}
                 to={card.href}
-                className="group flex flex-1 flex-col overflow-hidden bg-white shadow-[0_18px_55px_rgba(10,22,40,0.06)] ring-1 ring-[#e8edf3] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
+                className="group flex flex-1 flex-col overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
               >
                 <div className="overflow-hidden" style={{ height: 168 }}>
                   <img
@@ -545,19 +539,13 @@ function Industries() {
                     loading="lazy"
                   />
                 </div>
-                <div className="flex flex-col flex-1 px-7 pt-6 pb-7">
+                <div className="flex flex-col px-7 pt-6 pb-7">
                   <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
                     {card.title}
                   </h3>
-                  <p className="text-[#0a1628]/62 text-[14px] leading-[1.7] flex-1 mb-6">
+                  <p className="text-[#0a1628]/62 text-[14px] leading-[1.7]">
                     {card.desc}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#1a7aab] group-hover:gap-3 transition-all duration-200">
-                    {card.cta}
-                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                      <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
                 </div>
               </Link>
             ))}
