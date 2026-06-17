@@ -411,6 +411,24 @@
 }
 .container-max { max-width: 80rem; margin-left: auto; margin-right: auto; }
 
+/* Wider-screen gutter polish: keeps existing layouts intact while giving
+   shared page containers a calmer, Legora-like amount of side breathing room. */
+@media (min-width: 1280px) {
+  .max-w-7xl.mx-auto,
+  .mx-auto.max-w-7xl {
+    padding-left: clamp(3rem, 4.4vw, 5.25rem) !important;
+    padding-right: clamp(3rem, 4.4vw, 5.25rem) !important;
+  }
+}
+
+@media (min-width: 1760px) {
+  .max-w-7xl.mx-auto,
+  .mx-auto.max-w-7xl {
+    padding-left: 5.75rem !important;
+    padding-right: 5.75rem !important;
+  }
+}
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    TEXT COLOUR TOKENS — canonical opacity values
    /60  secondary body text   (was inconsistently /60 or /65)
