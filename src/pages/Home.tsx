@@ -179,7 +179,7 @@ function Hero() {
       </div>
 
       {/* -- Content, Harvey layout: bottom-left, minimal copy -- */}
-      <div className="relative flex-1 flex flex-col justify-end pb-16 max-w-7xl mx-auto w-full px-8 lg:px-12">
+      <div className="relative flex flex-col justify-end pb-16 max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '85%' }}>
 
         {/* Headline */}
         <h1
@@ -209,25 +209,25 @@ function Hero() {
       </div>
 
       {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
-      <div className="relative border-t border-gray-100 bg-white overflow-hidden">
-        <div className="flex items-center">
-          <div className="shrink-0 px-8 py-4 border-r border-black/10">
+      <div className="relative border-t border-gray-100 bg-white overflow-hidden" style={{ height: '15%' }}>
+        <div className="flex items-center h-full">
+          <div className="shrink-0 h-full flex items-center px-8 border-r border-black/10">
             <span className="text-[#0a1628]/60 text-[14px] font-semibold tracking-[0.22em] uppercase whitespace-nowrap">
               Trusted by
             </span>
           </div>
-          <div className="overflow-hidden flex-1">
-            <div className="ticker-track" aria-hidden="true" style={{ animationDuration: '160s' }}>
+          <div className="overflow-hidden flex-1 h-full">
+            <div className="ticker-track h-full" aria-hidden="true" style={{ animationDuration: '160s' }}>
               {[...tickerLogos, ...tickerLogos].map((logo, i) => (
                 <div
                   key={`${logo.id}-${i}`}
-                  className="flex items-center justify-center px-[42px] py-4 shrink-0"
+                  className="flex items-center justify-center px-[42px] h-full shrink-0"
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     className="w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    style={{ height: `${logo.h ?? 120}px`, maxWidth: '240px' }}
+                    style={{ maxHeight: '55%', maxWidth: '200px' }}
                   />
                 </div>
               ))}
