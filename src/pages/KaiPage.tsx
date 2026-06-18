@@ -1051,12 +1051,12 @@ function OmnichannelSection() {
     `}</style>
     <section
       className="relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0a1628 0%, #0d2240 40%, #0a3352 70%, #0a1628 100%)' }}
+      style={{ background: '#0a1628' }}
     >
       {/* Ambient glow blobs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.18) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-[-10%] right-[5%] w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.12) 0%, transparent 70%)' }} />
+        <div className="absolute top-[5%] left-[10%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.18) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-[5%] right-[5%] w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.12) 0%, transparent 70%)' }} />
       </div>
 
       {/* Dot grid texture */}
@@ -1641,8 +1641,8 @@ export default function KaiPage() {
       <section className="relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a1628 0%, #0d2240 40%, #0a3352 70%, #0a1628 100%)' }}>
         {/* Ambient glow blobs */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.18) 0%, transparent 70%)' }} />
-          <div className="absolute bottom-[-10%] right-[5%] w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.12) 0%, transparent 70%)' }} />
+          <div className="absolute top-[5%] left-[10%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.18) 0%, transparent 70%)' }} />
+          <div className="absolute bottom-[5%] right-[5%] w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.12) 0%, transparent 70%)' }} />
         </div>
 
         {/* Dot grid texture */}
