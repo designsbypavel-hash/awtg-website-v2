@@ -110,6 +110,33 @@ function CurriculumAgnosticSection() {
   const KY = RY * 0.5522848
   const ORBIT_PATH = `M ${CX} ${CY - RY} C ${CX + KX} ${CY - RY} ${CX + RX} ${CY - KY} ${CX + RX} ${CY} C ${CX + RX} ${CY + KY} ${CX + KX} ${CY + RY} ${CX} ${CY + RY} C ${CX - KX} ${CY + RY} ${CX - RX} ${CY + KY} ${CX - RX} ${CY} C ${CX - RX} ${CY - KY} ${CX - KX} ${CY - RY} ${CX} ${CY - RY} Z`
 
+  // One spoke line per subject, tracking that card's live position on the ellipse
+  // so the hub always looks connected to every subject as they orbit.
+  const lineRefs = useRef<(SVGLineElement | null)[]>([])
+  const dotRefs = useRef<(SVGCircleElement | null)[]>([])
+
+  useEffect(() => {
+    if (!inView) return
+    let raf = 0
+    const start = performance.now()
+    const tick = (now: number) => {
+      const elapsed = (now - start) / 1000
+      for (let i = 0; i < N; i++) {
+        const frac = ((elapsed / ORBIT_DUR) + i / N) % 1
+        const theta = frac * Math.PI * 2
+        const x = CX + RX * Math.sin(theta)
+        const y = CY - RY * Math.cos(theta)
+        lineRefs.current[i]?.setAttribute('x2', String(x))
+        lineRefs.current[i]?.setAttribute('y2', String(y))
+        dotRefs.current[i]?.setAttribute('cx', String(x))
+        dotRefs.current[i]?.setAttribute('cy', String(y))
+      }
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView, N, ORBIT_DUR, CX, CY, RX, RY])
+
   return (
     <section ref={ref} className="py-24 bg-[#f8fafc] overflow-hidden">
       <style>{`
@@ -188,19 +215,25 @@ function CurriculumAgnosticSection() {
                 pointerEvents:'none',
               }}/>
 
-              {/* Connection beam SVG - always points upward from center, beam appears for top card */}
+              {/* Connection beams - one spoke per subject, tracking its live orbit position */}
               <svg style={{ position:'absolute', inset:0, width:ORBIT_W, height:ORBIT_H, pointerEvents:'none' }} viewBox={`0 0 ${ORBIT_W} ${ORBIT_H}`}>
-                <line
-                  x1={CX} y1={CY}
-                  x2={CX} y2={CY - RY + 10}
-                  stroke="#228DC1"
-                  strokeWidth="1.5"
-                  strokeDasharray="5 5"
-                  style={{ animation:'beamDash 0.8s linear infinite', opacity:0.55 }}
-                />
-                {/* Connection dot at top */}
-                <circle cx={CX} cy={CY - RY + 10} r="4" fill="#228DC1" opacity="0.7"
-                  style={{ animation:'connectionPulse 2s ease-in-out infinite' }}/>
+                {curriculumSubjects.map((subj, i) => (
+                  <g key={subj.name}>
+                    <line
+                      ref={(el) => { lineRefs.current[i] = el }}
+                      x1={CX} y1={CY}
+                      x2={CX} y2={CY - RY}
+                      stroke={subj.color}
+                      strokeWidth="1.5"
+                      strokeDasharray="5 5"
+                      style={{ animation:'beamDash 0.8s linear infinite', opacity:0.32 }}
+                    />
+                    <circle
+                      ref={(el) => { dotRefs.current[i] = el }}
+                      cx={CX} cy={CY - RY} r="3.5" fill={subj.color} opacity="0.85"
+                    />
+                  </g>
+                ))}
               </svg>
 
               {/* CENTER - Aruva logo */}
@@ -240,12 +273,10 @@ function CurriculumAgnosticSection() {
                       offsetPath:`path("${ORBIT_PATH}")`,
                       offsetRotate:'0deg',
                       offsetAnchor:'center',
-                      animation: inView ? `orbitTravel ${ORBIT_DUR}s linear infinite` : 'none',
-                      animationDelay:`${delay}s`,
+                      animation: inView ? `orbitTravel ${ORBIT_DUR}s linear ${delay}s infinite` : 'none',
                     }}>
                       <div style={{
-                        animation: inView ? `cardFloat ${ORBIT_DUR}s linear infinite` : 'none',
-                        animationDelay: `${delay}s`,
+                        animation: inView ? `cardFloat ${ORBIT_DUR}s linear ${delay}s infinite` : 'none',
                         transformOrigin:'center',
                       }}>
                         <div style={{
