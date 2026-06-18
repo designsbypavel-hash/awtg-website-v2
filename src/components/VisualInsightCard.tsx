@@ -24,15 +24,15 @@ export default function VisualInsightCard({
   style,
 }: VisualInsightCardProps) {
   const base = dark
-    ? 'border-white/10 bg-[#0d1c31] text-white hover:bg-[#10243d]'
-    : 'border-gray-200 bg-white text-[#0a1628] hover:bg-[#fbfdff]'
+    ? 'bg-[#0d1c31] text-white'
+    : 'bg-white text-[#0a1628]'
 
   return (
     <article
-      className={`group flex h-full flex-col overflow-hidden rounded-lg border shadow-[0_1px_8px_rgba(10,22,40,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(10,22,40,0.12)] ${base}`}
+      className={`group flex h-full flex-col ${base}`}
       style={style}
     >
-      <div className="relative aspect-[16/9] overflow-hidden bg-[#e8f4fa]">
+      <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-[#e8f4fa]">
         <img
           src={image}
           alt=""

@@ -132,10 +132,10 @@ export default function InsightsCaseStudiesPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <Link
             to={`/insights/case-studies/${featured.slug}`}
-            className="group block overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all"
+            className="group block bg-white"
           >
             {/* Image strip */}
-            <div className="relative h-52 overflow-hidden">
+            <div className="relative h-52 overflow-hidden rounded-2xl">
               <InsightImage src={getCaseStudyImage(featured.slug, featured.tag)} alt={featured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="grid lg:grid-cols-[1fr_360px]">
@@ -145,7 +145,7 @@ export default function InsightsCaseStudiesPage() {
                   <div className="flex items-center gap-3 mb-6">
                     <span className="text-[#0a1628]/60 text-xs">{featured.date}</span>
                   </div>
-                  <h2 className="font-h2 text-[#0a1628] group-hover:text-[#1a7aab] transition-colors mb-5">
+                  <h2 className="font-h2 text-[#0a1628] mb-5">
                     {featured.title}
                   </h2>
                   <p className="text-[#0a1628]/60 text-sm font-normal leading-[1.75] max-w-lg">
@@ -185,9 +185,9 @@ export default function InsightsCaseStudiesPage() {
                   <Link
                     key={cs.slug}
                     to={`/insights/case-studies/${cs.slug}`}
-                    className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all"
+                    className="group flex flex-col bg-white"
                   >
-                    <div className="h-44 relative overflow-hidden bg-gray-100">
+                    <div className="h-44 relative overflow-hidden rounded-2xl bg-gray-100">
                       <InsightImage src={getCaseStudyImage(cs.slug, cs.tag)} alt={cs.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       <div className={`absolute bottom-0 left-0 w-full h-0.5 ${tagAccent[cs.tag] ?? 'bg-[#228DC1]'}`} />
                     </div>
@@ -195,7 +195,7 @@ export default function InsightsCaseStudiesPage() {
                       <div className="flex items-center justify-between mb-5">
                         <span className="text-[#0a1628]/60 text-[11px]">{cs.date.split(' ').pop()}</span>
                       </div>
-                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">{cs.title}</h3>
+                      <h3 className="font-h5 text-[#0a1628] mb-3 flex-1">{cs.title}</h3>
                       <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.7] mb-6">{cs.excerpt}</p>
                       <div className="flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold mt-auto">
                         Read case study
@@ -209,9 +209,9 @@ export default function InsightsCaseStudiesPage() {
                 <Link
                   key={cs.slug}
                   to={`/insights/case-studies/${cs.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all"
+                  className="group flex flex-col bg-white"
                 >
-                  <div className="h-44 relative overflow-hidden">
+                  <div className="h-44 relative overflow-hidden rounded-2xl">
                     <InsightImage src={getCaseStudyImage(cs.slug, cs.tag)} alt={cs.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className={`absolute bottom-0 left-0 w-full h-0.5 ${tagAccent[cs.tag] ?? 'bg-[#228DC1]'}`} />
                   </div>
@@ -219,7 +219,7 @@ export default function InsightsCaseStudiesPage() {
                     <div className="flex items-center justify-between mb-5">
                       <span className="text-[#0a1628]/60 text-[11px]">{cs.date.split(' ').pop()}</span>
                     </div>
-                    <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">
+                    <h3 className="font-h5 text-[#0a1628] mb-3 flex-1">
                       {cs.title}
                     </h3>
                     <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.7] mb-6">

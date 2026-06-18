@@ -181,7 +181,7 @@ export default function InsightsWhitePapersPage() {
 
       <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <Link to={getWhitePaperHref(featuredPaper)} className="group grid overflow-hidden rounded-2xl border border-gray-100 transition-all hover:border-[#228DC1] lg:grid-cols-5">
+          <Link to={getWhitePaperHref(featuredPaper)} className="group grid lg:grid-cols-5">
             <div className="lg:col-span-3 p-8 lg:p-12">
               <div className="flex flex-wrap items-center gap-3 mb-7">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60">Featured</span>
@@ -190,7 +190,7 @@ export default function InsightsWhitePapersPage() {
                   {featuredPaper.topic}
                 </span>
               </div>
-              <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#1a7aab] transition-colors">
+              <h2 className="font-h2 text-[#0a1628] mb-5">
                 {featuredPaper.title}
               </h2>
               <p className="text-[#0a1628]/70 text-[16px] font-normal leading-[1.8] max-w-2xl mb-9">
@@ -203,7 +203,7 @@ export default function InsightsWhitePapersPage() {
               </div>
             </div>
             <div className="lg:col-span-2 bg-[#0a1628] flex flex-col">
-              <div className="h-52 overflow-hidden bg-gray-100">
+              <div className="h-52 overflow-hidden rounded-2xl bg-gray-100">
                 <InsightImage src={getWhitePaperImage(featuredPaper.slug, featuredPaper.topic)} alt={featuredPaper.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div className="p-8 lg:p-10 flex flex-col justify-between flex-1">
@@ -242,8 +242,8 @@ export default function InsightsWhitePapersPage() {
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {visiblePapers.map((paper, index) => (
-              <Link key={paper.slug} to={getWhitePaperHref(paper)} className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all">
-                <div className="h-44 relative overflow-hidden">
+              <Link key={paper.slug} to={getWhitePaperHref(paper)} className="group bg-white">
+                <div className="h-44 relative overflow-hidden rounded-2xl">
                   <InsightImage src={getWhitePaperImage(paper.slug, paper.topic)} alt={paper.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute top-4 right-4 h-10 w-10 bg-white/90 flex items-center justify-center text-[#1a7aab]">
                     <FontAwesomeIcon icon={faFilePdf} className="w-4 h-4" />
@@ -259,7 +259,7 @@ export default function InsightsWhitePapersPage() {
                     </span>
                     <span className="text-[#0a1628]/60 text-xs">{paper.date}</span>
                   </div>
-                  <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">
+                  <h3 className="font-h5 text-[#0a1628] mb-3">
                     {paper.title}
                   </h3>
                   <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">

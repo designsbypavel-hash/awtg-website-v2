@@ -40,10 +40,10 @@ function initials(name: string) {
 
 function PersonCard({ person, large = false }: { person: Person; large?: boolean }) {
   return (
-    <article className="group overflow-hidden rounded-2xl bg-white hover:bg-[#f7f8fa] transition-colors">
-      <div className={large ? 'aspect-[4/5] bg-[#eef5f9] overflow-hidden' : 'aspect-square bg-[#eef5f9] overflow-hidden'}>
+    <article className="group bg-white">
+      <div className={large ? 'aspect-[4/5] overflow-hidden rounded-2xl bg-[#eef5f9]' : 'aspect-square overflow-hidden rounded-2xl bg-[#eef5f9]'}>
         {person.photo ? (
-          <img src={person.photo} alt={person.name} className="h-full w-full object-cover object-top" loading="lazy" />
+          <img src={person.photo} alt={person.name} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
         ) : (
           <div className="h-full w-full flex items-center justify-center bg-[#0a1628] text-white">
             <span className="font-h2">{initials(person.name)}</span>
@@ -51,7 +51,7 @@ function PersonCard({ person, large = false }: { person: Person; large?: boolean
         )}
       </div>
       <div className={large ? 'p-6' : 'p-5'}>
-        <h2 className="font-h5 text-[#0a1628] mb-2 group-hover:text-[#1a7aab] transition-colors">
+        <h2 className="font-h5 text-[#0a1628] mb-2">
           {person.name}
         </h2>
         <p className="text-[#0a1628]/62 text-[13px] font-semibold uppercase tracking-[0.12em] leading-[1.5]">

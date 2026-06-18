@@ -144,14 +144,14 @@ export default function InsightsBlogPage() {
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <Link
               to={`/insights/blog/${featured.slug}`}
-              className="group grid overflow-hidden rounded-2xl border border-gray-100 transition-all hover:border-[#228DC1] lg:grid-cols-5"
+              className="group grid lg:grid-cols-5"
             >
               <div className="lg:col-span-3 p-10 lg:p-14 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <span className="text-[14px] font-semibold uppercase tracking-[0.15em] text-[#0a1628]/60">Featured</span>
                   </div>
-                  <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#1a7aab] transition-colors">
+                  <h2 className="font-h2 text-[#0a1628] mb-5">
                     {featured.title}
                   </h2>
                   <p className="text-[#0a1628]/75 text-[16px] font-normal leading-[1.7] max-w-lg">
@@ -164,11 +164,11 @@ export default function InsightsBlogPage() {
                     <span>·</span>
                     <span className="flex items-center gap-1.5"><FontAwesomeIcon icon={faClock} className="w-3 h-3" /> {featured.readTime} read</span>
                   </div>
-                  <span className="text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.1em] flex items-center gap-1.5 group-hover:gap-3 transition-all">
+                  <span className="text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.1em] flex items-center gap-1.5">
                     Read article                  </span>
                 </div>
               </div>
-              <div className="lg:col-span-2 relative overflow-hidden min-h-[320px]">
+              <div className="lg:col-span-2 relative overflow-hidden rounded-2xl min-h-[320px]">
                 <InsightImage src={getBlogImage(featured.slug, featured.tag)} alt={featured.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/40 to-transparent" />
               </div>
@@ -190,13 +190,13 @@ export default function InsightsBlogPage() {
                     <Link
                       key={post.slug}
                       to={`/insights/blog/${post.slug}`}
-                    className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md lg:col-span-2 md:col-span-2"
+                    className="group bg-white lg:col-span-2 md:col-span-2"
                   >
-                      <div className="h-72 relative overflow-hidden bg-gray-100">
+                      <div className="h-72 relative overflow-hidden rounded-2xl bg-gray-100">
                         <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       </div>
                       <div className="p-8">
-                        <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">{post.title}</h3>
+                        <h3 className="font-h4 text-[#0a1628] mb-3">{post.title}</h3>
                         <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-5 max-w-2xl">{post.excerpt}</p>
                         <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
                           <span>{post.date}</span>
@@ -214,13 +214,13 @@ export default function InsightsBlogPage() {
                     <Link
                       key={post.slug}
                       to={`/insights/blog/${post.slug}`}
-                      className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md"
+                      className="group flex flex-col bg-white"
                     >
-                      <div className="h-48 relative overflow-hidden bg-gray-100">
+                      <div className="h-48 relative overflow-hidden rounded-2xl bg-gray-100">
                         <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       </div>
                       <div className="p-6 flex flex-col flex-1">
-                        <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">{post.title}</h3>
+                        <h3 className="font-h5 text-[#0a1628] mb-3 flex-1">{post.title}</h3>
                         <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
                         <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
                           <span>{post.date}</span>
@@ -237,13 +237,13 @@ export default function InsightsBlogPage() {
                   <Link
                     key={post.slug}
                     to={`/insights/blog/${post.slug}`}
-                    className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md"
+                    className="group flex flex-col bg-white"
                   >
-                    <div className="h-48 relative overflow-hidden">
+                    <div className="h-48 relative overflow-hidden rounded-2xl">
                       <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors flex-1">{post.title}</h3>
+                      <h3 className="font-h5 text-[#0a1628] mb-3 flex-1">{post.title}</h3>
                       <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
                       <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
                         <span>{post.date}</span>

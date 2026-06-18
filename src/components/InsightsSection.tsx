@@ -59,16 +59,16 @@ export default function InsightsSection() {
             <Link
               key={post.slug}
               to={`/insights/blog/${post.slug}`}
-              className="group bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow border border-gray-100"
+              className="group bg-white"
             >
-              <div className="relative h-48 overflow-hidden bg-gray-100">
+              <div className="relative h-48 overflow-hidden rounded-2xl bg-gray-100">
                 <InsightImage src={getBlogImage(post.slug, post.category)} alt={post.title} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-6">
                 <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3 ${categoryColors[post.category]}`}>
                   {post.category}
                 </span>
-                <h3 className="font-semibold text-[#0a1628] leading-[1.3] mb-3 group-hover:text-[#1a7aab] transition-colors">
+                <h3 className="font-semibold text-[#0a1628] leading-[1.3] mb-3">
                   {post.title}
                 </h3>
                 <p className="text-[#0a1628]/75 text-[14px] leading-[1.7] mb-4">{post.excerpt}</p>

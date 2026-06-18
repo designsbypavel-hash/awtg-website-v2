@@ -504,9 +504,9 @@ function Industries() {
               <Link
                 key={card.title}
                 to={card.href}
-                  className="group flex flex-col overflow-hidden rounded-2xl bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
+                  className="group flex flex-col bg-white"
               >
-                <div className="overflow-hidden" style={{ height: 420 }}>
+                <div className="overflow-hidden rounded-2xl" style={{ height: 420 }}>
                   <img
                     src={card.img}
                     alt={card.title}
@@ -532,9 +532,9 @@ function Industries() {
               <Link
                 key={card.title}
                 to={card.href}
-                  className="group flex flex-1 flex-col overflow-hidden rounded-2xl bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
+                  className="group flex flex-1 flex-col bg-white"
               >
-                <div className="overflow-hidden" style={{ height: 168 }}>
+                <div className="overflow-hidden rounded-2xl" style={{ height: 168 }}>
                   <img
                     src={card.img}
                     alt={card.title}
@@ -918,10 +918,10 @@ function Insights() {
             <Link
               key={a.title}
               to={a.href}
-              className="group flex shrink-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
+              className="group flex shrink-0 flex-col bg-white"
               style={{ width: 340, scrollSnapAlign: 'start' }}
             >
-              <div className="h-48 overflow-hidden bg-gray-100">
+              <div className="h-48 overflow-hidden rounded-2xl bg-gray-100">
                 <img
                   src={a.img}
                   alt={a.title}
@@ -931,8 +931,8 @@ function Insights() {
               </div>
               <div className="flex flex-col p-5">
                 <h3 className="text-[#0a1628] font-semibold leading-[1.4] mb-2 inline-flex items-start gap-1.5" style={{ fontSize: 17 }}>
-                  <span className="group-hover:text-[#1a7aab] transition-colors">{a.title}</span>
-                  <svg className="h-4 w-4 mt-1 shrink-0 text-[#1a7aab] transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <span>{a.title}</span>
+                  <svg className="h-4 w-4 mt-1 shrink-0 text-[#1a7aab]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </h3>

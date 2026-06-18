@@ -677,9 +677,9 @@ export default function InsightsNewsPage() {
                   <Link
                     key={`${item.title}-${item.date}`}
                     to={getNewsHref(item)}
-                    className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md xl:col-span-2 md:col-span-2"
+                    className="group bg-white xl:col-span-2 md:col-span-2"
                   >
-                    <div className="h-72 relative overflow-hidden bg-gray-100">
+                    <div className="h-72 relative overflow-hidden rounded-2xl bg-gray-100">
                       <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div className="p-8">
@@ -689,7 +689,7 @@ export default function InsightsNewsPage() {
                         </span>
                         <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
                       </div>
-                      <h3 className="font-h4 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">{cleanText(item.title)}</h3>
+                      <h3 className="font-h4 text-[#0a1628] mb-3">{cleanText(item.title)}</h3>
                       <p className="text-[#0a1628]/60 text-sm leading-relaxed max-w-2xl">{cleanText(item.excerpt)}</p>
                     </div>
                   </Link>
@@ -701,9 +701,9 @@ export default function InsightsNewsPage() {
                   <Link
                     key={`${item.title}-${item.date}`}
                     to={getNewsHref(item)}
-                    className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md"
+                    className="group bg-white"
                   >
-                    <div className="h-44 relative overflow-hidden bg-gray-100">
+                    <div className="h-44 relative overflow-hidden rounded-2xl bg-gray-100">
                       <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="p-6">
@@ -713,7 +713,7 @@ export default function InsightsNewsPage() {
                         </span>
                         <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
                       </div>
-                      <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">{cleanText(item.title)}</h3>
+                      <h3 className="font-h5 text-[#0a1628] mb-3">{cleanText(item.title)}</h3>
                       <p className="text-[#0a1628]/60 text-[13px] leading-[1.7] mb-5">{cleanText(item.excerpt)}</p>
                       <div className="flex items-center gap-2 text-[#1a7aab] text-xs font-semibold pt-4 border-t border-gray-100">
                         {hasVideo ? 'Watch story' : 'Read story'}
@@ -727,9 +727,9 @@ export default function InsightsNewsPage() {
                 <Link
                   key={`${item.title}-${item.date}`}
                   to={getNewsHref(item)}
-                  className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all"
+                  className="group bg-white"
                 >
-                  <div className="h-44 relative overflow-hidden">
+                  <div className="h-44 relative overflow-hidden rounded-2xl">
                     <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-6">
@@ -739,7 +739,7 @@ export default function InsightsNewsPage() {
                       </span>
                       <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
                     </div>
-                    <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">
+                    <h3 className="font-h5 text-[#0a1628] mb-3">
                       {cleanText(item.title)}
                     </h3>
                     <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
