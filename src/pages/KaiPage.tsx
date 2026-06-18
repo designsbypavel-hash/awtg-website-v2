@@ -47,7 +47,6 @@ const integrationLogos = {
   telegram: new URL('../assets/Integration/Telegram.svg', import.meta.url).href,
   whatsapp: new URL('../assets/Integration/Whatsapp.svg', import.meta.url).href,
   yahooMail: new URL('../assets/Integration/Yahoo Mail.svg', import.meta.url).href,
-  kaiHoriz: '/kai-logo-horiz-white.svg',
 }
 
 function ScrollProgress() {
@@ -1086,10 +1085,16 @@ function OmnichannelSection() {
 
             {/* Centre: Kai (glowing) */}
             <div className="flex justify-center items-center">
-              <ChIcon color="#228DC1" bg="rgba(34,141,193,0.10)" glow>
-                <img src={integrationLogos.kaiHoriz} alt="Kai" style={{ width:46, height:24, objectFit:'contain' }}
+              <div style={{
+                width:52, height:52, borderRadius:14, flexShrink:0,
+                background: '#ffffff',
+                border: '1px solid rgba(255,255,255,0.15)',
+                display:'flex', alignItems:'center', justifyContent:'center',
+                boxShadow: 'none',
+              }}>
+                <img src="/kai-logo-horiz.svg" alt="Kai" style={{ width:46, height:24, objectFit:'contain' }}
                   onError={(e)=>{ (e.target as HTMLImageElement).style.display='none' }} />
-              </ChIcon>
+              </div>
             </div>
 
             {/* Right: Gmail Outlook Apple Mail */}
