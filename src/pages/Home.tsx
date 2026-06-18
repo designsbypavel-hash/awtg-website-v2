@@ -301,7 +301,7 @@ function WhatWeDo() {
           {whatWeDoItems.map((item, index) => {
             const imageFirst = index % 2 === 1
             const image = (
-              <div className="group relative min-h-[320px] overflow-hidden rounded-2xl bg-[#f6f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:min-h-[386px]">
+              <div className="group relative h-full min-h-[340px] overflow-hidden rounded-2xl bg-[#f6f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:min-h-[460px]">
                 <img
                   src={item.image}
                   alt={item.label}
@@ -312,7 +312,7 @@ function WhatWeDo() {
               </div>
             )
             const copy = (
-              <div className="flex min-h-[320px] flex-col justify-center py-4 lg:min-h-[386px]">
+              <div className="flex min-h-[340px] flex-col justify-center py-6 lg:min-h-[460px]">
                 <h3 className="mb-4 text-[28px] font-normal leading-[1.18] tracking-[-0.01em] text-[#0a1628] lg:text-[34px]">
                   {item.label}
                 </h3>
@@ -336,7 +336,7 @@ function WhatWeDo() {
             return (
               <article
                 key={item.label}
-                className={`grid gap-8 lg:grid-cols-2 lg:gap-4 ${index > 0 ? 'lg:-mt-1' : ''}`}
+                className={`grid items-stretch gap-8 lg:grid-cols-2 lg:gap-4 ${index > 0 ? 'lg:-mt-1' : ''}`}
               >
                 <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'}>
                   {image}
