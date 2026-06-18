@@ -314,7 +314,7 @@ function WhatWeDo() {
                 <h3 className="mb-4 text-[28px] font-normal leading-[1.18] tracking-[-0.01em] text-[#0a1628] lg:text-[34px]">
                   {item.label}
                 </h3>
-                <div className="max-w-[600px] space-y-4 text-[16px] font-normal leading-[1.72] text-[#0a1628]/72">
+                <div className="max-w-[700px] space-y-4 text-[16px] font-normal leading-[1.72] text-[#0a1628]/72">
                   {item.description.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
@@ -325,7 +325,7 @@ function WhatWeDo() {
             return (
               <article
                 key={item.label}
-                className={`grid gap-8 lg:grid-cols-2 lg:gap-8 ${index > 0 ? 'lg:-mt-1' : ''}`}
+                className={`grid gap-8 lg:grid-cols-2 lg:gap-4 ${index > 0 ? 'lg:-mt-1' : ''}`}
               >
                 <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'}>
                   {image}
