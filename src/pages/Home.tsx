@@ -172,7 +172,6 @@ function Hero() {
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="home-ai-hero-glow absolute inset-0" />
       </div>
 
       {/* -- Content, Harvey layout: bottom-left, minimal copy -- */}
