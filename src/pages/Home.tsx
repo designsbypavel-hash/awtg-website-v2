@@ -674,10 +674,6 @@ const pnaasFeatures = [
 export function PNaaS() {
   return (
     <section className="py-32 bg-[#f8fafc] relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-      <div className="absolute right-0 top-0 w-2/3 h-full"
-        style={{ background: 'radial-gradient(ellipse at right center, rgba(37,99,235,0.08) 0%, transparent 70%)' }} />
       <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div>
