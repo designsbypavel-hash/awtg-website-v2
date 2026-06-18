@@ -154,7 +154,7 @@ export default function CookiePolicyPage() {
       </section>
 
       {/* Quick nav */}
-      <section className="py-6 bg-white border-b border-gray-100">
+      <section className="py-6 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-wrap gap-2">
             {sections.map((s) => (
@@ -173,7 +173,7 @@ export default function CookiePolicyPage() {
       {/* Content sections */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="border-b border-gray-100">
+          <div>
             {sections.map((section) => (
               <article
                 key={section.num}

@@ -103,7 +103,7 @@ export default function AboutOverviewPage() {
         </div>
       </section>
 
-      <section className="bg-white border-b border-gray-100">
+      <section className="bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
             {[
@@ -137,7 +137,7 @@ export default function AboutOverviewPage() {
         {contentSections.map((section, index) => {
           const isReversed = index % 2 === 1
           return (
-            <div key={section.label} className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 560 }}>
+            <div key={section.label} className="grid lg:grid-cols-2" style={{ minHeight: 560 }}>
 
               {/* Text panel */}
               <div

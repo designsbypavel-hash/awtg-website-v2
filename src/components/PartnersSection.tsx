@@ -5,7 +5,7 @@
 
 export default function PartnersSection() {
   return (
-    <section className="py-16 bg-white border-y border-gray-100">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <p className="text-center text-[#0a1628]/60 text-sm font-medium uppercase tracking-widest mb-10">
           Trusted Partners &amp; Technology Alliances

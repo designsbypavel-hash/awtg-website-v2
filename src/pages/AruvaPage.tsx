@@ -1757,7 +1757,7 @@ function MultimodalSection() {
   const activeM = MM_MODALITIES[active]
 
   return (
-    <section ref={sectionRef} style={{ background:'#f8fafc', padding:'96px 0 56px', borderTop:'1px solid #e8ecf2', borderBottom:'1px solid #e8ecf2' }}>
+    <section ref={sectionRef} style={{ background:'#f8fafc', padding:'96px 0 56px' }}>
       <style>{`
         @keyframes mmCardIn    { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
         @keyframes mmCursor    { 0%,100%{opacity:1} 50%{opacity:0} }

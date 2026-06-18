@@ -134,7 +134,7 @@ export default function AboutCertificationsPage() {
             <section
               key={group.label}
               id={group.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
-              className="grid lg:grid-cols-2 border-b border-gray-100 scroll-mt-14"
+              className="grid lg:grid-cols-2 scroll-mt-14"
             >
               {/* Content panel */}
               <div

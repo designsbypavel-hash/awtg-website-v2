@@ -140,7 +140,7 @@ export default function InsightsBlogPage() {
 
       {/* Featured post */}
       {featured && (
-        <section className="py-16 bg-white border-b border-gray-100">
+        <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <Link
               to={`/insights/blog/${featured.slug}`}

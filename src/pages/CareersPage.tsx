@@ -87,7 +87,7 @@ export default function CareersPage() {
       </section>
 
       {/* ── STATS STRIP ── */}
-      <section className="bg-white border-b border-gray-100">
+      <section className="bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
             {[
@@ -118,7 +118,7 @@ export default function CareersPage() {
       <div className="overflow-hidden">
 
         {/* Panel 1 — Why AWTG: text left, image right */}
-        <div className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 580 }}>
+        <div className="grid lg:grid-cols-2" style={{ minHeight: 580 }}>
           <div className="flex items-center bg-white" style={{ padding: '80px clamp(28px, 5.5vw, 96px)' }}>
             <div style={{ maxWidth: 520 }}>
               <div className="flex items-center gap-3 mb-6">
@@ -155,7 +155,7 @@ export default function CareersPage() {
         </div>
 
         {/* Panel 2 — Benefits: image left, text right */}
-        <div className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 560 }}>
+        <div className="grid lg:grid-cols-2" style={{ minHeight: 560 }}>
           <div className="relative overflow-hidden" style={{ minHeight: 440, background: '#0a1628' }}>
             <img src="/images/insights/private-networks.jpg" alt="Benefits at AWTG"
               className="absolute inset-0 w-full h-full object-cover" loading="lazy" />

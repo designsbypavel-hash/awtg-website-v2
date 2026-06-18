@@ -156,7 +156,7 @@ function GlobalReachSection() {
   ] as const
 
   return (
-    <section className="bg-[#f8fafc] border-b border-gray-100 py-20">
+    <section className="bg-[#f8fafc] py-20">
       <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
 
@@ -1048,7 +1048,6 @@ function OmnichannelSection() {
       }
     `}</style>
     <section
-      className="border-b border-gray-100"
       style={{
         background: OMNI_BG,
         backgroundImage: 'radial-gradient(circle, rgba(76,151,195,0.055) 1px, transparent 1px)',
@@ -1495,7 +1494,7 @@ export default function KaiPage() {
         ]
         const all = [...items, ...items]
         return (
-          <div className="bg-white border-y border-gray-100 py-10 overflow-hidden">
+          <div className="bg-white py-10 overflow-hidden">
             <p className="text-center text-[11px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/60 mb-9">
               Trusted by leading organisations
             </p>
@@ -1525,7 +1524,7 @@ export default function KaiPage() {
       <GlobalReachSection />
 
       {/* -- Escalation Rate Chart -- */}
-      <section className="bg-white border-b border-gray-100">
+      <section className="bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-12">
 

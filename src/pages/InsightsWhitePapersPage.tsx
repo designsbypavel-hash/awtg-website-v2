@@ -179,7 +179,7 @@ export default function InsightsWhitePapersPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-b border-gray-100">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <Link to={getWhitePaperHref(featuredPaper)} className="group grid lg:grid-cols-5">
             <div className="lg:col-span-3 p-8 lg:p-12">

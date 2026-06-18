@@ -99,7 +99,7 @@ export default function AboutLeadershipPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#f7f8fa] border-y border-gray-100">
+      <section className="py-20 bg-[#f7f8fa]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>

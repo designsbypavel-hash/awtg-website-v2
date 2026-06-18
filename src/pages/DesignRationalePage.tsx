@@ -95,7 +95,7 @@
       </section>
 
       {/* Three references */}
-      <section className="py-20 bg-white border-b border-gray-100">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-10">
             The Three Reference Points

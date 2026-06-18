@@ -170,7 +170,7 @@ export default function AboutSustainabilityPage() {
       <div id="carbon-reduction-plan" className="scroll-mt-14 overflow-hidden">
 
         {/* Panel 1 — Commitment */}
-        <div className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 540 }}>
+        <div className="grid lg:grid-cols-2" style={{ minHeight: 540 }}>
           <div className="flex items-center bg-white" style={{ padding: '72px clamp(28px, 5vw, 88px)' }}>
             <div style={{ maxWidth: 520 }}>
               <div className="flex items-center gap-3 mb-6">
@@ -204,7 +204,7 @@ export default function AboutSustainabilityPage() {
         </div>
 
         {/* Panel 2 — Emissions data */}
-        <div className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 540 }}>
+        <div className="grid lg:grid-cols-2" style={{ minHeight: 540 }}>
           <div className="relative overflow-hidden" style={{ minHeight: 420, background: '#0a1628' }}>
             <img src="/images/insights/performance-testing.jpg" alt="Emissions reporting" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to left, rgba(10,22,40,0.2) 0%, transparent 40%)' }} />
@@ -251,7 +251,7 @@ export default function AboutSustainabilityPage() {
         </div>
 
         {/* Panel 3 — Projects */}
-        <div className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 580 }}>
+        <div className="grid lg:grid-cols-2" style={{ minHeight: 580 }}>
           <div className="flex items-start bg-white" style={{ padding: '72px clamp(28px, 5vw, 88px)' }}>
             <div style={{ maxWidth: 560 }}>
               <div className="flex items-center gap-3 mb-6">
@@ -288,7 +288,7 @@ export default function AboutSustainabilityPage() {
         </div>
 
         {/* Declaration — full width */}
-        <div className="bg-[#f8fafc] border-b border-gray-100">
+        <div className="bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-8 lg:px-12 py-16">
             <div className="border-l-[3px] border-[#228DC1] pl-8 max-w-4xl">
               <p className="text-[#1a7aab] text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Declaration and Sign Off</p>
@@ -314,7 +314,7 @@ export default function AboutSustainabilityPage() {
       <div id="social-value-statement" className="scroll-mt-14 overflow-hidden">
 
         {/* Section intro — full width */}
-        <div className="bg-white border-b border-gray-100">
+        <div className="bg-white">
           <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
             <div className="grid lg:grid-cols-2 gap-12 items-end">
               <div>
@@ -336,7 +336,7 @@ export default function AboutSustainabilityPage() {
         {socialValueSections.map((section, index) => {
           const isReversed = index % 2 === 1
           return (
-            <div key={section.title} className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 500 }}>
+            <div key={section.title} className="grid lg:grid-cols-2" style={{ minHeight: 500 }}>
 
               {/* Content */}
               <div
@@ -389,7 +389,7 @@ export default function AboutSustainabilityPage() {
         })}
 
         {/* Pull quote */}
-        <div className="bg-[#f8fafc] border-b border-gray-100">
+        <div className="bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
             <div className="max-w-4xl">
               <div className="text-[#228DC1] text-[64px] font-serif leading-none mb-2 opacity-20 select-none">&ldquo;</div>
