@@ -964,7 +964,6 @@ function EscalationChart() {
 
 function OmnichannelSection() {
   // ─── Design tokens ──────────────────────────────────────────────────────
-  const OMNI_BG  = '#f4f4ff'
   const CONN_CLR = '#4c97c3'
 
   // ─── Telegram messages ──────────────────────────────────────────────────
@@ -990,8 +989,8 @@ function OmnichannelSection() {
   }: { color?:string; bg?:string; glow?:boolean; children:React.ReactNode }) => (
     <div style={{
       width:52, height:52, borderRadius:14, flexShrink:0,
-      background: 'transparent',
-      border: '1px solid rgba(10,22,40,0.12)',
+      background: 'rgba(255,255,255,0.06)',
+      border: '1px solid rgba(255,255,255,0.15)',
       display:'flex', alignItems:'center', justifyContent:'center',
       boxShadow: 'none',
     }}>
@@ -1036,18 +1035,27 @@ function OmnichannelSection() {
       }
     `}</style>
     <section
-      style={{
-        background: OMNI_BG,
-        backgroundImage: 'radial-gradient(circle, rgba(76,151,195,0.055) 1px, transparent 1px)',
-        backgroundSize: '22px 22px',
-      }}
+      className="relative overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2240 40%, #0a3352 70%, #0a1628 100%)' }}
     >
-      <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-20">
+      {/* Ambient glow blobs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.18) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-[-10%] right-[5%] w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.12) 0%, transparent 70%)' }} />
+      </div>
+
+      {/* Dot grid texture */}
+      <div className="absolute inset-0 pointer-events-none opacity-20" style={{
+        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)',
+        backgroundSize: '36px 36px',
+      }} />
+
+      <div className="relative max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-20">
 
         {/* ── Centred heading ── */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="font-heading text-[#0a1628] mb-5">One AI. Every channel.</h2>
-          <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
+          <h2 className="font-heading text-white mb-5">One AI. Every channel.</h2>
+          <p className="text-white/65 text-[16px] font-normal leading-[1.7]">
             Kai meets customers on Telegram, your website or email - with the same intelligence, context and resolution on every channel.
           </p>
         </div>
@@ -1110,16 +1118,16 @@ function OmnichannelSection() {
           >
             {[120,160,200,500,800,840,880].map(x => (
               <line key={`stub-${x}`} x1={x} y1="0" x2={x} y2="40"
-                stroke="#cdd5de" strokeWidth="1.5" strokeDasharray="5,4" />
+                stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeDasharray="5,4" />
             ))}
-            <line x1="120" y1="40" x2="880" y2="40" stroke="#cdd5de" strokeWidth="1.5" strokeDasharray="5,4" />
+            <line x1="120" y1="40" x2="880" y2="40" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeDasharray="5,4" />
             {[160,500,840].map(x => (
               <line key={`drop-${x}`} x1={x} y1="40" x2={x} y2="80"
                 stroke={CONN_CLR} strokeWidth="1.5" strokeDasharray="5,4" opacity="0.55" />
             ))}
             {[120,160,200,500,800,840,880].map(x => (
               <circle key={`dot-${x}`} cx={x} cy="40" r="3.5"
-                fill="white" stroke="#cdd5de" strokeWidth="1.5" />
+                fill="#0a1628" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" />
             ))}
             {[160,500,840].map(x => (
               <circle key={`entry-${x}`} cx={x} cy="80" r="4.5"
