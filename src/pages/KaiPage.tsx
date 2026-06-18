@@ -884,7 +884,7 @@ function EscalationChart() {
   const tx = hp ? Math.min(Math.max(hp.x, 44), 516) : 0
 
   return (
-    <svg width="100%" viewBox="0 0 560 295" xmlns="http://www.w3.org/2000/svg" style={{ display:'block' }}>
+    <svg width="100%" height="100%" viewBox="0 0 560 295" xmlns="http://www.w3.org/2000/svg" style={{ display:'block' }}>
       <defs>
         <pattern id="escDots" x="0" y="0" width="9" height="9" patternUnits="userSpaceOnUse">
           <rect width="9" height="9" fill="#228DC1"/>
@@ -1527,10 +1527,10 @@ export default function KaiPage() {
       {/* -- Escalation Rate Chart -- */}
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="grid lg:grid-cols-[0.95fr_1.65fr] gap-10 lg:gap-16 items-center">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-12">
 
             {/* Left: copy */}
-            <div className="lg:pt-2">
+            <div className="flex h-full flex-col justify-center lg:pt-2">
               <h2 className="font-heading text-[#0a1628] mb-5">
                 Fewer escalations. Faster resolutions.
               </h2>
@@ -1564,9 +1564,9 @@ export default function KaiPage() {
             </div>
 
             {/* Right: chart card - Intercom-style */}
-            <div style={{ border:'1px solid #e4e8ed', background:'#fafaf7' }}>
+            <div className="flex flex-col justify-between overflow-hidden lg:h-[450px]" style={{ border:'1px solid #e4e8ed', background:'#fafaf7' }}>
               {/* Card header */}
-              <div style={{ padding:'20px 22px 12px' }}>
+              <div style={{ padding:'16px 20px 8px' }}>
                 <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#0a1628', lineHeight:1.35, fontFamily:'Roboto,sans-serif', letterSpacing:'-0.01em' }}>
                   Average client escalation rates drop from{' '}
                   <span style={{ color:'#1a7aab' }}>40%</span> to{' '}
@@ -1575,13 +1575,13 @@ export default function KaiPage() {
               </div>
 
               {/* SVG chart - hover-interactive */}
-              <div style={{ padding:'4px 16px 0' }}>
+              <div className="min-h-0 flex-1" style={{ padding:'0 14px' }}>
                 <EscalationChart />
               </div>
 
               {/* Feature chips: what drove the reduction */}
-              <div style={{ padding:'0 16px 18px' }}>
-                <p style={{ margin:'10px 0 10px', fontSize:11, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>
+              <div style={{ padding:'0 14px 14px' }}>
+                <p style={{ margin:'6px 0 8px', fontSize:11, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>
                   What drove this reduction
                 </p>
                 <div style={{ display:'flex', gap:8 }}>
@@ -1590,7 +1590,7 @@ export default function KaiPage() {
                     'Deep Contextual Knowledge',
                     'Optimise Conversation Design',
                   ].map((label, i) => (
-                    <div key={i} style={{ flex:1, display:'flex', alignItems:'center', gap:8, padding:'10px 13px', background:'rgba(34,141,193,0.05)', borderRadius:6, border:'1px solid rgba(34,141,193,0.14)' }}>
+                    <div key={i} style={{ flex:1, display:'flex', alignItems:'center', gap:8, padding:'8px 11px', background:'rgba(34,141,193,0.05)', borderRadius:6, border:'1px solid rgba(34,141,193,0.14)' }}>
                       <span style={{ width:6, height:6, borderRadius:'50%', background:'#228DC1', flexShrink:0 }} />
                       <p style={{ margin:0, fontSize:11, fontWeight:700, color:'#0a1628', lineHeight:1.3, fontFamily:'Roboto,sans-serif' }}>{label}</p>
                     </div>
