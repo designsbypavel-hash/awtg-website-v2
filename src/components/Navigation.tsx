@@ -323,7 +323,7 @@ export default function Navigation() {
                     : 'border-white text-white hover:bg-white hover:text-[#0a1628]'
                 }`}
               >
-                Request a Demo
+                Contact Us
               </Link>
             </div>
 
@@ -506,7 +506,7 @@ export default function Navigation() {
             <Link to="/careers" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Careers</Link>
             <div className="pt-4 flex flex-col gap-2">
               <Link to="/contact" className="w-full py-2.5 text-center text-sm border border-[#228DC1] text-[#1a7aab] hover:bg-[#228DC1] hover:text-white transition-colors rounded-lg">
-                Request a Demo
+                Contact Us
               </Link>
             </div>
           </div>
