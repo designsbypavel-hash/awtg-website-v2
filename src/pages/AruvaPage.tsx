@@ -100,12 +100,12 @@ function CurriculumAgnosticSection() {
   const [ref, inView] = useInView(0.1)
   const ORBIT_DUR = 20 // seconds per revolution
   const N = curriculumSubjects.length // 8
-  const ORBIT_W = 780
-  const ORBIT_H = 540
+  const ORBIT_W = 860
+  const ORBIT_H = 560
   const CX = ORBIT_W / 2
   const CY = ORBIT_H / 2
-  const RX = 310
-  const RY = 190
+  const RX = 345
+  const RY = 200
   const KX = RX * 0.5522848
   const KY = RY * 0.5522848
   const ORBIT_PATH = `M ${CX} ${CY - RY} C ${CX + KX} ${CY - RY} ${CX + RX} ${CY - KY} ${CX + RX} ${CY} C ${CX + RX} ${CY + KY} ${CX + KX} ${CY + RY} ${CX} ${CY + RY} C ${CX - KX} ${CY + RY} ${CX - RX} ${CY + KY} ${CX - RX} ${CY} C ${CX - RX} ${CY - KY} ${CX - KX} ${CY - RY} ${CX} ${CY - RY} Z`
@@ -114,6 +114,23 @@ function CurriculumAgnosticSection() {
   // so the hub always looks connected to every subject as they orbit.
   const lineRefs = useRef<(SVGLineElement | null)[]>([])
   const dotRefs = useRef<(SVGCircleElement | null)[]>([])
+
+  // Diagram is laid out at a fixed pixel size, then scaled down to fill
+  // whatever width the column actually has - keeps it as wide as possible
+  // on large screens without ever overflowing on narrower ones.
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(1)
+
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0].contentRect.width
+      if (w > 0) setScale(Math.min(1, w / ORBIT_W))
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [ORBIT_W])
 
   useEffect(() => {
     if (!inView) return
@@ -159,8 +176,8 @@ function CurriculumAgnosticSection() {
           to   { stroke-dashoffset: 0; }
         }
       `}</style>
-      <div className="max-w-[1380px] mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-[0.6fr_1.4fr] gap-10 xl:gap-14 items-center">
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        <div className="grid lg:grid-cols-[440px_minmax(0,1fr)] gap-12 xl:gap-16 items-center">
 
           {/* LEFT - text */}
           <div style={reveal(inView, 0)}>
@@ -183,7 +200,14 @@ function CurriculumAgnosticSection() {
 
           {/* RIGHT - orbital visual */}
           <div className="flex items-center justify-center" style={reveal(inView, 120)}>
-            <div style={{ position:'relative', width:ORBIT_W, height:ORBIT_H, flexShrink:0 }}>
+            <div ref={wrapRef} style={{ position:'relative', width:'100%', maxWidth:ORBIT_W, height:ORBIT_H * scale }}>
+            <div style={{
+              position:'absolute', top:0, left:0,
+              width:ORBIT_W, height:ORBIT_H,
+              transform:`scale(${scale})`,
+              transformOrigin:'top left',
+              transition:'transform 0.2s ease',
+            }}>
 
               {/* Orbit ring */}
               <div style={{
@@ -307,6 +331,7 @@ function CurriculumAgnosticSection() {
                 })}
               </div>
 
+            </div>
             </div>
           </div>
         </div>
