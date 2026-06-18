@@ -123,8 +123,8 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
       }} />
 
       <img
-        src="/images/kai-globe-transparent-4k.png"
-        alt="Kai global reach network globe"
+        src="/images/kai-dashboard-mockup.png"
+        alt="Kai dashboard interface on tablet"
         style={{
           width: 'min(100%, 560px)',
           height: 'auto',
@@ -1067,7 +1067,7 @@ function OmnichannelSection() {
         {/* 
             DESKTOP ROUTING DIAGRAM
          */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:block mx-auto w-full" style={{ maxWidth:1184 }}>
 
           {/* ── Channel icon row (3-col grid matching panels) ── */}
           <div className="grid grid-cols-3 gap-6 mb-0">
