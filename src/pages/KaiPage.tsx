@@ -1410,7 +1410,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(34,141,193,0.12) 0, transparent 55%)' }} />
 
       <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.35fr_0.65fr] lg:gap-8">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
 
           {/* Left: copy */}
           <div>
