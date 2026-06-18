@@ -905,7 +905,7 @@ function Insights() {
             <Link
               key={a.title}
               to={a.href}
-              className="group flex shrink-0 flex-col"
+              className="group flex shrink-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
               style={{ width: 340, scrollSnapAlign: 'start' }}
             >
               <div className="h-48 overflow-hidden bg-gray-100">
@@ -916,7 +916,7 @@ function Insights() {
                   loading="lazy"
                 />
               </div>
-              <div className="flex flex-col pt-5">
+              <div className="flex flex-col p-5">
                 <h3 className="text-[#0a1628] font-semibold leading-[1.4] mb-2 inline-flex items-start gap-1.5" style={{ fontSize: 17 }}>
                   <span className="group-hover:text-[#1a7aab] transition-colors">{a.title}</span>
                   <svg className="h-4 w-4 mt-1 shrink-0 text-[#1a7aab] transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
