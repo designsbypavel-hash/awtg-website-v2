@@ -325,12 +325,12 @@ function WhatWeDo() {
             return (
               <article
                 key={item.label}
-                className={`grid gap-8 lg:grid-cols-2 lg:gap-0 ${index > 0 ? 'lg:-mt-1' : ''}`}
+                className={`grid gap-8 lg:grid-cols-2 lg:gap-8 ${index > 0 ? 'lg:-mt-1' : ''}`}
               >
-                <div className={`${imageFirst ? 'lg:order-1' : 'lg:order-2'} ${imageFirst ? '' : 'lg:pl-16 xl:pl-24'}`}>
+                <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'}>
                   {image}
                 </div>
-                <div className={`${imageFirst ? 'lg:order-2 lg:pl-16 xl:pl-24' : 'lg:order-1 lg:pr-16 xl:pr-24'}`}>
+                <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'}>
                   {copy}
                 </div>
               </article>
