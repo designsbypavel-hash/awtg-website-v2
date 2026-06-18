@@ -1410,7 +1410,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(34,141,193,0.12) 0, transparent 55%)' }} />
 
       <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.35fr_0.65fr] lg:gap-8">
 
           {/* Left: copy */}
           <div>
@@ -1426,11 +1426,10 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
                 }}
               />
             </div>
-            <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
-              Enterprise Customer<br />
-              Service AI that <span style={{ color: '#0a1628' }}>resolves.</span>
+            <h1 className="font-serif-display mb-6 leading-[1.02] text-[#0a1628] lg:whitespace-nowrap lg:text-[40px]">
+              Enterprise Customer Service AI that <span style={{ color: '#0a1628' }}>resolves.</span>
             </h1>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
+            <p className="mb-10 max-w-full text-[16px] font-normal leading-[1.7] text-[#0a1628]/60 lg:w-[1180px]">
               Kai is the AI customer service built for every customer touchpoint. From website support to voice calls and call centre operations, Kai helps organisations understand customer intent and resolve intricate requests. With advanced analytics, teams can see what customers need, where frustration is building, and how service can be improved.
             </p>
             <div className="flex flex-wrap gap-4">
