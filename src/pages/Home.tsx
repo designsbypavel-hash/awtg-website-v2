@@ -290,6 +290,31 @@ const whatWeDoItems = [
 ]
 
 function WhatWeDo() {
+  const rowRefs = useRef<(HTMLElement | null)[]>([])
+  const [visibleRows, setVisibleRows] = useState<Set<number>>(() => new Set())
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          const index = Number((entry.target as HTMLElement).dataset.revealIndex)
+          setVisibleRows((current) => {
+            if (current.has(index)) return current
+            const next = new Set(current)
+            next.add(index)
+            return next
+          })
+          observer.unobserve(entry.target)
+        })
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -14% 0px' },
+    )
+
+    rowRefs.current.forEach((row) => row && observer.observe(row))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="relative overflow-hidden bg-white py-24 lg:py-28">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
@@ -297,6 +322,8 @@ function WhatWeDo() {
         <div className="space-y-16 lg:space-y-0">
           {whatWeDoItems.map((item, index) => {
             const imageFirst = index % 2 === 1
+            const isVisible = visibleRows.has(index)
+            const [firstWord, ...remainingWords] = item.label.split(' ')
             const image = (
               <div className="group relative h-full min-h-[340px] overflow-hidden rounded-2xl bg-[#f6f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:min-h-[460px]">
                 <img
@@ -311,8 +338,9 @@ function WhatWeDo() {
             const copy = (
               <div className="flex min-h-[340px] flex-col justify-center py-6 lg:min-h-[460px]">
                 <div className={index === 1 ? 'mx-auto w-full max-w-[700px] text-left' : ''}>
-                  <h3 className="mb-4 text-[28px] font-normal leading-[1.18] tracking-[-0.01em] text-[#0a1628] lg:text-[34px]">
-                    {item.label}
+                  <h3 className="mb-5 text-[32px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#0a1628] lg:text-[42px]">
+                    {firstWord}{' '}
+                    <span className="text-[#1a7aab]">{remainingWords.join(' ')}</span>
                   </h3>
                   <div className="max-w-[700px] space-y-4 text-[16px] font-normal leading-[1.72] text-[#0a1628]/72">
                     {item.description.map((paragraph) => (
@@ -326,12 +354,22 @@ function WhatWeDo() {
             return (
               <article
                 key={item.label}
+                ref={(node) => { rowRefs.current[index] = node }}
+                data-reveal-index={index}
                 className={`grid items-stretch gap-8 lg:grid-cols-2 lg:gap-4 ${index > 0 ? 'lg:-mt-1' : ''}`}
               >
-                <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'}>
+                <div
+                  className={`${imageFirst ? 'lg:order-1' : 'lg:order-2'} transition-all duration-700 ease-out ${
+                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                  }`}
+                >
                   {image}
                 </div>
-                <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'}>
+                <div
+                  className={`${imageFirst ? 'lg:order-2' : 'lg:order-1'} transition-all delay-150 duration-700 ease-out ${
+                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                  }`}
+                >
                   {copy}
                 </div>
               </article>
@@ -471,77 +509,46 @@ const industryCards = [
 
 function Industries() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24" style={{ backgroundColor: '#0a1628' }}>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="max-w-2xl mb-16">
-          <h2 className="font-heading text-[#0a1628] mb-4">
+          <h2 className="font-heading text-white mb-4">
             Powering transformation<br />
-            <span className="text-[#1a7aab]">across every sector.</span>
+            <span className="text-[#67c5f3]">across every sector.</span>
           </h2>
-          <p className="text-[#0a1628]/60 text-[16px] leading-[1.8]">
+          <p className="text-white/65 text-[16px] leading-[1.8]">
             From enterprise campuses to NHS trusts and government bodies, AWTG delivers technology built specifically for your world.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
-
-          {/* Large featured card — first industry */}
-          {(() => {
-            const card = industryCards[0]
-            return (
-              <Link
-                key={card.title}
-                to={card.href}
-                  className="group flex flex-col bg-white"
-              >
-                <div className="overflow-hidden rounded-2xl" style={{ height: 420 }}>
-                  <img
-                    src={card.img}
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="flex flex-col px-8 pt-8 pb-9">
-                  <h3 className="text-[#0a1628] font-semibold leading-snug mb-4" style={{ fontSize: 21 }}>
-                    {card.title}
-                  </h3>
-                  <p className="text-[#0a1628]/62 text-[15px] leading-[1.75]">
-                    {card.desc}
-                  </p>
-                </div>
-              </Link>
-            )
-          })()}
-
-          {/* Stacked smaller cards — remaining industries */}
-          <div className="flex flex-col gap-8">
-            {industryCards.slice(1).map((card) => (
-              <Link
-                key={card.title}
-                to={card.href}
-                  className="group flex flex-1 flex-col bg-white"
-              >
-                <div className="overflow-hidden rounded-2xl" style={{ height: 168 }}>
-                  <img
-                    src={card.img}
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="flex flex-col px-7 pt-6 pb-7">
-                  <h3 className="text-[#0a1628] font-semibold leading-snug mb-3" style={{ fontSize: 19 }}>
-                    {card.title}
-                  </h3>
-                  <p className="text-[#0a1628]/62 text-[14px] leading-[1.7]">
-                    {card.desc}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {industryCards.map((card) => (
+            <Link
+              key={card.title}
+              to={card.href}
+              className="group flex min-h-full flex-col"
+            >
+              <div className="aspect-video overflow-hidden rounded-xl bg-[#15243a]">
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex flex-1 flex-col pb-7 pt-6">
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#67c5f3]">
+                  {card.tag}
+                </p>
+                <h3 className="mb-3 text-[18px] font-semibold leading-snug text-white">
+                  {card.title}
+                </h3>
+                <p className="text-[13px] leading-[1.7] text-white/62">
+                  {card.desc}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
@@ -917,7 +924,7 @@ function Insights() {
                   loading="lazy"
                 />
               </div>
-              <div className="flex flex-col p-5">
+              <div className="flex flex-col py-5">
                 <h3 className="text-[#0a1628] font-semibold leading-[1.4] mb-2 inline-flex items-start gap-1.5" style={{ fontSize: 17 }}>
                   <span>{a.title}</span>
                   <svg className="h-4 w-4 mt-1 shrink-0 text-[#1a7aab]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

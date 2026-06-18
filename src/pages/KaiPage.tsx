@@ -359,22 +359,38 @@ function SecurityComplianceSection() {
               <div className="flex flex-col gap-7">
                 <div>
                   <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
-                  <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 AI Management System certified</p>
+                  <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 and ISO 27001 certified</p>
                   <p className="text-white/58 text-sm font-normal leading-relaxed">
-                    Governance, access control and auditability are built in from day one.
+                    AI governance, information security and auditability are built in from day one.
                   </p>
                 </div>
-                <div className="rounded-[18px] border border-white/[0.12] bg-white/[0.07] px-6 py-5 flex items-center gap-5">
-                  <img src={certISO42001} alt="ISO 42001" style={{ width: 76, height: 76, objectFit: 'contain', flexShrink: 0 }} />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.2em] leading-none mb-2">Certified</p>
-                    <p className="text-[17px] font-semibold text-white/95 leading-tight mb-1">ISO 42001</p>
-                    <p className="text-[12px] text-white/50 leading-snug">AI Management System</p>
-                  </div>
-                  <div className="flex items-center gap-1.5 bg-white/[0.08] border border-white/[0.1] rounded-full px-3 py-1.5 shrink-0">
-                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 3L5 9L2 6" stroke="#4ade80" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.05em' }}>Verified</span>
-                  </div>
+                <div className="space-y-3">
+                  {[
+                    { standard: 'ISO 42001', system: 'AI Management System', image: certISO42001 },
+                    { standard: 'ISO 27001', system: 'Information Security Management' },
+                  ].map((cert) => (
+                    <div key={cert.standard} className="rounded-[16px] border border-white/[0.12] bg-white/[0.07] px-5 py-4 flex items-center gap-4">
+                      {cert.image ? (
+                        <img src={cert.image} alt={cert.standard} style={{ width: 62, height: 62, objectFit: 'contain', flexShrink: 0 }} />
+                      ) : (
+                        <div className="w-[62px] h-[62px] shrink-0 rounded-full border-2 border-[#66ACDF] bg-[#101C4D] flex items-center justify-center shadow-[inset_0_0_0_4px_#0075C8]">
+                          <div className="text-center text-white leading-none">
+                            <span className="block text-[11px] font-black tracking-[-0.03em]">ISO</span>
+                            <span className="block mt-1 text-[10px] font-bold">27001</span>
+                          </div>
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] leading-none mb-2">Certified</p>
+                        <p className="text-[16px] font-semibold text-white/95 leading-tight mb-1">{cert.standard}</p>
+                        <p className="text-[12px] text-white/50 leading-snug">{cert.system}</p>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-white/[0.08] border border-white/[0.1] rounded-full px-3 py-1.5 shrink-0">
+                        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 3L5 9L2 6" stroke="#4ade80" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                        <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.05em' }}>Verified</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
