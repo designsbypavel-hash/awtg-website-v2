@@ -95,7 +95,7 @@ export default function AboutOverviewPage() {
               </p>
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Delivery footprint</p>
+              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-3">Delivery footprint</p>
               <p className="font-h2 text-[#0a1628]">45,000+</p>
               <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-2">RAN sites delivered globally.</p>
             </div>
@@ -117,7 +117,7 @@ export default function AboutOverviewPage() {
                   <div className="h-9 w-9 flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.08)' }}>
                     <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#228DC1]" />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/45">{item.label}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/60">{item.label}</p>
                 </div>
                 <p
                   className="font-black text-[#0a1628] leading-none mb-5"
@@ -125,7 +125,7 @@ export default function AboutOverviewPage() {
                 >
                   {item.stat}
                 </p>
-                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78] max-w-xs">{item.text}</p>
+                <p className="text-[#0a1628]/60 text-[14px] leading-[1.78] max-w-xs">{item.text}</p>
               </div>
             ))}
           </div>
@@ -133,7 +133,7 @@ export default function AboutOverviewPage() {
       </section>
 
       {/* Capgemini-style alternating panels */}
-      <section className="border-t border-gray-100 overflow-hidden">
+      <section className="overflow-hidden">
         {contentSections.map((section, index) => {
           const isReversed = index % 2 === 1
           return (
@@ -150,7 +150,7 @@ export default function AboutOverviewPage() {
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="h-px w-8 bg-[#228DC1]/35" />
-                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">
                       {section.label}
                     </span>
                   </div>
@@ -162,7 +162,7 @@ export default function AboutOverviewPage() {
                   </h2>
                   <div className="space-y-5">
                     {section.paragraphs.map((paragraph) => (
-                      <p key={paragraph} className="text-[#0a1628]/58 text-[15px] leading-[1.88] font-normal">
+                      <p key={paragraph} className="text-[#0a1628]/60 text-[15px] leading-[1.88] font-normal">
                         {paragraph}
                       </p>
                     ))}
@@ -196,7 +196,7 @@ export default function AboutOverviewPage() {
         })}
       </section>
 
-      <section className="py-24 bg-[#f8fafc] border-t border-gray-100">
+      <section className="py-24 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14">
             <p className="type-label text-[#1a7aab] mb-3">Who we work with</p>
@@ -219,7 +219,7 @@ export default function AboutOverviewPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-t border-gray-100">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100">
             {aboutLinks.map((link) => (

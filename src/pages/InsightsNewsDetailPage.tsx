@@ -127,7 +127,7 @@ export default function InsightsNewsDetailPage() {
       </section>
 
       {related.length > 0 && (
-        <section className="py-20 bg-[#f7f8fa] border-t border-gray-100">
+        <section className="py-20 bg-[#f7f8fa]">
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-10">Related News</p>
             <div className="grid md:grid-cols-3 gap-6">

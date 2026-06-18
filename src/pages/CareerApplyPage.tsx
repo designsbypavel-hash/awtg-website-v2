@@ -165,7 +165,7 @@ export default function CareerApplyPage() {
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <Link
               to={getRoleHref(role.slug)}
-              className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-[#0a1628]/60 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
             >
               Back to role
             </Link>
@@ -179,7 +179,7 @@ export default function CareerApplyPage() {
                 We've received your application for <strong className="text-[#0a1628]">{role.title}</strong>. Our team will review it and get back to you within 5 business days.
               </p>
               <div className="bg-white border border-gray-100 p-6 mb-8 space-y-2">
-                <p className="text-[13px] text-[#0a1628]/50 font-semibold uppercase tracking-[0.1em] mb-3">Application Summary</p>
+                <p className="text-[13px] text-[#0a1628]/60 font-semibold uppercase tracking-[0.1em] mb-3">Application Summary</p>
                 <p className="text-[14px] text-[#0a1628]/70"><span className="font-semibold text-[#0a1628]">Role:</span> {role.title}</p>
                 <p className="text-[14px] text-[#0a1628]/70"><span className="font-semibold text-[#0a1628]">Department:</span> {role.dept}</p>
                 <p className="text-[14px] text-[#0a1628]/70"><span className="font-semibold text-[#0a1628]">Email submitted:</span> {form.email}</p>
@@ -212,13 +212,13 @@ export default function CareerApplyPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <Link
             to={getRoleHref(role.slug)}
-            className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-[#0a1628]/60 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
           >
             Back to role
           </Link>
           <p className="type-label text-[#1a7aab] mb-3">Apply</p>
           <h1 className="font-h1 text-[#0a1628] mb-4">{role.title}</h1>
-          <div className="flex flex-wrap items-center gap-5 text-[13px] text-[#0a1628]/55">
+          <div className="flex flex-wrap items-center gap-5 text-[13px] text-[#0a1628]/60">
             <span className="flex items-center gap-1.5">
               <FontAwesomeIcon icon={faBuilding} className="w-3 h-3 text-[#1a7aab]" /> {role.dept}
             </span>
@@ -314,14 +314,14 @@ export default function CareerApplyPage() {
                           </div>
                           <div className="text-left">
                             <p className="text-[14px] font-semibold text-[#0a1628]">{form.cvFile.name}</p>
-                            <p className="text-[12px] text-[#0a1628]/45 mt-0.5">
+                            <p className="text-[12px] text-[#0a1628]/60 mt-0.5">
                               {(form.cvFile.size / 1024).toFixed(0)} KB
                             </p>
                           </div>
                           <button
                             type="button"
                             onClick={(e) => { e.stopPropagation(); setForm((p) => ({ ...p, cvFile: null })) }}
-                            className="ml-2 w-7 h-7 bg-gray-100 hover:bg-red-50 flex items-center justify-center text-[#0a1628]/40 hover:text-red-500 transition-colors"
+                            className="ml-2 w-7 h-7 bg-gray-100 hover:bg-red-50 flex items-center justify-center text-[#0a1628]/60 hover:text-red-500 transition-colors"
                           >
                             <FontAwesomeIcon icon={faXmark} className="w-3.5 h-3.5" />
                           </button>
@@ -334,7 +334,7 @@ export default function CareerApplyPage() {
                           <p className="text-[14px] font-semibold text-[#0a1628] mb-1">
                             Drop your CV here, or <span className="text-[#1a7aab]">browse</span>
                           </p>
-                          <p className="text-[12px] text-[#0a1628]/40">PDF, DOC or DOCX · Max 10 MB</p>
+                          <p className="text-[12px] text-[#0a1628]/60">PDF, DOC or DOCX · Max 10 MB</p>
                         </div>
                       )}
                     </div>
@@ -353,7 +353,7 @@ export default function CareerApplyPage() {
                       placeholder="Share what excites you about this role and what you'd bring to the team..."
                       className="w-full border border-gray-200 bg-white px-4 py-3 text-[14px] text-[#0a1628] placeholder-[#0a1628]/30 focus:outline-none focus:border-[#228DC1] focus:ring-1 focus:ring-[#228DC1]/20 transition-colors resize-none"
                     />
-                    <p className="text-[12px] text-[#0a1628]/40">{form.coverLetter.length} / 2000 characters</p>
+                    <p className="text-[12px] text-[#0a1628]/60">{form.coverLetter.length} / 2000 characters</p>
                   </div>
                 </SectionCard>
 
@@ -401,7 +401,7 @@ export default function CareerApplyPage() {
 
                 {/* Legal + Submit */}
                 <div className="bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)] px-8 py-7">
-                  <p className="text-[12px] text-[#0a1628]/45 leading-[1.8] mb-7">
+                  <p className="text-[12px] text-[#0a1628]/60 leading-[1.8] mb-7">
                     By submitting this application you consent to AWTG Limited processing your personal data for recruitment purposes in accordance with our{' '}
                     <Link to="/privacy" className="text-[#1a7aab] hover:underline">Privacy Policy</Link>.
                     {' '}Your data will be stored securely and retained for up to 12 months.
@@ -463,7 +463,7 @@ export default function CareerApplyPage() {
 
                 {/* AWTG contact */}
                 <div className="border border-gray-100 p-7 bg-white">
-                  <p className="text-[13px] text-[#0a1628]/55 leading-[1.75] mb-4">
+                  <p className="text-[13px] text-[#0a1628]/60 leading-[1.75] mb-4">
                     Questions before applying? Email our team directly.
                   </p>
                   <a

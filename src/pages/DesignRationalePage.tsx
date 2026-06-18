@@ -138,7 +138,7 @@
             {decisions.map((d, i) => (
               <div
                 key={d.title}
-                className="grid lg:grid-cols-3 gap-8 py-10 border-t border-gray-100"
+                className="grid lg:grid-cols-3 gap-8 py-10"
               >
                 <div className="lg:col-span-1">
                   <p className="text-[14px] font-semibold text-[#1a7aab] uppercase tracking-widest mb-2">
@@ -163,7 +163,7 @@
       </section>
 
       {/* Footer note */}
-      <section className="py-16 bg-[#f7f8fa] border-t border-gray-100">
+      <section className="py-16 bg-[#f7f8fa]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <p className="font-serif-display text-[#0a1628] text-xl mb-2">AWTG Website — Design Rationale</p>

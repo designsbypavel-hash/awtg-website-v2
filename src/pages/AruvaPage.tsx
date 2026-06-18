@@ -104,7 +104,7 @@ function CurriculumAgnosticSection() {
   const SIZE = 520 // container size in px
 
   return (
-    <section ref={ref} className="py-24 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
+    <section ref={ref} className="py-24 bg-[#f8fafc] overflow-hidden">
       <style>{`
         @keyframes orbitSpin  { from{transform:rotate(0deg)}    to{transform:rotate(-360deg)} }
         @keyframes cardFloat  {
@@ -406,7 +406,7 @@ function HowItWorksSection() {
     : AnalyticsVisual
 
   return (
-    <section ref={ref} className="bg-white py-28 border-t border-gray-100">
+    <section ref={ref} className="bg-white py-28">
       <style>{`
         @keyframes hiwVisual { from{opacity:0;transform:translateX(10px)} to{opacity:1;transform:translateX(0)} }
         @keyframes hiwProgress { from{transform:scaleX(0)} to{transform:scaleX(1)} }
@@ -1041,7 +1041,7 @@ function PlatformDiagram() {
   )
 
   return (
-    <section ref={sectionRef} className="border-t border-gray-100 bg-[#f8fafc]" style={{ minHeight:'220vh' }}>
+    <section ref={sectionRef} className="bg-[#f8fafc]" style={{ minHeight:'220vh' }}>
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
           <div className="grid lg:grid-cols-[400px_1fr] gap-24 items-center">
@@ -2149,7 +2149,7 @@ function BloomInsightSection() {
   const masteryColor = (value: number, fallback: string) => value >= 75 ? '#059669' : fallback
 
   return (
-    <section ref={sectionRef} className="py-28 bg-[#f8fafc] border-t border-gray-100">
+    <section ref={sectionRef} className="py-28 bg-[#f8fafc]">
       <style>{`
         @keyframes fadeUp     { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
         @keyframes barGrow    { from{transform:scaleX(0);transform-origin:left} to{transform:scaleX(1)} }
@@ -2564,7 +2564,7 @@ function BloomInsightSection() {
 function PrinciplesSection() {
   const [ref, inView] = useInView(0.08)
   return (
-    <section className="py-24 bg-[#f0f4f8] border-t border-gray-100">
+    <section className="py-24 bg-[#f0f4f8]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="mb-14">
           <h2 className="font-heading text-[#0a1628] mb-3">
@@ -2865,7 +2865,7 @@ export default function AruvaPage() {
       <AudienceSection onDemoClick={openDemo} />
 
       {/* Why Aruva */}
-      <section className="py-28 bg-white border-t border-gray-100">
+      <section className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-12">
             <h2 className="font-heading text-[#0a1628] mb-5">
@@ -2906,7 +2906,7 @@ export default function AruvaPage() {
       </section>
 
       {/* Governance */}
-      <section className="py-20 bg-white border-t border-gray-100">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
 

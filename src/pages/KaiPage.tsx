@@ -231,7 +231,7 @@ function IntegrationsSection() {
   const dist = (i: number) => Math.abs(Math.floor(i / 5) - 1) + Math.abs((i % 5) - 2)
 
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[2fr_3fr] gap-16 items-center">
 
@@ -357,7 +357,7 @@ function SecurityComplianceSection() {
   const [leftRef, leftInView] = useInView()
   const [gridRef, gridInView] = useInView()
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-16 items-start">
           <div ref={leftRef} className="lg:sticky lg:top-28">

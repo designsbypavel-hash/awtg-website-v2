@@ -614,7 +614,7 @@ export default function IcmapPage() {
       </section>
 
       {/* -- Feature summary -- */}
-      <section className="bg-white border-t border-gray-100 py-16">
+      <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
 
@@ -671,7 +671,7 @@ export default function IcmapPage() {
       </section>
 
       {/* -- Live Coverage Map -- */}
-      <section className="py-24 bg-white border-t border-gray-100">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-2xl mb-14">
             <h2 className="font-heading text-[#0a1628] mb-5">
@@ -728,7 +728,7 @@ export default function IcmapPage() {
       </section>
 
       {/* -- How it works -- */}
-      <section className="py-28 bg-[#f8fafc] border-t border-gray-100">
+      <section className="py-28 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-16">
             <h2 className="font-heading text-[#0a1628] mb-4">
@@ -777,7 +777,7 @@ export default function IcmapPage() {
       </section>
 
       {/* -- Who it's for -- */}
-      <section className="py-28 bg-[#f8fafc] border-t border-gray-100">
+      <section className="py-28 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14">
             <h2 className="font-heading text-[#0a1628] mb-5">

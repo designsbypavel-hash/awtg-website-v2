@@ -30,7 +30,7 @@ export default function IndustriesTelecomsPage() {
         </div>
       </section>
 
-      <section className="bg-[#f8fafc] border-t border-gray-100">
+      <section className="bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-12 grid sm:grid-cols-3 gap-8 text-center">
           <div>
             <p className="font-black text-[#0a1628] mb-1" style={{ fontSize: '32px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>15+</p>

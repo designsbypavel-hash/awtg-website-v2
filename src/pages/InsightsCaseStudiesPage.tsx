@@ -128,7 +128,7 @@ export default function InsightsCaseStudiesPage() {
       />
 
       {/* Featured */}
-      <section className="bg-[#f8fafc] pb-0 border-t border-gray-100">
+      <section className="bg-[#f8fafc] pb-0">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <Link
             to={`/insights/case-studies/${featured.slug}`}

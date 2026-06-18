@@ -29,7 +29,7 @@ export default function IndustriesRetailPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-white border-t border-gray-100">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h2 className="font-heading text-[#0a1628] mb-4">
             Solutions for Retail

@@ -31,7 +31,7 @@ export default function InsightsResourceNav({
         <div className="border border-gray-100 bg-white p-3 sm:p-4">
           <div className="grid gap-4">
             <div className="grid lg:grid-cols-[112px_minmax(0,1fr)] gap-3 lg:items-center">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a1628]/45">Resources</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a1628]/60">Resources</p>
               <nav className="flex flex-wrap items-center gap-2" aria-label="Insight resource navigation">
                 {resourceLinks.map((item) => {
                   const active = item.key === activeResource
@@ -59,7 +59,7 @@ export default function InsightsResourceNav({
                 <div className="grid lg:grid-cols-[112px_minmax(0,1fr)] gap-3 lg:items-start">
                   <div className="flex items-center gap-3 pt-2">
                     <span className="h-px w-8 bg-[#228DC1]" />
-                    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a1628]/45">{topicLabel}</p>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a1628]/60">{topicLabel}</p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2" role="toolbar" aria-label={`${activeResource} topic filters`}>
                     {topics.map((topic) => (

@@ -103,7 +103,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
           SUPPORTS — "What AWTG delivers for ___"
           Full-width alternating photo + text panels
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-white border-t border-gray-100 overflow-hidden">
+      <section className="bg-white overflow-hidden">
         {/* Section heading — constrained width */}
         <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-20 pb-14">
           <IndustrySectionHeader
@@ -200,7 +200,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       {/* ══════════════════════════════════════════════════════
           USE CASES
       ══════════════════════════════════════════════════════ */}
-      <section className="py-24 border-t border-gray-100" style={{ background: '#f8fafc' }}>
+      <section className="py-24" style={{ background: '#f8fafc' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <IndustrySectionHeader
             heading={useCases.heading}
@@ -225,7 +225,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       {/* ══════════════════════════════════════════════════════
           OUTCOMES — asymmetric: sticky heading left + 2×2 grid right
       ══════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24">
+      <section className="relative overflow-hidden bg-white py-24">
         <div
           className="absolute inset-y-0 right-0 hidden w-[46%] pointer-events-none lg:block"
           style={{ background: '#f6f9fc' }}
@@ -286,7 +286,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
 
       {/* Optional proof quote */}
       {proof && (
-        <section className="py-20 bg-[#f8fafc] border-t border-gray-100">
+        <section className="py-20 bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <div className="max-w-3xl border-l-4 pl-8" style={{ borderColor: accent }}>
               <p className="text-[#0a1628]/75 text-[18px] font-normal leading-relaxed mb-5">

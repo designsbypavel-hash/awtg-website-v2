@@ -509,7 +509,7 @@ export default function ServicesEngineeringPage() {
       </section>
 
       {/* ── CORE MODULES ──────────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-white py-24">
+      <section className="bg-white py-24">
         <div ref={modulesRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(modulesInView, 0)}>
             <SectionHeader
@@ -585,7 +585,7 @@ export default function ServicesEngineeringPage() {
       </section>
 
       {/* ── WHY SCAP IS DIFFERENT ─────────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-white py-24">
+      <section className="bg-white py-24">
         <div ref={diffRef} className="mx-auto max-w-7xl px-8 lg:px-12">
 
           {/* Heading + description */}

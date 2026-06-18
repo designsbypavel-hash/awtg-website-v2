@@ -340,7 +340,7 @@ export default function ServicesIoTPage() {
       </section>
 
       {/* ── BUILT FOR TWO AUDIENCES ──────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-[#f8fafc] py-24">
+      <section className="bg-[#f8fafc] py-24">
         <div ref={audRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-stretch">
 
@@ -409,7 +409,7 @@ export default function ServicesIoTPage() {
       </section>
 
       {/* ── KEY PLATFORM CAPABILITIES ────────────────────────────────────── */}
-      <section className="border-t border-gray-100 bg-[#f8fafc] py-24">
+      <section className="bg-[#f8fafc] py-24">
         <div ref={capRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(capInView, 0)}>
             <SectionHeader

@@ -161,7 +161,7 @@ export default function CookiePolicyPage() {
               <a
                 key={s.num}
                 href={`#section-${s.num}`}
-                className="px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.1em] bg-[#f8fafc] text-[#0a1628]/55 border border-gray-100 hover:border-[#228DC1] hover:text-[#1a7aab] transition-colors"
+                className="px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.1em] bg-[#f8fafc] text-[#0a1628]/60 border border-gray-100 hover:border-[#228DC1] hover:text-[#1a7aab] transition-colors"
               >
                 {s.num}. {s.title.split(' ').slice(0, 3).join(' ')}{s.title.split(' ').length > 3 ? '…' : ''}
               </a>
@@ -178,7 +178,7 @@ export default function CookiePolicyPage() {
               <article
                 key={section.num}
                 id={`section-${section.num}`}
-                className="grid lg:grid-cols-[260px_minmax(0,1fr)] gap-8 lg:gap-16 py-14 border-t border-gray-100 scroll-mt-24"
+                className="grid lg:grid-cols-[260px_minmax(0,1fr)] gap-8 lg:gap-16 py-14 scroll-mt-24"
               >
                 <div className="lg:pt-1">
                   <p className="type-label text-[#1a7aab] mb-3">{section.num}</p>
@@ -192,7 +192,7 @@ export default function CookiePolicyPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#f8fafc] border-t border-gray-100">
+      <section className="py-16 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div>
             <p className="type-label text-[#1a7aab] mb-3">Cookie Enquiries</p>

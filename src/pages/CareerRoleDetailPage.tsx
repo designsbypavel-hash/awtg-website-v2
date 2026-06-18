@@ -272,7 +272,7 @@ export default function CareerRoleDetailPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <Link
             to="/careers"
-            className="inline-flex items-center gap-2 text-[#0a1628]/50 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-[#0a1628]/60 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
           >
             Back to Careers
           </Link>
@@ -282,7 +282,7 @@ export default function CareerRoleDetailPage() {
                 {role.dept}
               </span>
               <h1 className="font-serif-display text-[#0a1628] mb-5">{role.title}</h1>
-              <div className="flex flex-wrap items-center gap-5 text-[14px] text-[#0a1628]/55 font-normal">
+              <div className="flex flex-wrap items-center gap-5 text-[14px] text-[#0a1628]/60 font-normal">
                 <span className="flex items-center gap-1.5">
                   <FontAwesomeIcon icon={faLocationDot} className="w-3.5 h-3.5 text-[#1a7aab]" /> {role.location}
                 </span>
@@ -374,7 +374,7 @@ export default function CareerRoleDetailPage() {
                         <FontAwesomeIcon icon={icon} className="w-3.5 h-3.5 text-[#1a7aab]" />
                       </div>
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#0a1628]/40 mb-0.5">{label}</p>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#0a1628]/60 mb-0.5">{label}</p>
                         <p className="text-[14px] text-[#0a1628] font-medium">{value}</p>
                       </div>
                     </div>
@@ -417,7 +417,7 @@ export default function CareerRoleDetailPage() {
                       >
                         <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#1a7aab] mb-1">{r.dept}</p>
                         <p className="text-[14px] font-semibold text-[#0a1628] group-hover:text-[#1a7aab] transition-colors leading-[1.3]">{r.title}</p>
-                        <p className="text-[12px] text-[#0a1628]/45 mt-1">{r.location}</p>
+                        <p className="text-[12px] text-[#0a1628]/60 mt-1">{r.location}</p>
                       </Link>
                     ))}
                   </div>
@@ -435,7 +435,7 @@ export default function CareerRoleDetailPage() {
       </section>
 
       {/* Related roles footer strip */}
-      <section className="py-16 bg-[#f7f9fc] border-t border-gray-100">
+      <section className="py-16 bg-[#f7f9fc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex items-end justify-between gap-6 mb-10">
             <div>
@@ -457,7 +457,7 @@ export default function CareerRoleDetailPage() {
                   {r.dept}
                 </span>
                 <h3 className="font-h5 text-[#0a1628] group-hover:text-[#1a7aab] transition-colors mb-3">{r.title}</h3>
-                <p className="text-[#0a1628]/55 text-[13px] mb-5">{r.location} · {r.type}</p>
+                <p className="text-[#0a1628]/60 text-[13px] mb-5">{r.location} · {r.type}</p>
                 <span className="inline-flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold uppercase tracking-[0.1em]">
                   View Role
                 </span>

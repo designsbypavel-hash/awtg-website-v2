@@ -148,7 +148,7 @@ export default function AboutSustainabilityPage() {
               </p>
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Net Zero target</p>
+              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-3">Net Zero target</p>
               <p className="font-h2 text-[#0a1628]">2045</p>
               <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-2">AWTG committed to achieving Net Zero emissions.</p>
             </div>
@@ -160,14 +160,14 @@ export default function AboutSustainabilityPage() {
       <section className="bg-white border-b border-gray-100 sticky top-0 z-20">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-wrap gap-0 divide-x divide-gray-100">
-            <a href="#carbon-reduction-plan"   className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors">Carbon Reduction Plan</a>
-            <a href="#social-value-statement"  className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors">Social Value Statement</a>
+            <a href="#carbon-reduction-plan"   className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors">Carbon Reduction Plan</a>
+            <a href="#social-value-statement"  className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors">Social Value Statement</a>
           </div>
         </div>
       </section>
 
       {/* ── CARBON REDUCTION PLAN ── */}
-      <div id="carbon-reduction-plan" className="scroll-mt-14 border-t border-gray-100 overflow-hidden">
+      <div id="carbon-reduction-plan" className="scroll-mt-14 overflow-hidden">
 
         {/* Panel 1 — Commitment */}
         <div className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 540 }}>
@@ -176,23 +176,23 @@ export default function AboutSustainabilityPage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">01</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Carbon Reduction Plan</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Carbon Reduction Plan</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-6" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
                 Commitment to Achieving Net Zero
               </h2>
-              <p className="text-[#0a1628]/58 text-[15px] leading-[1.88] mb-8">
+              <p className="text-[#0a1628]/60 text-[15px] leading-[1.88] mb-8">
                 AWTG is committed to achieving Net Zero by 2045. We are currently working to develop a full implementation plan which will allow us to bring this target further forward. All emissions reported and future plans include the entities controlled by AWTG Ltd.
               </p>
               <div className="flex items-center gap-6">
                 <div className="text-center">
                   <p className="text-[40px] font-black text-[#228DC1] leading-none">2045</p>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45 mt-1">Net Zero target</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60 mt-1">Net Zero target</p>
                 </div>
                 <div className="h-12 w-px bg-gray-200" />
                 <div className="text-center">
                   <p className="text-[40px] font-black text-[#059669] leading-none">2040</p>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45 mt-1">Scope 1 &amp; 2 target</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60 mt-1">Scope 1 &amp; 2 target</p>
                 </div>
               </div>
             </div>
@@ -214,7 +214,7 @@ export default function AboutSustainabilityPage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">02</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Emissions Reporting</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Emissions Reporting</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-7" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
                 Baseline and current emission footprint
@@ -225,8 +225,8 @@ export default function AboutSustainabilityPage() {
                   <div className="space-y-3">
                     {baselineEmissions.map((item) => (
                       <div key={item.scope} className="flex items-center justify-between">
-                        <span className="text-[12px] font-semibold text-[#0a1628]/55">{item.scope}</span>
-                        <span className="text-[15px] font-black text-[#0a1628]">{item.value}<span className="text-[11px] font-normal text-[#0a1628]/40 ml-1">t</span></span>
+                        <span className="text-[12px] font-semibold text-[#0a1628]/60">{item.scope}</span>
+                        <span className="text-[15px] font-black text-[#0a1628]">{item.value}<span className="text-[11px] font-normal text-[#0a1628]/60 ml-1">t</span></span>
                       </div>
                     ))}
                   </div>
@@ -236,14 +236,14 @@ export default function AboutSustainabilityPage() {
                   <div className="space-y-3">
                     {currentEmissions.map((item) => (
                       <div key={item.scope} className="flex items-center justify-between">
-                        <span className="text-[12px] font-semibold text-[#0a1628]/55">{item.scope}</span>
-                        <span className="text-[15px] font-black text-[#0a1628]">{item.value}<span className="text-[11px] font-normal text-[#0a1628]/40 ml-1">t</span></span>
+                        <span className="text-[12px] font-semibold text-[#0a1628]/60">{item.scope}</span>
+                        <span className="text-[15px] font-black text-[#0a1628]">{item.value}<span className="text-[11px] font-normal text-[#0a1628]/60 ml-1">t</span></span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
-              <p className="text-[#0a1628]/45 text-[12px] leading-[1.7] mt-5">
+              <p className="text-[#0a1628]/60 text-[12px] leading-[1.7] mt-5">
                 2022 and 2023 represent more realistic post-pandemic emissions. AWTG has grown steadily while maintaining emissions per person below the sector average.
               </p>
             </div>
@@ -257,7 +257,7 @@ export default function AboutSustainabilityPage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">03</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Action Plan</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Action Plan</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
                 Targets, completed and planned projects
@@ -349,7 +349,7 @@ export default function AboutSustainabilityPage() {
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="h-px w-8" style={{ background: section.accent + '55' }} />
-                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Social Value</span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Social Value</span>
                   </div>
                   <div className="flex items-center gap-3 mb-5">
                     <div className="h-10 w-10 flex items-center justify-center shrink-0" style={{ background: section.accent + '12' }}>

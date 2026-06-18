@@ -118,7 +118,7 @@ export default function ProductDemoModal({
               type="button"
               onClick={onClose}
               aria-label="Close"
-              className="absolute right-5 top-5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#f1f5f9] text-[#0a1628]/45 transition-colors hover:bg-[#e5edf4] hover:text-[#0a1628]"
+              className="absolute right-5 top-5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#f1f5f9] text-[#0a1628]/60 transition-colors hover:bg-[#e5edf4] hover:text-[#0a1628]"
             >
               <FontAwesomeIcon icon={faXmark} className="h-4 w-4" />
             </button>
@@ -167,7 +167,7 @@ export default function ProductDemoModal({
                 Continue
               </button>
 
-              <p className="pt-4 text-[11px] font-normal leading-relaxed text-[#0a1628]/45">
+              <p className="pt-4 text-[11px] font-normal leading-relaxed text-[#0a1628]/60">
                 By continuing, you agree that AWTG may process your details to respond to your request. We will only use your information in line with our privacy policy.
               </p>
             </form>

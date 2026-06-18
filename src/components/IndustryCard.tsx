@@ -44,9 +44,9 @@ export default function IndustryCard({
       >
         <FontAwesomeIcon icon={icon} style={{ fontSize: 20, color: tile.fg }} />
       </div>
-      {abbr && <p className="type-label text-[#0a1628]/40 mb-2">{abbr}</p>}
+      {abbr && <p className="type-label text-[#0a1628]/60 mb-2">{abbr}</p>}
       <h3 className="font-semibold text-[#0a1628] text-[15px] leading-snug mb-3">{title}</h3>
-      <p className="text-[#0a1628]/52 text-[13px] leading-relaxed">{desc}</p>
+      <p className="text-[#0a1628]/60 text-[13px] leading-relaxed">{desc}</p>
     </div>
   )
 }

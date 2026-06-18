@@ -98,7 +98,7 @@ export default function AboutCertificationsPage() {
               </p>
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/55 mb-3">Certifications</p>
+              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-3">Certifications</p>
               <p className="font-h2 text-[#0a1628]">{certificationGroups.reduce((n, g) => n + g.items.length, 0)}</p>
               <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-2">accreditations, memberships and partnerships.</p>
             </div>
@@ -114,7 +114,7 @@ export default function AboutCertificationsPage() {
               <a
                 key={group.label}
                 href={`#${group.label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-                className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/55 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors"
+                className="px-5 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60 hover:text-[#1a7aab] hover:bg-[#f8fafc] transition-colors"
               >
                 {group.label}
               </a>
@@ -124,7 +124,7 @@ export default function AboutCertificationsPage() {
       </section>
 
       {/* Alternating panels */}
-      <div className="border-t border-gray-100 overflow-hidden">
+      <div className="overflow-hidden">
         {certificationGroups.map((group, groupIndex) => {
           const isReversed = groupIndex % 2 === 1
           const accent = GROUP_COLORS[group.label] ?? '#228DC1'
@@ -147,7 +147,7 @@ export default function AboutCertificationsPage() {
                     {String(groupIndex + 1).padStart(2, '0')}
                   </span>
                   <span className="h-px w-8" style={{ background: accent + '55' }} />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">
                     {group.label}
                   </span>
                 </div>
@@ -170,7 +170,7 @@ export default function AboutCertificationsPage() {
                         </div>
                         <div>
                           <h3 className="text-[14px] font-bold text-[#0a1628] leading-snug mb-2">{item.name}</h3>
-                          <p className="text-[13px] text-[#0a1628]/55 leading-[1.78] font-normal">{item.desc}</p>
+                          <p className="text-[13px] text-[#0a1628]/60 leading-[1.78] font-normal">{item.desc}</p>
                         </div>
                       </div>
                     </article>

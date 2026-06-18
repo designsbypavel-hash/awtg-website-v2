@@ -55,7 +55,7 @@ export default function IndustryVisualPanel({
             >
               {title}
             </p>
-            <p className="text-[10.5px] font-medium" style={{ color: 'rgba(10,22,40,0.45)' }}>
+            <p className="text-[11px] font-medium" style={{ color: 'rgba(10,22,40,0.60)' }}>
               {subtitle}
             </p>
           </div>
@@ -65,7 +65,7 @@ export default function IndustryVisualPanel({
           style={{ background: '#05966910', border: '1px solid #05966922' }}
         >
           <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#059669' }} />
-          <span className="text-[11px] font-bold" style={{ color: '#059669' }}>
+          <span className="text-[11px] font-bold" style={{ color: '#047857' }}>
             Live
           </span>
         </div>
@@ -118,7 +118,7 @@ export default function IndustryVisualPanel({
             >
               <FontAwesomeIcon icon={b.icon} style={{ fontSize: 9, color: b.color }} />
               <span
-                className="text-[9.5px] font-bold uppercase tracking-wide"
+                className="text-[11px] font-bold uppercase tracking-wide"
                 style={{ color: b.color }}
               >
                 {b.label}

@@ -208,7 +208,7 @@ function Hero() {
       </div>
 
       {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
-      <div className="relative border-t border-gray-100 bg-white overflow-hidden" style={{ height: '10%' }}>
+      <div className="relative bg-white overflow-hidden" style={{ height: '10%' }}>
         <div className="flex items-center h-full">
           <div className="shrink-0 h-full flex items-center px-8 border-r border-black/10">
             <span className="text-[#0a1628]/60 text-[14px] font-semibold tracking-[0.22em] uppercase whitespace-nowrap">
@@ -292,7 +292,7 @@ const whatWeDoItems = [
 
 function WhatWeDo() {
   return (
-    <section className="relative overflow-hidden border-t border-gray-100 bg-white py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-white py-24 lg:py-28">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         <div className="space-y-16 lg:space-y-0">
@@ -424,7 +424,7 @@ export function OurSolutions() {
 
 export function Vision() {
   return (
-    <section className="py-28 bg-white border-t border-gray-100">
+    <section className="py-28 bg-white">
       <div className="max-w-5xl mx-auto px-8 lg:px-12 text-center">
         <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
           The next wave of connectivity will{' '}
@@ -470,7 +470,7 @@ const industryCards = [
 
 function Industries() {
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="max-w-2xl mb-16">
           <h2 className="font-heading text-[#0a1628] mb-4">
@@ -612,7 +612,7 @@ export function TechSolutions() {
   const [activeTab, setActiveTab] = useState(0)
   const tab = tabs[activeTab]
   return (
-    <section className="py-32 bg-white border-t border-gray-100">
+    <section className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="text-center mb-14">
           <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-5">
@@ -735,7 +735,7 @@ const partnerLogos = [
 
 export function Partners() {
   return (
-    <section className="py-20 bg-white border-t border-gray-100">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <p className="text-center text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-12">
           Trusted by Industry Leaders & Public Sector Bodies
@@ -946,7 +946,7 @@ function Insights() {
 
 function ContactCTA() {
   return (
-    <section className="py-28 bg-[#f7f9fc] border-t border-gray-100">
+    <section className="py-28 bg-[#f7f9fc]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>

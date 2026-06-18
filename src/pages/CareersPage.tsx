@@ -101,13 +101,13 @@ export default function CareersPage() {
                   <div className="h-9 w-9 flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.08)' }}>
                     <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#1a7aab]" />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/45">{item.label}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/60">{item.label}</p>
                 </div>
                 <p className="font-black text-[#0a1628] leading-none mb-5"
                   style={{ fontSize: 'clamp(40px, 4.5vw, 58px)', letterSpacing: '-0.03em' }}>
                   {item.stat}
                 </p>
-                <p className="text-[#0a1628]/55 text-[14px] leading-[1.78] max-w-xs">{item.text}</p>
+                <p className="text-[#0a1628]/60 text-[14px] leading-[1.78] max-w-xs">{item.text}</p>
               </div>
             ))}
           </div>
@@ -115,7 +115,7 @@ export default function CareersPage() {
       </section>
 
       {/* ── ALTERNATING PANELS ── */}
-      <div className="border-t border-gray-100 overflow-hidden">
+      <div className="overflow-hidden">
 
         {/* Panel 1 — Why AWTG: text left, image right */}
         <div className="grid lg:grid-cols-2 border-b border-gray-100" style={{ minHeight: 580 }}>
@@ -124,7 +124,7 @@ export default function CareersPage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">01</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Why AWTG</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Why AWTG</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8"
                 style={{ fontSize: 'clamp(24px, 2.4vw, 32px)' }}>
@@ -139,7 +139,7 @@ export default function CareersPage() {
                     </div>
                     <div>
                       <p className="text-[14px] font-bold text-[#0a1628] mb-1">{v.title}</p>
-                      <p className="text-[13px] text-[#0a1628]/58 leading-[1.78]">{v.desc}</p>
+                      <p className="text-[13px] text-[#0a1628]/60 leading-[1.78]">{v.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -167,7 +167,7 @@ export default function CareersPage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">02</span>
                 <span className="h-px w-8 bg-[#228DC1]/40" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/45">Benefits &amp; Perks</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Benefits &amp; Perks</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8"
                 style={{ fontSize: 'clamp(24px, 2.4vw, 32px)' }}>
@@ -182,7 +182,7 @@ export default function CareersPage() {
                     </div>
                     <div>
                       <p className="text-[13px] font-bold text-[#0a1628] mb-0.5">{b.title}</p>
-                      <p className="text-[12px] text-[#0a1628]/55 leading-[1.7]">{b.desc}</p>
+                      <p className="text-[12px] text-[#0a1628]/60 leading-[1.7]">{b.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -211,14 +211,14 @@ export default function CareersPage() {
       </section>
 
       {/* ── OPEN ROLES ── */}
-      <section id="open-roles" className="py-24 bg-[#f8fafc] border-t border-gray-100 scroll-mt-20">
+      <section id="open-roles" className="py-24 bg-[#f8fafc] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-[minmax(0,1fr)_auto] gap-8 items-end mb-12">
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab] mb-3">Open Positions</p>
               <h2 className="font-heading text-[#0a1628]">Join the team</h2>
             </div>
-            <p className="text-[#0a1628]/50 text-sm pb-1">{openRoles.length} open positions</p>
+            <p className="text-[#0a1628]/60 text-sm pb-1">{openRoles.length} open positions</p>
           </div>
 
           {/* Department filter tabs */}
@@ -231,7 +231,7 @@ export default function CareersPage() {
                 className={`rounded-lg px-4 py-2.5 text-[12px] font-bold uppercase tracking-[0.12em] transition-all ${
                   activeDept === dept
                     ? 'bg-[#0a1628] text-white shadow-[0_10px_24px_rgba(10,22,40,0.16)]'
-                    : 'text-[#0a1628]/48 hover:bg-[#f3f7fb] hover:text-[#0a1628]'
+                    : 'text-[#0a1628]/60 hover:bg-[#f3f7fb] hover:text-[#0a1628]'
                 }`}
               >
                 {dept}
@@ -260,7 +260,7 @@ export default function CareersPage() {
                     <h3 className="mb-4 text-[20px] font-semibold leading-snug text-[#0a1628] transition-colors group-hover:text-[#1a7aab]">
                       {role.title}
                     </h3>
-                    <div className="flex flex-wrap items-center gap-3 text-[13px] text-[#0a1628]/55">
+                    <div className="flex flex-wrap items-center gap-3 text-[13px] text-[#0a1628]/60">
                       <span className="inline-flex items-center gap-2 rounded-full bg-[#f3f7fb] px-3 py-1.5">
                         <FontAwesomeIcon icon={faLocationDot} className="h-3 w-3 text-[#1a7aab]" />
                         {role.location}
@@ -283,7 +283,7 @@ export default function CareersPage() {
       </section>
 
       {/* ── SPECULATIVE / CTA — alternating panel with image ── */}
-      <div className="grid lg:grid-cols-2 border-t border-gray-100" style={{ minHeight: 460 }}>
+      <div className="grid lg:grid-cols-2" style={{ minHeight: 460 }}>
         <div className="relative overflow-hidden" style={{ background: '#0a1628', minHeight: 300 }}>
           <img src="/images/insights/ai-lab.jpg" alt="AI technology workspace at AWTG"
             className="absolute inset-0 w-full h-full object-cover opacity-40" loading="lazy" />

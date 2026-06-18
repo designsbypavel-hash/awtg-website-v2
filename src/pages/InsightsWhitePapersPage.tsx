@@ -232,7 +232,7 @@ export default function InsightsWhitePapersPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/55 mb-3">All Whitepapers</p>
+              <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-3">All Whitepapers</p>
               <h2 className="font-h2 text-[#0a1628]">
                 {activeTopic === 'All' ? 'Research for real infrastructure decisions.' : activeTopic}
               </h2>
@@ -251,13 +251,13 @@ export default function InsightsWhitePapersPage() {
                 </div>
                 <div className="p-6">
                   <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <span className="font-mono text-[12px] text-[#0a1628]/40">
+                    <span className="font-mono text-[12px] text-[#0a1628]/60">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-[#228DC1]/10 text-[#1a7aab]">
                       {paper.topic}
                     </span>
-                    <span className="text-[#0a1628]/50 text-xs">{paper.date}</span>
+                    <span className="text-[#0a1628]/60 text-xs">{paper.date}</span>
                   </div>
                   <h3 className="font-h5 text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">
                     {paper.title}
