@@ -1565,7 +1565,15 @@ export default function KaiPage() {
             </div>
 
             {/* Right: chart card - Intercom-style */}
-            <div className="flex flex-col justify-between overflow-hidden lg:h-[450px]">
+            <div
+              className="flex flex-col justify-between overflow-hidden lg:h-[450px]"
+              style={{
+                borderRadius: 20,
+                background: 'linear-gradient(165deg, #ffffff 0%, #f2f8fb 60%, #eaf3f8 100%)',
+                border: '1px solid rgba(34,141,193,0.14)',
+                boxShadow: '0 28px 56px rgba(10,22,40,0.09), 0 6px 18px rgba(10,22,40,0.05)',
+              }}
+            >
               {/* Card header */}
               <div style={{ padding:'16px 20px 8px' }}>
                 <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#0a1628', lineHeight:1.35, fontFamily:'Roboto,sans-serif', letterSpacing:'-0.01em' }}>
