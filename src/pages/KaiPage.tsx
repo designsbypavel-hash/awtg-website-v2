@@ -95,29 +95,30 @@ function GlobeCountUp({ num, prefix = '', suffix = '', visible, delay = 0 }: {
 
 function RealisticGlobePanel({ visible }: { visible: boolean }) {
   return (
-    <div style={{ position: 'relative', width: '100%', minHeight: 430, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{
-        position: 'absolute',
-        left: '50%',
-        top: '50%',
-        width: '76%',
-        height: '76%',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(34,141,193,0.22), rgba(34,141,193,0) 68%)',
-        filter: 'blur(12px)',
-        transform: 'translate(-50%, -50%)',
-        opacity: 0.5,
-        pointerEvents: 'none',
-      }} />
-
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        minHeight: 430,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#ffffff',
+        borderRadius: 20,
+        border: '1px solid rgba(15,23,42,0.07)',
+        boxShadow: '0 4px 18px rgba(15,23,42,0.07)',
+        overflow: 'hidden',
+        padding: 24,
+      }}
+    >
       <img
         src="/images/kai-dashboard-mockup.png"
         alt="Kai dashboard interface on tablet"
         style={{
-          width: 'min(100%, 560px)',
+          width: '100%',
           height: 'auto',
           display: 'block',
-          filter: 'drop-shadow(0 32px 56px rgba(34,141,193,0.22))',
+          borderRadius: 20,
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.96)',
           transition: 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)',
@@ -143,7 +144,7 @@ function GlobalReachSection() {
   ] as const
 
   return (
-    <section className="bg-[#f8fafc] py-20">
+    <section className="bg-white py-20">
       <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
 
@@ -1130,7 +1131,7 @@ function OmnichannelSection() {
           <div className="grid grid-cols-3 gap-6">
 
             {/*  LEFT: TELEGRAM  */}
-            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', aspectRatio:'4 / 4.5' }}>
+            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', height:525 }}>
 
               {/* Header */}
               <div style={{ background:'#229ED9', padding:'11px 14px', display:'flex', alignItems:'center', gap:10, flexShrink:0 }}>
@@ -1191,7 +1192,7 @@ function OmnichannelSection() {
             </div>
 
             {/*  CENTRE: Kai WEB CHAT  */}
-            <div className="omni-panel-center" style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, display:'flex', flexDirection:'column', aspectRatio:'4 / 4.5' }}>
+            <div className="omni-panel-center" style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, display:'flex', flexDirection:'column', height:525 }}>
               <div style={{ borderRadius:15, background:'#fff', overflow:'hidden', flex:1, display:'flex', flexDirection:'column' }}>
 
                 {/* Kai header */}
@@ -1241,7 +1242,7 @@ function OmnichannelSection() {
             </div>
 
             {/*  RIGHT: GMAIL  */}
-            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', aspectRatio:'4 / 4.5' }}>
+            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', height:525 }}>
 
               {/* Gmail toolbar */}
               <div style={{ background:'white', borderBottom:'1px solid #e8e8e8', padding:'9px 14px', display:'flex', alignItems:'center', gap:10, flexShrink:0 }}>
