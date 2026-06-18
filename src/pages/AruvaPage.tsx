@@ -100,21 +100,24 @@ function CurriculumAgnosticSection() {
   const [ref, inView] = useInView(0.1)
   const ORBIT_DUR = 20 // seconds per revolution
   const N = curriculumSubjects.length // 8
-  const R = 178 // orbit radius in px
-  const SIZE = 520 // container size in px
+  const ORBIT_W = 700
+  const ORBIT_H = 520
+  const CX = ORBIT_W / 2
+  const CY = ORBIT_H / 2
+  const RX = 275
+  const RY = 185
+  const KX = RX * 0.5522848
+  const KY = RY * 0.5522848
+  const ORBIT_PATH = `M ${CX} ${CY - RY} C ${CX + KX} ${CY - RY} ${CX + RX} ${CY - KY} ${CX + RX} ${CY} C ${CX + RX} ${CY + KY} ${CX + KX} ${CY + RY} ${CX} ${CY + RY} C ${CX - KX} ${CY + RY} ${CX - RX} ${CY + KY} ${CX - RX} ${CY} C ${CX - RX} ${CY - KY} ${CX - KX} ${CY - RY} ${CX} ${CY - RY} Z`
 
   return (
     <section ref={ref} className="py-24 bg-[#f8fafc] overflow-hidden">
       <style>{`
-        @keyframes orbitSpin  { from{transform:rotate(0deg)}    to{transform:rotate(-360deg)} }
+        @keyframes orbitTravel { from{offset-distance:0%} to{offset-distance:100%} }
         @keyframes cardFloat  {
-          0%   { transform: rotate(0deg)   scale(1.55); filter: drop-shadow(0 16px 36px rgba(34,141,193,0.55)); animation-timing-function: cubic-bezier(0.55,0,1,1); }
-          7%   { transform: rotate(25deg)  scale(1.18); filter: drop-shadow(0 8px 18px rgba(34,141,193,0.22)); animation-timing-function: linear; }
-          25%  { transform: rotate(90deg)  scale(0.94); filter: none; animation-timing-function: linear; }
-          50%  { transform: rotate(180deg) scale(0.84); filter: none; animation-timing-function: linear; }
-          75%  { transform: rotate(270deg) scale(0.94); filter: none; animation-timing-function: linear; }
-          93%  { transform: rotate(335deg) scale(1.18); filter: drop-shadow(0 8px 18px rgba(34,141,193,0.22)); animation-timing-function: cubic-bezier(0,0,0.45,1); }
-          100% { transform: rotate(360deg) scale(1.55); filter: drop-shadow(0 16px 36px rgba(34,141,193,0.55)); }
+          0%,100% { transform:scale(1.22); filter:drop-shadow(0 14px 30px rgba(34,141,193,0.34)); }
+          18%,82% { transform:scale(1); filter:drop-shadow(0 6px 14px rgba(34,141,193,0.12)); }
+          50% { transform:scale(0.9); filter:none; }
         }
         @keyframes connectionPulse {
           0%,100% { opacity:0; transform: scale(0.92); }
@@ -130,7 +133,7 @@ function CurriculumAgnosticSection() {
         }
       `}</style>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-[0.82fr_1fr] gap-16 items-center">
+        <div className="grid lg:grid-cols-[0.68fr_1.32fr] gap-10 xl:gap-14 items-center">
 
           {/* LEFT - text */}
           <div style={reveal(inView, 0)}>
@@ -153,13 +156,13 @@ function CurriculumAgnosticSection() {
 
           {/* RIGHT - orbital visual */}
           <div className="flex items-center justify-center" style={reveal(inView, 120)}>
-            <div style={{ position:'relative', width:SIZE, height:SIZE, flexShrink:0 }}>
+            <div style={{ position:'relative', width:ORBIT_W, height:ORBIT_H, flexShrink:0 }}>
 
               {/* Orbit ring */}
               <div style={{
                 position:'absolute',
-                top: SIZE/2 - R, left: SIZE/2 - R,
-                width: R*2, height: R*2,
+                top: CY - RY, left: CX - RX,
+                width: RX*2, height: RY*2,
                 borderRadius:'50%',
                 border:'1.5px dashed rgba(34,141,193,0.18)',
                 pointerEvents:'none',
@@ -168,8 +171,8 @@ function CurriculumAgnosticSection() {
               {/* Second subtle ring */}
               <div style={{
                 position:'absolute',
-                top: SIZE/2 - R*0.62, left: SIZE/2 - R*0.62,
-                width: R*2*0.62, height: R*2*0.62,
+                top: CY - RY*0.62, left: CX - RX*0.62,
+                width: RX*2*0.62, height: RY*2*0.62,
                 borderRadius:'50%',
                 border:'1px solid rgba(34,141,193,0.07)',
                 pointerEvents:'none',
@@ -178,7 +181,7 @@ function CurriculumAgnosticSection() {
               {/* Radial glow behind center */}
               <div style={{
                 position:'absolute',
-                top: SIZE/2 - 90, left: SIZE/2 - 90,
+                top: CY - 90, left: CX - 90,
                 width:180, height:180,
                 borderRadius:'50%',
                 background:'radial-gradient(circle, rgba(34,141,193,0.18) 0%, transparent 70%)',
@@ -186,17 +189,17 @@ function CurriculumAgnosticSection() {
               }}/>
 
               {/* Connection beam SVG - always points upward from center, beam appears for top card */}
-              <svg style={{ position:'absolute', inset:0, width:SIZE, height:SIZE, pointerEvents:'none' }} viewBox={`0 0 ${SIZE} ${SIZE}`}>
+              <svg style={{ position:'absolute', inset:0, width:ORBIT_W, height:ORBIT_H, pointerEvents:'none' }} viewBox={`0 0 ${ORBIT_W} ${ORBIT_H}`}>
                 <line
-                  x1={SIZE/2} y1={SIZE/2}
-                  x2={SIZE/2} y2={SIZE/2 - R + 10}
+                  x1={CX} y1={CY}
+                  x2={CX} y2={CY - RY + 10}
                   stroke="#228DC1"
                   strokeWidth="1.5"
                   strokeDasharray="5 5"
                   style={{ animation:'beamDash 0.8s linear infinite', opacity:0.55 }}
                 />
                 {/* Connection dot at top */}
-                <circle cx={SIZE/2} cy={SIZE/2 - R + 10} r="4" fill="#228DC1" opacity="0.7"
+                <circle cx={CX} cy={CY - RY + 10} r="4" fill="#228DC1" opacity="0.7"
                   style={{ animation:'connectionPulse 2s ease-in-out infinite' }}/>
               </svg>
 
@@ -225,24 +228,20 @@ function CurriculumAgnosticSection() {
                 }}>Centralised AI</span>
               </div>
 
-              {/* ORBITING CARDS - single container rotates, cards counter-rotate + scale */}
-              <div style={{
-                position:'absolute', inset:0,
-                animation: inView ? `orbitSpin ${ORBIT_DUR}s linear infinite` : 'none',
-              }}>
+              {/* ORBITING CARDS - travel along a wide elliptical path while staying upright */}
+              <div style={{ position:'absolute', inset:0 }}>
                 {curriculumSubjects.map((subj, i) => {
-                  const angleDeg = i * (360 / N) // 0=top, clockwise
-                  const angleRad = (angleDeg - 90) * Math.PI / 180
-                  const cx = SIZE/2 + Math.cos(angleRad) * R
-                  const cy = SIZE/2 + Math.sin(angleRad) * R
-                  // delay so card is at 0% (peak/top) when it actually reaches the top
-                  const delay = -(ORBIT_DUR * (1 - angleDeg / 360))
+                  const delay = -(ORBIT_DUR * i / N)
 
                   return (
                     <div key={subj.name} style={{
                       position:'absolute',
-                      left: cx, top: cy,
-                      transform:'translate(-50%,-50%)',
+                      left:0, top:0,
+                      offsetPath:`path("${ORBIT_PATH}")`,
+                      offsetRotate:'0deg',
+                      offsetAnchor:'center',
+                      animation: inView ? `orbitTravel ${ORBIT_DUR}s linear infinite` : 'none',
+                      animationDelay:`${delay}s`,
                     }}>
                       <div style={{
                         animation: inView ? `cardFloat ${ORBIT_DUR}s linear infinite` : 'none',
@@ -253,23 +252,23 @@ function CurriculumAgnosticSection() {
                           background:'white',
                           border:`1.5px solid ${subj.color}35`,
                           borderRadius:12,
-                          padding:'8px 12px',
-                          minWidth:112,
+                          padding:'7px 10px',
+                          minWidth:96,
                           boxShadow:`0 4px 16px ${subj.color}18`,
                           display:'flex', flexDirection:'column', gap:3,
                         }}>
                           <div style={{ display:'flex', alignItems:'center', gap:6 }}>
                             <div style={{
-                              width:24, height:24, borderRadius:'50%',
+                              width:22, height:22, borderRadius:'50%',
                               background:subj.color,
                               display:'flex', alignItems:'center', justifyContent:'center',
-                              fontSize:9, fontWeight:900, color:'white', flexShrink:0,
+                              fontSize:8.5, fontWeight:900, color:'white', flexShrink:0,
                             }}>
                               {subj.name.slice(0,2)}
                             </div>
-                            <span style={{ fontSize:12, fontWeight:700, color:'#0a1628', whiteSpace:'nowrap' }}>{subj.name}</span>
+                            <span style={{ fontSize:11.5, fontWeight:700, color:'#0a1628', whiteSpace:'nowrap' }}>{subj.name}</span>
                           </div>
-                          <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', lineHeight:1.3, paddingLeft:30 }}>{subj.signal}</span>
+                          <span style={{ fontSize:10.5, color:'rgba(10,22,40,0.60)', lineHeight:1.3, paddingLeft:28 }}>{subj.signal}</span>
                         </div>
                       </div>
                     </div>
@@ -1757,7 +1756,7 @@ function MultimodalSection() {
   const activeM = MM_MODALITIES[active]
 
   return (
-    <section ref={sectionRef} style={{ background:'#f8fafc', padding:'96px 0 56px' }}>
+    <section ref={sectionRef} style={{ background:'#f8fafc', padding:'112px 0' }}>
       <style>{`
         @keyframes mmCardIn    { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
         @keyframes mmCursor    { 0%,100%{opacity:1} 50%{opacity:0} }
@@ -1768,7 +1767,7 @@ function MultimodalSection() {
         @keyframes transcriptReveal { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
         @keyframes aruvaVoiceBlob { 0%,100%{border-radius:48% 52% 45% 55%/58% 43% 57% 42%;transform:scale(1)} 35%{border-radius:58% 42% 52% 48%/45% 60% 40% 55%;transform:scale(1.04)} 70%{border-radius:43% 57% 59% 41%/52% 44% 56% 48%;transform:scale(0.97)} }
       `}</style>
-      <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 40px' }}>
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Two-column: left = title + tabs, right = demo */}
         <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:0, alignItems:'start' }}>
