@@ -206,7 +206,7 @@ export default function AboutOverviewPage() {
             {trustCategories.map(({ label, icon }) => (
               <div
                 key={label}
-                className="group bg-white border border-gray-100 p-7 hover:border-[#228DC1]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                className="group flex flex-col rounded-2xl bg-white border border-gray-100 p-7 hover:border-[#228DC1]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="h-11 w-11 flex items-center justify-center mb-6" style={{ background: 'rgba(34,141,193,0.10)' }}>
                   <FontAwesomeIcon icon={icon} className="w-5 h-5 text-[#228DC1]" />
@@ -221,7 +221,7 @@ export default function AboutOverviewPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100">
+          <div className="grid overflow-hidden rounded-2xl sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100">
             {aboutLinks.map((link) => (
               <Link key={link.href} to={link.href} className="group bg-white p-7 hover:bg-[#f7f8fa] transition-colors">
                 <h3 className="font-card-heading text-[#0a1628] text-[14px] mb-2 group-hover:text-[#1a7aab] transition-colors">{link.label}</h3>

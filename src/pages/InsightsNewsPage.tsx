@@ -612,7 +612,7 @@ export default function InsightsNewsPage() {
 
       <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-5 border border-gray-100">
+          <div className="grid overflow-hidden rounded-2xl border border-gray-100 lg:grid-cols-5">
             <Link to={getNewsHref(featured)} className="group lg:col-span-3 p-8 lg:p-12">
               <div className="flex flex-wrap items-center gap-3 mb-7">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60">Featured</span>
@@ -677,7 +677,7 @@ export default function InsightsNewsPage() {
                   <Link
                     key={`${item.title}-${item.date}`}
                     to={getNewsHref(item)}
-                    className="group xl:col-span-2 md:col-span-2 bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden hover:shadow-md"
+                    className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md xl:col-span-2 md:col-span-2"
                   >
                     <div className="h-72 relative overflow-hidden bg-gray-100">
                       <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -701,7 +701,7 @@ export default function InsightsNewsPage() {
                   <Link
                     key={`${item.title}-${item.date}`}
                     to={getNewsHref(item)}
-                    className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden hover:shadow-md"
+                    className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md"
                   >
                     <div className="h-44 relative overflow-hidden bg-gray-100">
                       <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -727,7 +727,7 @@ export default function InsightsNewsPage() {
                 <Link
                   key={`${item.title}-${item.date}`}
                   to={getNewsHref(item)}
-                  className="group bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
+                  className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all"
                 >
                   <div className="h-44 relative overflow-hidden">
                     <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

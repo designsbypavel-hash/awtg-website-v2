@@ -108,7 +108,7 @@ const sections = [
         <Para>
           If you would like to update your information, modify your communication preferences, or if you do not want to receive marketing communications from AWTG in the future, please contact us:
         </Para>
-        <div className="bg-[#f8fafc] border border-gray-100 p-6 space-y-2">
+          <div className="rounded-2xl bg-[#f8fafc] border border-gray-100 p-6 space-y-2">
           <p className="text-[#0a1628] text-sm font-semibold">AWTG Limited</p>
           <p className="text-[#0a1628]/70 text-sm">8 Canham Mews, Canham Road, London, W3 7SR, United Kingdom</p>
           <a href="mailto:info@awtg.co.uk" className="block text-[#1a7aab] text-sm hover:underline">info@awtg.co.uk</a>

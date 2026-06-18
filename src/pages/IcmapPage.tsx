@@ -125,7 +125,7 @@ function CoverageMap() {
   ]
 
   return (
-    <div className="bg-white border border-gray-200 overflow-hidden shadow-[0_8px_48px_rgba(10,22,40,0.1)]">
+    <div className="overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-[0_8px_48px_rgba(10,22,40,0.1)]">
       {/* Browser chrome */}
       <div className="flex items-center gap-1.5 px-4 py-3 bg-[#f3f4f6] border-b border-gray-200">
         <span className="w-2.5 h-2.5 rounded-full bg-[#fc5f57]" />
@@ -748,7 +748,7 @@ export default function IcmapPage() {
                     </div>
                   )}
                   <div
-                    className="relative bg-white border border-gray-100 p-7 flex flex-col h-full shadow-[0_2px_8px_rgba(10,22,40,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
+                  className="relative flex h-full flex-col rounded-2xl bg-white border border-gray-100 p-7 shadow-[0_2px_8px_rgba(10,22,40,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
                     style={{ borderRadius: 20, borderTop: `3px solid ${step.color}` }}
                   >
                     <div className="mb-6 flex items-center gap-4">

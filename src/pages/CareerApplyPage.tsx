@@ -112,7 +112,7 @@ function SectionCard({
   children: React.ReactNode
 }) {
   return (
-    <div className="bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)]">
+      <div className="overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)]">
       <div className="px-8 py-5 border-b border-gray-100 flex items-center gap-4">
         <span className="w-7 h-7 bg-[#228DC1] text-white text-[12px] font-bold flex items-center justify-center shrink-0">
           {num}
@@ -178,7 +178,7 @@ export default function CareerApplyPage() {
               <p className="text-[#0a1628]/60 text-[16px] leading-[1.8] mb-8">
                 We've received your application for <strong className="text-[#0a1628]">{role.title}</strong>. Our team will review it and get back to you within 5 business days.
               </p>
-              <div className="bg-white border border-gray-100 p-6 mb-8 space-y-2">
+              <div className="mb-8 space-y-2 rounded-xl bg-white border border-gray-100 p-6">
                 <p className="text-[13px] text-[#0a1628]/60 font-semibold uppercase tracking-[0.1em] mb-3">Application Summary</p>
                 <p className="text-[14px] text-[#0a1628]/70"><span className="font-semibold text-[#0a1628]">Role:</span> {role.title}</p>
                 <p className="text-[14px] text-[#0a1628]/70"><span className="font-semibold text-[#0a1628]">Department:</span> {role.dept}</p>
@@ -400,7 +400,7 @@ export default function CareerApplyPage() {
                 </SectionCard>
 
                 {/* Legal + Submit */}
-                <div className="bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)] px-8 py-7">
+                <div className="rounded-2xl bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)] px-8 py-7">
                   <p className="text-[12px] text-[#0a1628]/60 leading-[1.8] mb-7">
                     By submitting this application you consent to AWTG Limited processing your personal data for recruitment purposes in accordance with our{' '}
                     <Link to="/privacy" className="text-[#1a7aab] hover:underline">Privacy Policy</Link>.
@@ -420,7 +420,7 @@ export default function CareerApplyPage() {
               <aside className="lg:sticky lg:top-24 space-y-4">
 
                 {/* Job summary */}
-                <div className="bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)] p-7">
+                <div className="rounded-2xl bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)] p-7">
                   <p className="type-label text-[#1a7aab] mb-4">You're applying for</p>
                   <h3 className="font-h5 text-[#0a1628] mb-5">{role.title}</h3>
                   <div className="space-y-3 pb-5 border-b border-gray-100">
@@ -444,7 +444,7 @@ export default function CareerApplyPage() {
                 </div>
 
                 {/* What to expect */}
-                <div className="bg-[#f8fafc] border border-gray-100 p-7">
+                <div className="rounded-2xl bg-[#f8fafc] border border-gray-100 p-7">
                   <p className="type-label text-[#1a7aab] mb-4">What happens next</p>
                   <div className="space-y-4">
                     {[
@@ -462,7 +462,7 @@ export default function CareerApplyPage() {
                 </div>
 
                 {/* AWTG contact */}
-                <div className="border border-gray-100 p-7 bg-white">
+                <div className="rounded-2xl border border-gray-100 p-7 bg-white">
                   <p className="text-[13px] text-[#0a1628]/60 leading-[1.75] mb-4">
                     Questions before applying? Email our team directly.
                   </p>

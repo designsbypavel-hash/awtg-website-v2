@@ -84,7 +84,7 @@ export default function InsightsNewsDetailPage() {
         <div className="max-w-3xl mx-auto px-8 lg:px-12">
           {youtubeEmbedUrl && (
             <div className="mb-12">
-              <div className="aspect-video bg-[#0a1628] border border-gray-100">
+              <div className="aspect-video overflow-hidden rounded-2xl bg-[#0a1628] border border-gray-100">
                 <iframe
                   className="h-full w-full"
                   src={youtubeEmbedUrl}
@@ -132,7 +132,7 @@ export default function InsightsNewsDetailPage() {
             <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-10">Related News</p>
             <div className="grid md:grid-cols-3 gap-6">
               {related.map((newsItem) => (
-                <Link key={newsItem.title} to={getNewsHref(newsItem)} className="group bg-white border border-gray-100 p-6 hover:border-[#228DC1] transition-all">
+                <Link key={newsItem.title} to={getNewsHref(newsItem)} className="group rounded-2xl bg-white border border-gray-100 p-6 hover:border-[#228DC1] transition-all">
                   <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block ${categoryColours[newsItem.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                     {newsItem.category}
                   </span>

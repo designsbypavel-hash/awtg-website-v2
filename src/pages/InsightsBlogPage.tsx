@@ -144,7 +144,7 @@ export default function InsightsBlogPage() {
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <Link
               to={`/insights/blog/${featured.slug}`}
-              className="group grid lg:grid-cols-5 gap-0 border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
+              className="group grid overflow-hidden rounded-2xl border border-gray-100 transition-all hover:border-[#228DC1] lg:grid-cols-5"
             >
               <div className="lg:col-span-3 p-10 lg:p-14 flex flex-col justify-between">
                 <div>
@@ -190,7 +190,7 @@ export default function InsightsBlogPage() {
                     <Link
                       key={post.slug}
                       to={`/insights/blog/${post.slug}`}
-                    className="group lg:col-span-2 md:col-span-2 bg-white border border-gray-100 hover:border-[#228DC1] overflow-hidden transition-all hover:shadow-md"
+                    className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md lg:col-span-2 md:col-span-2"
                   >
                       <div className="h-72 relative overflow-hidden bg-gray-100">
                         <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -214,7 +214,7 @@ export default function InsightsBlogPage() {
                     <Link
                       key={post.slug}
                       to={`/insights/blog/${post.slug}`}
-                      className="group bg-white border border-gray-100 hover:border-[#228DC1] flex flex-col overflow-hidden transition-all hover:shadow-md"
+                      className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md"
                     >
                       <div className="h-48 relative overflow-hidden bg-gray-100">
                         <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -237,7 +237,7 @@ export default function InsightsBlogPage() {
                   <Link
                     key={post.slug}
                     to={`/insights/blog/${post.slug}`}
-                    className="group bg-white border border-gray-100 hover:border-[#228DC1] flex flex-col overflow-hidden transition-all hover:shadow-md"
+                    className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all hover:shadow-md"
                   >
                     <div className="h-48 relative overflow-hidden">
                       <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

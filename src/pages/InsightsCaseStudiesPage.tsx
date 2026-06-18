@@ -132,7 +132,7 @@ export default function InsightsCaseStudiesPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <Link
             to={`/insights/case-studies/${featured.slug}`}
-            className="group block bg-white border border-gray-100 hover:border-[#228DC1] transition-all overflow-hidden"
+            className="group block overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] transition-all"
           >
             {/* Image strip */}
             <div className="relative h-52 overflow-hidden">
@@ -185,7 +185,7 @@ export default function InsightsCaseStudiesPage() {
                   <Link
                     key={cs.slug}
                     to={`/insights/case-studies/${cs.slug}`}
-                    className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all flex flex-col overflow-hidden"
+                    className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all"
                   >
                     <div className="h-44 relative overflow-hidden bg-gray-100">
                       <InsightImage src={getCaseStudyImage(cs.slug, cs.tag)} alt={cs.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -209,7 +209,7 @@ export default function InsightsCaseStudiesPage() {
                 <Link
                   key={cs.slug}
                   to={`/insights/case-studies/${cs.slug}`}
-                  className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all flex flex-col overflow-hidden"
+                  className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-md transition-all"
                 >
                   <div className="h-44 relative overflow-hidden">
                     <InsightImage src={getCaseStudyImage(cs.slug, cs.tag)} alt={cs.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

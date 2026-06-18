@@ -25,7 +25,7 @@ export default function ContactPage() {
           <div>
             <h2 className="font-h2 text-[#0a1628] mb-8">Send Us a Message</h2>
             {submitted ? (
-              <div className="p-8 bg-[#f0f5ff] border border-[#228DC1]/20 text-[#0a1628]">
+          <div className="rounded-2xl p-8 bg-[#f0f5ff] border border-[#228DC1]/20 text-[#0a1628]">
                 <p className="font-semibold text-[16px] mb-2">Thank you for getting in touch.</p>
                 <p className="text-[#0a1628]/75 font-normal">A member of our team will respond within 2 business hours.</p>
               </div>

@@ -28,7 +28,7 @@ export default function InsightsResourceNav({
   return (
     <section className="border-y border-gray-100 bg-[#f8fafc] shadow-[0_12px_32px_rgba(10,22,40,0.05)]">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4">
-        <div className="border border-gray-100 bg-white p-3 sm:p-4">
+        <div className="rounded-2xl border border-gray-100 bg-white p-3 sm:p-4">
           <div className="grid gap-4">
             <div className="grid lg:grid-cols-[112px_minmax(0,1fr)] gap-3 lg:items-center">
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a1628]/60">Resources</p>

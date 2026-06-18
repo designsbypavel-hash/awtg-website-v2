@@ -474,7 +474,7 @@ export default function InsightsBlogPostPage() {
             }
             if (block.type === 'stat-row' && block.stats) {
               return (
-                <div key={i} className="my-12 grid grid-cols-3 border border-gray-100">
+              <div key={i} className="my-12 grid grid-cols-3 overflow-hidden rounded-2xl border border-gray-100">
                   {block.stats.map((s, j) => (
                     <div key={j} className={`px-6 py-6 ${j < block.stats!.length - 1 ? 'border-r border-gray-100' : ''}`}>
                       <p className="font-serif-display text-[#0a1628]" style={{ fontSize: '24px', lineHeight: 1.1 }}>{s.value}</p>
@@ -523,7 +523,7 @@ export default function InsightsBlogPostPage() {
               <Link
                 key={r.slug}
                 to={`/insights/blog/${r.slug}`}
-                className="group bg-white border border-gray-100 p-6 hover:border-[#228DC1] transition-all"
+                className="group rounded-2xl bg-white border border-gray-100 p-6 hover:border-[#228DC1] transition-all"
               >
                 <span className={`text-[14px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block ${tagColour[r.tag] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                   {r.tag}

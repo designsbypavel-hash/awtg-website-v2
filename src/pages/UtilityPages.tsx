@@ -48,7 +48,7 @@ function UtilityPage({
               <Link
                 key={card.href}
                 to={card.href}
-                className="group p-7 border border-gray-100 hover:border-[#228DC1]/30 hover:shadow-md transition-all bg-white"
+                className="group rounded-2xl p-7 border border-gray-100 hover:border-[#228DC1]/30 hover:shadow-md transition-all bg-white"
               >
                 <h2 className="text-xl font-semibold text-[#0a1628] mb-3 group-hover:text-[#1a7aab] transition-colors">
                   {card.title}

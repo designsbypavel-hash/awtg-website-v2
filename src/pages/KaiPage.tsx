@@ -368,7 +368,7 @@ function SecurityComplianceSection() {
               Safe, measurable and auditable AI for teams with real governance requirements.
             </p>
 
-            <div className="bg-[#0a1628] text-white p-8 shadow-[0_16px_50px_rgba(10,22,40,0.12)]" style={reveal(leftInView, 280)}>
+            <div className="rounded-2xl bg-[#0a1628] text-white p-8 shadow-[0_16px_50px_rgba(10,22,40,0.12)]" style={reveal(leftInView, 280)}>
               <div className="flex flex-col gap-7">
                 <div>
                   <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
@@ -403,7 +403,7 @@ function SecurityComplianceSection() {
                 { badge: 'Deployment', title: 'Flexible deployment', detail: 'Cloud, hybrid or on-premises.' },
                 { badge: 'AI governance', title: 'Auditable AI', detail: 'Rules for access, consent and escalation.' },
               ].map((item, i) => (
-                <div key={item.badge} className="group bg-white border border-gray-200 p-6 shadow-[0_1px_8px_rgba(10,22,40,0.03)] hover:shadow-[0_16px_40px_rgba(10,22,40,0.07)] hover:-translate-y-0.5 transition-all" style={reveal(gridInView, i * 80)}>
+                <div key={item.badge} className="group rounded-2xl bg-white border border-gray-200 p-6 shadow-[0_1px_8px_rgba(10,22,40,0.03)] hover:shadow-[0_16px_40px_rgba(10,22,40,0.07)] hover:-translate-y-0.5 transition-all" style={reveal(gridInView, i * 80)}>
                   <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a7aab] mb-5">{item.badge}</p>
                   <h3 className="text-[#0a1628] text-[14px] font-semibold mb-2">{item.title}</h3>
                   <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.detail}</p>
@@ -417,7 +417,7 @@ function SecurityComplianceSection() {
                 { label: 'Data control', value: 'GDPR aligned' },
                 { label: 'Deployment', value: 'Your choice' },
               ].map((item) => (
-                <div key={item.label} className="bg-[#f8fafc] border border-gray-200 px-5 py-4">
+                <div key={item.label} className="rounded-xl bg-[#f8fafc] border border-gray-200 px-5 py-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-1">{item.label}</p>
                   <p className="text-[#0a1628] text-[13px] font-semibold">{item.value}</p>
                 </div>

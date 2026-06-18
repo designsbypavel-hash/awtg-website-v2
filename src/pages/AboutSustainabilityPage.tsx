@@ -220,7 +220,7 @@ export default function AboutSustainabilityPage() {
                 Baseline and current emission footprint
               </h2>
               <div className="grid grid-cols-2 gap-5">
-                <div className="bg-[#f8fafc] border border-gray-100 p-5">
+                <div className="rounded-xl bg-[#f8fafc] border border-gray-100 p-5">
                   <p className="text-[#1a7aab] text-[11px] font-bold uppercase tracking-[0.14em] mb-4">Baseline 2019</p>
                   <div className="space-y-3">
                     {baselineEmissions.map((item) => (
@@ -231,7 +231,7 @@ export default function AboutSustainabilityPage() {
                     ))}
                   </div>
                 </div>
-                <div className="bg-[#edf5fb] border border-[#228DC1]/15 p-5">
+                <div className="rounded-xl bg-[#edf5fb] border border-[#228DC1]/15 p-5">
                   <p className="text-[#1a7aab] text-[11px] font-bold uppercase tracking-[0.14em] mb-4">Reporting 2024</p>
                   <div className="space-y-3">
                     {currentEmissions.map((item) => (

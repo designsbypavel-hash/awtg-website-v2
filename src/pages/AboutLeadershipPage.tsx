@@ -40,7 +40,7 @@ function initials(name: string) {
 
 function PersonCard({ person, large = false }: { person: Person; large?: boolean }) {
   return (
-    <article className="group bg-white hover:bg-[#f7f8fa] transition-colors">
+    <article className="group overflow-hidden rounded-2xl bg-white hover:bg-[#f7f8fa] transition-colors">
       <div className={large ? 'aspect-[4/5] bg-[#eef5f9] overflow-hidden' : 'aspect-square bg-[#eef5f9] overflow-hidden'}>
         {person.photo ? (
           <img src={person.photo} alt={person.name} className="h-full w-full object-cover object-top" loading="lazy" />
@@ -91,7 +91,7 @@ export default function AboutLeadershipPage() {
             </div>
             <p className="text-[#0a1628]/60 text-sm">{featured.length} leaders</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-gray-100 border border-gray-100">
+          <div className="grid overflow-hidden rounded-2xl sm:grid-cols-2 lg:grid-cols-5 gap-px bg-gray-100 border border-gray-100">
             {featured.map((person) => (
               <PersonCard key={person.name} person={person} large />
             ))}
@@ -107,7 +107,7 @@ export default function AboutLeadershipPage() {
             </div>
             <p className="text-[#0a1628]/60 text-sm">{widerTeam.length} team members</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-gray-200 border border-gray-200">
+          <div className="grid overflow-hidden rounded-2xl sm:grid-cols-2 lg:grid-cols-5 gap-px bg-gray-200 border border-gray-200">
             {widerTeam.map((person) => (
               <PersonCard key={person.name} person={person} />
             ))}

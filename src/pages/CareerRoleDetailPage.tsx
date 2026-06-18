@@ -341,7 +341,7 @@ export default function CareerRoleDetailPage() {
               </div>
 
               {/* Apply CTA inline */}
-              <div className="bg-[#f7f9fc] border border-gray-100 p-8">
+              <div className="rounded-2xl bg-[#f7f9fc] border border-gray-100 p-8">
                 <p className="type-label text-[#1a7aab] mb-3">Ready to apply?</p>
                 <h3 className="font-h4 text-[#0a1628] mb-3">Send us your application</h3>
                 <p className="text-[#0a1628]/60 text-[14px] leading-[1.75] mb-6">
@@ -360,7 +360,7 @@ export default function CareerRoleDetailPage() {
             <aside className="lg:sticky lg:top-24 space-y-6">
 
               {/* Quick facts */}
-              <div className="bg-[#f8fafc] border border-gray-100 p-7">
+              <div className="rounded-2xl bg-[#f8fafc] border border-gray-100 p-7">
                 <h3 className="font-h5 text-[#0a1628] mb-6">Role Details</h3>
                 <div className="space-y-4">
                   {[
@@ -391,7 +391,7 @@ export default function CareerRoleDetailPage() {
               </div>
 
               {/* Speculative */}
-              <div className="border border-gray-100 p-7">
+              <div className="rounded-2xl border border-gray-100 p-7">
                 <p className="type-label text-[#1a7aab] mb-3">Not the right fit?</p>
                 <p className="text-[#0a1628]/60 text-[13px] leading-[1.75] mb-5">
                   We welcome speculative applications from talented people. Send your CV and tell us how you can contribute.
@@ -406,7 +406,7 @@ export default function CareerRoleDetailPage() {
 
               {/* Other open roles */}
               {related.length > 0 && (
-                <div className="border border-gray-100 p-7">
+              <div className="rounded-2xl border border-gray-100 p-7">
                   <h3 className="font-h5 text-[#0a1628] mb-5">Other Open Roles</h3>
                   <div className="space-y-4">
                     {related.map((r) => (
@@ -451,7 +451,7 @@ export default function CareerRoleDetailPage() {
               <Link
                 key={r.slug}
                 to={getRoleHref(r.slug)}
-                className="group bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-[0_4px_20px_rgba(34,141,193,0.1)] transition-all p-7"
+                  className="group rounded-2xl bg-white border border-gray-100 hover:border-[#228DC1] hover:shadow-[0_4px_20px_rgba(34,141,193,0.1)] transition-all p-7"
               >
                 <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a7aab] bg-[#228DC1]/8 px-2.5 py-1 mb-4">
                   {r.dept}

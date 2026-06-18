@@ -83,7 +83,7 @@ export default function InsightsWhitePaperDetailPage() {
             </div>
           </div>
 
-          <div className="border border-gray-100 bg-[#f8fafc]">
+          <div className="overflow-hidden rounded-2xl border border-gray-100 bg-[#f8fafc]">
             <object data={paper.pdf} type="application/pdf" className="h-[80vh] min-h-[640px] w-full">
               <div className="p-8 text-center">
                 <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#1a7aab] mb-5" />
@@ -105,7 +105,7 @@ export default function InsightsWhitePaperDetailPage() {
             <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-10">Related Whitepapers</p>
             <div className="grid md:grid-cols-3 gap-6">
               {related.map((item) => (
-                <Link key={item.slug} to={getWhitePaperHref(item)} className="group bg-white border border-gray-100 p-6 hover:border-[#228DC1] transition-all">
+                <Link key={item.slug} to={getWhitePaperHref(item)} className="group rounded-2xl bg-white border border-gray-100 p-6 hover:border-[#228DC1] transition-all">
                   <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 mb-4 inline-block bg-[#228DC1]/10 text-[#1a7aab]">
                     {item.topic}
                   </span>

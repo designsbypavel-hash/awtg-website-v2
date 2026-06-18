@@ -299,7 +299,7 @@ function WhatWeDo() {
           {whatWeDoItems.map((item, index) => {
             const imageFirst = index % 2 === 1
             const image = (
-              <div className="group relative min-h-[320px] overflow-hidden bg-[#f6f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:min-h-[386px]">
+              <div className="group relative min-h-[320px] overflow-hidden rounded-2xl bg-[#f6f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:min-h-[386px]">
                 <img
                   src={item.image}
                   alt={item.label}
@@ -385,7 +385,7 @@ export function OurSolutions() {
       </div>
       <div className="max-w-7xl mx-auto px-8 lg:px-12 pb-28 space-y-4">
         {solutionPanels.map((panel) => (
-          <div key={panel.title} className={`grid lg:grid-cols-2 gap-0 overflow-hidden bg-white border border-gray-100`}>
+              <div key={panel.title} className="grid overflow-hidden rounded-2xl border border-gray-100 bg-white lg:grid-cols-2">
             {panel.flip ? (
               <>
                 <div className="p-12 lg:p-16 flex flex-col justify-center">
@@ -491,7 +491,7 @@ function Industries() {
               <Link
                 key={card.title}
                 to={card.href}
-                className="group flex flex-col overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
+                  className="group flex flex-col overflow-hidden rounded-2xl bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
               >
                 <div className="overflow-hidden" style={{ height: 420 }}>
                   <img
@@ -519,7 +519,7 @@ function Industries() {
               <Link
                 key={card.title}
                 to={card.href}
-                className="group flex flex-1 flex-col overflow-hidden bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
+                  className="group flex flex-1 flex-col overflow-hidden rounded-2xl bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(10,22,40,0.11)]"
               >
                 <div className="overflow-hidden" style={{ height: 168 }}>
                   <img
@@ -638,7 +638,7 @@ export function TechSolutions() {
             </button>
           ))}
         </div>
-        <div className="grid lg:grid-cols-2 gap-0 overflow-hidden border border-gray-100">
+          <div className="grid overflow-hidden rounded-2xl border border-gray-100 lg:grid-cols-2">
           <div className="h-72 lg:h-auto min-h-[380px] relative" style={{ background: tab.imgBg }}>
             <img src={tab.img} alt={tab.title} className="w-full h-full object-cover opacity-50 mix-blend-luminosity" loading="lazy" />
           </div>
@@ -700,7 +700,7 @@ export function PNaaS() {
           </div>
           <div className="space-y-3">
             {pnaasFeatures.map(({ icon, title, desc }) => (
-              <div key={title} className="flex items-start gap-5 bg-white/[0.04] hover:bg-white/[0.07] p-6 border border-gray-100 transition-colors">
+                  <div key={title} className="flex items-start gap-5 rounded-xl bg-white/[0.04] hover:bg-white/[0.07] p-6 border border-gray-100 transition-colors">
                 <div className="w-10 h-10 bg-[#228DC1]/15 flex items-center justify-center shrink-0">
                   <FontAwesomeIcon icon={icon} className="w-5 h-5 text-[#1a7aab]" />
                 </div>

@@ -30,7 +30,7 @@ const sections = [
         <Para>
           Controller in the sense of the General Data Protection Regulation (GDPR) and other data protection or data privacy laws in the Member States of the European Union and other guidelines with a data protection nature regarding our online and mobile applications — including, but not limited to, SPEED TEST, SPORTS AR, associated web-sites such as www.awtg.website, as well as any other AWTG Service, AWTG site or AWTG Software and any other websites owned or operated by AWTG (hereinafter "AWTG Products") — is:
         </Para>
-        <div className="bg-[#f8fafc] border border-gray-100 p-6 space-y-2">
+        <div className="rounded-2xl bg-[#f8fafc] border border-gray-100 p-6 space-y-2">
           <p className="text-[#0a1628] text-sm font-semibold">AWTG Limited</p>
           <p className="text-[#0a1628]/70 text-sm">8 Canham Mews, Canham Road, London, W3 7SR, United Kingdom</p>
           <a href="mailto:info@awtg.website" className="block text-[#1a7aab] text-sm hover:underline">info@awtg.website</a>
