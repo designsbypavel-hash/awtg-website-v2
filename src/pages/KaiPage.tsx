@@ -1431,7 +1431,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               Service AI that <span style={{ color: '#0a1628' }}>resolves.</span>
             </h1>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
-              Kai resolves customer requests, qualifies leads, triggers workflows, and improves every customer interaction.
+              Kai is the AI customer service built for every customer touchpoint. From website support to voice calls and call centre operations, Kai helps organisations understand customer intent and resolve intricate requests. With advanced analytics, teams can see what customers need, where frustration is building, and how service can be improved.
             </p>
             <div className="flex flex-wrap gap-4">
               <button type="button" onClick={onDemoClick} className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a6e99] transition-colors">
