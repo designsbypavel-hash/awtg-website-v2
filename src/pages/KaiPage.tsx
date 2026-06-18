@@ -47,7 +47,7 @@ const integrationLogos = {
   telegram: new URL('../assets/Integration/Telegram.svg', import.meta.url).href,
   whatsapp: new URL('../assets/Integration/Whatsapp.svg', import.meta.url).href,
   yahooMail: new URL('../assets/Integration/Yahoo Mail.svg', import.meta.url).href,
-  kaiHoriz: new URL('../assets/KAI Page Icons/logo horiz.svg', import.meta.url).href,
+  kaiHoriz: '/kai-logo-horiz-white.svg',
 }
 
 function ScrollProgress() {
@@ -1426,7 +1426,7 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               <span style={{ color: '#0a1628' }}>AI that resolves.</span>
             </h1>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-[560px] mb-10">
-              Kai is the AI customer service built for every customer touchpoint. From website support to voice calls and call centre operations, Kai helps organisations understand customer intent and resolve intricate requests. With advanced analytics, teams can see what customers need, where frustration is building, and how service can be improved.
+              Kai is the AI customer service built for every customer touchpoint. From website support to voice calls and call centre operations, Kai helps organisations understand customer intent and resolve intricate requests.
             </p>
             <div className="flex flex-wrap gap-4">
               <button type="button" onClick={onDemoClick}
