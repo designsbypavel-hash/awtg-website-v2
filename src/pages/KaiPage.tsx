@@ -1143,7 +1143,7 @@ function OmnichannelSection() {
           <div className="grid grid-cols-3 gap-6">
 
             {/*  LEFT: TELEGRAM  */}
-            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', aspectRatio:'3 / 4' }}>
+            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', aspectRatio:'4 / 4.5' }}>
 
               {/* Header */}
               <div style={{ background:'#229ED9', padding:'11px 14px', display:'flex', alignItems:'center', gap:10, flexShrink:0 }}>
@@ -1204,7 +1204,7 @@ function OmnichannelSection() {
             </div>
 
             {/*  CENTRE: Kai WEB CHAT  */}
-            <div className="omni-panel-center" style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, display:'flex', flexDirection:'column', aspectRatio:'3 / 4' }}>
+            <div className="omni-panel-center" style={{ padding:5, borderRadius:20, background:KAI_HDR_GRAD, display:'flex', flexDirection:'column', aspectRatio:'4 / 4.5' }}>
               <div style={{ borderRadius:15, background:'#fff', overflow:'hidden', flex:1, display:'flex', flexDirection:'column' }}>
 
                 {/* Kai header */}
@@ -1254,7 +1254,7 @@ function OmnichannelSection() {
             </div>
 
             {/*  RIGHT: GMAIL  */}
-            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', aspectRatio:'3 / 4' }}>
+            <div className="omni-panel" style={{ borderRadius:16, overflow:'hidden', display:'flex', flexDirection:'column', background:'#fff', aspectRatio:'4 / 4.5' }}>
 
               {/* Gmail toolbar */}
               <div style={{ background:'white', borderBottom:'1px solid #e8e8e8', padding:'9px 14px', display:'flex', alignItems:'center', gap:10, flexShrink:0 }}>
@@ -1528,43 +1528,9 @@ export default function KaiPage() {
       {/* -- Escalation Rate Chart -- */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-12">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
 
-            {/* Left: copy */}
-            <div className="flex h-full flex-col justify-center lg:pt-2">
-              <h2 className="font-heading text-[#0a1628] mb-5">
-                Fewer escalations. Faster resolutions.
-              </h2>
-              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
-                Kai helps resolve more customer queries at the first point of contact, reducing unnecessary handovers and giving support teams more time to focus on complex cases.
-              </p>
-              <div className="space-y-3">
-                {[
-                  { icon: faRobot,                 title: 'More queries resolved automatically', desc: 'Kai handles routine queries end-to-end.' },
-                  { icon: faArrowRightFromBracket,  title: 'Cleaner human handover',              desc: 'Only complex cases are escalated.' },
-                  { icon: faChartSimple,            title: 'Better service visibility',           desc: 'Track trends and act on insights faster.' },
-                ].map(item => (
-                  <div
-                    key={item.title}
-                    className="flex items-start gap-4 p-4 rounded-2xl bg-white"
-                    style={{ border: '1px solid rgba(15,23,42,0.07)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ background: 'rgba(34,141,193,0.09)' }}
-                    >
-                      <FontAwesomeIcon icon={item.icon} style={{ fontSize: 15, color: '#228DC1' }} />
-                    </div>
-                    <div>
-                      <p className="text-[#0a1628] text-[14px] font-semibold leading-snug mb-0.5">{item.title}</p>
-                      <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: chart card - Intercom-style */}
+            {/* Left: chart card - Intercom-style */}
             <div
               className="flex flex-col justify-between overflow-hidden lg:h-[450px]"
               style={{
@@ -1608,6 +1574,40 @@ export default function KaiPage() {
               </div>
 
 
+            </div>
+
+            {/* Right: copy */}
+            <div className="flex h-full flex-col justify-center lg:pt-2">
+              <h2 className="font-heading text-[#0a1628] mb-5">
+                Fewer escalations. Faster resolutions.
+              </h2>
+              <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
+                Kai helps resolve more customer queries at the first point of contact, reducing unnecessary handovers and giving support teams more time to focus on complex cases.
+              </p>
+              <div className="space-y-3">
+                {[
+                  { icon: faRobot,                 title: 'More queries resolved automatically', desc: 'Kai handles routine queries end-to-end.' },
+                  { icon: faArrowRightFromBracket,  title: 'Cleaner human handover',              desc: 'Only complex cases are escalated.' },
+                  { icon: faChartSimple,            title: 'Better service visibility',           desc: 'Track trends and act on insights faster.' },
+                ].map(item => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-4 p-4 rounded-2xl bg-white"
+                    style={{ border: '1px solid rgba(15,23,42,0.07)', boxShadow: '0 1px 4px rgba(15,23,42,0.04)' }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ background: 'rgba(34,141,193,0.09)' }}
+                    >
+                      <FontAwesomeIcon icon={item.icon} style={{ fontSize: 15, color: '#228DC1' }} />
+                    </div>
+                    <div>
+                      <p className="text-[#0a1628] text-[14px] font-semibold leading-snug mb-0.5">{item.title}</p>
+                      <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
