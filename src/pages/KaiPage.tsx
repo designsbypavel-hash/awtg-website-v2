@@ -1051,7 +1051,7 @@ function OmnichannelSection() {
     `}</style>
     <section
       className="relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2240 40%, #0a3352 70%, #0a1628 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #0a1628 0%, #0d2240 40%, #0a3352 70%, #0a1628 100%)' }}
     >
       {/* Ambient glow blobs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -1638,7 +1638,7 @@ export default function KaiPage() {
       <OmnichannelSection />
 
       {/* -- How Kai Works -- */}
-      <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2240 40%, #0a3352 70%, #0a1628 100%)' }}>
+      <section className="relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a1628 0%, #0d2240 40%, #0a3352 70%, #0a1628 100%)' }}>
         {/* Ambient glow blobs */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(34,141,193,0.18) 0%, transparent 70%)' }} />
