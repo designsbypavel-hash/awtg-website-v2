@@ -1,105 +1,203 @@
-import CTASection from '@/components/CTASection'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import IndustrySectorPage from '@/components/IndustrySectorPage'
+import type { SectorPageData } from '@/components/IndustrySectorPage'
 import {
-  faBrain, faWifi, faGears, faChartLine, faNetworkWired, faSitemap,
+  faArrowTrendUp,
+  faBrain,
+  faBuilding,
+  faCar,
+  faChartLine,
+  faCloud,
+  faGears,
+  faGlobe,
+  faNetworkWired,
+  faRadio,
+  faSatelliteDish,
+  faSignal,
+  faSitemap,
+  faTowerBroadcast,
+  faUsers,
+  faWifi,
 } from '@fortawesome/free-solid-svg-icons'
 
-const COLORS = ['#228DC1', '#7c3aed', '#059669', '#d97706']
+const data: SectorPageData = {
+  hero: {
+    badge: 'Connectivity · Telecommunications',
+    accentColor: '#228DC1',
+    heroImage:
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=85',
+    title: 'Telecommunications',
+    subtitle: 'Future-ready networks, delivered with confidence.',
+    description:
+      'AWTG combines advanced network services, software and telecoms expertise to help operators, infrastructure providers and enterprises design, deploy and manage the next generation of communications.',
+    ctaLabel: 'Talk to our experts',
+    visualIcon: faTowerBroadcast,
+    visualItems: [
+      { icon: faSignal, label: '5G and future networks' },
+      { icon: faWifi, label: 'In-building wireless' },
+      { icon: faRadio, label: 'Spectrum management' },
+      { icon: faNetworkWired, label: 'Network rollout' },
+    ],
+  },
 
-const solutions = [
-  { icon: faBrain, title: 'MNO Network Optimisation with AI', desc: 'Machine-learning-driven radio optimisation, predictive fault detection and automated capacity management for mobile network operators.' },
-  { icon: faWifi, title: 'MVNO Platform Enablement', desc: 'End-to-end MVNO launch and operational support: from core network integration to BSS provisioning and billing platform configuration.' },
-  { icon: faGears, title: 'Tower Company Automation', desc: 'Automated site management, energy monitoring and remote infrastructure control for towercos managing large passive infrastructure portfolios.' },
-  { icon: faChartLine, title: 'Spectrum Management', desc: 'Advisory and tooling for spectrum acquisition, interference analysis and regulatory compliance across licensed and shared spectrum bands.' },
-  { icon: faNetworkWired, title: 'RAN Modernisation', desc: 'Vendor-neutral consultancy and delivery for Open RAN deployments, legacy RAN transformation and multi-vendor integration programmes.' },
-  { icon: faSitemap, title: 'OSS/BSS Integration', desc: 'Systems integration services connecting operational and business support systems to enable end-to-end service assurance and revenue management.' },
-]
+  challenges: {
+    heading: 'The telecommunications challenge',
+    intro:
+      'Operators must expand capacity, modernise complex estates and improve customer experience while controlling cost and meeting evolving regulatory requirements.',
+    items: [
+      {
+        icon: faSignal,
+        title: 'Network evolution',
+        desc: 'Moving from legacy infrastructure to 5G and future communication systems requires careful planning, integration and assurance.',
+      },
+      {
+        icon: faChartLine,
+        title: 'Performance and capacity',
+        desc: 'Growing data use and connected devices place continual pressure on coverage, capacity and service quality.',
+      },
+      {
+        icon: faSitemap,
+        title: 'Multi-vendor complexity',
+        desc: 'Modern networks depend on coordinated radio, transport, core, cloud and operational platforms from multiple suppliers.',
+      },
+      {
+        icon: faRadio,
+        title: 'Spectrum efficiency',
+        desc: 'Licensed and shared spectrum must be planned and managed efficiently while maintaining regulatory compliance.',
+      },
+    ],
+  },
+
+  supports: {
+    heading: 'What AWTG delivers for telecommunications',
+    intro:
+      'From strategy and architecture through deployment, integration and managed operations, AWTG supports the full network lifecycle.',
+    items: [
+      {
+        icon: faSignal,
+        title: '5G, Wi-Fi 6 and future communication systems',
+        desc:
+          'AWTG designs and delivers advanced communication networks that support data-intensive services, low-latency applications and connected operations.',
+        bullets: [
+          'Solution design, architecture and network planning',
+          'Deployment, implementation and systems integration',
+          'Integrated service platforms and application enablement',
+          'End-to-end operational and managed network services',
+        ],
+        image:
+          'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
+      },
+      {
+        icon: faBuilding,
+        title: 'In-building design and deployment',
+        desc:
+          'Comprehensive indoor wireless services for corporate customers, venues, hospitals and mobile operators—from RF survey and design to integration and go-live.',
+        bullets: [
+          'Cellular, Wi-Fi, DAS and small-cell network design',
+          'Radio-frequency surveys and coverage planning',
+          'Deployment, commissioning and service assurance',
+          'Smart-building, IoT and location technology integration',
+        ],
+        image:
+          'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
+      },
+      {
+        icon: faRadio,
+        title: 'Spectrum, rollout and network operations',
+        desc:
+          'AWTG helps organisations manage spectrum, launch new infrastructure and improve existing networks with experienced engineering and operational teams.',
+        bullets: [
+          'Spectrum sharing, databases and regulatory frameworks',
+          'Greenfield rollout and existing-network expansion',
+          'Planning, design, optimisation and preventive maintenance',
+          'AI-supported site surveys and infrastructure inspections',
+        ],
+        image:
+          'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
+      },
+    ],
+  },
+
+  useCases: {
+    heading: 'Telecommunications solutions across the network',
+    intro:
+      'AWTG brings together connectivity, software and engineering expertise for operators, infrastructure owners and communications-led enterprises.',
+    items: [
+      {
+        icon: faBrain,
+        title: 'Network AI and automation',
+        desc: 'AI-assisted optimisation, fault correlation and operational automation that improve service performance and network efficiency.',
+      },
+      {
+        icon: faTowerBroadcast,
+        title: 'Small cells and fixed wireless',
+        desc: 'Turnkey small-cell and fixed-wireless delivery for indoor and dense outdoor environments, from rollout to maintenance.',
+      },
+      {
+        icon: faCar,
+        title: 'Connected autonomous vehicles',
+        desc: '5G, LTE-V and intelligent transport connectivity supporting safer vehicles, route planning and responsive roadside infrastructure.',
+      },
+      {
+        icon: faGlobe,
+        title: 'Immersive communications',
+        desc: 'Low-latency mixed-reality, telepresence and smart application delivery enabled by high-performance communications networks.',
+      },
+      {
+        icon: faSatelliteDish,
+        title: 'Drone-powered site surveys',
+        desc: 'AI-supported line-of-sight surveys, site inspections and maintenance assessments that reduce cost and personnel risk.',
+      },
+      {
+        icon: faCloud,
+        title: 'OSS/BSS and service platforms',
+        desc: 'Integration of operational and business support systems to strengthen assurance, provisioning and revenue management.',
+      },
+    ],
+  },
+
+  outcomes: {
+    heading: 'Networks built for what comes next',
+    intro:
+      'The right telecommunications partner helps organisations move faster, control risk and turn network investment into dependable services and new opportunities.',
+    items: [
+      {
+        icon: faArrowTrendUp,
+        title: 'Faster network evolution',
+        desc: 'Experienced planning and delivery teams accelerate launches, upgrades and transformation programmes without compromising quality.',
+      },
+      {
+        icon: faChartLine,
+        title: 'Improved performance',
+        desc: 'Better visibility, optimisation and assurance improve coverage, capacity and the customer experience across the network.',
+      },
+      {
+        icon: faGears,
+        title: 'Greater operational efficiency',
+        desc: 'Automation, integrated platforms and managed services reduce manual effort and support more efficient network operations.',
+      },
+      {
+        icon: faUsers,
+        title: 'A dependable delivery partner',
+        desc: 'AWTG combines technical depth with practical deployment experience across operators, vendors, enterprises and public-sector estates.',
+      },
+    ],
+  },
+
+  proof: {
+    quote:
+      'The key to capitalising on next-generation networks is working with the right partner to deliver the vision, the use cases and the support behind them.',
+    author: 'AWTG',
+    context: 'Telecommunications',
+  },
+
+  cta: {
+    title: 'Build the network your next service depends on',
+    subtitle:
+      'Speak to AWTG about network strategy, 5G and Wi-Fi delivery, in-building wireless, spectrum management and rollout programmes.',
+    label: 'Talk to our experts',
+  },
+}
 
 export default function IndustriesTelecomsPage() {
-  return (
-    <>
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <h1 className="font-serif-display text-[#0a1628] leading-tight mb-6">
-            Telecommunications
-          </h1>
-          <p className="text-[#0a1628]/60 text-lg max-w-2xl font-normal leading-relaxed">
-            Deep technical expertise serving MNOs, MVNOs and infrastructure vendors: from network AI and RAN modernisation to OSS/BSS integration and spectrum strategy.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 py-12 grid sm:grid-cols-3 gap-8 text-center">
-          <div>
-            <p className="font-black text-[#0a1628] mb-1" style={{ fontSize: '32px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>15+</p>
-            <p className="type-label text-[#0a1628]/60">MNO Clients</p>
-          </div>
-          <div>
-            <p className="font-black text-[#0a1628] mb-1" style={{ fontSize: '32px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>40+</p>
-            <p className="type-label text-[#0a1628]/60">RF Engineers</p>
-          </div>
-          <div>
-            <p className="font-black text-[#0a1628] mb-1" style={{ fontSize: '32px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>30</p>
-            <p className="type-label text-[#0a1628]/60">Countries</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <h2 className="font-heading text-[#0a1628] mb-4">
-            Solutions for Telecoms
-          </h2>
-          <p className="text-[#0a1628]/60 mb-14 max-w-2xl font-normal text-[16px] leading-[1.7]">
-            From greenfield network builds to incumbent transformation, AWTG delivers proven telecoms solutions across the full operator lifecycle.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {solutions.map((s, i) => {
-              const color = COLORS[i % 4]
-              return (
-                <div
-                  key={s.title}
-                  className="bg-white rounded-[18px] p-7 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-                  style={{
-                    border: '1px solid rgba(15,23,42,0.08)',
-                    boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
-                    borderTop: `3px solid ${color}`,
-                  }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                    style={{ backgroundColor: `${color}10`, border: `1px solid ${color}22`, color }}
-                  >
-                    <FontAwesomeIcon icon={s.icon} style={{ fontSize: 16 }} />
-                  </div>
-                  <h3 className="font-semibold text-[#0a1628] text-sm mb-2">{s.title}</h3>
-                  <p className="text-[#0a1628]/60 text-[13.5px] font-normal leading-relaxed">{s.desc}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl border-l-4 border-[#228DC1] pl-8">
-            <p className="text-[#0a1628]/80 text-xl font-normal leading-relaxed">
-              "Network AI for a Tier-1 UK MNO. 35% reduction in OPEX delivered through automated fault correlation and predictive maintenance across 12,000 cell sites."
-            </p>
-            <Link
-              to="/insights/case-studies"
-              className="inline-flex items-center gap-2 mt-6 text-[#1a7aab] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
-            >
-              View Case Studies
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <CTASection />
-    </>
-  )
+  return <IndustrySectorPage data={data} />
 }
