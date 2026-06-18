@@ -11,6 +11,7 @@ type ProductDemoModalProps = {
   logoSrc: string
   accentColor?: string
   outcomes: string[]
+  submitLabel?: string
 }
 
 const companySizes = [
@@ -31,6 +32,7 @@ export default function ProductDemoModal({
   logoSrc,
   accentColor = '#228DC1',
   outcomes,
+  submitLabel = 'Continue',
 }: ProductDemoModalProps) {
   useEffect(() => {
     if (!isOpen) return
@@ -164,7 +166,7 @@ export default function ProductDemoModal({
                 className="mt-2 inline-flex h-[52px] w-full items-center justify-center rounded-[7px] px-6 text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
                 style={{ background: accentColor }}
               >
-                Continue
+                {submitLabel}
               </button>
 
               <p className="pt-4 text-[11px] font-normal leading-relaxed text-[#0a1628]/60">
