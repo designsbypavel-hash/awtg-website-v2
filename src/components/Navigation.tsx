@@ -69,7 +69,7 @@ const navItems: NavEntry[] = [
         items: [
           { label: 'Government', desc: 'PSN, GovWifi and secure government networking', href: '/connectivity/government' },
           { label: 'Commerce', desc: 'SD-WAN, PCI DSS and customer Wi-Fi', href: '/connectivity/commerce' },
-          { label: 'Manufacturing', desc: 'Private wireless, IoT and industrial connectivity', href: '/connectivity/manufacturing' },
+          { label: 'Telecommunications', desc: '5G, Wi-Fi 6 and future communication systems', href: '/industries/telecoms' },
           { label: 'Engineering', desc: 'Site connectivity, assets and innovation programmes', href: '/connectivity/engineering' },
         ],
       },
