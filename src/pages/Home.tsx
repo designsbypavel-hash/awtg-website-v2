@@ -312,7 +312,11 @@ function WhatWeDo() {
               </div>
             )
             const copy = (
-              <div className="flex min-h-[340px] flex-col justify-center py-6 lg:min-h-[460px]">
+              <div
+                className={`flex min-h-[340px] flex-col justify-center py-6 lg:min-h-[460px] ${
+                  index === 1 ? 'items-center text-center' : ''
+                }`}
+              >
                 <h3 className="mb-4 text-[28px] font-normal leading-[1.18] tracking-[-0.01em] text-[#0a1628] lg:text-[34px]">
                   {item.label}
                 </h3>
