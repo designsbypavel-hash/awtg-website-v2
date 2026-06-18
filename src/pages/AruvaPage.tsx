@@ -100,12 +100,12 @@ function CurriculumAgnosticSection() {
   const [ref, inView] = useInView(0.1)
   const ORBIT_DUR = 20 // seconds per revolution
   const N = curriculumSubjects.length // 8
-  const ORBIT_W = 700
-  const ORBIT_H = 520
+  const ORBIT_W = 780
+  const ORBIT_H = 540
   const CX = ORBIT_W / 2
   const CY = ORBIT_H / 2
-  const RX = 275
-  const RY = 185
+  const RX = 310
+  const RY = 190
   const KX = RX * 0.5522848
   const KY = RY * 0.5522848
   const ORBIT_PATH = `M ${CX} ${CY - RY} C ${CX + KX} ${CY - RY} ${CX + RX} ${CY - KY} ${CX + RX} ${CY} C ${CX + RX} ${CY + KY} ${CX + KX} ${CY + RY} ${CX} ${CY + RY} C ${CX - KX} ${CY + RY} ${CX - RX} ${CY + KY} ${CX - RX} ${CY} C ${CX - RX} ${CY - KY} ${CX - KX} ${CY - RY} ${CX} ${CY - RY} Z`
@@ -144,7 +144,7 @@ function CurriculumAgnosticSection() {
         @keyframes cardFloat  {
           0%,100% { transform:scale(1.22); filter:drop-shadow(0 14px 30px rgba(34,141,193,0.34)); }
           18%,82% { transform:scale(1); filter:drop-shadow(0 6px 14px rgba(34,141,193,0.12)); }
-          50% { transform:scale(0.9); filter:none; }
+          50% { transform:scale(0.9); filter:drop-shadow(0 3px 8px rgba(34,141,193,0.05)); }
         }
         @keyframes connectionPulse {
           0%,100% { opacity:0; transform: scale(0.92); }
@@ -159,8 +159,8 @@ function CurriculumAgnosticSection() {
           to   { stroke-dashoffset: 0; }
         }
       `}</style>
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-[0.68fr_1.32fr] gap-10 xl:gap-14 items-center">
+      <div className="max-w-[1380px] mx-auto px-8 lg:px-12">
+        <div className="grid lg:grid-cols-[0.6fr_1.4fr] gap-10 xl:gap-14 items-center">
 
           {/* LEFT - text */}
           <div style={reveal(inView, 0)}>
@@ -276,7 +276,7 @@ function CurriculumAgnosticSection() {
                       animation: inView ? `orbitTravel ${ORBIT_DUR}s linear ${delay}s infinite` : 'none',
                     }}>
                       <div style={{
-                        animation: inView ? `cardFloat ${ORBIT_DUR}s linear ${delay}s infinite` : 'none',
+                        animation: inView ? `cardFloat ${ORBIT_DUR}s ease-in-out ${delay}s infinite` : 'none',
                         transformOrigin:'center',
                       }}>
                         <div style={{
