@@ -269,7 +269,8 @@ const whatWeDoItems = [
       'We design and build intelligent software products that solve real operational challenges, improve decision making, and create new opportunities for growth. Our AI solutions are built with security, reliability, and usability at the core, so clients can adopt innovation with confidence.',
       'From strategy to deployment, AWTG gives organisations the tools, technology, and expertise to win in an increasingly AI-driven world.',
     ],
-    href: '/products/kai',
+    href: '/ai/digital-transformation',
+    cta: 'Explore Digital Transformation',
     accent: '#228DC1',
     tag: 'Generative AI',
     image: kaiMockup,
@@ -282,7 +283,8 @@ const whatWeDoItems = [
       'We design and deliver telecoms and connectivity solutions that improve performance, expand coverage, and enable smarter operations. Whether supporting public sector transformation, enterprise networks, smart cities, transport, or critical infrastructure, our focus is on reliable technology that works in real environments.',
       'With AWTG, clients gain a trusted partner for building stronger, faster, and more intelligent networks.',
     ],
-    href: '/contact',
+    href: '/industries/telecoms',
+    cta: 'Explore Telecommunications',
     accent: '#0ea472',
     tag: 'Connectivity',
     image: idamsMockup,
@@ -319,6 +321,15 @@ function WhatWeDo() {
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
+                <Link
+                  to={item.href}
+                  className="mt-7 inline-flex w-fit items-center gap-2 rounded-lg bg-[#228DC1] px-6 py-3 text-[14px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1a6e99]"
+                >
+                  {item.cta}
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
             )
 
