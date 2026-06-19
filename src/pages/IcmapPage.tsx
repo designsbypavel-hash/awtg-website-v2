@@ -483,7 +483,7 @@ export default function IcmapPage() {
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
-              <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
+              <h1 className="font-serif-display text-[#0a1628] leading-[1.05] mb-6" style={{ fontSize: 'clamp(28px, 3.2vw, 40px)' }}>
                 Coverage intelligence for<br />
                 smarter network decisions.
               </h1>
