@@ -478,32 +478,32 @@ export function Vision() {
   )
 }
 
-// --- YOUR INDUSTRY -----------------------------------------------------------
+// --- CASE STUDIES -------------------------------------------------------------
 
 const industryCards = [
   {
-    tag: 'Health & Life Sciences',
-    title: 'Health Tech',
-    desc: 'NHS-grade connectivity, clinical AI and digital health infrastructure built around patient outcomes and care delivery.',
-    cta: 'Explore health tech',
-    href: '/industries/health-tech',
-    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=85&auto=format&fit=crop',
+    tag: 'Open RAN Security',
+    title: "iTRUSTRIC: Securing Open RAN with AWTG's Advanced Solution",
+    desc: "Open RAN's disaggregated architecture creates powerful flexibility and new security exposure. iTRUSTRIC secures data flows, improves network visibility and ensures compliance across multi-vendor Open RAN deployments.",
+    cta: 'Read the case study',
+    href: '/insights/case-studies/itrustric-open-ran-security',
+    img: '/images/insights/open-ran.jpg',
+  },
+  {
+    tag: 'Network Economics',
+    title: "AWTG's Service Assurance and Service Creation Platform",
+    desc: 'A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG\'s iSASCP platform.',
+    cta: 'Read the case study',
+    href: '/insights/case-studies/tot-service-assurance',
+    img: '/images/insights/performance-testing.jpg',
   },
   {
     tag: 'Public Sector',
-    title: 'Connectivity for the Public Sector',
-    desc: 'PSN-aligned network infrastructure, secure remote access and managed services for central and local government.',
-    cta: 'Explore connectivity',
-    href: '/connectivity/public-sector',
+    title: 'Connectivity, Software and Services for High Street Recovery',
+    desc: 'How AWTG delivered digital infrastructure and connectivity underpinning local authority high street recovery programmes across retail and leisure sectors.',
+    cta: 'Read the case study',
+    href: '/insights/case-studies/high-street-recovery',
     img: '/images/insights/public-sector.jpg',
-  },
-  {
-    tag: 'Education',
-    title: 'Education',
-    desc: 'Campus-wide Wi-Fi, 5G and safeguarding-compliant networks supporting universities, schools and research institutions.',
-    cta: 'Explore education',
-    href: '/industries/education',
-    img: '/images/insights/education.jpg',
   },
 ]
 
@@ -513,11 +513,11 @@ function Industries() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="max-w-2xl mb-16">
           <h2 className="font-heading text-white mb-4">
-            Powering transformation<br />
-            <span className="text-[#67c5f3]">across every sector.</span>
+            Real projects,<br />
+            <span className="text-[#67c5f3]">measurable outcomes.</span>
           </h2>
           <p className="text-white/65 text-[16px] leading-[1.8]">
-            From enterprise campuses to NHS trusts and government bodies, AWTG delivers technology built specifically for your world.
+            Case studies spanning Open RAN security, network economics and public sector connectivity, with results backed by GSMA and operator data.
           </p>
         </div>
 
