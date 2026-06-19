@@ -96,6 +96,19 @@ const curriculumSubjects = [
   { name: 'History',    signal: 'Source interpretation',   color: '#9333ea', soft: '#faf5ff' },
 ]
 
+function hexToRgb(hex: string) {
+  const v = parseInt(hex.slice(1), 16)
+  return { r: (v >> 16) & 255, g: (v >> 8) & 255, b: v & 255 }
+}
+const subjectRgb = curriculumSubjects.map((s) => hexToRgb(s.color))
+
+// Smoothstep easing - used to ramp the "connected" state in and out with no
+// discontinuity, instead of a hard on/off toggle.
+function smoothstep(edge0: number, edge1: number, x: number) {
+  const t = Math.min(1, Math.max(0, (x - edge0) / (edge1 - edge0)))
+  return t * t * (3 - 2 * t)
+}
+
 function CurriculumAgnosticSection() {
   const [ref, inView] = useInView(0.1)
   const ORBIT_DUR = 20 // seconds per revolution
@@ -106,14 +119,14 @@ function CurriculumAgnosticSection() {
   const CY = ORBIT_H / 2
   const RX = 345
   const RY = 200
-  const KX = RX * 0.5522848
-  const KY = RY * 0.5522848
-  const ORBIT_PATH = `M ${CX} ${CY - RY} C ${CX + KX} ${CY - RY} ${CX + RX} ${CY - KY} ${CX + RX} ${CY} C ${CX + RX} ${CY + KY} ${CX + KX} ${CY + RY} ${CX} ${CY + RY} C ${CX - KX} ${CY + RY} ${CX - RX} ${CY + KY} ${CX - RX} ${CY} C ${CX - RX} ${CY - KY} ${CX - KX} ${CY - RY} ${CX} ${CY - RY} Z`
 
-  // One spoke line per subject, tracking that card's live position on the ellipse
-  // so the hub always looks connected to every subject as they orbit.
+  // Cards and beams are driven from one rAF loop using the same ellipse
+  // formula, so the connection line always meets the card's exact pixel
+  // position - no drift between two separately-timed animation systems.
   const lineRefs = useRef<(SVGLineElement | null)[]>([])
   const dotRefs = useRef<(SVGCircleElement | null)[]>([])
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const shellRefs = useRef<(HTMLDivElement | null)[]>([])
 
   // Diagram is laid out at a fixed pixel size, then scaled down to fill
   // whatever width the column actually has - keeps it as wide as possible
@@ -143,10 +156,47 @@ function CurriculumAgnosticSection() {
         const theta = frac * Math.PI * 2
         const x = CX + RX * Math.sin(theta)
         const y = CY - RY * Math.cos(theta)
-        lineRefs.current[i]?.setAttribute('x2', String(x))
-        lineRefs.current[i]?.setAttribute('y2', String(y))
-        dotRefs.current[i]?.setAttribute('cx', String(x))
-        dotRefs.current[i]?.setAttribute('cy', String(y))
+
+        // depth: 1 at the front of the ellipse (nearest the viewer), -1 at
+        // the back. "Connected" is a smooth pulse that peaks only in the
+        // ~100deg arc closest to the front, eased in/out with no snapping.
+        const depth = Math.cos(theta)
+        const strength = smoothstep(0.45, 0.96, depth)
+        const { r, g, b } = subjectRgb[i]
+
+        const line = lineRefs.current[i]
+        if (line) {
+          line.setAttribute('x2', String(x))
+          line.setAttribute('y2', String(y))
+          line.setAttribute('stroke-width', String(1.3 + strength * 2.3))
+          line.style.opacity = String(0.22 + strength * 0.68)
+        }
+
+        const dot = dotRefs.current[i]
+        if (dot) {
+          dot.setAttribute('cx', String(x))
+          dot.setAttribute('cy', String(y))
+          dot.setAttribute('r', String(3 + strength * 3.2))
+          dot.style.filter = strength > 0.04
+            ? `drop-shadow(0 0 ${3 + strength * 10}px rgba(${r},${g},${b},${0.5 + strength * 0.5}))`
+            : 'none'
+        }
+
+        const card = cardRefs.current[i]
+        if (card) {
+          const baseScale = 1 + depth * 0.13
+          const scale = baseScale + strength * 0.3
+          const opacity = 0.62 + ((depth + 1) / 2) * 0.38
+          card.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${scale})`
+          card.style.opacity = String(Math.min(1, opacity))
+          card.style.zIndex = String(Math.round(100 + depth * 40 + strength * 120))
+        }
+
+        const shell = shellRefs.current[i]
+        if (shell) {
+          shell.style.boxShadow = `0 ${4 + strength * 12}px ${16 + strength * 30}px rgba(${r},${g},${b},${0.1 + strength * 0.4})`
+          shell.style.borderColor = `rgba(${r},${g},${b},${0.2 + strength * 0.55})`
+        }
       }
       raf = requestAnimationFrame(tick)
     }
@@ -157,16 +207,6 @@ function CurriculumAgnosticSection() {
   return (
     <section ref={ref} className="py-24 bg-[#f8fafc] overflow-hidden">
       <style>{`
-        @keyframes orbitTravel { from{offset-distance:0%} to{offset-distance:100%} }
-        @keyframes cardFloat  {
-          0%,100% { transform:scale(1.22); filter:drop-shadow(0 14px 30px rgba(34,141,193,0.34)); }
-          18%,82% { transform:scale(1); filter:drop-shadow(0 6px 14px rgba(34,141,193,0.12)); }
-          50% { transform:scale(0.9); filter:drop-shadow(0 3px 8px rgba(34,141,193,0.05)); }
-        }
-        @keyframes connectionPulse {
-          0%,100% { opacity:0; transform: scale(0.92); }
-          50%     { opacity:1; transform: scale(1); }
-        }
         @keyframes logoGlow {
           0%,100% { box-shadow: 0 0 0 0 rgba(34,141,193,0); }
           50%     { box-shadow: 0 0 0 16px rgba(34,141,193,0.06); }
@@ -279,50 +319,44 @@ function CurriculumAgnosticSection() {
                 />
               </div>
 
-              {/* ORBITING CARDS - travel along a wide elliptical path while staying upright */}
+              {/* ORBITING CARDS - position, scale, opacity and z-index are all
+                  set every frame from the same rAF loop as the connection
+                  beams above, so a card is always exactly where its line
+                  says it is, and pops forward precisely as it connects. */}
               <div style={{ position:'absolute', inset:0 }}>
-                {curriculumSubjects.map((subj, i) => {
-                  const delay = -(ORBIT_DUR * i / N)
-
-                  return (
-                    <div key={subj.name} style={{
-                      position:'absolute',
-                      left:0, top:0,
-                      offsetPath:`path("${ORBIT_PATH}")`,
-                      offsetRotate:'0deg',
-                      offsetAnchor:'center',
-                      animation: inView ? `orbitTravel ${ORBIT_DUR}s linear ${delay}s infinite` : 'none',
-                    }}>
-                      <div style={{
-                        animation: inView ? `cardFloat ${ORBIT_DUR}s ease-in-out ${delay}s infinite` : 'none',
-                        transformOrigin:'center',
-                      }}>
+                {curriculumSubjects.map((subj, i) => (
+                  <div
+                    key={subj.name}
+                    ref={(el) => { cardRefs.current[i] = el }}
+                    style={{ position:'absolute', left:0, top:0, willChange:'transform, opacity' }}
+                  >
+                    <div
+                      ref={(el) => { shellRefs.current[i] = el }}
+                      style={{
+                        background:'white',
+                        border:`1.5px solid ${subj.color}35`,
+                        borderRadius:12,
+                        padding:'7px 10px',
+                        minWidth:96,
+                        boxShadow:`0 4px 16px ${subj.color}18`,
+                        display:'flex', flexDirection:'column', gap:3,
+                      }}
+                    >
+                      <div style={{ display:'flex', alignItems:'center', gap:6 }}>
                         <div style={{
-                          background:'white',
-                          border:`1.5px solid ${subj.color}35`,
-                          borderRadius:12,
-                          padding:'7px 10px',
-                          minWidth:96,
-                          boxShadow:`0 4px 16px ${subj.color}18`,
-                          display:'flex', flexDirection:'column', gap:3,
+                          width:22, height:22, borderRadius:'50%',
+                          background:subj.color,
+                          display:'flex', alignItems:'center', justifyContent:'center',
+                          fontSize:8.5, fontWeight:900, color:'white', flexShrink:0,
                         }}>
-                          <div style={{ display:'flex', alignItems:'center', gap:6 }}>
-                            <div style={{
-                              width:22, height:22, borderRadius:'50%',
-                              background:subj.color,
-                              display:'flex', alignItems:'center', justifyContent:'center',
-                              fontSize:8.5, fontWeight:900, color:'white', flexShrink:0,
-                            }}>
-                              {subj.name.slice(0,2)}
-                            </div>
-                            <span style={{ fontSize:11.5, fontWeight:700, color:'#0a1628', whiteSpace:'nowrap' }}>{subj.name}</span>
-                          </div>
-                          <span style={{ fontSize:10.5, color:'rgba(10,22,40,0.60)', lineHeight:1.3, paddingLeft:28 }}>{subj.signal}</span>
+                          {subj.name.slice(0,2)}
                         </div>
+                        <span style={{ fontSize:11.5, fontWeight:700, color:'#0a1628', whiteSpace:'nowrap' }}>{subj.name}</span>
                       </div>
+                      <span style={{ fontSize:10.5, color:'rgba(10,22,40,0.60)', lineHeight:1.3, paddingLeft:28 }}>{subj.signal}</span>
                     </div>
-                  )
-                })}
+                  </div>
+                ))}
               </div>
 
             </div>
