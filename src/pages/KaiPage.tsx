@@ -99,6 +99,7 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
       style={{
         position: 'relative',
         width: '100%',
+        height: '100%',
         minHeight: 430,
         borderRadius: 20,
         boxShadow: '0 4px 18px rgba(15,23,42,0.07)',
@@ -142,7 +143,7 @@ function GlobalReachSection() {
   return (
     <section className="bg-white py-20">
       <div ref={ref} className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-stretch">
 
           {/* Left - heading, body, stat cards */}
           <div style={reveal(inView, 0)}>
@@ -177,7 +178,7 @@ function GlobalReachSection() {
           </div>
 
           {/* Right - globe fills the full column */}
-          <div style={reveal(inView, 200)}>
+          <div className="h-full" style={reveal(inView, 200)}>
             <GlobePanel visible={inView} />
           </div>
 
