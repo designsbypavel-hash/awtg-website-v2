@@ -277,12 +277,6 @@ function CurriculumAgnosticSection() {
                   style={{ width:130, height:'auto', objectFit:'contain', display:'block' }}
                   onError={(e) => { (e.target as HTMLImageElement).style.display='none' }}
                 />
-                <span style={{
-                  fontSize:9, fontWeight:800, letterSpacing:'0.18em', textTransform:'uppercase',
-                  color:'#228DC1', background:'#e5f4fa', borderRadius:20,
-                  padding:'3px 12px', border:'1px solid rgba(34,141,193,0.20)',
-                  whiteSpace:'nowrap',
-                }}>Centralised AI</span>
               </div>
 
               {/* ORBITING CARDS - travel along a wide elliptical path while staying upright */}
