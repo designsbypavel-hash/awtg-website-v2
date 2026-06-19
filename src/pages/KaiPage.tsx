@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faXmark, faChevronDown, faPaperPlane, faMicrophone, faRobot, faArrowRightFromBracket, faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
+import kaiDashboardMockup from '../assets/Mockup/KAi_Mockup.png'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -111,7 +112,7 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
       }}
     >
       <img
-        src="/images/kai-dashboard-mockup.png"
+        src={kaiDashboardMockup}
         alt="Kai dashboard interface on tablet"
         style={{
           width: '100%',
