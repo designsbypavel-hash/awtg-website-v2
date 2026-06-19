@@ -1,16 +1,19 @@
 ﻿import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faBuildingColumns, faChartLine,
+  faChartLine,
   faClipboardCheck,
   faMapLocationDot, faNetworkWired,
   faSearchLocation,
-  faTowerBroadcast,
   faDatabase,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import VisualInsightCard from '@/components/VisualInsightCard'
+import idamsHeroScreen1 from '@/assets/IDAMS/hero/screen-1.png'
+import idamsHeroScreen2 from '@/assets/IDAMS/hero/screen-2.png'
+import idamsAssetOwnersVisual from '@/assets/IDAMS/audiences/asset-owners.png'
+import idamsNetworkOperatorsVisual from '@/assets/IDAMS/audiences/network-operators.png'
 
 // ── Scroll utilities ──────────────────────────────────────────────────────────
 function useInView(threshold = 0.1) {
@@ -150,6 +153,62 @@ function IdamsMapVisual() {
     </div>
   )
 }
+
+void IdamsMapVisual
+
+const IDAMS_HERO_SCREENS = [
+  { label: 'iDAMS regional asset discovery map', src: idamsHeroScreen1 },
+  { label: 'iDAMS polygon asset selection map', src: idamsHeroScreen2 },
+]
+
+function IdamsHeroShowcase() {
+  const [active, setActive] = useState(0)
+  const [entered, setEntered] = useState(false)
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setTimeout(() => setEntered(true), 100))
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => setActive(current => (current + 1) % IDAMS_HERO_SCREENS.length), 3200)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div
+      className="relative w-full max-w-[760px]"
+      style={{
+        opacity: entered ? 1 : 0,
+        transform: entered ? 'translateY(0)' : 'translateY(28px)',
+        transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
+      }}
+    >
+      <div
+        className="absolute -inset-8 hidden pointer-events-none lg:block"
+        style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(61,77,158,0.18) 0, rgba(61,77,158,0.08) 34%, transparent 72%)' }}
+      />
+      <div style={{ display: 'grid', filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
+        {IDAMS_HERO_SCREENS.map((screen, index) => (
+          <img
+            key={screen.src}
+            src={screen.src}
+            alt={screen.label}
+            style={{
+              gridRow: '1 / 2',
+              gridColumn: '1 / 2',
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              opacity: active === index ? 1 : 0,
+              transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 // ── Section header ────────────────────────────────────────────────────────────
 function SectionHeader({ title, desc }: { title: string; desc: string }) {
   return (
@@ -170,41 +229,9 @@ const capabilities = [
   { icon: faNetworkWired,    title: 'Integration-Ready Platform',  color: '#0891b2', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
 ]
 
-const ownerBenefits = [
-  'Centralised asset register',
-  'Map-based asset visibility',
-  'Flexible data import and export',
-  'Configurable asset categories and metadata',
-  'Approval workflow for acquisition requests',
-  'Improved governance and auditability',
-  'Better opportunity to monetise underused assets',
-]
-
-const operatorBenefits = [
-  'Faster site identification',
-  'Reduced manual communication',
-  'Clearer asset availability and metadata',
-  'Streamlined request and approval process',
-  'Improved collaboration with asset owners',
-  'Support for telecom site deployment and wider infrastructure use cases',
-]
-
-
-const audiences = [
-  {
-    icon: faBuildingColumns, color: '#228DC1',
-    title: 'Asset Owners',
-    who: 'Local authorities, public bodies, landlords, and private organisations',
-    desc: 'iDAMS helps asset owners make their infrastructure visible and available for commercial or public-service use. Import asset data, manage records, define availability, review requests, and track the full acquisition process from enquiry to approval.',
-    benefits: ownerBenefits,
-  },
-  {
-    icon: faTowerBroadcast, color: '#3d4d9e',
-    title: 'Mobile Network Operators & Neutral Hosts',
-    who: 'MNOs, neutral hosts, and telecom infrastructure providers',
-    desc: 'iDAMS helps operators identify suitable locations for network deployment more quickly. Search assets geographically, filter by metadata, select individual or multiple assets, and submit requests through a structured process.',
-    benefits: operatorBenefits,
-  },
+const audienceVisuals = [
+  { title: 'Asset Owners', image: idamsAssetOwnersVisual },
+  { title: 'Mobile Network Operators & Neutral Hosts', image: idamsNetworkOperatorsVisual },
 ]
 
 const idamsUseCases = [
@@ -282,7 +309,8 @@ export default function ServicesIoTPage() {
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 35%, rgba(61,77,158,0.12) 0, transparent 55%)' }} />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
+        <div className="relative mx-auto max-w-[1320px] px-8 lg:px-12">
+          <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <h1 className="font-serif-display mb-6 leading-[1.02] text-[#0a1628]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
               iDAMS
@@ -290,8 +318,8 @@ export default function ServicesIoTPage() {
             <h2 className="mb-5 max-w-xl text-[30px] font-semibold leading-[1.15] text-[#0a1628] lg:text-[40px]">
               Digital asset management for smarter infrastructure sharing.
             </h2>
-            <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              iDAMS helps local authorities, operators and infrastructure partners discover, assess and manage telecom and public assets through a secure map based platform. Teams can view available sites, check asset details, manage access requests and coordinate approvals from one shared workspace.
+            <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
+              iDAMS helps local authorities, operators and infrastructure partners discover, assess and manage telecom and public assets through one secure map-based workspace.
             </p>
             <button
               type="button"
@@ -304,7 +332,8 @@ export default function ServicesIoTPage() {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <IdamsMapVisual />
+            <IdamsHeroShowcase />
+          </div>
           </div>
         </div>
       </section>
@@ -342,69 +371,32 @@ export default function ServicesIoTPage() {
       {/* ── BUILT FOR TWO AUDIENCES ──────────────────────────────────────── */}
       <section className="bg-[#f8fafc] py-24">
         <div ref={audRef} className="mx-auto max-w-7xl px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-stretch">
 
-            {/* LEFT: heading + description + stacked audience cards */}
-            <div style={reveal(audInView, 0)} className="flex flex-col gap-7">
-
-              {/* Heading block */}
-              <div className="flex flex-col gap-4">
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
-                  <div style={{ width: 4, flexShrink: 0, alignSelf: 'stretch', borderRadius: 4, background: 'linear-gradient(180deg, #3d4d9e 0%, #228DC1 100%)', minHeight: 52 }} />
-                  <div>
-                    <h2 className="font-heading text-[#0a1628] mb-3">
-                      Built for asset owners and asset consumers
-                    </h2>
-                    <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-                      iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Audience cards - stacked */}
-              <div className="flex flex-col gap-5 flex-1">
-                {audiences.map((aud, i) => (
-                  <div
-                    key={aud.title}
-                    className="group flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-7 transition-all duration-300 hover:border-[#3d4d9e]/20 hover:shadow-[0_8px_32px_rgba(61,77,158,0.08)]"
-                    style={{ ...reveal(audInView, 100 + i * 120), borderTop: `3px solid ${aud.color}` }}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div style={{ display: 'flex', height: 46, width: 46, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: 12, background: `${aud.color}12`, border: `1px solid ${aud.color}22` }}>
-                        <FontAwesomeIcon icon={aud.icon} className="h-4 w-4" style={{ color: aud.color }} />
-                      </div>
-                      <div>
-                        <p className="mb-0.5 text-[11px] font-medium tracking-wide text-[#0a1628]/45 uppercase">{aud.who}</p>
-                        <h3 className="text-[17px] font-semibold leading-[1.3] text-[#0a1628]">{aud.title}</h3>
-                      </div>
-                    </div>
-                    <p className="text-[13px] font-normal leading-[1.75] text-[#0a1628]/60">{aud.desc}</p>
-                    <div className="grid grid-cols-2 gap-x-5 gap-y-2 border-t border-gray-100 pt-4">
-                      {aud.benefits.slice(0, 6).map(b => (
-                        <div key={b} className="flex items-start gap-2">
-                          <div className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: aud.color }} />
-                          <span className="text-[12px] leading-snug text-[#0a1628]/65">{b}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {/* Heading block */}
+          <div style={{ ...reveal(audInView, 0), display: 'flex', alignItems: 'flex-start', gap: 16 }} className="mb-12">
+            <div style={{ width: 4, flexShrink: 0, alignSelf: 'stretch', borderRadius: 4, background: 'linear-gradient(180deg, #3d4d9e 0%, #228DC1 100%)', minHeight: 52 }} />
+            <div>
+              <h2 className="font-heading text-[#0a1628] mb-3">
+                Built for asset owners and asset consumers
+              </h2>
+              <p className="max-w-2xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
+                iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it.
+              </p>
             </div>
-
-            {/* RIGHT: full-height image stretching to match left column */}
-            <div style={{ ...reveal(audInView, 250), position: 'relative', borderRadius: 24, overflow: 'hidden', minHeight: 500 }}>
-              <img
-                src="/images/insights/city-infrastructure.jpg"
-                alt="iDAMS asset marketplace"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              {/* Subtle gradient overlay */}
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(61,77,158,0.15) 0%, transparent 60%)' }} />
-            </div>
-
           </div>
+
+          {/* Audience dashboards - stacked full-width */}
+          <div className="flex flex-col gap-10">
+            {audienceVisuals.map((aud, i) => (
+              <div
+                key={aud.title}
+                style={{ ...reveal(audInView, 150 + i * 150), borderRadius: 20, overflow: 'hidden', boxShadow: '0 18px 48px rgba(10,22,40,0.08)' }}
+              >
+                <img src={aud.image} alt={aud.title} className="block h-auto w-full" loading="lazy" />
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
