@@ -1463,7 +1463,7 @@ function MMImageDemo() {
   }, [])
 
   return (
-    <div style={{ display:'flex', flexDirection:'column', flex:1, background:'#ffffff' }}>
+    <div style={{ display:'flex', flexDirection:'column', flex:1, minHeight:0, background:'#ffffff' }}>
       <div style={{ borderBottom:'1px solid #e5e7eb', padding:'14px 18px', display:'flex', flexDirection:'column', gap:10, background:'#fafbfc' }}>
         <div style={{ alignSelf:'flex-end', maxWidth:'82%', opacity:0, animation:'mmCardIn 0.34s ease forwards' }}>
           <div style={{
@@ -1501,13 +1501,13 @@ function MMImageDemo() {
         </div>
       </div>
 
-      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'14px 16px', background:'#f8fafc' }}>
-        <div style={{ position:'relative', width:'100%', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
+      <div style={{ flex:1, minHeight:0, display:'flex', alignItems:'center', justifyContent:'center', padding:'14px 16px', background:'#f8fafc' }}>
+        <div style={{ position:'relative', height:'100%', maxWidth:'100%', aspectRatio:'280 / 178', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
           <img
             src="/images/aruva-cell-diagram.png"
             alt="Generated biochemistry lecture diagram"
             style={{
-              display:'block', width:'100%', height:'auto', aspectRatio:'280 / 178', objectFit:'cover',
+              display:'block', width:'100%', height:'100%', objectFit:'cover',
               opacity:0.18,
               filter:'saturate(0.45) blur(2px)',
               transform:'scale(1.01)',
@@ -1524,7 +1524,7 @@ function MMImageDemo() {
               aria-hidden="true"
               style={{
                 display:'block', width:`calc(100% * ${100 / Math.max(revealWidth, 1)})`, height:'100%',
-                aspectRatio:'280 / 178', objectFit:'cover',
+                objectFit:'cover',
                 opacity: revealWidth > 0 ? 1 : 0,
                 filter: stage >= 4 ? 'none' : 'saturate(1.05) contrast(1.02)',
                 transform: stage >= 4 ? 'scale(1)' : 'scale(1.006)',
@@ -1839,6 +1839,22 @@ function MultimodalSection() {
 
   const activeM = MM_MODALITIES[active]
 
+  // Match the demo card's height to the left column's natural height, so
+  // both boxes share the same top and bottom edge without forcing the
+  // (shorter) text column to stretch.
+  const leftColRef = React.useRef<HTMLDivElement>(null)
+  const [demoHeight, setDemoHeight] = React.useState<number | null>(null)
+  React.useEffect(() => {
+    const el = leftColRef.current
+    if (!el) return
+    const ro = new ResizeObserver((entries) => {
+      const h = entries[0].contentRect.height
+      if (h > 0) setDemoHeight(h)
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
   return (
     <section ref={sectionRef} style={{ background:'#f8fafc', padding:'112px 0' }}>
       <style>{`
@@ -1857,7 +1873,7 @@ function MultimodalSection() {
         <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:0, alignItems:'start' }}>
 
           {/* LEFT - title, brief, then tabs */}
-          <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
+          <div ref={leftColRef} style={{ display:'flex', flexDirection:'column', gap:6 }}>
 
             {/* Section header inside left column */}
             <div style={{
@@ -1912,8 +1928,11 @@ function MultimodalSection() {
             })}
           </div>
 
-          <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
-          {/* RIGHT - single large demo card, remounts on each modality change */}
+          <div style={{ display:"flex", flexDirection:"column", gap:10, height: demoHeight ?? undefined }}>
+          {/* RIGHT - single large demo card, remounts on each modality change.
+              Height is pinned to the left column's natural height (see
+              leftColRef/demoHeight above) so both boxes share the same top
+              and bottom edge - the text column is never stretched to match. */}
           <div style={{
             borderRadius:20, overflow:'hidden',
             border:'1px solid #e2e8f0',
@@ -1922,6 +1941,8 @@ function MultimodalSection() {
             display:'flex', flexDirection:'column',
             opacity: inView?1:0, transform: inView?'translateY(0)':'translateY(24px)',
             transition:'opacity 0.65s ease 0.15s, transform 0.65s ease 0.15s',
+            height: demoHeight ?? undefined,
+            minHeight: 0,
           }}>
             {/* Card header - updates smoothly on tab switch */}
             <div style={{
@@ -1947,17 +1968,17 @@ function MultimodalSection() {
 
             {/* Demo content - key forces remount so animations restart on each cycle */}
             <div key={`${active}-${cycleCount}`} style={{
-              flex:1, display:'flex', flexDirection:'column',
+              flex:1, display:'flex', flexDirection:'column', minHeight:0, overflow:'hidden',
               opacity:0, animation:'mmCardIn 0.4s ease forwards',
             }}>
 
               {/* ── Voice ── */}
               {active === 0 && (
-                <div style={{ flex:1, display:'flex', flexDirection:'column', padding:24, background:'linear-gradient(180deg,#ffffff 0%,#f8fbfd 100%)' }}>
+                <div style={{ flex:1, display:'flex', flexDirection:'column', padding:'18px 24px', background:'linear-gradient(180deg,#ffffff 0%,#f8fbfd 100%)', minHeight:0 }}>
                   <div style={{
                     display:'flex', alignItems:'center', justifyContent:'space-between', gap:16,
-                    padding:'14px 16px', border:'1px solid #e5edf4', borderRadius:16,
-                    background:'#ffffff', boxShadow:'0 8px 24px rgba(10,22,40,0.05)', marginBottom:18,
+                    padding:'12px 16px', border:'1px solid #e5edf4', borderRadius:16,
+                    background:'#ffffff', boxShadow:'0 8px 24px rgba(10,22,40,0.05)', marginBottom:12, flexShrink:0,
                   }}>
                     <div style={{ display:'flex', alignItems:'center', gap:10 }}>
                       <div style={{
@@ -1981,37 +2002,37 @@ function MultimodalSection() {
                   </div>
 
                   <div style={{ flex:1, display:'grid', gridTemplateColumns:'1fr 220px', gap:22, minHeight:0, alignItems:'stretch' }}>
-                    <div style={{ display:'flex', flexDirection:'column', gap:13, minWidth:0 }}>
+                    <div style={{ display:'flex', flexDirection:'column', gap:9, minWidth:0, minHeight:0, justifyContent:'center' }}>
                       <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.05s forwards' }}>
-                        <p style={{ fontSize:11, fontWeight:900, color:'#1a7aab', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>Student transcript</p>
+                        <p style={{ fontSize:11, fontWeight:900, color:'#1a7aab', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:5 }}>Student transcript</p>
                         <div style={{
                           background:'#fff7ed', border:'1px solid rgba(245,158,11,0.22)', color:'#0a1628',
-                          padding:'12px 14px', borderRadius:'14px 14px 4px 14px', fontSize:13,
-                          fontWeight:700, lineHeight:1.45, boxShadow:'0 9px 20px rgba(245,158,11,0.12)',
+                          padding:'10px 13px', borderRadius:'14px 14px 4px 14px', fontSize:13,
+                          fontWeight:700, lineHeight:1.4, boxShadow:'0 9px 20px rgba(245,158,11,0.12)',
                         }}>
                           "Can you explain Porter's Five Forces without giving me the answer?"
                         </div>
                       </div>
 
                       <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.45s forwards' }}>
-                        <p style={{ fontSize:11, fontWeight:900, color:'#059669', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>AI responding</p>
+                        <p style={{ fontSize:11, fontWeight:900, color:'#059669', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:5 }}>AI responding</p>
                         <div style={{
                           background:'#ffffff', border:'1px solid #e6edf3', borderRadius:'14px 14px 14px 4px',
-                          padding:'13px 15px', boxShadow:'0 8px 22px rgba(10,22,40,0.06)',
-                          fontSize:13, color:'rgba(10,22,40,0.76)', lineHeight:1.55,
+                          padding:'10px 14px', boxShadow:'0 8px 22px rgba(10,22,40,0.06)',
+                          fontSize:13, color:'rgba(10,22,40,0.76)', lineHeight:1.5,
                         }}>
                           Start with buyer power. What would give customers leverage here: many alternatives, low switching cost, or something else?
-                          <div style={{ marginTop:10, paddingTop:10, borderTop:'1px solid #eef2f6', color:'#1a7aab', fontSize:11, fontWeight:800 }}>
+                          <div style={{ marginTop:8, paddingTop:8, borderTop:'1px solid #eef2f6', color:'#1a7aab', fontSize:11, fontWeight:800 }}>
                             Cited source: Porter (2008), Ch. 2
                           </div>
                         </div>
                       </div>
 
                       <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.82s forwards' }}>
-                        <p style={{ fontSize:10, fontWeight:900, color:'#d97706', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:6 }}>Student reply transcript</p>
+                        <p style={{ fontSize:10, fontWeight:900, color:'#d97706', letterSpacing:'0.14em', textTransform:'uppercase', marginBottom:5 }}>Student reply transcript</p>
                         <div style={{
-                          background:'#f59e0b', color:'#ffffff', padding:'12px 14px', borderRadius:'14px 14px 4px 14px',
-                          boxShadow:'0 10px 22px rgba(245,158,11,0.18)', fontSize:13, fontWeight:700, lineHeight:1.45,
+                          background:'#f59e0b', color:'#ffffff', padding:'10px 13px', borderRadius:'14px 14px 4px 14px',
+                          boxShadow:'0 10px 22px rgba(245,158,11,0.18)', fontSize:13, fontWeight:700, lineHeight:1.4,
                         }}>
                           "Switching costs. If it's easy to switch, buyers have more leverage."
                         </div>
