@@ -489,7 +489,7 @@ function HowItWorksSection() {
     : AnalyticsVisual
 
   return (
-    <section ref={ref} className="bg-white py-28">
+    <section ref={ref} className="relative py-28" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
       <style>{`
         @keyframes hiwVisual { from{opacity:0;transform:translateX(10px)} to{opacity:1;transform:translateX(0)} }
         @keyframes hiwProgress { from{transform:scaleX(0)} to{transform:scaleX(1)} }
