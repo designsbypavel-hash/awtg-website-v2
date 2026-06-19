@@ -1851,9 +1851,9 @@ function MultimodalSection() {
         @keyframes transcriptReveal { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
         @keyframes aruvaVoiceBlob { 0%,100%{border-radius:48% 52% 45% 55%/58% 43% 57% 42%;transform:scale(1)} 35%{border-radius:58% 42% 52% 48%/45% 60% 40% 55%;transform:scale(1.04)} 70%{border-radius:43% 57% 59% 41%/52% 44% 56% 48%;transform:scale(0.97)} }
       `}</style>
-      <div>
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-        {/* Two-column: left = title + tabs, right = demo - full bleed, no side gutters */}
+        {/* Two-column: left = title + tabs, right = demo */}
         <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:0, alignItems:'start' }}>
 
           {/* LEFT - title, brief, then tabs */}
