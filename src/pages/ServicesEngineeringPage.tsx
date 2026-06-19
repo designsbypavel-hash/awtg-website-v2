@@ -475,7 +475,7 @@ const useCases = [
 ]
 
 // -- Section header helper ----------------------------------------------------
-function SectionHeader({ title, desc }: { title: string; desc: string }) {
+function SectionHeader({ title, desc }: { title: React.ReactNode; desc: string }) {
   return (
     <div className="mb-14 max-w-3xl">
       <h2 className="font-heading mb-5 text-[#0a1628]">{title}</h2>
@@ -580,7 +580,7 @@ export default function ServicesEngineeringPage() {
       <section className="bg-white py-24">
         <div ref={diffRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(diffInView, 0)} className="mb-14 max-w-3xl">
-            <h2 className="font-heading text-[#0a1628] mb-5">Why SCAP is different</h2>
+            <h2 className="font-heading text-[#0a1628] mb-5">Why SCAP is <span className="text-[#1a7aab]">different</span></h2>
             <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
               SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform.
             </p>
@@ -622,7 +622,7 @@ export default function ServicesEngineeringPage() {
         <div ref={modulesRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(modulesInView, 0)}>
             <SectionHeader
-              title="Manage network operations from one platform"
+              title={<>Manage network operations from <span className="text-[#1a7aab]">one platform</span></>}
               desc="SCAP brings together the core operational modules needed to monitor, manage and assure modern telecom networks. From performance dashboards to fault alerts and configuration workflows, teams can work from the same operational view and respond faster to service impacting issues."
             />
           </div>
@@ -668,7 +668,7 @@ export default function ServicesEngineeringPage() {
         <div ref={mvRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
             <div style={reveal(mvInView, 0)}>
-              <h2 className="font-heading mb-6 text-white">Built for multi-vendor network environments.</h2>
+              <h2 className="font-heading mb-6 text-white">Built for <span className="text-[#67c5f3]">multi-vendor network environments.</span></h2>
               <p className="mb-8 text-[16px] font-normal leading-[1.78] text-white/60">
                 SCAP connects network equipment, systems and functions from different suppliers through standards-based interfaces and adaptable integration layers. It helps operators bring vendor data into one operational view, while allowing new integrations to be added as network requirements evolve.
               </p>
@@ -707,7 +707,7 @@ export default function ServicesEngineeringPage() {
         <div ref={ucRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(ucInView, 0)}>
             <div className="mb-14 max-w-3xl">
-              <h2 className="font-heading mb-5 text-white">Designed for modern telecom use cases</h2>
+              <h2 className="font-heading mb-5 text-white">Designed for <span className="text-[#67c5f3]">modern telecom use cases</span></h2>
               <p className="text-[16px] font-normal leading-[1.75] text-white/60">
                 SCAP is suitable for organisations seeking to modernise network operations through automation, assurance and orchestration.
               </p>

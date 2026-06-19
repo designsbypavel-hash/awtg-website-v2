@@ -2253,7 +2253,7 @@ function BloomInsightSection() {
           {/* Left narrative */}
           <div className="lg:sticky lg:top-28" style={{ animation: 'fadeUp 0.6s ease both' }}>
             <h2 className="font-heading text-[#0a1628] mb-9 max-w-[420px]">
-              One student journey. Three semesters.<br />One clear progression picture.
+              One student journey. Three semesters.<br /><span className="text-[#1a7aab]">One clear progression picture.</span>
             </h2>
 
             <div className="space-y-4 max-w-[420px]">

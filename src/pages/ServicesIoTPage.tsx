@@ -1,4 +1,4 @@
-﻿import { useState, useRef, useEffect, type CSSProperties } from 'react'
+﻿import { useState, useRef, useEffect, type CSSProperties, type ReactNode } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChartLine,
@@ -212,7 +212,7 @@ function IdamsHeroShowcase() {
   )
 }
 // ── Section header ────────────────────────────────────────────────────────────
-function SectionHeader({ title, desc }: { title: string; desc: string }) {
+function SectionHeader({ title, desc }: { title: ReactNode; desc: string }) {
   return (
     <div className="mb-14 max-w-3xl">
       <h2 className="font-heading mb-5 text-[#0a1628]">{title}</h2>
@@ -377,7 +377,7 @@ export default function ServicesIoTPage() {
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
             <div>
-              <h2 className="font-heading mb-6 text-white">Turning infrastructure assets into usable digital records.</h2>
+              <h2 className="font-heading mb-6 text-white">Turning infrastructure assets into <span className="text-[#67c5f3]">usable digital records.</span></h2>
               <p className="text-[16px] font-normal leading-[1.78] text-white/60">
                 Many organisations hold valuable telecom and public infrastructure assets, but the information is often spread across spreadsheets, disconnected systems, emails and manual approval processes.
                 iDAMS brings asset discovery, ownership details, requests, approvals and reporting into one secure map-based platform, helping teams manage assets more clearly and move from enquiry to action faster.
@@ -411,7 +411,7 @@ export default function ServicesIoTPage() {
             <div style={{ width: 4, flexShrink: 0, alignSelf: 'stretch', borderRadius: 4, background: 'linear-gradient(180deg, #3d4d9e 0%, #228DC1 100%)', minHeight: 52 }} />
             <div>
               <h2 className="font-heading text-[#0a1628] mb-3">
-                Built for asset owners and asset consumers
+                Built for <span className="text-[#1a7aab]">asset owners and asset consumers</span>
               </h2>
               <p className="max-w-2xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
                 iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it.
@@ -459,7 +459,7 @@ export default function ServicesIoTPage() {
         <div ref={capRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(capInView, 0)}>
             <SectionHeader
-              title="Key platform capabilities"
+              title={<>Key platform <span className="text-[#1a7aab]">capabilities</span></>}
               desc="iDAMS provides a complete set of tools for asset discovery, management, acquisition, and collaboration."
             />
           </div>
@@ -486,7 +486,7 @@ export default function ServicesIoTPage() {
         <div ref={ucRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(ucInView, 0)}>
             <div className="mb-14 max-w-3xl">
-              <h2 className="font-heading mb-5 text-white">Use cases</h2>
+              <h2 className="font-heading mb-5 text-white">Use <span className="text-[#67c5f3]">cases</span></h2>
               <p className="text-[16px] font-normal leading-[1.75] text-white/60">
                 iDAMS is designed for organisations deploying connectivity and infrastructure assets across the public and private sector.
               </p>

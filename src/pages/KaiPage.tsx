@@ -148,7 +148,7 @@ function GlobalReachSection() {
           {/* Left - heading, body, stat cards */}
           <div style={reveal(inView, 0)}>
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Global reach. Measurable customer outcomes.
+              Global reach.{' '}<span className="text-[#1a7aab]">Measurable customer outcomes.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] mb-10">
               Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from day 1.
@@ -223,7 +223,7 @@ function IntegrationsSection() {
           {/* Left: copy */}
           <div>
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Connects to your stack. Works from day one.
+              Connects to your stack.{' '}<span className="text-[#1a7aab]">Works from day one.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-8">
               Kai connects to your existing CRM, ticketing, messaging, knowledge, and workflow tools, giving your AI agent the context it needs to resolve queries, route requests, qualify leads, and trigger actions without replacing your current systems.
@@ -347,7 +347,7 @@ function SecurityComplianceSection() {
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-16 items-start">
           <div ref={leftRef} className="lg:sticky lg:top-28">
             <h2 className="font-heading text-[#0a1628] mb-5" style={{ ...reveal(leftInView, 100) }}>
-              Designed for regulated<br />environments.
+              Designed for regulated<br /><span className="text-[#1a7aab]">environments.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8 max-w-xl" style={reveal(leftInView, 180)}>
               Safe, measurable and auditable AI for teams with real governance requirements.
@@ -1067,7 +1067,7 @@ function OmnichannelSection() {
 
         {/* ── Centred heading ── */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="font-heading text-white mb-5">One AI. Every channel.</h2>
+          <h2 className="font-heading text-white mb-5">One AI.{' '}<span className="text-[#67c5f3]">Every channel.</span></h2>
           <p className="text-white/65 text-[16px] font-normal leading-[1.7]">
             Kai meets customers on Telegram, your website or email - with the same intelligence, context and resolution on every channel.
           </p>
@@ -1594,7 +1594,7 @@ export default function KaiPage() {
             {/* Right: copy */}
             <div className="flex h-full flex-col justify-center lg:pt-2">
               <h2 className="font-heading text-[#0a1628] mb-5">
-                Fewer escalations. Faster resolutions.
+                Fewer escalations.{' '}<span className="text-[#1a7aab]">Faster resolutions.</span>
               </h2>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
                 Kai helps resolve more customer queries at the first point of contact, reducing unnecessary handovers and giving support teams more time to focus on complex cases.
@@ -1654,7 +1654,7 @@ export default function KaiPage() {
           {/* Heading */}
           <div className="mb-16">
             <h2 className="font-heading text-white mb-4">
-              Build your Kai Agent
+              Build your <span className="text-[#67c5f3]">Kai Agent</span>
             </h2>
             <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
               Kai connects with your customers across web, messaging, and chat channels, resolving their pain points wherever the conversation starts.

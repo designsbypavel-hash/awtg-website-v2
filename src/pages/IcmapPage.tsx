@@ -580,7 +580,7 @@ export default function IcmapPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-16">
             <h2 className="font-heading text-[#0a1628] mb-4">
-              From raw network data to coverage decisions
+              From raw network data to <span className="text-[#1a7aab]">coverage decisions</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.7] max-w-2xl">
               iCMAP brings coverage, mapping and contextual data into one workspace, helping teams identify weak areas, understand local impact and plan improvements with clearer evidence.
@@ -638,7 +638,7 @@ export default function IcmapPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14">
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Designed for modern connectivity programmes
+              Designed for modern <span className="text-[#1a7aab]">connectivity programmes</span>
             </h2>
             <p className="text-[#0a1628]/62 text-[16px] font-normal leading-[1.75] max-w-2xl">
               From national coverage obligations to private network estates, iCMAP helps teams see the same evidence and decide where to act next.
