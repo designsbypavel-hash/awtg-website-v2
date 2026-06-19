@@ -1545,7 +1545,7 @@ export default function KaiPage() {
       {/* -- Escalation Rate Chart -- */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
 
             {/* Left: chart card - Intercom-style */}
             <div
