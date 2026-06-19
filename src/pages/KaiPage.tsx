@@ -100,25 +100,21 @@ function RealisticGlobePanel({ visible }: { visible: boolean }) {
         position: 'relative',
         width: '100%',
         minHeight: 430,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#ffffff',
         borderRadius: 20,
-        border: '1px solid rgba(15,23,42,0.07)',
         boxShadow: '0 4px 18px rgba(15,23,42,0.07)',
         overflow: 'hidden',
-        padding: 24,
       }}
     >
       <img
         src={kaiDashboardMockup}
         alt="Kai dashboard interface on tablet"
         style={{
+          position: 'absolute',
+          inset: 0,
           width: '100%',
-          height: 'auto',
+          height: '100%',
+          objectFit: 'cover',
           display: 'block',
-          borderRadius: 20,
           opacity: visible ? 1 : 0,
           transform: visible ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.96)',
           transition: 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)',
