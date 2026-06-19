@@ -1854,10 +1854,10 @@ function MultimodalSection() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Two-column: left = title + tabs, right = demo */}
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:0, alignItems:'stretch' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', columnGap:56, rowGap:0, alignItems:'start' }}>
 
-          {/* LEFT - title, brief, then tabs - stretched to match the demo card's height, so both columns share the same top and bottom edge */}
-          <div style={{ display:'flex', flexDirection:'column', gap:6, height:'100%', justifyContent:'space-between' }}>
+          {/* LEFT - title, brief, then tabs */}
+          <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
 
             {/* Section header inside left column */}
             <div style={{
