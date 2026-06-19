@@ -3,13 +3,14 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import type { CSSProperties } from 'react'
 
 type VisualInsightCardProps = {
-  eyebrow: string
+  eyebrow?: string
   title: string
   description: string
   image: string
   points?: string[]
   dark?: boolean
   accent?: string
+  flushContent?: boolean
   style?: CSSProperties
 }
 
@@ -21,11 +22,12 @@ export default function VisualInsightCard({
   points = [],
   dark = false,
   accent = '#228DC1',
+  flushContent = false,
   style,
 }: VisualInsightCardProps) {
   const base = dark
     ? 'bg-[#0d1c31] text-white'
-    : 'bg-white text-[#0a1628]'
+    : `${flushContent ? 'bg-transparent' : 'bg-white'} text-[#0a1628]`
 
   return (
     <article
@@ -42,10 +44,12 @@ export default function VisualInsightCard({
         <div className={`absolute inset-0 ${dark ? 'bg-gradient-to-t from-[#0a1628]/50 via-transparent to-transparent' : 'bg-gradient-to-t from-[#0a1628]/20 via-transparent to-transparent'}`} />
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: accent }}>
-          {eyebrow}
-        </p>
+      <div className={`flex flex-1 flex-col ${flushContent ? 'pt-6' : 'p-6'}`}>
+        {eyebrow && (
+          <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: accent }}>
+            {eyebrow}
+          </p>
+        )}
         <h3 className={`mb-3 text-[17px] font-semibold leading-[1.28] ${dark ? 'text-white' : 'text-[#0a1628]'}`}>
           {title}
         </h3>

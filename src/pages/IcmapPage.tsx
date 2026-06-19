@@ -2,9 +2,18 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Polygon, useMap } from 'react-leaflet'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMap, faChartBar, faGlobe, faLayerGroup, faBullseye, faSignal, faChartLine, faDatabase, faMapLocationDot, faCrosshairs, faRoute, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faMap, faChartBar, faLayerGroup, faBullseye } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import VisualInsightCard from '@/components/VisualInsightCard'
+import icmapFeatureImage from '@/assets/iCMAP/1.png'
+import icmapStep1 from '@/assets/iCMAP/isometric/step-1.png'
+import icmapStep2 from '@/assets/iCMAP/isometric/step-2.png'
+import icmapStep3 from '@/assets/iCMAP/isometric/step-3.png'
+import icmapStep4 from '@/assets/iCMAP/isometric/step-4.png'
+import networkOperatorsImage from '@/assets/iCMAP/use-cases/network-operators.png'
+import regulatorsImage from '@/assets/iCMAP/use-cases/regulators-local-authorities.png'
+import smartInfrastructureImage from '@/assets/iCMAP/use-cases/smart-infrastructure.png'
+import enterpriseEstatesImage from '@/assets/iCMAP/use-cases/enterprise-estates.png'
 import 'leaflet/dist/leaflet.css'
 import type { LatLngExpression } from 'leaflet'
 
@@ -266,11 +275,13 @@ function CoverageMap() {
   )
 }
 
+void CoverageMap
+
 // -- Use cases -----------------------------------------------------------------
 const useCases = [
   {
     label: 'Network operators',
-    image: '/images/insights/mobile-networks.jpg',
+    image: networkOperatorsImage,
     headline: 'Plan, benchmark and optimise live networks.',
     desc: 'Give engineering and planning teams a single map for coverage quality, weak zones and investment priorities.',
     points: [
@@ -281,7 +292,7 @@ const useCases = [
   },
   {
     label: 'Regulators and local authorities',
-    image: '/images/insights/public-sector.jpg',
+    image: regulatorsImage,
     headline: 'Turn coverage evidence into public action.',
     desc: 'Track commitments, understand digital exclusion and build a defensible view of where connectivity fails.',
     points: [
@@ -292,7 +303,7 @@ const useCases = [
   },
   {
     label: 'Smart infrastructure teams',
-    image: '/images/insights/smart-city.jpg',
+    image: smartInfrastructureImage,
     headline: 'Accelerate connected-place programmes.',
     desc: 'Plan connectivity across transport corridors, towns, campuses and infrastructure programmes with geospatial context.',
     points: [
@@ -303,7 +314,7 @@ const useCases = [
   },
   {
     label: 'Enterprise estates',
-    image: '/images/insights/private-networks.jpg',
+    image: enterpriseEstatesImage,
     headline: 'Manage private and operational networks.',
     desc: 'Help organisations understand site-level performance across offices, venues, campuses and operational environments.',
     points: [
@@ -319,7 +330,7 @@ const useCases = [
 const steps = [
   {
     num: '01',
-    icon: faDatabase,
+    image: icmapStep1,
     color: '#228DC1',
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
@@ -328,7 +339,7 @@ const steps = [
   },
   {
     num: '02',
-    icon: faMapLocationDot,
+    image: icmapStep2,
     color: '#3d4d9e',
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
@@ -337,7 +348,7 @@ const steps = [
   },
   {
     num: '03',
-    icon: faCrosshairs,
+    image: icmapStep3,
     color: '#059669',
     label: 'Assess weak zones',
     desc: 'Identify underserved areas and rank them by coverage quality, severity and impact.',
@@ -346,7 +357,7 @@ const steps = [
   },
   {
     num: '04',
-    icon: faRoute,
+    image: icmapStep4,
     color: '#d97706',
     label: 'Plan the next action',
     desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
@@ -509,16 +520,16 @@ export default function IcmapPage() {
       {/* -- Feature summary -- */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-stretch">
 
-            {/* Left: image with stat overlay */}
-            <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', height: 460 }}>
+            {/* Left: product image */}
+            <div className="min-h-[320px] lg:min-h-0" style={{ position: 'relative', borderRadius: 20, overflow: 'hidden' }}>
               <img
-                src="/images/insights/mobile-networks.jpg"
+                src={icmapFeatureImage}
                 alt="iCMAP network coverage analysis"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,22,40,0.06) 0%, transparent 40%, rgba(10,22,40,0.65) 100%)' }} />
+              <div style={{ display: 'none' }}>
               <div style={{ position: 'absolute', bottom: 28, left: 28, right: 28 }}>
                 <div style={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.50)', background: 'rgba(255,255,255,0.95)', padding: '18px 22px', boxShadow: '0 16px 48px rgba(10,22,40,0.18)', backdropFilter: 'blur(12px)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -533,10 +544,11 @@ export default function IcmapPage() {
                   </div>
                 </div>
               </div>
+              </div>
             </div>
 
             {/* Right: stacked feature cards */}
-            <div className="flex flex-col gap-3">
+            <div className="flex h-full flex-col gap-3">
               {[
                 { icon: faLayerGroup, stat: 'Filter',     label: 'by 2G, 3G, and 5G',                  note: 'View coverage by technology in one place',     color: '#228DC1' },
                 { icon: faMap,        stat: 'Overlay',    label: 'population and terrain data',         note: 'Add real world context to each coverage area', color: '#059669' },
@@ -545,9 +557,9 @@ export default function IcmapPage() {
               ].map((item) => (
                 <div
                   key={item.stat}
-                  className="group flex gap-5 rounded-xl border border-gray-100 bg-[#f9fafb] p-6 transition-all duration-300 hover:border-[#228DC1]/20 hover:bg-white hover:shadow-[0_8px_32px_rgba(34,141,193,0.08)]"
+                  className="group flex flex-1 gap-5 p-6"
                 >
-                  <div style={{ display: 'flex', height: 44, width: 44, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: 12, background: `${item.color}12`, border: `1px solid ${item.color}22` }}>
+                  <div style={{ display: 'flex', height: 44, width: 44, flexShrink: 0, alignItems: 'center', justifyContent: 'center' }}>
                     <FontAwesomeIcon icon={item.icon} style={{ color: item.color, fontSize: 15 }} />
                   </div>
                   <div>
@@ -563,63 +575,6 @@ export default function IcmapPage() {
         </div>
       </section>
 
-      {/* -- Live Coverage Map -- */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-2xl mb-14">
-            <h2 className="font-heading text-[#0a1628] mb-5">
-              Every area. Every technology. Clear coverage decisions.
-            </h2>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7]">
-              iCMAP brings coverage data, signal strength, population and infrastructure context into one interactive map. Teams can filter by network generation, inspect local coverage, identify weak zones, and prioritise improvements using configurable scoring.
-            </p>
-          </div>
-          <CoverageMap />
-          <>
-            <style>{`
-              .cov-feat-card {
-                transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease;
-                cursor: default;
-              }
-              .cov-feat-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 16px 40px rgba(10,22,40,0.10);
-              }
-              .cov-feat-card:hover .cov-feat-icon {
-                background-color: rgba(34,141,193,0.22);
-              }
-              .cov-feat-divider { display: none; }
-              @media (min-width: 640px) { .cov-feat-divider { display: block; } }
-            `}</style>
-            <div className="mt-10 rounded-3xl bg-[#f8fafc] px-4 py-10 sm:px-6">
-              <div className="grid sm:grid-cols-3">
-                {[
-                  { icon: faSignal,    label: 'Multi-generation visibility',     desc: 'Compare 2G, 3G, 4G and 5G coverage in one operational view.' },
-                  { icon: faGlobe,     label: 'Urban, rural and remote terrain', desc: 'Understand performance across dense cities, rural communities and hard-to-reach locations.' },
-                  { icon: faChartLine, label: 'Coverage clarity',                desc: 'Know where coverage works, where it fails, and where to act next.' },
-                ].map((item, i) => (
-                  <div key={item.label} className="relative flex">
-                    {i > 0 && (
-                      <div className="cov-feat-divider w-px self-stretch bg-[#0a1628]/[0.08] flex-shrink-0" />
-                    )}
-                    <div className="cov-feat-card flex-1 px-8 py-9 rounded-2xl">
-                      <div
-                        className="cov-feat-icon w-12 h-12 rounded-full bg-[#228DC1]/10 flex items-center justify-center mb-6"
-                        style={{ transition: 'background-color 0.28s ease' }}
-                      >
-                        <FontAwesomeIcon icon={item.icon} style={{ fontSize: 18, color: '#228DC1' }} />
-                      </div>
-                      <p className="text-[#0a1628] font-semibold text-[16px] mb-3 leading-[1.35]">{item.label}</p>
-                      <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.75]">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </>
-        </div>
-      </section>
-
       {/* -- How it works -- */}
       <section className="py-28 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
@@ -631,40 +586,49 @@ export default function IcmapPage() {
               iCMAP brings coverage, mapping and contextual data into one workspace, helping teams identify weak areas, understand local impact and plan improvements with clearer evidence.
             </p>
           </div>
-          <div className="relative">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {steps.map((step, i) => (
-                <div key={step.num} className="relative">
-                  {i < steps.length - 1 && (
-                    <div className="hidden lg:flex absolute -right-[18px] top-[18px] z-10 w-7 h-7 items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm">
-                      <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 10, color: '#0a1628', opacity: 0.35 }} />
-                    </div>
-                  )}
-                  <div
-                  className="relative flex h-full flex-col rounded-2xl bg-white border border-gray-100 p-7 shadow-[0_2px_8px_rgba(10,22,40,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
-                    style={{ borderRadius: 20, borderTop: `3px solid ${step.color}` }}
-                  >
-                    <div className="mb-6 flex items-center gap-4">
-                      <div
-                        className="flex h-[60px] w-[60px] flex-shrink-0 items-center justify-center rounded-full"
-                        style={{ background: `${step.color}12`, border: `1.5px solid ${step.color}30` }}
-                      >
-                        <FontAwesomeIcon icon={step.icon} style={{ fontSize: 20, color: step.color }} />
-                      </div>
-                      <span className="text-[32px] font-black leading-none tabular-nums" style={{ color: `${step.color}22` }}>
-                        {step.num}
-                      </span>
-                    </div>
-                    <h3 className="text-[#0a1628] font-semibold text-base leading-[1.3] mb-3">{step.label}</h3>
-                    <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.75] mb-8">{step.desc}</p>
-                    <div className="mt-auto pt-5 border-t border-gray-100">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: step.color }}>{step.detailLabel}</p>
-                      <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.65]">{step.detail}</p>
-                    </div>
+          <div className="space-y-16 lg:space-y-24">
+            {steps.map((step, i) => (
+              <article
+                key={step.num}
+                className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+              >
+                <div className={i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
+                  <img
+                    src={step.image}
+                    alt={`${step.label} interface`}
+                    className="block w-full rounded-[20px]"
+                  />
+                </div>
+
+                <div className={i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}>
+                  <div className="mb-5 flex items-center gap-4">
+                    <span
+                      className="text-[14px] font-bold uppercase tracking-[0.16em]"
+                      style={{ color: step.color }}
+                    >
+                      Step {step.num}
+                    </span>
+                  </div>
+                  <h3 className="font-heading text-[#0a1628] mb-5">
+                    {step.label}
+                  </h3>
+                  <p className="text-[#0a1628]/65 text-[17px] font-normal leading-[1.75] mb-7">
+                    {step.desc}
+                  </p>
+                  <div className="border-t border-[#0a1628]/10 pt-6">
+                    <p
+                      className="mb-3 text-[12px] font-semibold uppercase tracking-[0.12em]"
+                      style={{ color: step.color }}
+                    >
+                      {step.detailLabel}
+                    </p>
+                    <p className="text-[#0a1628]/60 text-[15px] font-normal leading-[1.75]">
+                      {step.detail}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -684,12 +648,12 @@ export default function IcmapPage() {
             {useCases.map((uc) => (
               <VisualInsightCard
                 key={uc.label}
-                eyebrow={uc.label}
                 title={uc.headline}
                 description={uc.desc}
                 image={uc.image}
                 points={uc.points}
                 accent="#228DC1"
+                flushContent
               />
             ))}
           </div>

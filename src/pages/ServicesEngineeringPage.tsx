@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faChartLine, faCircleCheck, faLayerGroup, faServer,
+  faChartLine, faLayerGroup, faServer,
   faTriangleExclamation, faNetworkWired,
   faCubes, faGaugeHigh, faCodeBranch,
   faArrowsRotate,
@@ -9,6 +9,13 @@ import {
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import VisualInsightCard from '@/components/VisualInsightCard'
+import scapScreen1 from '@/assets/SCAP/screen-1.png'
+import scapScreen2 from '@/assets/SCAP/screen-2.png'
+import scapIsometric from '@/assets/SCAP/scap-isometric.png'
+import scapModule1 from '@/assets/SCAP/cards/module-1.png'
+import scapModule2 from '@/assets/SCAP/cards/module-2.png'
+import scapModule3 from '@/assets/SCAP/cards/module-3.png'
+import scapModule4 from '@/assets/SCAP/cards/module-4.png'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -313,11 +320,69 @@ function ScapDashboardVisual() {
   )
 }
 
+void ScapDashboardVisual
+
+// -- SCAP hero screen showcase ------------------------------------------------
+const SCAP_HERO_SCREENS = [
+  { label: 'SCAP network performance dashboard', src: scapScreen1 },
+  { label: 'SCAP network operations dashboard', src: scapScreen2 },
+]
+
+function ScapHeroShowcase() {
+  const [active, setActive] = useState(0)
+  const [entered, setEntered] = useState(false)
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setTimeout(() => setEntered(true), 100))
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => setActive(current => (current + 1) % SCAP_HERO_SCREENS.length), 3200)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div
+      className="relative w-full max-w-[760px]"
+      style={{
+        opacity: entered ? 1 : 0,
+        transform: entered ? 'translateY(0)' : 'translateY(28px)',
+        transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
+      }}
+    >
+      <div
+        className="absolute -inset-8 hidden pointer-events-none lg:block"
+        style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }}
+      />
+      <div style={{ display: 'grid', filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
+        {SCAP_HERO_SCREENS.map((screen, index) => (
+          <img
+            key={screen.src}
+            src={screen.src}
+            alt={screen.label}
+            style={{
+              gridRow: '1 / 2',
+              gridColumn: '1 / 2',
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              opacity: active === index ? 1 : 0,
+              transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // -- Core modules data ---------------------------------------------------------
 const coreModules = [
   {
     abbr: 'SMO',
     icon: faLayerGroup,
+    image: scapModule1,
     title: 'Service Management & Orchestration',
     color: '#228DC1',
     capabilities: [
@@ -327,6 +392,7 @@ const coreModules = [
   {
     abbr: 'PM',
     icon: faChartLine,
+    image: scapModule2,
     title: 'Performance Management',
     color: '#059669',
     capabilities: [
@@ -336,6 +402,7 @@ const coreModules = [
   {
     abbr: 'CM',
     icon: faCodeBranch,
+    image: scapModule3,
     title: 'Configuration Management',
     color: '#7c3aed',
     capabilities: [
@@ -345,6 +412,7 @@ const coreModules = [
   {
     abbr: 'FM',
     icon: faTriangleExclamation,
+    image: scapModule4,
     title: 'Fault Management',
     color: '#d97706',
     capabilities: [
@@ -480,15 +548,14 @@ export default function ServicesEngineeringPage() {
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 72% 35%, rgba(34,141,193,0.14) 0, transparent 55%)' }} />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-8 lg:grid-cols-[1fr_1.1fr] lg:px-12">
+        <div className="relative mx-auto max-w-[1320px] px-8 lg:px-12">
+          <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <h1 className="font-serif-display mb-3 leading-[1.02] text-[#0a1628]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
               SCAP
             </h1>
-            <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              Unified network management for multi-vendor telecom environments.
-              SCAP helps operators monitor performance, manage configuration, detect faults and coordinate service management across 5G, private networks, Open RAN and hybrid network environments.
-              It brings SMO, performance management, configuration management and fault management into one operational platform, giving teams a clearer view of network health and service impact.
+            <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
+              SCAP unifies performance, configuration, fault and service management across multi-vendor 5G, private network, Open RAN and hybrid environments. Teams gain one operational view of network health, changes and service impact.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -503,12 +570,54 @@ export default function ServicesEngineeringPage() {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <ScapDashboardVisual />
+            <ScapHeroShowcase />
+          </div>
           </div>
         </div>
       </section>
 
       {/* ── CORE MODULES ──────────────────────────────────────────────────── */}
+      <section className="bg-white py-24">
+        <div ref={diffRef} className="mx-auto max-w-7xl px-8 lg:px-12">
+          <div style={reveal(diffInView, 0)} className="mb-14 max-w-3xl">
+            <h2 className="font-heading text-[#0a1628] mb-5">Why SCAP is different</h2>
+            <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
+              SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-stretch">
+            <div style={{ ...reveal(diffInView, 80), position: 'relative', borderRadius: 20, overflow: 'hidden', height: 480 }}>
+              <img
+                src={scapIsometric}
+                alt="SCAP integrated network operations platform"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </div>
+
+            <div className="flex h-full flex-col justify-between gap-8 lg:h-[480px] lg:gap-0">
+              {differentiators.map((d, i) => (
+                <div
+                  key={d.label}
+                  className="group flex gap-5"
+                  style={reveal(diffInView, 120 + i * 80)}
+                >
+                  <div
+                    className="flex h-11 w-11 shrink-0 items-center justify-center"
+                  >
+                    <FontAwesomeIcon icon={d.icon} className="h-4 w-4" style={{ color: d.color }} />
+                  </div>
+                  <div>
+                    <h3 className="mb-1.5 text-[15px] font-semibold leading-[1.3] text-[#0a1628]">{d.title}</h3>
+                    <p className="text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">{d.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-white py-24">
         <div ref={modulesRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(modulesInView, 0)}>
@@ -517,36 +626,45 @@ export default function ServicesEngineeringPage() {
               desc="SCAP brings together the core operational modules needed to monitor, manage and assure modern telecom networks. From performance dashboards to fault alerts and configuration workflows, teams can work from the same operational view and respond faster to service impacting issues."
             />
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-16 lg:space-y-24">
             {coreModules.map((mod, i) => (
-              <div
+              <article
                 key={mod.abbr}
-                className="flex flex-col rounded-2xl border border-gray-200 bg-white p-7 shadow-[0_1px_8px_rgba(10,22,40,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
+                className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
                 style={reveal(modulesInView, i * 80)}
               >
-                <div className="mb-2 flex items-center gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl" style={{ background: `${mod.color}14` }}>
-                    <FontAwesomeIcon icon={mod.icon} className="h-5 w-5" style={{ color: mod.color }} />
+                <div className={i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
+                  <img
+                    src={mod.image}
+                    alt={`${mod.title} interface`}
+                    className="block w-full rounded-[20px]"
+                  />
+                </div>
+
+                <div className={i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}>
+                  <p
+                    className="mb-5 text-[14px] font-bold uppercase tracking-[0.16em]"
+                    style={{ color: mod.color }}
+                  >
+                    {mod.abbr}
+                  </p>
+                  <h3 className="font-heading mb-5 text-[#0a1628]">{mod.title}</h3>
+                  <div className="border-t border-[#0a1628]/10 pt-6">
+                    {mod.capabilities.map(cap => (
+                      <p key={cap} className="text-[16px] font-normal leading-[1.75] text-[#0a1628]/65">
+                        {cap}
+                      </p>
+                    ))}
                   </div>
-                  <span className="text-[22px] font-black tracking-tight" style={{ color: mod.color }}>{mod.abbr}</span>
                 </div>
-                <h3 className="mb-4 text-[15px] font-semibold leading-[1.35] text-[#0a1628]">{mod.title}</h3>
-                <div className="mt-auto space-y-2.5 border-t border-gray-100 pt-5">
-                  {mod.capabilities.map(cap => (
-                    <div key={cap} className="flex items-start gap-2.5">
-                      <FontAwesomeIcon icon={faCircleCheck} className="mt-0.5 h-3.5 w-3.5 shrink-0" style={{ color: mod.color }} />
-                      <span className="text-[13px] leading-snug text-[#0a1628]/65">{cap}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── MULTI-VENDOR NETWORKS ─────────────────────────────────────────── */}
-      <section className="border-t border-[#0d2442] bg-[#0a1628] py-24">
+      <section className="bg-[#0a1628] py-24">
         <div ref={mvRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
             <div style={reveal(mvInView, 0)}>
@@ -584,78 +702,8 @@ export default function ServicesEngineeringPage() {
         </div>
       </section>
 
-      {/* ── WHY SCAP IS DIFFERENT ─────────────────────────────────────────── */}
-      <section className="bg-white py-24">
-        <div ref={diffRef} className="mx-auto max-w-7xl px-8 lg:px-12">
-
-          {/* Heading + description */}
-          <div style={reveal(diffInView, 0)} className="mb-14 max-w-3xl">
-            <h2 className="font-heading text-[#0a1628] mb-5">Why SCAP is different</h2>
-            <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform.
-            </p>
-          </div>
-
-          {/* Split: image left, feature cards right */}
-          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
-
-            {/* Left: image with stat overlay */}
-            <div style={{ ...reveal(diffInView, 80), position: 'relative', borderRadius: 20, overflow: 'hidden', height: 480 }}>
-              <img
-                src="/images/insights/engineering-team.jpg"
-                alt="SCAP network operations team"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,22,40,0.06) 0%, transparent 40%, rgba(10,22,40,0.62) 100%)' }} />
-
-              {/* Floating stat card */}
-              <div style={{ position: 'absolute', bottom: 28, left: 28, right: 28 }}>
-                <div style={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.95)', padding: '20px 22px', boxShadow: '0 16px 48px rgba(10,22,40,0.18)', backdropFilter: 'blur(12px)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
-                    <div style={{ flexShrink: 0 }}>
-                      <p style={{ fontSize: 34, fontWeight: 900, lineHeight: 1, color: '#228DC1', margin: 0 }}>4-in-1</p>
-                      <p style={{ marginTop: 4, fontSize: 12, fontWeight: 700, color: '#0a1628', margin: '4px 0 0' }}>Integrated platform</p>
-                    </div>
-                    <div style={{ width: 1, height: 44, flexShrink: 0, background: '#e5e7eb' }} />
-                    <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.55, color: 'rgba(10,22,40,0.60)', margin: 0 }}>
-                      SMO, PM, CM and FM unified in a single operational view
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: stacked feature cards */}
-            <div className="flex flex-col gap-3">
-              {differentiators.map((d, i) => (
-                <div
-                  key={d.label}
-                  className="group flex gap-5 rounded-xl border border-gray-100 bg-[#f9fafb] p-6 transition-all duration-300 hover:border-[#228DC1]/20 hover:bg-white hover:shadow-[0_8px_32px_rgba(34,141,193,0.08)]"
-                  style={reveal(diffInView, 120 + i * 80)}
-                >
-                  <div
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
-                    style={{ background: `${d.color}12`, border: `1px solid ${d.color}22` }}
-                  >
-                    <FontAwesomeIcon icon={d.icon} className="h-4 w-4" style={{ color: d.color }} />
-                  </div>
-                  <div>
-                    <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: d.color }}>
-                      {d.label}
-                    </span>
-                    <h3 className="mb-1.5 text-[15px] font-semibold leading-[1.3] text-[#0a1628]">{d.title}</h3>
-                    <p className="text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">{d.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       {/* ── DESIGNED FOR ──────────────────────────────────────────────────── */}
-      <section className="border-t border-[#0d2442] bg-[#0a1628] py-24">
+      <section className="bg-[#0a1628] py-24">
         <div ref={ucRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(ucInView, 0)}>
             <div className="mb-14 max-w-3xl">
