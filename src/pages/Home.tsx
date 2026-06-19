@@ -537,9 +537,6 @@ function Industries() {
                 />
               </div>
               <div className="flex flex-1 flex-col pb-7 pt-6">
-                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#67c5f3]">
-                  {card.tag}
-                </p>
                 <h3 className="mb-3 text-[18px] font-semibold leading-snug text-white">
                   {card.title}
                 </h3>
