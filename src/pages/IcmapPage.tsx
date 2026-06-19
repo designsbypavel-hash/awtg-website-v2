@@ -355,57 +355,17 @@ const steps = [
   },
 ]
 
-const HERO_LAYERS = ['All', 'Very Good', 'Good', 'Fair', 'Fringe'] as const
-
-const HERO_QUALITY_LEVELS = [
-  { label: 'Very Good', fill: '#72b879', stroke: '#4f9d62', signal: '-72 dBm' },
-  { label: 'Good', fill: '#a8c76f', stroke: '#83aa4d', signal: '-84 dBm' },
-  { label: 'Fair', fill: '#d6a23a', stroke: '#b98219', signal: '-94 dBm' },
-  { label: 'Fringe', fill: '#e99a78', stroke: '#d97855', signal: '-108 dBm' },
-] as const
-
-// Non-interactive hero Leaflet map — real tiles, real zone data
-function HeroCoverageMap({ activeId }: { activeId: string }) {
-  return (
-    <MapContainer
-      style={{ height: '100%', width: '100%' }}
-      center={[53.480, -2.240]}
-      zoom={10}
-      scrollWheelZoom={false}
-      zoomControl={false}
-      attributionControl={false}
-      dragging={false}
-      doubleClickZoom={false}
-      keyboard={false}
-      boxZoom={false}
-    >
-      <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
-      <MapFit />
-      {coverageZones.map((zone, index) => {
-        const quality = HERO_QUALITY_LEVELS[index % HERO_QUALITY_LEVELS.length]
-        const isActive = zone.id === activeId
-        return (
-          <Polygon
-            key={zone.id}
-            positions={zone.positions}
-            pathOptions={{
-              fillColor: quality.fill,
-              fillOpacity: isActive ? 0.72 : 0.40,
-              color: quality.stroke,
-              weight: isActive ? 2.8 : 0.9,
-              opacity: isActive ? 1 : 0.62,
-            }}
-          />
-        )
-      })}
-    </MapContainer>
-  )
-}
+// Tablet mockup carousel — cycles through real iCMAP coverage screens (2G/3G/4G/5G)
+const ICMAP_HERO_SCREENS = [
+  { label: '2G coverage', src: '/images/icmap-screens/2g.png' },
+  { label: '3G coverage', src: '/images/icmap-screens/3g.png' },
+  { label: '4G coverage', src: '/images/icmap-screens/4g.png' },
+  { label: '5G coverage', src: '/images/icmap-screens/5g.png' },
+]
 
 function IcmapHeroDemo() {
-  const [layerIdx, setLayerIdx] = useState(0)
-  const [zoneIdx,  setZoneIdx]  = useState(0)
-  const [entered,  setEntered]  = useState(false)
+  const [active, setActive] = useState(0)
+  const [entered, setEntered] = useState(false)
 
   useEffect(() => {
     const raf = requestAnimationFrame(() => setTimeout(() => setEntered(true), 100))
@@ -413,138 +373,39 @@ function IcmapHeroDemo() {
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setLayerIdx(p => (p + 1) % HERO_LAYERS.length), 2600)
+    const id = setInterval(() => setActive(p => (p + 1) % ICMAP_HERO_SCREENS.length), 2800)
     return () => clearInterval(id)
   }, [])
-
-  useEffect(() => {
-    const id = setInterval(() => setZoneIdx(p => (p + 1) % coverageZones.length), 2000)
-    return () => clearInterval(id)
-  }, [])
-
-  const activeZone = coverageZones[zoneIdx]
-  const activeQuality = HERO_QUALITY_LEVELS[zoneIdx % HERO_QUALITY_LEVELS.length]
 
   return (
-    <div style={{
-      width: '100%', maxWidth: 500,
-      opacity: entered ? 1 : 0,
-      transform: entered ? 'translateY(0)' : 'translateY(28px)',
-      transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
-    }}>
-      <div style={{
-        borderRadius: 12, overflow: 'hidden',
-        boxShadow: '0 32px 72px rgba(10,22,40,0.20), 0 6px 24px rgba(10,22,40,0.10)',
-        border: '1px solid rgba(0,0,0,0.1)',
-        background: '#fff',
-      }}>
+    <div
+      className="relative w-full max-w-[620px]"
+      style={{
+        opacity: entered ? 1 : 0,
+        transform: entered ? 'translateY(0)' : 'translateY(28px)',
+        transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
+      }}
+    >
+      <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }} />
 
-        {/* Browser chrome */}
-        <div style={{ background: '#e4e4e4', padding: '7px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ display: 'flex', gap: 5 }}>
-            <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#fc5f57' }} />
-            <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
-            <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
-          </div>
-          <div style={{
-            flex: 1, background: '#fff', borderRadius: 5, padding: '3px 10px',
-            fontSize: 11, color: '#555', fontFamily: 'sans-serif',
-            border: '1px solid rgba(0,0,0,0.12)', display: 'flex', alignItems: 'center', gap: 5,
-          }}>
-            <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
-              <circle cx="6" cy="6" r="5" stroke="#aaa" strokeWidth="1.2"/>
-              <path d="M6 3v3l2 1.5" stroke="#aaa" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
-            app.icmap.awtg.co.uk/coverage
-          </div>
-        </div>
-
-        {/* App: sidebar + map */}
-        <div style={{ display: 'flex', height: 322 }}>
-
-          {/* Sidebar */}
-          <div style={{
-            width: 118, background: '#fff', borderRight: '1px solid #ebebeb',
-            display: 'flex', flexDirection: 'column', padding: '10px 9px', gap: 9, flexShrink: 0,
-          }}>
-            {/* iCMAP brand */}
-            <div style={{ paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                <div style={{ width: 18, height: 18, borderRadius: 4, background: '#228DC1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                    <circle cx="6" cy="6" r="5" stroke="#fff" strokeWidth="1.2"/>
-                    <circle cx="6" cy="6" r="2" fill="#fff"/>
-                  </svg>
-                </div>
-                <span style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>iCMAP</span>
-              </div>
-              <div style={{ fontSize: 11, color: '#666', marginTop: 3, fontFamily: 'sans-serif' }}>Coverage Intelligence</div>
-            </div>
-
-            {/* Layers */}
-            <div>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: '#666', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Layers</p>
-              {HERO_LAYERS.map((l, i) => (
-                <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4, padding: '3px 5px', borderRadius: 4, background: layerIdx === i ? '#f0f7ff' : 'transparent', transition: 'background 0.35s' }}>
-                  <div style={{ width: 11, height: 11, borderRadius: '50%', flexShrink: 0, background: layerIdx === i ? '#228DC1' : '#fff', border: `1.5px solid ${layerIdx === i ? '#228DC1' : '#d0d0d0'}`, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {layerIdx === i && <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#fff' }} />}
-                  </div>
-                  <span style={{ fontSize: 11, fontFamily: 'sans-serif', fontWeight: layerIdx === i ? 600 : 400, color: layerIdx === i ? '#1a7aab' : '#666', transition: 'color 0.3s' }}>{l}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Legend — from zoneStyle */}
-            <div style={{ flex: 1 }}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: '#666', textTransform: 'uppercase', marginBottom: 5, fontFamily: 'sans-serif' }}>Legend</p>
-              {HERO_QUALITY_LEVELS.map((quality, index) => {
-                const isActive = zoneIdx % HERO_QUALITY_LEVELS.length === index
-                return (
-                  <div key={quality.label} style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 5, opacity: isActive ? 1 : 0.52, transition: 'opacity 0.4s' }}>
-                    <div style={{ width: 14, height: 9, borderRadius: 2, background: quality.fill, flexShrink: 0 }} />
-                    <span style={{ fontSize: 11, color: '#333', fontFamily: 'sans-serif', fontWeight: isActive ? 600 : 400 }}>{quality.label}</span>
-                  </div>
-                )
-              })}
-            </div>
-
-            {/* Active zone card */}
-            <div style={{ background: '#f8fafc', borderRadius: 5, padding: '5px 7px', border: `1px solid ${activeQuality.fill}66`, transition: 'border-color 0.4s' }}>
-              <div style={{ fontSize: 11, color: '#666', fontFamily: 'sans-serif', marginBottom: 2, textTransform: 'uppercase' }}>Coverage zone</div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: '#0a1628', fontFamily: 'sans-serif' }}>{activeQuality.label}</div>
-              <div style={{ fontSize: 11, color: activeQuality.stroke, fontFamily: 'sans-serif', marginTop: 1, fontWeight: 600 }}>{activeQuality.signal}</div>
-              <div style={{ fontSize: 11, color: '#666', fontFamily: 'sans-serif' }}>{activeZone.population}</div>
-            </div>
-          </div>
-
-          {/* Real Leaflet map */}
-          <div style={{ flex: 1, position: 'relative', overflow: 'hidden', zIndex: 0 }}>
-            <HeroCoverageMap activeId={activeZone.id} />
-
-            <div style={{
-              position: 'absolute', top: 10, right: 10, zIndex: 1000,
-              background: 'rgba(255,255,255,0.92)', border: '1px solid rgba(0,0,0,0.12)',
-              borderRadius: 4, overflow: 'hidden', boxShadow: '0 2px 8px rgba(10,22,40,0.08)',
-            }}>
-              <div style={{ width: 24, height: 23, display: 'grid', placeItems: 'center', fontSize: 14, color: '#555', fontFamily: 'sans-serif', borderBottom: '1px solid #ddd' }}>+</div>
-              <div style={{ width: 24, height: 23, display: 'grid', placeItems: 'center', fontSize: 14, color: '#555', fontFamily: 'sans-serif' }}>-</div>
-            </div>
-
-            {/* Attribution overlay */}
-            <div style={{
-              position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 1000,
-              background: 'rgba(255,255,255,0.85)', padding: '3px 8px',
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              borderTop: '1px solid rgba(0,0,0,0.06)',
-            }}>
-              <span style={{ fontSize: 11, color: '#666', fontFamily: 'sans-serif' }}>OpenStreetMap - CartoDB Light</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#22c55e' }} />
-                <span style={{ fontSize: 11, color: '#22c55e', fontFamily: 'sans-serif', fontWeight: 600 }}>LIVE</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* All screens stacked in the same grid cell — preloaded at mount, crossfade with no gap */}
+      <div style={{ display: 'grid', filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
+        {ICMAP_HERO_SCREENS.map((s, i) => (
+          <img
+            key={s.src}
+            src={s.src}
+            alt={s.label}
+            style={{
+              gridRow: '1 / 2',
+              gridColumn: '1 / 2',
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              opacity: active === i ? 1 : 0,
+              transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
+            }}
+          />
+        ))}
       </div>
     </div>
   )
