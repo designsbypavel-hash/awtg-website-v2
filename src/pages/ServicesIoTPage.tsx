@@ -6,6 +6,8 @@ import {
   faMapLocationDot, faNetworkWired,
   faSearchLocation,
   faDatabase,
+  faBuildingColumns,
+  faTowerBroadcast,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
@@ -229,9 +231,41 @@ const capabilities = [
   { icon: faNetworkWired,    title: 'Integration-Ready Platform',  color: '#0891b2', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
 ]
 
-const audienceVisuals = [
-  { title: 'Asset Owners', image: idamsAssetOwnersVisual },
-  { title: 'Mobile Network Operators & Neutral Hosts', image: idamsNetworkOperatorsVisual },
+const ownerBenefits = [
+  'Centralised asset register',
+  'Map-based asset visibility',
+  'Flexible data import and export',
+  'Configurable asset categories and metadata',
+  'Approval workflow for acquisition requests',
+  'Improved governance and auditability',
+]
+
+const operatorBenefits = [
+  'Faster site identification',
+  'Reduced manual communication',
+  'Clearer asset availability and metadata',
+  'Streamlined request and approval process',
+  'Improved collaboration with asset owners',
+  'Support for telecom site deployment and wider infrastructure use cases',
+]
+
+const audiences = [
+  {
+    icon: faBuildingColumns, color: '#228DC1',
+    title: 'Asset Owners',
+    who: 'Local authorities, public bodies, landlords, and private organisations',
+    desc: 'iDAMS helps asset owners make their infrastructure visible and available for commercial or public-service use. Import asset data, manage records, define availability, review requests, and track the full acquisition process from enquiry to approval.',
+    benefits: ownerBenefits,
+    image: idamsAssetOwnersVisual,
+  },
+  {
+    icon: faTowerBroadcast, color: '#3d4d9e',
+    title: 'Mobile Network Operators & Neutral Hosts',
+    who: 'MNOs, neutral hosts, and telecom infrastructure providers',
+    desc: 'iDAMS helps operators identify suitable locations for network deployment more quickly. Search assets geographically, filter by metadata, select individual or multiple assets, and submit requests through a structured process.',
+    benefits: operatorBenefits,
+    image: idamsNetworkOperatorsVisual,
+  },
 ]
 
 const idamsUseCases = [
@@ -385,16 +419,36 @@ export default function ServicesIoTPage() {
             </div>
           </div>
 
-          {/* Audience dashboards - stacked full-width */}
-          <div className="flex flex-col gap-10">
-            {audienceVisuals.map((aud, i) => (
-              <div
-                key={aud.title}
-                style={{ ...reveal(audInView, 150 + i * 150), borderRadius: 20, overflow: 'hidden', boxShadow: '0 18px 48px rgba(10,22,40,0.08)' }}
-              >
-                <img src={aud.image} alt={aud.title} className="block h-auto w-full" loading="lazy" />
-              </div>
-            ))}
+          {/* Audience rows - alternating text / image */}
+          <div className="flex flex-col gap-16 lg:gap-20">
+            {audiences.map((aud, i) => {
+              const imageFirst = i % 2 === 1
+              return (
+                <div key={aud.title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                  <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'} style={reveal(audInView, 150 + i * 150)}>
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: `${aud.color}14` }}>
+                      <FontAwesomeIcon icon={aud.icon} className="h-5 w-5" style={{ color: aud.color }} />
+                    </div>
+                    <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0a1628]/45">{aud.who}</p>
+                    <h3 className="font-heading text-[#0a1628] mb-4">{aud.title}</h3>
+                    <p className="mb-6 text-[16px] font-normal leading-[1.75] text-[#0a1628]/65">{aud.desc}</p>
+                    <div className="grid gap-2.5 border-t border-[#0a1628]/10 pt-6 sm:grid-cols-2">
+                      {aud.benefits.map((b) => (
+                        <div key={b} className="flex items-start gap-2.5">
+                          <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: aud.color }} />
+                          <span className="text-[13.5px] font-normal leading-snug text-[#0a1628]/65">{b}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'} style={reveal(audInView, i * 150)}>
+                    <div className="overflow-hidden rounded-2xl shadow-[0_18px_48px_rgba(10,22,40,0.08)]">
+                      <img src={aud.image} alt={aud.title} className="block h-auto w-full" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
 
         </div>
