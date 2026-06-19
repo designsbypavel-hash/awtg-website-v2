@@ -503,7 +503,7 @@ const industryCards = [
     desc: 'How AWTG delivered digital infrastructure and connectivity underpinning local authority high street recovery programmes across retail and leisure sectors.',
     cta: 'Read the case study',
     href: '/insights/case-studies/high-street-recovery',
-    img: '/images/insights/public-sector.jpg',
+    img: 'https://images.unsplash.com/photo-1660620949746-c0f2a54538ef?w=900&q=85&auto=format&fit=crop',
   },
 ]
 
