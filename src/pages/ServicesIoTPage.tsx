@@ -447,15 +447,16 @@ export default function ServicesIoTPage() {
                 </div>
 
                 <div
-                  className={`mx-auto flex h-[340px] items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_8px_48px_rgba(10,22,40,0.1)] lg:h-[420px] ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}
+                  className={`group relative mx-auto h-[340px] overflow-hidden rounded-2xl bg-[#f6f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:h-[420px] ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}
                   style={{ aspectRatio: cap.aspect, maxWidth: '100%' }}
                 >
                   <img
                     src={cap.image}
                     alt={`${cap.title} interface`}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/16 via-transparent to-transparent" />
                 </div>
               </article>
             ))}
