@@ -34,12 +34,12 @@ const certISO42001 = new URL('../assets/cert-iso42001.svg', import.meta.url).hre
 const integrationLogos = {
   appleMail: new URL('../assets/Integration/Apple Mail.svg', import.meta.url).href,
   doc: new URL('../assets/Integration/Doc.svg', import.meta.url).href,
+  elevenLabs: new URL('../assets/Integration/ElevenLabs.svg', import.meta.url).href,
   excel: new URL('../assets/Integration/Excel.svg', import.meta.url).href,
   gmail: new URL('../assets/Integration/Gmail.svg', import.meta.url).href,
   hubspot: new URL('../assets/Integration/Hubspot.svg', import.meta.url).href,
   jira: new URL('../assets/Integration/Jira.svg', import.meta.url).href,
   outlook: new URL('../assets/Integration/Outlook.svg', import.meta.url).href,
-  protonMail: new URL('../assets/Integration/Proton Mail.svg', import.meta.url).href,
   salesforce: new URL('../assets/Integration/Salesforce.svg', import.meta.url).href,
   zendesk: new URL('../assets/Integration/Zendesk.svg', import.meta.url).href,
   serviceNow: new URL('../assets/Integration/ServiceNow.svg', import.meta.url).href,
@@ -198,7 +198,7 @@ function IntegrationsSection() {
   const items: Item[] = [
     { label: 'HubSpot',      category: 'CRM',        logo: integrationLogos.hubspot },
     { label: 'Salesforce',   category: 'CRM',        logo: integrationLogos.salesforce },
-    { label: 'Proton Mail',  category: 'Email',      logo: integrationLogos.protonMail },
+    { label: 'ElevenLabs',   category: 'Voice AI',   logo: integrationLogos.elevenLabs },
     { label: 'Yahoo Mail',   category: 'Email',      logo: integrationLogos.yahooMail },
     { label: 'Apple Mail',   category: 'Email',      logo: integrationLogos.appleMail },
     { label: 'Docs',         category: 'Knowledge',  logo: integrationLogos.doc },
