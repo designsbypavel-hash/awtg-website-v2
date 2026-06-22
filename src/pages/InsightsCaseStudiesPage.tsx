@@ -166,36 +166,33 @@ export default function InsightsCaseStudiesPage() {
       <section className="bg-[#f8fafc] py-20">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <p className="type-label text-[#0a1628]/60 mb-10">All case studies</p>
-          <div className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
             {filteredStudies.map((cs) => (
               <Link
                 key={cs.slug}
                 to={`/insights/case-studies/${cs.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#0a1628]/8 bg-white shadow-[0_8px_30px_rgba(10,22,40,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(10,22,40,0.11)]"
+                className="group flex flex-col"
               >
-                <div className="relative aspect-[16/9] overflow-hidden bg-[#e8f4fa]">
+                <div className="aspect-video overflow-hidden rounded-xl bg-[#e8f4fa]">
                   <InsightImage
                     src={getCaseStudyImage(cs.slug, cs.tag)}
                     alt={cs.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/16 via-transparent to-transparent" />
                 </div>
-                <div className="flex flex-1 flex-col p-7">
-                  <span className="mb-4 text-[11px] font-semibold text-[#0a1628]/50">
+                <div className="flex flex-1 flex-col pt-6">
+                  <span className="mb-3 text-[11px] font-semibold text-[#0a1628]/50">
                     {cs.date.split(' ').pop()}
                   </span>
-                  <h3 className="mb-3 text-[17px] font-semibold leading-[1.3] text-[#0a1628]">
+                  <h3 className="mb-3 text-[18px] font-semibold leading-snug text-[#0a1628]">
                     {cs.title}
                   </h3>
-                  <p className="mb-7 text-[13px] font-normal leading-[1.72] text-[#0a1628]/60">
+                  <p className="mb-5 text-[13px] font-normal leading-[1.7] text-[#0a1628]/60">
                     {cs.excerpt}
                   </p>
-                  <div className="mt-auto border-t border-[#0a1628]/8 pt-5">
-                    <span className="text-[12px] font-semibold text-[#1a7aab] transition-colors group-hover:text-[#0a1628]">
-                      Read case study
-                    </span>
-                  </div>
+                  <span className="mt-auto inline-flex items-center text-[12px] font-semibold text-[#1a7aab] transition-colors group-hover:text-[#0a1628]">
+                    Read case study
+                  </span>
                 </div>
               </Link>
             ))}
