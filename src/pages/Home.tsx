@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import kaiMockup from '../assets/Mockup/KAi_Mockup.png'
 import idamsMockup from '../assets/Mockup/Conecctivity_iDAMS mockup.png'
+import { getCaseStudyImage } from '@/lib/insightImages'
 
 // --- BRAND SVG LOGOS --------------------------------------------------------
 
@@ -487,15 +488,15 @@ const industryCards = [
     desc: "Open RAN's disaggregated architecture creates powerful flexibility and new security exposure. iTRUSTRIC secures data flows, improves network visibility and ensures compliance across multi-vendor Open RAN deployments.",
     cta: 'Read the case study',
     href: '/insights/case-studies/itrustric-open-ran-security',
-    img: '/images/insights/open-ran.jpg',
+    img: getCaseStudyImage('itrustric-open-ran-security', 'Open RAN Security'),
   },
   {
     tag: 'Network Economics',
     title: "AWTG's Service Assurance and Service Creation Platform",
-    desc: 'A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG\'s iSASCP platform.',
+    desc: "A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
     cta: 'Read the case study',
     href: '/insights/case-studies/tot-service-assurance',
-    img: '/images/insights/performance-testing.jpg',
+    img: getCaseStudyImage('tot-service-assurance', 'Network Economics'),
   },
   {
     tag: 'Public Sector',
@@ -503,7 +504,47 @@ const industryCards = [
     desc: 'How AWTG delivered digital infrastructure and connectivity underpinning local authority high street recovery programmes across retail and leisure sectors.',
     cta: 'Read the case study',
     href: '/insights/case-studies/high-street-recovery',
-    img: 'https://images.unsplash.com/photo-1660620949746-c0f2a54538ef?w=900&q=85&auto=format&fit=crop',
+    img: getCaseStudyImage('high-street-recovery', 'Public Sector'),
+  },
+  {
+    tag: 'Mobile Networks',
+    title: 'Central London Benchmarking',
+    desc: "Multidimensional benchmarking across four major UK operators, comparing 3G, EE's newly launched LTE and carrier-grade outdoor Wi-Fi in Central London.",
+    cta: 'Read the case study',
+    href: '/insights/case-studies/central-london-benchmarking',
+    img: getCaseStudyImage('central-london-benchmarking', 'Mobile Networks'),
+  },
+  {
+    tag: 'Capacity Planning',
+    title: 'Data Offloading with WiFi Enabled Devices',
+    desc: 'A laboratory demonstration of seamless cellular-to-WiFi offloading for dual-mode devices, examining the technical and commercial case for operator-managed offload.',
+    cta: 'Read the case study',
+    href: '/insights/case-studies/data-offloading-wifi',
+    img: getCaseStudyImage('data-offloading-wifi', 'Capacity Planning'),
+  },
+  {
+    tag: 'Performance Testing',
+    title: 'AKT: Stability Testing Scenario',
+    desc: "Multi-day network stability assessment using AWTG's Broadband Tester agents to measure user-perceived speed, reliability and quality of experience.",
+    cta: 'Read the case study',
+    href: '/insights/case-studies/akt-stability-testing',
+    img: getCaseStudyImage('akt-stability-testing', 'Performance Testing'),
+  },
+  {
+    tag: 'Mobile Services',
+    title: 'Rich Communications Suite',
+    desc: "AWTG's analysis of the GSMA RCS-e initiative — how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
+    cta: 'Read the case study',
+    href: '/insights/case-studies/rich-communications-suite',
+    img: getCaseStudyImage('rich-communications-suite', 'Mobile Services'),
+  },
+  {
+    tag: 'Site Acquisition',
+    title: 'Site Acquisition Proposition for Small Cell/3G Data Offload',
+    desc: "A site acquisition proposition for small cell deployment in high-density urban areas, drawing on AWTG's experience building outdoor small cell networks for O2.",
+    cta: 'Read the case study',
+    href: '/insights/case-studies/small-cell-site-acquisition',
+    img: getCaseStudyImage('small-cell-site-acquisition', 'Site Acquisition'),
   },
 ]
 
