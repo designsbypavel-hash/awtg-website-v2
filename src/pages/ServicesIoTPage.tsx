@@ -439,7 +439,7 @@ export default function ServicesIoTPage() {
             {capabilities.map((cap, i) => (
               <article
                 key={cap.title}
-                className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16"
+                className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
                 style={reveal(capInView, i * 70)}
               >
                 <div className={i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
