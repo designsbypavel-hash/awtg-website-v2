@@ -666,86 +666,38 @@ export default function InsightsNewsPage() {
             <p className="text-[#0a1628]/60 text-sm">{filteredNews.length} items</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 xl:grid-cols-3">
             {visibleNews.map((item, index) => {
               const isWide = index === 0
-              const isAccent = index === 4 || index === 10 || index === 16
               const hasVideo = !!getNewsVideoUrl(item)
-
-              if (isWide) {
-                return (
-                  <Link
-                    key={`${item.title}-${item.date}`}
-                    to={getNewsHref(item)}
-                    className="group bg-white xl:col-span-2 md:col-span-2"
-                  >
-                    <div className="h-72 relative overflow-hidden rounded-2xl bg-gray-100">
-                      <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    </div>
-                    <div className="p-8">
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                          {item.category}
-                        </span>
-                        <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
-                      </div>
-                      <h3 className="font-h4 text-[#0a1628] mb-3">{cleanText(item.title)}</h3>
-                      <p className="text-[#0a1628]/60 text-sm leading-relaxed max-w-2xl">{cleanText(item.excerpt)}</p>
-                    </div>
-                  </Link>
-                )
-              }
-
-              if (isAccent) {
-                return (
-                  <Link
-                    key={`${item.title}-${item.date}`}
-                    to={getNewsHref(item)}
-                    className="group bg-white"
-                  >
-                    <div className="h-44 relative overflow-hidden rounded-2xl bg-gray-100">
-                      <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div className="p-6">
-                      <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                          {item.category}
-                        </span>
-                        <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
-                      </div>
-                      <h3 className="font-h5 text-[#0a1628] mb-3">{cleanText(item.title)}</h3>
-                      <p className="text-[#0a1628]/60 text-[13px] leading-[1.7] mb-5">{cleanText(item.excerpt)}</p>
-                      <div className="flex items-center gap-2 text-[#1a7aab] text-xs font-semibold pt-4 border-t border-gray-100">
-                        {hasVideo ? 'Watch story' : 'Read story'}
-                      </div>
-                    </div>
-                  </Link>
-                )
-              }
 
               return (
                 <Link
                   key={`${item.title}-${item.date}`}
                   to={getNewsHref(item)}
-                  className="group bg-white"
+                  className={`group flex flex-col ${isWide ? 'md:col-span-2 xl:col-span-2' : ''}`}
                 >
-                  <div className="h-44 relative overflow-hidden rounded-2xl">
-                    <InsightImage src={getNewsImage(item.category, index)} alt={cleanText(item.title)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="aspect-video overflow-hidden rounded-xl bg-gray-100">
+                    <InsightImage
+                      src={getNewsImage(item.category, index)}
+                      alt={cleanText(item.title)}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
-                  <div className="p-6">
+                  <div className="flex flex-1 flex-col pt-6">
                     <div className="flex flex-wrap items-center gap-3 mb-4">
                       <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
                         {item.category}
                       </span>
                       <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
                     </div>
-                    <h3 className="font-h5 text-[#0a1628] mb-3">
+                    <h3 className={`${isWide ? 'font-h4' : 'font-h5'} text-[#0a1628] mb-3`}>
                       {cleanText(item.title)}
                     </h3>
-                    <p className="text-[#0a1628]/60 text-[14px] font-normal leading-[1.7]">
+                    <p className={`text-[#0a1628]/60 ${isWide ? 'text-sm leading-relaxed max-w-2xl' : 'text-[13px] leading-[1.7]'} mb-5`}>
                       {cleanText(item.excerpt)}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em]">
+                    <span className="mt-auto inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em] transition-colors group-hover:text-[#0a1628]">
                       {hasVideo ? 'Watch story' : 'Read story'}
                     </span>
                   </div>
