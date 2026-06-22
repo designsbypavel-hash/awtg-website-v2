@@ -581,7 +581,7 @@ export default function InsightsNewsPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden" style={{ minHeight: 540 }}>
+      <section className="relative overflow-hidden" style={{ minHeight: 500 }}>
         <img
           src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
           alt="AWTG News"
@@ -593,10 +593,9 @@ export default function InsightsNewsPage() {
         />
         <div
           className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
-          style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
+          style={{ minHeight: 500, paddingTop: 140, paddingBottom: 72 }}
         >
           <div style={{ maxWidth: 600 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#1a7aab] mb-5">News</p>
             <h1
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}

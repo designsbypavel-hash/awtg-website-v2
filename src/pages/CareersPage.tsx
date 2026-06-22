@@ -36,7 +36,7 @@ export default function CareersPage() {
   return (
     <>
       {/* ── HERO — full-bleed image, no text on photo ── */}
-      <section className="relative overflow-hidden" style={{ minHeight: 680 }}>
+      <section className="relative overflow-hidden" style={{ minHeight: 640 }}>
         <img
           src="/images/insights/mobile-networks.jpg"
           alt="AWTG Careers"
@@ -52,12 +52,9 @@ export default function CareersPage() {
         />
         <div
           className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
-          style={{ minHeight: 680, paddingTop: 140, paddingBottom: 88 }}
+          style={{ minHeight: 640, paddingTop: 140, paddingBottom: 88 }}
         >
           <div style={{ maxWidth: 640 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#1a7aab] mb-5">
-              Careers at AWTG
-            </p>
             <h1
               className="font-serif-display text-white leading-[1.06] mb-7"
               style={{ fontSize: 'clamp(36px, 4.5vw, 60px)' }}

@@ -80,7 +80,7 @@ export default function InsightsCaseStudiesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{ minHeight: 540 }}>
+      <section className="relative overflow-hidden" style={{ minHeight: 500 }}>
         <img
           src="/images/insights/education.jpg"
           alt="AWTG Case Studies"
@@ -92,10 +92,9 @@ export default function InsightsCaseStudiesPage() {
         />
         <div
           className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
-          style={{ minHeight: 540, paddingTop: 140, paddingBottom: 72 }}
+          style={{ minHeight: 500, paddingTop: 140, paddingBottom: 72 }}
         >
           <div style={{ maxWidth: 600 }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.24em] text-[#1a7aab] mb-5">Case Studies</p>
             <h1
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
