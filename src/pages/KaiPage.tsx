@@ -149,7 +149,7 @@ function GlobalReachSection() {
           {/* Left - heading, body, stat cards */}
           <div style={reveal(inView, 0)}>
             <h2 className="font-heading text-[#0a1628] mb-5">
-              Global reach.{' '}<span className="text-[#1a7aab]">Measurable customer outcomes.</span>
+              Global reach.<br /><span className="text-[#1a7aab]">Measurable customer outcomes.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] mb-10">
               Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from day 1.
