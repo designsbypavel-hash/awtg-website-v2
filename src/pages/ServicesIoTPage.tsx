@@ -193,7 +193,7 @@ function IdamsHeroShowcase() {
     >
       <div
         className="absolute -inset-8 hidden pointer-events-none lg:block"
-        style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(61,77,158,0.18) 0, rgba(61,77,158,0.08) 34%, transparent 72%)' }}
+        style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }}
       />
       <div style={{ display: 'grid', filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
         {IDAMS_HERO_SCREENS.map((screen, index) => (
@@ -310,14 +310,14 @@ export default function ServicesIoTPage() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #eceef8 0%, #dde0f4 40%, #cdd2ef 100%)' }}>
+      <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
 
-        {/* Diagonal dot-grid */}
+        {/* Dot-grid background */}
         <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="idamsGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <circle cx="1" cy="1" r="1" fill="rgba(61,77,158,0.38)" />
+                <circle cx="1" cy="1" r="1" fill="rgba(34,141,193,0.35)" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#idamsGrid)" />
@@ -325,50 +325,66 @@ export default function ServicesIoTPage() {
         </div>
 
         {/* Diagonal connecting lines */}
-        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.10 }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.12 }}>
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="idamsLines" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <line x1="0" y1="40" x2="80" y2="40" stroke="rgba(61,77,158,1)" strokeWidth="0.5" />
-                <line x1="40" y1="0" x2="40" y2="80" stroke="rgba(61,77,158,1)" strokeWidth="0.5" />
+              <pattern id="idamsHeroLines" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="40" x2="80" y2="40" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
+                <line x1="40" y1="0" x2="40" y2="80" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#idamsLines)" />
+            <rect width="100%" height="100%" fill="url(#idamsHeroLines)" />
           </svg>
         </div>
 
         {/* Decorative + crosses */}
-        {[{ top:'16%', left:'5%' }, { top:'54%', left:'3%' }, { top:'74%', left:'9%' }, { top:'30%', left:'43%' }].map((pos, i) => (
-          <div key={i} className="absolute pointer-events-none select-none text-[#3d4d9e]"
-            style={{ top: pos.top, left: pos.left, fontSize: 18, opacity: 0.30, fontWeight: 300, lineHeight: 1 }}>+</div>
+        {[
+          { top: '18%', left: '6%' }, { top: '52%', left: '3%' },
+          { top: '72%', left: '9%' }, { top: '30%', left: '42%' },
+          { top: '62%', left: '38%' },
+        ].map((pos, i) => (
+          <div key={i} className="absolute pointer-events-none select-none text-[#228DC1]"
+            style={{ top: pos.top, left: pos.left, fontSize: 18, opacity: 0.35, fontWeight: 300, lineHeight: 1 }}>+</div>
         ))}
 
+        {/* Decorative diamond */}
+        <div className="absolute pointer-events-none" style={{ top: '42%', left: '4.5%', opacity: 0.25 }}>
+          <svg width="14" height="14" viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" transform="rotate(45 7 7)" fill="none" stroke="#228DC1" strokeWidth="1.5"/></svg>
+        </div>
+
+        {/* Decorative dots */}
+        <div className="absolute rounded-full pointer-events-none" style={{ top: '12%', left: '7%', width: 5, height: 5, background: 'rgba(34,141,193,0.3)' }} />
+        <div className="absolute rounded-full pointer-events-none" style={{ top: '68%', left: '5%', width: 6, height: 6, background: 'rgba(34,141,193,0.35)' }} />
+
         {/* Radial glow */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 35%, rgba(61,77,158,0.12) 0, transparent 55%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 72% 35%, rgba(34,141,193,0.14) 0, transparent 55%)' }} />
 
         <div className="relative mx-auto max-w-[1320px] px-8 lg:px-12">
           <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <h1 className="font-serif-display mb-6 leading-[1.02] text-[#0a1628]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
-              iDAMS
-            </h1>
-            <h2 className="mb-5 max-w-xl text-[30px] font-semibold leading-[1.15] text-[#0a1628] lg:text-[40px]">
+            <div className="mb-8">
+              <span className="text-[14px] font-bold uppercase tracking-[0.16em] text-[#228DC1]">
+                iDAMS
+              </span>
+            </div>
+            <h1 className="font-serif-display mb-6 leading-[1.05] text-[#0a1628]" style={{ fontSize: 'clamp(28px, 3.2vw, 40px)' }}>
               Digital asset management for smarter infrastructure sharing.
-            </h2>
+            </h1>
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
               iDAMS helps local authorities, operators and infrastructure partners discover, assess and manage telecom and public assets through one secure map-based workspace.
             </p>
-            <button
-              type="button"
-              onClick={() => setIsDemoOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[14px] font-semibold text-white transition-all hover:-translate-y-0.5"
-              style={{ background: '#3d4d9e', boxShadow: '0 6px 24px rgba(61,77,158,0.30)' }}
-            >
-              Request a Demo
-            </button>
+            <div className="flex flex-wrap gap-4">
+              <button
+                type="button"
+                onClick={() => setIsDemoOpen(true)}
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors"
+              >
+                Request a Demo
+              </button>
+            </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex items-center justify-center lg:justify-end">
             <IdamsHeroShowcase />
           </div>
           </div>
