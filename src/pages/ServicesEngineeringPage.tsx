@@ -319,7 +319,7 @@ export default function ServicesEngineeringPage() {
           </div>
 
           <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-stretch">
-            <div style={{ ...reveal(diffInView, 80), position: 'relative', borderRadius: 20, overflow: 'hidden', height: 480 }}>
+            <div style={{ ...reveal(diffInView, 80), position: 'relative', borderRadius: 20, overflow: 'hidden', height: 480, border: '1px solid rgba(10,22,40,0.12)', boxShadow: '0 16px 40px rgba(10,22,40,0.12)' }}>
               <img
                 src={scapKpiDashboard}
                 alt="SCAP KPI dashboard showing performance controls and service metrics"
@@ -365,7 +365,7 @@ export default function ServicesEngineeringPage() {
                 className={`grid items-center gap-10 lg:gap-12 ${i % 2 === 0 ? 'lg:grid-cols-[1.15fr_0.85fr]' : 'lg:grid-cols-[0.85fr_1.15fr]'}`}
                 style={reveal(modulesInView, i * 80)}
               >
-                <div className={`aspect-[16/9] overflow-hidden rounded-2xl border border-[#0a1628]/10 bg-white shadow-[0_12px_34px_rgba(10,22,40,0.09)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div className={`aspect-[16/9] overflow-hidden rounded-2xl border border-[#0a1628]/15 bg-white shadow-[0_16px_40px_rgba(10,22,40,0.14)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                   <img
                     src={mod.image}
                     alt={`${mod.title} interface`}
