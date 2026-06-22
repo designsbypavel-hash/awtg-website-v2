@@ -228,12 +228,12 @@ function SectionHeader({ title, desc }: { title: ReactNode; desc: string }) {
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const capabilities = [
-  { image: idamsCapability1, title: 'Interactive Asset Map', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
-  { image: idamsCapability2, title: 'Advanced Search & Filtering', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
-  { image: idamsCapability3, title: 'Asset Data Management', desc: 'Import, create, update, and manage asset records in one place. iDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
-  { image: idamsCapability4, title: 'Acquisition Workflow', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications - keeping every request visible and accountable.' },
-  { image: idamsCapability5, title: 'Reporting & Insights', desc: 'Use dashboards, reports, and exports to understand asset usage, acquisition progress, and operational performance across your estate.' },
-  { image: idamsCapability6, title: 'Integration-Ready Platform', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
+  { image: idamsCapability1, aspect: '1535 / 1024', title: 'Interactive Asset Map', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
+  { image: idamsCapability2, aspect: '1024 / 1535', title: 'Advanced Search & Filtering', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
+  { image: idamsCapability3, aspect: '1024 / 1535', title: 'Asset Data Management', desc: 'Import, create, update, and manage asset records in one place. iDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
+  { image: idamsCapability4, aspect: '1535 / 1024', title: 'Acquisition Workflow', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications - keeping every request visible and accountable.' },
+  { image: idamsCapability5, aspect: '1535 / 1024', title: 'Reporting & Insights', desc: 'Use dashboards, reports, and exports to understand asset usage, acquisition progress, and operational performance across your estate.' },
+  { image: idamsCapability6, aspect: '1535 / 1024', title: 'Integration-Ready Platform', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
 ]
 
 const ownerBenefits = [
@@ -261,6 +261,7 @@ const audiences = [
     desc: 'iDAMS helps asset owners make their infrastructure visible and available for commercial or public-service use. Import asset data, manage records, define availability, review requests, and track the full acquisition process from enquiry to approval.',
     benefits: ownerBenefits,
     image: idamsAssetOwnersVisual,
+    aspect: '1165 / 1024',
   },
   {
     color: '#3d4d9e',
@@ -268,6 +269,7 @@ const audiences = [
     desc: 'iDAMS helps operators identify suitable locations for network deployment more quickly. Search assets geographically, filter by metadata, select individual or multiple assets, and submit requests through a structured process.',
     benefits: operatorBenefits,
     image: idamsNetworkOperatorsVisual,
+    aspect: '1111 / 1024',
   },
 ]
 
@@ -408,8 +410,11 @@ export default function ServicesIoTPage() {
                     </div>
                   </div>
                   <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'} style={reveal(audInView, i * 150)}>
-                    <div className="mx-auto h-[340px] w-full overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-[0_8px_48px_rgba(10,22,40,0.1)] lg:h-[420px] lg:p-8">
-                      <img src={aud.image} alt={aud.title} className="h-full w-full object-contain" loading="lazy" />
+                    <div
+                      className="mx-auto h-[340px] w-fit overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_8px_48px_rgba(10,22,40,0.1)] lg:h-[420px]"
+                      style={{ aspectRatio: aud.aspect, maxWidth: '100%' }}
+                    >
+                      <img src={aud.image} alt={aud.title} className="h-full w-full object-cover" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -442,12 +447,13 @@ export default function ServicesIoTPage() {
                 </div>
 
                 <div
-                  className={`mx-auto h-[340px] w-full overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-[0_8px_48px_rgba(10,22,40,0.1)] lg:h-[420px] lg:p-8 ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}
+                  className={`mx-auto h-[340px] w-fit overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_8px_48px_rgba(10,22,40,0.1)] lg:h-[420px] ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}
+                  style={{ aspectRatio: cap.aspect, maxWidth: '100%' }}
                 >
                   <img
                     src={cap.image}
                     alt={`${cap.title} interface`}
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
