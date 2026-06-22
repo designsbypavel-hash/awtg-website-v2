@@ -5,17 +5,6 @@ import InsightImage from '@/components/InsightImage'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
 import { getCaseStudyImage } from '@/lib/insightImages'
 
-const tagAccent: Record<string, string> = {
-  'Open RAN Security': 'bg-[#228DC1]',
-  'Network Economics': 'bg-emerald-500',
-  'Public Sector': 'bg-violet-500',
-  'Mobile Networks': 'bg-sky-500',
-  'Capacity Planning': 'bg-amber-400',
-  'Performance Testing': 'bg-orange-400',
-  'Mobile Services': 'bg-indigo-500',
-  'Site Acquisition': 'bg-slate-400',
-}
-
 const featured = {
   slug: 'itrustric-open-ran-security',
   tag: 'Open RAN Security',
@@ -174,68 +163,45 @@ export default function InsightsCaseStudiesPage() {
       </section>
 
       {/* Grid */}
-      <section className="py-20 bg-white">
+      <section className="bg-[#f8fafc] py-20">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <p className="type-label text-[#0a1628]/60 mb-10">All case studies</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredStudies.map((cs, index) => {
-              const isAccent = index === 2 || index === 5
-              if (isAccent) {
-                return (
-                  <Link
-                    key={cs.slug}
-                    to={`/insights/case-studies/${cs.slug}`}
-                    className="group flex flex-col bg-white"
-                  >
-                    <div className="h-44 relative overflow-hidden rounded-2xl bg-gray-100">
-                      <InsightImage src={getCaseStudyImage(cs.slug, cs.tag)} alt={cs.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className={`absolute bottom-0 left-0 w-full h-0.5 ${tagAccent[cs.tag] ?? 'bg-[#228DC1]'}`} />
-                    </div>
-                    <div className="p-7 flex flex-col flex-1">
-                      <div className="flex items-center justify-between mb-5">
-                        <span className="text-[#0a1628]/60 text-[11px]">{cs.date.split(' ').pop()}</span>
-                      </div>
-                      <h3 className="font-h5 text-[#0a1628] mb-3 flex-1">{cs.title}</h3>
-                      <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.7] mb-6">{cs.excerpt}</p>
-                      <div className="flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold mt-auto">
-                        Read case study
-                      </div>
-                    </div>
-                  </Link>
-                )
-              }
-
-              return (
-                <Link
-                  key={cs.slug}
-                  to={`/insights/case-studies/${cs.slug}`}
-                  className="group flex flex-col bg-white"
-                >
-                  <div className="h-44 relative overflow-hidden rounded-2xl">
-                    <InsightImage src={getCaseStudyImage(cs.slug, cs.tag)} alt={cs.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className={`absolute bottom-0 left-0 w-full h-0.5 ${tagAccent[cs.tag] ?? 'bg-[#228DC1]'}`} />
-                  </div>
-                  <div className="p-7 flex flex-col flex-1">
-                    <div className="flex items-center justify-between mb-5">
-                      <span className="text-[#0a1628]/60 text-[11px]">{cs.date.split(' ').pop()}</span>
-                    </div>
-                    <h3 className="font-h5 text-[#0a1628] mb-3 flex-1">
-                      {cs.title}
-                    </h3>
-                    <p className="text-[#0a1628]/60 text-[13px] font-normal leading-[1.7] mb-6">
-                      {cs.excerpt}
-                    </p>
-                    <div className="flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold mt-auto">
+          <div className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filteredStudies.map((cs) => (
+              <Link
+                key={cs.slug}
+                to={`/insights/case-studies/${cs.slug}`}
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#0a1628]/8 bg-white shadow-[0_8px_30px_rgba(10,22,40,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(10,22,40,0.11)]"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden bg-[#e8f4fa]">
+                  <InsightImage
+                    src={getCaseStudyImage(cs.slug, cs.tag)}
+                    alt={cs.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/16 via-transparent to-transparent" />
+                </div>
+                <div className="flex flex-1 flex-col p-7">
+                  <span className="mb-4 text-[11px] font-semibold text-[#0a1628]/50">
+                    {cs.date.split(' ').pop()}
+                  </span>
+                  <h3 className="mb-3 text-[17px] font-semibold leading-[1.3] text-[#0a1628]">
+                    {cs.title}
+                  </h3>
+                  <p className="mb-7 text-[13px] font-normal leading-[1.72] text-[#0a1628]/60">
+                    {cs.excerpt}
+                  </p>
+                  <div className="mt-auto border-t border-[#0a1628]/8 pt-5">
+                    <span className="text-[12px] font-semibold text-[#1a7aab] transition-colors group-hover:text-[#0a1628]">
                       Read case study
-                    </div>
+                    </span>
                   </div>
-                </Link>
-              )
-            })}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
-
       <CTASection
         title="See What We Can Achieve Together"
         subtitle="Tell us about your challenge and we will share the most relevant experience from across our project portfolio."
