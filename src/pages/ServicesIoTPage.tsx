@@ -10,6 +10,15 @@ import idamsCapability3 from '@/assets/IDAMS/capabilities/capability-3.png'
 import idamsCapability4 from '@/assets/IDAMS/capabilities/capability-4.png'
 import idamsCapability5 from '@/assets/IDAMS/capabilities/capability-5.png'
 import idamsCapability6 from '@/assets/IDAMS/capabilities/capability-6.png'
+import idamsUseCase5G from '@/assets/IDAMS/use-cases/5g-small-cell.png'
+import idamsUseCaseAcquisition from '@/assets/IDAMS/use-cases/site-acquisition.png'
+import idamsUseCaseEvCharging from '@/assets/IDAMS/use-cases/ev-charging.png'
+import idamsUseCaseIoT from '@/assets/IDAMS/use-cases/iot-infrastructure.png'
+import idamsUseCaseMonetisation from '@/assets/IDAMS/use-cases/public-asset-monetisation.png'
+import idamsUseCaseSmartCity from '@/assets/IDAMS/use-cases/smart-city-assets.png'
+import idamsUseCaseLand from '@/assets/IDAMS/use-cases/land-property.png'
+import idamsUseCaseStreetFurniture from '@/assets/IDAMS/use-cases/street-furniture.png'
+import idamsUseCaseApprovals from '@/assets/IDAMS/use-cases/multi-stakeholder-approvals.png'
 import idamsAssetOwnersVisual from '@/assets/IDAMS/audiences/asset-owners.png'
 import idamsNetworkOperatorsVisual from '@/assets/IDAMS/audiences/network-operators.png'
 
@@ -263,15 +272,15 @@ const audiences = [
 ]
 
 const idamsUseCases = [
-  { image: '/images/insights/telecom-tower.jpg', eyebrow: 'Connectivity', title: '5G & Small Cell', desc: '5G and small cell deployment across urban and rural environments.' },
-  { image: '/images/insights/city-infrastructure.jpg', eyebrow: 'Acquisition', title: 'Site Acquisition', desc: 'Mobile and neutral host site acquisition with structured workflows.' },
-  { image: '/images/insights/smart-city.jpg', eyebrow: 'Energy', title: 'EV Charging', desc: 'EV charging infrastructure siting and asset acquisition.' },
-  { image: '/images/insights/cloud-network.jpg', eyebrow: 'IoT estate', title: 'IoT Infrastructure', desc: 'IoT sensor and device infrastructure discovery and management.' },
-  { image: '/images/insights/public-sector.jpg', eyebrow: 'Public sector', title: 'Public Asset Monetisation', desc: 'Councils monetising public assets for connectivity and services.' },
-  { image: '/images/insights/urban-rail.jpg', eyebrow: 'Urban assets', title: 'Smart City Assets', desc: 'Advertising, smart city, and street furniture asset reuse.' },
-  { image: '/images/insights/ports-logistics.jpg', eyebrow: 'Property', title: 'Land & Property', desc: 'Public and private land or property assets for infrastructure use.' },
-  { image: '/images/insights/connectivity.jpg', eyebrow: 'Street estate', title: 'Street Furniture', desc: 'Street furniture reuse and repurposing for network deployment.' },
-  { image: '/images/insights/conference.jpg', eyebrow: 'Governance', title: 'Multi-stakeholder Approvals', desc: 'Multi-stakeholder asset approval workflows with full audit trail.' },
+  { image: idamsUseCase5G, eyebrow: 'Connectivity', title: '5G & Small Cell', desc: '5G and small cell deployment across urban and rural environments.' },
+  { image: idamsUseCaseAcquisition, eyebrow: 'Acquisition', title: 'Site Acquisition', desc: 'Mobile and neutral host site acquisition with structured workflows.' },
+  { image: idamsUseCaseEvCharging, eyebrow: 'Energy', title: 'EV Charging', desc: 'EV charging infrastructure siting and asset acquisition.' },
+  { image: idamsUseCaseIoT, eyebrow: 'IoT estate', title: 'IoT Infrastructure', desc: 'IoT sensor and device infrastructure discovery and management.' },
+  { image: idamsUseCaseMonetisation, eyebrow: 'Public sector', title: 'Public Asset Monetisation', desc: 'Councils monetising public assets for connectivity and services.' },
+  { image: idamsUseCaseSmartCity, eyebrow: 'Urban assets', title: 'Smart City Assets', desc: 'Advertising, smart city, and street furniture asset reuse.' },
+  { image: idamsUseCaseLand, eyebrow: 'Property', title: 'Land & Property', desc: 'Public and private land or property assets for infrastructure use.' },
+  { image: idamsUseCaseStreetFurniture, eyebrow: 'Street estate', title: 'Street Furniture', desc: 'Street furniture reuse and repurposing for network deployment.' },
+  { image: idamsUseCaseApprovals, eyebrow: 'Governance', title: 'Multi-stakeholder Approvals', desc: 'Multi-stakeholder asset approval workflows with full audit trail.' },
 ]
 
 // ── Main page ─────────────────────────────────────────────────────────────────
