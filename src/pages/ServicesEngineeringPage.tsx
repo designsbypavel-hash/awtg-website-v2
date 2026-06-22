@@ -9,6 +9,8 @@ import {
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import VisualInsightCard from '@/components/VisualInsightCard'
+import scapScreen1 from '@/assets/SCAP/screen-1.png'
+import scapScreen2 from '@/assets/SCAP/screen-2.png'
 import scapKpiDashboard from '@/assets/SCAP/product/kpi-dashboard.png'
 import scapKpiPerformance from '@/assets/SCAP/product/kpi-performance.png'
 import scapAlarmManagement from '@/assets/SCAP/product/alarm-management.png'
@@ -56,8 +58,8 @@ function ScrollProgress() {
 
 // -- SCAP hero screen showcase ------------------------------------------------
 const SCAP_HERO_SCREENS = [
-  { label: 'SCAP KPI performance dashboard', src: scapKpiDashboard },
-  { label: 'SCAP alarm management interface', src: scapAlarmManagement },
+  { label: 'SCAP network performance dashboard', src: scapScreen1 },
+  { label: 'SCAP network operations dashboard', src: scapScreen2 },
 ]
 
 function ScapHeroShowcase() {
@@ -70,27 +72,35 @@ function ScapHeroShowcase() {
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setActive(current => (current + 1) % SCAP_HERO_SCREENS.length), 3600)
+    const id = setInterval(() => setActive(current => (current + 1) % SCAP_HERO_SCREENS.length), 3200)
     return () => clearInterval(id)
   }, [])
 
   return (
     <div
-      className="w-full max-w-[820px]"
+      className="relative w-full max-w-[760px]"
       style={{
         opacity: entered ? 1 : 0,
-        transform: entered ? 'translateY(0)' : 'translateY(24px)',
+        transform: entered ? 'translateY(0)' : 'translateY(28px)',
         transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
       }}
     >
-      <div className="grid aspect-[16/9] overflow-hidden rounded-2xl border border-[#0a1628]/10 bg-white shadow-[0_18px_44px_rgba(10,22,40,0.12)]">
+      <div
+        className="absolute -inset-8 hidden pointer-events-none lg:block"
+        style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }}
+      />
+      <div style={{ display: 'grid', filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
         {SCAP_HERO_SCREENS.map((screen, index) => (
           <img
             key={screen.src}
             src={screen.src}
             alt={screen.label}
-            className="col-start-1 row-start-1 h-full w-full object-cover"
             style={{
+              gridRow: '1 / 2',
+              gridColumn: '1 / 2',
+              width: '100%',
+              height: 'auto',
+              display: 'block',
               opacity: active === index ? 1 : 0,
               transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
             }}
