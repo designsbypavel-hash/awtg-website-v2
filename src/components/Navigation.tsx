@@ -348,13 +348,13 @@ export default function Navigation() {
               id={`dropdown-${nav.key}`}
               role="region"
               aria-label={`${nav.key} submenu`}
-              className="absolute left-0 right-0 bg-white border-b border-gray-200 shadow-[0_24px_70px_rgba(10,22,40,0.10)] animate-[navDrop_180ms_ease-out]"
+              className="absolute left-0 right-0 bg-white border-b border-gray-200 shadow-[0_24px_70px_rgba(10,22,40,0.12)] animate-[navDrop_180ms_ease-out]"
               onMouseEnter={() => openDropdown(nav.key)}
               onMouseLeave={closeDropdownSoon}
               style={{ top: '64px' }}
             >
               <div className="absolute -top-3 left-0 right-0 h-3" aria-hidden="true" />
-              <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 lg:py-10">
+              <div className="mx-auto max-w-[1440px] px-6 py-8 lg:px-10 lg:py-10 xl:px-12">
 
                 {/* Flat grid (Solutions / Services / Industries) */}
                 {nav.items && (
@@ -363,14 +363,14 @@ export default function Navigation() {
                       <Link
                         key={item.href}
                         to={item.href}
-                        className="group flex items-start gap-3 px-4 py-3.5 rounded-md border-l-2 border-transparent hover:border-[#228DC1] hover:bg-[#f0f5ff] hover:translate-x-0.5 transition-all duration-200"
+                        className="group flex items-start gap-3 rounded-md border-l-2 border-transparent px-4 py-3.5 transition-all duration-200 hover:translate-x-0.5 hover:border-[#228DC1] hover:bg-[#f0f5ff]"
                         onClick={closeDropdownNow}
                       >
                         <div>
-                          <p className="text-[#0a1628] text-[14px] font-semibold group-hover:text-[#1a7aab] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
+                          <p className="mb-0.5 text-[14px] font-semibold tracking-[-0.01em] text-[#0a1628] transition-colors duration-150 group-hover:text-[#1a7aab]">
                             {item.label}
                           </p>
-                          <p className="text-[#0a1628]/60 text-xs font-normal leading-relaxed">
+                          <p className="text-xs font-normal leading-relaxed text-[#0a1628]/60">
                             {item.desc}
                           </p>
                         </div>
@@ -381,8 +381,8 @@ export default function Navigation() {
 
                 {/* Grouped mega menu */}
                 {nav.groups && (
-                  <div className="grid grid-cols-[minmax(0,1fr)_300px] gap-10 xl:gap-14 items-start">
-                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-8' : 'grid-cols-2 gap-8 xl:gap-10'}`}>
+                  <div className="grid grid-cols-[minmax(0,1fr)_minmax(360px,0.52fr)] items-start gap-8 xl:gap-10">
+                    <div className={`grid ${nav.groups.length === 3 ? 'grid-cols-3 gap-5 xl:gap-6' : 'grid-cols-2 gap-4 xl:grid-cols-[minmax(0,280px)_minmax(0,340px)] xl:gap-7'}`}>
                       {nav.groups.map((group) => (
                         <div key={group.heading}>
                           <p className={`text-[11px] font-bold uppercase tracking-[0.24em] mb-5 px-1 ${group.heading ? 'text-[#0a1628]/60' : 'invisible'}`}>
@@ -393,7 +393,7 @@ export default function Navigation() {
                               <Link
                                 key={item.href}
                                 to={item.href}
-                                className="group block px-1 py-0 transition-transform duration-200 hover:translate-x-1"
+                                className="group block max-w-[330px] px-1 py-0 transition-transform duration-200 hover:translate-x-1"
                                 onMouseEnter={() => {
                                   const panel = featuredPanels[nav.key]
                                   const match = panel?.items.findIndex((featured) => featured.href === item.href || featured.label === item.label) ?? -1
@@ -402,10 +402,10 @@ export default function Navigation() {
                                 onClick={closeDropdownNow}
                               >
                                 <div>
-                                  <p className="text-[#0a1628] text-[13.5px] font-semibold group-hover:text-[#1a7aab] transition-colors duration-150 mb-0.5 tracking-[-0.01em]">
+                                  <p className="mb-0.5 text-[13.5px] font-semibold tracking-[-0.01em] text-[#0a1628] transition-colors duration-150 group-hover:text-[#1a7aab]">
                                     {item.label}
                                   </p>
-                                  <p className="text-[#0a1628]/60 text-xs font-normal leading-relaxed">
+                                  <p className="text-xs font-normal leading-relaxed text-[#0a1628]/60">
                                     {item.desc}
                                   </p>
                                 </div>
@@ -420,8 +420,8 @@ export default function Navigation() {
                       const panel = featuredPanels[nav.key]
                       const item = panel.items[featuredIndex % panel.items.length]
                       return (
-                        <div className="pt-1">
-                          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#1a7aab] mb-4">
+                        <div className="border-l border-[#0a1628]/10 pl-8 pt-1 xl:pl-10">
+                          <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-[#1a7aab]">
                             {panel.eyebrow}
                           </p>
                           <Link
@@ -430,18 +430,18 @@ export default function Navigation() {
                             onClick={closeDropdownNow}
                             className="group block"
                           >
-                            <div className="relative h-[170px] overflow-hidden rounded-[8px] bg-[#f5f8fb] border border-gray-200 shadow-[0_8px_32px_rgba(10,22,40,0.10)]">
+                            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-gray-200 bg-[#f5f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.12)]">
                               <img
                                 src={item.image}
                                 alt=""
-                                className={`h-full w-full ${item.imageFit === 'contain' ? 'object-contain p-6' : 'object-cover'}`}
+                                className={`h-full w-full ${item.imageFit === 'contain' ? 'object-contain p-8' : 'object-cover'}`}
                               />
-                              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(10,22,40,0.08)_100%)]" />
+                              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_45%,rgba(10,22,40,0.10)_100%)]" />
                             </div>
-                            <h3 className="mt-4 text-[#0a1628] text-[14px] font-semibold tracking-[-0.01em]">
+                            <h3 className="mt-5 max-w-[95%] text-[15px] font-semibold leading-snug tracking-[-0.01em] text-[#0a1628] transition-colors group-hover:text-[#1a7aab]">
                               {item.label}
                             </h3>
-                            <p className="mt-1.5 text-[#0a1628]/60 text-[12px] leading-relaxed">
+                            <p className="mt-2 max-w-[95%] text-[12.5px] leading-relaxed text-[#0a1628]/60">
                               {item.desc}
                             </p>
                           </Link>
@@ -449,7 +449,7 @@ export default function Navigation() {
                             <Link
                               to={panel.href}
                               onClick={closeDropdownNow}
-                              className="mt-4 inline-flex items-center text-[12px] font-semibold text-[#1a7aab] hover:text-[#0a1628] transition-colors"
+                              className="mt-4 inline-flex items-center text-[12px] font-semibold text-[#1a7aab] transition-colors hover:text-[#0a1628]"
                             >
                               {panel.cta} <span className="ml-1.5">→</span>
                             </Link>
