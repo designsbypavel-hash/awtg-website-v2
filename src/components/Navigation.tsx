@@ -37,6 +37,11 @@ const navItems: NavEntry[] = [
           { label: 'Education', desc: 'AI for student support, admissions and multilingual engagement', href: '/ai/education' },
           { label: 'Health Tech', desc: 'NHS and healthcare digital infrastructure', href: '/industries/health-tech' },
           { label: 'Commerce', desc: 'AI for customer service, product guidance and retail operations', href: '/ai/commerce' },
+        ],
+      },
+      {
+        heading: '',
+        items: [
           { label: 'Digital Transformation', desc: 'Process automation, knowledge management and organisational AI', href: '/ai/digital-transformation' },
           { label: 'Public Sector', desc: 'AI for citizen services, case management and policy delivery', href: '/ai/public-sector' },
           { label: 'Security', desc: 'AI governance, model security and quantum-ready cryptography', href: '/ai/security' },
