@@ -363,7 +363,7 @@ export default function ServicesIoTPage() {
           <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <div className="mb-8">
-              <span className="text-[14px] font-bold uppercase tracking-[0.16em] text-[#228DC1]">
+              <span className="font-serif-display block font-bold leading-none text-[#228DC1]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
                 iDAMS
               </span>
             </div>
