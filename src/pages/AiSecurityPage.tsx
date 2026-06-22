@@ -23,7 +23,7 @@ const heroVisual = (
       { icon: faGavel, label: 'AI governance frameworks' },
       { icon: faMicrochip, label: 'Model security assessments' },
       { icon: faRobot, label: 'Responsible AI deployment' },
-      { icon: faKey, label: 'Post-quantum readiness' },
+      { icon: faKey, label: 'Post quantum readiness' },
     ]}
     badges={[
       { icon: faShieldHalved, label: 'GDPR', color: '#059669' },
@@ -43,14 +43,14 @@ const data: SectorPageData = {
     subtitle:
       'Governance, risk management and security built into every AI deployment — so innovation never comes at the cost of trust.',
     description:
-      'AWTG helps organisations adopt AI securely and responsibly — combining AI governance frameworks, model security assessments and forward-looking cryptography so that innovation keeps pace with emerging regulation and emerging threats.',
+      'AWTG helps organisations adopt AI securely and responsibly — combining AI governance frameworks, model security assessments and forward looking cryptography so that innovation keeps pace with emerging regulation and emerging threats.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faShieldHalved,
     visualItems: [
       { icon: faGavel, label: 'AI governance frameworks' },
       { icon: faMicrochip, label: 'Model security assessments' },
       { icon: faRobot, label: 'Responsible AI deployment' },
-      { icon: faKey, label: 'Quantum-safe security strategies' },
+      { icon: faKey, label: 'Quantum safe security strategies' },
     ],
   },
 
@@ -72,12 +72,12 @@ const data: SectorPageData = {
       {
         icon: faGavel,
         title: 'Regulatory uncertainty',
-        desc: "AI-specific regulation is evolving quickly across jurisdictions, leaving organisations exposed if governance and documentation can't demonstrate compliance.",
+        desc: "AI specific regulation is evolving quickly across jurisdictions, leaving organisations exposed if governance and documentation can't demonstrate compliance.",
       },
       {
         icon: faKey,
         title: 'Cryptography running out of road',
-        desc: 'Advances in quantum computing put long-lived encryption and sensitive data at risk, demanding migration plans many organisations have not yet started.',
+        desc: 'Advances in quantum computing put long lived encryption and sensitive data at risk, demanding migration plans many organisations have not yet started.',
       },
     ],
   },
@@ -85,7 +85,7 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for secure AI adoption',
     intro:
-      'AWTG combines AI governance, security engineering and forward-looking cryptography to help organisations innovate without losing control of risk.',
+      'AWTG combines AI governance, security engineering and forward looking cryptography to help organisations innovate without losing control of risk.',
     items: [
       {
         icon: faGavel,
@@ -113,12 +113,12 @@ const data: SectorPageData = {
       },
       {
         icon: faKey,
-        title: 'Quantum-safe and future-ready security',
-        desc: 'We help organisations get ahead of the cryptographic transition — assessing exposure today and planning the migration to quantum-safe standards.',
+        title: 'Quantum safe and future ready security',
+        desc: 'We help organisations get ahead of the cryptographic transition — assessing exposure today and planning the migration to quantum safe standards.',
         bullets: [
-          'Post-Quantum Cryptography (PQC) readiness assessments',
+          'Post Quantum Cryptography (PQC) readiness assessments',
           'Cryptographic inventory and migration planning',
-          'Quantum-safe security strategies',
+          'Quantum safe security strategies',
           'Emerging technology and future network security reviews',
         ],
         image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
@@ -148,7 +148,7 @@ const data: SectorPageData = {
       },
       {
         icon: faKey,
-        title: 'Post-quantum readiness',
+        title: 'Post quantum readiness',
         desc: 'Cryptographic inventory, PQC readiness assessments and migration planning ahead of the quantum transition.',
       },
       {
@@ -162,7 +162,7 @@ const data: SectorPageData = {
   outcomes: {
     heading: 'Confidence to scale AI responsibly',
     intro:
-      'Security-led AI adoption with AWTG gives organisations the assurance to innovate while staying ahead of risk and regulation.',
+      'Security led AI adoption with AWTG gives organisations the assurance to innovate while staying ahead of risk and regulation.',
     items: [
       {
         icon: faArrowTrendUp,
@@ -176,13 +176,13 @@ const data: SectorPageData = {
       },
       {
         icon: faKey,
-        title: 'Future-ready security posture',
+        title: 'Future ready security posture',
         desc: 'Cryptographic and architectural foundations that hold up as quantum computing and emerging technologies mature.',
       },
       {
         icon: faLightbulb,
         title: 'Alignment with emerging regulation',
-        desc: 'Governance and documentation that keeps pace with fast-evolving AI and data protection standards.',
+        desc: 'Governance and documentation that keeps pace with fast evolving AI and data protection standards.',
       },
     ],
   },
@@ -190,7 +190,7 @@ const data: SectorPageData = {
   cta: {
     title: 'Adopt AI without adopting the risk',
     subtitle:
-      'Speak to AWTG about AI governance, model security and quantum-readiness for your AI deployments.',
+      'Speak to AWTG about AI governance, model security and quantum readiness for your AI deployments.',
     label: 'Talk to our experts',
   },
 }
