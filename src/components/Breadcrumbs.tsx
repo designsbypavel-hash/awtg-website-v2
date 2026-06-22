@@ -60,6 +60,10 @@ const PATH_CRUMBS: Record<string, Omit<Crumb, 'isLast'>[]> = {
     { label: 'Connectivity' },
     { href: '/connectivity/idams', label: 'iDAMS' },
   ],
+  '/insights/blog': [
+    { href: '/about', label: 'About' },
+    { href: '/insights/blog', label: 'Blog' },
+  ],
 }
 
 function toLabel(segment: string): string {
@@ -78,7 +82,14 @@ export default function Breadcrumbs() {
 
   if (segments.length === 0) return null
 
-  const customCrumbs = PATH_CRUMBS[pathname]
+  const isBlogPost = segments[0] === 'insights' && segments[1] === 'blog' && segments.length > 2
+  const customCrumbs = isBlogPost
+    ? [
+        { href: '/about', label: 'About' },
+        { href: '/insights/blog', label: 'Blog' },
+        { href: pathname, label: toLabel(segments[2]) },
+      ]
+    : PATH_CRUMBS[pathname]
   const crumbs: Crumb[] = customCrumbs
     ? customCrumbs.map((crumb, i) => ({
         ...crumb,
