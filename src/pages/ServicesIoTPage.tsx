@@ -394,7 +394,7 @@ export default function ServicesIoTPage() {
             {audiences.map((aud, i) => {
               const imageFirst = i % 2 === 1
               return (
-                <div key={aud.title} className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+                <div key={aud.title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                   <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'} style={reveal(audInView, 150 + i * 150)}>
                     <h3 className="font-heading text-[#0a1628] mb-4">{aud.title}</h3>
                     <p className="mb-6 text-[16px] font-normal leading-[1.75] text-[#0a1628]/65">{aud.desc}</p>
