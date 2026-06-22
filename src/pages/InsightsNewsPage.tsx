@@ -616,10 +616,6 @@ export default function InsightsNewsPage() {
             <Link to={getNewsHref(featured)} className="group lg:col-span-3 p-8 lg:p-12">
               <div className="flex flex-wrap items-center gap-3 mb-7">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60">Featured</span>
-                <span className="w-8 h-px bg-gray-200" />
-                <span className={`text-[13px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[featured.category]}`}>
-                  {featured.category}
-                </span>
               </div>
               <h2 className="font-h2 text-[#0a1628] mb-5 group-hover:text-[#1a7aab] transition-colors">
                 {cleanText(featured.title)}
@@ -686,9 +682,6 @@ export default function InsightsNewsPage() {
                   </div>
                   <div className="flex flex-1 flex-col pt-6">
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className={`text-[12px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
-                        {item.category}
-                      </span>
                       <span className="text-[#0a1628]/60 text-xs">{item.date}</span>
                     </div>
                     <h3 className={`${isWide ? 'font-h4' : 'font-h5'} text-[#0a1628] mb-3`}>
