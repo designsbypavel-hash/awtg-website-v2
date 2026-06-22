@@ -39,6 +39,7 @@ const navItems: NavEntry[] = [
           { label: 'Commerce', desc: 'AI for customer service, product guidance and retail operations', href: '/ai/commerce' },
           { label: 'Digital Transformation', desc: 'Process automation, knowledge management and organisational AI', href: '/ai/digital-transformation' },
           { label: 'Public Sector', desc: 'AI for citizen services, case management and policy delivery', href: '/ai/public-sector' },
+          { label: 'Security', desc: 'AI governance, model security and quantum-ready cryptography', href: '/ai/security' },
         ],
       },
     ],
@@ -62,6 +63,7 @@ const navItems: NavEntry[] = [
           { label: 'Public Sector', desc: 'PSN-aligned networks and managed connectivity', href: '/connectivity/public-sector' },
           { label: 'Space & Defence', desc: 'Mission-critical and SATCOM connectivity', href: '/connectivity/space-defence' },
           { label: 'Education', desc: 'Campus wireless and safeguarding-compliant networks', href: '/connectivity/education' },
+          { label: 'Security', desc: 'Telecom, cloud and SOC-led network security', href: '/connectivity/security' },
         ],
       },
       {

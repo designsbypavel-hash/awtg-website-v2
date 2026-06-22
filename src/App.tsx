@@ -23,9 +23,11 @@ import AiEducationPage from './pages/AiEducationPage'
 import AiCommercePage from './pages/AiCommercePage'
 import AiDigitalTransformationPage from './pages/AiDigitalTransformationPage'
 import AiPublicSectorPage from './pages/AiPublicSectorPage'
+import AiSecurityPage from './pages/AiSecurityPage'
 
 // Connectivity sector pages
 import ConnectivityHealthPage from './pages/ConnectivityHealthPage'
+import ConnectivitySecurityPage from './pages/ConnectivitySecurityPage'
 import ConnectivityPublicSectorPage from './pages/ConnectivityPublicSectorPage'
 import ConnectivitySpaceDefencePage from './pages/ConnectivitySpaceDefencePage'
 import ConnectivityEducationPage from './pages/ConnectivityEducationPage'
@@ -101,9 +103,11 @@ export default function App() {
         <Route path="ai/commerce" element={<AiCommercePage />} />
         <Route path="ai/digital-transformation" element={<AiDigitalTransformationPage />} />
         <Route path="ai/public-sector" element={<AiPublicSectorPage />} />
+        <Route path="ai/security" element={<AiSecurityPage />} />
 
         {/* Connectivity sector pages */}
         <Route path="connectivity/health" element={<ConnectivityHealthPage />} />
+        <Route path="connectivity/security" element={<ConnectivitySecurityPage />} />
         <Route path="connectivity/public-sector" element={<ConnectivityPublicSectorPage />} />
         <Route path="connectivity/space-defence" element={<ConnectivitySpaceDefencePage />} />
         <Route path="connectivity/education" element={<ConnectivityEducationPage />} />
