@@ -18,12 +18,12 @@ const blogSlugImages: Record<string, string> = {
 
 const caseStudySlugImages: Record<string, string> = {
   'itrustric-open-ran-security': image('open-ran.jpg'),
-  'high-street-recovery': image('public-sector.jpg'),
+  'high-street-recovery': 'https://images.unsplash.com/photo-1555529771-122e5d9f2341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
   'tot-service-assurance': image('performance-testing.jpg'),
-  'central-london-benchmarking': image('mobile-networks.jpg'),
+  'central-london-benchmarking': 'https://images.unsplash.com/photo-1488747279002-c8523379faaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
   'data-offloading-wifi': image('data-centre.jpg'),
   'akt-stability-testing': image('safety-network.jpg'),
-  'rich-communications-suite': image('connectivity.jpg'),
+  'rich-communications-suite': 'https://images.unsplash.com/photo-1598965402089-897ce52e8355?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
   'small-cell-site-acquisition': image('city-infrastructure.jpg'),
 }
 
