@@ -15,7 +15,6 @@ type VisualInsightCardProps = {
 }
 
 export default function VisualInsightCard({
-  eyebrow,
   title,
   description,
   image,
@@ -45,11 +44,6 @@ export default function VisualInsightCard({
       </div>
 
       <div className={`flex flex-1 flex-col ${flushContent ? 'pt-6' : 'p-6'}`}>
-        {eyebrow && (
-          <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: accent }}>
-            {eyebrow}
-          </p>
-        )}
         <h3 className={`mb-3 text-[17px] font-semibold leading-[1.28] ${dark ? 'text-white' : 'text-[#0a1628]'}`}>
           {title}
         </h3>
