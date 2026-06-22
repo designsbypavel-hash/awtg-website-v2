@@ -583,7 +583,7 @@ export default function InsightsNewsPage() {
     <>
       <section className="relative overflow-hidden" style={{ minHeight: 540 }}>
         <img
-          src="/images/insights/ai-lab.jpg"
+          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
           alt="AWTG News"
           className="absolute inset-0 w-full h-full object-cover"
         />
