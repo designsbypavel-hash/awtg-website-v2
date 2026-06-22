@@ -408,8 +408,8 @@ export default function ServicesIoTPage() {
                     </div>
                   </div>
                   <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'} style={reveal(audInView, i * 150)}>
-                    <div className="flex h-[360px] items-start overflow-hidden rounded-2xl shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:h-[380px]">
-                      <img src={aud.image} alt={aud.title} className="block h-full w-full object-contain object-top" loading="lazy" />
+                    <div className="flex h-[400px] items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-[0_8px_48px_rgba(10,22,40,0.1)] lg:h-[440px]">
+                      <img src={aud.image} alt={aud.title} className="max-h-full max-w-full object-contain" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -441,11 +441,11 @@ export default function ServicesIoTPage() {
                   <p className="border-t border-[#0a1628]/10 pt-6 text-[16px] font-normal leading-[1.75] text-[#0a1628]/65">{cap.desc}</p>
                 </div>
 
-                <div className={`flex h-[480px] items-start justify-center overflow-hidden rounded-[20px] lg:h-[560px] ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div className={`flex h-[400px] items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-[0_8px_48px_rgba(10,22,40,0.1)] lg:h-[440px] ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                   <img
                     src={cap.image}
                     alt={`${cap.title} interface`}
-                    className="block h-full w-full object-cover object-center"
+                    className="max-h-full max-w-full object-contain"
                     loading="lazy"
                   />
                 </div>
