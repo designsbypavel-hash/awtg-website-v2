@@ -1,19 +1,15 @@
 ﻿import { useState, useRef, useEffect, type CSSProperties, type ReactNode } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faChartLine,
-  faClipboardCheck,
-  faMapLocationDot, faNetworkWired,
-  faSearchLocation,
-  faDatabase,
-  faBuildingColumns,
-  faTowerBroadcast,
-} from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import VisualInsightCard from '@/components/VisualInsightCard'
 import idamsHeroScreen1 from '@/assets/IDAMS/hero/screen-1.png'
 import idamsHeroScreen2 from '@/assets/IDAMS/hero/screen-2.png'
+import idamsCapability1 from '@/assets/IDAMS/capabilities/capability-1.png'
+import idamsCapability2 from '@/assets/IDAMS/capabilities/capability-2.png'
+import idamsCapability3 from '@/assets/IDAMS/capabilities/capability-3.png'
+import idamsCapability4 from '@/assets/IDAMS/capabilities/capability-4.png'
+import idamsCapability5 from '@/assets/IDAMS/capabilities/capability-5.png'
+import idamsCapability6 from '@/assets/IDAMS/capabilities/capability-6.png'
 import idamsAssetOwnersVisual from '@/assets/IDAMS/audiences/asset-owners.png'
 import idamsNetworkOperatorsVisual from '@/assets/IDAMS/audiences/network-operators.png'
 
@@ -223,12 +219,12 @@ function SectionHeader({ title, desc }: { title: ReactNode; desc: string }) {
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const capabilities = [
-  { icon: faMapLocationDot, title: 'Interactive Asset Map',       color: '#228DC1', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
-  { icon: faSearchLocation,  title: 'Advanced Search & Filtering', color: '#059669', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
-  { icon: faDatabase,        title: 'Asset Data Management',       color: '#7c3aed', desc: 'Import, create, update, and manage asset records in one place. iDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
-  { icon: faClipboardCheck,  title: 'Acquisition Workflow',        color: '#d97706', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications - keeping every request visible and accountable.' },
-  { icon: faChartLine,       title: 'Reporting & Insights',        color: '#dc2626', desc: 'Use dashboards, reports, and exports to understand asset usage, acquisition progress, and operational performance across your estate.' },
-  { icon: faNetworkWired,    title: 'Integration-Ready Platform',  color: '#0891b2', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
+  { image: idamsCapability1, title: 'Interactive Asset Map', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
+  { image: idamsCapability2, title: 'Advanced Search & Filtering', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
+  { image: idamsCapability3, title: 'Asset Data Management', desc: 'Import, create, update, and manage asset records in one place. iDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
+  { image: idamsCapability4, title: 'Acquisition Workflow', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications - keeping every request visible and accountable.' },
+  { image: idamsCapability5, title: 'Reporting & Insights', desc: 'Use dashboards, reports, and exports to understand asset usage, acquisition progress, and operational performance across your estate.' },
+  { image: idamsCapability6, title: 'Integration-Ready Platform', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
 ]
 
 const ownerBenefits = [
@@ -251,17 +247,15 @@ const operatorBenefits = [
 
 const audiences = [
   {
-    icon: faBuildingColumns, color: '#228DC1',
+    color: '#228DC1',
     title: 'Asset Owners',
-    who: 'Local authorities, public bodies, landlords, and private organisations',
     desc: 'iDAMS helps asset owners make their infrastructure visible and available for commercial or public-service use. Import asset data, manage records, define availability, review requests, and track the full acquisition process from enquiry to approval.',
     benefits: ownerBenefits,
     image: idamsAssetOwnersVisual,
   },
   {
-    icon: faTowerBroadcast, color: '#3d4d9e',
+    color: '#3d4d9e',
     title: 'Mobile Network Operators & Neutral Hosts',
-    who: 'MNOs, neutral hosts, and telecom infrastructure providers',
     desc: 'iDAMS helps operators identify suitable locations for network deployment more quickly. Search assets geographically, filter by metadata, select individual or multiple assets, and submit requests through a structured process.',
     benefits: operatorBenefits,
     image: idamsNetworkOperatorsVisual,
@@ -372,10 +366,90 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
+      {/* ── BUILT FOR TWO AUDIENCES ──────────────────────────────────────── */}
+      <section className="bg-[#f8fafc] py-24">
+        <div ref={audRef} className="mx-auto max-w-7xl px-8 lg:px-12">
+
+          {/* Heading block */}
+          <div style={reveal(audInView, 0)} className="mb-12">
+            <h2 className="font-heading text-[#0a1628] mb-3">
+              Built for <span className="text-[#1a7aab]">asset owners and asset consumers</span>
+            </h2>
+            <p className="max-w-2xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
+              iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it.
+            </p>
+          </div>
+
+          {/* Audience rows - alternating text / image */}
+          <div className="flex flex-col gap-16 lg:gap-20">
+            {audiences.map((aud, i) => {
+              const imageFirst = i % 2 === 1
+              return (
+                <div key={aud.title} className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+                  <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'} style={reveal(audInView, 150 + i * 150)}>
+                    <h3 className="font-heading text-[#0a1628] mb-4">{aud.title}</h3>
+                    <p className="mb-6 text-[16px] font-normal leading-[1.75] text-[#0a1628]/65">{aud.desc}</p>
+                    <div className="grid gap-2.5 border-t border-[#0a1628]/10 pt-6 sm:grid-cols-2">
+                      {aud.benefits.map((b) => (
+                        <div key={b} className="flex items-start gap-2.5">
+                          <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: aud.color }} />
+                          <span className="text-[13.5px] font-normal leading-snug text-[#0a1628]/65">{b}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'} style={reveal(audInView, i * 150)}>
+                    <div className="flex h-[360px] items-start overflow-hidden rounded-2xl shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:h-[380px]">
+                      <img src={aud.image} alt={aud.title} className="block h-full w-full object-contain object-top" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── KEY PLATFORM CAPABILITIES ────────────────────────────────────── */}
+      <section className="bg-[#f8fafc] py-24">
+        <div ref={capRef} className="mx-auto max-w-7xl px-8 lg:px-12">
+          <div style={reveal(capInView, 0)}>
+            <SectionHeader
+              title={<>Key platform <span className="text-[#1a7aab]">capabilities</span></>}
+              desc="iDAMS provides a complete set of tools for asset discovery, management, acquisition, and collaboration."
+            />
+          </div>
+          <div className="space-y-16 lg:space-y-24">
+            {capabilities.map((cap, i) => (
+              <article
+                key={cap.title}
+                className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16"
+                style={reveal(capInView, i * 70)}
+              >
+                <div className={i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
+                  <h3 className="font-heading mb-5 text-[#0a1628]">{cap.title}</h3>
+                  <p className="border-t border-[#0a1628]/10 pt-6 text-[16px] font-normal leading-[1.75] text-[#0a1628]/65">{cap.desc}</p>
+                </div>
+
+                <div className={`flex h-[480px] items-start justify-center overflow-hidden rounded-[20px] lg:h-[560px] ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+                  <img
+                    src={cap.image}
+                    alt={`${cap.title} interface`}
+                    className="block h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── TURNING ASSETS INTO OPPORTUNITIES ────────────────────────────── */}
-      <section className="border-t border-[#0d2442] bg-[#0a1628] py-24">
+      <section className="bg-[#0a1628] py-24">
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
-          <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
+          <div className="grid items-start gap-16 lg:grid-cols-2">
             <div>
               <h2 className="font-heading mb-6 text-white">Turning infrastructure assets into <span className="text-[#67c5f3]">usable digital records.</span></h2>
               <p className="text-[16px] font-normal leading-[1.78] text-white/60">
@@ -402,87 +476,8 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* ── BUILT FOR TWO AUDIENCES ──────────────────────────────────────── */}
-      <section className="bg-[#f8fafc] py-24">
-        <div ref={audRef} className="mx-auto max-w-7xl px-8 lg:px-12">
-
-          {/* Heading block */}
-          <div style={{ ...reveal(audInView, 0), display: 'flex', alignItems: 'flex-start', gap: 16 }} className="mb-12">
-            <div style={{ width: 4, flexShrink: 0, alignSelf: 'stretch', borderRadius: 4, background: 'linear-gradient(180deg, #3d4d9e 0%, #228DC1 100%)', minHeight: 52 }} />
-            <div>
-              <h2 className="font-heading text-[#0a1628] mb-3">
-                Built for <span className="text-[#1a7aab]">asset owners and asset consumers</span>
-              </h2>
-              <p className="max-w-2xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-                iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it.
-              </p>
-            </div>
-          </div>
-
-          {/* Audience rows - alternating text / image */}
-          <div className="flex flex-col gap-16 lg:gap-20">
-            {audiences.map((aud, i) => {
-              const imageFirst = i % 2 === 1
-              return (
-                <div key={aud.title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-                  <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'} style={reveal(audInView, 150 + i * 150)}>
-                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: `${aud.color}14` }}>
-                      <FontAwesomeIcon icon={aud.icon} className="h-5 w-5" style={{ color: aud.color }} />
-                    </div>
-                    <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#0a1628]/45">{aud.who}</p>
-                    <h3 className="font-heading text-[#0a1628] mb-4">{aud.title}</h3>
-                    <p className="mb-6 text-[16px] font-normal leading-[1.75] text-[#0a1628]/65">{aud.desc}</p>
-                    <div className="grid gap-2.5 border-t border-[#0a1628]/10 pt-6 sm:grid-cols-2">
-                      {aud.benefits.map((b) => (
-                        <div key={b} className="flex items-start gap-2.5">
-                          <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: aud.color }} />
-                          <span className="text-[13.5px] font-normal leading-snug text-[#0a1628]/65">{b}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'} style={reveal(audInView, i * 150)}>
-                    <div className="overflow-hidden rounded-2xl shadow-[0_18px_48px_rgba(10,22,40,0.08)]">
-                      <img src={aud.image} alt={aud.title} className="block h-auto w-full" loading="lazy" />
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── KEY PLATFORM CAPABILITIES ────────────────────────────────────── */}
-      <section className="bg-[#f8fafc] py-24">
-        <div ref={capRef} className="mx-auto max-w-7xl px-8 lg:px-12">
-          <div style={reveal(capInView, 0)}>
-            <SectionHeader
-              title={<>Key platform <span className="text-[#1a7aab]">capabilities</span></>}
-              desc="iDAMS provides a complete set of tools for asset discovery, management, acquisition, and collaboration."
-            />
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((cap, i) => (
-              <div
-                key={cap.title}
-                className="flex flex-col rounded-2xl border border-gray-200 bg-white p-7 shadow-[0_1px_8px_rgba(10,22,40,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(10,22,40,0.10)]"
-                style={reveal(capInView, i * 70)}
-              >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: `${cap.color}14` }}>
-                  <FontAwesomeIcon icon={cap.icon} className="h-5 w-5" style={{ color: cap.color }} />
-                </div>
-                <h3 className="mb-3 text-[15px] font-semibold leading-[1.3] text-[#0a1628]">{cap.title}</h3>
-                <p className="text-[13px] font-normal leading-[1.75] text-[#0a1628]/60">{cap.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── USE CASES ────────────────────────────────────────────────────── */}
-      <section className="border-t border-[#0d2442] bg-[#0a1628] py-24">
+      <section className="bg-[#0a1628] py-24">
         <div ref={ucRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(ucInView, 0)}>
             <div className="mb-14 max-w-3xl">
