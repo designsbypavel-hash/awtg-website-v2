@@ -52,6 +52,11 @@ import IcmapPage from './pages/IcmapPage'
 import ServicesEngineeringPage from './pages/ServicesEngineeringPage'
 import ServicesIoTPage from './pages/ServicesIoTPage'
 
+// Digital Platforms
+import DigitalPlatformsPage from './pages/DigitalPlatformsPage'
+import DigitalPlatformsIBecomePage from './pages/DigitalPlatformsIBecomePage'
+import DigitalPlatformsIYouthPage from './pages/DigitalPlatformsIYouthPage'
+
 // About
 import AboutOverviewPage from './pages/AboutOverviewPage'
 import AboutLeadershipPage from './pages/AboutLeadershipPage'
@@ -94,6 +99,11 @@ export default function App() {
         <Route path="products/icmap" element={<IcmapPage />} />
         <Route path="connectivity/scap" element={<ServicesEngineeringPage />} />
         <Route path="connectivity/idams" element={<ServicesIoTPage />} />
+
+        {/* Digital Platforms */}
+        <Route path="digital-platforms" element={<DigitalPlatformsPage />} />
+        <Route path="digital-platforms/ibecome" element={<DigitalPlatformsIBecomePage />} />
+        <Route path="digital-platforms/iyouth" element={<DigitalPlatformsIYouthPage />} />
 
         {/* Solutions */}
 

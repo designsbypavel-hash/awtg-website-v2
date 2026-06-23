@@ -83,6 +83,34 @@ const navItems: NavEntry[] = [
     ],
   },
   {
+    label: 'Digital Platforms',
+    key: 'digital-platforms',
+    groups: [
+      {
+        heading: 'Products',
+        items: [
+          { label: 'iBecome', desc: 'A platform for jobs, apprenticeships and local opportunity', href: '/digital-platforms/ibecome' },
+          { label: 'iYouth', desc: 'A platform for youth engagement, activities and local participation', href: '/digital-platforms/iyouth' },
+        ],
+      },
+      {
+        heading: 'Industries',
+        items: [
+          { label: 'Employability', desc: 'Digital platforms for careers, jobs and skills development', href: '/digital-platforms#employability' },
+          { label: 'Youth Engagement', desc: 'Supporting activities, participation and community programmes', href: '/digital-platforms#youth-engagement' },
+          { label: 'Education', desc: 'Connecting learners, institutions and opportunity pathways', href: '/digital-platforms#education' },
+        ],
+      },
+      {
+        heading: '',
+        items: [
+          { label: 'Local Government', desc: 'Citizen-focused service delivery and engagement', href: '/digital-platforms#local-government' },
+          { label: 'Community Services', desc: 'Digital experiences for outreach and programme delivery', href: '/digital-platforms#community-services' },
+        ],
+      },
+    ],
+  },
+  {
     label: 'About',
     key: 'about',
     groups: [
@@ -138,6 +166,23 @@ const featuredPanels: Record<string, FeaturedPanel> = {
         href: '/insights/case-studies/tot-service-assurance',
         badge: 'Case Study',
         image: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        imageFit: 'cover',
+      },
+    ],
+  },
+  'digital-platforms': {
+    eyebrow: 'Featured',
+    title: 'Digital Platforms for Communities',
+    desc: 'Helping organisations connect people with opportunities, activities and support through modern digital experiences.',
+    href: '/digital-platforms',
+    cta: '',
+    items: [
+      {
+        label: 'Digital Platforms for Communities',
+        desc: 'Helping organisations connect people with opportunities, activities and support through modern digital experiences.',
+        href: '/digital-platforms',
+        badge: 'Platform',
+        image: '/images/insights/public-sector.jpg',
         imageFit: 'cover',
       },
     ],

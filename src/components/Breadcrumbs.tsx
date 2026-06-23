@@ -26,6 +26,7 @@ const LABELS: Record<string, string> = {
   retail: 'Commerce',
   defence: 'Space & Defence',
   products: 'Products',
+  'digital-platforms': 'Digital Platforms',
   kai: 'AI for Sales and Customer Services',
   aruva: 'AI for Education',
   icmap: 'iCMAP',
