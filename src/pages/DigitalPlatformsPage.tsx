@@ -9,6 +9,7 @@ import CTASection from '@/components/CTASection'
 import lysHomePage from '@/assets/iYouth/LYS home page.jpg'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
+import opportunityGuidance from '@/assets/Digital Platforms/outcomes/opportunity-guidance.webp'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -206,34 +207,65 @@ export default function DigitalPlatformsPage() {
       </section>
 
       {/* ── SHARED STRENGTHS ─────────────────────────────────────────────── */}
-      <section className="py-24 bg-[#f0f4f8]">
+      <section className="bg-[#f4f7fa] py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14 max-w-2xl">
-            <h2 className="font-heading text-[#0a1628]">
+          <div className="mb-10 max-w-3xl lg:mb-12">
+            <h2 className="font-heading mb-5 text-[#0a1628]">
               What our platforms are built to deliver
             </h2>
+            <p className="max-w-2xl text-[16px] font-normal leading-[1.75] text-[#0a1628]/60">
+              Digital services should make opportunity easier to find, participation simpler to manage and delivery clearer for every team involved.
+            </p>
           </div>
-          <div ref={benefitsRef} className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-            {benefits.map((b, i) => (
-              <div key={b.label}
-                className="bg-white rounded-2xl p-7 hover:shadow-md transition-shadow"
-                style={{
-                  borderTop: `3px solid ${b.color}`,
-                  boxShadow: '0 2px 12px rgba(10,22,40,0.06)',
-                  ...reveal(benefitsInView, i * 80),
-                }}>
-                <div className="w-11 h-11 flex items-center justify-center rounded-xl mb-6"
-                  style={{ background: b.color + '15', border: `1px solid ${b.color}25` }}>
-                  <FontAwesomeIcon icon={b.icon} style={{ width: 18, height: 18, color: b.color }} />
-                </div>
-                <p className="text-[#0a1628] font-semibold text-[15px] leading-snug mb-2.5">{b.label}</p>
-                <p className="text-[#0a1628]/60 text-[13px] font-normal leading-relaxed">{b.desc}</p>
-              </div>
-            ))}
+
+          <div ref={benefitsRef} className="grid items-stretch gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+            <div
+              className="relative min-h-[340px] overflow-hidden rounded-2xl border border-[#0a1628]/10 bg-white sm:min-h-[440px] lg:min-h-[560px]"
+              style={{
+                boxShadow: '0 16px 40px rgba(10,22,40,0.09)',
+                ...reveal(benefitsInView),
+              }}
+            >
+              <img
+                src={opportunityGuidance}
+                alt="Young adults exploring jobs, apprenticeships and local opportunities with a careers adviser"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
+            </div>
+
+            <ul className="flex flex-col overflow-hidden rounded-2xl border border-[#0a1628]/10 bg-white px-6 sm:px-8">
+              {benefits.map((b, i) => (
+                <li
+                  key={b.label}
+                  className="flex flex-1 items-start gap-5 border-b border-[#0a1628]/8 py-6 last:border-b-0 lg:py-5"
+                  style={reveal(benefitsInView, 80 + i * 70)}
+                >
+                  <div
+                    className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+                    style={{ background: b.color + '12', border: `1px solid ${b.color}24` }}
+                  >
+                    <FontAwesomeIcon
+                      icon={b.icon}
+                      aria-hidden="true"
+                      style={{ width: 17, height: 17, color: b.color }}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="mb-1.5 text-[16px] font-semibold leading-snug text-[#0a1628]">
+                      {b.label}
+                    </h3>
+                    <p className="text-[14px] font-normal leading-[1.65] text-[#0a1628]/60">
+                      {b.desc}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
-
       {/* ── AUDIENCE ──────────────────────────────────────────────────────── */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
