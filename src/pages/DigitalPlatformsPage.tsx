@@ -147,20 +147,6 @@ export default function DigitalPlatformsPage() {
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
               Our Digital Platforms support the services that connect people with opportunities, activities and support. They bring together clear user journeys, practical delivery tools and better visibility for the teams managing them.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/digital-platforms/ibecome"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors"
-              >
-                Explore iBecome
-              </Link>
-              <Link
-                to="/digital-platforms/iyouth"
-                className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1] text-[#1a7aab] text-[14px] font-semibold rounded-lg hover:bg-[#228DC1] hover:text-white transition-colors"
-              >
-                Explore iYouth
-              </Link>
-            </div>
           </div>
         </div>
       </section>
