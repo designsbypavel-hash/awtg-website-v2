@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from 'react'
+﻿import { Fragment, useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -287,31 +287,34 @@ export default function Navigation() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center" aria-label="Main navigation">
-              {navItems.map(({ label, key }) => (
-                <button
-                  key={key}
-                  aria-expanded={activeDropdown === key}
-                  aria-haspopup="true"
-                  aria-controls={`dropdown-${key}`}
-                  onMouseEnter={() => openDropdown(key)}
-                  onFocus={() => openDropdown(key)}
-                  onClick={(e) => { e.stopPropagation(); activeDropdown === key ? closeDropdownNow() : openDropdown(key) }}
-                  className={`relative flex items-center gap-1 px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls} ${activeDropdown === key ? (scrolled || !isHome ? 'text-[#0a1628]' : 'text-white') : ''}`}
-                >
-                  {label}
-                  <FontAwesomeIcon icon={faChevronDown} className={`w-3 h-3 opacity-50 transition-transform duration-200 ${activeDropdown === key ? 'rotate-180' : ''}`} aria-hidden="true" />
-                  {/* Harvey-style active underline */}
-                  {activeDropdown === key && (
-                    <span className="absolute bottom-0 left-4 right-4 h-px bg-current opacity-30" aria-hidden="true" />
+              {navItems.map(({ label, key }, index) => (
+                <Fragment key={key}>
+                  <button
+                    aria-expanded={activeDropdown === key}
+                    aria-haspopup="true"
+                    aria-controls={`dropdown-${key}`}
+                    onMouseEnter={() => openDropdown(key)}
+                    onFocus={() => openDropdown(key)}
+                    onClick={(e) => { e.stopPropagation(); activeDropdown === key ? closeDropdownNow() : openDropdown(key) }}
+                    className={`relative flex items-center gap-1 px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls} ${activeDropdown === key ? (scrolled || !isHome ? 'text-[#0a1628]' : 'text-white') : ''}`}
+                  >
+                    {label}
+                    <FontAwesomeIcon icon={faChevronDown} className={`w-3 h-3 opacity-50 transition-transform duration-200 ${activeDropdown === key ? 'rotate-180' : ''}`} aria-hidden="true" />
+                    {/* Harvey-style active underline */}
+                    {activeDropdown === key && (
+                      <span className="absolute bottom-0 left-4 right-4 h-px bg-current opacity-30" aria-hidden="true" />
+                    )}
+                  </button>
+                  {index === 1 && (
+                    <Link
+                      to="/digital-platforms"
+                      className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
+                    >
+                      Digital Platforms
+                    </Link>
                   )}
-                </button>
+                </Fragment>
               ))}
-              <Link
-                to="/digital-platforms"
-                className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
-              >
-                Digital Platforms
-              </Link>
               <Link
                 to="/news"
                 className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
@@ -481,41 +484,45 @@ export default function Navigation() {
         {/* Mobile menu */}
         {mobileOpen && (
           <div id="mobile-menu" className="lg:hidden bg-white border-t border-gray-100 px-6 py-4" role="navigation" aria-label="Mobile navigation">
-            {navItems.map((nav) => (
-              <div key={nav.key} className="border-b border-gray-50 last:border-0">
-                <button
-                  aria-expanded={mobileExpanded === nav.key}
-                  aria-controls={`mobile-submenu-${nav.key}`}
-                  onClick={() => setMobileExpanded(mobileExpanded === nav.key ? null : nav.key)}
-                  className="flex items-center justify-between w-full py-3.5 text-[#0a1628] text-sm font-medium"
-                >
-                  {nav.label}
-                  <FontAwesomeIcon icon={faChevronDown} className={`w-4 h-4 opacity-40 transition-transform ${mobileExpanded === nav.key ? 'rotate-180' : ''}`} aria-hidden="true" />
-                </button>
-                {mobileExpanded === nav.key && (
-                  <div id={`mobile-submenu-${nav.key}`} className="pb-4 space-y-4 pl-2">
-                    {nav.items && nav.items.map((item) => (
-                      <Link key={item.href} to={item.href} className="block py-1">
-                        <p className="text-sm text-[#0a1628] font-normal">{item.label}</p>
-                        <p className="text-xs text-[#0a1628]/75 font-normal mt-0.5">{item.desc}</p>
-                      </Link>
-                    ))}
-                    {nav.groups && nav.groups.map((group) => (
-                      <div key={group.heading}>
-                        <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/60 mb-2 mt-3">{group.heading}</p>
-                        {group.items.map((item) => (
-                          <Link key={item.href} to={item.href} className="block py-1">
-                            <p className="text-sm text-[#0a1628] font-normal">{item.label}</p>
-                            <p className="text-xs text-[#0a1628]/75 font-normal mt-0.5">{item.desc}</p>
-                          </Link>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
+            {navItems.map((nav, index) => (
+              <Fragment key={nav.key}>
+                <div className="border-b border-gray-50 last:border-0">
+                  <button
+                    aria-expanded={mobileExpanded === nav.key}
+                    aria-controls={`mobile-submenu-${nav.key}`}
+                    onClick={() => setMobileExpanded(mobileExpanded === nav.key ? null : nav.key)}
+                    className="flex items-center justify-between w-full py-3.5 text-[#0a1628] text-sm font-medium"
+                  >
+                    {nav.label}
+                    <FontAwesomeIcon icon={faChevronDown} className={`w-4 h-4 opacity-40 transition-transform ${mobileExpanded === nav.key ? 'rotate-180' : ''}`} aria-hidden="true" />
+                  </button>
+                  {mobileExpanded === nav.key && (
+                    <div id={`mobile-submenu-${nav.key}`} className="pb-4 space-y-4 pl-2">
+                      {nav.items && nav.items.map((item) => (
+                        <Link key={item.href} to={item.href} className="block py-1">
+                          <p className="text-sm text-[#0a1628] font-normal">{item.label}</p>
+                          <p className="text-xs text-[#0a1628]/75 font-normal mt-0.5">{item.desc}</p>
+                        </Link>
+                      ))}
+                      {nav.groups && nav.groups.map((group) => (
+                        <div key={group.heading}>
+                          <p className="text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/60 mb-2 mt-3">{group.heading}</p>
+                          {group.items.map((item) => (
+                            <Link key={item.href} to={item.href} className="block py-1">
+                              <p className="text-sm text-[#0a1628] font-normal">{item.label}</p>
+                              <p className="text-xs text-[#0a1628]/75 font-normal mt-0.5">{item.desc}</p>
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                {index === 1 && (
+                  <Link to="/digital-platforms" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Digital Platforms</Link>
                 )}
-              </div>
+              </Fragment>
             ))}
-            <Link to="/digital-platforms" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Digital Platforms</Link>
             <Link to="/news" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">News</Link>
             <Link to="/careers" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Careers</Link>
             <div className="pt-4 flex flex-col gap-2">
