@@ -121,7 +121,7 @@ export default function DigitalPlatformsIYouthPage() {
       />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
+      <section className="relative overflow-hidden pt-32 pb-20 lg:flex lg:h-[634px] lg:items-center" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -186,7 +186,7 @@ export default function DigitalPlatformsIYouthPage() {
                   src={lysHomePage}
                   alt="iYouth"
                   className="w-full h-auto block"
-                  style={{ aspectRatio: '4 / 3', objectFit: 'cover' }}
+                  style={{ aspectRatio: '16 / 9', objectFit: 'cover' }}
                 />
               </div>
             </div>
