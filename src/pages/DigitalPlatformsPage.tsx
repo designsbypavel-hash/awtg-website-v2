@@ -8,6 +8,7 @@ import {
 import CTASection from '@/components/CTASection'
 import lysHomePage from '@/assets/iYouth/LYS home page.jpg'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
+import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -37,7 +38,7 @@ const products = [
     name: 'iBecome',
     subtitle: 'A platform for jobs, apprenticeships and local opportunity',
     desc: 'iBecome helps young people discover opportunities, build confidence and move closer to employment. It carries forward the proven model behind Liverpool City Region BeMore, bringing together vacancies, careers content, profile tools and local engagement in one joined-up experience.',
-    image: 'https://images.unsplash.com/photo-1758520144427-ddb02ac74e9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+    image: iBecomeHero,
     highlights: [
       'Profile and CV builder',
       'Apprenticeships and jobs',
@@ -52,7 +53,7 @@ const products = [
     name: 'iYouth',
     subtitle: 'A platform for youth engagement, activities and local participation',
     desc: 'iYouth helps organisations manage youth-facing activities, events and engagement in one place. It is designed to make access simpler for young people and families, while giving delivery teams a clearer way to manage participation and communicate with their communities.',
-    image: lysHomePage,
+    image: iYouthHero,
     highlights: [
       'Activities and event management',
       'Youth participation',
@@ -177,7 +178,7 @@ export default function DigitalPlatformsPage() {
                     src={product.image}
                     alt={product.name}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="h-full w-full object-contain p-4 transition-transform duration-700 group-hover:scale-[1.025]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
                 </div>
