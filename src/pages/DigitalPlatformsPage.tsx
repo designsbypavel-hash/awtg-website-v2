@@ -2,14 +2,17 @@ import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faKey, faComments, faLayerGroup, faChartLine, faMobileScreenButton,
   faBuildingColumns, faGraduationCap, faPeopleGroup, faBriefcase, faChalkboardUser, faHandsHolding,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import lysHomePage from '@/assets/iYouth/LYS home page.jpg'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
-import opportunityGuidance from '@/assets/Digital Platforms/outcomes/opportunity-guidance.webp'
+import clearAccessImage from '@/assets/Digital Platforms/outcomes/clear-access.webp'
+import betterEngagementImage from '@/assets/Digital Platforms/outcomes/better-engagement.webp'
+import joinedUpDeliveryImage from '@/assets/Digital Platforms/outcomes/joined-up-delivery.webp'
+import strongerVisibilityImage from '@/assets/Digital Platforms/outcomes/stronger-visibility.webp'
+import webMobileReadinessImage from '@/assets/Digital Platforms/outcomes/web-mobile-readiness.webp'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -68,13 +71,12 @@ const products = [
 ]
 
 const benefits = [
-  { icon: faKey, label: 'Clear access', desc: 'Make it easier for people to find what is available and take the next step.', color: '#228DC1' },
-  { icon: faComments, label: 'Better engagement', desc: 'Support participation through timely information, relevant content and a clearer user journey.', color: '#059669' },
-  { icon: faLayerGroup, label: 'Joined-up delivery', desc: 'Bring services, opportunities or activities into one experience rather than splitting them across disconnected systems.', color: '#7c3aed' },
-  { icon: faChartLine, label: 'Stronger visibility', desc: 'Give delivery teams a better view of activity, engagement and programme performance.', color: '#d97706' },
-  { icon: faMobileScreenButton, label: 'Web and mobile readiness', desc: 'Design for how people actually access services today.', color: '#228DC1' },
+  { label: 'Clear access', desc: 'Make it easier for people to find what is available and take the next step.', image: clearAccessImage, alt: 'Young person using a mobile phone to access local opportunities and public services', accent: '#228DC1' },
+  { label: 'Better engagement', desc: 'Support participation through timely information, relevant content and a clearer user journey.', image: betterEngagementImage, alt: 'Youth worker facilitating an inclusive community workshop with young people', accent: '#059669' },
+  { label: 'Joined-up delivery', desc: 'Bring services, opportunities and activities into one connected experience rather than fragmented systems.', image: joinedUpDeliveryImage, alt: 'Cross-organisational team collaborating in a digital transformation workshop', accent: '#7C3AED' },
+  { label: 'Stronger visibility', desc: 'Give delivery teams a better view of activity, engagement and programme performance.', image: strongerVisibilityImage, alt: 'Operations team reviewing programme analytics and performance metrics', accent: '#D97706' },
+  { label: 'Web and mobile readiness', desc: 'Design for how people actually access services today.', image: webMobileReadinessImage, alt: 'Person accessing a modern digital service across a smartphone and laptop', accent: '#228DC1' },
 ]
-
 const audiences = [
   { icon: faBuildingColumns, label: 'Local authorities' },
   { icon: faGraduationCap, label: 'Education providers' },
@@ -84,10 +86,64 @@ const audiences = [
   { icon: faHandsHolding, label: 'Community and outreach teams' },
 ]
 
+function PlatformOutcomeSection({ outcome, index }: { outcome: typeof benefits[number]; index: number }) {
+  const [sectionRef, inView] = useInView(0.14)
+  const imageLayerRef = useRef<HTMLDivElement>(null)
+  const imageOnRight = index % 2 === 1
+
+  useEffect(() => {
+    const section = sectionRef.current
+    const imageLayer = imageLayerRef.current
+    if (!section || !imageLayer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let frame = 0
+    const updateParallax = () => {
+      frame = 0
+      const rect = section.getBoundingClientRect()
+      const progress = (window.innerHeight / 2 - (rect.top + rect.height / 2)) / window.innerHeight
+      imageLayer.style.transform = `translate3d(0, ${Math.max(-22, Math.min(22, progress * 32))}px, 0)`
+    }
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateParallax)
+    }
+
+    updateParallax()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [sectionRef])
+
+  return (
+    <article className={index % 2 === 1 ? 'bg-[#F8FAFC]' : 'bg-white'}>
+      <div ref={sectionRef} className="mx-auto grid max-w-[1400px] items-center gap-10 px-8 py-16 sm:py-20 lg:grid-cols-2 lg:gap-20 lg:px-12 lg:py-24">
+        <div
+          className={`group relative h-[360px] overflow-hidden rounded-[24px] border border-[#0a1628]/8 bg-[#e8eef4] shadow-[0_18px_50px_rgba(10,22,40,0.10)] motion-reduce:!translate-y-0 motion-reduce:!opacity-100 motion-reduce:!transition-none sm:h-[460px] lg:h-[560px] ${imageOnRight ? 'lg:order-2' : ''}`}
+          style={reveal(inView)}
+        >
+          <div ref={imageLayerRef} className="absolute inset-x-0 -inset-y-[7%] will-change-transform">
+            <img src={outcome.image} alt={outcome.alt} loading="lazy" className="h-full w-full scale-[1.03] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] motion-reduce:transform-none motion-reduce:transition-none" />
+          </div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a1628]/12 via-transparent to-transparent" />
+        </div>
+
+        <div className={`max-w-[540px] motion-reduce:!translate-y-0 motion-reduce:!opacity-100 motion-reduce:!transition-none ${imageOnRight ? 'lg:order-1 lg:justify-self-end' : 'lg:order-2'}`} style={reveal(inView, 100)}>
+          <div className="mb-7 h-1 w-12 rounded-full" style={{ background: outcome.accent }} />
+          <h3 className="font-heading mb-6 text-[#0a1628]" style={{ fontSize: 'clamp(2rem, 3vw, 3.5rem)', lineHeight: 1.08 }}>
+            {outcome.label}
+          </h3>
+          <p className="text-[17px] font-normal leading-[1.8] text-[#0a1628]/65 sm:text-[18px]">{outcome.desc}</p>
+        </div>
+      </div>
+    </article>
+  )
+}
 // -- Main page -----------------------------------------------------------------
 export default function DigitalPlatformsPage() {
   const [productsRef, productsInView] = useInView(0.08)
-  const [benefitsRef, benefitsInView] = useInView(0.08)
   const [audienceRef, audienceInView] = useInView(0.08)
 
   return (
@@ -206,65 +262,20 @@ export default function DigitalPlatformsPage() {
         </div>
       </section>
 
-      {/* ── SHARED STRENGTHS ─────────────────────────────────────────────── */}
-      <section className="bg-[#f4f7fa] py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-10 max-w-3xl lg:mb-12">
-            <h2 className="font-heading mb-5 text-[#0a1628]">
-              What our platforms are built to deliver
-            </h2>
-            <p className="max-w-2xl text-[16px] font-normal leading-[1.75] text-[#0a1628]/60">
+      {/* ── OUTCOME STORIES ──────────────────────────────────────────────── */}
+      <section className="bg-white pt-20 lg:pt-28">
+        <div className="mx-auto max-w-[1400px] px-8 pb-14 lg:px-12 lg:pb-20">
+          <div className="max-w-3xl">
+            <h2 className="font-heading mb-6 text-[#0a1628]">What our platforms are built to deliver</h2>
+            <p className="max-w-2xl text-[16px] font-normal leading-[1.75] text-[#0a1628]/60 sm:text-[17px]">
               Digital services should make opportunity easier to find, participation simpler to manage and delivery clearer for every team involved.
             </p>
           </div>
-
-          <div ref={benefitsRef} className="grid items-stretch gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
-            <div
-              className="relative min-h-[340px] overflow-hidden rounded-2xl border border-[#0a1628]/10 bg-white sm:min-h-[440px] lg:min-h-[560px]"
-              style={{
-                boxShadow: '0 16px 40px rgba(10,22,40,0.09)',
-                ...reveal(benefitsInView),
-              }}
-            >
-              <img
-                src={opportunityGuidance}
-                alt="Young adults exploring jobs, apprenticeships and local opportunities with a careers adviser"
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
-            </div>
-
-            <ul className="flex flex-col overflow-hidden rounded-2xl border border-[#0a1628]/10 bg-white px-6 sm:px-8">
-              {benefits.map((b, i) => (
-                <li
-                  key={b.label}
-                  className="flex flex-1 items-start gap-5 border-b border-[#0a1628]/8 py-6 last:border-b-0 lg:py-5"
-                  style={reveal(benefitsInView, 80 + i * 70)}
-                >
-                  <div
-                    className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
-                    style={{ background: b.color + '12', border: `1px solid ${b.color}24` }}
-                  >
-                    <FontAwesomeIcon
-                      icon={b.icon}
-                      aria-hidden="true"
-                      style={{ width: 17, height: 17, color: b.color }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="mb-1.5 text-[16px] font-semibold leading-snug text-[#0a1628]">
-                      {b.label}
-                    </h3>
-                    <p className="text-[14px] font-normal leading-[1.65] text-[#0a1628]/60">
-                      {b.desc}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
+
+        {benefits.map((outcome, index) => (
+          <PlatformOutcomeSection key={outcome.label} outcome={outcome} index={index} />
+        ))}
       </section>
       {/* ── AUDIENCE ──────────────────────────────────────────────────────── */}
       <section className="py-24 bg-white">
