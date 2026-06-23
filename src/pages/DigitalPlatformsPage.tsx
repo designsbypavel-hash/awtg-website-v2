@@ -280,29 +280,38 @@ export default function DigitalPlatformsPage() {
       {/* ── AUDIENCE ──────────────────────────────────────────────────────── */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14 max-w-2xl">
-            <h2 className="font-heading text-[#0a1628] mb-5">
-              Who these platforms are for
-            </h2>
-            <p className="text-[16px] font-normal leading-[1.75] text-[#0a1628]/60">
-              Our Digital Platforms are suited to organisations working across youth engagement, employability, education, local programmes and community service delivery.
-            </p>
-          </div>
-          <div ref={audienceRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {audiences.map((a, i) => (
-              <div key={a.label}
-                className="flex items-center gap-4 p-6 rounded-2xl bg-white"
-                style={{
-                  border: '1px solid rgba(15,23,42,0.08)',
-                  boxShadow: '0 1px 4px rgba(15,23,42,0.04)',
-                  ...reveal(audienceInView, i * 70),
-                }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.09)' }}>
-                  <FontAwesomeIcon icon={a.icon} style={{ fontSize: 17, color: '#228DC1' }} />
-                </div>
-                <p className="text-[#0a1628] text-[15px] font-semibold leading-snug">{a.label}</p>
+          <div ref={audienceRef} className="grid gap-14 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
+            <div>
+              <h2 className="font-heading text-[#0a1628] mb-5 max-w-xl">
+                Who these platforms are for
+              </h2>
+              <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.75] text-[#0a1628]/60">
+                Our Digital Platforms are suited to organisations working across youth engagement, employability, education, local programmes and community service delivery.
+              </p>
+              <div className="relative overflow-hidden rounded-sm bg-[#0a1628] shadow-[0_24px_70px_rgba(10,22,40,0.16)]" style={{ aspectRatio: '4 / 3' }}>
+                <img
+                  src="https://images.unsplash.com/photo-1758873269276-9518d0cb4a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  alt="Organisations collaborating around the services they deliver"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
               </div>
-            ))}
+            </div>
+
+            <div className="lg:pl-4">
+              <div className="border-y border-[#0a1628]/10">
+                {audiences.map((a, i) => (
+                  <div
+                    key={a.label}
+                    className="flex items-center gap-5 border-b border-[#0a1628]/10 py-6 last:border-b-0"
+                    style={reveal(audienceInView, i * 70)}
+                  >
+                    <FontAwesomeIcon icon={a.icon} style={{ fontSize: 20, color: '#228DC1' }} className="shrink-0" />
+                    <p className="text-[#0a1628] text-[16px] font-semibold leading-snug">{a.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
