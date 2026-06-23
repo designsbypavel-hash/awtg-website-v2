@@ -90,6 +90,7 @@ const valueProps = [
 
 export default function DigitalPlatformsIBecomePage() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
+  const [outcomesRef, outcomesInView] = useInView(0.1)
   const [capRef, capInView] = useInView(0.08)
   const [valueRef, valueInView] = useInView(0.08)
 
@@ -179,31 +180,58 @@ export default function DigitalPlatformsIBecomePage() {
         </div>
       </section>
 
-      {/* ── IMPACT / PROOF STRIP ─────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="grid sm:grid-cols-3 max-w-6xl mx-auto">
-            {metrics.map((item, i) => (
-              <div key={item.label}
-                className={`px-8 py-12 flex flex-col items-center justify-center text-center min-h-[180px] ${i > 0 ? 'sm:border-l sm:border-gray-200' : ''}`}>
-                <p className="font-heading text-[#228DC1] mb-3" style={{ fontSize: 'clamp(26px,2.6vw,38px)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-                  {item.stat}
-                </p>
-                <p className="text-[#0a1628]/70 text-sm font-normal leading-snug max-w-[260px]">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── PROVEN OUTCOMES AT SCALE ─────────────────────────────────────── */}
+      <section className="bg-white py-24 lg:py-28 overflow-hidden">
+        <div ref={outcomesRef} className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+            <div style={reveal(outcomesInView)}>
+              <p className="mb-4 text-[12px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">
+                Proven impact
+              </p>
+              <h2 className="font-heading mb-6 leading-[1.12] text-[#0a1628]">
+                Built on the success of BeMore.<br />
+                Proven through measurable outcomes.
+              </h2>
+              <p className="mb-4 text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
+                BeMore transformed how young people discover careers, apprenticeships and opportunities across Liverpool City Region.
+              </p>
+              <p className="mb-10 text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
+                iBecome builds on that proven foundation, helping organisations connect services, improve engagement and provide better visibility across programmes and delivery partners.
+              </p>
 
-      {/* ── STORY ─────────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-[#f0f4f8]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <h2 className="font-heading text-[#0a1628] mb-5">Built on the success of BeMore</h2>
-            <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              BeMore brought jobs, apprenticeships, careers information, training and employer engagement into one digital experience for Liverpool City Region. iBecome carries that model forward for organisations looking for a proven platform that helps young people move from discovery to action, while giving partners better visibility of local opportunity delivery.
-            </p>
+              <div className="space-y-4">
+                {metrics.map((item, i) => (
+                  <div
+                    key={item.label}
+                    className="flex gap-5 rounded-2xl border border-[#0a1628]/8 bg-white p-6"
+                    style={{ boxShadow: '0 12px 32px rgba(10,22,40,0.06)', ...reveal(outcomesInView, 150 + i * 100) }}
+                  >
+                    <div className="mt-1 h-auto w-1 shrink-0 rounded-full" style={{ background: '#228DC1' }} />
+                    <div>
+                      <p className="font-heading mb-1.5 text-[#0a1628]" style={{ fontSize: 'clamp(24px,2.4vw,32px)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                        {item.stat}
+                      </p>
+                      <p className="text-[#0a1628]/60 text-[14px] font-normal leading-snug">{item.label}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={reveal(outcomesInView, 200)}>
+              <div
+                className="group relative overflow-hidden rounded-[24px] border border-[#0a1628]/8"
+                style={{ aspectRatio: '4 / 5', boxShadow: '0 30px 70px rgba(10,22,40,0.18)' }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1758270705172-07b53627dfcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1100&q=80"
+                  alt="Young people discovering apprenticeship and career opportunities together"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
