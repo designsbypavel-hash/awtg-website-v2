@@ -674,7 +674,7 @@ export default function InsightsNewsPage() {
                 >
                   <div className="aspect-video overflow-hidden rounded-xl bg-gray-100">
                     <InsightImage
-                      src={getNewsImage(item.category, index)}
+                      src={getNewsImage(`${item.title} ${item.excerpt}`, item.category)}
                       alt={cleanText(item.title)}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />

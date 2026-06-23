@@ -84,24 +84,44 @@ const newsCategoryImages: Record<string, string> = {
   Telecommunications: image('mobile-networks.jpg'),
 }
 
-const newsImageRotation = [
-  image('ai-innovation.jpg'),
-  image('conference.jpg'),
-  image('engineering-team.jpg'),
-  image('lab-testing.jpg'),
-  image('urban-rail.jpg'),
-  image('smart-city.jpg'),
-  image('cloud-network.jpg'),
-  image('telecom-tower.jpg'),
-  image('private-networks.jpg'),
-  image('public-sector.jpg'),
-  image('future-networks.jpg'),
-  image('mobile-networks.jpg'),
-  image('open-ran.jpg'),
-  image('data-centre.jpg'),
-  image('ports-logistics.jpg'),
-  image('research-papers.jpg'),
+// Ordered most-specific-first: each news story is matched against its title + excerpt
+// so the photo reflects what the story is actually about, not just its category.
+const newsKeywordImages: { pattern: RegExp; image: string }[] = [
+  { pattern: /open\s*ran|o-ran|\brapp\b|hiper-ran|sconda|core hdd|itrustric|software-defined radio|\bsdr\b/i, image: image('open-ran.jpg') },
+  { pattern: /rail(way)?|\btrain\b|heartland|millbrook|bicester|bletchley/i, image: image('rail-transport.jpg') },
+  { pattern: /port\s*comms|port industry|\bports\b/i, image: image('ports-logistics.jpg') },
+  { pattern: /defence|\besn\b|emergency services network/i, image: image('defence-network.jpg') },
+  { pattern: /health|echalliance|hospital|practitioner/i, image: image('safety-network.jpg') },
+  { pattern: /award|shortlist|winner|winning|recognised|recognition/i, image: image('research-papers.jpg') },
+  { pattern: /g-cloud|cloud procurement|data\s*centre|data\s*center/i, image: image('cloud-network.jpg') },
+  { pattern: /\blab\b|laboratory|network operations centre/i, image: image('lab-testing.jpg') },
+  { pattern: /\bkai\b|generative ai|artificial intelligence|machine learning|\bai\b/i, image: image('ai-innovation.jpg') },
+  { pattern: /director of engineering|systems integration|quality of service|\bengineering\b/i, image: image('engineering-team.jpg') },
+  { pattern: /glasgow|smart city|smart and connected|city chambers|kielder|christmas market/i, image: image('smart-city.jpg') },
+  { pattern: /mwc|mobile world congress|connected britain|summit|expo|tech week|lamma|panel|sponsor|exhibit|christmas dinner|exclusive with|interview/i, image: image('conference.jpg') },
+  { pattern: /private\s*network|pnaas|network-in-a-box|private\s*5g/i, image: image('private-networks.jpg') },
+  { pattern: /public sector|council|government|crown commercial|\bofcom\b|borderlands/i, image: image('public-sector.jpg') },
+  { pattern: /5g|mobile network|telecom/i, image: image('telecom-tower.jpg') },
 ]
+
+// Fallback pools (by category) for the rare story that matches none of the keywords above.
+const newsCategoryPool: Record<string, string[]> = {
+  'Artificial Intelligence': [image('ai-innovation.jpg'), image('cloud-network.jpg'), image('data-centre.jpg')],
+  Awards: [image('research-papers.jpg'), image('telecom-tower.jpg')],
+  Engineering: [image('engineering-team.jpg'), image('lab-testing.jpg')],
+  'Health Tech': [image('safety-network.jpg'), image('education.jpg')],
+  Innovation: [image('future-networks.jpg'), image('conference.jpg'), image('smart-city.jpg')],
+  News: [image('city-infrastructure.jpg'), image('conference.jpg'), image('research-papers.jpg')],
+  'Private Networks': [image('private-networks.jpg'), image('connectivity.jpg')],
+  'Public Sector': [image('public-sector.jpg'), image('city-infrastructure.jpg')],
+  Telecommunications: [image('mobile-networks.jpg'), image('telecom-tower.jpg'), image('urban-rail.jpg')],
+}
+
+function hashText(text: string) {
+  let hash = 0
+  for (let i = 0; i < text.length; i++) hash = (hash * 31 + text.charCodeAt(i)) >>> 0
+  return hash
+}
 
 export function getBlogImage(slug: string, tag: string) {
   return blogSlugImages[slug] ?? newsCategoryImages[tag] ?? insightFallbackImage
@@ -115,7 +135,9 @@ export function getWhitePaperImage(slug: string, topic: string) {
   return whitePaperSlugImages[slug] ?? whitePaperTopicFallbacks[topic] ?? insightFallbackImage
 }
 
-export function getNewsImage(category: string, index = -1) {
-  if (index >= 0) return newsImageRotation[index % newsImageRotation.length]
-  return newsCategoryImages[category] ?? insightFallbackImage
+export function getNewsImage(text: string, category: string) {
+  const match = newsKeywordImages.find(({ pattern }) => pattern.test(text))
+  if (match) return match.image
+  const pool = newsCategoryPool[category] ?? [insightFallbackImage]
+  return pool[hashText(text) % pool.length]
 }
