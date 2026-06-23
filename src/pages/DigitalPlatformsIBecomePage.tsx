@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
+import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -168,17 +169,11 @@ export default function DigitalPlatformsIBecomePage() {
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <div
-                className="relative w-full max-w-[760px] overflow-hidden rounded-2xl border border-gray-200 bg-white"
-                style={{ filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1758520144427-ddb02ac74e9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1100&q=80"
-                  alt="iBecome"
-                  className="w-full h-auto block"
-                  style={{ aspectRatio: '16 / 9', objectFit: 'cover' }}
-                />
-              </div>
+              <img
+                src={iBecomeHero}
+                alt="iBecome digital opportunity platform"
+                className="block max-h-[430px] w-full max-w-[760px] object-contain"
+              />
             </div>
           </div>
         </div>

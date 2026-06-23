@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import lysHomePage from '@/assets/iYouth/LYS home page.jpg'
+import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -139,14 +140,23 @@ export default function DigitalPlatformsPage() {
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(34,141,193,0.12) 0, transparent 55%)' }} />
 
-        <div className="relative max-w-[1320px] mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <h1 className="font-serif-display text-[#0a1628] leading-[1.02] mb-6">
-              Digital platforms for opportunity, engagement and service delivery
-            </h1>
-            <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
-              Our Digital Platforms support the services that connect people with opportunities, activities and support. They bring together clear user journeys, practical delivery tools and better visibility for the teams managing them.
-            </p>
+        <div className="relative mx-auto max-w-[1320px] px-8 lg:px-12">
+          <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <h1 className="font-serif-display mb-6 leading-[1.02] text-[#0a1628]">
+                Digital platforms for opportunity, engagement and service delivery
+              </h1>
+              <p className="max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
+                Our Digital Platforms support the services that connect people with opportunities, activities and support. They bring together clear user journeys, practical delivery tools and better visibility for the teams managing them.
+              </p>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <img
+                src={iBecomeHero}
+                alt="iBecome digital opportunity platform"
+                className="block max-h-[430px] w-full max-w-[760px] object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>

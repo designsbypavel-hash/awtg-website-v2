@@ -11,6 +11,7 @@ import lysHomePage from '@/assets/iYouth/LYS home page.jpg'
 import clubHomePage from '@/assets/iYouth/Club Home page.jpg'
 import lysOrganisations from '@/assets/iYouth/LYS Organisations Clubs table Active tab.jpg'
 import lysReporting from '@/assets/iYouth/LYS Reporting table.jpg'
+import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -178,17 +179,11 @@ export default function DigitalPlatformsIYouthPage() {
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <div
-                className="relative w-full max-w-[760px] overflow-hidden rounded-2xl border border-gray-200 bg-white"
-                style={{ filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}
-              >
-                <img
-                  src={lysHomePage}
-                  alt="iYouth"
-                  className="w-full h-auto block"
-                  style={{ aspectRatio: '16 / 9', objectFit: 'cover' }}
-                />
-              </div>
+              <img
+                src={iYouthHero}
+                alt="iYouth youth engagement platform"
+                className="block max-h-[430px] w-full max-w-[760px] object-contain"
+              />
             </div>
           </div>
         </div>
