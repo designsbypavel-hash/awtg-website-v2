@@ -307,6 +307,12 @@ export default function Navigation() {
                 </button>
               ))}
               <Link
+                to="/digital-platforms"
+                className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
+              >
+                Digital Platforms
+              </Link>
+              <Link
                 to="/news"
                 className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
               >
@@ -509,6 +515,7 @@ export default function Navigation() {
                 )}
               </div>
             ))}
+            <Link to="/digital-platforms" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Digital Platforms</Link>
             <Link to="/news" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">News</Link>
             <Link to="/careers" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Careers</Link>
             <div className="pt-4 flex flex-col gap-2">
