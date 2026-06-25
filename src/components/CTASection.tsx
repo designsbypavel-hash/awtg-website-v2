@@ -7,6 +7,7 @@ interface CTASectionProps {
   primaryHref?: string
   primaryOnClick?: () => void
   image?: string
+  imagePosition?: string
   eyebrow?: string
 }
 
@@ -19,6 +20,7 @@ export default function CTASection({
   primaryHref = '/contact',
   primaryOnClick,
   image,
+  imagePosition = 'center',
   eyebrow,
 }: CTASectionProps) {
   return (
@@ -78,6 +80,7 @@ export default function CTASection({
                 src={image ?? DEFAULT_IMAGE}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: imagePosition }}
                 aria-hidden="true"
               />
             </div>

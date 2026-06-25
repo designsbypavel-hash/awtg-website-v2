@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
-import lysHomePage from '@/assets/iYouth/LYS home page.jpg'
+import lysLogin from '@/assets/iYouth/Login.jpg'
 import clubHomePage from '@/assets/iYouth/Club Home page.jpg'
 import lysOrganisations from '@/assets/iYouth/LYS Organisations Clubs table Active tab.jpg'
 import lysReporting from '@/assets/iYouth/LYS Reporting table.jpg'
@@ -299,7 +299,8 @@ export default function DigitalPlatformsIYouthPage() {
         subtitle="We can help shape iYouth around the way your programme, service or organisation works."
         primaryLabel="Request a demo"
         primaryOnClick={() => setIsDemoOpen(true)}
-        image={lysHomePage}
+        image={lysLogin}
+        imagePosition="right center"
       />
     </>
   )
