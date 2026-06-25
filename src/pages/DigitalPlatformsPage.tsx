@@ -5,7 +5,7 @@ import {
   faBuildingColumns, faGraduationCap, faPeopleGroup, faBriefcase, faChalkboardUser, faHandsHolding,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
-import lysHomePage from '@/assets/iYouth/LYS home page.jpg'
+import lysLogin from '@/assets/iYouth/Login.jpg'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 import clearAccessImage from '@/assets/Digital Platforms/outcomes/clear-access.webp'
@@ -300,7 +300,8 @@ export default function DigitalPlatformsPage() {
         subtitle="We work with organisations that need practical, well-designed digital platforms for real delivery settings."
         primaryLabel="Talk to us"
         primaryHref="/contact"
-        image={lysHomePage}
+        image={lysLogin}
+        imagePosition="right center"
       />
     </>
   )
