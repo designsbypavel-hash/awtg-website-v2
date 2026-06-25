@@ -264,8 +264,8 @@ export default function DigitalPlatformsIYouthPage() {
           <div ref={shotsRef} className="grid sm:grid-cols-3 gap-6">
             {proofShots.map((shot, i) => (
               <div key={shot.label} style={reveal(shotsInView, i * 100)}>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-gray-200 bg-white" style={{ boxShadow: '0 8px 32px rgba(10,22,40,0.08)' }}>
-                  <img src={shot.src} alt={shot.label} className="absolute inset-0 w-full h-full object-contain" />
+                <div className="relative aspect-[1910/896] overflow-hidden rounded-2xl border border-gray-200 bg-white" style={{ boxShadow: '0 8px 32px rgba(10,22,40,0.08)' }}>
+                  <img src={shot.src} alt={shot.label} className="absolute inset-0 w-full h-full object-cover" />
                 </div>
                 <p className="mt-4 text-[#0a1628] text-[13px] font-semibold text-center">{shot.label}</p>
               </div>
