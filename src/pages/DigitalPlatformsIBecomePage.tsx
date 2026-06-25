@@ -1,8 +1,4 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faUserPen, faBriefcase, faCalendarCheck, faCompass, faVideo, faHandshake, faMobileScreenButton,
-} from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
@@ -38,52 +34,38 @@ const metrics = [
 
 const capabilities = [
   {
-    icon: faUserPen,
     title: 'Profile & CV builder',
     desc: 'Users can create a profile, build a CV and stay ready to apply.',
-    color: '#228DC1',
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
-    icon: faBriefcase,
     title: 'Apprenticeships & jobs',
     desc: 'Bring live vacancies and apprenticeship opportunities into one place, with saved opportunities and a clear route back.',
-    color: '#059669',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
-    icon: faCalendarCheck,
     title: 'Events & engagement',
     desc: 'Promote careers fairs, employer sessions and local opportunity events through the same platform.',
-    color: '#7c3aed',
     image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
-    icon: faCompass,
     title: 'Personalised guidance',
     desc: 'Recommendations, reminders and notifications help users keep moving and stay engaged.',
-    color: '#d97706',
     image: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
-    icon: faVideo,
     title: 'Careers content',
     desc: 'Videos, guides, case studies and sector pathways help users make better informed choices.',
-    color: '#228DC1',
     image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
-    icon: faHandshake,
     title: 'Employer & provider reach',
     desc: 'Give employers and training providers a clearer way to reach local talent.',
-    color: '#059669',
     image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
-    icon: faMobileScreenButton,
     title: 'Web and mobile access',
     desc: 'Support a joined-up experience across web and mobile so access stays simple.',
-    color: '#7c3aed',
     image: 'https://images.unsplash.com/photo-1556742111-a301076d9d18?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
 ]
