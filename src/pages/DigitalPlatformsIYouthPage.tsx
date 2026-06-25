@@ -235,10 +235,6 @@ export default function DigitalPlatformsIYouthPage() {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                   />
-                  <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(10,22,40,0) 55%, rgba(10,22,40,0.6) 100%)' }} />
-                  <div className="absolute bottom-4 left-4 w-10 h-10 rounded-lg flex items-center justify-center bg-white">
-                    <FontAwesomeIcon icon={cap.icon} style={{ width: 16, height: 16, color: cap.color }} />
-                  </div>
                 </div>
                 <p className="mt-4 text-[#0a1628] font-semibold text-base leading-snug mb-2">{cap.title}</p>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{cap.desc}</p>
