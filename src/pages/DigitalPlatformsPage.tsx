@@ -41,30 +41,16 @@ const products = [
   {
     name: 'iBecome',
     subtitle: 'A platform for jobs, apprenticeships and local opportunity',
-    desc: 'iBecome helps young people discover opportunities, build confidence and move closer to employment. It carries forward the proven model behind Liverpool City Region BeMore, bringing together vacancies, careers content, profile tools and local engagement in one joined-up experience.',
+    desc: 'iBecome helps young people discover opportunities, build confidence and move closer to employment. It carries forward the proven model behind Liverpool City Region BeMore, bringing together vacancies, careers content, profile tools and local engagement in one joined-up experience. It includes a profile and CV builder, apprenticeships and jobs, events and engagement, personalised guidance, and employer and provider reach.',
     image: iBecomeHero,
-    highlights: [
-      'Profile and CV builder',
-      'Apprenticeships and jobs',
-      'Events and engagement',
-      'Personalised guidance',
-      'Employer and provider reach',
-    ],
     href: '/digital-platforms/ibecome',
     cta: 'View iBecome',
   },
   {
     name: 'iYouth',
     subtitle: 'A platform for youth engagement, activities and local participation',
-    desc: 'iYouth helps organisations manage youth-facing activities, events and engagement in one place. It is designed to make access simpler for young people and families, while giving delivery teams a clearer way to manage participation and communicate with their communities.',
+    desc: 'iYouth helps organisations manage youth-facing activities, events and engagement in one place. It is designed to make access simpler for young people and families, while giving delivery teams a clearer way to manage participation and communicate with their communities. It covers activities and event management, youth participation, communications and updates, better visibility of services, and clearer delivery oversight.',
     image: iYouthHero,
-    highlights: [
-      'Activities and event management',
-      'Youth participation',
-      'Communications and updates',
-      'Better visibility of services',
-      'Clearer delivery oversight',
-    ],
     href: '/digital-platforms/iyouth',
     cta: 'View iYouth',
   },
@@ -242,15 +228,7 @@ export default function DigitalPlatformsPage() {
                 <div className="flex flex-1 flex-col p-8">
                   <h2 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize: 24 }}>{product.name}</h2>
                   <p className="text-[#1a7aab] text-[14px] font-semibold leading-snug mb-4">{product.subtitle}</p>
-                  <p className="text-[#0a1628]/60 text-[14px] leading-relaxed mb-6">{product.desc}</p>
-                  <div className="space-y-2.5 border-t border-gray-100 pt-5 mb-7">
-                    {product.highlights.map((point) => (
-                      <div key={point} className="flex items-start gap-2.5">
-                        <div className="w-1.5 h-1.5 bg-[#228DC1] rounded-full shrink-0 mt-1.5" />
-                        <p className="text-[13px] font-normal leading-relaxed text-[#0a1628]/70">{point}</p>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-[#0a1628]/60 text-[14px] leading-relaxed mb-7">{product.desc}</p>
                   <span className="mt-auto inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg transition-colors group-hover:bg-[#1a6e99] w-fit">
                     {product.cta}
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
