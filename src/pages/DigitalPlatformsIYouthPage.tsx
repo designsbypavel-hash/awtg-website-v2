@@ -11,8 +11,6 @@ import lysHomePage from '@/assets/iYouth/LYS home page.jpg'
 import clubHomePage from '@/assets/iYouth/Club Home page.jpg'
 import lysOrganisations from '@/assets/iYouth/LYS Organisations Clubs table Active tab.jpg'
 import lysReporting from '@/assets/iYouth/LYS Reporting table.jpg'
-import lysInfoPublishing from '@/assets/iYouth/LYS Information publishing table Search.jpg'
-import lysNotifications from '@/assets/iYouth/LYS Notifications.jpg'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 
 // -- Scroll utilities ----------------------------------------------------------
@@ -96,9 +94,6 @@ const proofShots = [
   { src: clubHomePage, label: 'Club dashboard and announcements' },
   { src: lysOrganisations, label: 'Organisations and clubs management' },
   { src: lysReporting, label: 'Reporting and oversight' },
-  { src: lysHomePage, label: 'Regional dashboard and announcements' },
-  { src: lysInfoPublishing, label: 'Information publishing' },
-  { src: lysNotifications, label: 'Notifications and alerts' },
 ]
 
 export default function DigitalPlatformsIYouthPage() {
