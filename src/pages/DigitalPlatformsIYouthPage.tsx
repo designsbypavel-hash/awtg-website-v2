@@ -76,12 +76,36 @@ const capabilities = [
 ]
 
 const useCases = [
-  { icon: faPeopleGroup, label: 'Youth services' },
-  { icon: faBuildingColumns, label: 'Local authority teams' },
-  { icon: faHandsHolding, label: 'Community programmes' },
-  { icon: faPersonWalkingArrowRight, label: 'Outreach and engagement teams' },
-  { icon: faGraduationCap, label: 'Education-linked youth initiatives' },
-  { icon: faCalendarCheck, label: 'Event and activity-based youth programmes' },
+  {
+    icon: faPeopleGroup,
+    label: 'Youth services',
+    image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    icon: faBuildingColumns,
+    label: 'Local authority teams',
+    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    icon: faHandsHolding,
+    label: 'Community programmes',
+    image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    icon: faPersonWalkingArrowRight,
+    label: 'Outreach and engagement teams',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    icon: faGraduationCap,
+    label: 'Education-linked youth initiatives',
+    image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    icon: faCalendarCheck,
+    label: 'Event and activity-based youth programmes',
+    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
 ]
 
 const valueProps = [
@@ -233,19 +257,22 @@ export default function DigitalPlatformsIYouthPage() {
               iYouth is suited to organisations that need a clearer digital layer around youth participation and service delivery.
             </p>
           </div>
-          <div ref={useCasesRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div ref={useCasesRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {useCases.map((u, i) => (
-              <div key={u.label}
-                className="flex items-center gap-4 p-6 rounded-2xl bg-white"
-                style={{
-                  border: '1px solid rgba(15,23,42,0.08)',
-                  boxShadow: '0 1px 4px rgba(15,23,42,0.04)',
-                  ...reveal(useCasesInView, i * 70),
-                }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.09)' }}>
-                  <FontAwesomeIcon icon={u.icon} style={{ fontSize: 17, color: '#228DC1' }} />
+              <div key={u.label} className="group" style={reveal(useCasesInView, i * 70)}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl" style={{ boxShadow: '0 1px 4px rgba(15,23,42,0.08)' }}>
+                  <img
+                    src={u.image}
+                    alt={u.label}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(10,22,40,0) 55%, rgba(10,22,40,0.6) 100%)' }} />
+                  <div className="absolute bottom-4 left-4 w-10 h-10 rounded-lg flex items-center justify-center bg-white">
+                    <FontAwesomeIcon icon={u.icon} style={{ fontSize: 15, color: '#228DC1' }} />
+                  </div>
                 </div>
-                <p className="text-[#0a1628] text-[15px] font-semibold leading-snug">{u.label}</p>
+                <p className="mt-4 text-[#0a1628] text-[15px] font-semibold leading-snug">{u.label}</p>
               </div>
             ))}
           </div>
