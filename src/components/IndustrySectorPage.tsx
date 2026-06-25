@@ -85,10 +85,9 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
 
             <Link
               to={hero.ctaHref ?? '/contact'}
-              className="inline-flex items-center gap-2 rounded-xl font-semibold text-[14px] text-white transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#228DC1] font-semibold text-[14px] text-white transition-colors hover:bg-[#1a6e99]"
               style={{
-                background: accent,
-                boxShadow: `0 6px 24px ${accent}55`,
+                boxShadow: '0 6px 24px rgba(34,141,193,0.35)',
                 padding: '14px 32px',
               }}
             >
