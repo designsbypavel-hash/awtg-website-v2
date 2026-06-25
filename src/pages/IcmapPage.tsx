@@ -590,13 +590,13 @@ export default function IcmapPage() {
             {steps.map((step, i) => (
               <article
                 key={step.num}
-                className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+                className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16"
               >
-                <div className={i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
+                <div className={`flex h-[360px] items-start overflow-hidden rounded-[20px] lg:h-[380px] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                   <img
                     src={step.image}
                     alt={`${step.label} interface`}
-                    className="block w-full rounded-[20px]"
+                    className="block h-full w-full object-contain object-top"
                   />
                 </div>
 

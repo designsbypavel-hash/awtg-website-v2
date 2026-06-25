@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faUserPen, faBriefcase, faCalendarCheck, faCompass, faVideo, faHandshake, faMobileScreenButton,
@@ -83,9 +82,21 @@ const capabilities = [
 ]
 
 const valueProps = [
-  { label: 'For young people', desc: 'A clearer path from discovering an opportunity to being ready to apply.' },
-  { label: 'For local partners', desc: 'Stronger engagement and better visibility of the opportunities being delivered.' },
-  { label: 'For programmes', desc: 'A proven digital model that can be adapted around local goals and service needs.' },
+  {
+    label: 'For young people',
+    desc: 'A clearer path from discovering an opportunity to being ready to apply.',
+    image: 'https://images.unsplash.com/photo-1486403184395-fc4990866136?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    label: 'For local partners',
+    desc: 'Stronger engagement and better visibility of the opportunities being delivered.',
+    image: 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    label: 'For programmes',
+    desc: 'A proven digital model that can be adapted around local goals and service needs.',
+    image: 'https://images.unsplash.com/photo-1758873271761-6cfe9b4f000c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+  },
 ]
 
 export default function DigitalPlatformsIBecomePage() {
@@ -161,12 +172,6 @@ export default function DigitalPlatformsIBecomePage() {
                 >
                   Request a demo
                 </button>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 rounded-lg border border-[#228DC1] px-7 py-3.5 text-[14px] font-semibold text-[#1a7aab] transition-colors hover:bg-[#228DC1] hover:text-white"
-                >
-                  Talk to us
-                </Link>
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
@@ -260,18 +265,26 @@ export default function DigitalPlatformsIBecomePage() {
       </section>
 
       {/* ── VALUE: WHY IT WORKS ──────────────────────────────────────────── */}
-      <section className="py-24 bg-[#f0f4f8]">
+      <section className="py-24" style={{ backgroundColor: '#0a1628' }}>
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14 max-w-2xl">
-            <h2 className="font-heading text-[#0a1628]">Why it works</h2>
+            <h2 className="font-heading text-white">Why it works</h2>
           </div>
           <div ref={valueRef} className="grid sm:grid-cols-3 gap-5">
             {valueProps.map((v, i) => (
-              <div key={v.label}
-                className="bg-white rounded-2xl p-8"
-                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 2px 12px rgba(10,22,40,0.05)', ...reveal(valueInView, i * 90) }}>
-                <p className="text-[#1a7aab] text-[13px] font-bold uppercase tracking-[0.12em] mb-4">{v.label}</p>
-                <p className="text-[#0a1628]/70 text-[15px] font-normal leading-relaxed">{v.desc}</p>
+              <div key={v.label} className="group" style={reveal(valueInView, i * 90)}>
+                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-white/5">
+                  <img
+                    src={v.image}
+                    alt={v.label}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                </div>
+                <div className="pt-6">
+                  <p className="text-white text-[16px] font-semibold mb-2">{v.label}</p>
+                  <p className="text-white/60 text-[14px] font-normal leading-relaxed">{v.desc}</p>
+                </div>
               </div>
             ))}
           </div>
