@@ -52,7 +52,7 @@ export default function CTASection({
                 <button
                   type="button"
                   onClick={primaryOnClick}
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/25 text-white text-[14px] font-medium hover:bg-white hover:text-[#0a1628] hover:border-white transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#228DC1] text-white text-[14px] font-semibold transition-colors hover:bg-[#1a6e99]"
                 >
                   {primaryLabel}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -62,7 +62,7 @@ export default function CTASection({
               ) : (
                 <Link
                   to={primaryHref}
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/25 text-white text-[14px] font-medium hover:bg-white hover:text-[#0a1628] hover:border-white transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#228DC1] text-white text-[14px] font-semibold transition-colors hover:bg-[#1a6e99]"
                 >
                   {primaryLabel}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
