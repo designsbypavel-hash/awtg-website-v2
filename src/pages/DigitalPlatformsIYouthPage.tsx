@@ -231,17 +231,17 @@ export default function DigitalPlatformsIYouthPage() {
           <div className="mb-14 max-w-2xl">
             <h2 className="font-heading text-[#0a1628]">What iYouth supports</h2>
           </div>
-          <div ref={capRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:[grid-auto-flow:dense]">
+          <div ref={capRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {capabilities.map((cap, i) => (
               <div key={cap.title}
-                className={`bg-white rounded-2xl flex flex-col ${i === 0 ? 'p-9 lg:col-span-2 lg:row-span-2 lg:justify-end' : 'p-7'}`}
+                className="bg-white rounded-2xl p-7"
                 style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 2px 12px rgba(10,22,40,0.05)', ...reveal(capInView, i * 80) }}>
-                <div className={`flex items-center justify-center rounded-xl ${i === 0 ? 'w-14 h-14 mb-7' : 'w-11 h-11 mb-6'}`}
+                <div className="w-11 h-11 flex items-center justify-center rounded-xl mb-6"
                   style={{ background: cap.color + '15', border: `1px solid ${cap.color}25` }}>
-                  <FontAwesomeIcon icon={cap.icon} style={{ width: i === 0 ? 22 : 18, height: i === 0 ? 22 : 18, color: cap.color }} />
+                  <FontAwesomeIcon icon={cap.icon} style={{ width: 18, height: 18, color: cap.color }} />
                 </div>
-                <p className={`text-[#0a1628] font-semibold leading-snug ${i === 0 ? 'text-2xl mb-4' : 'text-base mb-3'}`}>{cap.title}</p>
-                <p className={`text-[#0a1628]/60 font-normal leading-relaxed ${i === 0 ? 'text-base max-w-md' : 'text-sm'}`}>{cap.desc}</p>
+                <p className="text-[#0a1628] font-semibold text-base leading-snug mb-3">{cap.title}</p>
+                <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{cap.desc}</p>
               </div>
             ))}
           </div>
