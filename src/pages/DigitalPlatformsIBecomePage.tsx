@@ -42,42 +42,49 @@ const capabilities = [
     title: 'Profile & CV builder',
     desc: 'Users can create a profile, build a CV and stay ready to apply.',
     color: '#228DC1',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faBriefcase,
     title: 'Apprenticeships & jobs',
     desc: 'Bring live vacancies and apprenticeship opportunities into one place, with saved opportunities and a clear route back.',
     color: '#059669',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faCalendarCheck,
     title: 'Events & engagement',
     desc: 'Promote careers fairs, employer sessions and local opportunity events through the same platform.',
     color: '#7c3aed',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faCompass,
     title: 'Personalised guidance',
     desc: 'Recommendations, reminders and notifications help users keep moving and stay engaged.',
     color: '#d97706',
+    image: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faVideo,
     title: 'Careers content',
     desc: 'Videos, guides, case studies and sector pathways help users make better informed choices.',
     color: '#228DC1',
+    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faHandshake,
     title: 'Employer & provider reach',
     desc: 'Give employers and training providers a clearer way to reach local talent.',
     color: '#059669',
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faMobileScreenButton,
     title: 'Web and mobile access',
     desc: 'Support a joined-up experience across web and mobile so access stays simple.',
     color: '#7c3aed',
+    image: 'https://images.unsplash.com/photo-1556742111-a301076d9d18?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
 ]
 
@@ -247,16 +254,22 @@ export default function DigitalPlatformsIBecomePage() {
           <div className="mb-14 max-w-2xl">
             <h2 className="font-heading text-[#0a1628]">What iBecome does</h2>
           </div>
-          <div ref={capRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div ref={capRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {capabilities.map((cap, i) => (
-              <div key={cap.title}
-                className="bg-white rounded-2xl p-7"
-                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 2px 12px rgba(10,22,40,0.05)', ...reveal(capInView, i * 80) }}>
-                <div className="w-11 h-11 flex items-center justify-center rounded-xl mb-6"
-                  style={{ background: cap.color + '15', border: `1px solid ${cap.color}25` }}>
-                  <FontAwesomeIcon icon={cap.icon} style={{ width: 18, height: 18, color: cap.color }} />
+              <div key={cap.title} className="group" style={reveal(capInView, i * 80)}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl" style={{ boxShadow: '0 1px 4px rgba(15,23,42,0.08)' }}>
+                  <img
+                    src={cap.image}
+                    alt={cap.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(10,22,40,0) 55%, rgba(10,22,40,0.6) 100%)' }} />
+                  <div className="absolute bottom-4 left-4 w-10 h-10 rounded-lg flex items-center justify-center bg-white">
+                    <FontAwesomeIcon icon={cap.icon} style={{ width: 16, height: 16, color: cap.color }} />
+                  </div>
                 </div>
-                <p className="text-[#0a1628] font-semibold text-base leading-snug mb-3">{cap.title}</p>
+                <p className="mt-4 text-[#0a1628] font-semibold text-base leading-snug mb-2">{cap.title}</p>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{cap.desc}</p>
               </div>
             ))}
