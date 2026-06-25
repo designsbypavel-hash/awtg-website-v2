@@ -144,9 +144,15 @@ export default function DigitalPlatformsIBecomePage() {
         <div className="relative mx-auto max-w-[1320px] px-8 lg:px-12">
           <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
-              <h1 className="font-serif-display mb-3 leading-[1.02] text-[#0a1628]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
-                iBecome
-              </h1>
+              <div className="mb-3 w-fit">
+                <h1 className="font-serif-display leading-[1.02] text-[#1a2233]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)', textShadow: '0 8px 28px rgba(10,22,40,0.22)' }}>
+                  iBecome
+                </h1>
+                <div className="relative mt-3 h-[10px] w-4/5">
+                  <div className="absolute inset-0 rounded-full opacity-80 blur-xl" style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899, #f97316, #eab308, #22c55e, #3b82f6)' }} />
+                  <div className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899, #f97316, #eab308, #22c55e, #3b82f6)' }} />
+                </div>
+              </div>
               <p className="mb-3 text-[#1a7aab] text-[17px] font-semibold">
                 A complete local opportunity ecosystem
               </p>
