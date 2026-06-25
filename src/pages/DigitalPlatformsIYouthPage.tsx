@@ -42,36 +42,42 @@ const capabilities = [
     title: 'Activities & events',
     desc: 'Present youth activities and events in a clear, accessible format.',
     color: '#228DC1',
+    image: 'https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faUserPlus,
     title: 'Registrations & participation',
     desc: 'Give young people and families a simpler route to register and take part.',
     color: '#059669',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faBullhorn,
     title: 'Communications & updates',
     desc: 'Share important updates, reminders and information in one place.',
     color: '#7c3aed',
+    image: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faEye,
     title: 'Service visibility',
     desc: 'Make local youth offers easier to discover and easier to understand.',
     color: '#d97706',
+    image: 'https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faChartLine,
     title: 'Delivery oversight',
     desc: 'Give teams a clearer view of participation and activity delivery.',
     color: '#228DC1',
+    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faPeopleGroup,
     title: 'Community engagement',
     desc: 'Support stronger, more consistent engagement with young people and families.',
     color: '#059669',
+    image: 'https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
 ]
 
@@ -231,16 +237,22 @@ export default function DigitalPlatformsIYouthPage() {
           <div className="mb-14 max-w-2xl">
             <h2 className="font-heading text-[#0a1628]">What iYouth supports</h2>
           </div>
-          <div ref={capRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div ref={capRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {capabilities.map((cap, i) => (
-              <div key={cap.title}
-                className="bg-white rounded-2xl p-7"
-                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 2px 12px rgba(10,22,40,0.05)', ...reveal(capInView, i * 80) }}>
-                <div className="w-11 h-11 flex items-center justify-center rounded-xl mb-6"
-                  style={{ background: cap.color + '15', border: `1px solid ${cap.color}25` }}>
-                  <FontAwesomeIcon icon={cap.icon} style={{ width: 18, height: 18, color: cap.color }} />
+              <div key={cap.title} className="group" style={reveal(capInView, i * 80)}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl" style={{ boxShadow: '0 1px 4px rgba(15,23,42,0.08)' }}>
+                  <img
+                    src={cap.image}
+                    alt={cap.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(10,22,40,0) 55%, rgba(10,22,40,0.6) 100%)' }} />
+                  <div className="absolute bottom-4 left-4 w-10 h-10 rounded-lg flex items-center justify-center bg-white">
+                    <FontAwesomeIcon icon={cap.icon} style={{ width: 16, height: 16, color: cap.color }} />
+                  </div>
                 </div>
-                <p className="text-[#0a1628] font-semibold text-base leading-snug mb-3">{cap.title}</p>
+                <p className="mt-4 text-[#0a1628] font-semibold text-base leading-snug mb-2">{cap.title}</p>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{cap.desc}</p>
               </div>
             ))}
