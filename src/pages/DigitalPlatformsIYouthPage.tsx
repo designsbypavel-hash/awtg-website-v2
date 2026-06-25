@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCalendarCheck, faUserPlus, faBullhorn, faEye, faChartLine, faPeopleGroup,
@@ -206,12 +205,6 @@ export default function DigitalPlatformsIYouthPage() {
                 >
                   Request a demo
                 </button>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 rounded-lg border border-[#228DC1] px-7 py-3.5 text-[14px] font-semibold text-[#1a7aab] transition-colors hover:bg-[#228DC1] hover:text-white"
-                >
-                  Talk to us
-                </Link>
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
