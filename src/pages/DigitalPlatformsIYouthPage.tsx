@@ -219,18 +219,6 @@ export default function DigitalPlatformsIYouthPage() {
         </div>
       </section>
 
-      {/* ── INTRO ─────────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-[#f0f4f8]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <h2 className="font-heading text-[#0a1628] mb-5">Built for organisations working with young people</h2>
-            <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              Youth services often rely on fragmented communications, scattered information and manual coordination. iYouth provides a clearer digital route for managing activities, connecting with users and improving visibility across programmes and local services.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ── CAPABILITIES ─────────────────────────────────────────────────── */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
