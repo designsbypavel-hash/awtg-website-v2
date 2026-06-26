@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import CTASection from '@/components/CTASection'
 import IndustryIconVisual from '@/components/IndustryIconVisual'
-import IndustryCard from '@/components/IndustryCard'
 import IndustrySectionHeader from '@/components/IndustrySectionHeader'
 
 export interface SectorHero {
@@ -35,7 +34,7 @@ export interface SectorPageData {
 }
 
 export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
-  const { hero, supports, useCases, outcomes, proof, cta } = data
+  const { hero, supports, outcomes, proof, cta } = data
   const accent = hero.accentColor ?? '#228DC1'
 
   return (
@@ -194,31 +193,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
             </div>
           )
         })}
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
-          USE CASES
-      ══════════════════════════════════════════════════════ */}
-      <section className="py-24" style={{ background: '#f8fafc' }}>
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <IndustrySectionHeader
-            heading={useCases.heading}
-            intro={useCases.intro}
-            className="mb-14"
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {useCases.items.map((u, i) => (
-              <IndustryCard
-                key={u.title}
-                icon={u.icon}
-                title={u.title}
-                desc={u.desc}
-                index={i}
-                accentTop={accent}
-              />
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
