@@ -40,7 +40,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Digital Transformation',
     accentColor: '#7c3aed',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/images/insights/ai-innovation.jpg',
     title: 'AI for digital transformation',
     subtitle:
       'Automate processes, unlock trapped knowledge and give your organisation the intelligence it needs to move faster.',
@@ -99,7 +99,7 @@ const data: SectorPageData = {
           'Exception handling with escalation pathways',
           'Integration with existing systems and platforms',
         ],
-        image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/ai-lab.jpg',
       },
       {
         icon: faDatabase,
@@ -111,7 +111,7 @@ const data: SectorPageData = {
           'Version control and content governance',
           'Usage analytics to identify gaps and improve content',
         ],
-        image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/research-papers.jpg',
       },
       {
         icon: faChartLine,
@@ -123,7 +123,7 @@ const data: SectorPageData = {
           'Predictive signals for operational planning',
           'Executive reporting on transformation progress',
         ],
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/data-centre.jpg',
       },
     ],
   },

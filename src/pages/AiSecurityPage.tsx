@@ -38,7 +38,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Security & Governance',
     accentColor: '#dc2626',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/images/insights/defence-network.jpg',
     title: 'Secure, trustworthy AI you can deploy with confidence',
     subtitle:
       'Governance, risk management and security built into every AI deployment — so innovation never comes at the cost of trust.',
@@ -97,7 +97,7 @@ const data: SectorPageData = {
           'Responsible AI deployment practices',
           'AI security architecture reviews',
         ],
-        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/research-papers.jpg',
       },
       {
         icon: faMicrochip,
@@ -109,7 +109,7 @@ const data: SectorPageData = {
           'Data protection and privacy controls',
           'Ongoing security architecture reviews as systems evolve',
         ],
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/safety-network.jpg',
       },
       {
         icon: faKey,
@@ -121,7 +121,7 @@ const data: SectorPageData = {
           'Quantum safe security strategies',
           'Emerging technology and future network security reviews',
         ],
-        image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/future-networks.jpg',
       },
     ],
   },

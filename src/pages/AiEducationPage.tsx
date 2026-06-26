@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Education',
     accentColor: '#228DC1',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/images/insights/education.jpg',
     title: 'AI-powered teaching and formative assessment for higher education',
     subtitle:
       'Aruva helps universities personalise learning, generate meaningful feedback and understand student progress in real time.',
@@ -98,7 +98,7 @@ const data: SectorPageData = {
           'Approved materials used as the source for every student interaction',
           'Consistent alignment between course design and AI support',
         ],
-        image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/education.jpg',
       },
       {
         icon: faClipboardList,
@@ -110,7 +110,7 @@ const data: SectorPageData = {
           'Assessment variants to support academic integrity',
           'Early intervention signals for at-risk learners',
         ],
-        image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/research-papers.jpg',
       },
       {
         icon: faChartLine,
@@ -122,7 +122,7 @@ const data: SectorPageData = {
           'Role-based access, audit trails and attribution',
           'Cloud, hybrid or on-premises deployment supported',
         ],
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/ai-lab.jpg',
       },
     ],
   },
