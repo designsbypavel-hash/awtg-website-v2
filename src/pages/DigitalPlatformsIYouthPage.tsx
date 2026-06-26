@@ -113,12 +113,6 @@ const useCases = [
   },
 ]
 
-const valueProps = [
-  { label: 'For young people and families', desc: 'A simpler way to find activities, stay informed and take part.' },
-  { label: 'For delivery teams', desc: 'Better organisation, clearer communication and stronger visibility of participation.' },
-  { label: 'For programmes', desc: 'A more joined-up platform for engagement and service delivery.' },
-]
-
 const proofShots = [
   { src: clubHomePage, label: 'Club dashboard and announcements' },
   { src: lysOrganisations, label: 'Organisations and clubs management' },
@@ -129,7 +123,6 @@ export default function DigitalPlatformsIYouthPage() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
   const [capRef, capInView] = useInView(0.08)
   const [useCasesRef, useCasesInView] = useInView(0.08)
-  const [valueRef, valueInView] = useInView(0.08)
   const [shotsRef, shotsInView] = useInView(0.08)
 
   return (
@@ -296,24 +289,6 @@ export default function DigitalPlatformsIYouthPage() {
         </div>
       </section>
 
-      {/* ── VALUE: WHY IT MATTERS ────────────────────────────────────────── */}
-      <section className="py-24 bg-[#f0f4f8]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14 max-w-2xl">
-            <h2 className="font-heading text-[#0a1628]">Why it matters</h2>
-          </div>
-          <div ref={valueRef} className="grid sm:grid-cols-3 gap-5">
-            {valueProps.map((v, i) => (
-              <div key={v.label}
-                className="bg-white rounded-2xl p-8"
-                style={{ border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 2px 12px rgba(10,22,40,0.05)', ...reveal(valueInView, i * 90) }}>
-                <p className="text-[#1a7aab] text-[13px] font-bold uppercase tracking-[0.12em] mb-4">{v.label}</p>
-                <p className="text-[#0a1628]/70 text-[15px] font-normal leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── FINAL CTA ─────────────────────────────────────────────────────── */}
       <CTASection
