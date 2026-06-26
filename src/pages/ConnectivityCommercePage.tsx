@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Commerce',
     accentColor: '#d97706',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/images/connectivity-commerce/commerce-connectivity-hero.png',
     title: 'Connectivity for commerce and retail',
     subtitle:
       'Multi-site SD-WAN, PCI DSS-compliant networks and customer Wi-Fi infrastructure for retail and commercial operations.',
@@ -98,7 +98,8 @@ const data: SectorPageData = {
           'Failover and resilience for always-on retail operations',
           'Cost-efficient bandwidth utilisation across the estate',
         ],
-        image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/connectivity-commerce/multi-site-sdwan.png',
+        imageFit: 'contain',
       },
       {
         icon: faShieldHalved,
@@ -110,7 +111,8 @@ const data: SectorPageData = {
           'Compliance documentation and evidence gathering support',
           'Ongoing managed compliance monitoring and alerting',
         ],
-        image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/connectivity-commerce/pci-dss-network-design.png',
+        imageFit: 'contain',
       },
       {
         icon: faWifi,
@@ -122,7 +124,8 @@ const data: SectorPageData = {
           'IoT device onboarding and lifecycle management',
           'Footfall and dwell time analytics from Wi-Fi infrastructure',
         ],
-        image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/connectivity-commerce/customer-wifi-retail-iot.png',
+        imageFit: 'contain',
       },
     ],
   },
