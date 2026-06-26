@@ -40,7 +40,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Digital Transformation',
     accentColor: '#7c3aed',
     heroVisual,
-    heroImage: '/images/insights/ai-innovation.jpg',
+    heroImage: '/images/digital-transformation-ai/digital-transformation-hero.png',
     title: 'AI for digital transformation',
     subtitle:
       'Automate processes, unlock trapped knowledge and give your organisation the intelligence it needs to move faster.',
@@ -99,7 +99,8 @@ const data: SectorPageData = {
           'Exception handling with escalation pathways',
           'Integration with existing systems and platforms',
         ],
-        image: '/images/insights/ai-lab.jpg',
+        image: '/images/digital-transformation-ai/intelligent-process-automation.png',
+        imageFit: 'contain',
       },
       {
         icon: faDatabase,
@@ -111,7 +112,8 @@ const data: SectorPageData = {
           'Version control and content governance',
           'Usage analytics to identify gaps and improve content',
         ],
-        image: '/images/insights/research-papers.jpg',
+        image: '/images/digital-transformation-ai/knowledge-management-access.png',
+        imageFit: 'contain',
       },
       {
         icon: faChartLine,
@@ -123,7 +125,8 @@ const data: SectorPageData = {
           'Predictive signals for operational planning',
           'Executive reporting on transformation progress',
         ],
-        image: '/images/insights/data-centre.jpg',
+        image: '/images/digital-transformation-ai/organisational-intelligence.png',
+        imageFit: 'contain',
       },
     ],
   },
