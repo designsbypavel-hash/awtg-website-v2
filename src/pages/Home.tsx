@@ -67,8 +67,8 @@ function TypewriterHeading({
     return () => observer.disconnect()
   }, [reducedMotion])
 
-  const steps = Math.max(getTextLength(children), 8)
-  const duration = Math.min(steps * 30, 1100)
+  const charCount = Math.max(getTextLength(children), 8)
+  const duration = Math.min(Math.max(charCount * 45, 700), 1600)
   const Tag = as
 
   return (
@@ -80,7 +80,7 @@ function TypewriterHeading({
             ? undefined
             : {
                 clipPath: revealed ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
-                transition: `clip-path ${duration}ms steps(${steps}, end)`,
+                transition: `clip-path ${duration}ms ease-in`,
               }
         }
       >
@@ -413,10 +413,10 @@ function WhatWeDo() {
             const copy = (
               <div className="flex min-h-[340px] flex-col justify-center py-6 lg:min-h-[460px]">
                 <div className={index === 1 ? 'mx-auto w-full max-w-[700px] text-left' : ''}>
-                  <h3 className="mb-5 text-[32px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#0a1628] lg:text-[42px]">
+                  <TypewriterHeading as="h3" className="mb-5 text-[32px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#0a1628] lg:text-[42px]">
                     {firstWord}{' '}
                     <span className="text-[#1a7aab]">{remainingWords.join(' ')}</span>
-                  </h3>
+                  </TypewriterHeading>
                   <div className="max-w-[700px] space-y-4 text-[16px] font-normal leading-[1.72] text-[#0a1628]/72">
                     {item.description.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
