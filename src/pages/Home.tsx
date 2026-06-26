@@ -245,18 +245,33 @@ function Hero() {
   return (
     <section className="home-hero home-ai-hero relative h-screen min-h-[700px] flex flex-col overflow-hidden">
 
-      {/* -- Cinematic background (decorative, aria-hidden) -- */}
-      <div className="absolute inset-0" aria-hidden="true">
+      {/* -- Cinematic globe, right side (decorative, aria-hidden) -- */}
+      <div
+        className="home-hero-media hidden md:block absolute right-[4%] top-1/2 -translate-y-1/2 overflow-hidden rounded-full"
+        style={{ width: 'min(46vw, 620px)', height: 'min(46vw, 620px)' }}
+        aria-hidden="true"
+      >
         <video
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          className="home-hero-media w-full h-full object-cover"
+          className="w-full h-full object-cover"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
+        <div className="absolute inset-0 rounded-full ring-1 ring-white/10" />
+
+        {/* 5G / AI cycling badges */}
+        <div className="absolute left-1/2 top-1/2 h-12 w-28 -translate-x-1/2 -translate-y-1/2">
+          <span className="home-hero-badge home-hero-badge-1 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-sm font-semibold tracking-wide text-white backdrop-blur-md">
+            5G
+          </span>
+          <span className="home-hero-badge home-hero-badge-2 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-sm font-semibold tracking-wide text-white backdrop-blur-md">
+            AI
+          </span>
+        </div>
       </div>
 
       {/* -- Content, Harvey layout: bottom-left, minimal copy -- */}

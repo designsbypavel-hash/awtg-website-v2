@@ -127,6 +127,32 @@
   isolation: isolate;
 }
 
+@keyframes homeHeroBadgeCycle {
+  0% { opacity: 0; transform: translateY(8px) scale(0.92); }
+  8% { opacity: 1; transform: translateY(0) scale(1); }
+  42% { opacity: 1; transform: translateY(0) scale(1); }
+  50% { opacity: 0; transform: translateY(-8px) scale(0.92); }
+  100% { opacity: 0; }
+}
+
+.home-hero-badge {
+  animation: homeHeroBadgeCycle 4.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.home-hero-badge-2 {
+  animation-delay: -2.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-badge {
+    animation: none;
+    opacity: 0;
+  }
+  .home-hero-badge-1 {
+    opacity: 1;
+  }
+}
+
 .home-page-ambient {
   background: #ffffff;
 }
