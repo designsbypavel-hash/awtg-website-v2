@@ -66,29 +66,10 @@ const capabilities = [
   },
 ]
 
-const valueProps = [
-  {
-    label: 'For young people',
-    desc: 'A clearer path from discovering an opportunity to being ready to apply.',
-    image: 'https://images.unsplash.com/photo-1486403184395-fc4990866136?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    label: 'For local partners',
-    desc: 'Stronger engagement and better visibility of the opportunities being delivered.',
-    image: 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    label: 'For programmes',
-    desc: 'A proven digital model that can be adapted around local goals and service needs.',
-    image: 'https://images.unsplash.com/photo-1758873271761-6cfe9b4f000c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
-  },
-]
-
 export default function DigitalPlatformsIBecomePage() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
   const [outcomesRef, outcomesInView] = useInView(0.1)
   const [capRef, capInView] = useInView(0.08)
-  const [valueRef, valueInView] = useInView(0.08)
 
   return (
     <>
@@ -263,33 +244,6 @@ export default function DigitalPlatformsIBecomePage() {
                 </div>
                 <p className="mt-4 text-[#0a1628] font-semibold text-base leading-snug mb-2">{cap.title}</p>
                 <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{cap.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── VALUE: WHY IT WORKS ──────────────────────────────────────────── */}
-      <section className="py-24" style={{ backgroundColor: '#0a1628' }}>
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14 max-w-2xl">
-            <h2 className="font-heading text-white">Why it works</h2>
-          </div>
-          <div ref={valueRef} className="grid sm:grid-cols-3 gap-5">
-            {valueProps.map((v, i) => (
-              <div key={v.label} className="group" style={reveal(valueInView, i * 90)}>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-white/5">
-                  <img
-                    src={v.image}
-                    alt={v.label}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                  />
-                </div>
-                <div className="pt-6">
-                  <p className="text-white text-[16px] font-semibold mb-2">{v.label}</p>
-                  <p className="text-white/60 text-[14px] font-normal leading-relaxed">{v.desc}</p>
-                </div>
               </div>
             ))}
           </div>
