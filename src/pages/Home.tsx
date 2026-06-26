@@ -279,8 +279,12 @@ function Hero() {
 
       {/* -- Cinematic globe, right side (decorative, aria-hidden) -- */}
       <div
-        className="home-hero-media hidden md:block absolute right-[1%] top-1/2 -translate-y-1/2 overflow-hidden rounded-full"
-        style={{ width: 'min(58vw, 70vh, 820px)', height: 'min(58vw, 70vh, 820px)' }}
+        className="home-hero-media hidden md:block absolute top-1/2 overflow-hidden rounded-full"
+        style={{
+          width: 'min(58vw, 70vh, 820px)',
+          height: 'min(58vw, 70vh, 820px)',
+          right: 'max(2rem, calc((50vw - min(58vw, 70vh, 820px)) / 2))',
+        }}
         aria-hidden="true"
       >
         <video
