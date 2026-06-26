@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
+import lgcAward2023 from '@/assets/iBecome/LGC_Award_2023.webp'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -28,7 +29,7 @@ const reveal = (inView: boolean, delay = 0): CSSProperties => ({
 
 const metrics = [
   { stat: '12,500+', label: 'young people connected with apprenticeship and job opportunities' },
-  { stat: 'Award winning', label: 'Recognised through the LGC Awards Technology category for Liverpool City Region BeMore' },
+  { stat: 'Award winning', label: 'Recognised through the LGC Awards Technology category for Liverpool City Region BeMore', badge: lgcAward2023 },
   { stat: '3x monthly users', label: 'after redesign and mobile app launch' },
 ]
 
@@ -198,16 +199,23 @@ export default function DigitalPlatformsIBecomePage() {
                 {metrics.map((item, i) => (
                   <div
                     key={item.label}
-                    className="flex gap-5 rounded-2xl border border-[#0a1628]/8 bg-white p-6"
+                    className="flex items-center gap-5 rounded-2xl border border-[#0a1628]/8 bg-white p-6"
                     style={{ boxShadow: '0 12px 32px rgba(10,22,40,0.06)', ...reveal(outcomesInView, 150 + i * 100) }}
                   >
-                    <div className="mt-1 h-auto w-1 shrink-0 rounded-full" style={{ background: '#228DC1' }} />
-                    <div>
+                    <div className="self-stretch h-auto w-1 shrink-0 rounded-full" style={{ background: '#228DC1' }} />
+                    <div className="flex-1">
                       <p className="font-heading mb-1.5 text-[#0a1628]" style={{ fontSize: 'clamp(24px,2.4vw,32px)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
                         {item.stat}
                       </p>
                       <p className="text-[#0a1628]/60 text-[14px] font-normal leading-snug">{item.label}</p>
                     </div>
+                    {item.badge && (
+                      <img
+                        src={item.badge}
+                        alt="LGC Awards 2023 Winner"
+                        className="h-14 w-14 shrink-0 rounded-lg object-cover border border-[#0a1628]/8"
+                      />
+                    )}
                   </div>
                 ))}
               </div>
