@@ -63,11 +63,6 @@ const capabilities = [
     desc: 'Give employers and training providers a clearer way to reach local talent.',
     image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
-  {
-    title: 'Web and mobile access',
-    desc: 'Support a joined-up experience across web and mobile so access stays simple.',
-    image: 'https://images.unsplash.com/photo-1556742111-a301076d9d18?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
-  },
 ]
 
 const valueProps = [
