@@ -195,7 +195,7 @@ export default function DigitalPlatformsIYouthPage() {
                 A platform for youth engagement, activities and local participation
               </p>
               <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
-                iYouth helps organisations bring youth activities, events and participation into one joined-up digital experience. It is designed to make access simpler for young people and families, while giving delivery teams a clearer way to organise engagement and keep services visible.
+                iYouth helps organisations bring youth activities, events and participation into one joined-up digital experience. It is designed to make access simpler for young people and families.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button
