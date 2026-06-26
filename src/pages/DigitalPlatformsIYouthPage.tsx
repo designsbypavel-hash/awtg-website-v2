@@ -186,7 +186,7 @@ export default function DigitalPlatformsIYouthPage() {
                 <h1 className="font-serif-display leading-[1.02] text-[#1a2233]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)', textShadow: '0 8px 28px rgba(10,22,40,0.22)' }}>
                   iYouth
                 </h1>
-                <div className="relative mt-3 h-[10px] w-4/5">
+                <div className="relative mt-3 h-[10px] w-full">
                   <div className="absolute inset-0 rounded-full opacity-80 blur-xl" style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899, #f97316, #eab308, #22c55e, #3b82f6)' }} />
                   <div className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899, #f97316, #eab308, #22c55e, #3b82f6)' }} />
                 </div>
