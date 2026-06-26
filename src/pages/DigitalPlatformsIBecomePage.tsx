@@ -210,11 +210,16 @@ export default function DigitalPlatformsIBecomePage() {
                       <p className="text-[#0a1628]/60 text-[14px] font-normal leading-snug">{item.label}</p>
                     </div>
                     {item.badge && (
-                      <img
-                        src={item.badge}
-                        alt="LGC Awards 2023 Winner"
-                        className="h-14 w-14 shrink-0 rounded-lg object-cover border border-[#0a1628]/8"
-                      />
+                      <div
+                        className="flex h-20 w-32 shrink-0 items-center justify-center rounded-xl p-2"
+                        style={{ background: 'linear-gradient(135deg, #fff9eb 0%, #fef3d6 100%)', boxShadow: '0 4px 14px rgba(217,169,15,0.18)', border: '1px solid rgba(217,169,15,0.25)' }}
+                      >
+                        <img
+                          src={item.badge}
+                          alt="LGC Awards 2023 Winner"
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
                     )}
                   </div>
                 ))}
