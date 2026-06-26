@@ -170,7 +170,7 @@ export default function DigitalPlatformsIBecomePage() {
                 Proven through measurable outcomes.
               </h2>
               <p className="mb-4 text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-                BeMore transformed how young people discover careers, apprenticeships and opportunities across Liverpool City Region.
+                iBecome helps younger peole apprentice opportunities
               </p>
               <p className="mb-10 text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
                 iBecome builds on that proven foundation, helping organisations connect services, improve engagement and provide better visibility across programmes and delivery partners.
