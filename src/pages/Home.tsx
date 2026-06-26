@@ -275,7 +275,7 @@ function Hero() {
       </div>
 
       {/* -- Content, left-centre aligned, minimal copy -- */}
-      <div className="relative flex flex-col justify-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '90%' }}>
+      <div className="relative flex flex-col justify-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '85%' }}>
 
         {/* Headline */}
         <h1
@@ -295,7 +295,7 @@ function Hero() {
       </div>
 
       {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
-      <div className="relative bg-white overflow-hidden" style={{ height: '10%' }}>
+      <div className="relative bg-white overflow-hidden" style={{ height: '15%' }}>
         <div className="flex items-center h-full">
           <div className="shrink-0 h-full flex items-center px-8 border-r border-black/10">
             <span className="text-[#0a1628]/60 text-[14px] font-semibold tracking-[0.22em] uppercase whitespace-nowrap">
@@ -307,13 +307,13 @@ function Hero() {
               {[...tickerLogos, ...tickerLogos].map((logo, i) => (
                 <div
                   key={`${logo.id}-${i}`}
-                  className="flex items-center justify-center px-[42px] h-full shrink-0"
+                  className="flex items-center justify-center px-[48px] h-full shrink-0"
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     className="w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    style={{ maxHeight: '80%', maxWidth: '260px' }}
+                    style={{ maxHeight: '88%', maxWidth: '340px' }}
                   />
                 </div>
               ))}
