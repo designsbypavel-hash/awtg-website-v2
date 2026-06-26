@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef, isValidElement, type ReactNode } from 'react'
+﻿import { useState, useEffect, useRef, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
@@ -10,15 +10,6 @@ import { getCaseStudyImage } from '@/lib/insightImages'
 // Full heading text stays in the DOM at all times (good for SEO/AX, no
 // duplicate text nodes) — the reveal is a pure visual clip-path mask that
 // runs once when the heading scrolls into view. Respects prefers-reduced-motion.
-
-function getTextLength(node: ReactNode): number {
-  if (node == null || typeof node === 'boolean') return 0
-  if (typeof node === 'string') return node.trim().length
-  if (typeof node === 'number') return String(node).length
-  if (Array.isArray(node)) return node.reduce((sum: number, child) => sum + getTextLength(child), 0)
-  if (isValidElement(node)) return getTextLength((node.props as { children?: ReactNode }).children)
-  return 0
-}
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(
@@ -67,8 +58,9 @@ function TypewriterHeading({
     return () => observer.disconnect()
   }, [reducedMotion])
 
-  const charCount = Math.max(getTextLength(children), 8)
-  const duration = Math.min(Math.max(charCount * 45, 700), 1600)
+  // Fixed duration (not scaled by text length) so every heading reveals at
+  // the same uniform speed, regardless of how long or short the title is.
+  const duration = 1000
   const Tag = as
 
   return (
