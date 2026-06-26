@@ -221,7 +221,7 @@ function CurriculumAgnosticSection() {
 
           {/* LEFT - text */}
           <div style={reveal(inView, 0)}>
-            <h2 className="font-h2 text-[#0a1628] mb-5">
+            <h2 className="font-heading text-[#0a1628] mb-5">
               One central Aruva layer.<br />
               <span className="text-[#228DC1]">Every subject can use it.</span>
             </h2>
