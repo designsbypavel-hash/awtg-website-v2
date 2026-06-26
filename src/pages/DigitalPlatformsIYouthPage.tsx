@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faCalendarCheck, faUserPlus, faBullhorn, faEye, faChartLine, faPeopleGroup,
+  faCalendarCheck, faUserPlus, faBullhorn, faEye, faPeopleGroup,
   faBuildingColumns, faHandsHolding, faPersonWalkingArrowRight, faGraduationCap,
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
@@ -63,20 +63,6 @@ const capabilities = [
     desc: 'Make local youth offers easier to discover and easier to understand.',
     color: '#d97706',
     image: 'https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    icon: faChartLine,
-    title: 'Delivery oversight',
-    desc: 'Give teams a clearer view of participation and activity delivery.',
-    color: '#228DC1',
-    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    icon: faPeopleGroup,
-    title: 'Community engagement',
-    desc: 'Support stronger, more consistent engagement with young people and families.',
-    color: '#059669',
-    image: 'https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
 ]
 
@@ -217,7 +203,7 @@ export default function DigitalPlatformsIYouthPage() {
           <div className="mb-14 max-w-2xl">
             <h2 className="font-heading text-[#0a1628]">What iYouth supports</h2>
           </div>
-          <div ref={capRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div ref={capRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {capabilities.map((cap, i) => (
               <div key={cap.title} className="group" style={reveal(capInView, i * 80)}>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl" style={{ boxShadow: '0 1px 4px rgba(15,23,42,0.08)' }}>
