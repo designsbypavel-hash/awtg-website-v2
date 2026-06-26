@@ -187,21 +187,11 @@ function Hero() {
         </h1>
 
         {/* One-liner, StoryBrand: customer is the hero, AWTG is the guide */}
-        <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-10 font-normal" style={{ animationDelay: '160ms' }}>
+        <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-0 font-normal" style={{ animationDelay: '160ms' }}>
           AWTG delivers AI, 5G, private networks and software solutions
           for UK enterprises and public sector, end-to-end,
           accountable, built to perform.
         </p>
-
-        {/* CTA */}
-        <div className="home-hero-reveal" style={{ animationDelay: '300ms' }}>
-          <Link
-            to="/contact"
-            className="inline-block px-7 py-3.5 border border-white text-white text-[14px] font-normal tracking-wide hover:bg-white hover:text-[#0a1628] transition-all duration-200"
-          >
-            Request a Demo
-          </Link>
-        </div>
 
       </div>
 
