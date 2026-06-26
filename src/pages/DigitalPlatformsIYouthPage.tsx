@@ -99,12 +99,12 @@ const useCases = [
   {
     icon: faPersonWalkingArrowRight,
     label: 'Outreach and engagement teams',
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faGraduationCap,
     label: 'Education-linked youth initiatives',
-    image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faCalendarCheck,
