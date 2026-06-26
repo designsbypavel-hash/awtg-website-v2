@@ -274,8 +274,8 @@ function Hero() {
         </div>
       </div>
 
-      {/* -- Content, Harvey layout: bottom-left, minimal copy -- */}
-      <div className="relative flex flex-col justify-end pb-16 max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '90%' }}>
+      {/* -- Content, left-centre aligned, minimal copy -- */}
+      <div className="relative flex flex-col justify-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '90%' }}>
 
         {/* Headline */}
         <h1
