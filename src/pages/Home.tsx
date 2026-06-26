@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef, type ReactNode } from 'react'
+﻿import { useState, useEffect, useRef, useMemo, isValidElement, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
@@ -7,9 +7,10 @@ import idamsMockup from '../assets/Mockup/Conecctivity_iDAMS mockup.png'
 import { getCaseStudyImage } from '@/lib/insightImages'
 
 // --- SCROLL-TRIGGERED TYPEWRITER HEADING (homepage only) --------------------
-// Full heading text stays in the DOM at all times (good for SEO/AX, no
-// duplicate text nodes) — the reveal is a pure visual clip-path mask that
-// runs once when the heading scrolls into view. Respects prefers-reduced-motion.
+// Characters are typed in one at a time, ChatGPT-style, once the heading
+// scrolls into view. Line breaks are respected as hard stops: a line types
+// out fully before the next line begins. Respects prefers-reduced-motion by
+// rendering the original content immediately, with no animation.
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(
@@ -24,6 +25,23 @@ function usePrefersReducedMotion() {
   return reduced
 }
 
+type TypewriterSegment = { text: string; className?: string } | { br: true }
+
+function flattenToSegments(node: ReactNode, className?: string): TypewriterSegment[] {
+  if (node == null || typeof node === 'boolean') return []
+  if (typeof node === 'string') return node.length ? [{ text: node, className }] : []
+  if (typeof node === 'number') return [{ text: String(node), className }]
+  if (Array.isArray(node)) return node.flatMap((child) => flattenToSegments(child, className))
+  if (isValidElement(node)) {
+    if (node.type === 'br') return [{ br: true }]
+    const props = node.props as { children?: ReactNode; className?: string }
+    return flattenToSegments(props.children, props.className ?? className)
+  }
+  return []
+}
+
+const TYPE_MS_PER_CHAR = 20
+
 function TypewriterHeading({
   as = 'h2',
   className,
@@ -33,13 +51,16 @@ function TypewriterHeading({
   className?: string
   children: ReactNode
 }) {
-  // The observer watches an unclipped wrapper rather than the heading itself —
-  // an element clipped to zero visible width always reports an intersection
-  // ratio of 0, so observing the clipped element directly would never cross
-  // the threshold and the reveal would never fire.
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const [revealed, setRevealed] = useState(false)
+  const [started, setStarted] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(0)
   const reducedMotion = usePrefersReducedMotion()
+
+  const segments = useMemo(() => flattenToSegments(children), [children])
+  const totalChars = useMemo(
+    () => segments.reduce((sum, seg) => sum + ('text' in seg ? seg.text.length : 0), 0),
+    [segments],
+  )
 
   useEffect(() => {
     if (reducedMotion) return
@@ -48,7 +69,7 @@ function TypewriterHeading({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setRevealed(true)
+          setStarted(true)
           observer.disconnect()
         }
       },
@@ -58,26 +79,45 @@ function TypewriterHeading({
     return () => observer.disconnect()
   }, [reducedMotion])
 
-  // Fixed duration (not scaled by text length) so every heading reveals at
-  // the same uniform speed, regardless of how long or short the title is.
-  const duration = 1000
+  useEffect(() => {
+    if (!started || reducedMotion || visibleCount >= totalChars) return
+    const id = setTimeout(() => setVisibleCount((c) => Math.min(c + 1, totalChars)), TYPE_MS_PER_CHAR)
+    return () => clearTimeout(id)
+  }, [started, reducedMotion, visibleCount, totalChars])
+
   const Tag = as
+
+  if (reducedMotion) {
+    return (
+      <Tag className={className}>{children}</Tag>
+    )
+  }
+
+  // Render segments in order, one line/run at a time — once a segment isn't
+  // fully typed yet, stop rendering (so later lines stay hidden until the
+  // current line finishes, matching how ChatGPT streams text).
+  const rendered: ReactNode[] = []
+  let consumed = 0
+  for (let i = 0; i < segments.length; i++) {
+    const seg = segments[i]
+    if ('br' in seg) {
+      rendered.push(<br key={i} />)
+      continue
+    }
+    const remaining = visibleCount - consumed
+    if (remaining <= 0) break
+    rendered.push(
+      <span key={i} className={seg.className}>
+        {seg.text.slice(0, remaining)}
+      </span>,
+    )
+    consumed += seg.text.length
+    if (remaining < seg.text.length) break
+  }
 
   return (
     <div ref={wrapperRef}>
-      <Tag
-        className={className}
-        style={
-          reducedMotion
-            ? undefined
-            : {
-                clipPath: revealed ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
-                transition: `clip-path ${duration}ms ease-in`,
-              }
-        }
-      >
-        {children}
-      </Tag>
+      <Tag className={className}>{rendered}</Tag>
     </div>
   )
 }
