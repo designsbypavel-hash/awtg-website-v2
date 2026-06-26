@@ -89,7 +89,7 @@ const useCases = [
   {
     icon: faBuildingColumns,
     label: 'Local authority teams',
-    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faHandsHolding,
