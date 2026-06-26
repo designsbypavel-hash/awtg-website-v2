@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Government',
     accentColor: '#4f46e5',
     heroVisual,
-    heroImage: '/images/government-connectivity/government-connectivity-hero.png',
+    heroImage: 'https://images.unsplash.com/photo-1750630443133-b53362899f2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for government',
     subtitle:
       'PSN-compliant networks, GovWifi infrastructure and cleared managed services for central and local government.',
@@ -98,8 +98,7 @@ const data: SectorPageData = {
           'Traffic classification and segmentation for data handling policies',
           'High-availability design for continuity of citizen services',
         ],
-        image: '/images/government-connectivity/psn-wan-sdwan.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1663806340685-98a4d82bad8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faShield,
@@ -111,8 +110,7 @@ const data: SectorPageData = {
           'Integration with government identity and access management',
           'Monitoring and compliance reporting for GovWifi obligations',
         ],
-        image: '/images/government-connectivity/govwifi-secure-wireless.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1681135092730-b943082aeba5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faCloud,
@@ -124,8 +122,7 @@ const data: SectorPageData = {
           'Performance optimisation for cloud-hosted citizen services',
           'Routing compliance for government data handling requirements',
         ],
-        image: '/images/government-connectivity/government-cloud-connectivity.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1583815369490-e8b75a3163bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },

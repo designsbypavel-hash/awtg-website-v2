@@ -24,7 +24,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Telecommunications',
     accentColor: '#228DC1',
     heroImage:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=85',
+      'https://images.unsplash.com/photo-1533664488202-6af66d26c44a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=85',
     title: 'Telecommunications',
     subtitle: 'Future-ready networks, delivered with confidence.',
     description:
@@ -84,7 +84,7 @@ const data: SectorPageData = {
           'End-to-end operational and managed network services',
         ],
         image:
-          'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
+          'https://images.unsplash.com/photo-1615377387113-4692ddb9e292?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
       },
       {
         icon: faBuilding,
@@ -98,7 +98,7 @@ const data: SectorPageData = {
           'Smart-building, IoT and location technology integration',
         ],
         image:
-          'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
+          'https://images.unsplash.com/photo-1676781316568-feffeb4ab4e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
       },
       {
         icon: faRadio,
@@ -112,7 +112,7 @@ const data: SectorPageData = {
           'AI-supported site surveys and infrastructure inspections',
         ],
         image:
-          'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
+          'https://images.unsplash.com/photo-1494452672938-ad7f60625bb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85',
       },
     ],
   },

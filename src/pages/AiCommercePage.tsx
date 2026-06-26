@@ -40,7 +40,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Commerce',
     accentColor: '#d97706',
     heroVisual,
-    heroImage: '/images/commerce-ai/commerce-ai-hero.png',
+    heroImage: 'https://images.unsplash.com/photo-1753354868616-544973e405c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'AI for commerce and customer operations',
     subtitle:
       'Resolve customer enquiries faster, reduce friction across the purchase journey and surface demand intelligence at scale.',
@@ -99,8 +99,7 @@ const data: SectorPageData = {
           'Escalation to human agents with full context',
           'CSAT measurement built in from deployment',
         ],
-        image: '/images/commerce-ai/customer-service-ai.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1603714228681-b399854b8f80?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faCartShopping,
@@ -112,8 +111,7 @@ const data: SectorPageData = {
           'Cross-sell and upsell surfacing from catalogue data',
           'Available across web, app and messaging channels',
         ],
-        image: '/images/commerce-ai/product-guidance-discovery.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1753161028509-095944dd2ee7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faChartLine,
@@ -125,8 +123,7 @@ const data: SectorPageData = {
           'CSAT and resolution quality dashboards',
           'Seasonal and campaign impact reporting',
         ],
-        image: '/images/commerce-ai/commerce-demand-analytics.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1586528116022-aeda1613c63d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },

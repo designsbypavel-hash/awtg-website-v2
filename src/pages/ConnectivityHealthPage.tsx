@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Healthcare',
     accentColor: '#059669',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1688565631550-ff8aa569f71a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for healthcare',
     subtitle:
       'Secure, DSPT-compliant network infrastructure designed for the clinical environment — from acute ward to community care.',
@@ -98,7 +98,7 @@ const data: SectorPageData = {
           'Encryption across all clinical data pathways',
           'Architecture documentation for DSPT submission support',
         ],
-        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faWifi,
@@ -110,7 +110,7 @@ const data: SectorPageData = {
           'Roaming and handoff optimised for mobile clinical workflows',
           'Separate SSID management for clinical, staff and guest traffic',
         ],
-        image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1712232415633-095dc9e03c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faMicrochip,
@@ -122,7 +122,7 @@ const data: SectorPageData = {
           'Traffic prioritisation for patient-critical device communications',
           'Integration with clinical IT and EPR infrastructure',
         ],
-        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1648224395362-45708f929dc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },

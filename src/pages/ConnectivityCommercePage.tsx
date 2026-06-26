@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Commerce',
     accentColor: '#d97706',
     heroVisual,
-    heroImage: '/images/connectivity-commerce/commerce-connectivity-hero.png',
+    heroImage: 'https://images.unsplash.com/photo-1753354868616-544973e405c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for commerce and retail',
     subtitle:
       'Multi-site SD-WAN, PCI DSS-compliant networks and customer Wi-Fi infrastructure for retail and commercial operations.',
@@ -98,8 +98,7 @@ const data: SectorPageData = {
           'Failover and resilience for always-on retail operations',
           'Cost-efficient bandwidth utilisation across the estate',
         ],
-        image: '/images/connectivity-commerce/multi-site-sdwan.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1586528116022-aeda1613c63d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faShieldHalved,
@@ -111,8 +110,7 @@ const data: SectorPageData = {
           'Compliance documentation and evidence gathering support',
           'Ongoing managed compliance monitoring and alerting',
         ],
-        image: '/images/connectivity-commerce/pci-dss-network-design.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faWifi,
@@ -195,7 +193,7 @@ const data: SectorPageData = {
     subtitle:
       'Speak to AWTG about SD-WAN, PCI DSS-compliant networks and customer Wi-Fi for retail and commercial operations.',
     label: 'Talk to our experts',
-    image: '/images/connectivity-commerce/commerce-connectivity-hero.png',
+    image: 'https://images.unsplash.com/photo-1753161028509-095944dd2ee7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1100&q=80',
     imagePosition: 'center',
   },
 }

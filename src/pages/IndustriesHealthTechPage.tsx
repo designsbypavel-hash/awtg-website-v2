@@ -13,7 +13,7 @@ const data: SectorPageData = {
     badge: 'AI · Health Tech',
     accentColor: '#059669',
     heroImage:
-      '/images/health-tech/health-tech-platform-hero.png',
+      'https://images.unsplash.com/photo-1666886573531-48d2e3c2b684?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Health Tech',
     description:
       'Digital health solutions that improve care delivery, operational efficiency and patient experiences through connected systems, secure platforms and intelligent healthcare workflows.',
@@ -70,8 +70,7 @@ const data: SectorPageData = {
           'Care coordination and referral workflow automation',
           'Compliance with NHS England, CQC and DSPT standards',
         ],
-        image: '/images/health-tech/intelligent-health-solution.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1758691462774-f01ed567f2c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faHouseChimney,
@@ -83,8 +82,7 @@ const data: SectorPageData = {
           'Real-time intervention triggers for clinical teams',
           'GDPR-compliant data flows from home to clinical systems',
         ],
-        image: '/images/health-tech/connected-assistive-living.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1758691462321-9b6c98c40f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faCode,
@@ -96,8 +94,7 @@ const data: SectorPageData = {
           'Mobile-first portals for patients and practitioners',
           'Continuous iteration with clinical and operational stakeholders',
         ],
-        image: '/images/health-tech/clinical-software-platform.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1666886573301-b5d526cfd518?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },

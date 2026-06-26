@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Public Sector',
     accentColor: '#0891b2',
     heroVisual,
-    heroImage: '/images/public-sector-ai/public-sector-ai-hero.png',
+    heroImage: 'https://images.unsplash.com/photo-1565688103955-d38e06888776?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'AI for the public sector',
     subtitle:
       'Respond to more citizens faster, reduce case backlogs and give frontline teams the intelligence to act on what matters.',
@@ -98,8 +98,7 @@ const data: SectorPageData = {
           'Clear escalation to human advisors where needed',
           'Audit trail and transparency for governance requirements',
         ],
-        image: '/images/public-sector-ai/citizen-service-automation.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1678007968223-3c624888b0ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faClipboardList,
@@ -111,8 +110,7 @@ const data: SectorPageData = {
           'Integration with existing case management platforms',
           'Audit-ready logging for accountability requirements',
         ],
-        image: '/images/public-sector-ai/case-management-triage.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1707757112182-5167a5e17444?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faShieldHalved,
@@ -124,8 +122,7 @@ const data: SectorPageData = {
           'Usage analytics to identify guidance gaps',
           'Integration with legislative change workflows',
         ],
-        image: '/images/public-sector-ai/policy-compliance-intelligence.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1573164574511-73c773193279?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },
