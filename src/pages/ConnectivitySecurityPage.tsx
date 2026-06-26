@@ -97,7 +97,6 @@ const data: SectorPageData = {
           'Network slicing and edge/MEC security',
         ],
         image: '/images/connectivity-security/telecom-network-security.png',
-        imageFit: 'contain',
       },
       {
         icon: faServer,
@@ -110,7 +109,6 @@ const data: SectorPageData = {
           'Digital forensics and incident investigation',
         ],
         image: '/images/connectivity-security/threat-detection-infrastructure.png',
-        imageFit: 'contain',
       },
       {
         icon: faCloud,
@@ -123,7 +121,6 @@ const data: SectorPageData = {
           'Continuous vulnerability and configuration management',
         ],
         image: '/images/connectivity-security/cloud-infrastructure-security.png',
-        imageFit: 'contain',
       },
     ],
   },

@@ -98,7 +98,6 @@ const data: SectorPageData = {
           'AI security architecture reviews',
         ],
         image: '/images/ai-security/ai-governance-risk.png',
-        imageFit: 'contain',
       },
       {
         icon: faMicrochip,
@@ -111,7 +110,6 @@ const data: SectorPageData = {
           'Ongoing security architecture reviews as systems evolve',
         ],
         image: '/images/ai-security/secure-ai-model-design.png',
-        imageFit: 'contain',
       },
       {
         icon: faKey,
@@ -124,7 +122,6 @@ const data: SectorPageData = {
           'Emerging technology and future network security reviews',
         ],
         image: '/images/ai-security/quantum-safe-security.png',
-        imageFit: 'contain',
       },
     ],
   },
