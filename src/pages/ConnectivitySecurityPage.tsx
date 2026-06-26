@@ -37,7 +37,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Security & Assurance',
     accentColor: '#dc2626',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1580795479225-c50ab8c3348d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/images/connectivity-security/connectivity-security-hero.png',
     title: 'Network and infrastructure security built for telecoms grade resilience',
     subtitle:
       'Protect networks, cloud and critical infrastructure with security designed around real telecom and IT operating environments.',
@@ -96,7 +96,8 @@ const data: SectorPageData = {
           'Private mobile, satellite and NTN security',
           'Network slicing and edge/MEC security',
         ],
-        image: 'https://images.unsplash.com/photo-1629837093109-11325d6e7afd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/connectivity-security/telecom-network-security.png',
+        imageFit: 'contain',
       },
       {
         icon: faServer,
@@ -108,7 +109,8 @@ const data: SectorPageData = {
           'Security automation and orchestration',
           'Digital forensics and incident investigation',
         ],
-        image: 'https://images.unsplash.com/photo-1580795478966-561ba4f1ce68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/connectivity-security/threat-detection-infrastructure.png',
+        imageFit: 'contain',
       },
       {
         icon: faCloud,
@@ -120,7 +122,8 @@ const data: SectorPageData = {
           'Identity, access and encryption management',
           'Continuous vulnerability and configuration management',
         ],
-        image: 'https://images.unsplash.com/photo-1581092919535-7146ff1a590b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/connectivity-security/cloud-infrastructure-security.png',
+        imageFit: 'contain',
       },
     ],
   },
