@@ -13,7 +13,7 @@ const data: SectorPageData = {
     badge: 'AI · Health Tech',
     accentColor: '#059669',
     heroImage:
-      '/images/insights/ai-lab.jpg',
+      '/images/health-tech/health-tech-platform-hero.png',
     title: 'Health Tech',
     description:
       'Digital health solutions that improve care delivery, operational efficiency and patient experiences through connected systems, secure platforms and intelligent healthcare workflows.',
@@ -70,7 +70,8 @@ const data: SectorPageData = {
           'Care coordination and referral workflow automation',
           'Compliance with NHS England, CQC and DSPT standards',
         ],
-        image: '/images/insights/lab-testing.jpg',
+        image: '/images/health-tech/intelligent-health-solution.png',
+        imageFit: 'contain',
       },
       {
         icon: faHouseChimney,
@@ -82,7 +83,8 @@ const data: SectorPageData = {
           'Real-time intervention triggers for clinical teams',
           'GDPR-compliant data flows from home to clinical systems',
         ],
-        image: '/images/insights/safety-network.jpg',
+        image: '/images/health-tech/connected-assistive-living.png',
+        imageFit: 'contain',
       },
       {
         icon: faCode,
@@ -94,7 +96,8 @@ const data: SectorPageData = {
           'Mobile-first portals for patients and practitioners',
           'Continuous iteration with clinical and operational stakeholders',
         ],
-        image: '/images/insights/data-centre.jpg',
+        image: '/images/health-tech/clinical-software-platform.png',
+        imageFit: 'contain',
       },
     ],
   },
