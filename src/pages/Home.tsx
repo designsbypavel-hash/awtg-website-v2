@@ -264,11 +264,11 @@ function Hero() {
         <div className="absolute inset-0 rounded-full ring-1 ring-white/10" />
 
         {/* 5G / AI cycling badges */}
-        <div className="absolute left-1/2 top-1/2 h-12 w-28 -translate-x-1/2 -translate-y-1/2">
-          <span className="home-hero-badge home-hero-badge-1 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-sm font-semibold tracking-wide text-white backdrop-blur-md">
+        <div className="absolute left-1/2 top-1/2 h-20 w-44 -translate-x-1/2 -translate-y-1/2">
+          <span className="home-hero-badge home-hero-badge-1 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-3xl font-bold tracking-wide text-white backdrop-blur-md">
             5G
           </span>
-          <span className="home-hero-badge home-hero-badge-2 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-sm font-semibold tracking-wide text-white backdrop-blur-md">
+          <span className="home-hero-badge home-hero-badge-2 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-3xl font-bold tracking-wide text-white backdrop-blur-md">
             AI
           </span>
         </div>
