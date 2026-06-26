@@ -124,8 +124,7 @@ const data: SectorPageData = {
           'IoT device onboarding and lifecycle management',
           'Footfall and dwell time analytics from Wi-Fi infrastructure',
         ],
-        image: '/images/connectivity-commerce/customer-wifi-retail-iot.png',
-        imageFit: 'contain',
+        image: 'https://images.unsplash.com/photo-1697545806200-a351283a8047?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
     ],
   },
@@ -196,6 +195,8 @@ const data: SectorPageData = {
     subtitle:
       'Speak to AWTG about SD-WAN, PCI DSS-compliant networks and customer Wi-Fi for retail and commercial operations.',
     label: 'Talk to our experts',
+    image: '/images/connectivity-commerce/commerce-connectivity-hero.png',
+    imagePosition: 'center',
   },
 }
 

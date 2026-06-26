@@ -31,7 +31,7 @@ export interface SectorPageData {
   useCases:   { heading: string; intro: string; items: SectorUseCase[] }
   outcomes:   { heading: string; intro: string; items: SectorOutcome[] }
   proof?: { quote: string; author?: string; context?: string }
-  cta: { title: string; subtitle: string; label?: string }
+  cta: { title: string; subtitle: string; label?: string; image?: string; imagePosition?: string }
 }
 
 export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
@@ -311,6 +311,8 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
         subtitle={cta.subtitle}
         primaryLabel={cta.label ?? 'Talk to our experts'}
         primaryHref="/contact"
+        image={cta.image}
+        imagePosition={cta.imagePosition}
       />
     </>
   )
