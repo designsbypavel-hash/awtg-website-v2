@@ -21,7 +21,7 @@ export interface SectorHero {
   heroImage?: string
 }
 export interface SectorChallenge { icon: IconDefinition; title: string; desc: string }
-export interface SectorSupport   { icon: IconDefinition; title: string; desc: string; bullets: string[]; image?: string }
+export interface SectorSupport   { icon: IconDefinition; title: string; desc: string; bullets: string[]; image?: string; imageFit?: 'cover' | 'contain' }
 export interface SectorUseCase   { icon: IconDefinition; title: string; desc: string }
 export interface SectorOutcome   { icon: IconDefinition; title: string; desc: string }
 export interface SectorPageData {
@@ -163,7 +163,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 style={{
                   minHeight: 420,
                   background: s.image
-                    ? undefined
+                    ? (s.imageFit === 'contain' ? '#f6f8fb' : undefined)
                     : `linear-gradient(135deg, ${accent}10 0%, ${accent}05 100%)`,
                 }}
               >
@@ -172,7 +172,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                     <img
                       src={s.image}
                       alt={s.title}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className={`absolute inset-0 w-full h-full ${s.imageFit === 'contain' ? 'object-contain p-6' : 'object-cover'}`}
                     />
                     {/* Subtle inner shadow on the join edge for depth */}
                     <div

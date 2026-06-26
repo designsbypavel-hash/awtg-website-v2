@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Education',
     accentColor: '#228DC1',
     heroVisual,
-    heroImage: '/images/insights/education.jpg',
+    heroImage: '/images/aruva-screens/dashboard.png',
     title: 'AI-powered teaching and formative assessment for higher education',
     subtitle:
       'Aruva helps universities personalise learning, generate meaningful feedback and understand student progress in real time.',
@@ -98,7 +98,8 @@ const data: SectorPageData = {
           'Approved materials used as the source for every student interaction',
           'Consistent alignment between course design and AI support',
         ],
-        image: '/images/insights/education.jpg',
+        image: '/images/aruva-screens/learning-map.png',
+        imageFit: 'contain',
       },
       {
         icon: faClipboardList,
@@ -110,7 +111,8 @@ const data: SectorPageData = {
           'Assessment variants to support academic integrity',
           'Early intervention signals for at-risk learners',
         ],
-        image: '/images/insights/research-papers.jpg',
+        image: '/images/aruva-screens/skill-mastery.png',
+        imageFit: 'contain',
       },
       {
         icon: faChartLine,
@@ -122,7 +124,8 @@ const data: SectorPageData = {
           'Role-based access, audit trails and attribution',
           'Cloud, hybrid or on-premises deployment supported',
         ],
-        image: '/images/insights/ai-lab.jpg',
+        image: '/images/aruva-screens/ai-insights.png',
+        imageFit: 'contain',
       },
     ],
   },
