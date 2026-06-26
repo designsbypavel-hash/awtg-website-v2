@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
-import lgcAward2023 from '@/assets/iBecome/LGC_Award_2023.webp'
+import lgcAward2023 from '@/assets/iBecome/LGC_Award_2023_logo.webp'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
