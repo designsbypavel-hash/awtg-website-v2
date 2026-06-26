@@ -1,10 +1,94 @@
-﻿import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef, isValidElement, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import kaiMockup from '../assets/Mockup/KAi_Mockup.png'
 import idamsMockup from '../assets/Mockup/Conecctivity_iDAMS mockup.png'
 import { getCaseStudyImage } from '@/lib/insightImages'
+
+// --- SCROLL-TRIGGERED TYPEWRITER HEADING (homepage only) --------------------
+// Full heading text stays in the DOM at all times (good for SEO/AX, no
+// duplicate text nodes) — the reveal is a pure visual clip-path mask that
+// runs once when the heading scrolls into view. Respects prefers-reduced-motion.
+
+function getTextLength(node: ReactNode): number {
+  if (node == null || typeof node === 'boolean') return 0
+  if (typeof node === 'string') return node.trim().length
+  if (typeof node === 'number') return String(node).length
+  if (Array.isArray(node)) return node.reduce((sum: number, child) => sum + getTextLength(child), 0)
+  if (isValidElement(node)) return getTextLength((node.props as { children?: ReactNode }).children)
+  return 0
+}
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return reduced
+}
+
+function TypewriterHeading({
+  as = 'h2',
+  className,
+  children,
+}: {
+  as?: 'h1' | 'h2' | 'h3'
+  className?: string
+  children: ReactNode
+}) {
+  // The observer watches an unclipped wrapper rather than the heading itself —
+  // an element clipped to zero visible width always reports an intersection
+  // ratio of 0, so observing the clipped element directly would never cross
+  // the threshold and the reveal would never fire.
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const [revealed, setRevealed] = useState(false)
+  const reducedMotion = usePrefersReducedMotion()
+
+  useEffect(() => {
+    if (reducedMotion) return
+    const el = wrapperRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.35, rootMargin: '0px 0px -10% 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [reducedMotion])
+
+  const steps = Math.max(getTextLength(children), 8)
+  const duration = Math.min(steps * 30, 1100)
+  const Tag = as
+
+  return (
+    <div ref={wrapperRef}>
+      <Tag
+        className={className}
+        style={
+          reducedMotion
+            ? undefined
+            : {
+                clipPath: revealed ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
+                transition: `clip-path ${duration}ms steps(${steps}, end)`,
+              }
+        }
+      >
+        {children}
+      </Tag>
+    </div>
+  )
+}
 
 // --- BRAND SVG LOGOS --------------------------------------------------------
 
@@ -239,7 +323,7 @@ function SectionHeader({
 }) {
   return (
     <div className={className}>
-      <h2 className="font-heading text-[#0a1628] mb-5">{title}</h2>
+      <TypewriterHeading as="h2" className="font-heading text-[#0a1628] mb-5">{title}</TypewriterHeading>
       {description && (
         <p className="text-[#0a1628]/60 text-base font-normal leading-[1.7] max-w-2xl">{description}</p>
       )}
@@ -456,13 +540,13 @@ export function Vision() {
   return (
     <section className="py-28 bg-white">
       <div className="max-w-5xl mx-auto px-8 lg:px-12 text-center">
-        <h2 className="font-serif-display text-[#0a1628] leading-[1.1]">
+        <TypewriterHeading as="h2" className="font-serif-display text-[#0a1628] leading-[1.1]">
           The next wave of connectivity will{' '}
           <span className="text-[#1a7aab]">transform businesses</span>
           {', '}unlock new network value, and{' '}
           <span className="text-[#1a7aab]">empower communities</span>{' '}
           worldwide.
-        </h2>
+        </TypewriterHeading>
         <div className="mt-10 w-10 h-0.5 bg-[#228DC1] mx-auto" />
       </div>
     </section>
@@ -543,10 +627,10 @@ function Industries() {
     <section className="py-24" style={{ backgroundColor: '#0a1628' }}>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="max-w-2xl mb-16">
-          <h2 className="font-heading text-white mb-4">
+          <TypewriterHeading as="h2" className="font-heading text-white mb-4">
             Real projects,<br />
             <span className="text-[#67c5f3]">measurable outcomes.</span>
-          </h2>
+          </TypewriterHeading>
           <p className="text-white/65 text-[16px] leading-[1.8]">
             Case studies spanning Open RAN security, network economics and public sector connectivity, with results backed by GSMA and operator data.
           </p>
@@ -654,10 +738,10 @@ export function TechSolutions() {
           <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-5">
             Technology Solutions
           </span>
-          <h2 className="font-heading text-[#0a1628]">
+          <TypewriterHeading as="h2" className="font-heading text-[#0a1628]">
             AI-Powered Technology{' '}
             <span className="text-[#1a7aab]">Solutions</span>
-          </h2>
+          </TypewriterHeading>
         </div>
         <div className="flex flex-wrap justify-center gap-2 mb-14">
           {tabs.map((t, i) => (
@@ -716,10 +800,10 @@ export function PNaaS() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/60 mb-8">
               PNaaS, Private Network as a Service
             </span>
-            <h2 className="font-heading text-[#0a1628] mb-6">
+            <TypewriterHeading as="h2" className="font-heading text-[#0a1628] mb-6">
               Transforming the future of connectivity{' '}
               <span className="text-[#1a7aab]">and beyond.</span>
-            </h2>
+            </TypewriterHeading>
             <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-10 font-normal">
               AWTG's Private Network as a Service delivers enterprise-grade 4G/5G connectivity, fully managed, infinitely scalable, built around your operations.
             </p>
@@ -986,10 +1070,10 @@ function ContactCTA() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="font-serif-display text-[#0a1628] leading-[1.1] mb-4">
+            <TypewriterHeading as="h2" className="font-serif-display text-[#0a1628] leading-[1.1] mb-4">
               Ready to build<br />
               <span className="text-[#1a7aab]">something that matters?</span>
-            </h2>
+            </TypewriterHeading>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-10">
               No pitch. No jargon. Just honest advice from engineers who've done it before.
             </p>
