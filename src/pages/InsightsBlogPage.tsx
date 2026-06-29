@@ -194,7 +194,7 @@ export default function InsightsBlogPage() {
                       <div className="h-72 relative overflow-hidden rounded-2xl bg-gray-100">
                         <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       </div>
-                      <div className="p-8">
+                      <div className="pt-6">
                         <h3 className="font-h4 text-[#0a1628] mb-3">{post.title}</h3>
                         <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-5 max-w-2xl">{post.excerpt}</p>
                         <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
@@ -218,7 +218,7 @@ export default function InsightsBlogPage() {
                       <div className="h-48 relative overflow-hidden rounded-2xl bg-gray-100">
                         <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       </div>
-                      <div className="p-6 flex flex-col">
+                      <div className="pt-5 flex flex-col">
                         <h3 className="font-h5 text-[#0a1628] mb-3">{post.title}</h3>
                         <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
                         <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
@@ -241,7 +241,7 @@ export default function InsightsBlogPage() {
                     <div className="h-48 relative overflow-hidden rounded-2xl">
                       <InsightImage src={getBlogImage(post.slug, post.tag)} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <div className="p-6 flex flex-col">
+                    <div className="pt-5 flex flex-col">
                       <h3 className="font-h5 text-[#0a1628] mb-3">{post.title}</h3>
                       <p className="text-[#0a1628]/60 text-sm leading-relaxed mb-4">{post.excerpt}</p>
                       <div className="flex items-center gap-2 text-[#0a1628]/60 text-xs pt-4 border-t border-gray-100">
