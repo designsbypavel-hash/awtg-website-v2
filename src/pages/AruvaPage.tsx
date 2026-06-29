@@ -1505,7 +1505,7 @@ function MMImageDemo() {
       </div>
 
       <div style={{ flex:1, minHeight:0, display:'flex', alignItems:'center', justifyContent:'center', padding:'14px 16px', background:'#f8fafc' }}>
-        <div style={{ position:'relative', height:'100%', maxWidth:'100%', aspectRatio:'280 / 178', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
+        <div style={{ position:'relative', width:'100%', height:'100%', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
           <img
             src="/images/aruva-cell-diagram.png"
             alt="Generated biochemistry lecture diagram"
@@ -1750,7 +1750,7 @@ function MMGraphDemo() {
 
       {/* Graph */}
       <div style={{ flex:1, minHeight:0, position:'relative', background:'#fff', display:'flex', alignItems:'center', justifyContent:'center' }}>
-        <svg width="100%" height="100%" viewBox={`0 0 ${GW} ${GH}`} preserveAspectRatio="xMidYMid meet" style={{ display:'block' }}>
+        <svg width="100%" height="100%" viewBox={`0 0 ${GW} ${GH}`} preserveAspectRatio="xMidYMid slice" style={{ display:'block' }}>
           {Array.from({length:17},(_,i)=><line key={`v${i}`} x1={(i/16)*GW} y1={0} x2={(i/16)*GW} y2={GH} stroke="#f0f4f8" strokeWidth="0.7"/>)}
           {Array.from({length:11},(_,i)=><line key={`h${i}`} x1={0} y1={(i/10)*GH} x2={GW} y2={(i/10)*GH} stroke="#f0f4f8" strokeWidth="0.7"/>)}
           <line x1={CX} y1={0} x2={CX} y2={GH} stroke="#d1d5db" strokeWidth="1.2"/>
