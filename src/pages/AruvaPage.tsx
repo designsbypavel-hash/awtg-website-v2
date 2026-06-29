@@ -2797,31 +2797,33 @@ function PrinciplesAudienceSection({ onDemoClick }: { onDemoClick: () => void })
 
 function PlatformMetricsStrip() {
   return (
-    <div className="mt-16 pt-12 border-t border-gray-200/80">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-        {[
-          { stat: '99.9%', label: 'platform availability' },
-          { stat: '≥95%',  label: 'grounded answers include citations' },
-          { stat: '100%',  label: 'auditable AI + admin action' },
-          { stat: '0%',    label: 'customer data used to train public models' },
-        ].map((item, i) => (
-          <div key={item.stat}
-            className={`px-8 py-10 lg:py-12 flex flex-col items-center justify-center text-center min-h-[148px] ${
-              i % 2 === 1 ? 'sm:border-l sm:border-gray-300/80' : ''
-            } ${
-              i > 0 ? 'lg:border-l lg:border-gray-300/80' : ''
-            } ${
-              i > 1 ? 'max-sm:border-t max-sm:border-gray-300/80' : ''
-            }`}>
-            <p className="font-heading text-[#228DC1] mb-3"
-              style={{ fontSize: 'clamp(36px,3.2vw,50px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
-              {item.stat}
-            </p>
-            <p className="text-[#0a1628]/70 text-sm font-normal leading-snug max-w-[210px]">{item.label}</p>
-          </div>
-        ))}
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+          {[
+            { stat: '99.9%', label: 'platform availability' },
+            { stat: '≥95%',  label: 'grounded answers include citations' },
+            { stat: '100%',  label: 'auditable AI + admin action' },
+            { stat: '0%',    label: 'customer data used to train public models' },
+          ].map((item, i) => (
+            <div key={item.stat}
+              className={`px-8 py-10 lg:py-12 flex flex-col items-center justify-center text-center min-h-[148px] ${
+                i % 2 === 1 ? 'sm:border-l sm:border-gray-300/80' : ''
+              } ${
+                i > 0 ? 'lg:border-l lg:border-gray-300/80' : ''
+              } ${
+                i > 1 ? 'max-sm:border-t max-sm:border-gray-300/80' : ''
+              }`}>
+              <p className="font-heading text-[#228DC1] mb-3"
+                style={{ fontSize: 'clamp(36px,3.2vw,50px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
+                {item.stat}
+              </p>
+              <p className="text-[#0a1628]/70 text-sm font-normal leading-snug max-w-[210px]">{item.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -2951,6 +2953,9 @@ export default function AruvaPage() {
       {/* Platform Architecture */}
       <PlatformDiagram />
 
+      {/* Platform trust metrics */}
+      <PlatformMetricsStrip />
+
       {/* How It Works */}
       <HowItWorksSection />
 
@@ -3067,8 +3072,6 @@ export default function AruvaPage() {
             </div>
 
           </div>
-
-          <PlatformMetricsStrip />
         </div>
       </section>
 
