@@ -199,11 +199,11 @@ const vendors = [
 
 // -- Use cases ----------------------------------------------------------------
 const useCases = [
-  { image: scapKpiDashboard, eyebrow: 'Operators', title: 'Mobile Network Operators',   desc: 'Unified assurance and orchestration for O-RAN and multi-vendor RAN environments with full SMO and PM capability.' },
-  { image: scapAlarmManagement, eyebrow: 'Private 5G', title: 'Private Network Providers',  desc: 'End-to-end visibility, fault management and configuration governance for private 5G deployments.' },
-  { image: scapConfigurationNavigation, eyebrow: 'Neutral host', title: 'Neutral Host Networks',      desc: 'Multi-tenant network management with vendor-agnostic integration and service-level assurance.' },
-  { image: scapKpiPerformance, eyebrow: 'Delivery', title: 'System Integrators',         desc: 'A flexible platform layer that connects equipment, software and operational workflows across complex multi-vendor programmes.' },
-  { image: scapKpiDashboard, eyebrow: 'Enterprise', title: 'Enterprise Telecom',         desc: 'Network operations modernisation through automation, assurance and orchestration for enterprise telecom environments.' },
+  { image: '/images/insights/mobile-networks.jpg', eyebrow: 'Operators', title: 'Mobile Network Operators',   desc: 'Unified assurance and orchestration for O-RAN and multi-vendor RAN environments with full SMO and PM capability.' },
+  { image: '/images/insights/private-networks.jpg', eyebrow: 'Private 5G', title: 'Private Network Providers',  desc: 'End-to-end visibility, fault management and configuration governance for private 5G deployments.' },
+  { image: '/images/insights/telecom-tower.jpg', eyebrow: 'Neutral host', title: 'Neutral Host Networks',      desc: 'Multi-tenant network management with vendor-agnostic integration and service-level assurance.' },
+  { image: '/images/insights/engineering-team.jpg', eyebrow: 'Delivery', title: 'System Integrators',         desc: 'A flexible platform layer that connects equipment, software and operational workflows across complex multi-vendor programmes.' },
+  { image: '/images/insights/data-centre.jpg', eyebrow: 'Enterprise', title: 'Enterprise Telecom',         desc: 'Network operations modernisation through automation, assurance and orchestration for enterprise telecom environments.' },
 ]
 
 // -- Section header helper ----------------------------------------------------
