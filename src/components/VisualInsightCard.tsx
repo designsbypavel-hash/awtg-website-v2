@@ -11,6 +11,7 @@ type VisualInsightCardProps = {
   dark?: boolean
   accent?: string
   flushContent?: boolean
+  transparent?: boolean
   style?: CSSProperties
 }
 
@@ -22,10 +23,11 @@ export default function VisualInsightCard({
   dark = false,
   accent = '#228DC1',
   flushContent = false,
+  transparent = false,
   style,
 }: VisualInsightCardProps) {
   const base = dark
-    ? 'bg-[#0d1c31] text-white'
+    ? `${transparent ? 'bg-transparent' : 'bg-[#0d1c31]'} text-white`
     : `${flushContent ? 'bg-transparent' : 'bg-white'} text-[#0a1628]`
 
   return (

@@ -450,6 +450,8 @@ export default function ServicesEngineeringPage() {
               <VisualInsightCard
                 key={uc.title}
                 dark
+                transparent
+                flushContent
                 accent="#7ac4e0"
                 eyebrow={uc.eyebrow}
                 title={uc.title}
