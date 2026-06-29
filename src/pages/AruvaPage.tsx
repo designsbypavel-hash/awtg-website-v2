@@ -1396,7 +1396,7 @@ function MMTextDemo() {
   }, [active])
 
   return (
-    <div style={{ flex:1, display:'flex', flexDirection:'column', gap:14, padding:'24px 28px' }}>
+    <div style={{ flex:1, minHeight:0, display:'flex', flexDirection:'column', gap:14, padding:'24px 28px' }}>
       <div style={{ display:'grid', gridTemplateColumns:'repeat(2, minmax(0, 1fr))', gap:10 }}>
         {MM_TEXT_CONVERSATIONS.map((student, index) => (
           <button key={student.name} type="button" onClick={() => setActive(index)}
@@ -1466,7 +1466,7 @@ function MMImageDemo() {
   }, [])
 
   return (
-    <div style={{ display:'flex', flexDirection:'column', flex:1, background:'#ffffff' }}>
+    <div style={{ display:'flex', flexDirection:'column', flex:1, minHeight:0, background:'#ffffff' }}>
       <div style={{ borderBottom:'1px solid #e5e7eb', padding:'14px 18px', display:'flex', flexDirection:'column', gap:10, background:'#fafbfc' }}>
         <div style={{ alignSelf:'flex-end', maxWidth:'82%', opacity:0, animation:'mmCardIn 0.34s ease forwards' }}>
           <div style={{
@@ -1504,13 +1504,13 @@ function MMImageDemo() {
         </div>
       </div>
 
-      <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', padding:'14px 16px', background:'#f8fafc' }}>
-        <div style={{ position:'relative', width:'100%', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
+      <div style={{ flex:1, minHeight:0, display:'flex', alignItems:'center', justifyContent:'center', padding:'14px 16px', background:'#f8fafc' }}>
+        <div style={{ position:'relative', height:'100%', maxWidth:'100%', aspectRatio:'280 / 178', borderRadius:14, overflow:'hidden', border:'1px solid #dbe7dd', boxShadow:'0 16px 34px rgba(10,22,40,0.10)', background:'#ffffff' }}>
           <img
             src="/images/aruva-cell-diagram.png"
             alt="Generated biochemistry lecture diagram"
             style={{
-              display:'block', width:'100%', height:'auto', aspectRatio:'280 / 178', objectFit:'cover',
+              position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover',
               opacity:0.18,
               filter:'saturate(0.45) blur(2px)',
               transform:'scale(1.01)',
@@ -1526,8 +1526,8 @@ function MMImageDemo() {
               alt=""
               aria-hidden="true"
               style={{
-                display:'block', width:`calc(100% * ${100 / Math.max(revealWidth, 1)})`, height:'100%',
-                aspectRatio:'280 / 178', objectFit:'cover',
+                position:'absolute', inset:0, width:`calc(100% * ${100 / Math.max(revealWidth, 1)})`, height:'100%',
+                objectFit:'cover',
                 opacity: revealWidth > 0 ? 1 : 0,
                 filter: stage >= 4 ? 'none' : 'saturate(1.05) contrast(1.02)',
                 transform: stage >= 4 ? 'scale(1)' : 'scale(1.006)',
@@ -1714,7 +1714,7 @@ function MMGraphDemo() {
   const path = activeFormula ? buildPath(activeFormula) : ''
 
   return (
-    <div style={{ display:'flex', flexDirection:'column', flex:1 }}>
+    <div style={{ display:'flex', flexDirection:'column', flex:1, minHeight:0 }}>
       {/* Formula bar */}
       <form onSubmit={handleSubmit}>
         <div style={{ borderBottom:'1px solid #e5e7eb', padding:'10px 14px', background:'#fafbfc', display:'flex', alignItems:'center', gap:8 }}>
@@ -1749,8 +1749,8 @@ function MMGraphDemo() {
       </form>
 
       {/* Graph */}
-      <div style={{ flex:1, position:'relative', background:'#fff' }}>
-        <svg width="100%" viewBox={`0 0 ${GW} ${GH}`} style={{ display:'block' }}>
+      <div style={{ flex:1, minHeight:0, position:'relative', background:'#fff', display:'flex', alignItems:'center', justifyContent:'center' }}>
+        <svg width="100%" height="100%" viewBox={`0 0 ${GW} ${GH}`} preserveAspectRatio="xMidYMid meet" style={{ display:'block' }}>
           {Array.from({length:17},(_,i)=><line key={`v${i}`} x1={(i/16)*GW} y1={0} x2={(i/16)*GW} y2={GH} stroke="#f0f4f8" strokeWidth="0.7"/>)}
           {Array.from({length:11},(_,i)=><line key={`h${i}`} x1={0} y1={(i/10)*GH} x2={GW} y2={(i/10)*GH} stroke="#f0f4f8" strokeWidth="0.7"/>)}
           <line x1={CX} y1={0} x2={CX} y2={GH} stroke="#d1d5db" strokeWidth="1.2"/>
@@ -1918,6 +1918,7 @@ function MultimodalSection() {
           <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
           {/* RIGHT - single large demo card, remounts on each modality change */}
           <div style={{
+            height:500,
             borderRadius:20, overflow:'hidden',
             border:'1px solid #e2e8f0',
             background:'#ffffff',
@@ -1950,13 +1951,13 @@ function MultimodalSection() {
 
             {/* Demo content - key forces remount so animations restart on each cycle */}
             <div key={`${active}-${cycleCount}`} style={{
-              flex:1, display:'flex', flexDirection:'column',
+              flex:1, minHeight:0, display:'flex', flexDirection:'column',
               opacity:0, animation:'mmCardIn 0.4s ease forwards',
             }}>
 
               {/* ── Voice ── */}
               {active === 0 && (
-                <div style={{ flex:1, display:'flex', flexDirection:'column', padding:24, background:'linear-gradient(180deg,#ffffff 0%,#f8fbfd 100%)' }}>
+                <div style={{ flex:1, minHeight:0, display:'flex', flexDirection:'column', padding:24, background:'linear-gradient(180deg,#ffffff 0%,#f8fbfd 100%)' }}>
                   <div style={{
                     display:'flex', alignItems:'center', justifyContent:'space-between', gap:16,
                     padding:'14px 16px', border:'1px solid #e5edf4', borderRadius:16,
