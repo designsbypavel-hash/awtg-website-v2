@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrophy } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
@@ -180,21 +182,28 @@ export default function DigitalPlatformsIBecomePage() {
                 {metrics.map((item, i) => (
                   <div
                     key={item.label}
-                    className="flex items-center gap-5 rounded-2xl border border-[#0a1628]/8 bg-white p-6"
-                    style={{ boxShadow: '0 12px 32px rgba(10,22,40,0.06)', ...reveal(outcomesInView, 150 + i * 100) }}
+                    className={`flex items-center gap-5 rounded-2xl p-6 ${item.badge ? '' : 'border border-[#0a1628]/8 bg-white'}`}
+                    style={{
+                      ...(item.badge
+                        ? {
+                            background: 'linear-gradient(135deg, #fffaf0 0%, #fef3d9 100%)',
+                            border: '1px solid rgba(217,169,15,0.3)',
+                            boxShadow: '0 16px 36px rgba(217,169,15,0.16)',
+                          }
+                        : { boxShadow: '0 12px 32px rgba(10,22,40,0.06)' }),
+                      ...reveal(outcomesInView, 150 + i * 100),
+                    }}
                   >
-                    <div className="self-stretch h-auto w-1 shrink-0 rounded-full" style={{ background: '#228DC1' }} />
+                    <div className="self-stretch h-auto w-1 shrink-0 rounded-full" style={{ background: item.badge ? '#d9a90f' : '#228DC1' }} />
                     <div className="flex-1">
-                      <p className="font-heading mb-1.5 text-[#0a1628]" style={{ fontSize: 'clamp(24px,2.4vw,32px)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                      <p className="font-heading mb-1.5 flex items-center gap-2 text-[#0a1628]" style={{ fontSize: 'clamp(24px,2.4vw,32px)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                        {item.badge && <FontAwesomeIcon icon={faTrophy} style={{ width: '0.72em', height: '0.72em', color: '#d9a90f' }} />}
                         {item.stat}
                       </p>
                       <p className="text-[#0a1628]/60 text-[14px] font-normal leading-snug">{item.label}</p>
                     </div>
                     {item.badge && (
-                      <div
-                        className="flex h-20 w-32 shrink-0 items-center justify-center rounded-xl p-2"
-                        style={{ background: 'linear-gradient(135deg, #fff9eb 0%, #fef3d6 100%)', boxShadow: '0 4px 14px rgba(217,169,15,0.18)', border: '1px solid rgba(217,169,15,0.25)' }}
-                      >
+                      <div className="flex h-20 w-32 shrink-0 items-center justify-center rounded-xl bg-white p-2">
                         <img
                           src={item.badge}
                           alt="LGC Awards 2023 Winner"
