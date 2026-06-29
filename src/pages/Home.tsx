@@ -40,7 +40,7 @@ function flattenToSegments(node: ReactNode, className?: string): TypewriterSegme
   return []
 }
 
-const TYPE_MS_PER_CHAR = 20
+const TYPE_MS_PER_CHAR = 26
 
 function TypewriterHeading({
   as = 'h2',
