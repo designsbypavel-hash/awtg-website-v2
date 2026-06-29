@@ -222,7 +222,7 @@ export default function DigitalPlatformsIBecomePage() {
                 style={{ aspectRatio: '4 / 5', boxShadow: '0 30px 70px rgba(10,22,40,0.18)' }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1758270705172-07b53627dfcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1100&q=80"
+                  src="https://images.unsplash.com/photo-1758270705172-07b53627dfcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=90"
                   alt="Young people discovering apprenticeship and career opportunities together"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                   loading="lazy"
