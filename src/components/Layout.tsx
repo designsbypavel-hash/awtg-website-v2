@@ -1,13 +1,20 @@
-﻿import { useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
+﻿import { useLayoutEffect } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navigation from './Navigation'
 import Breadcrumbs from './Breadcrumbs'
 import Footer from './Footer'
 
 export default function Layout() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  const { pathname, search } = useLocation()
+
+  // useLayoutEffect, not useEffect: runs synchronously before the browser
+  // paints, so the new page never flashes at the old scroll position first.
+  // behavior must be 'instant', not 'auto' - 'auto' defers to the global
+  // `scroll-behavior: smooth` CSS rule and animates to the top instead of
+  // snapping there immediately.
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname, search])
 
   return (
     <div className="min-h-screen flex flex-col">
