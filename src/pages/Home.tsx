@@ -291,21 +291,14 @@ function Hero() {
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#030915] via-[#030915]/60 to-[#030915]/10" />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 45%, rgba(3,9,21,0.78) 0%, rgba(3,9,21,0.45) 55%, rgba(3,9,21,0.15) 100%)' }}
+        />
       </div>
 
-      {/* AI / 5G signal handoff badge */}
-      <div className="home-hero-badge-shell hidden md:block absolute top-1/2 right-[12%] h-20 w-44 -translate-y-1/2">
-        <span className="home-hero-badge home-hero-badge-1 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-3xl font-bold tracking-wide text-white backdrop-blur-md">
-          AI
-        </span>
-        <span className="home-hero-badge home-hero-badge-2 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-3xl font-bold tracking-wide text-white backdrop-blur-md">
-          5G
-        </span>
-      </div>
-
-      {/* -- Content, left-centre aligned, minimal copy -- */}
-      <div className="relative flex flex-col justify-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '80%' }}>
+      {/* -- Content, centred both horizontally and vertically -- */}
+      <div className="relative flex flex-col items-center justify-center text-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '80%' }}>
 
         {/* Headline */}
         <h1
@@ -316,7 +309,7 @@ function Hero() {
         </h1>
 
         {/* One-liner, StoryBrand: customer is the hero, AWTG is the guide */}
-        <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-0 font-normal" style={{ animationDelay: '160ms' }}>
+        <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-0 font-normal mx-auto" style={{ animationDelay: '160ms' }}>
           AWTG delivers AI, 5G, private networks and software solutions
           for UK enterprises and public sector, end-to-end,
           accountable, built to perform.
