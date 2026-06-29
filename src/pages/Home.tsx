@@ -279,37 +279,29 @@ function Hero() {
   return (
     <section className="home-hero home-ai-hero relative h-screen min-h-[700px] flex flex-col overflow-hidden">
 
-      {/* -- Cinematic globe, right side (decorative, aria-hidden) -- */}
-      <div
-        className="home-hero-media hidden md:block absolute top-1/2 overflow-hidden rounded-full"
-        style={{
-          width: 'min(58vw, 70vh, 820px)',
-          height: 'min(58vw, 70vh, 820px)',
-          right: 'max(2rem, calc((50vw - min(58vw, 70vh, 820px)) / 2))',
-        }}
-        aria-hidden="true"
-      >
+      {/* -- Cinematic background video, full hero bleed (decorative, aria-hidden) -- */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <video
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 rounded-full ring-1 ring-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#030915] via-[#030915]/60 to-[#030915]/10" />
+      </div>
 
-        {/* AI / 5G signal handoff badge */}
-        <div className="home-hero-badge-shell absolute left-1/2 top-1/2 h-20 w-44 -translate-x-1/2 -translate-y-1/2">
-          <span className="home-hero-badge home-hero-badge-1 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-3xl font-bold tracking-wide text-white backdrop-blur-md">
-            AI
-          </span>
-          <span className="home-hero-badge home-hero-badge-2 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-3xl font-bold tracking-wide text-white backdrop-blur-md">
-            5G
-          </span>
-        </div>
+      {/* AI / 5G signal handoff badge */}
+      <div className="home-hero-badge-shell hidden md:block absolute top-1/2 right-[12%] h-20 w-44 -translate-y-1/2">
+        <span className="home-hero-badge home-hero-badge-1 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-3xl font-bold tracking-wide text-white backdrop-blur-md">
+          AI
+        </span>
+        <span className="home-hero-badge home-hero-badge-2 absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-3xl font-bold tracking-wide text-white backdrop-blur-md">
+          5G
+        </span>
       </div>
 
       {/* -- Content, left-centre aligned, minimal copy -- */}
