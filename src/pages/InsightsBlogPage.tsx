@@ -265,23 +265,6 @@ export default function InsightsBlogPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div>
-            <p className="type-label text-[#1a7aab] mb-3">Work with AWTG</p>
-            <h2 className="font-h3 text-[#0a1628]">
-              Ready to talk about<br />your network?
-            </h2>
-          </div>
-          <Link
-            to="/contact"
-            className="shrink-0 px-8 py-4 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all"
-          >
-            Request a conversation
-          </Link>
-        </div>
-      </section>
     </>
   )
 }
