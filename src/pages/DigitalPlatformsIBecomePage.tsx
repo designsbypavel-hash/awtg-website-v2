@@ -164,9 +164,6 @@ export default function DigitalPlatformsIBecomePage() {
         <div ref={outcomesRef} className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
             <div style={reveal(outcomesInView)}>
-              <p className="mb-4 text-[12px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">
-                Proven impact
-              </p>
               <h2 className="font-heading mb-6 leading-[1.12] text-[#0a1628]">
                 Built on the success of BeMore.<br />
                 Proven through measurable outcomes.
