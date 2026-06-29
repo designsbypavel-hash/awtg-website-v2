@@ -102,6 +102,16 @@ function hexToRgb(hex: string) {
 }
 const subjectRgb = curriculumSubjects.map((s) => hexToRgb(s.color))
 
+// Linear-interpolates between two hex colours - used to crossfade colour
+// continuously with scroll position instead of a hard CSS-transition snap.
+function mixHex(hexA: string, hexB: string, t: number) {
+  const a = hexToRgb(hexA), b = hexToRgb(hexB)
+  const r = Math.round(a.r + (b.r - a.r) * t)
+  const g = Math.round(a.g + (b.g - a.g) * t)
+  const bl = Math.round(a.b + (b.b - a.b) * t)
+  return `rgb(${r}, ${g}, ${bl})`
+}
+
 // Smoothstep easing - used to ramp the "connected" state in and out with no
 // discontinuity, instead of a hard on/off toggle.
 function smoothstep(edge0: number, edge1: number, x: number) {
@@ -1049,35 +1059,47 @@ function PlatformDiagram() {
   const sectionRef = React.useRef<HTMLDivElement>(null)
   const [prog, setProg] = React.useState(0)
 
+  // rAF-batched scroll handler - coalesces to one measurement per frame so
+  // the diagram tracks the scrollbar exactly with no jank, and every value
+  // below is a continuous function of `prog` (no boolean snap + CSS-transition
+  // lag) so it scrubs smoothly in both directions at any scroll speed.
   React.useEffect(() => {
     const el = sectionRef.current
     if (!el) return
-    const onScroll = () => {
+    let frame: number | null = null
+    const compute = () => {
       const rect = el.getBoundingClientRect()
       const vh = window.innerHeight
       const p = (vh - rect.top) / (rect.height + vh)
       setProg(Math.max(0, Math.min(1, p)))
+      frame = null
+    }
+    const onScroll = () => {
+      if (frame == null) frame = requestAnimationFrame(compute)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
+    compute()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frame != null) cancelAnimationFrame(frame)
+    }
   }, [])
 
-  const integOn = prog > 0.06
-  const conn1On = prog > 0.18
-  const s0On    = prog > 0.24
-  const s1On    = prog > 0.32
-  const s2On    = prog > 0.40
-  const s3On    = prog > 0.48
-  const conn2On = prog > 0.58
-  const ui0On   = prog > 0.65
-  const ui1On   = prog > 0.70
-  const ui2On   = prog > 0.75
-  const ui3On   = prog > 0.80
-  const ui4On   = prog > 0.85
+  const integT = smoothstep(0.04, 0.09, prog)
+  const conn1T = smoothstep(0.16, 0.21, prog)
+  const s0T    = smoothstep(0.22, 0.27, prog)
+  const s1T    = smoothstep(0.30, 0.35, prog)
+  const s2T    = smoothstep(0.38, 0.43, prog)
+  const s3T    = smoothstep(0.46, 0.51, prog)
+  const conn2T = smoothstep(0.56, 0.61, prog)
+  const ui0T   = smoothstep(0.63, 0.68, prog)
+  const ui1T   = smoothstep(0.68, 0.73, prog)
+  const ui2T   = smoothstep(0.73, 0.78, prog)
+  const ui3T   = smoothstep(0.78, 0.83, prog)
+  const ui4T   = smoothstep(0.83, 0.88, prog)
 
-  const layerOn = [s0On, s1On, s2On, s3On]
-  const uiOn    = [ui0On, ui1On, ui2On, ui3On, ui4On]
+  const layerT = [s0T, s1T, s2T, s3T]
+  const uiT    = [ui0T, ui1T, ui2T, ui3T, ui4T]
 
 
   const layers = [
@@ -1101,26 +1123,23 @@ function PlatformDiagram() {
     { label:'Institutional Analytics', desc:'One view across every course you run',          color:'#dc2626' },
   ]
 
-  const T = 'opacity 0.45s cubic-bezier(0.4,0,0.2,1), transform 0.45s cubic-bezier(0.4,0,0.2,1)'
-  const on  = (active: boolean, delay = 0): React.CSSProperties => ({
-    opacity:   active ? 1 : 0,
-    transform: active ? 'translateY(0)' : 'translateY(14px)',
-    transition: T,
-    transitionDelay: `${delay}ms`,
+  const onT = (t: number): React.CSSProperties => ({
+    opacity: t,
+    transform: `translateY(${(1 - t) * 14}px)`,
   })
-  // Workflow node connector
-  const NodeConnector = ({ active, label }: { active: boolean; label?: string }) => (
+  // Workflow node connector - colour and opacity crossfade continuously with t
+  const NodeConnector = ({ t, label }: { t: number; label?: string }) => (
     <div className="flex flex-col items-center gap-0" style={{ padding:'4px 0' }}>
-      <div style={{ width:2, height:20, background: active ? '#596779' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
+      <div style={{ width:2, height:20, background: mixHex('#e2e8f0', '#596779', t), borderRadius:1 }} />
       {label && (
         <>
-          <div style={{ padding:'4px 10px', borderRadius:6, background: active ? '#f8fafc' : '#f1f5f9', border:`1px solid ${active ? '#cbd5e1' : '#e2e8f0'}`, transition:'all 0.3s ease' }}>
-            <span style={{ fontSize:11, fontWeight:700, color: active ? '#64748b' : '#596779', letterSpacing:'0.1em', textTransform:'uppercase' }}>{label}</span>
+          <div style={{ padding:'4px 10px', borderRadius:6, background: mixHex('#f1f5f9', '#f8fafc', t), border:`1px solid ${mixHex('#e2e8f0', '#cbd5e1', t)}` }}>
+            <span style={{ fontSize:11, fontWeight:700, color: '#596779', letterSpacing:'0.1em', textTransform:'uppercase' }}>{label}</span>
           </div>
-          <div style={{ width:2, height:20, background: active ? '#596779' : '#e2e8f0', transition:'background 0.4s ease', borderRadius:1 }} />
+          <div style={{ width:2, height:20, background: mixHex('#e2e8f0', '#596779', t), borderRadius:1 }} />
         </>
       )}
-      <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: active ? 1 : 0.2, transition:'opacity 0.4s ease' }}>
+      <svg width="10" height="6" viewBox="0 0 10 6" style={{ opacity: 0.2 + 0.8 * t }}>
         <path d="M1 1l4 4 4-4" stroke="#64748b" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     </div>
@@ -1158,7 +1177,7 @@ function PlatformDiagram() {
               style={{ backgroundImage:'radial-gradient(circle, #cbd5e1 1px, transparent 1px)', backgroundSize:'24px 24px', padding:'28px 28px', borderRadius:20, border:'1px solid #e2e8f0' }}>
 
               {/* Node 1: Integrations */}
-              <div style={{ ...on(integOn), background:'#fff', border:'1px solid #e2e8f0', borderRadius:12, padding:'16px 20px', boxShadow:'0 2px 12px rgba(10,22,40,0.06)' }}>
+              <div style={{ ...onT(integT), background:'#fff', border:'1px solid #e2e8f0', borderRadius:12, padding:'16px 20px', boxShadow:'0 2px 12px rgba(10,22,40,0.06)' }}>
                 <div className="flex items-center gap-3 mb-4">
                   <div style={{ width:28, height:28, borderRadius:8, background:'#eff6ff', border:'1px solid #bfdbfe', display:'flex', alignItems:'center', justifyContent:'center' }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -1192,24 +1211,25 @@ function PlatformDiagram() {
                 </div>
               </div>
 
-              <NodeConnector active={conn1On} label="Sync & Deploy" />
+              <NodeConnector t={conn1T} label="Sync & Deploy" />
 
               {/* Node 2: Platform layers */}
               <div style={{ background:'#fff', border:'1px solid #e2e8f0', borderRadius:12, overflow:'hidden', boxShadow:'0 2px 12px rgba(10,22,40,0.06)' }}>
-                <div style={{ ...on(s0On), background:'#0f172a', padding:'10px 20px', display:'flex', alignItems:'center', gap:8 }}>
+                <div style={{ ...onT(s0T), background:'#0f172a', padding:'10px 20px', display:'flex', alignItems:'center', gap:8 }}>
                   <div style={{ width:6, height:6, borderRadius:'50%', background:'#22d3ee' }} />
                   <p style={{ fontSize:11, fontWeight:700, color:'rgba(255,255,255,0.65)', letterSpacing:'0.2em', textTransform:'uppercase' }}>Aruva Intelligent Education Platform</p>
                 </div>
-                {layers.map((layer, i) => (
+                {layers.map((layer, i) => {
+                  const lrgb = hexToRgb(layer.color)
+                  return (
                   <div key={layer.label}
                     style={{
-                      ...on(layerOn[i], i * 70),
+                      ...onT(layerT[i]),
                       display:'flex', alignItems:'center', gap:16,
                       padding:'14px 20px',
                       borderBottom: i < layers.length - 1 ? '1px solid #f1f5f9' : 'none',
-                      borderLeft: `3px solid ${layerOn[i] ? layer.color : '#e2e8f0'}`,
-                      background: layerOn[i] ? `${layer.color}05` : '#fff',
-                      transition: `${T}, border-left-color 0.35s ease ${i*70}ms, background 0.35s ease ${i*70}ms`,
+                      borderLeft: `3px solid ${mixHex('#e2e8f0', layer.color, layerT[i])}`,
+                      background: `rgba(${lrgb.r}, ${lrgb.g}, ${lrgb.b}, ${layerT[i] * 0.02})`,
                     }}>
                     <div style={{ width:160, flexShrink:0 }}>
                       <p style={{ fontSize:13, fontWeight:700, color:'#0a1628', lineHeight:1.25 }}>{layer.label}</p>
@@ -1223,13 +1243,14 @@ function PlatformDiagram() {
                       ))}
                     </div>
                   </div>
-                ))}
+                  )
+                })}
               </div>
 
-              <NodeConnector active={conn2On} label="Aruva API" />
+              <NodeConnector t={conn2T} label="Aruva API" />
 
               {/* Node 3: User Interface */}
-              <div style={{ ...on(ui0On), background:'#fff', border:'1px solid #e2e8f0', borderRadius:12, padding:'16px 20px', boxShadow:'0 2px 12px rgba(10,22,40,0.06)' }}>
+              <div style={{ ...onT(ui0T), background:'#fff', border:'1px solid #e2e8f0', borderRadius:12, padding:'16px 20px', boxShadow:'0 2px 12px rgba(10,22,40,0.06)' }}>
                 <div className="flex items-center gap-3 mb-4">
                   <div style={{ width:28, height:28, borderRadius:8, background:'#f0fdf4', border:'1px solid #bbf7d0', display:'flex', alignItems:'center', justifyContent:'center' }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#22c55e" strokeWidth="2"/><path d="M8 21h8M12 17v4" stroke="#22c55e" strokeWidth="2" strokeLinecap="round"/></svg>
@@ -1240,19 +1261,22 @@ function PlatformDiagram() {
                   </div>
                 </div>
                 <div style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)', gap:8 }}>
-                  {surfaces.map((s, i) => (
+                  {surfaces.map((s, i) => {
+                    const srgb = hexToRgb(s.color)
+                    return (
                     <div key={s.label}
                       style={{
-                        padding:'10px 10px', borderRadius:10, borderTop:`2.5px solid ${uiOn[i] ? s.color : '#e2e8f0'}`,
-                        background: uiOn[i] ? s.color+'08' : '#f8fafc',
-                        opacity: uiOn[i] ? 1 : 0.4,
-                        transform: uiOn[i] ? 'translateY(0)' : 'translateY(6px)',
-                        transition:`opacity 0.4s ease ${i*60}ms, transform 0.4s ease ${i*60}ms, background 0.3s ease, border-top-color 0.3s ease`,
+                        padding:'10px 10px', borderRadius:10,
+                        borderTop:`2.5px solid ${mixHex('#e2e8f0', s.color, uiT[i])}`,
+                        background: `rgba(${srgb.r}, ${srgb.g}, ${srgb.b}, ${uiT[i] * 0.031})`,
+                        opacity: 0.4 + 0.6 * uiT[i],
+                        transform: `translateY(${(1 - uiT[i]) * 6}px)`,
                       }}>
                       <p style={{ fontSize:12, fontWeight:700, color:'#0f172a', lineHeight:1.3 }}>{s.label}</p>
                       <p style={{ fontSize:11, color:'#596779', marginTop:3, lineHeight:1.4 }}>{s.desc}</p>
                     </div>
-                  ))}
+                    )
+                  })}
                 </div>
               </div>
 
