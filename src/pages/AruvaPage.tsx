@@ -215,15 +215,18 @@ function CurriculumAgnosticSection() {
           from { stroke-dashoffset: 60; }
           to   { stroke-dashoffset: 0; }
         }
+        h2.aruva-hero-heading.font-heading {
+          font-size: clamp(26px, 2.4vw, 32px) !important;
+        }
       `}</style>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="grid lg:grid-cols-[440px_minmax(0,1fr)] gap-12 xl:gap-16 items-center">
 
           {/* LEFT - text */}
           <div style={reveal(inView, 0)}>
-            <h2 className="font-heading text-[#0a1628] mb-5">
-              One central Aruva layer.<br />
-              <span className="text-[#228DC1]">Every subject can use it.</span>
+            <h2 className="aruva-hero-heading font-heading text-[#0a1628] mb-5">
+              <span className="lg:whitespace-nowrap">One central Aruva layer.</span><br />
+              <span className="lg:whitespace-nowrap text-[#228DC1]">Every subject can use it.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-xl">
               Aruva stays centralised while the curriculum changes around it. Geography, Physics, Biology, Psychology, Maths, Economics, Chemistry and History all connect to the same governed learning intelligence layer.
