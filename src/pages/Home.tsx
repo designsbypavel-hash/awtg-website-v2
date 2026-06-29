@@ -298,7 +298,7 @@ function Hero() {
       </div>
 
       {/* -- Content, centred both horizontally and vertically -- */}
-      <div className="relative flex flex-col items-center justify-center text-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '80%' }}>
+      <div className="relative flex flex-col items-center justify-center text-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '88%' }}>
 
         {/* Headline */}
         <h1
@@ -318,7 +318,7 @@ function Hero() {
       </div>
 
       {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
-      <div className="relative bg-white overflow-hidden" style={{ height: '20%' }}>
+      <div className="relative bg-white overflow-hidden" style={{ height: '12%' }}>
         <div className="flex items-center h-full">
           <div className="shrink-0 h-full flex items-center px-8 border-r border-black/10">
             <span className="text-[#0a1628]/60 text-[14px] font-semibold tracking-[0.22em] uppercase whitespace-nowrap">
