@@ -293,7 +293,7 @@ function Hero() {
         </video>
         <div
           className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 45%, rgba(3,9,21,0.78) 0%, rgba(3,9,21,0.45) 55%, rgba(3,9,21,0.15) 100%)' }}
+          style={{ background: 'linear-gradient(135deg, rgba(3,9,21,0.88) 0%, rgba(10,22,40,0.68) 45%, rgba(34,141,193,0.55) 100%)' }}
         />
       </div>
 
