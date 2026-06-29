@@ -7,6 +7,7 @@ import {
 import CTASection from '@/components/CTASection'
 import lysLogin from '@/assets/iYouth/Login.jpg'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
+import iBecomeCardImage from '@/assets/Digital Platforms/iBecome_Card_LCRReels.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 import clearAccessImage from '@/assets/Digital Platforms/outcomes/clear-access.webp'
 import betterEngagementImage from '@/assets/Digital Platforms/outcomes/better-engagement.webp'
@@ -42,7 +43,7 @@ const products = [
     name: 'iBecome',
     subtitle: 'A platform for jobs, apprenticeships and local opportunity',
     desc: 'iBecome helps young people discover opportunities, build confidence and move closer to employment. It carries forward the proven model behind Liverpool City Region BeMore, bringing together vacancies, careers content, profile tools and local engagement in one joined-up experience. It includes a profile and CV builder, apprenticeships and jobs, events and engagement, personalised guidance, and employer and provider reach.',
-    image: iBecomeHero,
+    image: iBecomeCardImage,
     href: '/digital-platforms/ibecome',
     cta: 'View iBecome',
   },
