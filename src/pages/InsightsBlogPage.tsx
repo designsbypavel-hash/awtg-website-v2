@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import InsightImage from '@/components/InsightImage'
 import InsightsResourceNav from '@/components/InsightsResourceNav'
+import CTASection from '@/components/CTASection'
 import { getBlogImage } from '@/lib/insightImages'
 
 const posts = [
@@ -264,7 +265,12 @@ export default function InsightsBlogPage() {
           )}
         </div>
       </section>
-
+      <CTASection
+        title="See What We Can Achieve Together"
+        subtitle="Tell us about your challenge and we will share the most relevant experience from across our project portfolio."
+        primaryLabel="Get in Touch"
+        primaryHref="/contact"
+      />
     </>
   )
 }
