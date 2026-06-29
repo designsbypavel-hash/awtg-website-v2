@@ -172,7 +172,6 @@ const featuredPanels: Record<string, FeaturedPanel> = {
 type DropdownKey = string | null
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<DropdownKey>(null)
   const [mobileExpanded, setMobileExpanded] = useState<DropdownKey>(null)
@@ -216,12 +215,6 @@ export default function Navigation() {
   }
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
     setMobileOpen(false)
     closeDropdownNow()
     setMobileExpanded(null)
@@ -234,16 +227,11 @@ export default function Navigation() {
     return () => document.removeEventListener('click', close)
   }, [activeDropdown])
 
-  // Only use white/transparent nav on the home page (which has a dark video hero)
-  const isHome = location.pathname === '/'
+  // Solid nav background always - the home hero video varies between dark and
+  // light, so a transparent nav can't guarantee text contrast there.
+  const navBg = 'bg-white border-b border-gray-100'
 
-  const navBg = scrolled || activeDropdown || !isHome
-    ? 'bg-white border-b border-gray-100'
-    : 'bg-transparent'
-
-  const linkCls = scrolled || activeDropdown || !isHome
-    ? 'text-[#0a1628]/60 hover:text-[#0a1628]'
-    : 'text-white/80 hover:text-white'
+  const linkCls = 'text-[#0a1628]/60 hover:text-[#0a1628]'
 
   // Close dropdowns on Escape key
   useEffect(() => {
@@ -296,7 +284,7 @@ export default function Navigation() {
                     onMouseEnter={() => openDropdown(key)}
                     onFocus={() => openDropdown(key)}
                     onClick={(e) => { e.stopPropagation(); activeDropdown === key ? closeDropdownNow() : openDropdown(key) }}
-                    className={`relative flex items-center gap-1 px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls} ${activeDropdown === key ? (scrolled || !isHome ? 'text-[#0a1628]' : 'text-white') : ''}`}
+                    className={`relative flex items-center gap-1 px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls} ${activeDropdown === key ? 'text-[#0a1628]' : ''}`}
                   >
                     {label}
                     <FontAwesomeIcon icon={faChevronDown} className={`w-3 h-3 opacity-50 transition-transform duration-200 ${activeDropdown === key ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -333,11 +321,7 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center gap-2">
               <Link
                 to="/contact"
-                className={`px-5 py-2 text-[14px] font-medium border rounded-lg transition-all duration-200 ${
-                  scrolled || activeDropdown || !isHome
-                    ? 'border-[#228DC1] text-[#1a7aab] hover:bg-[#228DC1] hover:text-white'
-                    : 'border-white text-white hover:bg-white hover:text-[#0a1628]'
-                }`}
+                className="px-5 py-2 text-[14px] font-medium border rounded-lg transition-all duration-200 border-[#228DC1] text-[#1a7aab] hover:bg-[#228DC1] hover:text-white"
               >
                 Contact Us
               </Link>

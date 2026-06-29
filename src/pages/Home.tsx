@@ -293,23 +293,36 @@ function Hero() {
         </video>
         <div
           className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 45%, rgba(3,9,21,0.78) 0%, rgba(3,9,21,0.45) 55%, rgba(3,9,21,0.15) 100%)' }}
+          style={{ background: 'radial-gradient(ellipse 65% 60% at 50% 45%, rgba(248,250,252,0.46) 0%, rgba(248,250,252,0.32) 55%, rgba(248,250,252,0.20) 100%)' }}
         />
       </div>
 
       {/* -- Content, centred both horizontally and vertically -- */}
       <div className="relative flex flex-col items-center justify-center text-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '80%' }}>
 
+        {/* Frosted backdrop, guarantees contrast regardless of what the video
+            is doing right behind the text at any given moment */}
+        <div
+          className="absolute rounded-[28px]"
+          style={{
+            top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+            width: 'min(640px, 92%)', height: 280,
+            background: 'rgba(248,250,252,0.72)',
+            backdropFilter: 'blur(18px)',
+            WebkitBackdropFilter: 'blur(18px)',
+          }}
+        />
+
         {/* Headline */}
         <h1
-          className="home-hero-reveal font-serif-display text-white mb-6"
+          className="home-hero-reveal font-serif-display text-[#0a1628] mb-6 relative"
         >
           Helping organisations thrive<br />
           through AI and connectivity.
         </h1>
 
         {/* One-liner, StoryBrand: customer is the hero, AWTG is the guide */}
-        <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-0 font-normal mx-auto" style={{ animationDelay: '160ms' }}>
+        <p className="home-hero-reveal text-[#0a1628]/70 text-[16px] leading-[1.7] max-w-sm mb-0 font-normal mx-auto relative" style={{ animationDelay: '160ms' }}>
           AWTG delivers AI, 5G, private networks and software solutions
           for UK enterprises and public sector, end-to-end,
           accountable, built to perform.
