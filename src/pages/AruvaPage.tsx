@@ -1510,7 +1510,7 @@ function MMImageDemo() {
             src="/images/aruva-cell-diagram.png"
             alt="Generated biochemistry lecture diagram"
             style={{
-              position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover',
+              position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'contain',
               opacity:0.18,
               filter:'saturate(0.45) blur(2px)',
               transform:'scale(1.01)',
@@ -1527,7 +1527,7 @@ function MMImageDemo() {
               aria-hidden="true"
               style={{
                 position:'absolute', inset:0, width:`calc(100% * ${100 / Math.max(revealWidth, 1)})`, height:'100%',
-                objectFit:'cover',
+                objectFit:'contain',
                 opacity: revealWidth > 0 ? 1 : 0,
                 filter: stage >= 4 ? 'none' : 'saturate(1.05) contrast(1.02)',
                 transform: stage >= 4 ? 'scale(1)' : 'scale(1.006)',
