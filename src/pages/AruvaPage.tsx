@@ -2647,48 +2647,6 @@ function BloomInsightSection() {
   )
 }
 
-// -- Principles ----------------------------------------------------------------
-function PrinciplesSection() {
-  const [ref, inView] = useInView(0.08)
-  return (
-    <section className="py-24 bg-[#f0f4f8]">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="mb-14">
-          <h2 className="font-heading text-[#0a1628] mb-3">
-            Four foundations <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every decision</span> is built on
-          </h2>
-          <p className="text-[#0a1628]/60 text-base font-normal leading-relaxed max-w-xl">
-            The principles that define how universities actually need AI to work.
-          </p>
-        </div>
-        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {principles.map((p, i) => (
-            <div key={p.label}
-              className="bg-white rounded-2xl p-8 hover:shadow-md transition-shadow"
-              style={{
-                borderTop: `3px solid ${p.color}`,
-                boxShadow: '0 2px 12px rgba(10,22,40,0.06)',
-                ...reveal(inView, i * 80),
-              }}>
-              {/* Icon */}
-              <div className="w-11 h-11 flex items-center justify-center rounded-xl mb-6"
-                style={{ background: p.color + '15', border: `1px solid ${p.color}25` }}>
-                <FontAwesomeIcon icon={p.icon} style={{ width:18, height:18, color: p.color }} />
-              </div>
-              {/* Label */}
-              <p className="type-label mb-2" style={{ color: p.color }}>{p.label}</p>
-              {/* Title */}
-              <p className="text-[#0a1628] font-semibold text-base leading-snug mb-3">{p.title}</p>
-              {/* Desc */}
-              <p className="text-[#0a1628]/60 text-sm font-normal leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 // -- Audience card (shared between desktop and mobile) -------------------------
 function AudienceCard({ a, i, inView, onDemoClick }: {
   a: typeof audiences[0]; i: number; inView: boolean; onDemoClick: () => void
@@ -2725,18 +2683,45 @@ function AudienceCard({ a, i, inView, onDemoClick }: {
   )
 }
 
-// -- Audience ------------------------------------------------------------------
-function AudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
+// -- Principles + Audience -----------------------------------------------------
+function PrinciplesAudienceSection({ onDemoClick }: { onDemoClick: () => void }) {
   const [ref, inView] = useInView(0.08)
   return (
     <section className="py-24 bg-[#f5f0e8]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="mb-14">
-          <h2 className="font-heading text-[#0a1628]">
-            Built for <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>every layer</span> of the institution
+        <div ref={ref} className="mb-12">
+          <h2 className="font-heading text-[#0a1628] mb-3">
+            Four principles. <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>Built for every layer</span> of the institution.
           </h2>
+          <p className="text-[#0a1628]/60 text-base font-normal leading-relaxed max-w-2xl">
+            The foundations that define how Aruva works, and how students, educators and institutions each benefit.
+          </p>
         </div>
-        <div ref={ref} className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0" style={{ alignItems:'stretch' }}>
+
+        {/* Tier 1 — four principles, compact strip */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-16">
+          {principles.map((p, i) => (
+            <div key={p.label}
+              className="flex items-center gap-3 bg-white rounded-xl px-4 py-3.5"
+              style={{
+                boxShadow: '0 2px 12px rgba(10,22,40,0.05)',
+                border: `1px solid ${p.color}20`,
+                ...reveal(inView, i * 70),
+              }}>
+              <div className="w-9 h-9 flex items-center justify-center rounded-lg shrink-0"
+                style={{ background: p.color + '15', border: `1px solid ${p.color}25` }}>
+                <FontAwesomeIcon icon={p.icon} style={{ width:15, height:15, color: p.color }} />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[10px] font-bold uppercase tracking-wide mb-0.5" style={{ color: p.color }}>{p.label}</p>
+                <p className="text-[#0a1628] font-semibold text-[13px] leading-snug">{p.title}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tier 2 — three audience cards */}
+        <div className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0" style={{ alignItems:'stretch' }}>
 
           {/* Card 1 */}
           <div className="flex-1 flex flex-col"><AudienceCard a={audiences[0]} i={0} inView={inView} onDemoClick={onDemoClick} /></div>
@@ -2945,11 +2930,8 @@ export default function AruvaPage() {
       {/* How It Works */}
       <HowItWorksSection />
 
-      {/* Four principles */}
-      <PrinciplesSection />
-
-      {/* Who it's for */}
-      <AudienceSection onDemoClick={openDemo} />
+      {/* Four principles + Who it's for */}
+      <PrinciplesAudienceSection onDemoClick={openDemo} />
 
       {/* Why Aruva */}
       <section className="py-28 bg-white">
