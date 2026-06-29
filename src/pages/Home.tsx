@@ -293,7 +293,12 @@ function Hero() {
         </video>
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(135deg, rgba(3,9,21,0.88) 0%, rgba(10,22,40,0.68) 45%, rgba(34,141,193,0.55) 100%)' }}
+          style={{ background: 'linear-gradient(135deg, rgba(3,9,21,0.85) 0%, rgba(10,22,40,0.55) 40%, rgba(34,141,193,0.40) 75%, rgba(80,210,200,0.30) 100%)' }}
+        />
+        {/* Soft colour glows for depth - blue (top-right) and violet (bottom-left) */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 55% 50% at 88% 8%, rgba(56,189,248,0.35) 0%, transparent 60%), radial-gradient(ellipse 50% 45% at 6% 78%, rgba(124,58,237,0.32) 0%, transparent 60%)' }}
         />
       </div>
 
