@@ -55,7 +55,7 @@ const capabilities = [
     title: 'Communications & updates',
     desc: 'Share important updates, reminders and information in one place.',
     color: '#7c3aed',
-    image: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
+    image: 'https://images.unsplash.com/photo-1514464750060-00e6e34c8b8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faEye,
