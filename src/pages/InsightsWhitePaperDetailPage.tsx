@@ -84,7 +84,7 @@ export default function InsightsWhitePaperDetailPage() {
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-gray-100 bg-[#f8fafc]">
-            <object data={paper.pdf} type="application/pdf" className="h-[80vh] min-h-[640px] w-full">
+            <object data={`${paper.pdf}#toolbar=0&navpanes=0&scrollbar=0`} type="application/pdf" className="h-[80vh] min-h-[640px] w-full">
               <div className="p-8 text-center">
                 <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#1a7aab] mb-5" />
                 <p className="text-[#0a1628]/70 text-sm leading-[1.7] mb-5">
