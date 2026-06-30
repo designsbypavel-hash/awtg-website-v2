@@ -83,14 +83,31 @@ const aboutLinks = [
 export default function AboutOverviewPage() {
   return (
     <>
-      <section className="pt-32 pb-20 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6 max-w-4xl">
-            AWTG delivers innovative platforms, solutions and services for enterprises, cities and communities.
-          </h1>
-          <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.7]">
-            AWTG is an end-to-end engineering services and technology solutions provider operating across digital technology markets.
-          </p>
+      <section className="relative overflow-hidden" style={{ minHeight: 500 }}>
+        <img
+          src="/images/insights/engineering-team.jpg"
+          alt="AWTG team"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to right, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.75) 38%, rgba(10,22,40,0.30) 65%, transparent 85%)' }}
+        />
+        <div
+          className="relative max-w-7xl mx-auto px-8 lg:px-12 flex items-end"
+          style={{ minHeight: 500, paddingTop: 160, paddingBottom: 88 }}
+        >
+          <div style={{ maxWidth: 660 }}>
+            <h1
+              className="font-serif-display text-white leading-[1.06] mb-6"
+              style={{ fontSize: 'clamp(32px, 4vw, 54px)' }}
+            >
+              AWTG delivers innovative platforms, solutions and services for enterprises, cities and communities.
+            </h1>
+            <p className="text-white/70 text-[17px] max-w-xl font-normal leading-[1.8]">
+              An end-to-end engineering services and technology solutions provider operating across digital technology markets.
+            </p>
+          </div>
         </div>
       </section>
 
