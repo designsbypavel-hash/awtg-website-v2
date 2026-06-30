@@ -82,6 +82,7 @@ export default function Breadcrumbs() {
   const segments = pathname.split('/').filter(Boolean)
 
   if (segments.length === 0) return null
+  if (pathname.startsWith('/about')) return null
 
   const isBlogPost = segments[0] === 'insights' && segments[1] === 'blog' && segments.length > 2
   const customCrumbs = isBlogPost
