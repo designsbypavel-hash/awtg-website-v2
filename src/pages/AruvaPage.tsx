@@ -45,26 +45,29 @@ function AruvaHeroDashboard() {
         {/* mask-image punches a smooth quarter-circle at 0,0 — hides the cut
             corner in the source PNGs by revealing the hero background behind */}
         <div style={{
-          display: 'grid',
           maskImage: 'radial-gradient(circle at 0% 0%, transparent 18px, black 20px)',
           WebkitMaskImage: 'radial-gradient(circle at 0% 0%, transparent 18px, black 20px)',
         }}>
-          {HERO_SCREENS.map((s, i) => (
-            <img
-              key={s.src}
-              src={s.src}
-              alt={s.label}
-              style={{
-                gridRow: '1 / 2',
-                gridColumn: '1 / 2',
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-                opacity: active === i ? 1 : 0,
-                transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
-              }}
-            />
-          ))}
+          <div style={{ display: 'grid' }}>
+            {HERO_SCREENS.map((s, i) => (
+              <img
+                key={s.src}
+                src={s.src}
+                alt={s.label}
+                style={{
+                  gridRow: '1 / 2',
+                  gridColumn: '1 / 2',
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  opacity: active === i ? 1 : 0,
+                  transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
+                }}
+              />
+            ))}
+          </div>
+          {/* Bottom tablet bezel */}
+          <div style={{ background: '#14141e', height: 22, borderRadius: '0 0 18px 18px' }} />
         </div>
       </div>
     </div>
