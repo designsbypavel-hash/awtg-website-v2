@@ -70,7 +70,7 @@ const data: SectorPageData = {
           'Care coordination and referral workflow automation',
           'Compliance with NHS England, CQC and DSPT standards',
         ],
-        image: 'https://images.unsplash.com/photo-1758691462774-f01ed567f2c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       },
       {
         icon: faHouseChimney,
