@@ -46,8 +46,8 @@ function AruvaHeroDashboard() {
             corner in the source PNGs by revealing the hero background behind */}
         <div style={{
           display: 'grid',
-          maskImage: 'radial-gradient(circle at 0% 0%, transparent 46px, black 48px)',
-          WebkitMaskImage: 'radial-gradient(circle at 0% 0%, transparent 46px, black 48px)',
+          maskImage: 'radial-gradient(circle at 0% 0%, transparent 18px, black 20px)',
+          WebkitMaskImage: 'radial-gradient(circle at 0% 0%, transparent 18px, black 20px)',
         }}>
           {HERO_SCREENS.map((s, i) => (
             <img
