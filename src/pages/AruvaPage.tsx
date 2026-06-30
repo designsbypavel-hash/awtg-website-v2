@@ -235,7 +235,7 @@ function CurriculumAgnosticSection() {
           to   { stroke-dashoffset: 0; }
         }
         h2.aruva-hero-heading.font-heading {
-          font-size: clamp(26px, 2.4vw, 32px) !important;
+          font-size: 44px !important;
         }
       `}</style>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
