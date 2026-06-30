@@ -16,12 +16,12 @@ const management: Person[] = [
   { name: 'David Mintah', role: 'Director of Consultancy for MPN and Service Innovation', photo: '/team/person-6.png' },
   { name: 'Zeerak Akbar', role: 'Director for Operations', photo: '/team/person-7.png' },
   { name: 'Peter Najm', role: 'Product Manager', photo: '/team/person-10.png' },
-  { name: 'Taras Motulski', role: 'Operations Manager, Software Department' },
+  { name: 'Taras Motulski', role: 'Operations Manager, Software Department', photo: '/team/person-15.png' },
   { name: 'Dr. Sanaz Soltani', role: 'Operations and Security Technical Lead', photo: '/team/person-8.png' },
   { name: 'Sering Harding', role: 'Radio Network Planning and Optimisation Manager', photo: '/team/person-12.png' },
-  { name: 'Maria Berezkina', role: 'Project Manager' },
-  { name: 'Erkan Berk', role: 'Software Development Manager' },
-  { name: 'Desmond Nwanugo', role: 'Scrum Master and Senior Business Analyst' },
+  { name: 'Maria Berezkina', role: 'Project Manager', photo: '/team/person-13.png' },
+  { name: 'Erkan Berk', role: 'Software Development Manager', photo: '/team/person-14.png' },
+  { name: 'Desmond Nwanugo', role: 'Scrum Master and Senior Business Analyst', photo: '/team/person-9.png' },
 ]
 
 const featured = management.slice(0, 5)
