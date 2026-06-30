@@ -2863,54 +2863,57 @@ export default function AruvaPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-x-hidden pt-32 pb-28" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
+      <section className="relative pt-32 pb-28" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
 
-        {/* Diagonal dot-grid background pattern */}
-        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="heroGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <circle cx="1" cy="1" r="1" fill="rgba(34,141,193,0.35)" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#heroGrid)" />
-          </svg>
+        {/* Decorations are in their own overflow-hidden layer so they can't cause scrollbar */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Diagonal dot-grid background pattern */}
+          <div style={{ position: 'absolute', inset: 0, opacity: 0.45 }}>
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="heroGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <circle cx="1" cy="1" r="1" fill="rgba(34,141,193,0.35)" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#heroGrid)" />
+            </svg>
+          </div>
+
+          {/* Diagonal connecting lines */}
+          <div style={{ position: 'absolute', inset: 0, opacity: 0.12 }}>
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="heroLines" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <line x1="0" y1="40" x2="80" y2="40" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
+                  <line x1="40" y1="0" x2="40" y2="80" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#heroLines)" />
+            </svg>
+          </div>
+
+          {/* Decorative + crosses */}
+          {[
+            { top: '18%', left: '6%' }, { top: '52%', left: '3%' },
+            { top: '72%', left: '9%' }, { top: '30%', left: '42%' },
+            { top: '62%', left: '38%' },
+          ].map((pos, i) => (
+            <div key={i} className="absolute select-none text-[#228DC1]"
+              style={{ top: pos.top, left: pos.left, fontSize: 18, opacity: 0.35, fontWeight: 300, lineHeight: 1 }}>+</div>
+          ))}
+
+          {/* Decorative diamond */}
+          <div className="absolute" style={{ top: '42%', left: '4.5%', opacity: 0.25 }}>
+            <svg width="14" height="14" viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" transform="rotate(45 7 7)" fill="none" stroke="#228DC1" strokeWidth="1.5"/></svg>
+          </div>
+
+          {/* Decorative dots */}
+          <div className="absolute rounded-full" style={{ top: '12%', left: '7%', width: 5, height: 5, background: 'rgba(34,141,193,0.3)' }} />
+          <div className="absolute rounded-full" style={{ top: '68%', left: '5%', width: 6, height: 6, background: 'rgba(5,150,105,0.35)' }} />
+
+          {/* Radial glow */}
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(34,141,193,0.12) 0, transparent 55%)' }} />
         </div>
-
-        {/* Diagonal connecting lines */}
-        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.12 }}>
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="heroLines" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <line x1="0" y1="40" x2="80" y2="40" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
-                <line x1="40" y1="0" x2="40" y2="80" stroke="rgba(34,141,193,1)" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#heroLines)" />
-          </svg>
-        </div>
-
-        {/* Decorative + crosses */}
-        {[
-          { top: '18%', left: '6%' }, { top: '52%', left: '3%' },
-          { top: '72%', left: '9%' }, { top: '30%', left: '42%' },
-          { top: '62%', left: '38%' },
-        ].map((pos, i) => (
-          <div key={i} className="absolute pointer-events-none select-none text-[#228DC1]"
-            style={{ top: pos.top, left: pos.left, fontSize: 18, opacity: 0.35, fontWeight: 300, lineHeight: 1 }}>+</div>
-        ))}
-
-        {/* Decorative diamond */}
-        <div className="absolute pointer-events-none" style={{ top: '42%', left: '4.5%', opacity: 0.25 }}>
-          <svg width="14" height="14" viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" transform="rotate(45 7 7)" fill="none" stroke="#228DC1" strokeWidth="1.5"/></svg>
-        </div>
-
-        {/* Decorative dots */}
-        <div className="absolute rounded-full pointer-events-none" style={{ top: '12%', left: '7%', width: 5, height: 5, background: 'rgba(34,141,193,0.3)' }} />
-        <div className="absolute rounded-full pointer-events-none" style={{ top: '68%', left: '5%', width: 6, height: 6, background: 'rgba(5,150,105,0.35)' }} />
-
-        {/* Radial glow */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 70% 30%, rgba(34,141,193,0.12) 0, transparent 55%)' }} />
 
         <div className="relative max-w-[1320px] mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-[0.68fr_1.32fr] gap-14 items-center">
