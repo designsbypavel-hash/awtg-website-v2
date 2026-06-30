@@ -145,15 +145,6 @@ export default function AboutOverviewPage() {
                 style={{ padding: '72px clamp(32px, 5.5vw, 96px)' }}
               >
                 <div style={{ maxWidth: 520 }}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="h-px w-8 bg-[#228DC1]/35" />
-                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">
-                      {section.label}
-                    </span>
-                  </div>
                   <h2
                     className="font-heading text-[#0a1628] leading-[1.16] mb-7"
                     style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}
@@ -199,7 +190,6 @@ export default function AboutOverviewPage() {
       <section className="py-24 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14">
-            <p className="type-label text-[#1a7aab] mb-3">Who we work with</p>
             <h2 className="font-heading text-[#0a1628] max-w-lg">The organisations and communities we serve.</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
