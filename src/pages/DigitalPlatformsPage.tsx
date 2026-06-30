@@ -8,6 +8,7 @@ import CTASection from '@/components/CTASection'
 import lysLogin from '@/assets/iYouth/Login.jpg'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
 import iBecomeLCRReels from '@/assets/Digital Platforms/iBecome_LCRReels.png'
+import iBecomeVacancies from '@/assets/Digital Platforms/iBecome_Vacancies.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 import clearAccessImage from '@/assets/Digital Platforms/outcomes/clear-access.webp'
 import betterEngagementImage from '@/assets/Digital Platforms/outcomes/better-engagement.webp'
@@ -43,9 +44,10 @@ const products = [
     name: 'iBecome',
     subtitle: 'A platform for jobs, apprenticeships and local opportunity',
     desc: 'iBecome helps young people discover opportunities, build confidence and move closer to employment. It carries forward the proven model behind Liverpool City Region BeMore, bringing together vacancies, careers content, profile tools and local engagement in one joined-up experience. It includes a profile and CV builder, apprenticeships and jobs, events and engagement, personalised guidance, and employer and provider reach.',
-    image: iBecomeHero,
+    image: iBecomeVacancies,
     href: '/digital-platforms/ibecome',
     cta: 'View iBecome',
+    deviceFrame: true,
   },
   {
     name: 'iYouth',
@@ -238,15 +240,41 @@ export default function DigitalPlatformsPage() {
                 className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(10,22,40,0.12)]"
                 style={{ boxShadow: '0 4px 24px rgba(10,22,40,0.06)', ...reveal(productsInView, i * 120) }}
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#e8f4fa]">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    loading="lazy"
-                    className="h-full w-full object-contain p-4 transition-transform duration-700 group-hover:scale-[1.025]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
-                </div>
+                {'deviceFrame' in product && product.deviceFrame ? (
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#f0f4f8] to-[#e2eaf2] flex items-start justify-center pt-5 px-5">
+                    <div className="w-full overflow-hidden rounded-t-xl shadow-[0_16px_48px_rgba(10,22,40,0.20)] border border-[#0a1628]/10 flex flex-col">
+                      {/* Browser chrome */}
+                      <div className="bg-[#1c1c28] px-3 py-[9px] flex items-center gap-2.5 shrink-0">
+                        <div className="flex gap-1.5">
+                          <div className="w-[9px] h-[9px] rounded-full bg-[#ff5f56]" />
+                          <div className="w-[9px] h-[9px] rounded-full bg-[#febc2e]" />
+                          <div className="w-[9px] h-[9px] rounded-full bg-[#28c840]" />
+                        </div>
+                        <div className="flex-1 bg-white/10 rounded h-[18px] flex items-center px-2.5">
+                          <span className="text-white/50 text-[9px] font-mono">ibecome.co.uk/apprenticeships</span>
+                        </div>
+                      </div>
+                      {/* Screenshot — crops naturally at bottom to fill card */}
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        loading="lazy"
+                        className="w-full block transition-transform duration-700 group-hover:scale-[1.02]"
+                        style={{ maxHeight: 230, objectFit: 'cover', objectPosition: 'top' }}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#e8f4fa]">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      loading="lazy"
+                      className="h-full w-full object-contain p-4 transition-transform duration-700 group-hover:scale-[1.025]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
+                  </div>
+                )}
                 <div className="flex flex-1 flex-col p-8">
                   <h2 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize: 24 }}>{product.name}</h2>
                   <p className="text-[#1a7aab] text-[14px] font-semibold leading-snug mb-4">{product.subtitle}</p>
