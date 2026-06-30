@@ -7,7 +7,6 @@ import {
 import CTASection from '@/components/CTASection'
 import lysLogin from '@/assets/iYouth/Login.jpg'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
-import iBecomeCardImage from '@/assets/Digital Platforms/iBecome_Card_LCRReels.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 import clearAccessImage from '@/assets/Digital Platforms/outcomes/clear-access.webp'
 import betterEngagementImage from '@/assets/Digital Platforms/outcomes/better-engagement.webp'
