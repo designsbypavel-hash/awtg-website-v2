@@ -39,24 +39,27 @@ function AruvaHeroDashboard() {
     >
       <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background:'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }}/>
 
-      {/* All images stacked in the same grid cell — preloaded at mount, crossfade with no gap */}
-      <div style={{ display:'grid', filter:'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
-        {HERO_SCREENS.map((s, i) => (
-          <img
-            key={s.src}
-            src={s.src}
-            alt={s.label}
-            style={{
-              gridRow: '1 / 2',
-              gridColumn: '1 / 2',
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-              opacity: active === i ? 1 : 0,
-              transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
-            }}
-          />
-        ))}
+      {/* Outer wrapper carries the drop-shadow so it follows the rounded clipped shape */}
+      <div style={{ filter:'drop-shadow(0 32px 64px rgba(10,22,40,0.28)) drop-shadow(0 10px 28px rgba(10,22,40,0.14))' }}>
+        {/* border-radius + overflow:hidden clips all four corners cleanly, fixing the cut top-left corner in the source PNGs */}
+        <div style={{ display:'grid', borderRadius: '40px', overflow:'hidden' }}>
+          {HERO_SCREENS.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              alt={s.label}
+              style={{
+                gridRow: '1 / 2',
+                gridColumn: '1 / 2',
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                opacity: active === i ? 1 : 0,
+                transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
+              }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
