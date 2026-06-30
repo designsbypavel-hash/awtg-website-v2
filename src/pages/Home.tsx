@@ -671,8 +671,7 @@ function Industries() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="max-w-2xl mb-16">
           <TypewriterHeading as="h2" className="font-heading text-white mb-4">
-            Real projects,<br />
-            <span className="text-[#67c5f3]">measurable outcomes.</span>
+            Case Study
           </TypewriterHeading>
           <p className="text-white/65 text-[16px] leading-[1.8]">
             Case studies spanning Open RAN security, network economics and public sector connectivity, with results backed by GSMA and operator data.
