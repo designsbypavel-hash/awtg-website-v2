@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBuilding, faGlobe, faHandshake, faHospital, faIndustry, faLandmark, faMicroscope, faPuzzlePiece, faServer, faSignal } from '@fortawesome/free-solid-svg-icons'
+import { faHospital, faIndustry, faLandmark, faMicroscope, faPuzzlePiece, faServer, faSignal } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 
 const contentSections = [
@@ -95,7 +95,6 @@ export default function AboutOverviewPage() {
               </p>
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-3">Delivery footprint</p>
               <p className="font-h2 text-[#0a1628]">45,000+</p>
               <p className="text-[#0a1628]/60 text-sm leading-relaxed mt-2">RAN sites delivered globally.</p>
             </div>
@@ -107,18 +106,12 @@ export default function AboutOverviewPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
             {[
-              { icon: faBuilding, stat: '2006', label: 'Founded', text: 'Built to serve the specific needs of the telecommunications industry.' },
-              { icon: faGlobe, stat: '3', label: 'Continents', text: 'Thousands of 4G and 5G sites deployed across three continents.' },
-              { icon: faHandshake, stat: '45k+', label: 'RAN Sites Delivered', text: 'Government projects, network deployment and consultancy-centric programmes.' },
+              { stat: '2006', label: 'Founded', text: 'Built to serve the specific needs of the telecommunications industry.' },
+              { stat: '3', label: 'Continents', text: 'Thousands of 4G and 5G sites deployed across three continents.' },
+              { stat: '45k+', label: 'RAN Sites Delivered', text: 'Government projects, network deployment and consultancy-centric programmes.' },
             ].map((item) => (
               <div key={item.label} className="relative overflow-hidden px-10 py-14 lg:px-14 group">
                 <div className="h-0.5 w-10 bg-[#228DC1] mb-9 transition-all duration-300 group-hover:w-16" />
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="h-9 w-9 flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.08)' }}>
-                    <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#228DC1]" />
-                  </div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0a1628]/60">{item.label}</p>
-                </div>
                 <p
                   className="font-black text-[#0a1628] leading-none mb-5"
                   style={{ fontSize: 'clamp(40px, 4.5vw, 58px)', letterSpacing: '-0.03em' }}
