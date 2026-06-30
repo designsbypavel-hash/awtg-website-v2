@@ -66,8 +66,6 @@ function AruvaHeroDashboard() {
               />
             ))}
           </div>
-          {/* Bottom tablet bezel */}
-          <div style={{ background: '#14141e', height: 22, borderRadius: '0 0 18px 18px' }} />
         </div>
       </div>
     </div>
@@ -2865,7 +2863,7 @@ export default function AruvaPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
+      <section className="relative overflow-x-hidden pt-32 pb-28" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
 
         {/* Diagonal dot-grid background pattern */}
         <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
