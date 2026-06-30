@@ -151,20 +151,17 @@ export default function AboutOverviewPage() {
 
       <section className="py-24 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="mb-14">
-            <h2 className="font-heading text-[#0a1628] max-w-lg">The organisations and communities we serve.</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <h2 className="font-heading text-[#0a1628] max-w-xl mb-12">The organisations and communities we serve.</h2>
+          <div className="flex flex-wrap gap-3">
             {trustCategories.map(({ label, icon }) => (
               <div
                 key={label}
-                className="group flex flex-col rounded-2xl bg-white border border-gray-100 p-7 hover:border-[#228DC1]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                className="group flex items-center gap-3 bg-white border border-gray-100 rounded-full px-6 py-3.5 hover:border-[#228DC1]/50 hover:shadow-md transition-all duration-300 cursor-default"
               >
-                <div className="h-11 w-11 flex items-center justify-center mb-6" style={{ background: 'rgba(34,141,193,0.10)' }}>
-                  <FontAwesomeIcon icon={icon} className="w-5 h-5 text-[#228DC1]" />
+                <div className="h-7 w-7 flex items-center justify-center rounded-full shrink-0" style={{ background: 'rgba(34,141,193,0.10)' }}>
+                  <FontAwesomeIcon icon={icon} className="w-3 h-3 text-[#228DC1]" />
                 </div>
-                <p className="font-semibold text-[#0a1628] text-[15px] leading-snug">{label}</p>
-                <div className="mt-4 h-0.5 w-0 group-hover:w-8 transition-all duration-300 bg-[#228DC1]" />
+                <span className="font-semibold text-[#0a1628] text-[14px] whitespace-nowrap">{label}</span>
               </div>
             ))}
           </div>
