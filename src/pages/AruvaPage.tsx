@@ -39,43 +39,29 @@ function AruvaHeroDashboard() {
     >
       <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background:'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }}/>
 
-      {/* All images stacked in the same grid cell — preloaded at mount, crossfade with no gap */}
-      <div style={{ display:'grid', filter:'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
-        {HERO_SCREENS.map((s, i) => (
-          <img
-            key={s.src}
-            src={s.src}
-            alt={s.label}
-            style={{
-              gridRow: '1 / 2',
-              gridColumn: '1 / 2',
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-              opacity: active === i ? 1 : 0,
-              transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
-            }}
-          />
-        ))}
+      {/* Shadow on the outer wrapper so it follows the clipped image shape below */}
+      <div style={{ filter:'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
+        {/* clip-path removes only the top 28 px where the PNG canvas cuts the tablet's
+            rounded corner. margin-top compensates so the image sits at its original position. */}
+        <div style={{ display:'grid', clipPath:'inset(28px 0 0 0)', marginTop:'-28px' }}>
+          {HERO_SCREENS.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              alt={s.label}
+              style={{
+                gridRow: '1 / 2',
+                gridColumn: '1 / 2',
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                opacity: active === i ? 1 : 0,
+                transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
+              }}
+            />
+          ))}
+        </div>
       </div>
-
-      {/* Quarter-circle patch that visually completes the tablet's cut top-left corner.
-          The PNG canvas crops the bezel arc; this overlay fills that gap with the
-          hero section's background gradient so the corner looks fully rounded. */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: 78,
-          height: 70,
-          background: 'linear-gradient(135deg, #e8f4fa 30%, #dceef7 100%)',
-          borderBottomRightRadius: '100%',
-          pointerEvents: 'none',
-          zIndex: 10,
-        }}
-      />
     </div>
   )
 }
