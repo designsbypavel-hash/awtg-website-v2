@@ -6,7 +6,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import lysLogin from '@/assets/iYouth/Login.jpg'
-import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
 import iBecomeLCRReels from '@/assets/Digital Platforms/iBecome_LCRReels.png'
 import iBecomeVacancies from '@/assets/Digital Platforms/iBecome_Vacancies.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
