@@ -58,6 +58,24 @@ function AruvaHeroDashboard() {
           />
         ))}
       </div>
+
+      {/* Quarter-circle patch that visually completes the tablet's cut top-left corner.
+          The PNG canvas crops the bezel arc; this overlay fills that gap with the
+          hero section's background gradient so the corner looks fully rounded. */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: 78,
+          height: 70,
+          background: 'linear-gradient(135deg, #e8f4fa 30%, #dceef7 100%)',
+          borderBottomRightRadius: '100%',
+          pointerEvents: 'none',
+          zIndex: 10,
+        }}
+      />
     </div>
   )
 }
