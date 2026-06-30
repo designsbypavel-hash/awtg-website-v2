@@ -133,7 +133,7 @@ export default function AboutOverviewPage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 72% 35%, rgba(34,141,193,0.14) 0, transparent 55%)' }} />
 
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
-          <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6 max-w-4xl">
+          <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
             AWTG delivers innovative platforms, solutions and services for enterprises, cities and communities.
           </h1>
           <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.7]">
