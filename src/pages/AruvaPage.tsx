@@ -30,48 +30,24 @@ function AruvaHeroDashboard() {
 
   return (
     <div
-      className="relative w-full max-w-[620px]"
+      className="relative w-full max-w-[1020px]"
       style={{
         opacity: entered ? 1 : 0,
         transform: entered ? 'translateY(0)' : 'translateY(20px)',
         transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
       }}
     >
-      {/* Ambient glow */}
       <div className="absolute -inset-8 hidden lg:block pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }} />
 
-      {/* CSS tablet device shell — complete rounded corners, no image-canvas cut */}
-      <div style={{
-        position: 'relative',
-        background: 'linear-gradient(160deg, #2d2d2f 0%, #1c1c1e 100%)',
-        borderRadius: '44px',
-        padding: '18px 18px 22px',
-        boxShadow: [
-          'inset 0 1px 0 rgba(255,255,255,0.11)',
-          'inset 0 -1px 0 rgba(0,0,0,0.35)',
-          '0 0 0 1px rgba(0,0,0,0.55)',
-          '0 40px 80px rgba(10,22,40,0.42)',
-          '0 20px 40px rgba(10,22,40,0.22)',
-          '0 6px 16px rgba(10,22,40,0.14)',
-        ].join(', '),
-      }}>
-        {/* Front camera */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10 }}>
-          <div style={{
-            width: 10, height: 10, borderRadius: '50%',
-            background: '#3a3a3c',
-            boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04)',
-          }} />
-        </div>
-
-        {/* Screen */}
+      {/* drop-shadow on outer div so it follows the masked shape */}
+      <div style={{ filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
+        {/* mask-image punches a smooth quarter-circle at 0,0 — hides the cut
+            corner in the source PNGs by revealing the hero background behind */}
         <div style={{
-          borderRadius: '26px',
-          overflow: 'hidden',
-          position: 'relative',
-          aspectRatio: '4/3',
-          background: '#e8f0f5',
+          display: 'grid',
+          maskImage: 'radial-gradient(circle at 0% 0%, transparent 46px, black 48px)',
+          WebkitMaskImage: 'radial-gradient(circle at 0% 0%, transparent 46px, black 48px)',
         }}>
           {HERO_SCREENS.map((s, i) => (
             <img
@@ -79,12 +55,10 @@ function AruvaHeroDashboard() {
               src={s.src}
               alt={s.label}
               style={{
-                position: 'absolute',
-                inset: 0,
+                gridRow: '1 / 2',
+                gridColumn: '1 / 2',
                 width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: '55% center',
+                height: 'auto',
                 display: 'block',
                 opacity: active === i ? 1 : 0,
                 transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
@@ -92,38 +66,7 @@ function AruvaHeroDashboard() {
             />
           ))}
         </div>
-
-        {/* Home indicator bar */}
-        <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 14 }}>
-          <div style={{ width: 46, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.18)' }} />
-        </div>
       </div>
-
-      {/* Power button – right side */}
-      <div style={{
-        position: 'absolute', right: -3, top: '28%',
-        width: 3, height: 42,
-        background: '#2c2c2e',
-        borderRadius: '0 3px 3px 0',
-        boxShadow: '2px 0 5px rgba(0,0,0,0.4)',
-      }} />
-
-      {/* Volume up – left side */}
-      <div style={{
-        position: 'absolute', left: -3, top: '22%',
-        width: 3, height: 28,
-        background: '#2c2c2e',
-        borderRadius: '3px 0 0 3px',
-        boxShadow: '-2px 0 5px rgba(0,0,0,0.4)',
-      }} />
-      {/* Volume down – left side */}
-      <div style={{
-        position: 'absolute', left: -3, top: 'calc(22% + 40px)',
-        width: 3, height: 28,
-        background: '#2c2c2e',
-        borderRadius: '3px 0 0 3px',
-        boxShadow: '-2px 0 5px rgba(0,0,0,0.4)',
-      }} />
     </div>
   )
 }
