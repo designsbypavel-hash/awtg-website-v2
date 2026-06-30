@@ -30,53 +30,42 @@ function AruvaHeroDashboard() {
 
   return (
     <div
-      className="relative w-full max-w-[980px]"
+      className="relative w-full max-w-[1020px]"
       style={{
         opacity: entered ? 1 : 0,
-        transform: entered ? 'translateY(0) perspective(1200px) rotateY(-8deg) rotateX(3deg)' : 'translateY(20px) perspective(1200px) rotateY(-8deg) rotateX(3deg)',
+        transform: entered ? 'translateY(0)' : 'translateY(20px)',
         transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
-        transformStyle: 'preserve-3d',
       }}
     >
       <div className="absolute -inset-8 hidden lg:block pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }} />
 
-      {/* Tablet device frame */}
-      <div style={{
-        background: '#12121e',
-        borderRadius: 28,
-        padding: '14px 14px 28px 14px',
-        boxShadow: '0 40px 80px rgba(10,22,40,0.35), 0 8px 24px rgba(10,22,40,0.18), inset 0 1px 0 rgba(255,255,255,0.07)',
-        border: '1px solid rgba(255,255,255,0.06)',
-      }}>
-        {/* Top bezel — camera dot */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 14, marginBottom: 6 }}>
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#2a2a3e' }} />
-        </div>
-
-        {/* Screen — images stack on top of each other via CSS grid */}
-        <div style={{ display: 'grid', borderRadius: 8, overflow: 'hidden', lineHeight: 0 }}>
-          {HERO_SCREENS.map((s, i) => (
-            <img
-              key={s.src}
-              src={s.src}
-              alt={s.label}
-              style={{
-                gridRow: '1 / 2',
-                gridColumn: '1 / 2',
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-                opacity: active === i ? 1 : 0,
-                transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Bottom bezel — home indicator */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 14, marginTop: 8 }}>
-          <div style={{ width: 48, height: 5, borderRadius: 3, background: '#2a2a3e' }} />
+      {/* drop-shadow on outer div so it follows the masked shape */}
+      <div style={{ filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
+        {/* mask-image punches a smooth quarter-circle at 0,0 — hides the cut
+            corner in the source PNGs by revealing the hero background behind */}
+        <div style={{
+          maskImage: 'radial-gradient(circle at 0% 0%, transparent 18px, black 20px)',
+          WebkitMaskImage: 'radial-gradient(circle at 0% 0%, transparent 18px, black 20px)',
+        }}>
+          <div style={{ display: 'grid' }}>
+            {HERO_SCREENS.map((s, i) => (
+              <img
+                key={s.src}
+                src={s.src}
+                alt={s.label}
+                style={{
+                  gridRow: '1 / 2',
+                  gridColumn: '1 / 2',
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  opacity: active === i ? 1 : 0,
+                  transition: 'opacity 0.75s cubic-bezier(0.4,0,0.2,1)',
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
