@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDownload, faExternalLinkAlt, faFilePdf } from '@fortawesome/free-solid-svg-icons'
+import { faDownload, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { getWhitePaperHref, whitePapers } from './InsightsWhitePapersPage'
 
 export default function InsightsWhitePaperDetailPage() {
@@ -83,18 +83,13 @@ export default function InsightsWhitePaperDetailPage() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-gray-100 bg-[#f8fafc]">
-            <object data={`${paper.pdf}#toolbar=0&navpanes=0&scrollbar=0`} type="application/pdf" className="h-[80vh] min-h-[640px] w-full">
-              <div className="p-8 text-center">
-                <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#1a7aab] mb-5" />
-                <p className="text-[#0a1628]/70 text-sm leading-[1.7] mb-5">
-                  Your browser cannot display this PDF inline.
-                </p>
-                <a href={paper.pdf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#228DC1] text-white text-sm font-medium">
-                  Open PDF <FontAwesomeIcon icon={faExternalLinkAlt} className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </object>
+          {/* Outer container clips the browser PDF toolbar via overflow:hidden */}
+          <div className="rounded-2xl border border-gray-100 bg-[#f8fafc]" style={{ height: 'calc(80vh + 48px)', minHeight: 688, overflow: 'hidden', position: 'relative' }}>
+            <iframe
+              src={`${paper.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
+              title={paper.title}
+              style={{ position: 'absolute', top: -48, left: 0, width: '100%', height: 'calc(100% + 48px)', border: 'none' }}
+            />
           </div>
         </div>
       </section>
