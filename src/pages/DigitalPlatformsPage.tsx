@@ -251,9 +251,8 @@ export default function DigitalPlatformsPage() {
                   <h2 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize: 24 }}>{product.name}</h2>
                   <p className="text-[#1a7aab] text-[14px] font-semibold leading-snug mb-4">{product.subtitle}</p>
                   <p className="text-[#0a1628]/60 text-[14px] leading-relaxed mb-7">{product.desc}</p>
-                  <span className="mt-auto inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg transition-colors group-hover:bg-[#1a6e99] w-fit">
+                  <span className="mt-auto inline-flex items-center px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg transition-colors group-hover:bg-[#1a6e99] w-fit">
                     {product.cta}
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
                 </div>
               </Link>
