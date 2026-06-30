@@ -7,6 +7,7 @@ import {
 import CTASection from '@/components/CTASection'
 import lysLogin from '@/assets/iYouth/Login.jpg'
 import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
+import iBecomeLCRReels from '@/assets/Digital Platforms/iBecome_LCRReels.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 import clearAccessImage from '@/assets/Digital Platforms/outcomes/clear-access.webp'
 import betterEngagementImage from '@/assets/Digital Platforms/outcomes/better-engagement.webp'
@@ -194,12 +195,33 @@ export default function DigitalPlatformsPage() {
                 Our Digital Platforms support the services that connect people with opportunities, activities and support. They bring together clear user journeys, practical delivery tools and better visibility for the teams managing them.
               </p>
             </div>
-            <div className="flex justify-center lg:justify-end">
-              <img
-                src={iBecomeHero}
-                alt="iBecome digital opportunity platform"
-                className="block max-h-[430px] w-full max-w-[760px] object-contain"
-              />
+            {/* CSS tablet device showing LCR Reels screenshot */}
+            <div className="flex justify-center lg:justify-end" style={{ perspective: '1100px' }}>
+              <div
+                className="relative w-full max-w-[640px]"
+                style={{ transform: 'rotateY(-9deg) rotateX(2deg)', transformStyle: 'preserve-3d' }}
+              >
+                {/* Tablet bezel */}
+                <div className="bg-[#0e0e1c] rounded-[22px] p-[10px] shadow-[0_40px_90px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.06)]">
+                  {/* Top bar (camera) */}
+                  <div className="flex justify-center mb-1.5">
+                    <div className="w-8 h-[5px] rounded-full bg-[#1a1a2c]" />
+                  </div>
+                  {/* Screen */}
+                  <div className="overflow-hidden rounded-[12px]">
+                    <img
+                      src={iBecomeLCRReels}
+                      alt="iBecome — LCR Reels"
+                      className="w-full block"
+                      loading="lazy"
+                    />
+                  </div>
+                  {/* Bottom bar (home indicator) */}
+                  <div className="flex justify-center mt-1.5">
+                    <div className="w-14 h-[5px] rounded-full bg-[#1a1a2c]" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
