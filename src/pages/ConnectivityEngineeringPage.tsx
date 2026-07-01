@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Engineering',
     accentColor: '#6b7280',
     heroVisual,
-    heroImage: '/images/insights/cloud-network.jpg',
+    heroImage: '/images/insights/engineering-team.jpg',
     title: 'Connectivity for complex engineering projects',
     subtitle:
       'AWTG helps engineering and infrastructure organisations connect sites, assets, teams and systems through secure digital infrastructure.',
