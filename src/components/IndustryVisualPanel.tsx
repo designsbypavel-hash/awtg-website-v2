@@ -33,7 +33,7 @@ export default function IndustryVisualPanel({
         boxShadow: '0 16px 56px rgba(15,23,42,0.14), 0 2px 8px rgba(15,23,42,0.06)',
       }}
     >
-      {/* ── Header ── */}
+      {/* -- Header -- */}
       <div
         className="px-5 py-4 flex items-center justify-between"
         style={{
@@ -71,7 +71,7 @@ export default function IndustryVisualPanel({
         </div>
       </div>
 
-      {/* ── Capability rows ── */}
+      {/* -- Capability rows -- */}
       <div className="px-4 py-4 space-y-2">
         {items.map((item, i) => {
           const c = item.color ?? ITEM_COLORS[i % 4]
@@ -104,7 +104,7 @@ export default function IndustryVisualPanel({
         })}
       </div>
 
-      {/* ── Compliance badges ── */}
+      {/* -- Compliance badges -- */}
       {badges.length > 0 && (
         <div
           className="px-4 pb-4 flex gap-2 pt-3"

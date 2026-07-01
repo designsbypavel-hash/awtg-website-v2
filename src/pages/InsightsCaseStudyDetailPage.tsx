@@ -110,7 +110,7 @@ const studies: Record<string, CaseStudy> = {
       { type: "heading", text: "The AWTG Solution" },
       { type: "paragraph", text: "AWTG's iSASCP platform was deployed to provide a unified service assurance and service creation layer across TOT's existing network. The platform consolidated monitoring, fault management, customer care tooling and field operations management into a single integrated environment." },
       { type: "paragraph", text: "The platform also provided a service creation capability that allowed TOT to build and launch IoT services on top of its existing 3G infrastructure. Smart city, smart enterprise and Industry 4.0 services could be delivered without requiring a new network build." },
-      { type: "pullquote", text: "TOT and AWTG have established the possibility for TOT to create new and innovative services on top of its existing network. — Dr. Pairoj Likitthanasate, Vice President, TOT" },
+      { type: "pullquote", text: "TOT and AWTG have established the possibility for TOT to create new and innovative services on top of its existing network., Dr. Pairoj Likitthanasate, Vice President, TOT" },
       { type: "heading", text: "Outcomes" },
       { type: "bullets", items: [
         "Over 50% reduction in annual operating costs across engineering, customer care, monitoring licences and site operations",

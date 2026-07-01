@@ -41,9 +41,9 @@ const data: SectorPageData = {
     heroImage: '/images/ai-security/ai-security-hero.png',
     title: 'Secure, trustworthy AI you can deploy with confidence',
     subtitle:
-      'Governance, risk management and security built into every AI deployment — so innovation never comes at the cost of trust.',
+      'Governance, risk management and security built into every AI deployment, so innovation never comes at the cost of trust.',
     description:
-      'AWTG helps organisations adopt AI securely and responsibly — combining AI governance frameworks, model security assessments and forward looking cryptography so that innovation keeps pace with emerging regulation and emerging threats.',
+      'AWTG helps organisations adopt AI securely and responsibly, combining AI governance frameworks, model security assessments and forward looking cryptography so that innovation keeps pace with emerging regulation and emerging threats.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faShieldHalved,
     visualItems: [
@@ -57,7 +57,7 @@ const data: SectorPageData = {
   challenges: {
     heading: 'The risks of moving fast on AI',
     intro:
-      'AI adoption is outpacing the governance, security and cryptographic foundations many organisations have in place — creating exposure that grows with every new deployment.',
+      'AI adoption is outpacing the governance, security and cryptographic foundations many organisations have in place, creating exposure that grows with every new deployment.',
     items: [
       {
         icon: faRobot,
@@ -67,7 +67,7 @@ const data: SectorPageData = {
       {
         icon: faBug,
         title: 'Model and data security risks',
-        desc: "AI systems introduce new attack surfaces — from training data exposure to model manipulation — that traditional security tooling wasn't built to address.",
+        desc: "AI systems introduce new attack surfaces, from training data exposure to model manipulation, that traditional security tooling wasn't built to address.",
       },
       {
         icon: faGavel,
@@ -114,7 +114,7 @@ const data: SectorPageData = {
       {
         icon: faKey,
         title: 'Quantum safe and future ready security',
-        desc: 'We help organisations get ahead of the cryptographic transition — assessing exposure today and planning the migration to quantum safe standards.',
+        desc: 'We help organisations get ahead of the cryptographic transition, assessing exposure today and planning the migration to quantum safe standards.',
         bullets: [
           'Post Quantum Cryptography (PQC) readiness assessments',
           'Cryptographic inventory and migration planning',

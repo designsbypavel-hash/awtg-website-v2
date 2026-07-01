@@ -42,7 +42,7 @@ function AruvaHeroDashboard() {
 
       {/* drop-shadow on outer div so it follows the masked shape */}
       <div style={{ filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
-        {/* mask-image punches a smooth quarter-circle at 0,0 — hides the cut
+        {/* mask-image punches a smooth quarter-circle at 0,0, hides the cut
             corner in the source PNGs by revealing the hero background behind */}
         <div style={{
           maskImage: 'radial-gradient(circle at 0% 0%, transparent 18px, black 20px)',
@@ -766,7 +766,7 @@ function MasteryStoryVisual() {
         <div className="rounded-2xl border border-gray-100 bg-[#fbfcfe] p-5 flex flex-col justify-between">
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60 mb-3">Bloom mastery</p>
-            {/* Mini radar — matches BloomInsightSection visual style */}
+            {/* Mini radar, matches BloomInsightSection visual style */}
             {(() => {
               const vals   = [45, 30, 22, 18, 12, 15]
               const cohort = [58, 52, 48, 40, 35, 42]
@@ -819,7 +819,7 @@ function MasteryStoryVisual() {
                       stroke="rgba(10,22,40,0.06)" strokeWidth="0.8" />
                   ))}
 
-                  {/* Cohort avg — dashed blue */}
+                  {/* Cohort avg, dashed blue */}
                   <polygon points={poly2(cohort)} fill="url(#mavgfill)"
                     stroke={accent} strokeWidth="1.5" strokeDasharray="5 3"
                     strokeLinejoin="round" strokeLinecap="round" opacity="0.85" />
@@ -884,12 +884,12 @@ function MasteryStoryVisual() {
 function TutorVisual() {
   const messages = [
     { role: 'student', text: "Can you just solve Porter's Five Forces for me?" },
-    { role: 'aruva',   text: "Let's build that understanding together. Which of the five forces do you think has the strongest impact here - start with your instinct." },
+    { role: 'aruva',   text: "Let's build that understanding together. Which of the five forces do you think has the strongest impact here, start with your instinct." },
     { role: 'student', text: "Maybe buyer power? Because there are lots of alternatives?" },
-    { role: 'aruva',   text: "Good instinct. Now think about what actually gives buyers that power - is it the number of alternatives, switching costs, or something else?" },
+    { role: 'aruva',   text: "Good instinct. Now think about what actually gives buyers that power, is it the number of alternatives, switching costs, or something else?" },
     { role: 'student', text: "I think it's switching costs. If it's easy to switch, buyers have more leverage." },
   ]
-  const signal = { label: 'Mastery signal captured', sub: 'Apply level - Bloom taxonomy updated', color: '#228DC1', bg: '#e8f4fc', border: '#b8ddf0' }
+  const signal = { label: 'Mastery signal captured', sub: 'Apply level, Bloom taxonomy updated', color: '#228DC1', bg: '#e8f4fc', border: '#b8ddf0' }
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(10,22,40,0.07)]">
@@ -902,7 +902,7 @@ function TutorVisual() {
           </div>
           <span className="text-[14px] font-semibold text-[#0a1628]/60">Adaptive Tutor</span>
           <span className="text-[#0a1628]/20 mx-1">|</span>
-          <span className="text-[13px] text-[#0a1628]/60">Business Strategy 101 - Week 3</span>
+          <span className="text-[13px] text-[#0a1628]/60">Business Strategy 101, Week 3</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full text-[#059669] bg-[#f0fdf4] border border-[#059669]/20">Socratic mode</span>
@@ -914,11 +914,11 @@ function TutorVisual() {
         <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: '#f59e0b' }}>MG</div>
         <div>
           <p className="text-[13px] font-semibold text-[#0a1628] leading-none">Maria Garcia</p>
-          <p className="text-[11px] text-[#0a1628]/60 mt-0.5">Business Strategy 101 - Analogy-oriented learner</p>
+          <p className="text-[11px] text-[#0a1628]/60 mt-0.5">Business Strategy 101, Analogy-oriented learner</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fef3c7] border border-[#d97706]/20">
           <div className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
-          <span className="text-[11px] font-semibold text-[#d97706]">Week 3 - Porter's Five Forces</span>
+          <span className="text-[11px] font-semibold text-[#d97706]">Week 3, Porter's Five Forces</span>
         </div>
       </div>
 
@@ -1161,7 +1161,7 @@ function PlatformDiagram() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12 w-full">
           <div className="grid lg:grid-cols-[400px_1fr] gap-24 items-center">
 
-            {/* ── LEFT: static text ── */}
+            {/* -- LEFT: static text -- */}
             <div className="flex flex-col gap-8">
               <div>
                 <h2 className="font-heading text-[#0a1628] mb-5">
@@ -1169,7 +1169,7 @@ function PlatformDiagram() {
                   <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
                 </h2>
                 <p className="text-[#0a1628]/60 text-[16px] leading-[1.75]">
-                  Not a bundle of tools. One connected system where every layer talks to the next - from your LMS through to every student interface.
+                  Not a bundle of tools. One connected system where every layer talks to the next, from your LMS through to every student interface.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -1182,7 +1182,7 @@ function PlatformDiagram() {
               </div>
             </div>
 
-            {/* ── RIGHT: workflow nodes ── */}
+            {/* -- RIGHT: workflow nodes -- */}
             <div className="flex flex-col items-stretch"
               style={{ backgroundImage:'radial-gradient(circle, #cbd5e1 1px, transparent 1px)', backgroundSize:'24px 24px', padding:'28px 28px', borderRadius:20, border:'1px solid #e2e8f0' }}>
 
@@ -1989,7 +1989,7 @@ function MultimodalSection() {
               opacity:0, animation:'mmCardIn 0.4s ease forwards',
             }}>
 
-              {/* ── Voice ── */}
+              {/* -- Voice -- */}
               {active === 0 && (
                 <div style={{ flex:1, minHeight:0, display:'flex', flexDirection:'column', padding:24, background:'linear-gradient(180deg,#ffffff 0%,#f8fbfd 100%)' }}>
                   <div style={{
@@ -2085,7 +2085,7 @@ function MultimodalSection() {
                   </div>
                 </div>
               )}
-              {/* ── Text ── */}
+              {/* -- Text -- */}
               {active === 1 && <MMTextDemo />}
               {false && (
                 <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center', gap:13, padding:'32px 36px' }}>
@@ -2107,16 +2107,16 @@ function MultimodalSection() {
                 </div>
               )}
 
-              {/* ── Image ── */}
+              {/* -- Image -- */}
               {active === 2 && <MMImageDemo />}
 
-              {/* ── Graph ── */}
+              {/* -- Graph -- */}
               {active === 3 && <MMGraphDemo />}
 
             </div>
           </div>
 
-          {/* Caption — grid column 2, sits below the demo card */}
+          {/* Caption, grid column 2, sits below the demo card */}
           {active === 1 && (
             <div style={{
               display: 'flex', alignItems: 'center', gap: 14,
@@ -2128,7 +2128,7 @@ function MultimodalSection() {
                 <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:28, height:28, borderRadius:8, background:'#7c3aed', color:'#fff', fontSize:10, fontWeight:900, border:'2px solid #f8fafc', marginLeft:-6 }}>ER</span>
               </div>
               <p style={{ fontSize:14, color:'rgba(10,22,40,0.72)', lineHeight:1.65 }}>
-                Comparing Student A and Student B — two different learning profiles, the same question. See how Aruva tailors every response to each student's way of understanding.
+                Comparing Student A and Student B, two different learning profiles, the same question. See how Aruva tailors every response to each student's way of understanding.
               </p>
             </div>
           )}
@@ -2374,7 +2374,7 @@ function BloomInsightSection() {
           ))}
         </div>
 
-        {/* ── Bloom panel ── */}
+        {/* -- Bloom panel -- */}
         {activeTab === 0 && (
         <div className="tab-panel-enter">
 
@@ -2393,7 +2393,7 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[11px] font-semibold text-[#0a1628]/60 leading-none mt-1">Student profile - compared with class average</p>
+                    <p className="text-[11px] font-semibold text-[#0a1628]/60 leading-none mt-1">Student profile compared with class average</p>
                   </div>
                 </div>
               </div>
@@ -2579,7 +2579,7 @@ function BloomInsightSection() {
         </div>
         )} {/* end Bloom panel */}
 
-        {/* ── DOK panel ── */}
+        {/* -- DOK panel -- */}
         {activeTab === 1 && (
         <div className="tab-panel-enter">
 
@@ -2596,7 +2596,7 @@ function BloomInsightSection() {
                   </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
-                    <p className="text-[11px] font-semibold text-[#0a1628]/60 leading-none mt-1">Student profile - compared with class average</p>
+                    <p className="text-[11px] font-semibold text-[#0a1628]/60 leading-none mt-1">Student profile compared with class average</p>
                   </div>
                 </div>
               </div>
@@ -2732,7 +2732,7 @@ function PrinciplesAudienceSection({ onDemoClick }: { onDemoClick: () => void })
           </p>
         </div>
 
-        {/* Tier 1 — four principles, compact strip */}
+        {/* Tier 1, four principles, compact strip */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-16">
           {principles.map((p, i) => (
             <div key={p.label}
@@ -2754,7 +2754,7 @@ function PrinciplesAudienceSection({ onDemoClick }: { onDemoClick: () => void })
           ))}
         </div>
 
-        {/* Tier 2 — three audience cards */}
+        {/* Tier 2, three audience cards */}
         <div className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-0" style={{ alignItems:'stretch' }}>
 
           {/* Card 1 */}
@@ -3122,7 +3122,7 @@ export default function AruvaPage() {
               </div>
             </div>
 
-            {/* Right — image panel */}
+            {/* Right, image panel */}
             <div className="p-5 lg:p-6">
               <div className="rounded-xl overflow-hidden h-full relative" style={{ minHeight: 320 }}>
                 <img

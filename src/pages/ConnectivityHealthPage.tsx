@@ -42,7 +42,7 @@ const data: SectorPageData = {
     heroImage: 'https://images.unsplash.com/photo-1688565631550-ff8aa569f71a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for healthcare',
     subtitle:
-      'Secure, DSPT-compliant network infrastructure designed for the clinical environment — from acute ward to community care.',
+      'Secure, DSPT-compliant network infrastructure designed for the clinical environment, from acute ward to community care.',
     description:
       'AWTG designs, deploys and manages network infrastructure for NHS trusts and healthcare organisations. Every solution is built around DSPT compliance, clinical continuity and the practical demands of a 24/7 care environment.',
     ctaLabel: 'Talk to our experts',
@@ -68,7 +68,7 @@ const data: SectorPageData = {
       {
         icon: faMicrochip,
         title: 'IoMT device proliferation',
-        desc: 'The estate of connected medical devices — monitors, infusion pumps, imaging systems — is growing rapidly, placing new demands on wireless and wired infrastructure.',
+        desc: 'The estate of connected medical devices, monitors, infusion pumps, imaging systems, is growing rapidly, placing new demands on wireless and wired infrastructure.',
       },
       {
         icon: faWifi,
@@ -86,12 +86,12 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for healthcare',
     intro:
-      'AWTG provides end-to-end network infrastructure services for healthcare — from compliance-led design through to managed ongoing operations.',
+      'AWTG provides end-to-end network infrastructure services for healthcare, from compliance-led design through to managed ongoing operations.',
     items: [
       {
         icon: faShield,
         title: 'DSPT-compliant network design',
-        desc: 'Network architecture designed from the ground up around DSPT requirements — covering access control, segmentation, encryption and audit logging for clinical data.',
+        desc: 'Network architecture designed from the ground up around DSPT requirements, covering access control, segmentation, encryption and audit logging for clinical data.',
         bullets: [
           'Network segmentation aligned to clinical data classification',
           'Audit logging and access control for compliance evidence',
@@ -103,7 +103,7 @@ const data: SectorPageData = {
       {
         icon: faWifi,
         title: 'Clinical wireless infrastructure',
-        desc: 'High-density Wi-Fi designed for complex clinical environments — providing reliable coverage in wards, theatres, waiting areas and clinical support spaces.',
+        desc: 'High-density Wi-Fi designed for complex clinical environments, providing reliable coverage in wards, theatres, waiting areas and clinical support spaces.',
         bullets: [
           'RF survey and design for clinical building types',
           'High-density access point deployment for IoMT and staff devices',
@@ -115,7 +115,7 @@ const data: SectorPageData = {
       {
         icon: faMicrochip,
         title: 'IoMT and device connectivity',
-        desc: 'Robust, segmented connectivity for the growing estate of connected medical devices — from bedside monitors to imaging systems and infusion management.',
+        desc: 'Robust, segmented connectivity for the growing estate of connected medical devices, from bedside monitors to imaging systems and infusion management.',
         bullets: [
           'Dedicated network segments for clinical device categories',
           'Device onboarding and lifecycle management support',
@@ -135,27 +135,27 @@ const data: SectorPageData = {
       {
         icon: faWifi,
         title: 'Clinical wireless rollout',
-        desc: 'Full wireless infrastructure programmes for NHS trusts — survey, design, deployment and commissioning of Wi-Fi across ward, theatre and clinical support environments.',
+        desc: 'Full wireless infrastructure programmes for NHS trusts, survey, design, deployment and commissioning of Wi-Fi across ward, theatre and clinical support environments.',
       },
       {
         icon: faMicrochip,
         title: 'IoMT connectivity programmes',
-        desc: 'Segmented, managed connectivity for connected medical device estates — from initial design through to ongoing device lifecycle management.',
+        desc: 'Segmented, managed connectivity for connected medical device estates, from initial design through to ongoing device lifecycle management.',
       },
       {
         icon: faNetworkWired,
         title: 'Electronic patient records connectivity',
-        desc: 'Network infrastructure designed to support EPR system performance requirements — low latency, high availability and seamless access from all clinical points.',
+        desc: 'Network infrastructure designed to support EPR system performance requirements, low latency, high availability and seamless access from all clinical points.',
       },
       {
         icon: faShield,
         title: 'DSPT compliance support',
-        desc: 'Network audit, gap analysis and remediation against DSPT requirements — providing the technical evidence base for annual submission and ongoing assurance.',
+        desc: 'Network audit, gap analysis and remediation against DSPT requirements, providing the technical evidence base for annual submission and ongoing assurance.',
       },
       {
         icon: faCloud,
         title: 'Cloud connectivity for healthcare',
-        desc: 'Scalable, compliant connectivity to cloud-hosted clinical systems — designed for the bandwidth, resilience and security requirements of healthcare data.',
+        desc: 'Scalable, compliant connectivity to cloud-hosted clinical systems, designed for the bandwidth, resilience and security requirements of healthcare data.',
       },
     ],
   },
@@ -168,7 +168,7 @@ const data: SectorPageData = {
       {
         icon: faArrowTrendUp,
         title: 'Improved clinical mobility',
-        desc: 'Staff access EPRs, clinical apps and communications systems reliably from anywhere on the estate — supporting point-of-care delivery.',
+        desc: 'Staff access EPRs, clinical apps and communications systems reliably from anywhere on the estate, supporting point-of-care delivery.',
       },
       {
         icon: faUsers,

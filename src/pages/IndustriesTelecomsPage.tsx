@@ -90,7 +90,7 @@ const data: SectorPageData = {
         icon: faBuilding,
         title: 'In-building design and deployment',
         desc:
-          'Comprehensive indoor wireless services for corporate customers, venues, hospitals and mobile operators—from RF survey and design to integration and go-live.',
+          'Comprehensive indoor wireless services for corporate customers, venues, hospitals and mobile operators, from RF survey and design to integration and go-live.',
         bullets: [
           'Cellular, Wi-Fi, DAS and small-cell network design',
           'Radio-frequency surveys and coverage planning',

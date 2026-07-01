@@ -45,7 +45,7 @@ const data: SectorPageData = {
     subtitle:
       'Resolve customer enquiries faster, reduce friction across the purchase journey and surface demand intelligence at scale.',
     description:
-      'AWTG deploys AI that handles the high volume, repetitive side of customer operations — from product questions and order tracking to returns and multilingual support — so your teams focus on the interactions that need them most.',
+      'AWTG deploys AI that handles the high volume, repetitive side of customer operations, from product questions and order tracking to returns and multilingual support, so your teams focus on the interactions that need them most.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faCartShopping,
     visualItems: [
@@ -87,12 +87,12 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for commerce',
     intro:
-      'AWTG builds and deploys AI for retail and commerce operations — handling volume, reducing friction and providing the analytics to drive continuous improvement.',
+      'AWTG builds and deploys AI for retail and commerce operations, handling volume, reducing friction and providing the analytics to drive continuous improvement.',
     items: [
       {
         icon: faHeadset,
         title: 'Customer service AI',
-        desc: 'Conversational AI that handles the high-volume enquiries your teams handle daily — order status, product queries, account questions — with consistent, accurate responses.',
+        desc: 'Conversational AI that handles the high-volume enquiries your teams handle daily, order status, product queries, account questions, with consistent, accurate responses.',
         bullets: [
           'Common enquiry resolution at scale, 24/7',
           'Integration with order management and CRM systems',
@@ -105,7 +105,7 @@ const data: SectorPageData = {
       {
         icon: faCartShopping,
         title: 'Product guidance and discovery',
-        desc: 'AI that helps customers find the right product, understand features and navigate complex catalogues — reducing pre-purchase uncertainty and support load.',
+        desc: 'AI that helps customers find the right product, understand features and navigate complex catalogues, reducing pre-purchase uncertainty and support load.',
         bullets: [
           'Natural language product search and guidance',
           'Compatibility and specification Q&A',
@@ -118,7 +118,7 @@ const data: SectorPageData = {
       {
         icon: faChartLine,
         title: 'Analytics and demand intelligence',
-        desc: 'Turn customer interaction data into business intelligence — surfacing what customers are asking, where they drop off and which product areas generate the most confusion.',
+        desc: 'Turn customer interaction data into business intelligence, surfacing what customers are asking, where they drop off and which product areas generate the most confusion.',
         bullets: [
           'Contact reason and demand trend analysis',
           'Content gap and FAQ improvement signals',
@@ -134,7 +134,7 @@ const data: SectorPageData = {
   useCases: {
     heading: 'AI across the commerce journey',
     intro:
-      'AWTG deploys AI at the moments that matter most — from pre-purchase guidance to post-purchase support and long-term loyalty.',
+      'AWTG deploys AI at the moments that matter most, from pre-purchase guidance to post-purchase support and long-term loyalty.',
     items: [
       {
         icon: faHeadset,
@@ -149,7 +149,7 @@ const data: SectorPageData = {
       {
         icon: faRotateLeft,
         title: 'Returns and refunds AI',
-        desc: 'Automated returns initiation, status tracking and exchange processing — reducing manual handling and customer frustration after purchase.',
+        desc: 'Automated returns initiation, status tracking and exchange processing, reducing manual handling and customer frustration after purchase.',
       },
       {
         icon: faLanguage,

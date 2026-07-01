@@ -42,7 +42,7 @@ const data: SectorPageData = {
     subtitle:
       'Protect networks, cloud and critical infrastructure with security designed around real telecom and IT operating environments.',
     description:
-      'AWTG provides specialised security across telecommunications, cloud and infrastructure — from 5G and Open RAN to SOC led threat detection — helping organisations protect critical connectivity and meet evolving compliance requirements.',
+      'AWTG provides specialised security across telecommunications, cloud and infrastructure, from 5G and Open RAN to SOC led threat detection, helping organisations protect critical connectivity and meet evolving compliance requirements.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faShieldHalved,
     visualItems: [
@@ -56,7 +56,7 @@ const data: SectorPageData = {
   challenges: {
     heading: 'Security pressures across modern networks',
     intro:
-      'Next generation connectivity expands the attack surface as fast as it expands capability — and compliance requirements are rising to match.',
+      'Next generation connectivity expands the attack surface as fast as it expands capability, and compliance requirements are rising to match.',
     items: [
       {
         icon: faNetworkWired,
@@ -84,12 +84,12 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for network security',
     intro:
-      'AWTG provides security engineered around real telecom and infrastructure environments — not generic IT security retrofitted to networks.',
+      'AWTG provides security engineered around real telecom and infrastructure environments, not generic IT security retrofitted to networks.',
     items: [
       {
         icon: faNetworkWired,
         title: 'Telecommunications network security',
-        desc: 'Specialised security for next generation telecom and connectivity ecosystems — covering everything from the radio access network to the core.',
+        desc: 'Specialised security for next generation telecom and connectivity ecosystems, covering everything from the radio access network to the core.',
         bullets: [
           '4G, 5G and 6G security architecture',
           'Open RAN (O-RAN) security assessment',

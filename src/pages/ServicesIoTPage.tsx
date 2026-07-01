@@ -1,4 +1,4 @@
-﻿import { useState, useRef, useEffect, type CSSProperties, type ReactNode } from 'react'
+import { useState, useRef, useEffect, type CSSProperties, type ReactNode } from 'react'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import VisualInsightCard from '@/components/VisualInsightCard'
@@ -22,7 +22,7 @@ import idamsUseCaseApprovals from '@/assets/IDAMS/use-cases/multi-stakeholder-ap
 import idamsAssetOwnersVisual from '@/assets/IDAMS/audiences/asset-owners.png'
 import idamsNetworkOperatorsVisual from '@/assets/IDAMS/audiences/network-operators.png'
 
-// ── Scroll utilities ──────────────────────────────────────────────────────────
+// -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(false)
@@ -53,7 +53,7 @@ function ScrollProgress() {
   )
 }
 
-// ── iDAMS Map Visual ──────────────────────────────────────────────────────────
+// -- iDAMS Map Visual ----------------------------------------------------------
 function IdamsMapVisual() {
   const [activeSignal, setActiveSignal] = useState(0)
 
@@ -216,7 +216,7 @@ function IdamsHeroShowcase() {
     </div>
   )
 }
-// ── Section header ────────────────────────────────────────────────────────────
+// -- Section header ------------------------------------------------------------
 function SectionHeader({ title, desc }: { title: ReactNode; desc: string }) {
   return (
     <div className="mb-14 max-w-3xl">
@@ -226,12 +226,12 @@ function SectionHeader({ title, desc }: { title: ReactNode; desc: string }) {
   )
 }
 
-// ── Data ──────────────────────────────────────────────────────────────────────
+// -- Data ----------------------------------------------------------------------
 const capabilities = [
   { image: idamsCapability1, title: 'Interactive Asset Map', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
   { image: idamsCapability2, title: 'Advanced Search & Filtering', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
   { image: idamsCapability3, title: 'Asset Data Management', desc: 'Import, create, update, and manage asset records in one place. iDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
-  { image: idamsCapability4, title: 'Acquisition Workflow', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications - keeping every request visible and accountable.' },
+  { image: idamsCapability4, title: 'Acquisition Workflow', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications, keeping every request visible and accountable.' },
   { image: idamsCapability5, title: 'Reporting & Insights', desc: 'Use dashboards, reports, and exports to understand asset usage, acquisition progress, and operational performance across your estate.' },
   { image: idamsCapability6, title: 'Integration-Ready Platform', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
 ]
@@ -283,7 +283,7 @@ const idamsUseCases = [
   { image: idamsUseCaseApprovals, eyebrow: 'Governance', title: 'Multi-stakeholder Approvals', desc: 'Multi-stakeholder asset approval workflows with full audit trail.' },
 ]
 
-// ── Main page ─────────────────────────────────────────────────────────────────
+// -- Main page -----------------------------------------------------------------
 export default function ServicesIoTPage() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
   const [capRef,    capInView]    = useInView(0.08)
@@ -309,7 +309,7 @@ export default function ServicesIoTPage() {
         ]}
       />
 
-      {/* ── HERO ──────────────────────────────────────────────────────────── */}
+      {/* -- HERO ------------------------------------------------------------ */}
       <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
 
         {/* Dot-grid background */}
@@ -391,7 +391,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* ── BUILT FOR TWO AUDIENCES ──────────────────────────────────────── */}
+      {/* -- BUILT FOR TWO AUDIENCES ---------------------------------------- */}
       <section className="bg-[#f8fafc] py-24">
         <div ref={audRef} className="mx-auto max-w-7xl px-8 lg:px-12">
 
@@ -401,7 +401,7 @@ export default function ServicesIoTPage() {
               Built for <span className="text-[#1a7aab]">asset owners and asset consumers</span>
             </h2>
             <p className="max-w-2xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              iDAMS serves both sides of the asset marketplace - those who hold infrastructure and those who need access to it.
+              iDAMS serves both sides of the asset marketplace, those who hold infrastructure and those who need access to it.
             </p>
           </div>
 
@@ -442,7 +442,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* ── KEY PLATFORM CAPABILITIES ────────────────────────────────────── */}
+      {/* -- KEY PLATFORM CAPABILITIES -------------------------------------- */}
       <section className="bg-[#f8fafc] py-24">
         <div ref={capRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(capInView, 0)}>
@@ -480,7 +480,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* ── TURNING ASSETS INTO OPPORTUNITIES ────────────────────────────── */}
+      {/* -- TURNING ASSETS INTO OPPORTUNITIES ------------------------------ */}
       <section className="bg-[#0a1628] py-24">
         <div className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid items-start gap-16 lg:grid-cols-2">
@@ -510,7 +510,7 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* ── USE CASES ────────────────────────────────────────────────────── */}
+      {/* -- USE CASES ------------------------------------------------------ */}
       <section className="bg-[#0a1628] py-24">
         <div ref={ucRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(ucInView, 0)}>

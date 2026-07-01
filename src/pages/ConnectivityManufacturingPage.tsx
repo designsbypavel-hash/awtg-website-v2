@@ -44,7 +44,7 @@ const data: SectorPageData = {
     subtitle:
       'AWTG supports organisations with the connectivity foundations needed for operational visibility, automation and connected assets.',
     description:
-      'Manufacturing and industrial organisations need reliable connectivity to support operational systems, connected assets, data flows and future automation. AWTG brings experience in telecoms, advanced connectivity, 5G, IoT, software and secure infrastructure — giving us the capability to support manufacturers exploring connected operations.',
+      'Manufacturing and industrial organisations need reliable connectivity to support operational systems, connected assets, data flows and future automation. AWTG brings experience in telecoms, advanced connectivity, 5G, IoT, software and secure infrastructure, giving us the capability to support manufacturers exploring connected operations.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faIndustry,
     visualItems: [
@@ -68,7 +68,7 @@ const data: SectorPageData = {
       {
         icon: faWifi,
         title: 'Standard networks not sufficient',
-        desc: 'Consumer or office-grade wireless is often insufficient for industrial environments — where coverage, interference, device density and performance requirements are fundamentally different.',
+        desc: 'Consumer or office-grade wireless is often insufficient for industrial environments, where coverage, interference, device density and performance requirements are fundamentally different.',
       },
       {
         icon: faMicrochip,
@@ -78,7 +78,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'Security and resilience requirements',
-        desc: 'Operational environments need connectivity that is resilient, secure and designed around business continuity — requirements that generic network solutions often fail to address.',
+        desc: 'Operational environments need connectivity that is resilient, secure and designed around business continuity, requirements that generic network solutions often fail to address.',
       },
     ],
   },
@@ -91,7 +91,7 @@ const data: SectorPageData = {
       {
         icon: faNetworkWired,
         title: 'Operational and private wireless connectivity',
-        desc: 'Reliable networks that support equipment, staff devices, operational systems and digital workflows across industrial environments — including private 5G and advanced wireless where standard connectivity falls short.',
+        desc: 'Reliable networks that support equipment, staff devices, operational systems and digital workflows across industrial environments, including private 5G and advanced wireless where standard connectivity falls short.',
         bullets: [
           'Operational network design for industrial environments',
           'Private 5G and advanced wireless where required',
@@ -135,7 +135,7 @@ const data: SectorPageData = {
       {
         icon: faNetworkWired,
         title: 'Industrial connectivity',
-        desc: 'Support operational environments with secure and reliable network foundations — connecting equipment, systems and teams across industrial sites.',
+        desc: 'Support operational environments with secure and reliable network foundations, connecting equipment, systems and teams across industrial sites.',
       },
       {
         icon: faWifi,
@@ -145,12 +145,12 @@ const data: SectorPageData = {
       {
         icon: faMicrochip,
         title: 'IoT foundations',
-        desc: 'Enable connected assets, sensors and data flows where required — creating the visibility layer that supports operational decision making and future automation.',
+        desc: 'Enable connected assets, sensors and data flows where required, creating the visibility layer that supports operational decision making and future automation.',
       },
       {
         icon: faGears,
         title: 'AI-ready operations',
-        desc: 'Prepare the connectivity and data infrastructure needed for automation, analytics and future AI use cases — building the foundations before the applications are ready.',
+        desc: 'Prepare the connectivity and data infrastructure needed for automation, analytics and future AI use cases, building the foundations before the applications are ready.',
       },
     ],
   },

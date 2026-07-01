@@ -243,7 +243,7 @@ export default function ServicesEngineeringPage() {
         ]}
       />
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      {/* -- HERO ----------------------------------------------------------- */}
       <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
 
         {/* Diagonal dot-grid */}
@@ -308,7 +308,7 @@ export default function ServicesEngineeringPage() {
         </div>
       </section>
 
-      {/* ── CORE MODULES ──────────────────────────────────────────────────── */}
+      {/* -- CORE MODULES ---------------------------------------------------- */}
       <section className="bg-white py-24">
         <div ref={diffRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(diffInView, 0)} className="mb-14 max-w-3xl">
@@ -395,7 +395,7 @@ export default function ServicesEngineeringPage() {
         </div>
       </section>
 
-      {/* ── MULTI-VENDOR NETWORKS ─────────────────────────────────────────── */}
+      {/* -- MULTI-VENDOR NETWORKS ------------------------------------------- */}
       <section className="bg-[#0a1628] py-24">
         <div ref={mvRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
@@ -433,7 +433,7 @@ export default function ServicesEngineeringPage() {
         </div>
       </section>
 
-      {/* ── DESIGNED FOR ──────────────────────────────────────────────────── */}
+      {/* -- DESIGNED FOR ---------------------------------------------------- */}
       <section className="bg-[#0a1628] py-24">
         <div ref={ucRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div style={reveal(ucInView, 0)}>

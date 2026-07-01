@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 type Card = {
   title: string
@@ -92,8 +92,8 @@ export function InnovationPage() {
       title="Applied innovation, built for real-world deployment."
       intro="AWTG focuses innovation on systems that organisations can actually adopt: AI workflows, private networks, smart infrastructure and digital platforms with measurable value."
       cards={[
-        { title: 'Kai — AI Agent', desc: 'Production-ready conversational AI for sales, support and customer services.', href: '/products/kai' },
-        { title: 'Aruva — AI for Education', desc: 'AI-powered learning and administration platform built for schools and universities.', href: '/products/aruva' },
+        { title: 'Kai, AI Agent', desc: 'Production-ready conversational AI for sales, support and customer services.', href: '/products/kai' },
+        { title: 'Aruva, AI for Education', desc: 'AI-powered learning and administration platform built for schools and universities.', href: '/products/aruva' },
         { title: 'iDAMS', desc: 'Connected infrastructure and IoT management for smart operations.', href: '/contact' },
       ]}
     />

@@ -135,7 +135,7 @@ export default function DigitalPlatformsPage() {
 
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      {/* -- HERO ----------------------------------------------------------- */}
       <section className="relative overflow-hidden pt-32 pb-20 lg:flex lg:h-[634px] lg:items-center" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
 
         {/* Diagonal dot-grid background pattern */}
@@ -211,7 +211,7 @@ export default function DigitalPlatformsPage() {
                   <div className="overflow-hidden rounded-[12px]">
                     <img
                       src={iBecomeLCRReels}
-                      alt="iBecome — LCR Reels"
+                      alt="iBecome, LCR Reels"
                       className="w-full block"
                       loading="lazy"
                     />
@@ -227,7 +227,7 @@ export default function DigitalPlatformsPage() {
         </div>
       </section>
 
-      {/* ── PRODUCT CARDS ────────────────────────────────────────────────── */}
+      {/* -- PRODUCT CARDS -------------------------------------------------- */}
       <section className="py-24 bg-white">
         <div ref={productsRef} className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-8">
@@ -261,7 +261,7 @@ export default function DigitalPlatformsPage() {
         </div>
       </section>
 
-      {/* ── OUTCOME STORIES ──────────────────────────────────────────────── */}
+      {/* -- OUTCOME STORIES ------------------------------------------------ */}
       <section className="bg-white pt-20 lg:pt-28">
         <div className="mx-auto max-w-[1400px] px-8 pb-14 lg:px-12 lg:pb-20">
           <div className="max-w-3xl">
@@ -276,7 +276,7 @@ export default function DigitalPlatformsPage() {
           <PlatformOutcomeSection key={outcome.label} outcome={outcome} index={index} />
         ))}
       </section>
-      {/* ── AUDIENCE ──────────────────────────────────────────────────────── */}
+      {/* -- AUDIENCE -------------------------------------------------------- */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div ref={audienceRef} className="grid gap-14 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
@@ -315,7 +315,7 @@ export default function DigitalPlatformsPage() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ─────────────────────────────────────────────────────── */}
+      {/* -- FINAL CTA ------------------------------------------------------- */}
       <CTASection
         title="Looking for a platform built around your service model?"
         subtitle="We work with organisations that need practical, well-designed digital platforms for real delivery settings."

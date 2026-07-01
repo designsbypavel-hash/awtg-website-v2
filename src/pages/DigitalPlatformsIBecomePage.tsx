@@ -92,7 +92,7 @@ export default function DigitalPlatformsIBecomePage() {
         ]}
       />
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      {/* -- HERO ----------------------------------------------------------- */}
       <section className="relative overflow-hidden pt-32 pb-20 lg:flex lg:h-[634px] lg:items-center" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -160,7 +160,7 @@ export default function DigitalPlatformsIBecomePage() {
         </div>
       </section>
 
-      {/* ── PROVEN OUTCOMES AT SCALE ─────────────────────────────────────── */}
+      {/* -- PROVEN OUTCOMES AT SCALE --------------------------------------- */}
       <section className="bg-white py-24 lg:py-28 overflow-hidden">
         <div ref={outcomesRef} className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
@@ -232,7 +232,7 @@ export default function DigitalPlatformsIBecomePage() {
         </div>
       </section>
 
-      {/* ── CAPABILITIES ─────────────────────────────────────────────────── */}
+      {/* -- CAPABILITIES --------------------------------------------------- */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14 max-w-2xl">
@@ -257,7 +257,7 @@ export default function DigitalPlatformsIBecomePage() {
         </div>
       </section>
 
-      {/* ── SUPPORTING ────────────────────────────────────────────────────── */}
+      {/* -- SUPPORTING ------------------------------------------------------ */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-3xl">
@@ -269,7 +269,7 @@ export default function DigitalPlatformsIBecomePage() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ─────────────────────────────────────────────────────── */}
+      {/* -- FINAL CTA ------------------------------------------------------- */}
       <CTASection
         title="Looking to build on a proven employability platform?"
         subtitle="We can show you how iBecome can be shaped around your programme, region or delivery model."

@@ -44,7 +44,7 @@ const data: SectorPageData = {
     subtitle:
       'Respond to more citizens faster, reduce case backlogs and give frontline teams the intelligence to act on what matters.',
     description:
-      'AWTG deploys conversational AI and intelligent automation for public sector organisations — designed around compliance, accessibility and the practical constraints of government IT environments.',
+      'AWTG deploys conversational AI and intelligent automation for public sector organisations, designed around compliance, accessibility and the practical constraints of government IT environments.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faLandmark,
     visualItems: [
@@ -68,7 +68,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'Compliance and governance',
-        desc: 'Public sector AI must operate within strict governance frameworks — GDPR, accessibility standards and ministerial accountability requirements that commercial tools often overlook.',
+        desc: 'Public sector AI must operate within strict governance frameworks, GDPR, accessibility standards and ministerial accountability requirements that commercial tools often overlook.',
       },
       {
         icon: faClock,
@@ -86,12 +86,12 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for public services',
     intro:
-      'AWTG designs AI for the real operating environment of public sector organisations — compliant, accessible and built to work with existing systems and governance frameworks.',
+      'AWTG designs AI for the real operating environment of public sector organisations, compliant, accessible and built to work with existing systems and governance frameworks.',
     items: [
       {
         icon: faComments,
         title: 'Citizen service automation',
-        desc: 'Conversational AI that handles high-volume citizen enquiries on benefits, services, eligibility and local information — available around the clock via web and messaging channels.',
+        desc: 'Conversational AI that handles high-volume citizen enquiries on benefits, services, eligibility and local information, available around the clock via web and messaging channels.',
         bullets: [
           'Common enquiry resolution using approved, current guidance',
           'Accessible design meeting WCAG and public sector standards',
@@ -103,7 +103,7 @@ const data: SectorPageData = {
       {
         icon: faClipboardList,
         title: 'Case management and triage AI',
-        desc: 'AI that supports case intake, classification, routing and status management — reducing manual handling and improving consistency across complex workflows.',
+        desc: 'AI that supports case intake, classification, routing and status management, reducing manual handling and improving consistency across complex workflows.',
         bullets: [
           'Automated case triage and priority classification',
           'Document processing and data extraction',
@@ -115,7 +115,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'Policy and compliance intelligence',
-        desc: 'Give frontline teams and citizens access to accurate, current policy guidance — reducing errors, improving consistency and ensuring compliance with changing requirements.',
+        desc: 'Give frontline teams and citizens access to accurate, current policy guidance, reducing errors, improving consistency and ensuring compliance with changing requirements.',
         bullets: [
           'Conversational access to current policy and guidance',
           'Version-controlled knowledge base management',
@@ -135,7 +135,7 @@ const data: SectorPageData = {
       {
         icon: faComments,
         title: 'Citizen helpdesk AI',
-        desc: 'Conversational AI for citizen enquiries on local services, benefits eligibility, appointment booking and information requests — available 24/7 across channels.',
+        desc: 'Conversational AI for citizen enquiries on local services, benefits eligibility, appointment booking and information requests, available 24/7 across channels.',
       },
       {
         icon: faClipboardList,
@@ -145,7 +145,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'Policy navigation and guidance',
-        desc: 'AI-powered access to current policy, legislation and guidance for both citizens and frontline staff — reducing errors and improving first-contact resolution.',
+        desc: 'AI-powered access to current policy, legislation and guidance for both citizens and frontline staff, reducing errors and improving first-contact resolution.',
       },
       {
         icon: faChartLine,
@@ -155,7 +155,7 @@ const data: SectorPageData = {
       {
         icon: faGlobe,
         title: 'Multi-channel citizen access',
-        desc: 'Consistent AI across web, mobile and telephony channels — meeting citizens where they are and supporting digital inclusion goals across the population.',
+        desc: 'Consistent AI across web, mobile and telephony channels, meeting citizens where they are and supporting digital inclusion goals across the population.',
       },
     ],
   },
@@ -173,7 +173,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'Compliance by design',
-        desc: 'AI built to meet public sector governance, accessibility and data handling requirements — reducing risk and supporting auditability.',
+        desc: 'AI built to meet public sector governance, accessibility and data handling requirements, reducing risk and supporting auditability.',
       },
       {
         icon: faUsers,

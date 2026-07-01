@@ -45,7 +45,7 @@ const data: SectorPageData = {
     subtitle:
       'Automate processes, unlock trapped knowledge and give your organisation the intelligence it needs to move faster.',
     description:
-      'AWTG works with organisations at every stage of digital transformation — deploying AI that integrates with existing systems, reduces manual workload and creates the feedback loops that inform better decisions.',
+      'AWTG works with organisations at every stage of digital transformation, deploying AI that integrates with existing systems, reduces manual workload and creates the feedback loops that inform better decisions.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faGears,
     visualItems: [
@@ -59,7 +59,7 @@ const data: SectorPageData = {
   challenges: {
     heading: 'Where transformation stalls',
     intro:
-      'Most organisations have the intent but face structural barriers — siloed knowledge, inconsistent processes, change burden and measurement gaps that slow progress.',
+      'Most organisations have the intent but face structural barriers, siloed knowledge, inconsistent processes, change burden and measurement gaps that slow progress.',
     items: [
       {
         icon: faDatabase,
@@ -87,12 +87,12 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for transformation',
     intro:
-      'AWTG helps organisations build AI capability that sticks — grounded in your existing systems, aligned to your processes and measured for real outcomes.',
+      'AWTG helps organisations build AI capability that sticks, grounded in your existing systems, aligned to your processes and measured for real outcomes.',
     items: [
       {
         icon: faGears,
         title: 'Intelligent process automation',
-        desc: 'AI that handles the structured, repetitive work that consumes your teams — routing, classification, data extraction, workflow triggering — at scale and with consistency.',
+        desc: 'AI that handles the structured, repetitive work that consumes your teams, routing, classification, data extraction, workflow triggering, at scale and with consistency.',
         bullets: [
           'Document and data processing automation',
           'Workflow routing and case classification',
@@ -104,7 +104,7 @@ const data: SectorPageData = {
       {
         icon: faDatabase,
         title: 'Knowledge management and access',
-        desc: 'Make institutional knowledge accessible across the organisation — structured, searchable and delivered to the people who need it at the moment they need it.',
+        desc: 'Make institutional knowledge accessible across the organisation, structured, searchable and delivered to the people who need it at the moment they need it.',
         bullets: [
           'Knowledge base creation from existing documentation',
           'Conversational search and Q&A interfaces',
@@ -116,7 +116,7 @@ const data: SectorPageData = {
       {
         icon: faChartLine,
         title: 'Organisational intelligence',
-        desc: 'Turn operational data into continuous improvement signals — surfacing process bottlenecks, team performance patterns and decision-making blind spots.',
+        desc: 'Turn operational data into continuous improvement signals, surfacing process bottlenecks, team performance patterns and decision-making blind spots.',
         bullets: [
           'Process performance dashboards and trend analysis',
           'Bottleneck and inefficiency identification',
@@ -136,7 +136,7 @@ const data: SectorPageData = {
       {
         icon: faGears,
         title: 'Workflow and process AI',
-        desc: 'Automate structured workflows — document handling, approvals, routing and classification — reducing manual effort and improving consistency.',
+        desc: 'Automate structured workflows, document handling, approvals, routing and classification, reducing manual effort and improving consistency.',
       },
       {
         icon: faDatabase,
@@ -146,17 +146,17 @@ const data: SectorPageData = {
       {
         icon: faCloud,
         title: 'Cloud-native AI deployment',
-        desc: 'Deploy AI across cloud infrastructure with governance, observability and integration built in — designed for enterprise-scale operation from day one.',
+        desc: 'Deploy AI across cloud infrastructure with governance, observability and integration built in, designed for enterprise-scale operation from day one.',
       },
       {
         icon: faComments,
         title: 'Employee AI assistant',
-        desc: 'Conversational AI for internal operations — answering policy questions, guiding process steps and reducing time spent searching for information.',
+        desc: 'Conversational AI for internal operations, answering policy questions, guiding process steps and reducing time spent searching for information.',
       },
       {
         icon: faBrain,
         title: 'AI-powered decision support',
-        desc: 'Provide leaders and teams with AI-generated insight to inform decisions — drawing on operational data, trends and risk signals in real time.',
+        desc: 'Provide leaders and teams with AI-generated insight to inform decisions, drawing on operational data, trends and risk signals in real time.',
       },
     ],
   },
@@ -164,7 +164,7 @@ const data: SectorPageData = {
   outcomes: {
     heading: 'What transformation delivers',
     intro:
-      'The right AI foundation creates compounding returns — productivity gains, better decisions, faster adoption and consistent processes across the organisation.',
+      'The right AI foundation creates compounding returns, productivity gains, better decisions, faster adoption and consistent processes across the organisation.',
     items: [
       {
         icon: faArrowTrendUp,
@@ -179,7 +179,7 @@ const data: SectorPageData = {
       {
         icon: faLightbulb,
         title: 'Better-informed decisions',
-        desc: 'Leaders and teams make decisions with better intelligence — drawn from operational data rather than anecdote or instinct.',
+        desc: 'Leaders and teams make decisions with better intelligence, drawn from operational data rather than anecdote or instinct.',
       },
       {
         icon: faSitemap,

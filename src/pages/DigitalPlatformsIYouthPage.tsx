@@ -129,7 +129,7 @@ export default function DigitalPlatformsIYouthPage() {
         ]}
       />
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      {/* -- HERO ----------------------------------------------------------- */}
       <section className="relative overflow-hidden pt-32 pb-20 lg:flex lg:h-[634px] lg:items-center" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
         <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.45 }}>
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -197,7 +197,7 @@ export default function DigitalPlatformsIYouthPage() {
         </div>
       </section>
 
-      {/* ── CAPABILITIES ─────────────────────────────────────────────────── */}
+      {/* -- CAPABILITIES --------------------------------------------------- */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14 max-w-2xl">
@@ -222,7 +222,7 @@ export default function DigitalPlatformsIYouthPage() {
         </div>
       </section>
 
-      {/* ── USE CASES ─────────────────────────────────────────────────────── */}
+      {/* -- USE CASES ------------------------------------------------------- */}
       <section className="py-24 bg-[#f0f4f8]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="mb-14 max-w-2xl">
@@ -253,7 +253,7 @@ export default function DigitalPlatformsIYouthPage() {
         </div>
       </section>
 
-      {/* ── EXPERIENCE / CREDIBILITY ─────────────────────────────────────── */}
+      {/* -- EXPERIENCE / CREDIBILITY --------------------------------------- */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-3xl mb-14">
@@ -276,7 +276,7 @@ export default function DigitalPlatformsIYouthPage() {
       </section>
 
 
-      {/* ── FINAL CTA ─────────────────────────────────────────────────────── */}
+      {/* -- FINAL CTA ------------------------------------------------------- */}
       <CTASection
         title="Need a better digital experience for youth engagement?"
         subtitle="We can help shape iYouth around the way your programme, service or organisation works."

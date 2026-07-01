@@ -1,4 +1,4 @@
-﻿import { Fragment, useState, useEffect, useRef } from 'react'
+import { Fragment, useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -277,7 +277,7 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center shrink-0 z-10" aria-label="AWTG — Home">
+            <Link to="/" className="flex items-center shrink-0 z-10" aria-label="AWTG, Home">
               <img
                 src="/logo-icon.svg"
                 alt="AWTG"
@@ -356,7 +356,7 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* ── Mega dropdown panel ── */}
+        {/* -- Mega dropdown panel -- */}
         {navItems.map((nav) => (
           activeDropdown === nav.key && (
             <div

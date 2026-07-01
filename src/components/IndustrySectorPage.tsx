@@ -44,7 +44,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
   return (
     <>
       {/* ══════════════════════════════════════════════════════
-          HERO — full-bleed image with dark overlay
+          HERO, full-bleed image with dark overlay
       ══════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden" style={{ minHeight: 640 }}>
         {/* Background photo */}
@@ -66,7 +66,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
           />
         )}
 
-        {/* Gradient overlay — dark left for text, transparent right for photo */}
+        {/* Gradient overlay, dark left for text, transparent right for photo */}
         <div
           className="absolute inset-0"
           style={{
@@ -112,11 +112,11 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
 
 
       {/* ══════════════════════════════════════════════════════
-          SUPPORTS — "What AWTG delivers for ___"
+          SUPPORTS, "What AWTG delivers for ___"
           Full-width alternating photo + text panels
       ══════════════════════════════════════════════════════ */}
       <section className="bg-white overflow-hidden">
-        {/* Section heading — constrained width */}
+        {/* Section heading, constrained width */}
         <div className="max-w-7xl mx-auto px-8 lg:px-12 pt-20 pb-14">
           <IndustrySectionHeader
             heading={supports.heading}
@@ -205,7 +205,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          OUTCOMES — asymmetric: sticky heading left + 2×2 grid right
+          OUTCOMES, asymmetric: sticky heading left + 2×2 grid right
       ══════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-white py-24">
         <div
@@ -278,7 +278,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                   {proof.author}
                   {proof.context && (
                     <span className="font-normal normal-case tracking-normal text-[#0a1628]/60">
-                      {' '}— {proof.context}
+                      {' '}, {proof.context}
                     </span>
                   )}
                 </p>

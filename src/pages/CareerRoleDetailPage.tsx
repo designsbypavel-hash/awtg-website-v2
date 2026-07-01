@@ -141,7 +141,7 @@ export const roles: Role[] = [
     about: [
       'AWTG is at the forefront of AI-driven network intelligence, and we are looking for an AI/ML Engineer to join our AI & Data team. You will develop ML models and xApps/rApps that improve network performance, automate optimisation tasks and deliver actionable insights from RAN telemetry data.',
       'You will work within our growing AI platform practice, integrating models into AWTG\'s internal tools and client-facing products including our Kai AI platform and O-RAN near-RT RIC integrations.',
-      'This role sits at the intersection of applied machine learning and telecommunications — ideal for an engineer who wants to see their models running on live networks.',
+      'This role sits at the intersection of applied machine learning and telecommunications, ideal for an engineer who wants to see their models running on live networks.',
     ],
     responsibilities: [
       'Design, train and deploy ML models for RAN KPI prediction, anomaly detection and automated optimisation.',

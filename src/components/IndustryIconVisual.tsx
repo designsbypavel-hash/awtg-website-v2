@@ -21,7 +21,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
         border: `1px solid ${accent}10`,
       }}
     >
-      {/* ── Flowing arc illustration — no text, fully abstract ── */}
+      {/* -- Flowing arc illustration, no text, fully abstract -- */}
       <svg
         aria-hidden="true"
         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -56,7 +56,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
           </linearGradient>
         </defs>
 
-        {/* Arc 1 — wide horizontal sweep below icon */}
+        {/* Arc 1, wide horizontal sweep below icon */}
         <path
           d="M -20,230 C 80,180 160,110 280,130 C 340,138 380,170 420,160"
           fill="none"
@@ -65,7 +65,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
           strokeLinecap="round"
         />
 
-        {/* Arc 2 — diagonal from top-left curving to bottom-right */}
+        {/* Arc 2, diagonal from top-left curving to bottom-right */}
         <path
           d="M 10,-10 C 60,60 120,100 180,130 C 250,165 320,190 420,260"
           fill="none"
@@ -74,7 +74,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
           strokeLinecap="round"
         />
 
-        {/* Arc 3 — sweeping from top-right down to bottom-left */}
+        {/* Arc 3, sweeping from top-right down to bottom-left */}
         <path
           d="M 420,20 C 360,60 300,80 240,120 C 180,158 120,200 -10,270"
           fill="none"
@@ -83,7 +83,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
           strokeLinecap="round"
         />
 
-        {/* Arc 4 — tall vertical sweep from top through left side */}
+        {/* Arc 4, tall vertical sweep from top through left side */}
         <path
           d="M 55,-10 C 40,60 30,120 55,170 C 75,210 90,240 70,290"
           fill="none"
@@ -92,7 +92,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
           strokeLinecap="round"
         />
 
-        {/* Arc 5 — mirror vertical on right */}
+        {/* Arc 5, mirror vertical on right */}
         <path
           d="M 345,-10 C 360,60 370,120 345,170 C 325,210 310,240 330,290"
           fill="none"
@@ -101,7 +101,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
           strokeLinecap="round"
         />
 
-        {/* ── Elegant accent nodes — sparse, non-uniform ── */}
+        {/* -- Elegant accent nodes, sparse, non-uniform -- */}
         {/* Top-left */}
         <circle cx="58"  cy="44"  r="4.5" fill={accent} opacity="0.30" />
         <circle cx="58"  cy="44"  r="9"   fill="none" stroke={accent} strokeWidth="0.7" opacity="0.12" />
@@ -130,7 +130,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
         <line x1="380" y1="172" x2="380" y2="200" stroke={accent} strokeWidth="1.2" strokeLinecap="round" opacity="0.15" />
       </svg>
 
-      {/* ── Single slow-rotating ring ── */}
+      {/* -- Single slow-rotating ring -- */}
       <div
         aria-hidden="true"
         className="absolute rounded-full animate-spin"
@@ -143,7 +143,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
         }}
       />
 
-      {/* ── Soft radial glow behind icon ── */}
+      {/* -- Soft radial glow behind icon -- */}
       <div
         aria-hidden="true"
         className="absolute pointer-events-none"
@@ -155,7 +155,7 @@ export default function IndustryIconVisual({ icon, accent, className = '' }: Pro
         }}
       />
 
-      {/* ── Central icon ── */}
+      {/* -- Central icon -- */}
       <div
         className="relative z-10 flex items-center justify-center rounded-[26px]"
         style={{

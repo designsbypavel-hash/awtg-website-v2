@@ -28,7 +28,7 @@ export default function CTASection({
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="rounded-2xl overflow-hidden bg-[#0a1628] grid lg:grid-cols-[1fr_420px]">
 
-          {/* Left — dark panel */}
+          {/* Left, dark panel */}
           <div className="p-12 lg:p-16 flex flex-col justify-between" style={{ minHeight: 400 }}>
             <div>
               {eyebrow && (
@@ -73,7 +73,7 @@ export default function CTASection({
             </div>
           </div>
 
-          {/* Right — white inset panel */}
+          {/* Right, white inset panel */}
           <div className="p-5 lg:p-6">
             <div className="rounded-xl overflow-hidden h-full bg-white relative flex flex-col justify-center" style={{ minHeight: 320 }}>
                 <img

@@ -261,7 +261,7 @@ export const newsItems: NewsItem[] = [
     excerpt: "AWTG's CEO Abbey Alidoosti joined a deployment best practice panel focused on collaborative work with local authorities.",
   },
   {
-    title: "Introducing AWTG's Evolved Network-in-a-Box – Powered by RAN Automation",
+    title: "Introducing AWTG's Evolved Network-in-a-Box, Powered by RAN Automation",
     date: 'May 20, 2025',
     category: 'Private Networks',
     excerpt: 'AWTG introduced an evolved Network-in-a-Box and Cells on Wheels solution for events, pop-up venues, rural communities and temporary deployments.',
@@ -345,7 +345,7 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG opened its Network Operations Centre to companies across the UK to support innovative telecom and IT network operations.',
   },
   {
-    title: 'AWTG Brings PNaaS at MWC 2025 – The Next Evolution in Private 5G Network Solutions',
+    title: 'AWTG Brings PNaaS at MWC 2025, The Next Evolution in Private 5G Network Solutions',
     date: 'February 28, 2025',
     category: 'Private Networks',
     excerpt: 'AWTG introduced Private Network as a Service at MWC 2025 to simplify and accelerate enterprise mobile private network adoption.',
@@ -477,7 +477,7 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG presented connectivity developments at the Smart and Connected Social Places event at Glasgow City Chambers.',
   },
   {
-    title: 'AWTG to Speak in Smart and Connected Social Places – Glasgow',
+    title: 'AWTG to Speak in Smart and Connected Social Places, Glasgow',
     date: 'October 17, 2024',
     category: 'Telecommunications',
     excerpt: "AWTG announced speaker participation at Glasgow's Smart and Connected Social Places event, discussing SCONDA and urban connectivity.",
@@ -495,7 +495,7 @@ export const newsItems: NewsItem[] = [
     excerpt: 'AWTG exhibited private and enterprise network innovations across telecoms, AI and IoT at PortComms 2024.',
   },
   {
-    title: "iTRUSTRIC – Securing Open RAN with AWTG's Advanced Solution",
+    title: "iTRUSTRIC, Securing Open RAN with AWTG's Advanced Solution",
     date: 'October 7, 2024',
     category: 'Telecommunications',
     excerpt: 'AWTG introduced iTRUSTRIC, a security solution designed to protect Open RAN networks, improve visibility and support compliance.',

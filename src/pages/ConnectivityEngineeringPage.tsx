@@ -44,7 +44,7 @@ const data: SectorPageData = {
     subtitle:
       'AWTG helps engineering and infrastructure organisations connect sites, assets, teams and systems through secure digital infrastructure.',
     description:
-      'Engineering projects often involve complex sites, technical teams, distributed assets and operational data. AWTG brings experience in telecoms, 5G, IoT, software, secure infrastructure and innovation programmes — allowing us to support engineering organisations that need better connectivity across sites, systems and assets.',
+      'Engineering projects often involve complex sites, technical teams, distributed assets and operational data. AWTG brings experience in telecoms, 5G, IoT, software, secure infrastructure and innovation programmes, allowing us to support engineering organisations that need better connectivity across sites, systems and assets.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faWrench,
     visualItems: [
@@ -78,7 +78,7 @@ const data: SectorPageData = {
       {
         icon: faWifi,
         title: 'Connectivity gaps at project sites',
-        desc: 'Project locations frequently lack appropriate connectivity infrastructure — creating barriers to operational monitoring, team communications and data-driven decision making.',
+        desc: 'Project locations frequently lack appropriate connectivity infrastructure, creating barriers to operational monitoring, team communications and data-driven decision making.',
       },
     ],
   },
@@ -91,7 +91,7 @@ const data: SectorPageData = {
       {
         icon: faWifi,
         title: 'Site and wireless connectivity',
-        desc: 'Connectivity for operational sites, technical environments, project locations and distributed teams — including advanced wireless and private networks where standard connectivity falls short.',
+        desc: 'Connectivity for operational sites, technical environments, project locations and distributed teams, including advanced wireless and private networks where standard connectivity falls short.',
         bullets: [
           'Site connectivity for project and operational environments',
           'Advanced wireless and private networks where required',
@@ -103,7 +103,7 @@ const data: SectorPageData = {
       {
         icon: faMicrochip,
         title: 'Connected assets and data platforms',
-        desc: 'IoT and sensor infrastructure to support visibility across equipment, environmental conditions or operational assets — connected through to data platforms and reporting tools that support operational decisions.',
+        desc: 'IoT and sensor infrastructure to support visibility across equipment, environmental conditions or operational assets, connected through to data platforms and reporting tools that support operational decisions.',
         bullets: [
           'Asset and equipment connectivity foundations',
           'Environmental and operational monitoring where required',
@@ -135,7 +135,7 @@ const data: SectorPageData = {
       {
         icon: faWifi,
         title: 'Site and project connectivity',
-        desc: 'Support teams working across complex, distributed or technical environments — providing reliable connectivity for project sites, field operations and multi-site programmes.',
+        desc: 'Support teams working across complex, distributed or technical environments, providing reliable connectivity for project sites, field operations and multi-site programmes.',
       },
       {
         icon: faMicrochip,
@@ -163,12 +163,12 @@ const data: SectorPageData = {
       {
         icon: faArrowTrendUp,
         title: 'Better site and asset connectivity',
-        desc: 'Sites, assets and operational systems connected reliably — removing the infrastructure barriers that slow project delivery and limit operational visibility.',
+        desc: 'Sites, assets and operational systems connected reliably, removing the infrastructure barriers that slow project delivery and limit operational visibility.',
       },
       {
         icon: faUsers,
         title: 'Engineering teams better connected',
-        desc: 'Field and project teams with the digital access they need — reducing the communication and information gaps that create rework and delay.',
+        desc: 'Field and project teams with the digital access they need, reducing the communication and information gaps that create rework and delay.',
       },
       {
         icon: faCloud,
@@ -178,7 +178,7 @@ const data: SectorPageData = {
       {
         icon: faGlobe,
         title: 'Visibility across distributed sites',
-        desc: 'Connected monitoring across project sites and technical environments — improving situational awareness for engineering leaders and project teams.',
+        desc: 'Connected monitoring across project sites and technical environments, improving situational awareness for engineering leaders and project teams.',
       },
     ],
   },

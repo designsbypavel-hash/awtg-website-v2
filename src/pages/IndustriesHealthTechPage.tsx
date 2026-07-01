@@ -62,7 +62,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faHeartPulse,
-        title: 'iHS — Intelligent Health Solution',
+        title: 'iHS, Intelligent Health Solution',
         desc: 'A comprehensive electronic health record platform designed to streamline clinical documentation, patient data management and care coordination across NHS environments.',
         bullets: [
           'Clinical documentation and electronic health records management',
@@ -74,7 +74,7 @@ const data: SectorPageData = {
       },
       {
         icon: faHouseChimney,
-        title: 'iCAL — Intelligent Connected Assistive Living',
+        title: 'iCAL, Intelligent Connected Assistive Living',
         desc: 'Smart home technology and IoT integration enabling independent living for elderly and vulnerable individuals with real-time remote monitoring and care alerts.',
         bullets: [
           'IoT integration for remote patient monitoring and care alerts',
@@ -87,7 +87,7 @@ const data: SectorPageData = {
       {
         icon: faCode,
         title: 'Clinical Software Development',
-        desc: 'Purpose-built applications for clinical use — GDPR-compliant, interoperable with NHS systems and designed around the real needs of practitioners and patients.',
+        desc: 'Purpose-built applications for clinical use, GDPR-compliant, interoperable with NHS systems and designed around the real needs of practitioners and patients.',
         bullets: [
           'Purpose-built applications designed for clinical environments',
           'GDPR-compliant and NHS-interoperable architecture',
@@ -106,13 +106,13 @@ const data: SectorPageData = {
     items: [
       {
         icon: faEye,
-        title: 'VRBA — Virtual Reality Behavioural Activation',
+        title: 'VRBA, Virtual Reality Behavioural Activation',
         desc: 'Immersive VR-based therapy delivery for mental health and behavioural rehabilitation, bringing evidence-based treatment to patients wherever they are.',
       },
       {
         icon: faRotate,
         title: 'Digital health transformation',
-        desc: 'Strategy through to delivery — redesigning clinical workflows, digitising paper-based processes and modernising legacy infrastructure across NHS trusts.',
+        desc: 'Strategy through to delivery, redesigning clinical workflows, digitising paper-based processes and modernising legacy infrastructure across NHS trusts.',
       },
       {
         icon: faMicrochip,
@@ -127,12 +127,12 @@ const data: SectorPageData = {
       {
         icon: faMobile,
         title: 'Patient and practitioner applications',
-        desc: 'Mobile-first portals and apps that improve access, communication and self-management for patients — and reduce administrative overhead for clinical teams.',
+        desc: 'Mobile-first portals and apps that improve access, communication and self-management for patients, and reduce administrative overhead for clinical teams.',
       },
       {
         icon: faCloud,
         title: 'Cloud-based healthcare platforms',
-        desc: 'Scalable, resilient cloud infrastructure for healthcare data, analytics and AI workloads — with full compliance, disaster recovery and 99.99% uptime SLAs.',
+        desc: 'Scalable, resilient cloud infrastructure for healthcare data, analytics and AI workloads, with full compliance, disaster recovery and 99.99% uptime SLAs.',
       },
     ],
   },

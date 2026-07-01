@@ -377,7 +377,7 @@ export default function CareerApplyPage() {
                         id="sponsorship"
                         value={form.sponsorship}
                         onChange={set('sponsorship')}
-                        options={['No', 'Yes, I will require sponsorship', 'Unsure — happy to discuss']}
+                        options={['No', 'Yes, I will require sponsorship', 'Unsure, happy to discuss']}
                         placeholder="Please select"
                         required
                       />

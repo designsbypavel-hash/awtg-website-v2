@@ -12,7 +12,7 @@ import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { roles as openRoles, getRoleHref } from './CareerRoleDetailPage'
 
 const values: { icon: IconDefinition; title: string; desc: string }[] = [
-  { icon: faLightbulb,     title: 'Innovation at the core',    desc: 'At the frontier of 5G, Open RAN and AI — working on real-world deployments that push the boundaries of what networks can do.' },
+  { icon: faLightbulb,     title: 'Innovation at the core',    desc: 'At the frontier of 5G, Open RAN and AI, working on real-world deployments that push the boundaries of what networks can do.' },
   { icon: faUsers,         title: 'Brilliant, diverse people', desc: 'Our team spans engineers, researchers, consultants and strategists from across the globe, united by a passion for connectivity.' },
   { icon: faArrowTrendUp,  title: 'Grow with purpose',         desc: 'From dedicated learning budgets to hands-on project exposure, your professional development is built into how we work every day.' },
   { icon: faGlobe,         title: 'Meaningful global impact',  desc: 'Your work will connect communities, power smart cities and help enterprises operate more efficiently across three continents.' },
@@ -35,7 +35,7 @@ export default function CareersPage() {
 
   return (
     <>
-      {/* ── HERO — full-bleed image, no text on photo ── */}
+      {/* -- HERO, full-bleed image, no text on photo -- */}
       <section className="relative overflow-hidden" style={{ minHeight: 640 }}>
         <img
           src="/images/insights/mobile-networks.jpg"
@@ -83,7 +83,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ── STATS STRIP ── */}
+      {/* -- STATS STRIP -- */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
@@ -110,10 +110,10 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ── ALTERNATING PANELS ── */}
+      {/* -- ALTERNATING PANELS -- */}
       <div className="overflow-hidden">
 
-        {/* Panel 1 — Why AWTG: text left, image right */}
+        {/* Panel 1, Why AWTG: text left, image right */}
         <div className="grid lg:grid-cols-2" style={{ minHeight: 580 }}>
           <div className="flex items-center bg-white" style={{ padding: '80px clamp(28px, 5.5vw, 96px)' }}>
             <div style={{ maxWidth: 520 }}>
@@ -149,7 +149,7 @@ export default function CareersPage() {
           </div>
         </div>
 
-        {/* Panel 2 — Benefits: image left, text right */}
+        {/* Panel 2, Benefits: image left, text right */}
         <div className="grid lg:grid-cols-2" style={{ minHeight: 560 }}>
           <div className="relative overflow-hidden" style={{ minHeight: 440, background: '#0a1628' }}>
             <img src="/images/insights/private-networks.jpg" alt="Benefits at AWTG"
@@ -186,7 +186,7 @@ export default function CareersPage() {
         </div>
       </div>
 
-      {/* ── PULL QUOTE — navy ── */}
+      {/* -- PULL QUOTE, navy -- */}
       <section className="py-24 bg-[#0a1628] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-gradient-to-bl from-[#228DC1]/15 to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[300px] bg-gradient-to-tr from-[#228DC1]/08 to-transparent pointer-events-none" />
@@ -194,7 +194,7 @@ export default function CareersPage() {
           <div className="max-w-3xl">
             <div className="text-[#1a7aab] text-[72px] font-serif leading-none mb-4 opacity-30 select-none">&ldquo;</div>
             <p className="text-white text-xl lg:text-2xl font-light leading-[1.65] mb-8">
-              At AWTG, your work connects communities, powers smart cities and shapes the future of communications — across three continents and counting.
+              At AWTG, your work connects communities, powers smart cities and shapes the future of communications, across three continents and counting.
             </p>
             <div className="flex items-center gap-4">
               <p className="text-white/45 text-[12px] font-bold uppercase tracking-[0.2em]">AWTG People Team</p>
@@ -203,7 +203,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ── OPEN ROLES ── */}
+      {/* -- OPEN ROLES -- */}
       <section id="open-roles" className="py-24 bg-[#f8fafc] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="grid lg:grid-cols-[minmax(0,1fr)_auto] gap-8 items-end mb-12">
@@ -275,7 +275,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ── SPECULATIVE / CTA — alternating panel with image ── */}
+      {/* -- SPECULATIVE / CTA, alternating panel with image -- */}
       <div className="grid lg:grid-cols-2" style={{ minHeight: 460 }}>
         <div className="relative overflow-hidden" style={{ background: '#0a1628', minHeight: 300 }}>
           <img src="/images/insights/ai-lab.jpg" alt="AI technology workspace at AWTG"

@@ -44,7 +44,7 @@ const data: SectorPageData = {
     subtitle:
       'Campus wireless, safeguarding-compliant networks and managed infrastructure services for schools, colleges and universities.',
     description:
-      'AWTG designs and deploys network infrastructure for educational institutions — from primary school to university campus — meeting DfE requirements, online safety standards and the connectivity demands of modern teaching and learning.',
+      'AWTG designs and deploys network infrastructure for educational institutions, from primary school to university campus, meeting DfE requirements, online safety standards and the connectivity demands of modern teaching and learning.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faGraduationCap,
     visualItems: [
@@ -63,7 +63,7 @@ const data: SectorPageData = {
       {
         icon: faUsers,
         title: 'High device density',
-        desc: 'Modern classrooms support dozens of simultaneous devices — student laptops, tablets, interactive displays and IoT sensors — placing significant demands on wireless infrastructure.',
+        desc: 'Modern classrooms support dozens of simultaneous devices, student laptops, tablets, interactive displays and IoT sensors, placing significant demands on wireless infrastructure.',
       },
       {
         icon: faShield,
@@ -86,12 +86,12 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for education',
     intro:
-      'AWTG provides network infrastructure services tailored to educational institutions — combining technical expertise with an understanding of the DfE and safeguarding requirements that govern school networking.',
+      'AWTG provides network infrastructure services tailored to educational institutions, combining technical expertise with an understanding of the DfE and safeguarding requirements that govern school networking.',
     items: [
       {
         icon: faWifi,
         title: 'Campus wireless infrastructure',
-        desc: 'High-density Wi-Fi designed for educational environments — providing reliable coverage in classrooms, libraries, sports halls and outdoor teaching areas.',
+        desc: 'High-density Wi-Fi designed for educational environments, providing reliable coverage in classrooms, libraries, sports halls and outdoor teaching areas.',
         bullets: [
           'RF survey and design for educational building types',
           'High-density access point deployment for classroom environments',
@@ -115,7 +115,7 @@ const data: SectorPageData = {
       {
         icon: faCloud,
         title: 'Managed and cloud-ready connectivity',
-        desc: 'Managed connectivity services that keep educational networks performing reliably — with cloud-ready architecture for Microsoft 365, Google Workspace and cloud-hosted learning platforms.',
+        desc: 'Managed connectivity services that keep educational networks performing reliably, with cloud-ready architecture for Microsoft 365, Google Workspace and cloud-hosted learning platforms.',
         bullets: [
           'Managed NOC with education-aware monitoring',
           'Optimised routing for cloud-hosted educational platforms',
@@ -135,17 +135,17 @@ const data: SectorPageData = {
       {
         icon: faWifi,
         title: 'Campus-wide wireless rollout',
-        desc: 'End-to-end wireless programmes for schools and universities — survey, design, deployment and commissioning across all teaching and support spaces.',
+        desc: 'End-to-end wireless programmes for schools and universities, survey, design, deployment and commissioning across all teaching and support spaces.',
       },
       {
         icon: faShield,
         title: 'Online safety and content filtering',
-        desc: 'DfE-compliant internet safety filtering and monitoring for schools — meeting statutory safeguarding obligations with appropriate controls and reporting.',
+        desc: 'DfE-compliant internet safety filtering and monitoring for schools, meeting statutory safeguarding obligations with appropriate controls and reporting.',
       },
       {
         icon: faNetworkWired,
         title: 'School and MAT network programmes',
-        desc: 'Consistent, well-managed network infrastructure across multi-academy trusts — reducing fragmentation and operational overhead across multiple sites.',
+        desc: 'Consistent, well-managed network infrastructure across multi-academy trusts, reducing fragmentation and operational overhead across multiple sites.',
       },
       {
         icon: faCloud,
@@ -173,7 +173,7 @@ const data: SectorPageData = {
       {
         icon: faShield,
         title: 'Safeguarding compliance met',
-        desc: 'Networks designed and managed to meet DfE and Keeping Children Safe in Education requirements — reducing compliance risk for school leadership.',
+        desc: 'Networks designed and managed to meet DfE and Keeping Children Safe in Education requirements, reducing compliance risk for school leadership.',
       },
       {
         icon: faUsers,

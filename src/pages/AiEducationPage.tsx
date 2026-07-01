@@ -63,12 +63,12 @@ const data: SectorPageData = {
   challenges: {
     heading: 'The pressures facing higher education today',
     intro:
-      'Universities are under pressure to adopt AI, improve student engagement, strengthen formative assessment and protect academic integrity — without losing control of pedagogy, data or institutional governance.',
+      'Universities are under pressure to adopt AI, improve student engagement, strengthen formative assessment and protect academic integrity, without losing control of pedagogy, data or institutional governance.',
     items: [
       {
         icon: faBrain,
         title: 'Generic AI does not improve learning',
-        desc: 'Generic AI can help students move faster, but speed alone does not improve learning. Universities need tools grounded in course structure, approved content and educator intent — not blank chatbot prompts.',
+        desc: 'Generic AI can help students move faster, but speed alone does not improve learning. Universities need tools grounded in course structure, approved content and educator intent, not blank chatbot prompts.',
       },
       {
         icon: faClipboardList,
@@ -83,7 +83,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'AI governance and academic integrity',
-        desc: 'Institutions need AI that aligns with teaching quality, data governance and academic integrity — with auditability, source traceability and institution-level policy control built in from the start.',
+        desc: 'Institutions need AI that aligns with teaching quality, data governance and academic integrity, with auditability, source traceability and institution-level policy control built in from the start.',
       },
     ],
   },
@@ -91,7 +91,7 @@ const data: SectorPageData = {
   supports: {
     heading: 'What Aruva delivers for universities',
     intro:
-      'Aruva connects the full academic lifecycle — course design, adaptive support, formative assessment, performance profiling and institutional analytics — into one governed platform designed for higher education.',
+      'Aruva connects the full academic lifecycle, course design, adaptive support, formative assessment, performance profiling and institutional analytics, into one governed platform designed for higher education.',
     items: [
       {
         icon: faBookOpen,
@@ -138,7 +138,7 @@ const data: SectorPageData = {
   useCases: {
     heading: 'Platform capabilities',
     intro:
-      'Aruva brings the core elements of teaching and learning into one governed platform — from course design and adaptive tutoring through to formative assessment, performance profiling and institutional analytics.',
+      'Aruva brings the core elements of teaching and learning into one governed platform, from course design and adaptive tutoring through to formative assessment, performance profiling and institutional analytics.',
     items: [
       {
         icon: faBookOpen,
@@ -153,7 +153,7 @@ const data: SectorPageData = {
       {
         icon: faClipboardList,
         title: 'Formative assessment intelligence',
-        desc: 'Supports quizzes, rubrics, feedback checks and early learning-gap detection — giving educators insight into student understanding before final outcomes are fixed.',
+        desc: 'Supports quizzes, rubrics, feedback checks and early learning-gap detection, giving educators insight into student understanding before final outcomes are fixed.',
       },
       {
         icon: faBrain,
@@ -176,7 +176,7 @@ const data: SectorPageData = {
   outcomes: {
     heading: 'What Aruva delivers',
     intro:
-      'Aruva is designed to create measurable improvement across the whole academic lifecycle — better student support, more effective educators, stronger formative assessment and institution-level learning intelligence.',
+      'Aruva is designed to create measurable improvement across the whole academic lifecycle, better student support, more effective educators, stronger formative assessment and institution-level learning intelligence.',
     items: [
       {
         icon: faArrowTrendUp,
@@ -196,7 +196,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'Responsible, governed AI adoption',
-        desc: 'Institutions gain a practical route from AI experimentation to accountable deployment — with auditability, traceability and governance built into the platform from day one.',
+        desc: 'Institutions gain a practical route from AI experimentation to accountable deployment, with auditability, traceability and governance built into the platform from day one.',
       },
     ],
   },

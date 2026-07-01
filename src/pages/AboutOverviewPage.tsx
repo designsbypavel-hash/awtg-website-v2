@@ -16,8 +16,8 @@ const contentSections = [
     label: 'Our Story',
     title: 'Founded in 2006 to provide advanced professional services catering to the specific needs of the telecommunications industry.',
     paragraphs: [
-      'Founded in 2006 to provide advanced professional services catering to the specific needs of the telecommunications industry, AWTG has built a strong reputation by focusing on customer satisfaction—utilising our considerable skills and expertise to deliver superior results and returns-on-investments for our clients.',
-      'In 2014, AWTG deployed the first 5G test bed in the UK—including the first developed 5G core network in the UK and the provisioning of software solutions, support and engagement as part of this. Since then, AWTG has designed and deployed 5G and other mobile and wireless communications networks for numerous other clients, and continues to be the leading services company delivering 5G solutions for various market verticals.',
+      'Founded in 2006 to provide advanced professional services catering to the specific needs of the telecommunications industry, AWTG has built a strong reputation by focusing on customer satisfaction, utilising our considerable skills and expertise to deliver superior results and returns-on-investments for our clients.',
+      'In 2014, AWTG deployed the first 5G test bed in the UK, including the first developed 5G core network in the UK and the provisioning of software solutions, support and engagement as part of this. Since then, AWTG has designed and deployed 5G and other mobile and wireless communications networks for numerous other clients, and continues to be the leading services company delivering 5G solutions for various market verticals.',
       'AWTG has also delivered various successful government projects that are both network deployment and consultancy centric, and has deployed thousands of 4G and 5G sites across three continents over the last 17 years.',
     ],
   },
@@ -171,7 +171,7 @@ export default function AboutOverviewPage() {
                 </div>
               </div>
 
-              {/* Image panel — no text on image */}
+              {/* Image panel, no text on image */}
               <div
                 className={`relative overflow-hidden ${isReversed ? 'lg:order-1' : ''}`}
                 style={{ minHeight: 420, background: '#0a1628' }}

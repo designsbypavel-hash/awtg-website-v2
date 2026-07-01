@@ -1,4 +1,4 @@
-﻿import { useState, useRef, useEffect, type CSSProperties } from 'react'
+import { useState, useRef, useEffect, type CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faXmark, faChevronDown, faPaperPlane, faMicrophone, faRobot, faArrowRightFromBracket, faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
@@ -432,7 +432,7 @@ function SecurityComplianceSection() {
   )
 }
 
-// ─── Figma design tokens (node 2691:17369) ───────────────────────────────────
+// --- Figma design tokens (node 2691:17369) -----------------------------------
 const KAI_HDR_GRAD = 'linear-gradient(126deg,#4C97C3 0%,#6AC1EF 28.5%,#BEF3FF 43.36%,#67D7E4 50.91%,#6AC1EF 64.5%)'
 // const KAI_BORDER   = '#4c97c3'          // gradient border handled by wrapper padding
 const KAI_MSG_AI   = '#f4fbff'          // AI message row bg
@@ -453,8 +453,8 @@ const VOICE_SCRIPT: VoiceTurn[] = [
   { speaker: 'ai',   text: "Yes! I've updated the address. You'll receive a confirmation shortly." },
 ]
 
-// ─── Voice script (drives the animated voice phase) ──────────────────────────
-// ─── Chat script (mirrors voice, revealed all at once after voice ends) ───────
+// --- Voice script (drives the animated voice phase) --------------------------
+// --- Chat script (mirrors voice, revealed all at once after voice ends) -------
 type ChatRole = 'ai' | 'user' | 'signal' | 'map' | 'chips'
 const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
   { role: 'ai',     text: "Hi there! \nHow can I help you today?" },
@@ -469,7 +469,7 @@ const CHAT_SCRIPT: { role: ChatRole; text: string; meta?: string }[] = [
   { role: 'chips',  text: '' },
 ]
 
-// ─── Delivery map widget ──────────────────────────────────────────────────────
+// --- Delivery map widget ------------------------------------------------------
 function MapWidget() {
   // Street colour and block colours match the reference screenshot
   const STREET  = '#f5f2ec'
@@ -482,39 +482,39 @@ function MapWidget() {
         {/* Base */}
         <rect width="360" height="142" fill="#ece7dc"/>
 
-        {/* ── Vertical streets ── */}
+        {/* -- Vertical streets -- */}
         {[0, 94, 188, 282, 351].map(x => (
           <rect key={x} x={x} width="9" height="142" fill={STREET}/>
         ))}
 
-        {/* ── Horizontal streets ── */}
+        {/* -- Horizontal streets -- */}
         <rect y="0"   width="360" height="9"  fill={STREET}/>
         <rect y="59"  width="360" height="16" fill={STREET}/>   {/* route street */}
         <rect y="113" width="360" height="9"  fill={STREET}/>
         <rect y="133" width="360" height="9"  fill={STREET}/>
 
-        {/* ── Row 1 blocks  (y 9“59) ── */}
+        {/* -- Row 1 blocks  (y 9“59) -- */}
         <rect x="9"   y="9" width="85" height="50" fill={BLOCK}/>  {/* Col1 tan  */}
         <rect x="103" y="9" width="85" height="50" fill={GREEN}/>  {/* Col2 GREEN */}
         <rect x="197" y="9" width="85" height="50" fill={BLOCK}/>  {/* Col3 tan  */}
         <rect x="291" y="9" width="60" height="50" fill={BLOCK}/>  {/* Col4 tan  */}
 
-        {/* ── Row 2 blocks  (y 75“113) ── */}
+        {/* -- Row 2 blocks  (y 75“113) -- */}
         <rect x="9"   y="75" width="85" height="38" fill={GREEN}/>  {/* Col1 GREEN */}
         <rect x="103" y="75" width="85" height="38" fill={BLOCK}/>  {/* Col2 tan  */}
         <rect x="197" y="75" width="85" height="38" fill={BLOCK}/>  {/* Col3 tan  */}
         <rect x="291" y="75" width="60" height="38" fill={BLOCK}/>  {/* Col4 tan  */}
 
-        {/* ── Row 3 strip  (y 122“133) ── */}
+        {/* -- Row 3 strip  (y 122“133) -- */}
         {[9, 103, 197, 291].map((x, i) => (
           <rect key={i} x={x} y="122" width={i === 3 ? 60 : 85} height="11" fill={BLOCK}/>
         ))}
 
-        {/* ── Route line ── */}
+        {/* -- Route line -- */}
         <line x1="38" y1="67" x2="287" y2="67"
               stroke="#1a73e8" strokeWidth="2.5" strokeLinecap="round"/>
 
-        {/* ── Arrow chevrons along route ── */}
+        {/* -- Arrow chevrons along route -- */}
         {[108, 183, 248].map(x => (
           <polyline key={x}
             points={`${x-6},62 ${x},67 ${x-6},72`}
@@ -522,10 +522,10 @@ function MapWidget() {
             strokeLinecap="round" strokeLinejoin="round" opacity="0.75"/>
         ))}
 
-        {/* ── Current position - hollow blue ring ── */}
+        {/* -- Current position - hollow blue ring -- */}
         <circle cx="38" cy="67" r="9" fill="white" stroke="#1a73e8" strokeWidth="2.5"/>
 
-        {/* ── Destination - classic map pin (pointed bottom, circle top) ──
+        {/* -- Destination - classic map pin (pointed bottom, circle top) --
              Tip at (287, 75), circle centre at (287, 46), radius 17        */}
         <path
           d="M287,75 C276,67 270,57 270,46 A17,17,0,1,1,304,46 C304,57 298,67 287,75 Z"
@@ -533,7 +533,7 @@ function MapWidget() {
         />
         <circle cx="287" cy="44" r="7" fill="white" opacity="0.92"/>
 
-        {/* ── ETA badge ── */}
+        {/* -- ETA badge -- */}
         <rect x="183" y="116" width="172" height="21" rx="4" fill="white" opacity="0.93"/>
         <circle cx="196" cy="126.5" r="4" fill="#E53935"/>
         <text x="204" y="131" fontSize="11" fill="#374151"
@@ -545,7 +545,7 @@ function MapWidget() {
   )
 }
 
-// ─── Voice + Chat demo ────────────────────────────────────────────────────────
+// --- Voice + Chat demo --------------------------------------------------------
 type OrbMode   = 'listen' | 'user' | 'ai'
 type DemoPhase = 'voice' | 'chat' | 'csat' | 'csat-out'
 
@@ -637,7 +637,7 @@ function KaiChatDemo() {
       <div style={{ width: '100%', height: '100%', padding: 7, borderRadius: 33, background: KAI_HDR_GRAD, boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)' }}>
         <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: 30, overflow: 'hidden', background: KAI_HDR_GRAD }}>
 
-          {/* ── SHARED HEADER - always on top, never transitions ── */}
+          {/* -- SHARED HEADER - always on top, never transitions -- */}
           <div style={{
             position: 'absolute', top: 0, left: 0, right: 0, height: 73,
             background: KAI_HDR_GRAD,
@@ -653,7 +653,7 @@ function KaiChatDemo() {
             <FontAwesomeIcon icon={faChevronDown} style={{ width: 18, height: 18, color: KAI_ICON_DARK, opacity: 0.72, marginLeft: 7 }} />
           </div>
 
-          {/* ── VOICE VIEW ── */}
+          {/* -- VOICE VIEW -- */}
           <div style={{
             position: 'absolute', inset: 0,
             background: 'linear-gradient(180deg, #071220 0%, #0c1b30 55%, #08152a 100%)',
@@ -663,14 +663,14 @@ function KaiChatDemo() {
             zIndex: 1,
           }}>
 
-            {/* ── Main body: transcript TOP, orb BOTTOM ── */}
+            {/* -- Main body: transcript TOP, orb BOTTOM -- */}
             <div style={{
               position: 'absolute', top: 73, left: 0, right: 0, bottom: 58,
               display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
               padding: '6px 0 14px',
             }}>
 
-              {/* ── TOP: Kai VOICE label + live transcript ── */}
+              {/* -- TOP: Kai VOICE label + live transcript -- */}
               <div style={{ padding: '0 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
@@ -712,7 +712,7 @@ function KaiChatDemo() {
                 )}
               </div>
 
-              {/* ── BOTTOM: Orb + waveform + status ── */}
+              {/* -- BOTTOM: Orb + waveform + status -- */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 112, height: 112, borderRadius: '50%',
@@ -766,7 +766,7 @@ function KaiChatDemo() {
             </div>
           </div>
 
-          {/* ── CHAT VIEW (full conversation revealed at once) ── */}
+          {/* -- CHAT VIEW (full conversation revealed at once) -- */}
           <div style={{
             position: 'absolute', inset: 0,
             background: KAI_HDR_GRAD,
@@ -977,10 +977,10 @@ function EscalationChart() {
 // ---------------------------------------------------------------------------
 
 function OmnichannelSection() {
-  // ─── Design tokens ──────────────────────────────────────────────────────
+  // --- Design tokens ------------------------------------------------------
   const CONN_CLR = '#4c97c3'
 
-  // ─── Telegram messages ──────────────────────────────────────────────────
+  // --- Telegram messages --------------------------------------------------
   const tgMsgs = [
     { from:'bot',  text:"Hi! I'm Kai \nHow can I help you today?",                                        time:'09:41' },
     { from:'user', text:'I need help raising a complaint about a missed delivery',                            time:'09:42', ticks:'✓✓' },
@@ -988,7 +988,7 @@ function OmnichannelSection() {
     { from:'user', text:'Brilliant, thank you!',                                                              time:'09:43', ticks:'✓✓' },
   ]
 
-  // ─── Kai web messages ───────────────────────────────────────────────────
+  // --- Kai web messages ---------------------------------------------------
   const kaiMsgs: { from:'ai'|'user'; text:string; meta?:string; signal?:string }[] = [
     { from:'ai',   text:"Hi there! \nWhat can I help you with today?" },
     { from:'user', text:"I'd like to upgrade my subscription to the Pro plan." },
@@ -997,7 +997,7 @@ function OmnichannelSection() {
     { from:'ai',   text:"Pro is £299/month. I've emailed a full comparison and a one-click upgrade link.", signal:'Upgraded 44s CSAT sent' },
   ]
 
-  // ─── Channel icon box ────────────────────────────────────────────────
+  // --- Channel icon box ------------------------------------------------
   const ChIcon = ({
     children,
   }: { color?:string; bg?:string; glow?:boolean; children:React.ReactNode }) => (
@@ -1012,7 +1012,7 @@ function OmnichannelSection() {
     </div>
   )
 
-  // ─── Telegram icon path ───────────────────────────────────────────────
+  // --- Telegram icon path -----------------------------------------------
   const TgPath = ({ size = 20, fill = '#229ED9' }: { size?:number; fill?:string }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={fill}>
       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
@@ -1066,11 +1066,11 @@ function OmnichannelSection() {
 
       <div className="relative max-w-7xl mx-auto px-8 lg:px-12 pt-24 pb-20">
 
-        {/* ── Centred heading ── */}
+        {/* -- Centred heading -- */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="font-heading text-white mb-5">One AI.{' '}<span className="text-[#67c5f3]">Every channel.</span></h2>
           <p className="text-white/65 text-[16px] font-normal leading-[1.7]">
-            Kai meets customers on Telegram, your website or email - with the same intelligence, context and resolution on every channel.
+            Kai meets customers on Telegram, your website or email, with the same intelligence, context and resolution on every channel.
           </p>
         </div>
 
@@ -1079,7 +1079,7 @@ function OmnichannelSection() {
          */}
         <div className="hidden lg:block mx-auto w-full" style={{ maxWidth:1184 }}>
 
-          {/* ── Channel icon row (3-col grid matching panels) ── */}
+          {/* -- Channel icon row (3-col grid matching panels) -- */}
           <div className="grid grid-cols-3 gap-6 mb-0">
 
             {/* Left: WhatsApp Telegram Teams */}
@@ -1129,7 +1129,7 @@ function OmnichannelSection() {
             </div>
           </div>
 
-          {/* ── SVG connector ── */}
+          {/* -- SVG connector -- */}
           <svg
             width="100%" height="80"
             viewBox="0 0 1000 80"
@@ -1155,7 +1155,7 @@ function OmnichannelSection() {
             ))}
           </svg>
 
-          {/* ── Three channel panels ── */}
+          {/* -- Three channel panels -- */}
           <div className="grid grid-cols-3 gap-6">
 
             {/*  LEFT: TELEGRAM  */}
@@ -1288,7 +1288,7 @@ function OmnichannelSection() {
               {/* Thread header */}
               <div style={{ padding:'12px 14px 8px', borderBottom:'1px solid #f0f0f0', flexShrink:0 }}>
                 <p style={{ fontSize:14, fontWeight:600, color:'#202124', marginBottom:3, fontFamily:'Roboto,sans-serif' }}>
-                  RE: Subscription Upgrade - Pro Plan
+                  RE: Subscription Upgrade, Pro Plan
                 </p>
                 <div style={{ display:'flex', alignItems:'center', gap:5 }}>
                   <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>2 messages</span>
@@ -1334,7 +1334,7 @@ function OmnichannelSection() {
                 </div>
 
                 <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif' }}>
-                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics - at <strong>£299/month</strong>.
+                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics at <strong>£299/month</strong>.
                 </p>
                 <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif', marginTop:6 }}>
                   I've sent a one-click upgrade link to your inbox. Let me know if you have any questions!

@@ -208,10 +208,10 @@ export default function AboutSustainabilityPage() {
         </div>
       </section>
 
-      {/* ── CARBON REDUCTION PLAN ── */}
+      {/* -- CARBON REDUCTION PLAN -- */}
       <div id="carbon-reduction-plan" className="scroll-mt-14 overflow-hidden">
 
-        {/* Panel 1 — Commitment */}
+        {/* Panel 1, Commitment */}
         <div className="grid lg:grid-cols-2" style={{ minHeight: 540 }}>
           <div className="flex items-center bg-white" style={{ padding: '72px clamp(28px, 5vw, 88px)' }}>
             <div style={{ maxWidth: 520 }}>
@@ -244,7 +244,7 @@ export default function AboutSustainabilityPage() {
           </div>
         </div>
 
-        {/* Panel 2 — Emissions data */}
+        {/* Panel 2, Emissions data */}
         <div className="grid lg:grid-cols-2" style={{ minHeight: 540 }}>
           <div className="relative overflow-hidden" style={{ minHeight: 420, background: '#0a1628' }}>
             <img src="/images/insights/performance-testing.jpg" alt="Emissions reporting" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
@@ -290,7 +290,7 @@ export default function AboutSustainabilityPage() {
           </div>
         </div>
 
-        {/* Panel 3 — Projects */}
+        {/* Panel 3, Projects */}
         <div className="grid lg:grid-cols-2" style={{ minHeight: 580 }}>
           <div className="flex items-start bg-white" style={{ padding: '72px clamp(28px, 5vw, 88px)' }}>
             <div style={{ maxWidth: 560 }}>
@@ -326,7 +326,7 @@ export default function AboutSustainabilityPage() {
           </div>
         </div>
 
-        {/* Declaration — full width */}
+        {/* Declaration, full width */}
         <div className="bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-8 lg:px-12 py-16">
             <div className="border-l-[3px] border-[#228DC1] pl-8 max-w-4xl">
@@ -341,7 +341,7 @@ export default function AboutSustainabilityPage() {
               <p className="text-[#0a1628]/60 text-sm leading-[1.85]">This Carbon Reduction Plan has been reviewed and signed off by the management team.</p>
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <p className="text-[#0a1628] text-[14px] font-semibold">
-                  Signed: Abbey Alidoosti, Chief Executive Officer — 4th September 2024
+                  Signed: Abbey Alidoosti, Chief Executive Officer, 4th September 2024
                 </p>
               </div>
             </div>
@@ -349,10 +349,10 @@ export default function AboutSustainabilityPage() {
         </div>
       </div>
 
-      {/* ── SOCIAL VALUE STATEMENT ── */}
+      {/* -- SOCIAL VALUE STATEMENT -- */}
       <div id="social-value-statement" className="scroll-mt-14 overflow-hidden">
 
-        {/* Section intro — full width */}
+        {/* Section intro, full width */}
         <div className="bg-white">
           <div className="max-w-7xl mx-auto px-8 lg:px-12 py-20">
             <div className="grid lg:grid-cols-2 gap-12 items-end">

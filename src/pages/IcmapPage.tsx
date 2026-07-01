@@ -366,7 +366,7 @@ const steps = [
   },
 ]
 
-// Tablet mockup carousel — cycles through real iCMAP coverage screens (2G/3G/4G/5G)
+// Tablet mockup carousel, cycles through real iCMAP coverage screens (2G/3G/4G/5G)
 const ICMAP_HERO_SCREENS = [
   { label: '2G coverage', src: '/images/icmap-screens/2g.png' },
   { label: '3G coverage', src: '/images/icmap-screens/3g.png' },
@@ -399,7 +399,7 @@ function IcmapHeroDemo() {
     >
       <div className="absolute -inset-8 hidden lg:block pointer-events-none" style={{ background: 'radial-gradient(ellipse at 55% 45%, rgba(34,141,193,0.18) 0, rgba(34,141,193,0.08) 34%, transparent 72%)' }} />
 
-      {/* All screens stacked in the same grid cell — preloaded at mount, crossfade with no gap */}
+      {/* All screens stacked in the same grid cell, preloaded at mount, crossfade with no gap */}
       <div style={{ display: 'grid', filter: 'drop-shadow(0 30px 60px rgba(10,22,40,0.20)) drop-shadow(0 8px 20px rgba(10,22,40,0.10))' }}>
         {ICMAP_HERO_SCREENS.map((s, i) => (
           <img

@@ -44,7 +44,7 @@ const data: SectorPageData = {
     subtitle:
       'PSN-aligned network infrastructure, secure remote access and managed services for central and local government.',
     description:
-      'AWTG designs, deploys and manages connectivity solutions for public sector organisations — meeting the security, compliance and resilience requirements of government networking while supporting the demands of a modern, hybrid-working workforce.',
+      'AWTG designs, deploys and manages connectivity solutions for public sector organisations, meeting the security, compliance and resilience requirements of government networking while supporting the demands of a modern, hybrid-working workforce.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faLandmark,
     visualItems: [
@@ -63,12 +63,12 @@ const data: SectorPageData = {
       {
         icon: faShield,
         title: 'PSN and compliance requirements',
-        desc: 'Networks carrying public sector data must meet PSN Code of Connection and associated security requirements — with evidence for annual compliance assessment.',
+        desc: 'Networks carrying public sector data must meet PSN Code of Connection and associated security requirements, with evidence for annual compliance assessment.',
       },
       {
         icon: faNetworkWired,
         title: 'Fragmented legacy estate',
-        desc: 'Many public sector organisations operate connectivity built over decades — creating fragmentation, inconsistency and growing operational overhead.',
+        desc: 'Many public sector organisations operate connectivity built over decades, creating fragmentation, inconsistency and growing operational overhead.',
       },
       {
         icon: faCloud,
@@ -91,7 +91,7 @@ const data: SectorPageData = {
       {
         icon: faNetworkWired,
         title: 'PSN-aligned WAN and SD-WAN',
-        desc: 'Wide area network design and deployment aligned to PSN Code of Connection requirements — covering government sites from central departments to local authority offices.',
+        desc: 'Wide area network design and deployment aligned to PSN Code of Connection requirements, covering government sites from central departments to local authority offices.',
         bullets: [
           'PSN-compliant network architecture design',
           'SD-WAN for multi-site government connectivity',
@@ -103,7 +103,7 @@ const data: SectorPageData = {
       {
         icon: faCloud,
         title: 'Cloud and hybrid connectivity',
-        desc: 'Secure, performant connectivity to public cloud, G-Cloud hosted services and hybrid environments — designed for the demands of government digital transformation.',
+        desc: 'Secure, performant connectivity to public cloud, G-Cloud hosted services and hybrid environments, designed for the demands of government digital transformation.',
         bullets: [
           'Optimised connectivity to G-Cloud and government PaaS platforms',
           'Secure remote access for hybrid working staff',
@@ -115,7 +115,7 @@ const data: SectorPageData = {
       {
         icon: faShield,
         title: 'Managed security and compliance',
-        desc: 'Ongoing network security management, monitoring and compliance support — providing the operational assurance and evidence base that public sector organisations require.',
+        desc: 'Ongoing network security management, monitoring and compliance support, providing the operational assurance and evidence base that public sector organisations require.',
         bullets: [
           'Network security monitoring and threat detection',
           'PSN compliance evidence gathering and documentation',
@@ -135,12 +135,12 @@ const data: SectorPageData = {
       {
         icon: faNetworkWired,
         title: 'Government WAN and PSN connectivity',
-        desc: 'End-to-end WAN programmes aligned to PSN Code of Connection — connecting government sites with the security and resilience that public sector data demands.',
+        desc: 'End-to-end WAN programmes aligned to PSN Code of Connection, connecting government sites with the security and resilience that public sector data demands.',
       },
       {
         icon: faWifi,
         title: 'GovWifi and staff wireless',
-        desc: 'GovWifi-compliant wireless infrastructure for government offices, council buildings and public sector facilities — providing secure access for staff and visitors.',
+        desc: 'GovWifi-compliant wireless infrastructure for government offices, council buildings and public sector facilities, providing secure access for staff and visitors.',
       },
       {
         icon: faCloud,
@@ -155,7 +155,7 @@ const data: SectorPageData = {
       {
         icon: faLock,
         title: 'Secure remote access',
-        desc: 'Managed VPN and zero-trust network access for hybrid working public sector staff — secure, scalable and aligned to government security frameworks.',
+        desc: 'Managed VPN and zero-trust network access for hybrid working public sector staff, secure, scalable and aligned to government security frameworks.',
       },
     ],
   },
@@ -183,7 +183,7 @@ const data: SectorPageData = {
       {
         icon: faUsers,
         title: 'Hybrid workforce enabled',
-        desc: 'Secure, performant connectivity for office, home and remote working staff — removing the connectivity barriers to flexible public sector working.',
+        desc: 'Secure, performant connectivity for office, home and remote working staff, removing the connectivity barriers to flexible public sector working.',
       },
     ],
   },

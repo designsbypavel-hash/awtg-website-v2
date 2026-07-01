@@ -32,7 +32,7 @@ const studies = [
     tag: 'Network Economics',
     title: "AWTG's Service Assurance and Service Creation Platform",
     date: 'April 20, 2020',
-    excerpt: "A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
+    excerpt: "A GSMA-validated study with Telecom of Thailand, 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
   },
   {
     slug: 'central-london-benchmarking',
@@ -60,7 +60,7 @@ const studies = [
     tag: 'Mobile Services',
     title: 'Rich Communications Suite',
     date: 'June 23, 2012',
-    excerpt: "AWTG's analysis of the GSMA RCS-e initiative — how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
+    excerpt: "AWTG's analysis of the GSMA RCS-e initiative, how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
   },
   {
     slug: 'small-cell-site-acquisition',

@@ -44,7 +44,7 @@ const data: SectorPageData = {
     subtitle:
       'Multi-site SD-WAN, PCI DSS-compliant networks and customer Wi-Fi infrastructure for retail and commercial operations.',
     description:
-      'AWTG designs and manages network infrastructure for retail, hospitality and commercial organisations — providing consistent, secure connectivity across all sites and the compliance controls that commerce demands.',
+      'AWTG designs and manages network infrastructure for retail, hospitality and commercial organisations, providing consistent, secure connectivity across all sites and the compliance controls that commerce demands.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faStore,
     visualItems: [
@@ -58,7 +58,7 @@ const data: SectorPageData = {
   challenges: {
     heading: 'Network challenges in commerce and retail',
     intro:
-      'Retail and commercial operations need consistent, secure connectivity across every site — meeting compliance requirements while supporting the customer and operational demands of modern commerce.',
+      'Retail and commercial operations need consistent, secure connectivity across every site, meeting compliance requirements while supporting the customer and operational demands of modern commerce.',
     items: [
       {
         icon: faNetworkWired,
@@ -68,7 +68,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'PCI DSS compliance',
-        desc: 'Retail networks handling card payment data must meet PCI DSS requirements — with appropriate segmentation, encryption and annual compliance assessment evidence.',
+        desc: 'Retail networks handling card payment data must meet PCI DSS requirements, with appropriate segmentation, encryption and annual compliance assessment evidence.',
       },
       {
         icon: faWifi,
@@ -86,12 +86,12 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for commerce',
     intro:
-      'AWTG provides network infrastructure services for retail and commercial organisations — combining multi-site SD-WAN, PCI compliance expertise and customer-facing wireless in a single managed programme.',
+      'AWTG provides network infrastructure services for retail and commercial organisations, combining multi-site SD-WAN, PCI compliance expertise and customer-facing wireless in a single managed programme.',
     items: [
       {
         icon: faNetworkWired,
         title: 'Multi-site SD-WAN and WAN',
-        desc: 'Consistent, manageable connectivity across retail estates — SD-WAN architecture that delivers performance, centralised management and cost efficiency at scale.',
+        desc: 'Consistent, manageable connectivity across retail estates, SD-WAN architecture that delivers performance, centralised management and cost efficiency at scale.',
         bullets: [
           'Centralised policy management across all retail sites',
           'Application-aware routing for EPOS and operational systems',
@@ -103,7 +103,7 @@ const data: SectorPageData = {
       {
         icon: faShieldHalved,
         title: 'PCI DSS-compliant network design',
-        desc: 'Network architecture designed to meet PCI DSS requirements — with appropriate segmentation of cardholder data environments and the documentation that compliance demands.',
+        desc: 'Network architecture designed to meet PCI DSS requirements, with appropriate segmentation of cardholder data environments and the documentation that compliance demands.',
         bullets: [
           'Cardholder data environment segmentation and isolation',
           'Firewall and access control policy aligned to PCI DSS',
@@ -115,7 +115,7 @@ const data: SectorPageData = {
       {
         icon: faWifi,
         title: 'Customer Wi-Fi and retail IoT',
-        desc: 'High-quality customer-facing wireless infrastructure and segmented IoT connectivity across retail sites — improving customer experience and supporting operational IoT devices.',
+        desc: 'High-quality customer-facing wireless infrastructure and segmented IoT connectivity across retail sites, improving customer experience and supporting operational IoT devices.',
         bullets: [
           'Customer Wi-Fi with captive portal and analytics capability',
           'Separate network segments for customer, staff and IoT traffic',
@@ -135,22 +135,22 @@ const data: SectorPageData = {
       {
         icon: faNetworkWired,
         title: 'SD-WAN across the retail estate',
-        desc: 'Software-defined WAN providing consistent, centrally managed connectivity across multiple retail sites — with application performance visibility and cost efficiency.',
+        desc: 'Software-defined WAN providing consistent, centrally managed connectivity across multiple retail sites, with application performance visibility and cost efficiency.',
       },
       {
         icon: faShieldHalved,
         title: 'PCI DSS network programmes',
-        desc: 'End-to-end network design and compliance support for retail organisations — from gap assessment through to remediation, documentation and ongoing managed compliance.',
+        desc: 'End-to-end network design and compliance support for retail organisations, from gap assessment through to remediation, documentation and ongoing managed compliance.',
       },
       {
         icon: faWifi,
         title: 'Customer and venue Wi-Fi',
-        desc: 'Managed customer Wi-Fi infrastructure for stores, hospitality venues and commercial spaces — with analytics and captive portal capability to maximise value.',
+        desc: 'Managed customer Wi-Fi infrastructure for stores, hospitality venues and commercial spaces, with analytics and captive portal capability to maximise value.',
       },
       {
         icon: faMicrochip,
         title: 'Retail IoT connectivity',
-        desc: 'Segmented, managed connectivity for retail IoT estate — EPOS, digital signage, queue management, environmental monitoring and security systems.',
+        desc: 'Segmented, managed connectivity for retail IoT estate, EPOS, digital signage, queue management, environmental monitoring and security systems.',
       },
       {
         icon: faCloud,
@@ -168,7 +168,7 @@ const data: SectorPageData = {
       {
         icon: faArrowTrendUp,
         title: 'Consistent site performance',
-        desc: 'Every retail site operates with the same network quality and security standards — reducing the variability that creates operational and compliance risk.',
+        desc: 'Every retail site operates with the same network quality and security standards, reducing the variability that creates operational and compliance risk.',
       },
       {
         icon: faUsers,

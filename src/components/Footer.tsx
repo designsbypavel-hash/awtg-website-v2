@@ -32,8 +32,8 @@ const footerCols = [
   {
     title: 'AI',
     links: [
-      { label: 'Kai — Sales & Customer Services', href: '/products/kai' },
-      { label: 'Aruva — AI for Education', href: '/products/aruva' },
+      { label: 'Kai, Sales & Customer Services', href: '/products/kai' },
+      { label: 'Aruva, AI for Education', href: '/products/aruva' },
       { label: 'Education', href: '/ai/education' },
       { label: 'Health Tech', href: '/industries/health-tech' },
       { label: 'Commerce', href: '/ai/commerce' },
@@ -120,12 +120,12 @@ export default function Footer() {
           {/* Columns */}
           {footerCols.map((col) => (
             <div key={col.title}>
-              {/* text-white/60 gives ~6.9:1 on #050d1a – passes AA */}
+              {/* text-white/60 gives ~6.9:1 on #050d1a, passes AA */}
               <h4 className="text-[14px] font-semibold uppercase tracking-[0.2em] text-white/50 mb-5">{col.title}</h4>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.href}>
-                    {/* text-white/70 gives ~9:1 – passes AA */}
+                    {/* text-white/70 gives ~9:1, passes AA */}
                     <Link to={link.href} className="text-[14px] font-normal text-white/65 hover:text-white transition-colors leading-snug py-0.5 inline-block min-h-[24px]">
                       {link.label}
                     </Link>
@@ -138,7 +138,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          {/* text-white/55 gives ~6.8:1 on #050d1a – passes AA */}
+          {/* text-white/55 gives ~6.8:1 on #050d1a, passes AA */}
           <p className="text-white/55 text-xs">
             © {new Date().getFullYear()} AWTG Ltd. Advanced Wireless Technology Group. All rights reserved. Registered in England & Wales.
           </p>

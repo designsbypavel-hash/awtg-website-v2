@@ -24,7 +24,7 @@ const certificationGroups: CertGroup[] = [
       { name: 'ISO 14001:2015',          icon: faLeaf,         desc: 'ISO 14001 is a globally agreed standard that sets out the requirements for an environmental management system. It helps organisations improve their environmental performance through more efficient use of resources and reduction of waste.' },
       { name: 'ISO 45001:2018',          icon: faUserShield,   desc: 'ISO 45001 is a globally accepted standard that specifies requirements for an occupational health and safety (OH&S) management system, providing a framework for organizations to manage risks and improve OH&S performance.' },
       { name: 'ISO 20000:2018',          icon: faServer,       desc: 'ISO/IEC 20000-1:2018 is an international standard for IT service management (ITSM), providing requirements for organizations to establish, implement, maintain and continually improve a service management system focused on delivering value.' },
-      { name: 'ISO/IEC 42001 – AI Management System', icon: faMicrochip, desc: 'ISO/IEC 42001 provides the framework and requirements for organisations to establish, implement and maintain responsible, ethical, and risk-based governance of AI systems, ensuring transparency, accountability and trust.' },
+      { name: 'ISO/IEC 42001, AI Management System', icon: faMicrochip, desc: 'ISO/IEC 42001 provides the framework and requirements for organisations to establish, implement and maintain responsible, ethical, and risk-based governance of AI systems, ensuring transparency, accountability and trust.' },
       { name: 'Cyber Essentials',        icon: faShieldHalved, desc: 'Cyber Essentials Basic is an assessment tool that helps companies evaluate and adjust their digital security measures to the baseline standards of Cyber Essentials, identifying potential vulnerabilities in devices, networks and protocols.' },
       { name: 'Cyber Essentials Plus',   icon: faShield,       desc: "Cyber Essentials Plus goes beyond the standard self-assessment questionnaire and requires an audit of IT systems by a certified auditor to ensure appropriate controls are in place across the organisation's network." },
       { name: 'CREST Penetration Testing', icon: faUserSecret, desc: "This certificate confirms that AWTG's Vulnerability Assessment and Penetration Test for the Kai Application was conducted in line with industry best practices, including OWASP, NIST, ISO 27001:2022 and CREST." },
@@ -224,7 +224,7 @@ export default function AboutCertificationsPage() {
                 </div>
               </div>
 
-              {/* Image panel — no text on image */}
+              {/* Image panel, no text on image */}
               <div
                 className={`relative overflow-hidden ${isReversed ? 'lg:order-1' : ''}`}
                 style={{ minHeight: 480, background: '#0a1628' }}

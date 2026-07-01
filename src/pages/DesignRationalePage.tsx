@@ -1,4 +1,4 @@
-﻿export default function DesignRationalePage() {
+export default function DesignRationalePage() {
   const sections = [
     {
       ref: 'Harvey AI',
@@ -22,7 +22,7 @@
 
   const decisions = [
     {
-      title: 'Colour Palette — #0a1628, #228DC1, White',
+      title: 'Colour Palette, #0a1628, #228DC1, White',
       inspiration: 'Ericsson + Harvey',
       rationale: 'Dark navy communicates: we build infrastructure that runs the world. The blue accent (#228DC1) departs from the cyan telecoms cliché. It reads closer to trust, intelligence, and modernity. White sections are confidence, not emptiness. Harvey\'s entire philosophy is that white space is a signal of restraint, not a lack of content.',
     },
@@ -32,42 +32,42 @@
       rationale: 'Rounded corners are a consumer-app convention signalling friendliness and softness. Enterprise B2B clients (MNOs, MOD, NHS trusts) are buying infrastructure. Sharp corners communicate precision, rigour, and engineering discipline. They say: we are not a lifestyle product. We are built.',
     },
     {
-      title: 'Hero Headline — "The organisations winning the AI era aren\'t waiting."',
+      title: 'Hero Headline, "The organisations winning the AI era aren\'t waiting."',
       inspiration: 'Nokia',
       rationale: 'Nokia\'s brand is built on urgency and optimism, never fear. The headline puts the customer as protagonist. AWTG is the guide, not the hero. Present tense, declarative, short. The italic "aren\'t waiting" creates a rhythmic pivot. Nokia\'s typographic confidence applied directly.',
     },
     {
-      title: 'Typography — Roboto, clamp() sizing, uppercase tracking labels',
+      title: 'Typography, Roboto, clamp() sizing, uppercase tracking labels',
       inspiration: 'Nokia + Harvey',
       rationale: 'Roboto is technical, neutral, and infinitely legible. The typeface has no personality. The content does. Large clamp() headlines are Nokia\'s boldness applied responsively. The small uppercase eyebrow labels ("Solutions", "Services") are Harvey\'s exact pattern: a map, not a decoration.',
     },
     {
-      title: 'Navigation — Transparent → White on Scroll, Mega-dropdown',
+      title: 'Navigation, Transparent → White on Scroll, Mega-dropdown',
       inspiration: 'Harvey',
       rationale: 'Transparent nav means the hero section is cinematic and uncompeted. White on scroll grounds the nav in content territory. The border-left accent on hover is a precise ruled line, not a blob. That is Harvey\'s interaction model. Description text under each nav item is borrowed from Ericsson: their audience is technical and evaluating options, not browsing.',
     },
     {
-      title: 'Stats Sections — Full-width Dark Bars',
+      title: 'Stats Sections, Full-width Dark Bars',
       inspiration: 'Ericsson',
       rationale: 'Ericsson leads with numbers constantly. This is not boasting. It is proof. Technical buyers need data before narrative. The dark stats bars create visual rhythm: dark, light, dark, light, keeping the page from feeling like a single flat scroll. Each bar is a moment of weight and credibility.',
     },
     {
-      title: 'CTA Buttons — Border-only, No Arrows, Sharp Corners',
+      title: 'CTA Buttons, Border-only, No Arrows, Sharp Corners',
       inspiration: 'Harvey',
       rationale: 'No arrows: a well-designed button at the right moment is self-evident. Border-only (ghost) buttons on dark backgrounds are Harvey\'s primary CTA style, restrained and inverting cleanly on hover. Sharp corners on buttons reinforce the same signal as everywhere else: designed for enterprise procurement, not an app store.',
     },
     {
-      title: 'Ticker Bar — White Background, Full Opacity',
+      title: 'Ticker Bar, White Background, Full Opacity',
       inspiration: 'Harvey + Ericsson',
       rationale: 'Logos should be clearly readable, not mood-lit. Dimming partner logos signals mild embarrassment. Full opacity on white says: we\'re proud of every one of these relationships. The "Trusted by" label and link are subordinate. The logos do the talking. Ericsson\'s philosophy: let the client list speak.',
     },
     {
-      title: 'Section Alternation — White / #f7f8fa',
+      title: 'Section Alternation, White / #f7f8fa',
       inspiration: 'Harvey + Ericsson',
       rationale: 'Alternating between white and very light gray creates visual separation without colour drama. Harvey never uses heavily coloured mid-page sections. Ericsson uses this exact gray range across their enterprise product pages. The result: coherent, calm, the product of a company that doesn\'t need to fight for attention.',
     },
     {
-      title: 'Photography — Real People, Real Infrastructure',
+      title: 'Photography, Real People, Real Infrastructure',
       inspiration: 'Nokia + Harvey',
       rationale: 'No illustrations, no icon decoration, no stock vector art. Photography of actual offices, networks, and teams says: real deployments, real engineers, real outcomes. The hero video of an office team reinforces the same idea. Not an AI render. Actual people making decisions. Nokia\'s brand: technology in service of human progress.',
     },
@@ -166,7 +166,7 @@
       <section className="py-16 bg-[#f7f8fa]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <p className="font-serif-display text-[#0a1628] text-xl mb-2">AWTG Website — Design Rationale</p>
+            <p className="font-serif-display text-[#0a1628] text-xl mb-2">AWTG Website, Design Rationale</p>
             <p className="text-[#0a1628]/60 text-sm font-normal">
               Prepared by the design team. Inspired by Harvey AI, Nokia, and Ericsson.
             </p>

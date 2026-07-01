@@ -44,7 +44,7 @@ const data: SectorPageData = {
     subtitle:
       'PSN-compliant networks, GovWifi infrastructure and cleared managed services for central and local government.',
     description:
-      'AWTG designs and delivers secure, compliant network infrastructure for government organisations — from PSN-aligned WAN programmes to classified network environments and cloud connectivity for digital transformation.',
+      'AWTG designs and delivers secure, compliant network infrastructure for government organisations, from PSN-aligned WAN programmes to classified network environments and cloud connectivity for digital transformation.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faLandmark,
     visualItems: [
@@ -63,7 +63,7 @@ const data: SectorPageData = {
       {
         icon: faShield,
         title: 'PSN and security frameworks',
-        desc: 'Government networks carrying sensitive data must comply with PSN Code of Connection and related security standards — with evidence for annual compliance assessment.',
+        desc: 'Government networks carrying sensitive data must comply with PSN Code of Connection and related security standards, with evidence for annual compliance assessment.',
       },
       {
         icon: faNetworkWired,
@@ -86,12 +86,12 @@ const data: SectorPageData = {
   supports: {
     heading: 'What AWTG delivers for government',
     intro:
-      'AWTG brings deep experience in government networking — from PSN-compliant WAN programmes to classified network environments and managed services for complex estates.',
+      'AWTG brings deep experience in government networking, from PSN-compliant WAN programmes to classified network environments and managed services for complex estates.',
     items: [
       {
         icon: faNetworkWired,
         title: 'PSN-compliant WAN and SD-WAN',
-        desc: 'Government-grade WAN architecture designed to meet PSN Code of Connection requirements — providing secure, resilient connectivity across departmental and local authority sites.',
+        desc: 'Government-grade WAN architecture designed to meet PSN Code of Connection requirements, providing secure, resilient connectivity across departmental and local authority sites.',
         bullets: [
           'PSN compliance-led network architecture design',
           'SD-WAN for modernised, cost-efficient government connectivity',
@@ -103,7 +103,7 @@ const data: SectorPageData = {
       {
         icon: faShield,
         title: 'GovWifi and secure wireless',
-        desc: 'GovWifi deployment and management for government offices and public-facing buildings — providing compliant, secure wireless access for staff and visitors.',
+        desc: 'GovWifi deployment and management for government offices and public-facing buildings, providing compliant, secure wireless access for staff and visitors.',
         bullets: [
           'GovWifi programme delivery and ongoing management',
           'Separate wireless segments for staff, contractors and public',
@@ -135,12 +135,12 @@ const data: SectorPageData = {
       {
         icon: faNetworkWired,
         title: 'PSN and government WAN programmes',
-        desc: 'End-to-end WAN programmes for government organisations — from network assessment and design through to deployment and managed ongoing operations.',
+        desc: 'End-to-end WAN programmes for government organisations, from network assessment and design through to deployment and managed ongoing operations.',
       },
       {
         icon: faKey,
         title: 'GovWifi deployment and management',
-        desc: 'Full GovWifi programme delivery for government offices — compliant deployment, ongoing management and the reporting required to maintain GovWifi status.',
+        desc: 'Full GovWifi programme delivery for government offices, compliant deployment, ongoing management and the reporting required to maintain GovWifi status.',
       },
       {
         icon: faServer,
@@ -150,12 +150,12 @@ const data: SectorPageData = {
       {
         icon: faCloud,
         title: 'Digital transformation connectivity',
-        desc: 'Network infrastructure supporting government digital programmes — providing the cloud connectivity, performance and security that modern digital services require.',
+        desc: 'Network infrastructure supporting government digital programmes, providing the cloud connectivity, performance and security that modern digital services require.',
       },
       {
         icon: faLock,
         title: 'Secure remote and classified access',
-        desc: 'Managed secure remote access and classified network connectivity for government staff — aligned to relevant security frameworks and accreditation requirements.',
+        desc: 'Managed secure remote access and classified network connectivity for government staff, aligned to relevant security frameworks and accreditation requirements.',
       },
     ],
   },

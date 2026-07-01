@@ -4,14 +4,14 @@ import { Link, useLocation } from 'react-router-dom'
 // Full-path keys let us use exact nav labels even when the same segment
 // appears under different sections with different names.
 const PATH_LABELS: Record<string, string> = {
-  // ── Products (AI section) ──────────────────────────────────────────
+  // -- Products (AI section) ------------------------------------------
   '/products/kai':                       'AI for Sales and Customer Services',
   '/products/aruva':                     'AI for Education',
-  // ── Products (Connectivity section) ───────────────────────────────
+  // -- Products (Connectivity section) -------------------------------
   '/products/icmap':                     'iCMAP',
   '/connectivity/scap':                  'SCAP',
   '/connectivity/idams':                 'iDAMS',
-  // ── Industries ────────────────────────────────────────────────────
+  // -- Industries ----------------------------------------------------
   '/industries/enterprise':             'Enterprise',
   '/industries/telecoms':              'Telecoms',
   '/industries/public-sector':         'Public Sector',
@@ -19,14 +19,14 @@ const PATH_LABELS: Record<string, string> = {
   '/industries/education':             'Education',
   '/industries/retail':                'Commerce',
   '/industries/defence':               'Space & Defence',
-  // ── About ─────────────────────────────────────────────────────────
+  // -- About ---------------------------------------------------------
   '/about':                            'Overview',
   '/about/overview':                   'Overview',
   '/about/leadership':                 'Leadership',
   '/about/certifications':             'Certifications',
   '/about/sustainability':             'Sustainability',
   '/about/innovation':                 'Innovation',
-  // ── Insights ──────────────────────────────────────────────────────
+  // -- Insights ------------------------------------------------------
   '/insights':                         'News',
   '/insights/blog':                    'Blog',
   '/insights/case-studies':            'Case Studies',
@@ -57,7 +57,7 @@ export default function Breadcrumb() {
 
   const segments = pathname.split('/').filter(Boolean)
 
-  // Build crumbs — prefer full-path label, then segment label, then auto-capitalise
+  // Build crumbs, prefer full-path label, then segment label, then auto-capitalise
   const crumbs = segments.map((seg, i) => {
     const fullPath = '/' + segments.slice(0, i + 1).join('/')
     const name =
@@ -89,7 +89,7 @@ export default function Breadcrumb() {
         }}
       />
 
-      {/* Fixed bar — sits flush under the navigation */}
+      {/* Fixed bar, sits flush under the navigation */}
       <nav
         aria-label="Breadcrumb"
         className="fixed top-16 left-0 right-0 z-40"

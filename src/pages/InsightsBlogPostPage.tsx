@@ -1,4 +1,4 @@
-﻿import { useParams, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
@@ -206,8 +206,8 @@ const posts: Record<string, Post> = {
       { type: 'paragraph', text: 'The port needed a network capable of supporting hundreds of simultaneously connected devices, including autonomous straddle carriers, handheld scanners, CCTV cameras, and digital twin sensors, with sub-10ms latency and 99.99% availability. The existing Wi-Fi 5 infrastructure could not meet these requirements across the outdoor environment, with coverage gaps, interference, and handover failures causing persistent operational disruption.' },
       { type: 'paragraph', text: 'A public 5G solution was evaluated and rejected on two grounds: the inability to guarantee QoS for safety-critical autonomous vehicle communications, and data sovereignty requirements for the port\'s operational data.' },
       { type: 'heading', text: 'The Solution' },
-      { type: 'paragraph', text: 'AWTG designed and deployed a dedicated 5G NR network using shared spectrum in the 3.8–4.2 GHz band. The network covered the entire port area with 12 outdoor base stations, integrated with a private core network hosted in the port\'s on-premises data centre.' },
-      { type: 'bullets', items: ['5G NR in the 3.8–4.2 GHz shared spectrum band across 400 hectares', 'Private 5G core deployed on-premises with full data sovereignty', 'Network slicing separating autonomous vehicle traffic from general IoT', 'Integration with the port\'s SCADA systems and digital twin platform', 'Redundant core architecture with sub-30-second failover'] },
+      { type: 'paragraph', text: 'AWTG designed and deployed a dedicated 5G NR network using shared spectrum in the 3.8 to 4.2 GHz band. The network covered the entire port area with 12 outdoor base stations, integrated with a private core network hosted in the port\'s on-premises data centre.' },
+      { type: 'bullets', items: ['5G NR in the 3.8 to 4.2 GHz shared spectrum band across 400 hectares', 'Private 5G core deployed on-premises with full data sovereignty', 'Network slicing separating autonomous vehicle traffic from general IoT', 'Integration with the port\'s SCADA systems and digital twin platform', 'Redundant core architecture with sub-30-second failover'] },
       { type: 'pullquote', text: 'The ability to isolate autonomous vehicle communications on a dedicated network slice, with guaranteed latency and bandwidth, was the technical foundation that made the autonomous crane programme viable.' },
       { type: 'heading', text: 'The Results' },
       { type: 'paragraph', text: 'Following deployment, the port reported a 30% improvement in operational efficiency, driven primarily by the successful deployment of autonomous cranes and real-time cargo tracking. The digital twin capability, powered by the low-latency 5G network, has become central to the port\'s operational planning and has reduced crane idle time by 22%.' },
@@ -235,7 +235,7 @@ const posts: Record<string, Post> = {
       { type: 'heading', text: 'Where the Challenges Lie' },
       { type: 'paragraph', text: 'The multi-vendor integration complexity of Open RAN is real. Interoperability between components that theoretically conform to O-RAN specifications is not always seamless in practice. Integration testing, end-to-end performance validation, and fault isolation across vendor boundaries require expertise that most enterprise IT teams do not have in-house.' },
       { type: 'paragraph', text: 'AWTG\'s Open RAN deployments are supported by our dedicated systems integration practice, which handles the multi-vendor integration, OTIC-validated component selection, and ongoing performance management. The enterprises that get the most from Open RAN are those that treat it as a managed outcome rather than a self-service infrastructure project.' },
-      { type: 'bullets', items: ['Integration testing across vendor boundaries adds 4–6 weeks to deployment timelines vs traditional RAN', 'Performance at cell-edge can lag traditional RAN in early deployments if not tuned correctly', 'Support model complexity: multiple vendors means multiple support contracts to coordinate', 'Software update cadences vary by component vendor and require coordinated change management'] },
+      { type: 'bullets', items: ['Integration testing across vendor boundaries adds 4 to 6 weeks to deployment timelines vs traditional RAN', 'Performance at cell-edge can lag traditional RAN in early deployments if not tuned correctly', 'Support model complexity: multiple vendors means multiple support contracts to coordinate', 'Software update cadences vary by component vendor and require coordinated change management'] },
       { type: 'heading', text: 'Our Recommendation' },
       { type: 'paragraph', text: 'For enterprises deploying private 5G in 2025, Open RAN is a serious consideration, particularly for deployments where long-term flexibility, AI-driven optimisation, and vendor independence are priorities. The integration overhead is real but manageable with the right partner. The window to build Open RAN expertise ahead of the mainstream adoption curve is open now.' },
     ],
@@ -256,16 +256,16 @@ const posts: Record<string, Post> = {
       { type: 'paragraph', text: 'Consumer and enterprise connectivity is engineered for best-effort performance. When your video call degrades for two seconds, the experience is poor but the consequence is minor. When an autonomous guided vehicle loses its collision-avoidance signal for two seconds at operating speed, the consequence can be catastrophic. Industrial connectivity must be deterministic, not just fast on average, but reliably fast every single time.' },
       { type: 'paragraph', text: 'This requirement rules out public 5G for the most demanding applications. Public networks are shared infrastructure, and contention during peak periods creates latency spikes that are incompatible with real-time control systems. Private 5G, deployed on dedicated spectrum with a private core, eliminates contention entirely.' },
       { type: 'heading', text: 'The Architecture That Works' },
-      { type: 'bullets', items: ['Dedicated spectrum allocation in the 3.8–4.2 GHz shared band or licensed mmWave', 'Private 5G core hosted on-premises or in a local edge data centre', 'Network slicing to separate safety-critical traffic from general IoT and enterprise data', 'Time-sensitive networking integration for deterministic latency on the most demanding applications', 'Multi-access edge computing (MEC) for low-latency processing at the factory floor'] },
+      { type: 'bullets', items: ['Dedicated spectrum allocation in the 3.8 to 4.2 GHz shared band or licensed mmWave', 'Private 5G core hosted on-premises or in a local edge data centre', 'Network slicing to separate safety-critical traffic from general IoT and enterprise data', 'Time-sensitive networking integration for deterministic latency on the most demanding applications', 'Multi-access edge computing (MEC) for low-latency processing at the factory floor'] },
       { type: 'pullquote', text: 'The factories deploying private 5G today are not doing it because it is technically interesting. They are doing it because the economics of autonomous operations, once reliable connectivity is in place, are transformative.' },
       { type: 'heading', text: 'Where AWTG Deploys This' },
       { type: 'paragraph', text: 'AWTG has designed and deployed private 5G networks across manufacturing facilities, logistics warehouses, and port environments in the UK and Europe. Our industrial deployment methodology is built around a series of phased trials. We validate performance under production conditions before full-scale rollout, which significantly reduces deployment risk for our clients.' },
-      { type: 'paragraph', text: 'The use cases that consistently deliver the fastest return on investment are autonomous guided vehicles (where the reduction in human labour and increase in throughput pays back the network investment within 18 months), computer vision quality inspection (where AI-driven inspection at network speed reduces defect escape rates by 60–80%), and digital twin synchronisation for predictive maintenance.' },
+      { type: 'paragraph', text: 'The use cases that consistently deliver the fastest return on investment are autonomous guided vehicles (where the reduction in human labour and increase in throughput pays back the network investment within 18 months), computer vision quality inspection (where AI-driven inspection at network speed reduces defect escape rates by 60 to 80%), and digital twin synchronisation for predictive maintenance.' },
     ],
   },
 
   'spectrum-sharing-guide': {
-    title: 'Spectrum Sharing in the 3.8–4.2 GHz Band: A Practical Guide',
+    title: 'Spectrum Sharing in the 3.8 to 4.2 GHz Band: A Practical Guide',
     date: 'November 2024',
     readTime: '8 min',
     tag: 'Spectrum',
@@ -273,16 +273,16 @@ const posts: Record<string, Post> = {
     role: 'Regulatory & Spectrum',
     excerpt: 'Navigating shared spectrum allocation for private network deployments in the UK and Europe.',
     content: [
-      { type: 'paragraph', text: 'The 3.8–4.2 GHz band has become the primary spectrum choice for enterprise private 5G deployments in the UK. Since Ofcom opened the band for shared access in 2019, over 200 UK organisations have been granted local access licences. Understanding how spectrum sharing works in this band, and how to plan a deployment that maximises performance and minimises interference risk, is essential for any organisation evaluating private 5G.' },
-      { type: 'stat-row', stats: [{ value: '200+', label: 'UK organisations with 3.8–4.2 GHz local access licences' }, { value: '6 weeks', label: 'typical Ofcom licence approval timeline' }, { value: '100 MHz', label: 'typical channel allocation per deployment site' }] },
+      { type: 'paragraph', text: 'The 3.8 to 4.2 GHz band has become the primary spectrum choice for enterprise private 5G deployments in the UK. Since Ofcom opened the band for shared access in 2019, over 200 UK organisations have been granted local access licences. Understanding how spectrum sharing works in this band, and how to plan a deployment that maximises performance and minimises interference risk, is essential for any organisation evaluating private 5G.' },
+      { type: 'stat-row', stats: [{ value: '200+', label: 'UK organisations with 3.8 to 4.2 GHz local access licences' }, { value: '6 weeks', label: 'typical Ofcom licence approval timeline' }, { value: '100 MHz', label: 'typical channel allocation per deployment site' }] },
       { type: 'heading', text: 'How Shared Spectrum Access Works in the UK' },
-      { type: 'paragraph', text: 'Ofcom\'s Shared Access Licence framework allows organisations to deploy private wireless networks in the 3.8–4.2 GHz band on a local area basis. The framework operates on a coordination model: applicants submit a deployment proposal including antenna location, height, power levels, and coverage footprint. Ofcom checks for potential interference with existing licensees in the area and, if none is identified, issues a licence typically within six weeks.' },
+      { type: 'paragraph', text: 'Ofcom\'s Shared Access Licence framework allows organisations to deploy private wireless networks in the 3.8 to 4.2 GHz band on a local area basis. The framework operates on a coordination model: applicants submit a deployment proposal including antenna location, height, power levels, and coverage footprint. Ofcom checks for potential interference with existing licensees in the area and, if none is identified, issues a licence typically within six weeks.' },
       { type: 'paragraph', text: 'Licences are site-specific and non-exclusive. Multiple licensees can operate in the same band in the same geographic area as long as their deployments are coordinated. The practical implication is that your licence protects you from interference from future applicants, but does not give you exclusivity over the spectrum in your area.' },
       { type: 'heading', text: 'Interference Risk: What to Plan For' },
       { type: 'bullets', items: ['Co-channel interference from existing licensees operating in the same area', 'Adjacent channel interference if deployments are in close geographic proximity', 'Spurious emissions from non-5G equipment operating in adjacent bands', 'Inter-system interference in dense urban deployments where multiple private networks are in proximity', 'Seasonal propagation effects that can extend coverage beyond the designed footprint'] },
       { type: 'pullquote', text: 'A spectrum coordination exercise is not a bureaucratic step. It is a performance planning exercise. The deployments that do it properly avoid interference problems that can undermine the entire network investment.' },
       { type: 'heading', text: 'Planning a Deployment: The Key Variables' },
-      { type: 'paragraph', text: 'The most important variables in a 3.8–4.2 GHz deployment are antenna height, transmit power, and channel selection. Lower antenna heights reduce the coverage footprint and minimise interference risk, but may require more base stations to achieve full site coverage. Transmit power should be set to the minimum level that achieves the required coverage, not the maximum available.' },
+      { type: 'paragraph', text: 'The most important variables in a 3.8 to 4.2 GHz deployment are antenna height, transmit power, and channel selection. Lower antenna heights reduce the coverage footprint and minimise interference risk, but may require more base stations to achieve full site coverage. Transmit power should be set to the minimum level that achieves the required coverage, not the maximum available.' },
       { type: 'paragraph', text: 'Channel selection within the 400 MHz available band should be based on a spectrum survey of the deployment site. AWTG conducts site-specific spectrum surveys before every private network deployment, identifying existing signals in the band, characterising the interference environment, and selecting channels that maximise performance margin.' },
       { type: 'heading', text: 'The European Context' },
       { type: 'paragraph', text: 'Spectrum frameworks for private 5G vary significantly across Europe. Germany\'s local licensing approach has been the most progressive, with over 600 local licences issued by the Bundesnetzagentur since 2019. France, the Netherlands, and the Nordic countries have each adopted variants of the shared access model. If you are planning a multi-site deployment across European locations, understanding the national regulatory framework in each country is essential. AWTG\'s spectrum team can support the licensing process across all major European markets.' },
@@ -349,7 +349,7 @@ const allPosts = [
   { slug: 'private-5g-uk-port', tag: 'Case Study', title: 'How AWTG Deployed a Private 5G Network for a Major UK Port', date: 'March 2025' },
   { slug: 'open-ran-enterprises', tag: '5G', title: 'Understanding Open RAN: Opportunities and Challenges for Enterprises', date: 'January 2025' },
   { slug: 'private-5g-industry-4', tag: 'Private Networks', title: 'Why Private 5G is the Backbone of Industry 4.0', date: 'December 2024' },
-  { slug: 'spectrum-sharing-guide', tag: 'Spectrum', title: 'Spectrum Sharing in the 3.8–4.2 GHz Band: A Practical Guide', date: 'November 2024' },
+  { slug: 'spectrum-sharing-guide', tag: 'Spectrum', title: 'Spectrum Sharing in the 3.8 to 4.2 GHz Band: A Practical Guide', date: 'November 2024' },
   { slug: 'genai-telecoms-hype', tag: 'AI', title: 'Generative AI in Telecoms: Beyond the Hype', date: 'October 2024' },
   { slug: 'network-slicing-explained', tag: '5G', title: 'Network Slicing Explained: Use Cases and Deployment Models', date: 'September 2024' },
 ]
@@ -388,7 +388,7 @@ export default function InsightsBlogPostPage() {
 
   return (
     <>
-      {/* ── Hero ── */}
+      {/* -- Hero -- */}
       <section className="pt-28 pb-16 bg-[#f8fafc]">
         <div className="max-w-3xl mx-auto px-8 lg:px-12">
           <div className="flex items-center gap-4 mb-8">
@@ -429,7 +429,7 @@ export default function InsightsBlogPostPage() {
         </div>
       </section>
 
-      {/* ── Article body ── */}
+      {/* -- Article body -- */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-8 lg:px-12">
           {post.content.map((block, i) => {
@@ -489,7 +489,7 @@ export default function InsightsBlogPostPage() {
         </div>
       </section>
 
-      {/* ── CTA strip ── */}
+      {/* -- CTA strip -- */}
       <section className="py-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
@@ -514,7 +514,7 @@ export default function InsightsBlogPostPage() {
         </div>
       </section>
 
-      {/* ── Related articles ── */}
+      {/* -- Related articles -- */}
       <section className="py-20 bg-[#f7f8fa]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-10">More from AWTG</p>

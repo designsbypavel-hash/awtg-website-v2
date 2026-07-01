@@ -28,7 +28,7 @@ const sections = [
     content: (
       <div className="space-y-4">
         <Para>
-          Controller in the sense of the General Data Protection Regulation (GDPR) and other data protection or data privacy laws in the Member States of the European Union and other guidelines with a data protection nature regarding our online and mobile applications — including, but not limited to, SPEED TEST, SPORTS AR, associated web-sites such as www.awtg.website, as well as any other AWTG Service, AWTG site or AWTG Software and any other websites owned or operated by AWTG (hereinafter "AWTG Products") — is:
+          Controller in the sense of the General Data Protection Regulation (GDPR) and other data protection or data privacy laws in the Member States of the European Union and other guidelines with a data protection nature regarding our online and mobile applications, including, but not limited to, SPEED TEST, SPORTS AR, associated web-sites such as www.awtg.website, as well as any other AWTG Service, AWTG site or AWTG Software and any other websites owned or operated by AWTG (hereinafter "AWTG Products"), is:
         </Para>
         <div className="rounded-2xl bg-[#f8fafc] border border-gray-100 p-6 space-y-2">
           <p className="text-[#0a1628] text-sm font-semibold">AWTG Limited</p>
