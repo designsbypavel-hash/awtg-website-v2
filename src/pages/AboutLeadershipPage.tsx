@@ -21,7 +21,7 @@ const management: Person[] = [
   { name: 'Sering Harding', role: 'Radio Network Planning and Optimisation Manager', photo: '/team/person-12.png' },
   { name: 'Maria Berezkina', role: 'Project Manager', photo: '/team/maria.jpg' },
   { name: 'Erkan Berk', role: 'Software Development Manager', photo: '/team/erkan.jpg' },
-  { name: 'Desmond Nwanugo', role: 'Scrum Master and Senior Business Analyst', photo: '/team/desmond.png' },
+  { name: 'Desmond Nwanugo', role: 'Senior Project Manager', photo: '/team/desmond.png' },
 ]
 
 const featured = management.slice(0, 5)
