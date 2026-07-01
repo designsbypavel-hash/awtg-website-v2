@@ -184,7 +184,6 @@ export default function InsightsWhitePapersPage() {
             <div className="lg:col-span-3 p-8 lg:p-12">
               <div className="flex flex-wrap items-center gap-3 mb-7">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60">Featured</span>
-                <span className="w-8 h-px bg-gray-200" />
                 <span className="text-[13px] font-semibold uppercase tracking-[0.14em] px-2.5 py-1 bg-[#228DC1]/10 text-[#1a7aab]">
                   {featuredPaper.topic}
                 </span>

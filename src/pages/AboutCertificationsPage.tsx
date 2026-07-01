@@ -193,7 +193,6 @@ export default function AboutCertificationsPage() {
                   <span className="text-[11px] font-black uppercase tracking-[0.22em]" style={{ color: accent }}>
                     {String(groupIndex + 1).padStart(2, '0')}
                   </span>
-                  <span className="h-px w-8" style={{ background: accent + '55' }} />
                   <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">
                     {group.label}
                   </span>

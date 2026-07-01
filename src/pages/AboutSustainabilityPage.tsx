@@ -222,7 +222,6 @@ export default function AboutSustainabilityPage() {
             <div style={{ maxWidth: 520 }}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">01</span>
-                <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Carbon Reduction Plan</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-6" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
@@ -260,7 +259,6 @@ export default function AboutSustainabilityPage() {
             <div style={{ maxWidth: 540 }}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">02</span>
-                <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Emissions Reporting</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-7" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
@@ -303,7 +301,6 @@ export default function AboutSustainabilityPage() {
             <div style={{ maxWidth: 560 }}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">03</span>
-                <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Action Plan</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
@@ -395,7 +392,6 @@ export default function AboutSustainabilityPage() {
                     <span className="text-[11px] font-black uppercase tracking-[0.22em]" style={{ color: section.accent }}>
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <span className="h-px w-8" style={{ background: section.accent + '55' }} />
                     <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Social Value</span>
                   </div>
                   <div className="flex items-center gap-3 mb-5">

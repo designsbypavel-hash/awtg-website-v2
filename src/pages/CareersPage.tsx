@@ -93,7 +93,6 @@ export default function CareersPage() {
               { icon: faUsers,      stat: '3',     label: 'Continents',   text: 'A global team united by a passion for connectivity and innovation.' },
             ].map((item) => (
               <div key={item.label} className="relative overflow-hidden px-10 py-14 lg:px-14 group">
-                <div className="h-0.5 w-10 bg-[#228DC1] mb-9 transition-all duration-300 group-hover:w-16" />
                 <div className="flex items-center gap-3 mb-5">
                   <div className="h-9 w-9 flex items-center justify-center shrink-0" style={{ background: 'rgba(34,141,193,0.08)' }}>
                     <FontAwesomeIcon icon={item.icon} className="w-4 h-4 text-[#1a7aab]" />
@@ -120,7 +119,6 @@ export default function CareersPage() {
             <div style={{ maxWidth: 520 }}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">01</span>
-                <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Why AWTG</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8"
@@ -163,7 +161,6 @@ export default function CareersPage() {
             <div style={{ maxWidth: 540 }}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab]">02</span>
-                <span className="h-px w-8 bg-[#228DC1]/40" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Benefits &amp; Perks</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8"
@@ -200,7 +197,6 @@ export default function CareersPage() {
               At AWTG, your work connects communities, powers smart cities and shapes the future of communications — across three continents and counting.
             </p>
             <div className="flex items-center gap-4">
-              <div className="h-px w-12 bg-[#228DC1]" />
               <p className="text-white/45 text-[12px] font-bold uppercase tracking-[0.2em]">AWTG People Team</p>
             </div>
           </div>

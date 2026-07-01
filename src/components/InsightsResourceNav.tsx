@@ -58,7 +58,6 @@ export default function InsightsResourceNav({
                 <div className="h-px bg-gray-100" />
                 <div className="grid lg:grid-cols-[112px_minmax(0,1fr)] gap-3 lg:items-start">
                   <div className="flex items-center gap-3 pt-2">
-                    <span className="h-px w-8 bg-[#228DC1]" />
                     <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#0a1628]/60">{topicLabel}</p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2" role="toolbar" aria-label={`${activeResource} topic filters`}>

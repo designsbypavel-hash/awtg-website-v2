@@ -420,7 +420,6 @@ export default function ServicesEngineeringPage() {
                 {vendors.map((v) => (
                   <div key={v.name}
                     className="rounded-xl border border-white/8 bg-white/5 p-5 transition-all hover:bg-white/8">
-                    <div className="mb-3 h-2 w-8 rounded-full" style={{ background: v.color }} />
                     <p className="text-[14px] font-semibold text-white">{v.name}</p>
                     <p className="mt-1 text-[12px] text-white/40">Integrated vendor</p>
                   </div>

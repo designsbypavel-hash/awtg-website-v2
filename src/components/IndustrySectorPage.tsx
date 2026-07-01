@@ -248,7 +248,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                       <p className="text-[12px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60">
                         0{i + 1}
                       </p>
-                      <div className="mt-4 h-px w-14 transition-all duration-300 group-hover:w-20" style={{ background: accent }} />
                     </div>
                     <div>
                       <h3 className="mb-3 text-[22px] font-semibold leading-[1.18] text-[#0a1628]">
