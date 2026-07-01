@@ -6,10 +6,6 @@ import CTASection from '@/components/CTASection'
 import VisualInsightCard from '@/components/VisualInsightCard'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import icmapFeatureImage from '@/assets/iCMAP/1.png'
-import icmapStep1 from '@/assets/iCMAP/isometric/step-1.png'
-import icmapStep2 from '@/assets/iCMAP/isometric/step-2.png'
-import icmapStep3 from '@/assets/iCMAP/isometric/step-3.png'
-import icmapStep4 from '@/assets/iCMAP/isometric/step-4.png'
 import networkOperatorsImage from '@/assets/iCMAP/use-cases/network-operators.png'
 import regulatorsImage from '@/assets/iCMAP/use-cases/regulators-local-authorities.png'
 import smartInfrastructureImage from '@/assets/iCMAP/use-cases/smart-infrastructure.png'
@@ -330,7 +326,7 @@ const useCases = [
 const steps = [
   {
     num: '01',
-    image: icmapStep1,
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2400&q=95&crop=center',
     color: '#228DC1',
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
@@ -339,7 +335,7 @@ const steps = [
   },
   {
     num: '02',
-    image: icmapStep2,
+    image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=2400&q=95&crop=center',
     color: '#3d4d9e',
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
@@ -348,7 +344,7 @@ const steps = [
   },
   {
     num: '03',
-    image: icmapStep3,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2400&q=95&crop=center',
     color: '#059669',
     label: 'Assess weak zones',
     desc: 'Identify underserved areas and rank them by coverage quality, severity and impact.',
@@ -357,7 +353,7 @@ const steps = [
   },
   {
     num: '04',
-    image: icmapStep4,
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=95&crop=center',
     color: '#d97706',
     label: 'Plan the next action',
     desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
