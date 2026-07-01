@@ -300,14 +300,6 @@ function Hero() {
           className="absolute inset-0"
           style={{ background: 'radial-gradient(ellipse 55% 50% at 88% 8%, rgba(56,189,248,0.35) 0%, transparent 60%), radial-gradient(ellipse 50% 45% at 6% 78%, rgba(124,58,237,0.32) 0%, transparent 60%)' }}
         />
-        <div className="home-hero-badge-shell pointer-events-none absolute left-1/2 top-[53%] z-10 h-24 w-56 -translate-x-1/2 -translate-y-1/2 sm:h-28 sm:w-64 lg:h-32 lg:w-72">
-          <div className="home-hero-badge home-hero-badge-1 absolute inset-0 flex items-center justify-center rounded-full border border-white/25 bg-white/14 text-4xl font-black text-white backdrop-blur-xl sm:text-5xl lg:text-6xl">
-            AI
-          </div>
-          <div className="home-hero-badge home-hero-badge-2 absolute inset-0 flex items-center justify-center rounded-full border border-white/25 bg-white/14 text-4xl font-black text-white backdrop-blur-xl sm:text-5xl lg:text-6xl">
-            5G
-          </div>
-        </div>
       </div>
 
       {/* -- Content, centred both horizontally and vertically -- */}
