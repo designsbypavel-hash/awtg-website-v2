@@ -56,7 +56,6 @@ const socialValueSections = [
   {
     title: 'Employment and Skills',
     icon: faGraduationCap,
-    image: '/images/insights/ai-lab.jpg',
     accent: '#228DC1',
     items: [
       'Enabling local and community members to achieve the skills needed to access employment.',
@@ -70,7 +69,6 @@ const socialValueSections = [
   {
     title: 'Local Business and Economy',
     icon: faBuilding,
-    image: '/images/insights/ports-logistics.jpg',
     accent: '#059669',
     items: [
       'AWTG is an accredited Living Wage Employer.',
@@ -83,7 +81,6 @@ const socialValueSections = [
   {
     title: 'Community Engagement',
     icon: faPeopleGroup,
-    image: '/images/insights/public-sector.jpg',
     accent: '#7c3aed',
     items: [
       'Providing technological capabilities to communities through our CSR programme.',
@@ -96,7 +93,6 @@ const socialValueSections = [
   {
     title: 'Environment',
     icon: faLeaf,
-    image: '/images/insights/urban-rail.jpg',
     accent: '#16a34a',
     items: [
       'Committing to NetZero by 2045 as outlined in our carbon reduction plan.',
@@ -109,7 +105,6 @@ const socialValueSections = [
   {
     title: 'Governance, Measurement and Reporting',
     icon: faScaleBalanced,
-    image: '/images/insights/data-centre.jpg',
     accent: '#0a1628',
     items: [
       'Monitoring and reporting our social value and environmental impact using recognised independent tools and reporting platforms.',
@@ -376,60 +371,30 @@ export default function AboutSustainabilityPage() {
           </div>
         </div>
 
-        {/* Social value alternating panels */}
-        {socialValueSections.map((section, index) => {
-          const isReversed = index % 2 === 1
-          return (
-            <div key={section.title} className="grid lg:grid-cols-2" style={{ minHeight: 500 }}>
-
-              {/* Content */}
-              <div
-                className={`flex items-center bg-white ${isReversed ? 'lg:order-2' : ''}`}
-                style={{ padding: '72px clamp(28px, 5vw, 88px)' }}
-              >
-                <div style={{ maxWidth: 520 }}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[11px] font-black uppercase tracking-[0.22em]" style={{ color: section.accent }}>
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Social Value</span>
-                  </div>
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="h-10 w-10 flex items-center justify-center shrink-0" style={{ background: section.accent + '12' }}>
-                      <FontAwesomeIcon icon={section.icon} className="w-4 h-4" style={{ color: section.accent }} />
-                    </div>
-                    <h2 className="font-heading text-[#0a1628] leading-snug" style={{ fontSize: 'clamp(20px, 2vw, 27px)' }}>
-                      {section.title}
-                    </h2>
-                  </div>
-                  <BulletList items={section.items} accent={section.accent} />
+        {/* Social value panels */}
+        <div className="bg-white">
+          <div className="mx-auto grid max-w-7xl gap-6 px-8 pb-20 lg:grid-cols-2 lg:px-12">
+            {socialValueSections.map((section, index) => (
+              <article key={section.title} className="border border-gray-100 bg-white p-8">
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="text-[11px] font-black uppercase tracking-[0.22em]" style={{ color: section.accent }}>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Social Value</span>
                 </div>
-              </div>
-
-              {/* Image */}
-              <div
-                className={`relative overflow-hidden ${isReversed ? 'lg:order-1' : ''}`}
-                style={{ minHeight: 400, background: '#0a1628' }}
-              >
-                <img
-                  src={section.image}
-                  alt={section.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: isReversed
-                      ? `linear-gradient(to right, rgba(10,22,40,0.2) 0%, transparent 40%)`
-                      : `linear-gradient(to left, rgba(10,22,40,0.2) 0%, transparent 40%)`,
-                  }}
-                />
-              </div>
-
-            </div>
-          )
-        })}
+                <div className="mb-5 flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center" style={{ background: section.accent + '12' }}>
+                    <FontAwesomeIcon icon={section.icon} className="h-4 w-4" style={{ color: section.accent }} />
+                  </div>
+                  <h2 className="font-heading text-[#0a1628] leading-snug" style={{ fontSize: 'clamp(20px, 2vw, 27px)' }}>
+                    {section.title}
+                  </h2>
+                </div>
+                <BulletList items={section.items} accent={section.accent} />
+              </article>
+            ))}
+          </div>
+        </div>
 
         {/* Pull quote */}
         <div className="bg-[#f8fafc]">
