@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Polygon, useMap } from 'react-leaflet'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMap, faChartBar, faLayerGroup, faBullseye } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import VisualInsightCard from '@/components/VisualInsightCard'
+import ProductDemoModal from '@/components/ProductDemoModal'
 import icmapFeatureImage from '@/assets/iCMAP/1.png'
 import icmapStep1 from '@/assets/iCMAP/isometric/step-1.png'
 import icmapStep2 from '@/assets/iCMAP/isometric/step-2.png'
@@ -424,8 +424,25 @@ function IcmapHeroDemo() {
 
 // -- Main page -----------------------------------------------------------------
 export default function IcmapPage() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
   return (
     <>
+      <ProductDemoModal
+        isOpen={isDemoOpen}
+        onClose={() => setIsDemoOpen(false)}
+        productName="iCMAP"
+        title="See iCMAP in action"
+        description="Request a demo to see how iCMAP helps you visualise, analyse and act on mobile coverage data across any geographic area."
+        logoSrc="/icmap-logo.svg"
+        accentColor="#228DC1"
+        outcomes={[
+          'A walkthrough of coverage mapping and filtering tools',
+          'Live demonstration of weak-zone scoring and analysis',
+          'Guidance on importing your own network and field data',
+          'A practical pilot path for your coverage programme',
+        ]}
+      />
+
       {/* -- Hero -- */}
       <section className="relative overflow-hidden pt-32 pb-20" style={{ background: 'linear-gradient(135deg, #e8f4fa 0%, #dceef7 40%, #cde8f5 100%)' }}>
 
@@ -502,9 +519,9 @@ export default function IcmapPage() {
                 iCMAP helps organisations visualise, analyse and report on mobile network coverage across geographic areas. It brings coverage data, signal information and contextual layers into one map, so teams can identify weak zones, compare technologies and plan where to act next.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
+                <button onClick={() => setIsDemoOpen(true)} className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
                   Request a Demo
-                </Link>
+                </button>
               </div>
             </div>
 
