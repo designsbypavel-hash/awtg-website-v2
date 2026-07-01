@@ -365,13 +365,13 @@ export default function ServicesEngineeringPage() {
               <article
                 key={mod.abbr}
                 className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16"
-                style={reveal(modulesInView, i * 80)}
+                style={{ ...reveal(modulesInView, i * 80), minHeight: 420 }}
               >
-                <div className={`overflow-hidden rounded-2xl border border-[#0a1628]/15 bg-white shadow-[0_16px_40px_rgba(10,22,40,0.14)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`} style={{ aspectRatio: '16/9' }}>
+                <div className={`relative overflow-hidden rounded-2xl border border-[#0a1628]/15 bg-white shadow-[0_16px_40px_rgba(10,22,40,0.14)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                   <img
                     src={mod.image}
                     alt={`${mod.title} interface`}
-                    className="block h-full w-full object-cover object-center"
+                    className="absolute inset-0 block h-full w-full object-cover object-top"
                   />
                 </div>
 
