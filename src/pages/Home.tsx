@@ -681,7 +681,7 @@ function Industries() {
           <TypewriterHeading as="h2" className="font-heading text-white mb-4">
             Case Studies
           </TypewriterHeading>
-          <p className="text-white/65 text-[16px] leading-[1.8]">
+          <p className="text-white/70 text-[16px] leading-[1.8] font-light tracking-wide">
             Case studies spanning Open RAN security, network economics and public sector connectivity, with results backed by GSMA and operator data.
           </p>
         </div>
