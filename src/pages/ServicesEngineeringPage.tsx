@@ -320,7 +320,7 @@ export default function ServicesEngineeringPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-stretch">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16 items-stretch">
             <div style={{ ...reveal(diffInView, 80), position: 'relative', borderRadius: 20, overflow: 'hidden', height: 480, border: '1px solid rgba(10,22,40,0.12)', boxShadow: '0 16px 40px rgba(10,22,40,0.12)' }}>
               <img
                 src={scapMainView}
@@ -364,10 +364,10 @@ export default function ServicesEngineeringPage() {
             {coreModules.map((mod, i) => (
               <article
                 key={mod.abbr}
-                className={`grid items-center gap-10 lg:gap-12 ${i % 2 === 0 ? 'lg:grid-cols-[1.15fr_0.85fr]' : 'lg:grid-cols-[0.85fr_1.15fr]'}`}
+                className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16"
                 style={reveal(modulesInView, i * 80)}
               >
-                <div className={`aspect-[16/9] overflow-hidden rounded-2xl border border-[#0a1628]/15 bg-white shadow-[0_16px_40px_rgba(10,22,40,0.14)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div className={`overflow-hidden rounded-2xl border border-[#0a1628]/15 bg-white shadow-[0_16px_40px_rgba(10,22,40,0.14)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`} style={{ aspectRatio: '16/9' }}>
                   <img
                     src={mod.image}
                     alt={`${mod.title} interface`}
@@ -375,7 +375,7 @@ export default function ServicesEngineeringPage() {
                   />
                 </div>
 
-                <div className={i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}>
+                <div className={`${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} flex flex-col justify-center`}>
                   <p
                     className="mb-5 text-[14px] font-bold uppercase tracking-[0.16em]"
                     style={{ color: mod.color }}
