@@ -17,6 +17,10 @@ export interface SectorHero {
   visualItems: Array<{ icon: IconDefinition; label: string }>
   heroVisual?: ReactNode
   heroImage?: string
+  heroImageFit?: 'cover' | 'contain'
+  heroImagePosition?: string
+  heroImageWidth?: string
+  heroImageHeight?: string
 }
 export interface SectorChallenge { icon: IconDefinition; title: string; desc: string }
 export interface SectorSupport   { icon: IconDefinition; title: string; desc: string; bullets: string[]; image?: string; imageFit?: 'cover' | 'contain' }
@@ -47,7 +51,17 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
           <img
             src={hero.heroImage}
             alt={hero.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute"
+            style={{
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: hero.heroImageWidth || hero.heroImageHeight ? 'auto' : 0,
+              width: hero.heroImageWidth ?? '100%',
+              height: hero.heroImageHeight ?? '100%',
+              objectFit: hero.heroImageFit ?? 'cover',
+              objectPosition: hero.heroImagePosition ?? 'center',
+            }}
           />
         )}
 
