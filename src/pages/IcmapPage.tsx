@@ -607,7 +607,7 @@ export default function IcmapPage() {
                 className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-16"
                 style={{ minHeight: 420 }}
               >
-                <div className={`relative overflow-hidden rounded-[20px] bg-white shadow-[0_16px_40px_rgba(10,22,40,0.10)] border border-[#0a1628]/08 ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div className={`relative overflow-hidden rounded-[20px] bg-white shadow-[0_16px_40px_rgba(10,22,40,0.10)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                   <img
                     src={step.image}
                     alt={`${step.label} interface`}
