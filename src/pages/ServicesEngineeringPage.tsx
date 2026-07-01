@@ -12,9 +12,11 @@ import VisualInsightCard from '@/components/VisualInsightCard'
 import scapScreen1 from '@/assets/SCAP/screen-1.png'
 import scapScreen2 from '@/assets/SCAP/screen-2.png'
 import scapKpiDashboard from '@/assets/SCAP/product/kpi-dashboard.png'
+import scapMainView from '@/assets/SCAP/product/scap-main-view.png'
+import scapSmo from '@/assets/SCAP/product/smo.png'
+import scapConfigurationManagement from '@/assets/SCAP/product/configuration-management.png'
 import scapKpiPerformance from '@/assets/SCAP/product/kpi-performance.png'
 import scapAlarmManagement from '@/assets/SCAP/product/alarm-management.png'
-import scapConfigurationNavigation from '@/assets/SCAP/product/configuration-navigation.png'
 
 // -- Scroll utilities ----------------------------------------------------------
 function useInView(threshold = 0.12) {
@@ -115,7 +117,7 @@ const coreModules = [
   {
     abbr: 'SMO',
     icon: faLayerGroup,
-    image: scapKpiDashboard,
+    image: scapSmo,
     title: 'Service Management & Orchestration',
     color: '#228DC1',
     capabilities: [
@@ -145,7 +147,7 @@ const coreModules = [
   {
     abbr: 'CM',
     icon: faCodeBranch,
-    image: scapConfigurationNavigation,
+    image: scapConfigurationManagement,
     title: 'Configuration Management',
     color: '#7c3aed',
     capabilities: [
@@ -201,7 +203,7 @@ const vendors = [
 const useCases = [
   { image: scapKpiDashboard, eyebrow: 'Operators', title: 'Mobile Network Operators',   desc: 'Unified assurance and orchestration for O-RAN and multi-vendor RAN environments with full SMO and PM capability.' },
   { image: scapAlarmManagement, eyebrow: 'Private 5G', title: 'Private Network Providers',  desc: 'End-to-end visibility, fault management and configuration governance for private 5G deployments.' },
-  { image: scapConfigurationNavigation, eyebrow: 'Neutral host', title: 'Neutral Host Networks',      desc: 'Multi-tenant network management with vendor-agnostic integration and service-level assurance.' },
+  { image: scapConfigurationManagement, eyebrow: 'Neutral host', title: 'Neutral Host Networks',      desc: 'Multi-tenant network management with vendor-agnostic integration and service-level assurance.' },
   { image: scapKpiPerformance, eyebrow: 'Delivery', title: 'System Integrators',         desc: 'A flexible platform layer that connects equipment, software and operational workflows across complex multi-vendor programmes.' },
   { image: scapKpiDashboard, eyebrow: 'Enterprise', title: 'Enterprise Telecom',         desc: 'Network operations modernisation through automation, assurance and orchestration for enterprise telecom environments.' },
 ]
@@ -321,7 +323,7 @@ export default function ServicesEngineeringPage() {
           <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-stretch">
             <div style={{ ...reveal(diffInView, 80), position: 'relative', borderRadius: 20, overflow: 'hidden', height: 480, border: '1px solid rgba(10,22,40,0.12)', boxShadow: '0 16px 40px rgba(10,22,40,0.12)' }}>
               <img
-                src={scapKpiDashboard}
+                src={scapMainView}
                 alt="SCAP KPI dashboard showing performance controls and service metrics"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
               />
