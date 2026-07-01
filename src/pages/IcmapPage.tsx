@@ -326,7 +326,7 @@ const useCases = [
 const steps = [
   {
     num: '01',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2400&q=95&crop=center',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=95&crop=center',
     color: '#228DC1',
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
@@ -335,7 +335,7 @@ const steps = [
   },
   {
     num: '02',
-    image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=2400&q=95&crop=center',
+    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=2400&q=95&crop=center',
     color: '#3d4d9e',
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
@@ -344,7 +344,7 @@ const steps = [
   },
   {
     num: '03',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2400&q=95&crop=center',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2400&q=95&crop=center',
     color: '#059669',
     label: 'Assess weak zones',
     desc: 'Identify underserved areas and rank them by coverage quality, severity and impact.',
@@ -353,7 +353,7 @@ const steps = [
   },
   {
     num: '04',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=95&crop=center',
+    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=2400&q=95&crop=center',
     color: '#d97706',
     label: 'Plan the next action',
     desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
