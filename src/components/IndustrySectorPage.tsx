@@ -21,6 +21,7 @@ export interface SectorHero {
   heroImagePosition?: string
   heroImageWidth?: string
   heroImageHeight?: string
+  heroImageTop?: string
 }
 export interface SectorChallenge { icon: IconDefinition; title: string; desc: string }
 export interface SectorSupport   { icon: IconDefinition; title: string; desc: string; bullets: string[]; image?: string; imageFit?: 'cover' | 'contain' }
@@ -53,9 +54,9 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
             alt={hero.title}
             className="absolute"
             style={{
-              top: 0,
+              top: hero.heroImageTop ?? 0,
               right: 0,
-              bottom: 0,
+              bottom: hero.heroImageTop ? 'auto' : 0,
               left: hero.heroImageWidth || hero.heroImageHeight ? 'auto' : 0,
               width: hero.heroImageWidth ?? '100%',
               height: hero.heroImageHeight ?? '100%',

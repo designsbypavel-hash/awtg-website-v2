@@ -44,6 +44,7 @@ const data: SectorPageData = {
     heroImagePosition: 'right center',
     heroImageWidth: '56%',
     heroImageHeight: '82%',
+    heroImageTop: '8%',
     title: 'AI-powered teaching and formative assessment for higher education',
     subtitle:
       'Aruva helps universities personalise learning, generate meaningful feedback and understand student progress in real time.',

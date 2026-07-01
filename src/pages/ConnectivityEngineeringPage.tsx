@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'Connectivity · Engineering',
     accentColor: '#6b7280',
     heroVisual,
-    heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+    heroImage: '/images/insights/cloud-network.jpg',
     title: 'Connectivity for complex engineering projects',
     subtitle:
       'AWTG helps engineering and infrastructure organisations connect sites, assets, teams and systems through secure digital infrastructure.',
@@ -98,7 +98,7 @@ const data: SectorPageData = {
           'Connectivity for remote and technically demanding locations',
           'Secure access for distributed engineering teams',
         ],
-        image: 'https://images.unsplash.com/photo-1702128411129-68538eadb291?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/mobile-networks.jpg',
       },
       {
         icon: faMicrochip,
@@ -110,7 +110,7 @@ const data: SectorPageData = {
           'Data collection and platform integration',
           'Dashboards and reporting for engineering decision making',
         ],
-        image: 'https://images.unsplash.com/photo-1611845103828-d89eaac2a89b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/data-centre.jpg',
       },
       {
         icon: faNetworkWired,
@@ -122,7 +122,7 @@ const data: SectorPageData = {
           'Secure infrastructure for technical environments',
           'ESA and public sector innovation programme experience',
         ],
-        image: 'https://images.unsplash.com/photo-1702128411956-2197fd9706fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: '/images/insights/lab-testing.jpg',
       },
     ],
   },
