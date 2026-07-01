@@ -1,6 +1,5 @@
 import { type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import CTASection from '@/components/CTASection'
 import IndustryIconVisual from '@/components/IndustryIconVisual'
@@ -122,11 +121,6 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
                 style={{ padding: '64px clamp(32px, 5vw, 80px)' }}
               >
                 <div style={{ maxWidth: 520 }}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div style={{ width: 3, height: 32, background: accent, borderRadius: 2, flexShrink: 0 }} />
-                    <FontAwesomeIcon icon={s.icon} style={{ fontSize: 19, color: accent }} />
-                  </div>
-
                   <h3
                     className="font-heading text-[#0a1628] leading-snug mb-4"
                     style={{ fontSize: 'clamp(20px, 2vw, 27px)' }}
