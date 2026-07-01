@@ -39,7 +39,7 @@ const data: SectorPageData = {
     badge: 'AI Platform · Education',
     accentColor: '#228DC1',
     heroVisual,
-    heroImage: '/images/aruva-screens/dashboard.png',
+    heroImage: '/images/aruva-screens/skill-mastery.png',
     heroImageFit: 'contain',
     heroImagePosition: 'right center',
     heroImageWidth: '56%',
