@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef, useMemo, isValidElement, type ReactNode } from 'react'
+import { useState, useEffect, useRef, useMemo, isValidElement, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
@@ -93,7 +93,7 @@ function TypewriterHeading({
     )
   }
 
-  // Render segments in order, one line/run at a time — once a segment isn't
+  // Render segments in order, one line/run at a time � once a segment isn't
   // fully typed yet, stop rendering (so later lines stay hidden until the
   // current line finishes, matching how ChatGPT streams text).
   const rendered: ReactNode[] = []
@@ -300,6 +300,14 @@ function Hero() {
           className="absolute inset-0"
           style={{ background: 'radial-gradient(ellipse 55% 50% at 88% 8%, rgba(56,189,248,0.35) 0%, transparent 60%), radial-gradient(ellipse 50% 45% at 6% 78%, rgba(124,58,237,0.32) 0%, transparent 60%)' }}
         />
+        <div className="home-hero-badge-shell pointer-events-none absolute left-1/2 top-[53%] z-10 h-24 w-56 -translate-x-1/2 -translate-y-1/2 sm:h-28 sm:w-64 lg:h-32 lg:w-72">
+          <div className="home-hero-badge home-hero-badge-1 absolute inset-0 flex items-center justify-center rounded-full border border-white/25 bg-white/14 text-4xl font-black text-white backdrop-blur-xl sm:text-5xl lg:text-6xl">
+            AI
+          </div>
+          <div className="home-hero-badge home-hero-badge-2 absolute inset-0 flex items-center justify-center rounded-full border border-white/25 bg-white/14 text-4xl font-black text-white backdrop-blur-xl sm:text-5xl lg:text-6xl">
+            5G
+          </div>
+        </div>
       </div>
 
       {/* -- Content, centred both horizontally and vertically -- */}
@@ -610,7 +618,7 @@ const industryCards = [
   {
     tag: 'Network Economics',
     title: "AWTG's Service Assurance and Service Creation Platform",
-    desc: "A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
+    desc: "A GSMA-validated study with Telecom of Thailand � 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
     cta: 'Read the case study',
     href: '/insights/case-studies/tot-service-assurance',
     img: getCaseStudyImage('tot-service-assurance', 'Network Economics'),
@@ -650,7 +658,7 @@ const industryCards = [
   {
     tag: 'Mobile Services',
     title: 'Rich Communications Suite',
-    desc: "AWTG's analysis of the GSMA RCS-e initiative — how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
+    desc: "AWTG's analysis of the GSMA RCS-e initiative � how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
     cta: 'Read the case study',
     href: '/insights/case-studies/rich-communications-suite',
     img: getCaseStudyImage('rich-communications-suite', 'Mobile Services'),
@@ -671,7 +679,7 @@ function Industries() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="max-w-2xl mb-16">
           <TypewriterHeading as="h2" className="font-heading text-white mb-4">
-            Case Study
+            Case Studies
           </TypewriterHeading>
           <p className="text-white/65 text-[16px] leading-[1.8]">
             Case studies spanning Open RAN security, network economics and public sector connectivity, with results backed by GSMA and operator data.
@@ -924,7 +932,7 @@ const articles = [
     date: 'Jun 2026',
     readTime: '5 min read',
     title: 'KAI: How AI Agents Are Transforming Customer Engagement in Telecoms',
-    excerpt: 'How AWTG\'s KAI platform deploys conversational AI at scale — reducing escalations, improving CSAT and handling complex queries end-to-end.',
+    excerpt: 'How AWTG\'s KAI platform deploys conversational AI at scale � reducing escalations, improving CSAT and handling complex queries end-to-end.',
     img: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80&auto=format&fit=crop',
     href: '/products/kai',
   },
@@ -1133,7 +1141,7 @@ function ContactCTA() {
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Phone</p>
               <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#1a7aab] transition-colors font-medium text-sm">+44 (0) 20 3515 5151</a>
-              <p className="text-xs text-[#0a1628]/60 mt-1 font-normal">Mon–Fri, 9am–6pm GMT</p>
+              <p className="text-xs text-[#0a1628]/60 mt-1 font-normal">Mon�Fri, 9am�6pm GMT</p>
             </div>
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Offices</p>
