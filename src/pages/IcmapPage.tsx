@@ -335,7 +335,8 @@ const steps = [
   },
   {
     num: '02',
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=2400&q=95&crop=center',
+    image: icmapFeatureImage,
+    imageClassName: 'scale-[1.42] object-[72%_48%]',
     color: '#3d4d9e',
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
@@ -610,7 +611,7 @@ export default function IcmapPage() {
                   <img
                     src={step.image}
                     alt={`${step.label} interface`}
-                    className="absolute inset-0 block h-full w-full object-cover object-top"
+                    className={`absolute inset-0 block h-full w-full object-cover object-top ${'imageClassName' in step ? step.imageClassName : ''}`}
                   />
                 </div>
 
