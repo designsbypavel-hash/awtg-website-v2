@@ -610,7 +610,7 @@ const industryCards = [
   {
     tag: 'Network Economics',
     title: "AWTG's Service Assurance and Service Creation Platform",
-    desc: "A GSMA-validated study with Telecom of Thailand � 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
+    desc: "A GSMA-validated study with Telecom of Thailand — 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
     cta: 'Read the case study',
     href: '/insights/case-studies/tot-service-assurance',
     img: getCaseStudyImage('tot-service-assurance', 'Network Economics'),
@@ -650,7 +650,7 @@ const industryCards = [
   {
     tag: 'Mobile Services',
     title: 'Rich Communications Suite',
-    desc: "AWTG's analysis of the GSMA RCS-e initiative � how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
+    desc: "AWTG's analysis of the GSMA RCS-e initiative — how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
     cta: 'Read the case study',
     href: '/insights/case-studies/rich-communications-suite',
     img: getCaseStudyImage('rich-communications-suite', 'Mobile Services'),
@@ -924,7 +924,7 @@ const articles = [
     date: 'Jun 2026',
     readTime: '5 min read',
     title: 'KAI: How AI Agents Are Transforming Customer Engagement in Telecoms',
-    excerpt: 'How AWTG\'s KAI platform deploys conversational AI at scale � reducing escalations, improving CSAT and handling complex queries end-to-end.',
+    excerpt: 'How AWTG\'s KAI platform deploys conversational AI at scale — reducing escalations, improving CSAT and handling complex queries end-to-end.',
     img: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80&auto=format&fit=crop',
     href: '/products/kai',
   },
@@ -1133,7 +1133,7 @@ function ContactCTA() {
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Phone</p>
               <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#1a7aab] transition-colors font-medium text-sm">+44 (0) 20 3515 5151</a>
-              <p className="text-xs text-[#0a1628]/60 mt-1 font-normal">Mon�Fri, 9am�6pm GMT</p>
+              <p className="text-xs text-[#0a1628]/60 mt-1 font-normal">Mon-Fri, 9am-6pm GMT</p>
             </div>
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Offices</p>
