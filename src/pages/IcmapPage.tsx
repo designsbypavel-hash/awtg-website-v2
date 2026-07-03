@@ -6,10 +6,10 @@ import CTASection from '@/components/CTASection'
 import VisualInsightCard from '@/components/VisualInsightCard'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import icmapFeatureImage from '@/assets/iCMAP/1.png'
-import icmapStep1Image from '@/assets/iCMAP/isometric/step-1.png'
-import icmapStep2Image from '@/assets/iCMAP/isometric/step-2.png'
-import icmapStep3Image from '@/assets/iCMAP/isometric/step-3.png'
-import icmapStep4Image from '@/assets/iCMAP/isometric/step-4.png'
+import icmapStep1Image from '@/assets/iCMAP/generated/step-connect-network-data.png'
+import icmapStep2Image from '@/assets/iCMAP/generated/step-map-coverage-context.png'
+import icmapStep3Image from '@/assets/iCMAP/generated/step-assess-weak-zones.png'
+import icmapStep4Image from '@/assets/iCMAP/generated/step-plan-next-action.png'
 import networkOperatorsImage from '@/assets/iCMAP/use-cases/network-operators.png'
 import regulatorsImage from '@/assets/iCMAP/use-cases/regulators-local-authorities.png'
 import smartInfrastructureImage from '@/assets/iCMAP/use-cases/smart-infrastructure.png'
@@ -331,7 +331,7 @@ const steps = [
   {
     num: '01',
     image: icmapStep1Image,
-    imageClassName: 'object-contain object-center p-6 sm:p-8',
+    imageClassName: 'object-cover object-center',
     color: '#228DC1',
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
@@ -341,7 +341,7 @@ const steps = [
   {
     num: '02',
     image: icmapStep2Image,
-    imageClassName: 'object-contain object-center p-6 sm:p-8',
+    imageClassName: 'object-cover object-center',
     color: '#3d4d9e',
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
@@ -351,7 +351,7 @@ const steps = [
   {
     num: '03',
     image: icmapStep3Image,
-    imageClassName: 'object-contain object-center p-6 sm:p-8',
+    imageClassName: 'object-cover object-center',
     color: '#059669',
     label: 'Assess weak zones',
     desc: 'Identify underserved areas and rank them by coverage quality, severity and impact.',
@@ -361,7 +361,7 @@ const steps = [
   {
     num: '04',
     image: icmapStep4Image,
-    imageClassName: 'object-contain object-center p-6 sm:p-8',
+    imageClassName: 'object-cover object-center',
     color: '#d97706',
     label: 'Plan the next action',
     desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
@@ -613,11 +613,11 @@ export default function IcmapPage() {
                 key={step.num}
                 className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16"
               >
-                <div className={`relative h-[300px] overflow-hidden rounded-[20px] bg-white shadow-[0_16px_40px_rgba(10,22,40,0.10)] sm:h-[360px] lg:h-[420px] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div className={`relative aspect-[16/10] overflow-hidden rounded-[20px] bg-white shadow-[0_16px_40px_rgba(10,22,40,0.10)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                   <img
                     src={step.image}
                     alt={`${step.label} interface`}
-                    className={`absolute inset-0 block h-full w-full object-cover object-top ${'imageClassName' in step ? step.imageClassName : ''}`}
+                    className={`absolute inset-0 block h-full w-full ${'imageClassName' in step ? step.imageClassName : 'object-cover object-center'}`}
                   />
                 </div>
 
