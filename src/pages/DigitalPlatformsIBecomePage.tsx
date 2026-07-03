@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrophy } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import ProductDemoModal from '@/components/ProductDemoModal'
-import iBecomeHero from '@/assets/Digital Platforms/iBecome_Hero.png'
+import iBecomeMockupImage from '@/assets/iBecome/ibecome-mockup-image-85.png'
 import lgcAward2023 from '@/assets/iBecome/LGC_Award_2023_logo.webp'
 import iBecomeGroup from '@/assets/iBecome/Group2532.png'
 
@@ -160,7 +160,7 @@ export default function DigitalPlatformsIBecomePage() {
                   </div>
                   <div className="overflow-hidden rounded-[14px] bg-white">
                     <img
-                      src={iBecomeHero}
+                      src={iBecomeMockupImage}
                       alt="iBecome digital opportunity platform shown in a device mockup"
                       className="block w-full"
                     />
