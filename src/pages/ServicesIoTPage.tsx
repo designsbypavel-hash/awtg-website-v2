@@ -480,36 +480,6 @@ export default function ServicesIoTPage() {
         </div>
       </section>
 
-      {/* -- TURNING ASSETS INTO OPPORTUNITIES ------------------------------ */}
-      <section className="bg-[#0a1628] py-24">
-        <div className="mx-auto max-w-7xl px-8 lg:px-12">
-          <div className="grid items-start gap-16 lg:grid-cols-2">
-            <div>
-              <h2 className="font-heading mb-6 text-white">Turning infrastructure assets into <span className="text-[#67c5f3]">usable digital records.</span></h2>
-              <p className="text-[16px] font-normal leading-[1.78] text-white/60">
-                Many organisations hold valuable telecom and public infrastructure assets, but the information is often spread across spreadsheets, disconnected systems, emails and manual approval processes.
-                iDAMS brings asset discovery, ownership details, requests, approvals and reporting into one secure map-based platform, helping teams manage assets more clearly and move from enquiry to action faster.
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                'Publishing available assets',
-                'Managing asset data and ownership details',
-                'Displaying assets on an interactive map',
-                'Supporting asset search, filtering, and selection',
-                'Managing requests, approvals, and acquisition workflows',
-                'Improving visibility, governance, and reporting',
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/5 p-4">
-                  <div className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#228DC1]" />
-                  <span className="text-[13px] font-normal leading-snug text-white/65">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* -- USE CASES ------------------------------------------------------ */}
       <section className="bg-[#0a1628] py-24">
         <div ref={ucRef} className="mx-auto max-w-7xl px-8 lg:px-12">

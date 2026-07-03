@@ -243,9 +243,11 @@ export default function DigitalPlatformsPage() {
                     src={product.image}
                     alt={product.name}
                     loading="lazy"
-                    className="h-full w-full object-contain p-4 transition-transform duration-700 group-hover:scale-[1.025]"
+                    className={`h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.025] ${product.name === 'iBecome' ? 'p-3 drop-shadow-[0_18px_34px_rgba(10,22,40,0.16)]' : 'p-4'}`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
+                  {product.name !== 'iBecome' && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col p-8">
                   <h2 className="text-[#0a1628] font-bold leading-snug mb-2" style={{ fontSize: 24 }}>{product.name}</h2>
@@ -327,3 +329,8 @@ export default function DigitalPlatformsPage() {
     </>
   )
 }
+
+
+
+
+

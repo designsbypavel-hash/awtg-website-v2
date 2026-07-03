@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faBolt, faShield, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import kaiMockup from '../assets/Mockup/KAi_Mockup.png'
-import idamsMockup from '../assets/Mockup/Conecctivity_iDAMS mockup.png'
+
 import { getCaseStudyImage } from '@/lib/insightImages'
 
 // --- SCROLL-TRIGGERED TYPEWRITER HEADING (homepage only) --------------------
@@ -251,7 +251,6 @@ const tickerLogos = [
   { id: 'kingston',     src: '/logos/partners/Royal Borough of Kingston upon Thames.png',   alt: 'Royal Borough of Kingston upon Thames' },
   { id: 'ruckus',       src: '/logos/partners/Ruckus.png',                                  alt: 'Ruckus' },
   { id: 'scotland5g',   src: '/logos/partners/Scotland 5G Centre.png',                      alt: 'The Scotland 5G Centre' },
-  { id: 'scotland5gAlt',src: '/logos/partners/Scotland 5G Centre Alt.png',                  alt: 'The Scotland 5G Centre' },
   { id: 'stc',          src: '/logos/partners/STC.png',                                     alt: 'STC' },
   { id: 'strathclyde',  src: '/logos/partners/University of Strathclyde.png',               alt: 'University of Strathclyde' },
   { id: 'surrey',       src: '/logos/partners/University of Surrey.png',                    alt: 'University of Surrey' },
@@ -384,10 +383,8 @@ const whatWeDoItems = [
       'We design and build intelligent software products that solve real operational challenges, improve decision making, and create new opportunities for growth. Our AI solutions are built with security, reliability, and usability at the core, so clients can adopt innovation with confidence.',
       'From strategy to deployment, AWTG gives organisations the tools, technology, and expertise to win in an increasingly AI-driven world.',
     ],
-    href: '/ai/digital-transformation',
-    cta: 'Explore Digital Transformation',
+    points: ['Secure AI adoption', 'Operational decision intelligence', 'Production-ready software delivery'],
     accent: '#228DC1',
-    tag: 'Generative AI',
     image: kaiMockup,
     imageFit: 'cover',
   },
@@ -398,12 +395,11 @@ const whatWeDoItems = [
       'We design and deliver telecoms and connectivity solutions that improve performance, expand coverage, and enable smarter operations. Whether supporting public sector transformation, enterprise networks, smart cities, transport, or critical infrastructure, our focus is on reliable technology that works in real environments.',
       'With AWTG, clients gain a trusted partner for building stronger, faster, and more intelligent networks.',
     ],
-    href: '/industries/telecoms',
-    cta: 'Explore Telecommunications',
+    points: ['Reliable real-world coverage', 'Private, public and enterprise networks', 'Smarter connected operations'],
     accent: '#0ea472',
-    tag: 'Connectivity',
-    image: idamsMockup,
+    image: 'https://images.unsplash.com/photo-1533664488202-6af66d26c44a?auto=format&fit=crop&w=1800&q=85',
     imageFit: 'cover',
+    imagePosition: 'center 45%',
   },
 ]
 
@@ -434,37 +430,57 @@ function WhatWeDo() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden bg-white py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-[#f7fafc] py-24 lg:py-28">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d8e5ef] to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#d8e5ef] to-transparent" />
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        <SectionHeader
+          title={<>What We <span className="text-[#1a7aab]">Do</span></>}
+          description="Two connected capabilities, delivered with the same engineering discipline: intelligent software for better decisions and resilient networks that perform in the real world."
+          className="mb-14 max-w-3xl"
+        />
 
-        <div className="space-y-16 lg:space-y-0">
+        <div className="space-y-10 lg:space-y-12">
           {whatWeDoItems.map((item, index) => {
             const imageFirst = index % 2 === 1
             const isVisible = visibleRows.has(index)
             const [firstWord, ...remainingWords] = item.label.split(' ')
             const image = (
-              <div className="group relative h-full min-h-[340px] overflow-hidden rounded-2xl bg-[#f6f8fb] shadow-[0_18px_48px_rgba(10,22,40,0.08)] lg:min-h-[460px]">
+              <div className="group relative h-full min-h-[320px] overflow-hidden bg-white lg:min-h-[430px]">
                 <img
                   src={item.image}
                   alt={item.label}
-                  className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.025] ${item.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+                  className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.025] ${item.imageFit === 'contain' ? 'object-contain p-8' : 'object-cover'}`}
+                  style={{ objectPosition: item.imagePosition ?? 'center' }}
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/16 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/12 via-transparent to-transparent" />
+
               </div>
             )
             const copy = (
-              <div className="flex min-h-[340px] flex-col justify-center py-6 lg:min-h-[460px]">
-                <div className={index === 1 ? 'mx-auto w-full max-w-[700px] text-left' : ''}>
-                  <TypewriterHeading as="h3" className="mb-5 text-[32px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#0a1628] lg:text-[42px]">
+              <div className="flex min-h-[320px] flex-col justify-center bg-white px-7 py-8 lg:min-h-[430px] lg:px-11 xl:px-14">
+                <div className="max-w-[640px]">
+
+                  <TypewriterHeading as="h3" className="mb-5 text-[30px] font-semibold leading-[1.08] tracking-[-0.015em] text-[#0a1628] lg:text-[40px]">
                     {firstWord}{' '}
                     <span className="text-[#1a7aab]">{remainingWords.join(' ')}</span>
                   </TypewriterHeading>
-                  <div className="max-w-[700px] space-y-4 text-[16px] font-normal leading-[1.72] text-[#0a1628]/72">
-                    {item.description.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
+                  <p className="mb-5 text-[16px] font-normal leading-[1.72] text-[#0a1628]/72">
+                    {item.description[0]}
+                  </p>
+                  <p className="mb-7 text-[15px] font-normal leading-[1.72] text-[#0a1628]/62">
+                    {item.description[1]}
+                  </p>
+                  <ul className="mb-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                    {item.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2 text-[13px] font-semibold leading-snug text-[#0a1628]/78">
+                        <FontAwesomeIcon icon={faCircleCheck} className="mt-0.5 h-4 w-4 shrink-0" style={{ color: item.accent }} />
+                        <span>{point}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
+
                 </div>
               </div>
             )
@@ -474,7 +490,7 @@ function WhatWeDo() {
                 key={item.label}
                 ref={(node) => { rowRefs.current[index] = node }}
                 data-reveal-index={index}
-                className={`grid items-stretch gap-8 lg:grid-cols-2 lg:gap-4 ${index > 0 ? 'lg:-mt-1' : ''}`}
+                className="grid items-stretch overflow-hidden rounded-xl border border-[#d8e5ef] bg-white shadow-[0_22px_60px_rgba(10,22,40,0.08)] lg:grid-cols-2"
               >
                 <div
                   className={`${imageFirst ? 'lg:order-1' : 'lg:order-2'} transition-all duration-700 ease-out ${
@@ -499,7 +515,6 @@ function WhatWeDo() {
     </section>
   )
 }
-
 // --- OUR SOLUTIONS -----------------------------------------------------------
 
 const solutionPanels = [

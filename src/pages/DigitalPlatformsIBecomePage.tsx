@@ -149,12 +149,27 @@ export default function DigitalPlatformsIBecomePage() {
                 </button>
               </div>
             </div>
-            <div className="flex justify-center lg:justify-end">
-              <img
-                src={iBecomeHero}
-                alt="iBecome digital opportunity platform"
-                className="block max-h-[430px] w-full max-w-[760px] object-contain"
-              />
+            <div className="flex justify-center lg:justify-end" style={{ perspective: '1100px' }}>
+              <div
+                className="relative w-full max-w-[760px]"
+                style={{ transform: 'rotateY(-8deg) rotateX(2deg)', transformStyle: 'preserve-3d' }}
+              >
+                <div className="rounded-[24px] bg-[#0e0e1c] p-[10px] shadow-[0_40px_90px_rgba(10,22,40,0.30),0_0_0_1px_rgba(255,255,255,0.08)]">
+                  <div className="mb-1.5 flex justify-center">
+                    <div className="h-[5px] w-8 rounded-full bg-[#1a1a2c]" />
+                  </div>
+                  <div className="overflow-hidden rounded-[14px] bg-white">
+                    <img
+                      src={iBecomeHero}
+                      alt="iBecome digital opportunity platform shown in a device mockup"
+                      className="block w-full"
+                    />
+                  </div>
+                  <div className="mt-1.5 flex justify-center">
+                    <div className="h-[5px] w-14 rounded-full bg-[#1a1a2c]" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

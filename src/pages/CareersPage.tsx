@@ -38,9 +38,9 @@ export default function CareersPage() {
       {/* -- HERO, full-bleed image, no text on photo -- */}
       <section className="relative overflow-hidden" style={{ minHeight: 640 }}>
         <img
-          src="/images/insights/mobile-networks.jpg"
-          alt="AWTG Careers"
-          className="absolute inset-0 w-full h-full object-cover"
+          src="/images/careers/careers-hero.png"
+          alt="AWTG engineers collaborating in a modern connectivity innovation lab"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* Gradient: dark left for text, fades right */}
         <div
