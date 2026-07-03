@@ -6,10 +6,8 @@ import idamsHeroScreen1 from '@/assets/IDAMS/hero/screen-1.png'
 import idamsHeroScreen2 from '@/assets/IDAMS/hero/screen-2.png'
 import idamsCapability1 from '@/assets/IDAMS/capabilities/capability-1.png'
 import idamsCapability2 from '@/assets/IDAMS/capabilities/capability-2.png'
-import idamsCapability3 from '@/assets/IDAMS/capabilities/capability-3.png'
 import idamsCapability4 from '@/assets/IDAMS/capabilities/capability-4.png'
 import idamsCapability5 from '@/assets/IDAMS/capabilities/capability-5.png'
-import idamsCapability6 from '@/assets/IDAMS/capabilities/capability-6.png'
 import idamsUseCase5G from '@/assets/IDAMS/use-cases/5g-small-cell.png'
 import idamsUseCaseAcquisition from '@/assets/IDAMS/use-cases/site-acquisition.png'
 import idamsUseCaseEvCharging from '@/assets/IDAMS/use-cases/ev-charging.png'
@@ -230,10 +228,8 @@ function SectionHeader({ title, desc }: { title: ReactNode; desc: string }) {
 const capabilities = [
   { image: idamsCapability1, title: 'Interactive Asset Map', desc: 'View available assets on an intuitive map interface. Assets can be displayed as layers and filtered by location, type, ownership, availability, and other configurable criteria.' },
   { image: idamsCapability2, title: 'Advanced Search & Filtering', desc: 'Find the right assets using geographic search, postcode, asset type, metadata, or selected map areas such as radius or polygon search.' },
-  { image: idamsCapability3, title: 'Asset Data Management', desc: 'Import, create, update, and manage asset records in one place. iDAMS supports flexible data mapping and can be configured to fit different asset structures and ownership models.' },
   { image: idamsCapability4, title: 'Acquisition Workflow', desc: 'Manage asset requests through a structured workflow with reviews, approvals, stakeholder input, and notifications, keeping every request visible and accountable.' },
   { image: idamsCapability5, title: 'Reporting & Insights', desc: 'Use dashboards, reports, and exports to understand asset usage, acquisition progress, and operational performance across your estate.' },
-  { image: idamsCapability6, title: 'Integration-Ready Platform', desc: 'iDAMS provides APIs for importing and exporting data and can be configured during onboarding to support each customer\'s specific operational requirements.' },
 ]
 
 const ownerBenefits = [
