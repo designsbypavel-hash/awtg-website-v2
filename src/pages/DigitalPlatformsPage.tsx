@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import CTASection from '@/components/CTASection'
 import lysLogin from '@/assets/iYouth/Login.jpg'
-import iBecomeCard from '@/assets/Digital Platforms/iBecome_Card_LCRReels.png'
+import iBecomeMockupImage from '@/assets/iBecome/ibecome-mockup-image-85.png'
 import iBecomeLCRReels from '@/assets/Digital Platforms/iBecome_LCRReels.png'
 import iYouthHero from '@/assets/Digital Platforms/Hero_iYouth.png'
 import clearAccessImage from '@/assets/Digital Platforms/outcomes/clear-access.webp'
@@ -43,7 +43,7 @@ const products = [
     name: 'iBecome',
     subtitle: 'A platform for jobs, apprenticeships and local opportunity',
     desc: 'iBecome helps young people discover opportunities, build confidence and move closer to employment. It carries forward the proven model behind Liverpool City Region BeMore, bringing together vacancies, careers content, profile tools and local engagement in one joined-up experience. It includes a profile and CV builder, apprenticeships and jobs, events and engagement, personalised guidance, and employer and provider reach.',
-    image: iBecomeCard,
+    image: iBecomeMockupImage,
     href: '/digital-platforms/ibecome',
     cta: 'View iBecome',
   },
@@ -239,14 +239,29 @@ export default function DigitalPlatformsPage() {
                 style={{ boxShadow: '0 4px 24px rgba(10,22,40,0.06)', ...reveal(productsInView, i * 120) }}
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-[#e8f4fa]">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    loading="lazy"
-                    className={`h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.025] ${product.name === 'iBecome' ? 'object-top p-8 sm:p-10 drop-shadow-[0_18px_34px_rgba(10,22,40,0.16)]' : 'p-4'}`}
-                  />
-                  {product.name !== 'iBecome' && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
+                  {product.name === 'iBecome' ? (
+                    <div className="absolute inset-0 flex items-center justify-center px-7 py-8 sm:px-10">
+                      <div className="w-full rounded-[18px] bg-[#0e0e1c] p-[8px] shadow-[0_22px_44px_rgba(10,22,40,0.24)] transition-transform duration-700 group-hover:scale-[1.018]">
+                        <div className="overflow-hidden rounded-[10px] bg-white">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            loading="lazy"
+                            className="block w-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        loading="lazy"
+                        className="h-full w-full object-contain p-4 transition-transform duration-700 group-hover:scale-[1.025]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/15 via-transparent to-transparent" />
+                    </>
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-8">
