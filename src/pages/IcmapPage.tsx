@@ -6,6 +6,10 @@ import CTASection from '@/components/CTASection'
 import VisualInsightCard from '@/components/VisualInsightCard'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import icmapFeatureImage from '@/assets/iCMAP/1.png'
+import icmapStep1Image from '@/assets/iCMAP/isometric/step-1.png'
+import icmapStep2Image from '@/assets/iCMAP/isometric/step-2.png'
+import icmapStep3Image from '@/assets/iCMAP/isometric/step-3.png'
+import icmapStep4Image from '@/assets/iCMAP/isometric/step-4.png'
 import networkOperatorsImage from '@/assets/iCMAP/use-cases/network-operators.png'
 import regulatorsImage from '@/assets/iCMAP/use-cases/regulators-local-authorities.png'
 import smartInfrastructureImage from '@/assets/iCMAP/use-cases/smart-infrastructure.png'
@@ -326,7 +330,8 @@ const useCases = [
 const steps = [
   {
     num: '01',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=95&crop=center',
+    image: icmapStep1Image,
+    imageClassName: 'object-contain object-center p-6 sm:p-8',
     color: '#228DC1',
     label: 'Connect network data',
     desc: 'Bring live, historical and field data into one coverage workspace.',
@@ -335,8 +340,8 @@ const steps = [
   },
   {
     num: '02',
-    image: icmapFeatureImage,
-    imageClassName: 'scale-[1.42] object-[72%_48%]',
+    image: icmapStep2Image,
+    imageClassName: 'object-contain object-center p-6 sm:p-8',
     color: '#3d4d9e',
     label: 'Map coverage in context',
     desc: 'Layer signal, geography, population and infrastructure data together.',
@@ -345,7 +350,8 @@ const steps = [
   },
   {
     num: '03',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2400&q=95&crop=center',
+    image: icmapStep3Image,
+    imageClassName: 'object-contain object-center p-6 sm:p-8',
     color: '#059669',
     label: 'Assess weak zones',
     desc: 'Identify underserved areas and rank them by coverage quality, severity and impact.',
@@ -354,7 +360,8 @@ const steps = [
   },
   {
     num: '04',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2400&q=95&crop=center',
+    image: icmapStep4Image,
+    imageClassName: 'object-contain object-center p-6 sm:p-8',
     color: '#d97706',
     label: 'Plan the next action',
     desc: 'Turn coverage intelligence into reports, investment plans and delivery decisions.',
