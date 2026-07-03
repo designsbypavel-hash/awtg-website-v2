@@ -604,10 +604,9 @@ export default function IcmapPage() {
             {steps.map((step, i) => (
               <article
                 key={step.num}
-                className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-16"
-                style={{ minHeight: 420 }}
+                className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16"
               >
-                <div className={`relative overflow-hidden rounded-[20px] bg-white shadow-[0_16px_40px_rgba(10,22,40,0.10)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div className={`relative h-[300px] overflow-hidden rounded-[20px] bg-white shadow-[0_16px_40px_rgba(10,22,40,0.10)] sm:h-[360px] lg:h-[420px] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                   <img
                     src={step.image}
                     alt={`${step.label} interface`}
@@ -615,7 +614,7 @@ export default function IcmapPage() {
                   />
                 </div>
 
-                <div className={`flex flex-col justify-center ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div className={`flex flex-col ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                   <div className="mb-5 flex items-center gap-4">
                     <span
                       className="text-[14px] font-bold uppercase tracking-[0.16em]"
