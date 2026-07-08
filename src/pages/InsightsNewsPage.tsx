@@ -539,7 +539,7 @@ export const newsItems: NewsItem[] = [
 ]
 
 export const categoryColours: Record<string, string> = {
-  'Artificial Intelligence': 'bg-[#228DC1]/10 text-[#1a7aab]',
+  'Artificial Intelligence': 'bg-[#228DC1]/10 text-[#156485]',
   Awards: 'bg-amber-50 text-amber-700',
   Engineering: 'bg-slate-100 text-slate-700',
   'Health Tech': 'bg-rose-50 text-rose-700',

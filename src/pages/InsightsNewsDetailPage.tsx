@@ -98,7 +98,7 @@ export default function InsightsNewsDetailPage() {
                   href={getYouTubeWatchUrl(youtubeEmbedUrl)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a6e99] text-white text-sm font-medium hover:bg-[#145a7d] transition-all"
                 >
                   <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5" /> Watch on YouTube
                 </a>
