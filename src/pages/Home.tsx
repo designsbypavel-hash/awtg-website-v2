@@ -274,22 +274,109 @@ const tickerLogos = [
 
 // --- HERO (Harvey-inspired) --------------------------------------------------
 
+// Animated network/particle mesh, rendered natively on canvas at the display's
+// pixel density — always sharp, no source footage or upscaling involved.
+function HeroNetworkBackground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const reducedMotion = usePrefersReducedMotion()
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext('2d')
+    if (!canvas || !ctx) return
+
+    let width = 0
+    let height = 0
+    const LINK_DIST = 150
+
+    type Node = { x: number; y: number; vx: number; vy: number }
+    let nodes: Node[] = []
+    let rafId = 0
+
+    function resize() {
+      const rect = canvas!.getBoundingClientRect()
+      width = rect.width
+      height = rect.height
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      canvas!.width = Math.round(width * dpr)
+      canvas!.height = Math.round(height * dpr)
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+      const count = Math.round((width * height) / 22000)
+      nodes = Array.from({ length: Math.max(24, Math.min(90, count)) }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      }))
+    }
+
+    function draw() {
+      ctx!.clearRect(0, 0, width, height)
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i]
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j]
+          const dx = a.x - b.x
+          const dy = a.y - b.y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < LINK_DIST) {
+            const opacity = (1 - dist / LINK_DIST) * 0.35
+            ctx!.strokeStyle = `rgba(120, 200, 230, ${opacity})`
+            ctx!.lineWidth = 1
+            ctx!.beginPath()
+            ctx!.moveTo(a.x, a.y)
+            ctx!.lineTo(b.x, b.y)
+            ctx!.stroke()
+          }
+        }
+      }
+      for (const n of nodes) {
+        ctx!.fillStyle = 'rgba(148, 210, 255, 0.85)'
+        ctx!.beginPath()
+        ctx!.arc(n.x, n.y, 1.8, 0, Math.PI * 2)
+        ctx!.fill()
+      }
+    }
+
+    function tick() {
+      for (const n of nodes) {
+        n.x += n.vx
+        n.y += n.vy
+        if (n.x < 0 || n.x > width) n.vx *= -1
+        if (n.y < 0 || n.y > height) n.vy *= -1
+        n.x = Math.max(0, Math.min(width, n.x))
+        n.y = Math.max(0, Math.min(height, n.y))
+      }
+      draw()
+      rafId = requestAnimationFrame(tick)
+    }
+
+    resize()
+    window.addEventListener('resize', resize)
+
+    if (reducedMotion) {
+      draw()
+    } else {
+      rafId = requestAnimationFrame(tick)
+    }
+
+    return () => {
+      window.removeEventListener('resize', resize)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
+  }, [reducedMotion])
+
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
+}
+
 function Hero() {
   return (
     <section className="home-hero home-ai-hero relative h-screen min-h-[700px] flex flex-col overflow-hidden">
 
-      {/* -- Cinematic background video, full hero bleed (decorative, aria-hidden) -- */}
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/hero-video-2-4k.mp4" type="video/mp4" />
-        </video>
+      {/* -- Animated network background, full hero bleed (decorative, aria-hidden) -- */}
+      <div className="absolute inset-0 overflow-hidden bg-[#0a1628]" aria-hidden="true">
+        <HeroNetworkBackground />
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(135deg, rgba(3,9,21,0.85) 0%, rgba(10,22,40,0.55) 40%, rgba(34,141,193,0.40) 75%, rgba(80,210,200,0.30) 100%)' }}
