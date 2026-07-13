@@ -152,8 +152,7 @@ function GlobalReachSection() {
               Global reach.<br /><span className="text-[#1a7aab]">Measurable customer outcomes.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] mb-10">
-              Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from day 1.
-            </p>
+              Trusted by enterprise organisations across 150+ countries. Proven through real query volumes, measurable containment rates, and CSAT improvements from day 1. </p>
 
             {/* 2 × 2 stat grid - flush with text, no extra margin */}
             <div className="grid grid-cols-2 gap-4">
@@ -227,8 +226,7 @@ function IntegrationsSection() {
               Connects to your stack.{' '}<span className="text-[#1a7aab]">Works from day one.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-8">
-              Kai connects to your existing CRM, ticketing, messaging, knowledge, and workflow tools, giving your AI agent the context it needs to resolve queries, route requests, qualify leads, and trigger actions without replacing your current systems.
-            </p>
+              Kai connects to your existing CRM, ticketing, messaging, knowledge, and workflow tools, giving your AI agent the context it needs to resolve queries, route requests, qualify leads, and trigger actions without replacing your current systems. </p>
             <div className="flex flex-col gap-3">
               {[
                 { label: 'Customer context', value: 'CRM, tickets, knowledge bases, and account history' },
@@ -314,8 +312,7 @@ function IntegrationsSection() {
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                       />
                       <span className="relative text-[11px] font-semibold text-[#903E8E] bg-[#903E8E]/10 border border-[#903E8E]/30 px-1.5 py-0.5 rounded-sm">
-                        AI Agent MCP
-                      </span>
+                        AI Agent MCP </span>
                     </>
                   ) : (
                     <>
@@ -351,8 +348,7 @@ function SecurityComplianceSection() {
               Designed for regulated<br /><span className="text-[#1a7aab]">environments.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8 max-w-xl" style={reveal(leftInView, 180)}>
-              Safe, measurable and auditable AI for teams with real governance requirements.
-            </p>
+              Safe, measurable and auditable AI for teams with real governance requirements. </p>
 
             <div className="rounded-2xl bg-[#0a1628] text-white p-8 shadow-[0_16px_50px_rgba(10,22,40,0.12)]" style={reveal(leftInView, 280)}>
               <div className="flex flex-col gap-7">
@@ -360,8 +356,7 @@ function SecurityComplianceSection() {
                   <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/45 mb-4">Governance proof</p>
                   <p className="font-heading text-[20px] leading-tight mb-3">ISO 42001 and ISO 27001 certified</p>
                   <p className="text-white/58 text-sm font-normal leading-relaxed">
-                    AI governance, information security and auditability are built in from day one.
-                  </p>
+                    AI governance, information security and auditability are built in from day one. </p>
                 </div>
                 <div className="space-y-3">
                   {[
@@ -399,8 +394,8 @@ function SecurityComplianceSection() {
             <div ref={gridRef} className="grid sm:grid-cols-2 gap-4">
               {[
                 { badge: 'Encryption', title: 'Protected data paths', detail: 'TLS in transit. AES-256 at rest.' },
-                { badge: 'Access', title: 'Least-privilege control', detail: 'Roles, MFA, permissions and audit trails.' },
-                { badge: 'Testing', title: 'Penetration-tested posture', detail: 'CREST-certified penetration testing and TLS 1.3 checks.' },
+                { badge: 'Access', title: 'Least privilege control', detail: 'Roles, MFA, permissions and audit trails.' },
+                { badge: 'Testing', title: 'Penetration tested posture', detail: 'CREST-certified penetration testing and TLS 1.3 checks.' },
                 { badge: 'Residency', title: 'Data control', detail: 'GDPR-aligned with UK residency options.' },
                 { badge: 'Deployment', title: 'Flexible deployment', detail: 'Cloud, hybrid or on-premises.' },
                 { badge: 'AI governance', title: 'Auditable AI', detail: 'Rules for access, consent and escalation.' },
@@ -538,8 +533,7 @@ function MapWidget() {
         <circle cx="196" cy="126.5" r="4" fill="#E53935"/>
         <text x="204" y="131" fontSize="11" fill="#374151"
               fontFamily="system-ui,sans-serif" fontWeight="500">
-          2.4 mi ETA 6 PM
-        </text>
+          2.4 mi ETA 6 PM </text>
       </svg>
     </div>
   )
@@ -675,8 +669,7 @@ function KaiChatDemo() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20 }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4c97c3' }} />
                   <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.42)', letterSpacing: '0.22em', textTransform: 'uppercase', fontFamily: 'Roboto,sans-serif' }}>
-                    Kai VOICE
-                  </span>
+                    Kai VOICE </span>
                 </div>
 
                 {/* Previous turn - dimmed */}
@@ -828,8 +821,7 @@ function KaiChatDemo() {
                     animation: phase === 'csat' ? 'csatIn 0.55s cubic-bezier(0.22,1,0.36,1) both' : 'none',
                   }}>
                     <p style={{ fontSize: 14, fontWeight: 700, color: '#0a1628', textAlign: 'center', margin: '0 0 16px', lineHeight: 1.45 }}>
-                      Rate your experience to help us improve!
-                    </p>
+                      Rate your experience to help us improve! </p>
                     <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
                       {['Satisfied', 'Dissatisfied'].map(label => (
                         <div key={label} style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 8px', border: '1px solid #e5e7eb', borderRadius: 10, background: '#fff', fontSize: 13, fontWeight: 600, color: '#0a1628', cursor: 'default' }}>
@@ -838,8 +830,7 @@ function KaiChatDemo() {
                       ))}
                     </div>
                     <div style={{ border: '1px solid #e5e7eb', borderRadius: 10, padding: '10px 14px', color: 'rgba(10,22,40,0.60)', fontSize: 13, fontFamily: 'Roboto,sans-serif' }}>
-                      Leave a comment (optional)
-                    </div>
+                      Leave a comment (optional) </div>
                   </div>
                 </div>
               )}
@@ -847,8 +838,7 @@ function KaiChatDemo() {
               {/* Input bar - matches voice bar layout */}
               <div style={{ borderTop: '0.5px solid #e5e7eb', padding: '11px 16px 14px', display: 'flex', alignItems: 'center', gap: 10, background: '#fff', flexShrink: 0 }}>
                 <span style={{ flex: 1, fontFamily: 'Roboto,sans-serif', fontWeight: 500, fontSize: 15, color: 'rgba(10,22,40,0.60)', userSelect: 'none' }}>
-                  Type here...
-                </span>
+                  Type here... </span>
                 {/* Mic button */}
                 <div style={{ width: 36, height: 36, borderRadius: 10, flexShrink: 0, background: '#f0f2f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <FontAwesomeIcon icon={faMicrophone} style={{ width: 15, height: 15, color: 'rgba(10,22,40,0.60)' }} />
@@ -994,7 +984,7 @@ function OmnichannelSection() {
     { from:'user', text:"I'd like to upgrade my subscription to the Pro plan." },
     { from:'ai',   text:"Your current plan is Starter. Pro unlocks unlimited agents, priority support and full analytics.", meta:'Account #10284 CRM synced' },
     { from:'user', text:'What does it cost per month?' },
-    { from:'ai',   text:"Pro is £299/month. I've emailed a full comparison and a one-click upgrade link.", signal:'Upgraded 44s CSAT sent' },
+    { from:'ai',   text:"Pro is £299/month. I've emailed a full comparison and a one click upgrade link.", signal:'Upgraded 44s CSAT sent' },
   ]
 
   // --- Channel icon box ------------------------------------------------
@@ -1070,8 +1060,7 @@ function OmnichannelSection() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="font-heading text-white mb-5">One AI.{' '}<span className="text-[#67c5f3]">Every channel.</span></h2>
           <p className="text-white/65 text-[16px] font-normal leading-[1.7]">
-            Kai meets customers on Telegram, your website or email, with the same intelligence, context and resolution on every channel.
-          </p>
+            Kai meets customers on Telegram, your website or email, with the same intelligence, context and resolution on every channel. </p>
         </div>
 
         {/* 
@@ -1203,8 +1192,7 @@ function OmnichannelSection() {
                 )}
                 <div style={{ display:'flex', justifyContent:'center', marginTop:6 }}>
                   <span style={{ background:'rgba(0,0,0,0.09)', borderRadius:20, padding:'4px 12px', fontSize:11, color:'rgba(0,0,0,0.45)', fontFamily:'Roboto,sans-serif' }}>
-                    ✓ Case raised 28s
-                  </span>
+                    ✓ Case raised 28s </span>
                 </div>
               </div>
 
@@ -1288,8 +1276,7 @@ function OmnichannelSection() {
               {/* Thread header */}
               <div style={{ padding:'12px 14px 8px', borderBottom:'1px solid #f0f0f0', flexShrink:0 }}>
                 <p style={{ fontSize:14, fontWeight:600, color:'#202124', marginBottom:3, fontFamily:'Roboto,sans-serif' }}>
-                  RE: Subscription Upgrade, Pro Plan
-                </p>
+                  RE: Subscription Upgrade, Pro Plan </p>
                 <div style={{ display:'flex', alignItems:'center', gap:5 }}>
                   <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>2 messages</span>
                   <span style={{ width:3, height:3, borderRadius:'50%', background:'rgba(10,22,40,0.2)', display:'inline-block' }}/>
@@ -1309,8 +1296,7 @@ function OmnichannelSection() {
                       <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>11:02 AM</span>
                     </div>
                     <p style={{ fontSize:11, color:'rgba(10,22,40,0.60)', lineHeight:1.4, marginTop:1, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontFamily:'Roboto,sans-serif' }}>
-                      Hi, I'd like to upgrade from Starter to the Pro plan...
-                    </p>
+                      Hi, I'd like to upgrade from Starter to the Pro plan... </p>
                   </div>
                 </div>
               </div>
@@ -1334,15 +1320,12 @@ function OmnichannelSection() {
                 </div>
 
                 <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif' }}>
-                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics at <strong>£299/month</strong>.
-                </p>
+                  Hi James, I can see you're on the <strong>Starter</strong> plan. Pro unlocks unlimited agents, priority support and full analytics at <strong>£299/month</strong>. </p>
                 <p style={{ fontSize:13, color:'rgba(10,22,40,0.70)', lineHeight:1.65, fontFamily:'Roboto,sans-serif', marginTop:6 }}>
-                  I've sent a one-click upgrade link to your inbox. Let me know if you have any questions!
-                </p>
+                  I've sent a one click upgrade link to your inbox. Let me know if you have any questions! </p>
                 <div style={{ marginTop:9 }}>
                   <span style={{ fontSize:11, fontWeight:600, color:'#1a7aab', background:'rgba(26,122,171,0.10)', borderRadius:4, padding:'2px 8px', fontFamily:'Roboto,sans-serif' }}>
-                    ⚡ Account #10284 CRM synced
-                  </span>
+                    ⚡ Account #10284 CRM synced </span>
                 </div>
               </div>
 
@@ -1446,13 +1429,11 @@ function HeroSection({ onDemoClick }: { onDemoClick: () => void }) {
               <span style={{ color: '#0a1628' }}>AI that resolves.</span>
             </h1>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-[560px] mb-10">
-              Kai is the AI customer service built for every customer touchpoint. From website support to voice calls and call centre operations, Kai helps organisations understand customer intent and resolve intricate requests.
-            </p>
+              Kai is the AI customer service built for every customer touchpoint. From website support to voice calls and call centre operations, Kai helps organisations understand customer intent and resolve intricate requests. </p>
             <div className="flex flex-wrap gap-4">
               <button type="button" onClick={onDemoClick}
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
-                Request a Demo
-              </button>
+                Request a Demo </button>
             </div>
           </div>
 
@@ -1514,8 +1495,7 @@ export default function KaiPage() {
         return (
           <div className="bg-white py-10 overflow-hidden">
             <p className="text-center text-[11px] font-semibold uppercase tracking-[0.26em] text-[#0a1628]/60 mb-9">
-              Trusted by leading organisations
-            </p>
+              Trusted by leading organisations </p>
             <div className="relative">
               <div className="absolute left-0 top-0 bottom-0 w-36 z-10 pointer-events-none"
                 style={{ background: 'linear-gradient(to right, white, transparent)' }} />
@@ -1561,8 +1541,7 @@ export default function KaiPage() {
                 <p style={{ margin:0, fontSize:16, fontWeight:800, color:'#0a1628', lineHeight:1.35, fontFamily:'Roboto,sans-serif', letterSpacing:'-0.01em' }}>
                   Average client escalation rates drop from{' '}
                   <span style={{ color:'#1a7aab' }}>40%</span> to{' '}
-                  <span style={{ color:'#1a7aab' }}>10%</span> with Kai
-                </p>
+                  <span style={{ color:'#1a7aab' }}>10%</span> with Kai </p>
               </div>
 
               {/* SVG chart - hover-interactive */}
@@ -1573,8 +1552,7 @@ export default function KaiPage() {
               {/* Feature chips: what drove the reduction */}
               <div style={{ padding:'0 14px 14px' }}>
                 <p style={{ margin:'6px 0 8px', fontSize:11, fontWeight:700, letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(10,22,40,0.60)', fontFamily:'Roboto,sans-serif' }}>
-                  What drove this reduction
-                </p>
+                  What drove this reduction </p>
                 <div style={{ display:'flex', gap:8 }}>
                   {[
                     'Advanced Sentiment Analysis',
@@ -1598,8 +1576,7 @@ export default function KaiPage() {
                 Fewer escalations.{' '}<span className="text-[#1a7aab]">Faster resolutions.</span>
               </h2>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-8">
-                Kai helps resolve more customer queries at the first point of contact, reducing unnecessary handovers and giving support teams more time to focus on complex cases.
-              </p>
+                Kai helps resolve more customer queries at the first point of contact, reducing unnecessary handovers and giving support teams more time to focus on complex cases. </p>
               <div className="space-y-3">
                 {[
                   { icon: faRobot,                 title: 'More queries resolved automatically', desc: 'Kai handles routine queries end-to-end.' },
@@ -1658,8 +1635,7 @@ export default function KaiPage() {
               Build your <span className="text-[#67c5f3]">Kai Agent</span>
             </h2>
             <p className="text-white/65 text-[16px] max-w-lg leading-[1.7]">
-              Kai connects with your customers across web, messaging, and chat channels, resolving their pain points wherever the conversation starts.
-            </p>
+              Kai connects with your customers across web, messaging, and chat channels, resolving their pain points wherever the conversation starts. </p>
           </div>
 
           {/* Cards */}

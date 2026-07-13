@@ -12,12 +12,12 @@
   {
     number: '03',
     title: 'Deploy',
-    description: 'We manage end-to-end deployment including hardware installation, software configuration, and system integration.',
+    description: 'We manage end to end deployment including hardware installation, software configuration, and system integration.',
   },
   {
     number: '04',
     title: 'Optimise',
-    description: 'Post-deployment, we continuously monitor and optimise your network to ensure peak performance and reliability.',
+    description: 'Post deployment, we continuously monitor and optimise your network to ensure peak performance and reliability.',
   },
 ]
 
@@ -29,8 +29,7 @@ export default function ProcessSection() {
           <p className="text-[#1a7aab] font-semibold text-[14px] uppercase tracking-widest mb-3">Our Process</p>
           <h2 className="font-heading text-[#0a1628] mb-4">How We Work</h2>
           <p className="text-[#0a1628]/60 text-[18px] max-w-2xl mx-auto">
-            A proven methodology that delivers results, from initial consultation to long-term managed service.
-          </p>
+            A proven methodology that delivers results, from initial consultation to long term managed service. </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

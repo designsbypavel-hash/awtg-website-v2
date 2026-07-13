@@ -27,10 +27,10 @@ const studies: Record<string, CaseStudy> = {
     tag: "Open RAN Security",
     sector: "Telecommunications",
     client: "AWTG Platform",
-    excerpt: "Open RAN architecture introduces powerful flexibility but creates new security exposure across disaggregated, multi-vendor interfaces. iTRUSTRIC is AWTG's purpose-built platform to close that gap.",
+    excerpt: "Open RAN architecture introduces powerful flexibility but creates new security exposure across disaggregated, multi vendor interfaces. iTRUSTRIC is AWTG's purpose built platform to close that gap.",
     content: [
-      { type: "paragraph", text: "Open RAN is reshaping how mobile networks are built. By disaggregating the radio access network into open, standardised components from multiple vendors, operators gain flexibility, reduce lock-in and open the door to software-driven innovation. But this same openness introduces a broader attack surface than traditional, integrated RAN architectures." },
-      { type: "paragraph", text: "The interfaces between O-RAN components were defined for interoperability. Security across these interfaces requires an additional layer of assurance that the O-RAN Alliance specifications alone do not fully address. iTRUSTRIC was built to provide exactly that." },
+      { type: "paragraph", text: "Open RAN is reshaping how mobile networks are built. By disaggregating the radio access network into open, standardised components from multiple vendors, operators gain flexibility, reduce lock in and open the door to software driven innovation. But this same openness introduces a broader attack surface than traditional, integrated RAN architectures." },
+      { type: "paragraph", text: "The interfaces between O RAN components were defined for interoperability. Security across these interfaces requires an additional layer of assurance that the O RAN Alliance specifications alone do not fully address. iTRUSTRIC was built to provide exactly that." },
       { type: "heading", text: "The Security Challenge in Open RAN" },
       { type: "bullets", items: [
         "Disaggregated architecture means more interfaces, each a potential point of attack",
@@ -41,7 +41,7 @@ const studies: Record<string, CaseStudy> = {
       ]},
       { type: "heading", text: "The iTRUSTRIC Platform" },
       { type: "paragraph", text: "iTRUSTRIC is a security assurance platform engineered specifically for Open RAN environments. It operates across the full RAN stack providing continuous monitoring, threat detection and compliance validation in real time." },
-      { type: "paragraph", text: "The platform secures data flows between O-RAN components, provides granular visibility into inter-component communication, and alerts operators to anomalous behaviour before it escalates into a breach or service degradation event." },
+      { type: "paragraph", text: "The platform secures data flows between O RAN components, provides granular visibility into inter component communication, and alerts operators to anomalous behaviour before it escalates into a breach or service degradation event." },
       { type: "pullquote", text: "Open RAN gives operators flexibility. iTRUSTRIC gives them the confidence to use it, deploying Open RAN at scale without compromising on security or compliance." },
       { type: "heading", text: "Key Capabilities" },
       { type: "bullets", items: [
@@ -53,7 +53,7 @@ const studies: Record<string, CaseStudy> = {
         "Supports deployment across greenfield Open RAN and migration from traditional RAN",
       ]},
       { type: "heading", text: "Outcomes for Operators" },
-      { type: "paragraph", text: "Operators deploying iTRUSTRIC gain a security layer that moves at network speed. Rather than periodic audits or reactive incident response, the platform provides continuous assurance, verifying that data flows are behaving as expected and that the multi-vendor trust boundary is being maintained at all times." },
+      { type: "paragraph", text: "Operators deploying iTRUSTRIC gain a security layer that moves at network speed. Rather than periodic audits or reactive incident response, the platform provides continuous assurance, verifying that data flows are behaving as expected and that the multi vendor trust boundary is being maintained at all times." },
       { type: "paragraph", text: "For operators under regulatory scrutiny or national security framework obligations, iTRUSTRIC also provides the audit trail and compliance evidence needed to demonstrate due diligence to regulators and stakeholders." },
     ],
   },
@@ -67,8 +67,8 @@ const studies: Record<string, CaseStudy> = {
     excerpt: "As retail and leisure sectors faced structural decline accelerated by the pandemic, AWTG worked with local authorities to deliver the connectivity and digital infrastructure underpinning high street recovery programmes.",
     content: [
       { type: "paragraph", text: "High streets across the UK were under pressure before the pandemic. A decade of online retail growth, changing consumer behaviour and reduced footfall had already forced local authorities to rethink how town and city centres could be made relevant again. The pandemic accelerated this challenge sharply, leaving many high streets facing vacancy rates and footfall levels that made conventional recovery strategies insufficient." },
-      { type: "paragraph", text: "Local authorities responded with place-making strategies: coordinated programmes designed to create vibrant, mixed-use centres that could attract visitors, residents and businesses. Connectivity and digital infrastructure became a central pillar of these strategies, not an afterthought." },
-      { type: "heading", text: "The Five Pillars of Place-Making" },
+      { type: "paragraph", text: "Local authorities responded with place making strategies: coordinated programmes designed to create vibrant, mixed use centres that could attract visitors, residents and businesses. Connectivity and digital infrastructure became a central pillar of these strategies, not an afterthought." },
+      { type: "heading", text: "The Five Pillars of Place Making" },
       { type: "bullets", items: [
         "Repurposing and reusing buildings: converting vacant retail units to mixed uses including workspace, health services and community facilities",
         "Public realm improvements: upgrading streetscapes, creating attractive outdoor spaces and improving accessibility",
@@ -77,7 +77,7 @@ const studies: Record<string, CaseStudy> = {
         "Implementing active travel initiatives: walking and cycling infrastructure that makes centres more accessible",
       ]},
       { type: "heading", text: "AWTG's Role" },
-      { type: "paragraph", text: "AWTG provided the connectivity infrastructure and software solutions that made place-making strategies technically deliverable. This included public realm Wi-Fi networks, private connectivity for high street businesses, smart sensors for footfall and environmental monitoring, and digital platforms for local authority management and reporting." },
+      { type: "paragraph", text: "AWTG provided the connectivity infrastructure and software solutions that made place making strategies technically deliverable. This included public realm Wi Fi networks, private connectivity for high street businesses, smart sensors for footfall and environmental monitoring, and digital platforms for local authority management and reporting." },
       { type: "pullquote", text: "High street recovery is not a single intervention. It is a sustained programme that requires connectivity, data and digital capability running as a foundation beneath every other initiative." },
       { type: "heading", text: "Delivered Capabilities" },
       { type: "bullets", items: [
@@ -96,9 +96,9 @@ const studies: Record<string, CaseStudy> = {
     tag: "Network Economics",
     sector: "Telecommunications",
     client: "Telecom of Thailand (TOT)",
-    excerpt: "A GSMA-validated case study with Telecom of Thailand demonstrating how AWTG's Integrated Service Assurance and Service Creation Platform delivered over 50% reduction in operating costs and opened $250M in new revenue.",
+    excerpt: "A GSMA validated case study with Telecom of Thailand demonstrating how AWTG's Integrated Service Assurance and Service Creation Platform delivered over 50% reduction in operating costs and opened $250M in new revenue.",
     content: [
-      { type: "paragraph", text: "Telecom of Thailand (TOT) faced a challenge common to many incumbent operators: significant operational expenditure across engineering, customer care, monitoring and site operations, with existing infrastructure that was underutilised for value-added services. The Thailand 4.0 national initiative created both an imperative and an opportunity to modernise." },
+      { type: "paragraph", text: "Telecom of Thailand (TOT) faced a challenge common to many incumbent operators: significant operational expenditure across engineering, customer care, monitoring and site operations, with existing infrastructure that was underutilised for value added services. The Thailand 4.0 national initiative created both an imperative and an opportunity to modernise." },
       { type: "paragraph", text: "TOT partnered with AWTG to deploy the Integrated Service Assurance and Service Creation Platform (iSASCP), a solution designed to address operational costs while simultaneously unlocking new IoT and smart city revenue streams on existing 3G infrastructure." },
       { type: "stat-row", stats: [
         { value: "50%+", label: "Reduction in annual operating costs" },
@@ -129,7 +129,7 @@ const studies: Record<string, CaseStudy> = {
     tag: "Mobile Networks",
     sector: "Mobile Networks",
     client: "Major UK MNOs",
-    excerpt: "A pilot mobile service benchmarking programme across Central London, covering four major network operators, 3G voice and data performance, and a novel comparison of EE's newly launched LTE against carrier-grade outdoor Wi-Fi.",
+    excerpt: "A pilot mobile service benchmarking programme across Central London, covering four major network operators, 3G voice and data performance, and a novel comparison of EE's newly launched LTE against carrier grade outdoor Wi Fi.",
     content: [
       { type: "paragraph", text: "Benchmarking mobile network performance in a dense urban environment like Central London requires a methodology capable of capturing the real experience of users across different service types, network operators, and transport environments. Standard drive testing approaches miss significant portions of how people actually use mobile services in cities." },
       { type: "paragraph", text: "AWTG designed and delivered a multidimensional benchmarking pilot that evaluated the mobile network performance of four major UK mobile network operators across Central London, using a combination of pedestrian, indoor and transit testing methodologies." },
@@ -142,7 +142,7 @@ const studies: Record<string, CaseStudy> = {
         "Multidimensional analysis combining throughput, latency, coverage consistency and handover performance",
       ]},
       { type: "heading", text: "Why This Mattered" },
-      { type: "paragraph", text: "At the time of this study, EE had just launched LTE in the UK and there was significant industry and media interest in how 4G compared to existing services in real-world conditions. The comparison with carrier-grade outdoor Wi-Fi was particularly relevant given the simultaneous investment by local authorities and operators in public Wi-Fi infrastructure across Central London." },
+      { type: "paragraph", text: "At the time of this study, EE had just launched LTE in the UK and there was significant industry and media interest in how 4G compared to existing services in real world conditions. The comparison with carrier grade outdoor Wi Fi was particularly relevant given the simultaneous investment by local authorities and operators in public Wi Fi infrastructure across Central London." },
       { type: "pullquote", text: "Benchmarking that only captures static or pedestrian use misses a substantial share of how people actually use mobile services in cities. The transit dimension is where operators often have their biggest performance gaps." },
       { type: "heading", text: "Methodology" },
       { type: "bullets", items: [
@@ -161,9 +161,9 @@ const studies: Record<string, CaseStudy> = {
     tag: "Capacity Planning",
     sector: "Mobile Networks",
     client: "Mobile Operators",
-    excerpt: "A laboratory demonstration of seamless cellular-to-WiFi data offloading, examining the technical and commercial case for dual-mode devices as a solution to mobile data capacity pressure.",
+    excerpt: "A laboratory demonstration of seamless cellular to WiFi data offloading, examining the technical and commercial case for dual mode devices as a solution to mobile data capacity pressure.",
     content: [
-      { type: "paragraph", text: "By 2013, the growth of mobile data traffic was outpacing the capacity of 3G networks in high-density areas. Smartphones, tablets and laptops had become predominantly dual-mode devices, carrying both cellular and WiFi radios, but the capability to seamlessly offload traffic between these access technologies was not yet being fully exploited." },
+      { type: "paragraph", text: "By 2013, the growth of mobile data traffic was outpacing the capacity of 3G networks in high density areas. Smartphones, tablets and laptops had become predominantly dual mode devices, carrying both cellular and WiFi radios, but the capability to seamlessly offload traffic between these access technologies was not yet being fully exploited." },
       { type: "paragraph", text: "AWTG conducted a laboratory demonstration programme to test and document the technical requirements for seamless data offloading from cellular to WiFi, examining what was needed at the network level and what the user experience implications were across different offloading scenarios." },
       { type: "heading", text: "The Capacity Context" },
       { type: "bullets", items: [
@@ -174,8 +174,8 @@ const studies: Record<string, CaseStudy> = {
         "Carrier-grade WiFi networks were emerging as a parallel infrastructure investment by operators and local authorities",
       ]},
       { type: "heading", text: "The Laboratory Demonstration" },
-      { type: "paragraph", text: "AWTG's demonstration was built on industry standards for access network handover and authentication, using network solutions from Cisco and Ericsson to create a representative test environment. The demonstration examined real-life usage scenarios including video streaming, web browsing, email and file transfer across both cellular and WiFi access." },
-      { type: "pullquote", text: "The question was not whether WiFi offload would happen; dual-mode devices were already doing it. The question was whether it could be made seamless enough and managed well enough to be an operator-grade capacity tool." },
+      { type: "paragraph", text: "AWTG's demonstration was built on industry standards for access network handover and authentication, using network solutions from Cisco and Ericsson to create a representative test environment. The demonstration examined real life usage scenarios including video streaming, web browsing, email and file transfer across both cellular and WiFi access." },
+      { type: "pullquote", text: "The question was not whether WiFi offload would happen; dual mode devices were already doing it. The question was whether it could be made seamless enough and managed well enough to be an operator grade capacity tool." },
       { type: "heading", text: "Key Findings" },
       { type: "bullets", items: [
         "Standards-based offload using Hotspot 2.0 and 802.11u provided a usable foundation for seamless handover",
@@ -193,7 +193,7 @@ const studies: Record<string, CaseStudy> = {
     tag: "Performance Testing",
     sector: "Network Testing",
     client: "AKT",
-    excerpt: "A multi-day network stability assessment using AWTG's Broadband Tester agents to measure user-perceived speed and reliability, providing an objective view of network quality of experience over sustained periods.",
+    excerpt: "A multi day network stability assessment using AWTG's Broadband Tester agents to measure user perceived speed and reliability, providing an objective view of network quality of experience over sustained periods.",
     content: [
       { type: "paragraph", text: "Network stability is not the same as network availability. A network can be technically available while delivering inconsistent performance that degrades the user experience in ways that standard uptime monitoring will never capture. Understanding stability requires sustained measurement over time, across real usage patterns, from the user's perspective." },
       { type: "paragraph", text: "AWTG designed a stability testing scenario for AKT that measured network performance continuously over multiple days, using AWTG's Broadband Tester agents to simulate real user activity and capture the quality of experience rather than just raw network metrics." },
@@ -207,7 +207,7 @@ const studies: Record<string, CaseStudy> = {
       ]},
       { type: "heading", text: "The AWTG Broadband Tester Agent Approach" },
       { type: "paragraph", text: "AWTG's Broadband Tester agents were deployed to simulate user data exchange activity across the network under test. Rather than synthetic traffic generation at a network level, the agents replicated the pattern of data transmission and reception that a real user would generate across typical applications and usage behaviours." },
-      { type: "pullquote", text: "Short test windows tell you what the network can do. Multi-day stability testing tells you what the network actually does, consistently, across the full range of real operating conditions." },
+      { type: "pullquote", text: "Short test windows tell you what the network can do. Multi day stability testing tells you what the network actually does, consistently, across the full range of real operating conditions." },
       { type: "heading", text: "Outcomes" },
       { type: "bullets", items: [
         "Objective baseline of user-perceived network performance across the test period",
@@ -225,11 +225,11 @@ const studies: Record<string, CaseStudy> = {
     tag: "Mobile Services",
     sector: "Mobile Networks",
     client: "Mobile Network Operators",
-    excerpt: "An analysis of the GSMA RCS-e initiative and its strategic importance for mobile network operators facing competition from over-the-top services, with AWTG's assessment of deployment considerations and commercial positioning.",
+    excerpt: "An analysis of the GSMA RCS e initiative and its strategic importance for mobile network operators facing competition from over the top services, with AWTG's assessment of deployment considerations and commercial positioning.",
     content: [
-      { type: "paragraph", text: "By 2012, mobile network operators faced a structural challenge: the services that had historically generated the highest-margin revenues (voice calls, SMS messaging, and MMS) were being displaced by over-the-top providers. Skype, WhatsApp (then emerging), Google Voice and similar services were delivering equivalent functionality over the mobile data connection that operators provided, without paying operators for the access." },
-      { type: "paragraph", text: "The industry response was the Rich Communications Suite. Specifically, RCS-e (Rich Communications Suite-enhanced) was the GSMA's standardised framework for operators to deliver voice, messaging and multimedia services that could match or exceed the functionality of OTT providers." },
-      { type: "heading", text: "What RCS-e Was Solving For" },
+      { type: "paragraph", text: "By 2012, mobile network operators faced a structural challenge: the services that had historically generated the highest margin revenues (voice calls, SMS messaging, and MMS) were being displaced by over the top providers. Skype, WhatsApp (then emerging), Google Voice and similar services were delivering equivalent functionality over the mobile data connection that operators provided, without paying operators for the access." },
+      { type: "paragraph", text: "The industry response was the Rich Communications Suite. Specifically, RCS e (Rich Communications Suite enhanced) was the GSMA's standardised framework for operators to deliver voice, messaging and multimedia services that could match or exceed the functionality of OTT providers." },
+      { type: "heading", text: "What RCS e Was Solving For" },
       { type: "bullets", items: [
         "OTT services (Skype, Google Voice) were taking call and messaging revenue from operators",
         "LTE networks were pure data bearers with no integrated voice service; VoLTE was years away from widespread deployment",
@@ -238,8 +238,8 @@ const studies: Record<string, CaseStudy> = {
         "The GSMA One API initiative required a common interface for application developers to access operator network capabilities",
       ]},
       { type: "heading", text: "The Technical Architecture" },
-      { type: "paragraph", text: "RCS-e was built on IMS (IP Multimedia Subsystem) and SIP protocols, providing a standards-based foundation for inter-operator interconnection. An RCS-e message or call needed to work between users on different operator networks, just as SMS worked universally." },
-      { type: "pullquote", text: "RCS-e was not a feature upgrade. It was a strategic repositioning of the operator as the platform layer, giving developers a single interface to network capabilities across all carriers simultaneously." },
+      { type: "paragraph", text: "RCS e was built on IMS (IP Multimedia Subsystem) and SIP protocols, providing a standards based foundation for inter operator interconnection. An RCS e message or call needed to work between users on different operator networks, just as SMS worked universally." },
+      { type: "pullquote", text: "RCS e was not a feature upgrade. It was a strategic repositioning of the operator as the platform layer, giving developers a single interface to network capabilities across all carriers simultaneously." },
       { type: "heading", text: "Deployment Considerations" },
       { type: "bullets", items: [
         "IMS core investment required: operators without IMS needed a deployment path before RCS-e was viable",
@@ -257,10 +257,10 @@ const studies: Record<string, CaseStudy> = {
     tag: "Site Acquisition",
     sector: "Mobile Infrastructure",
     client: "Mobile Operators incl. O2",
-    excerpt: "A site acquisition proposition for small cell and 3G data offload deployment in high-density urban areas, drawing on AWTG's experience building outdoor small cell networks for O2 and other major UK operators.",
+    excerpt: "A site acquisition proposition for small cell and 3G data offload deployment in high density urban areas, drawing on AWTG's experience building outdoor small cell networks for O2 and other major UK operators.",
     content: [
-      { type: "paragraph", text: "By 2012, 3G networks were operating at or near capacity in high-density urban environments. The explosion of smartphone usage, combined with flat-rate data tariffs that had become the commercial norm, meant operators were carrying increasing traffic volumes while average revenue per user was declining. Traditional capacity expansion was constrained by planning, cost and time." },
-      { type: "paragraph", text: "Small cells offered a complementary path: dense, low-power radio nodes deployed on existing street furniture and building assets, capable of significantly increasing network capacity in the locations where it was most needed without the planning complexity and capital cost of new macro sites." },
+      { type: "paragraph", text: "By 2012, 3G networks were operating at or near capacity in high density urban environments. The explosion of smartphone usage, combined with flat rate data tariffs that had become the commercial norm, meant operators were carrying increasing traffic volumes while average revenue per user was declining. Traditional capacity expansion was constrained by planning, cost and time." },
+      { type: "paragraph", text: "Small cells offered a complementary path: dense, low power radio nodes deployed on existing street furniture and building assets, capable of significantly increasing network capacity in the locations where it was most needed without the planning complexity and capital cost of new macro sites." },
       { type: "stat-row", stats: [
         { value: "10x", label: "Capacity increase achievable with dense small cell deployment" },
         { value: "60-80%", label: "Of urban mobile data generated in indoor environments" },
@@ -275,7 +275,7 @@ const studies: Record<string, CaseStudy> = {
         "Traditional network densification through new macro sites was slow, expensive and planning-constrained",
       ]},
       { type: "heading", text: "The Small Cell and Offload Approach" },
-      { type: "paragraph", text: "AWTG's proposition combined two complementary strategies. Outdoor small cells, deployed on lamp columns, CCTV poles, bus shelters and building facades, increased network capacity in high-footfall outdoor environments. Indoor WiFi hotspots addressed the indoor capacity gap." },
+      { type: "paragraph", text: "AWTG's proposition combined two complementary strategies. Outdoor small cells, deployed on lamp columns, CCTV poles, bus shelters and building facades, increased network capacity in high footfall outdoor environments. Indoor WiFi hotspots addressed the indoor capacity gap." },
       { type: "pullquote", text: "The technical case for small cells was clear. The challenge was always the site acquisition: getting access to the right locations at the right density. That is where the programme either works or does not." },
       { type: "heading", text: "AWTG's Experience" },
       { type: "paragraph", text: "AWTG had direct experience designing, deploying and operating outdoor small cell networks for O2 and other major UK network operators in busy urban areas. This experience informed a site acquisition proposition built around practical programme management, local authority relationships and asset owner engagement." },
@@ -325,8 +325,7 @@ export default function InsightsCaseStudyDetailPage() {
         <h1 className="text-4xl font-bold text-[#0a1628] mb-4">Case Study Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This case study does not exist or may have been moved.</p>
         <Link to="/insights/case-studies" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
-          Back to Case Studies
-        </Link>
+          Back to Case Studies </Link>
       </div>
     )
   }
@@ -341,8 +340,7 @@ export default function InsightsCaseStudyDetailPage() {
               to="/insights/case-studies"
               className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#1a7aab] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
-              Case Studies
-            </Link>
+              Case Studies </Link>
             <span className="text-[#0a1628]/30">·</span>
             <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${tagColour[study.tag] ?? 'bg-[#228DC1]/8 text-[#0a1628]/60'}`}>
               {study.tag}
@@ -392,8 +390,7 @@ export default function InsightsCaseStudyDetailPage() {
               return (
                 <blockquote key={i} className="my-12 pl-8 border-l-2 border-[#228DC1]">
                   <p className="font-serif-display text-[#0a1628] leading-snug italic" style={{ fontSize: 'clamp(18px, 2vw, 24px)' }}>
-                    &ldquo;{block.text}&rdquo;
-                  </p>
+                    &ldquo;{block.text}&rdquo; </p>
                 </blockquote>
               )
             }
@@ -432,15 +429,13 @@ export default function InsightsCaseStudyDetailPage() {
           <div>
             <p className="text-[14px] font-semibold uppercase tracking-[0.22em] text-[#1a7aab] mb-4">Talk to AWTG</p>
             <h2 className="font-serif-display text-[#0a1628] leading-tight">
-              Want to explore<br />this further?
-            </h2>
+              Want to explore<br />this further? </h2>
           </div>
           <div className="flex items-center gap-4 shrink-0">
             <Link to="/contact" className="px-7 py-3.5 bg-white text-[#0a1628] text-sm font-medium hover:bg-[#f0f5ff] transition-all">
-              Speak to our experts
-            </Link>
+              Speak to our experts </Link>
             <Link to="/insights/case-studies" className="px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all inline-flex items-center gap-2">
-              More case studies            </Link>
+              More case studies </Link>
           </div>
         </div>
       </section>

@@ -21,8 +21,8 @@ const heroVisual = (
     title="Campus Network"
     subtitle="Education connectivity"
     items={[
-      { icon: faWifi, label: 'High-density campus wireless' },
-      { icon: faShield, label: 'Safeguarding-compliant networks' },
+      { icon: faWifi, label: 'High density campus wireless' },
+      { icon: faShield, label: 'Safeguarding compliant networks' },
       { icon: faNetworkWired, label: 'Research & HPC infrastructure' },
       { icon: faMobile, label: 'BYOD & guest access' },
     ]}
@@ -42,7 +42,7 @@ const data: SectorPageData = {
     heroImage: 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for education',
     subtitle:
-      'Campus wireless, safeguarding-compliant networks and managed infrastructure services for schools, colleges and universities.',
+      'Campus wireless, safeguarding compliant networks and managed infrastructure services for schools, colleges and universities.',
     description:
       'AWTG designs and deploys network infrastructure for educational institutions, from primary school to university campus, meeting DfE requirements, online safety standards and the connectivity demands of modern teaching and learning.',
     ctaLabel: 'Talk to our experts',
@@ -51,7 +51,7 @@ const data: SectorPageData = {
       { icon: faWifi, label: 'Campus wireless networks' },
       { icon: faShield, label: 'Safeguarding & filtering' },
       { icon: faNetworkWired, label: 'Managed education networks' },
-      { icon: faCloud, label: 'Cloud-ready connectivity' },
+      { icon: faCloud, label: 'Cloud ready connectivity' },
     ],
   },
 
@@ -102,7 +102,7 @@ const data: SectorPageData = {
       },
       {
         icon: faShield,
-        title: 'Safeguarding-compliant networks',
+        title: 'Safeguarding compliant networks',
         desc: 'Network design and filtering solutions that meet Keeping Children Safe in Education obligations and DfE guidance on internet safety for educational institutions.',
         bullets: [
           'Content filtering aligned to DfE requirements',
@@ -114,7 +114,7 @@ const data: SectorPageData = {
       },
       {
         icon: faCloud,
-        title: 'Managed and cloud-ready connectivity',
+        title: 'Managed and cloud ready connectivity',
         desc: 'Managed connectivity services that keep educational networks performing reliably, with cloud-ready architecture for Microsoft 365, Google Workspace and cloud-hosted learning platforms.',
         bullets: [
           'Managed NOC with education-aware monitoring',
@@ -134,7 +134,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faWifi,
-        title: 'Campus-wide wireless rollout',
+        title: 'Campus wide wireless rollout',
         desc: 'End-to-end wireless programmes for schools and universities, survey, design, deployment and commissioning across all teaching and support spaces.',
       },
       {
@@ -191,7 +191,7 @@ const data: SectorPageData = {
   cta: {
     title: 'Better connectivity for every learner',
     subtitle:
-      'Speak to AWTG about campus wireless, DfE-compliant networks and managed connectivity services for educational institutions.',
+      'Speak to AWTG about campus wireless, DfE compliant networks and managed connectivity services for educational institutions.',
     label: 'Talk to our experts',
   },
 }

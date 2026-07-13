@@ -26,14 +26,14 @@ const data: SectorPageData = {
     heroImage:
       'https://images.unsplash.com/photo-1533664488202-6af66d26c44a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=85',
     title: 'Telecommunications',
-    subtitle: 'Future-ready networks, delivered with confidence.',
+    subtitle: 'Future ready networks, delivered with confidence.',
     description:
       'AWTG combines advanced network services, software and telecoms expertise to help operators, infrastructure providers and enterprises design, deploy and manage the next generation of communications.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faTowerBroadcast,
     visualItems: [
       { icon: faSignal, label: '5G and future networks' },
-      { icon: faWifi, label: 'In-building wireless' },
+      { icon: faWifi, label: 'In building wireless' },
       { icon: faRadio, label: 'Spectrum management' },
       { icon: faNetworkWired, label: 'Network rollout' },
     ],
@@ -56,7 +56,7 @@ const data: SectorPageData = {
       },
       {
         icon: faSitemap,
-        title: 'Multi-vendor complexity',
+        title: 'Multi vendor complexity',
         desc: 'Modern networks depend on coordinated radio, transport, core, cloud and operational platforms from multiple suppliers.',
       },
       {
@@ -74,7 +74,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faSignal,
-        title: '5G, Wi-Fi 6 and future communication systems',
+        title: '5G, Wi Fi 6 and future communication systems',
         desc:
           'AWTG designs and delivers advanced communication networks that support data-intensive services, low-latency applications and connected operations.',
         bullets: [
@@ -88,7 +88,7 @@ const data: SectorPageData = {
       },
       {
         icon: faBuilding,
-        title: 'In-building design and deployment',
+        title: 'In building design and deployment',
         desc:
           'Comprehensive indoor wireless services for corporate customers, venues, hospitals and mobile operators, from RF survey and design to integration and go-live.',
         bullets: [
@@ -144,7 +144,7 @@ const data: SectorPageData = {
       },
       {
         icon: faSatelliteDish,
-        title: 'Drone-powered site surveys',
+        title: 'Drone powered site surveys',
         desc: 'AI-supported line-of-sight surveys, site inspections and maintenance assessments that reduce cost and personnel risk.',
       },
       {
@@ -185,7 +185,7 @@ const data: SectorPageData = {
 
   proof: {
     quote:
-      'The key to capitalising on next-generation networks is working with the right partner to deliver the vision, the use cases and the support behind them.',
+      'The key to capitalising on next generation networks is working with the right partner to deliver the vision, the use cases and the support behind them.',
     author: 'AWTG',
     context: 'Telecommunications',
   },
@@ -193,7 +193,7 @@ const data: SectorPageData = {
   cta: {
     title: 'Build the network your next service depends on',
     subtitle:
-      'Speak to AWTG about network strategy, 5G and Wi-Fi delivery, in-building wireless, spectrum management and rollout programmes.',
+      'Speak to AWTG about network strategy, 5G and Wi Fi delivery, in building wireless, spectrum management and rollout programmes.',
     label: 'Talk to our experts',
   },
 }

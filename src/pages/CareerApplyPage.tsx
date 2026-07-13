@@ -167,8 +167,7 @@ export default function CareerApplyPage() {
               to={getRoleHref(role.slug)}
               className="inline-flex items-center gap-2 text-[#0a1628]/60 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
             >
-              Back to role
-            </Link>
+              Back to role </Link>
             <div className="max-w-xl">
               <div className="w-14 h-14 bg-[#228DC1]/10 flex items-center justify-center mb-8">
                 <FontAwesomeIcon icon={faCircleCheck} className="w-7 h-7 text-[#1a7aab]" />
@@ -176,8 +175,7 @@ export default function CareerApplyPage() {
               <p className="type-label text-[#1a7aab] mb-4">Application Received</p>
               <h1 className="font-h2 text-[#0a1628] mb-5">Thank you, {form.firstName}.</h1>
               <p className="text-[#0a1628]/60 text-[16px] leading-[1.8] mb-8">
-                We've received your application for <strong className="text-[#0a1628]">{role.title}</strong>. Our team will review it and get back to you within 5 business days.
-              </p>
+                We've received your application for <strong className="text-[#0a1628]">{role.title}</strong>. Our team will review it and get back to you within 5 business days. </p>
               <div className="mb-8 space-y-2 rounded-xl bg-white border border-gray-100 p-6">
                 <p className="text-[13px] text-[#0a1628]/60 font-semibold uppercase tracking-[0.1em] mb-3">Application Summary</p>
                 <p className="text-[14px] text-[#0a1628]/70"><span className="font-semibold text-[#0a1628]">Role:</span> {role.title}</p>
@@ -189,14 +187,12 @@ export default function CareerApplyPage() {
                   to="/careers"
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                 >
-                  View All Roles
-                </Link>
+                  View All Roles </Link>
                 <Link
                   to="/"
                   className="inline-flex items-center gap-2 px-7 py-3.5 border border-gray-200 text-[#0a1628] text-[14px] font-semibold hover:border-[#228DC1] hover:text-[#1a7aab] transition-colors"
                 >
-                  Back to Home
-                </Link>
+                  Back to Home </Link>
               </div>
             </div>
           </div>
@@ -214,8 +210,7 @@ export default function CareerApplyPage() {
             to={getRoleHref(role.slug)}
             className="inline-flex items-center gap-2 text-[#0a1628]/60 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
           >
-            Back to role
-          </Link>
+            Back to role </Link>
           <p className="type-label text-[#1a7aab] mb-3">Apply</p>
           <h1 className="font-h1 text-[#0a1628] mb-4">{role.title}</h1>
           <div className="flex flex-wrap items-center gap-5 text-[13px] text-[#0a1628]/60">
@@ -274,7 +269,7 @@ export default function CareerApplyPage() {
                   <div className="space-y-5">
                     <div>
                       <FieldLabel>LinkedIn Profile URL</FieldLabel>
-                      <Input id="linkedIn" type="url" value={form.linkedIn} onChange={set('linkedIn')} placeholder="https://linkedin.com/in/your-profile" />
+                      <Input id="linkedIn" type="url" value={form.linkedIn} onChange={set('linkedIn')} placeholder="https://linkedin.com/in/your profile" />
                     </div>
                     <div>
                       <FieldLabel>Portfolio / Website URL</FieldLabel>
@@ -315,8 +310,7 @@ export default function CareerApplyPage() {
                           <div className="text-left">
                             <p className="text-[14px] font-semibold text-[#0a1628]">{form.cvFile.name}</p>
                             <p className="text-[12px] text-[#0a1628]/60 mt-0.5">
-                              {(form.cvFile.size / 1024).toFixed(0)} KB
-                            </p>
+                              {(form.cvFile.size / 1024).toFixed(0)} KB </p>
                           </div>
                           <button
                             type="button"
@@ -403,15 +397,12 @@ export default function CareerApplyPage() {
                 <div className="rounded-2xl bg-white border border-gray-100 shadow-[0_2px_12px_rgba(10,22,40,0.04)] px-8 py-7">
                   <p className="text-[12px] text-[#0a1628]/60 leading-[1.8] mb-7">
                     By submitting this application you consent to AWTG Limited processing your personal data for recruitment purposes in accordance with our{' '}
-                    <Link to="/privacy" className="text-[#1a7aab] hover:underline">Privacy Policy</Link>.
-                    {' '}Your data will be stored securely and retained for up to 12 months.
-                  </p>
+                    <Link to="/privacy" className="text-[#1a7aab] hover:underline">Privacy Policy</Link>. {' '}Your data will be stored securely and retained for up to 12 months. </p>
                   <button
                     type="submit"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                   >
-                    Submit Application
-                  </button>
+                    Submit Application </button>
                 </div>
 
               </div>
@@ -439,8 +430,7 @@ export default function CareerApplyPage() {
                     to={getRoleHref(role.slug)}
                     className="mt-5 flex items-center gap-2 text-[#1a7aab] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
-                    View full job description
-                  </Link>
+                    View full job description </Link>
                 </div>
 
                 {/* What to expect */}
@@ -464,14 +454,12 @@ export default function CareerApplyPage() {
                 {/* AWTG contact */}
                 <div className="rounded-2xl border border-gray-100 p-7 bg-white">
                   <p className="text-[13px] text-[#0a1628]/60 leading-[1.75] mb-4">
-                    Questions before applying? Email our team directly.
-                  </p>
+                    Questions before applying? Email our team directly. </p>
                   <a
                     href="mailto:info@awtg.co.uk"
                     className="inline-flex items-center gap-2 text-[#1a7aab] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
-                    info@awtg.co.uk
-                  </a>
+                    info@awtg.co.uk </a>
                 </div>
 
               </aside>

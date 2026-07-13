@@ -96,8 +96,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-6">
-              An end-to-end engineering services and technology solutions provider. Creating innovations that improve communities and deliver real ROI since 2006.
-            </p>
+              An end to end engineering services and technology solutions provider. Creating innovations that improve communities and deliver real ROI since 2006. </p>
             <div className="flex gap-2">
               <a href="https://www.linkedin.com/company/awtg-ltd/" target="_blank" rel="noopener noreferrer"
                 aria-label="AWTG on LinkedIn (opens in new tab)"
@@ -140,8 +139,7 @@ export default function Footer() {
         <div className="pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           {/* text-white/55 gives ~6.8:1 on #050d1a, passes AA */}
           <p className="text-white/55 text-xs">
-            © {new Date().getFullYear()} AWTG Ltd. Advanced Wireless Technology Group. All rights reserved. Registered in England & Wales.
-          </p>
+            © {new Date().getFullYear()} AWTG Ltd. Advanced Wireless Technology Group. All rights reserved. Registered in England & Wales. </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/privacy" className="text-xs text-white/55 hover:text-white transition-colors py-1 min-h-[24px] inline-flex items-center">Privacy Policy</Link>
             <Link to="/cookies" className="text-xs text-white/55 hover:text-white transition-colors py-1 min-h-[24px] inline-flex items-center">Cookie Settings</Link>

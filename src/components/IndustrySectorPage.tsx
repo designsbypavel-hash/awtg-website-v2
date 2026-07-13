@@ -271,8 +271,7 @@ export default function IndustrySectorPage({ data }: { data: SectorPageData }) {
           <div className="max-w-7xl mx-auto px-8 lg:px-12">
             <div className="max-w-3xl border-l-4 pl-8" style={{ borderColor: accent }}>
               <p className="text-[#0a1628]/75 text-[18px] font-normal leading-relaxed mb-5">
-                "{proof.quote}"
-              </p>
+                "{proof.quote}" </p>
               {proof.author && (
                 <p className="text-[#0a1628]/60 text-[13px] font-semibold uppercase tracking-wider">
                   {proof.author}

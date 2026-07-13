@@ -46,7 +46,7 @@ const contentSections = [
     ],
   },
   {
-    label: 'Driving Long-term Social Impact',
+    label: 'Driving Long term Social Impact',
     title: 'AWTG has a strong commitment to corporate social responsibility.',
     paragraphs: [
       'AWTG has a strong commitment to corporate social responsibility (CSR) and is committed to creating a sustainable world in which all can thrive. Our team has embraced our responsibility to our community as part of our mission, striving to improve people’s lives and promote sustainability throughout the world.',
@@ -134,11 +134,9 @@ export default function AboutOverviewPage() {
 
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
           <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
-            AWTG delivers innovative platforms, solutions and services for enterprises, cities and communities.
-          </h1>
+            AWTG delivers innovative platforms, solutions and services for enterprises, cities and communities. </h1>
           <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.7]">
-            An end-to-end engineering services and technology solutions provider operating across digital technology markets.
-          </p>
+            An end to end engineering services and technology solutions provider operating across digital technology markets. </p>
         </div>
       </section>
 
@@ -224,8 +222,7 @@ export default function AboutOverviewPage() {
                 <h3 className="font-card-heading text-[#0a1628] text-[14px] mb-2 group-hover:text-[#1a7aab] transition-colors">{link.label}</h3>
                 <p className="text-[#0a1628]/60 text-[14px] leading-[1.7] font-normal mb-5">{link.desc}</p>
                 <span className="inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.14em]">
-                  Explore
-                </span>
+                  Explore </span>
               </Link>
             ))}
           </div>

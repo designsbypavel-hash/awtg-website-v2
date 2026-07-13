@@ -22,7 +22,7 @@ const heroVisual = (
     subtitle="Space & defence infrastructure"
     items={[
       { icon: faSatellite, label: 'SATCOM integration' },
-      { icon: faShieldHalved, label: 'High-assurance security' },
+      { icon: faShieldHalved, label: 'High assurance security' },
       { icon: faNetworkWired, label: 'Tactical private networking' },
       { icon: faLock, label: 'Classified communications' },
     ]}
@@ -42,13 +42,13 @@ const data: SectorPageData = {
     heroImage: 'https://images.unsplash.com/photo-1581089781785-603411fa81e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for space and defence',
     subtitle:
-      'Mission-critical network infrastructure, SATCOM integration and high-assurance communications for defence and space environments.',
+      'Mission critical network infrastructure, SATCOM integration and high assurance communications for defence and space environments.',
     description:
       'AWTG designs and delivers connectivity for the most demanding operational environments, where failure is not an option, security classifications must be maintained and communications must work at the edge of coverage.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faSatellite,
     visualItems: [
-      { icon: faShieldHalved, label: 'High-assurance networks' },
+      { icon: faShieldHalved, label: 'High assurance networks' },
       { icon: faNetworkWired, label: 'Tactical communications' },
       { icon: faSatellite, label: 'SATCOM integration' },
       { icon: faServer, label: 'Edge infrastructure' },
@@ -90,7 +90,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faNetworkWired,
-        title: 'Mission-critical network design',
+        title: 'Mission critical network design',
         desc: 'Resilient, high-availability network architecture for defence and space environments, designed to maintain communications under adverse conditions and operational stress.',
         bullets: [
           'Redundant architecture with automatic failover',
@@ -114,7 +114,7 @@ const data: SectorPageData = {
       },
       {
         icon: faShieldHalved,
-        title: 'High-assurance communications',
+        title: 'High assurance communications',
         desc: 'Networks designed and certified to operate at the appropriate security classification level, with the architecture, controls and documentation that assurance demands.',
         bullets: [
           'Architecture designed to security classification requirements',
@@ -191,7 +191,7 @@ const data: SectorPageData = {
   cta: {
     title: 'Communications infrastructure for critical programmes',
     subtitle:
-      'Speak to AWTG about mission-critical network design, SATCOM integration and high-assurance communications for defence and space.',
+      'Speak to AWTG about mission critical network design, SATCOM integration and high assurance communications for defence and space.',
     label: 'Talk to our experts',
   },
 }

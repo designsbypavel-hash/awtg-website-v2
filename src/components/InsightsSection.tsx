@@ -7,8 +7,8 @@ import { getBlogImage } from '@/lib/insightImages'
 const posts = [
   {
     category: 'Blog',
-    title: 'From Wi-Fi to Private 5G: The Evolution of Tourism Connectivity',
-    excerpt: 'How destinations can move from public Wi-Fi to secure, high-capacity private 5G experiences.',
+    title: 'From Wi Fi to Private 5G: The Evolution of Tourism Connectivity',
+    excerpt: 'How destinations can move from public Wi Fi to secure, high capacity private 5G experiences.',
     date: 'October 20, 2025',
     readTime: '5 min read',
     slug: 'wifi-to-private-5g-tourism-connectivity',
@@ -23,8 +23,8 @@ const posts = [
   },
   {
     category: 'Blog',
-    title: '5G-Connected Ports: The Gateway to Smarter Trade',
-    excerpt: 'Why ports are becoming connected, data-driven environments powered by advanced 5G infrastructure.',
+    title: '5G Connected Ports: The Gateway to Smarter Trade',
+    excerpt: 'Why ports are becoming connected, data driven environments powered by advanced 5G infrastructure.',
     date: 'September 15, 2025',
     readTime: '6 min read',
     slug: '5g-connected-ports-smarter-trade',
@@ -50,8 +50,7 @@ export default function InsightsSection() {
             to="/insights"
             className="text-[#1a7aab] font-semibold hover:underline transition-all text-sm"
           >
-            View all insights
-          </Link>
+            View all insights </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

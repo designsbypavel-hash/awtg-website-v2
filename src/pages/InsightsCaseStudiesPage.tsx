@@ -10,7 +10,7 @@ const featured = {
   tag: 'Open RAN Security',
   title: "iTRUSTRIC: Securing Open RAN with AWTG's Advanced Solution",
   date: 'October 7, 2024',
-  excerpt: "Open RAN's disaggregated architecture creates powerful flexibility and new security exposure. iTRUSTRIC is AWTG's purpose-built platform to secure data flows, improve network visibility and ensure compliance across multi-vendor Open RAN deployments.",
+  excerpt: "Open RAN's disaggregated architecture creates powerful flexibility and new security exposure. iTRUSTRIC is AWTG's purpose built platform to secure data flows, improve network visibility and ensure compliance across multi vendor Open RAN deployments.",
   sector: 'Telecommunications',
   stats: [
     { value: 'Real-time', label: 'Threat monitoring' },
@@ -32,42 +32,42 @@ const studies = [
     tag: 'Network Economics',
     title: "AWTG's Service Assurance and Service Creation Platform",
     date: 'April 20, 2020',
-    excerpt: "A GSMA-validated study with Telecom of Thailand, 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
+    excerpt: "A GSMA validated study with Telecom of Thailand, 50%+ operating cost reduction and $250M in new revenue through AWTG's iSASCP platform.",
   },
   {
     slug: 'central-london-benchmarking',
     tag: 'Mobile Networks',
     title: 'Central London Benchmarking',
     date: 'May 6, 2018',
-    excerpt: "Multidimensional benchmarking across four major UK operators, comparing 3G, EE's newly launched LTE and carrier-grade outdoor Wi-Fi in Central London.",
+    excerpt: "Multidimensional benchmarking across four major UK operators, comparing 3G, EE's newly launched LTE and carrier grade outdoor Wi Fi in Central London.",
   },
   {
     slug: 'data-offloading-wifi',
     tag: 'Capacity Planning',
     title: 'Data Offloading with WiFi Enabled Devices',
     date: 'September 2, 2013',
-    excerpt: 'A laboratory demonstration of seamless cellular-to-WiFi offloading for dual-mode devices, examining the technical and commercial case for operator-managed offload.',
+    excerpt: 'A laboratory demonstration of seamless cellular to WiFi offloading for dual mode devices, examining the technical and commercial case for operator managed offload.',
   },
   {
     slug: 'akt-stability-testing',
     tag: 'Performance Testing',
     title: 'AKT: Stability Testing Scenario',
     date: 'September 1, 2013',
-    excerpt: "Multi-day network stability assessment using AWTG's Broadband Tester agents to measure user-perceived speed, reliability and quality of experience.",
+    excerpt: "Multi day network stability assessment using AWTG's Broadband Tester agents to measure user perceived speed, reliability and quality of experience.",
   },
   {
     slug: 'rich-communications-suite',
     tag: 'Mobile Services',
     title: 'Rich Communications Suite',
     date: 'June 23, 2012',
-    excerpt: "AWTG's analysis of the GSMA RCS-e initiative, how operators could use IMS/SIP-based rich communications to compete with over-the-top services at scale.",
+    excerpt: "AWTG's analysis of the GSMA RCS e initiative, how operators could use IMS/SIP based rich communications to compete with over the top services at scale.",
   },
   {
     slug: 'small-cell-site-acquisition',
     tag: 'Site Acquisition',
     title: 'Site Acquisition Proposition for Small Cell/3G Data Offload',
     date: 'June 23, 2012',
-    excerpt: "A site acquisition proposition for small cell deployment in high-density urban areas, drawing on AWTG's experience building outdoor small cell networks for O2.",
+    excerpt: "A site acquisition proposition for small cell deployment in high density urban areas, drawing on AWTG's experience building outdoor small cell networks for O2.",
   },
 ]
 
@@ -99,11 +99,9 @@ export default function InsightsCaseStudiesPage() {
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
             >
-              Case Studies
-            </h1>
+              Case Studies </h1>
             <p className="text-white/65 text-[17px] font-normal leading-[1.8]" style={{ maxWidth: 500 }}>
-              Real projects, measurable outcomes. Case studies spanning Open RAN security, network economics, mobile benchmarking and urban connectivity.
-            </p>
+              Real projects, measurable outcomes. Case studies spanning Open RAN security, network economics, mobile benchmarking and urban connectivity. </p>
           </div>
         </div>
       </section>
@@ -141,8 +139,7 @@ export default function InsightsCaseStudiesPage() {
                   </p>
                 </div>
                 <div className="mt-10 flex items-center gap-2 text-[#1a7aab] text-sm font-semibold">
-                  Read case study
-                </div>
+                  Read case study </div>
               </div>
               {/* Right: stats panel */}
               <div className="bg-[#0a1628] p-10 lg:p-14 flex flex-col justify-between">
@@ -190,8 +187,7 @@ export default function InsightsCaseStudiesPage() {
                     {cs.excerpt}
                   </p>
                   <span className="mt-auto inline-flex items-center text-[12px] font-semibold text-[#1a7aab] transition-colors group-hover:text-[#0a1628]">
-                    Read case study
-                  </span>
+                    Read case study </span>
                 </div>
               </Link>
             ))}

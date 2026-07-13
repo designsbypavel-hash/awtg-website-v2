@@ -65,7 +65,7 @@ export const roles: Role[] = [
     location: 'Remote (UK)',
     type: 'Full-time',
     postedDate: 'June 2026',
-    summary: 'Build CI/CD pipelines and automation tooling for cloud-native network functions, O-RAN components and enterprise network infrastructure.',
+    summary: 'Build CI/CD pipelines and automation tooling for cloud native network functions, O RAN components and enterprise network infrastructure.',
     about: [
       'As a DevOps Engineer at AWTG you will design and operate the automation infrastructure that underpins our 5G and Open RAN deployments. You will work across containerised network functions, GitOps workflows and infrastructure-as-code tooling in a fast-paced engineering environment.',
       'You will collaborate directly with our RF, software and solutions teams to build reliable, repeatable deployment pipelines for O-RAN software components including near-RT RIC, non-RT RIC and CU/DU disaggregated stacks.',
@@ -101,7 +101,7 @@ export const roles: Role[] = [
     location: 'Remote (UK)',
     type: 'Full-time',
     postedDate: 'June 2026',
-    summary: 'Lead technical pre-sales engagements for private 5G and Open RAN solutions, translating complex client requirements into winning architectures.',
+    summary: 'Lead technical pre sales engagements for private 5G and Open RAN solutions, translating complex client requirements into winning architectures.',
     about: [
       'We are seeking a 5G Solutions Architect to act as the technical lead in our pre-sales process. You will own the solution design for private 5G, Open RAN and enterprise connectivity opportunities across telecoms operators, enterprise clients and public sector bodies.',
       'Working closely with the commercial team, you will respond to RFIs and RFPs, develop reference architectures, lead proof-of-concept engagements and present technically to senior client stakeholders.',
@@ -173,7 +173,7 @@ export const roles: Role[] = [
     location: 'Manchester, UK',
     type: 'Full-time',
     postedDate: 'May 2026',
-    summary: 'Own end-to-end delivery of private 5G network deployments, managing client relationships, cross-functional teams, schedules and budgets from kick-off to acceptance.',
+    summary: 'Own end to end delivery of private 5G network deployments, managing client relationships, cross functional teams, schedules and budgets from kick off to acceptance.',
     about: [
       'We are looking for an experienced Project Manager to lead the delivery of private network programmes for enterprise and public sector clients. You will manage the full project lifecycle from initial scoping through to network acceptance and handover, working with RF engineers, software developers, procurement and client teams.',
       'You will be based in Manchester with regular travel to client sites and AWTG offices. You will manage a portfolio of concurrent projects across sectors including rail, ports, smart cities and industrial IoT.',
@@ -274,8 +274,7 @@ export default function CareerRoleDetailPage() {
             to="/careers"
             className="inline-flex items-center gap-2 text-[#0a1628]/60 text-[13px] font-semibold hover:text-[#1a7aab] transition-colors mb-8"
           >
-            Back to Careers
-          </Link>
+            Back to Careers </Link>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div>
               <span className="inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a7aab] bg-[#228DC1]/8 px-2.5 py-1 mb-5">
@@ -298,8 +297,7 @@ export default function CareerRoleDetailPage() {
               to={`/careers/${role.slug}/apply`}
               className="shrink-0 inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
             >
-              Apply for This Role
-            </Link>
+              Apply for This Role </Link>
           </div>
         </div>
       </section>
@@ -345,14 +343,12 @@ export default function CareerRoleDetailPage() {
                 <p className="type-label text-[#1a7aab] mb-3">Ready to apply?</p>
                 <h3 className="font-h4 text-[#0a1628] mb-3">Send us your application</h3>
                 <p className="text-[#0a1628]/60 text-[14px] leading-[1.75] mb-6">
-                  Complete your application in a few minutes. Upload your CV, add a covering note, and our team will be in touch.
-                </p>
+                  Complete your application in a few minutes. Upload your CV, add a covering note, and our team will be in touch. </p>
                 <Link
                   to={`/careers/${role.slug}/apply`}
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                 >
-                  Apply Now
-                </Link>
+                  Apply Now </Link>
               </div>
             </div>
 
@@ -385,8 +381,7 @@ export default function CareerRoleDetailPage() {
                     to={`/careers/${role.slug}/apply`}
                     className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[#228DC1] text-white text-[13px] font-semibold hover:bg-[#1a7fa8] transition-colors"
                   >
-                    Apply for This Role
-                  </Link>
+                    Apply for This Role </Link>
                 </div>
               </div>
 
@@ -394,14 +389,12 @@ export default function CareerRoleDetailPage() {
               <div className="rounded-2xl border border-gray-100 p-7">
                 <p className="type-label text-[#1a7aab] mb-3">Not the right fit?</p>
                 <p className="text-[#0a1628]/60 text-[13px] leading-[1.75] mb-5">
-                  We welcome speculative applications from talented people. Send your CV and tell us how you can contribute.
-                </p>
+                  We welcome speculative applications from talented people. Send your CV and tell us how you can contribute. </p>
                 <Link
                   to="/contact"
                   className="inline-flex items-center gap-2 text-[#1a7aab] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                 >
-                  Send Speculative CV
-                </Link>
+                  Send Speculative CV </Link>
               </div>
 
               {/* Other open roles */}
@@ -425,8 +418,7 @@ export default function CareerRoleDetailPage() {
                     to="/careers"
                     className="mt-5 pt-5 border-t border-gray-100 flex items-center gap-2 text-[#1a7aab] text-[13px] font-semibold hover:text-[#1a7fa8] transition-colors"
                   >
-                    View all positions
-                  </Link>
+                    View all positions </Link>
                 </div>
               )}
             </aside>
@@ -443,8 +435,7 @@ export default function CareerRoleDetailPage() {
               <h2 className="font-h3 text-[#0a1628]">More open positions</h2>
             </div>
             <Link to="/careers" className="text-[#1a7aab] text-sm font-semibold hover:text-[#1a7fa8] transition-colors flex items-center gap-1.5">
-              All roles
-            </Link>
+              All roles </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             {related.map((r) => (
@@ -459,8 +450,7 @@ export default function CareerRoleDetailPage() {
                 <h3 className="font-h5 text-[#0a1628] group-hover:text-[#1a7aab] transition-colors mb-3">{r.title}</h3>
                 <p className="text-[#0a1628]/60 text-[13px] mb-5">{r.location} · {r.type}</p>
                 <span className="inline-flex items-center gap-2 text-[#1a7aab] text-[12px] font-semibold uppercase tracking-[0.1em]">
-                  View Role
-                </span>
+                  View Role </span>
               </Link>
             ))}
           </div>

@@ -6,12 +6,12 @@ const reasons: { icon: IconDefinition; title: string; description: string }[] = 
   {
     icon: faShieldHalved,
     title: 'Security First',
-    description: 'Every solution we design is built with zero-trust principles and compliance with the highest security standards.',
+    description: 'Every solution we design is built with zero trust principles and compliance with the highest security standards.',
   },
   {
     icon: faBolt,
     title: 'Proven Performance',
-    description: 'Our networks consistently deliver sub-millisecond latency and 99.99% uptime across mission-critical environments.',
+    description: 'Our networks consistently deliver sub millisecond latency and 99.99% uptime across mission critical environments.',
   },
   {
     icon: faGlobe,
@@ -33,11 +33,9 @@ export default function WhySection() {
           <div>
             <p className="text-[#1a7aab] font-semibold text-[14px] uppercase tracking-widest mb-3">Why AWTG</p>
             <h2 className="font-heading text-[#0a1628] mb-6">
-              The Partner You Can Rely On
-            </h2>
+              The Partner You Can Rely On </h2>
             <p className="text-[#0a1628]/60 text-[18px] leading-[1.7] mb-8 font-normal">
-              We don't just build networks, we build long-term partnerships. Our approach combines deep technical expertise with a genuine commitment to your success.
-            </p>
+              We don't just build networks, we build long term partnerships. Our approach combines deep technical expertise with a genuine commitment to your success. </p>
             <div className="w-16 h-1 bg-[#228DC1] rounded" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

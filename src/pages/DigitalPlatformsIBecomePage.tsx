@@ -126,27 +126,23 @@ export default function DigitalPlatformsIBecomePage() {
             <div>
               <div className="mb-3 w-fit">
                 <h1 className="font-serif-display leading-[1.02] text-[#1a2233]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)', textShadow: '0 8px 28px rgba(10,22,40,0.22)' }}>
-                  iBecome
-                </h1>
+                  iBecome </h1>
                 <div className="relative mt-3 h-[10px] w-full">
                   <div className="absolute inset-0 rounded-full opacity-80 blur-xl" style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899, #f97316, #eab308, #22c55e, #3b82f6)' }} />
                   <div className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899, #f97316, #eab308, #22c55e, #3b82f6)' }} />
                 </div>
               </div>
               <p className="mb-3 text-[#1a7aab] text-[17px] font-semibold">
-                A complete local opportunity ecosystem
-              </p>
+                A complete local opportunity ecosystem </p>
               <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
-                iBecome helps young people discover opportunities, become application-ready and stay engaged. It carries forward the proven model behind Liverpool City Region BeMore, giving local partners a clearer way to connect talent with jobs, apprenticeships, training and careers support.
-              </p>
+                iBecome helps young people discover opportunities, become application ready and stay engaged. It carries forward the proven model behind Liverpool City Region BeMore, giving local partners a clearer way to connect talent with jobs, apprenticeships, training and careers support. </p>
               <div className="flex flex-wrap gap-4">
                 <button
                   type="button"
                   onClick={() => setIsDemoOpen(true)}
                   className="inline-flex items-center gap-2 rounded-lg bg-[#228DC1] px-7 py-3.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#1a6e99]"
                 >
-                  Request a demo
-                </button>
+                  Request a demo </button>
               </div>
             </div>
             <div className="flex justify-center lg:justify-end" style={{ perspective: '1100px' }}>
@@ -182,14 +178,11 @@ export default function DigitalPlatformsIBecomePage() {
             <div style={reveal(outcomesInView)}>
               <h2 className="font-heading mb-6 leading-[1.12] text-[#0a1628]">
                 Built on the success of BeMore.<br />
-                Proven through measurable outcomes.
-              </h2>
+                Proven through measurable outcomes. </h2>
               <p className="mb-4 text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-                iBecome helps younger peole apprentice opportunities
-              </p>
+                iBecome helps younger peole apprentice opportunities </p>
               <p className="mb-10 text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-                iBecome builds on that proven foundation, helping organisations connect services, improve engagement and provide better visibility across programmes and delivery partners.
-              </p>
+                iBecome builds on that proven foundation, helping organisations connect services, improve engagement and provide better visibility across programmes and delivery partners. </p>
 
               <div className="space-y-4">
                 {metrics.map((item, i) => (
@@ -278,8 +271,7 @@ export default function DigitalPlatformsIBecomePage() {
           <div className="max-w-3xl">
             <h2 className="font-heading text-[#0a1628] mb-5">Designed for local opportunity delivery</h2>
             <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              iBecome is well suited to local and regional programmes that want to bring employability support into one place. It helps reduce fragmentation, improve visibility and create a better user experience for young people navigating jobs, apprenticeships and career pathways.
-            </p>
+              iBecome is well suited to local and regional programmes that want to bring employability support into one place. It helps reduce fragmentation, improve visibility and create a better user experience for young people navigating jobs, apprenticeships and career pathways. </p>
           </div>
         </div>
       </section>

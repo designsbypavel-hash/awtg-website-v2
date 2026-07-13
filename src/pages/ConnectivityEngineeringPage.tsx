@@ -21,15 +21,15 @@ const heroVisual = (
     title="Site Connectivity"
     subtitle="Engineering infrastructure"
     items={[
-      { icon: faWifi, label: 'Multi-site wireless' },
+      { icon: faWifi, label: 'Multi site wireless' },
       { icon: faMicrochip, label: 'Asset IoT' },
       { icon: faNetworkWired, label: 'OT/IT convergence' },
       { icon: faCloud, label: 'Remote monitoring' },
     ]}
     badges={[
-      { icon: faNetworkWired, label: 'SD-WAN', color: '#059669' },
+      { icon: faNetworkWired, label: 'SD WAN', color: '#059669' },
       { icon: faMicrochip, label: 'IoT Ready', color: '#6b7280' },
-      { icon: faGlobe, label: 'Multi-site', color: '#0891b2' },
+      { icon: faGlobe, label: 'Multi site', color: '#0891b2' },
     ]}
   />
 )

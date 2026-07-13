@@ -40,8 +40,7 @@ export default function InsightsNewsDetailPage() {
         <h1 className="text-4xl font-bold text-[#0a1628] mb-4">News Story Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This news story does not exist or may have been moved.</p>
         <Link to="/news" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
-          Back to Newsroom
-        </Link>
+          Back to Newsroom </Link>
       </div>
     )
   }
@@ -55,8 +54,7 @@ export default function InsightsNewsDetailPage() {
               to="/news"
               className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#1a7aab] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
             >
-              Newsroom
-            </Link>
+              Newsroom </Link>
             <span className="text-[#0a1628]/30">/</span>
             <span className={`text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 ${categoryColours[item.category] ?? 'bg-[#0a1628]/8 text-[#0a1628]'}`}>
               {item.category}
@@ -100,8 +98,7 @@ export default function InsightsNewsDetailPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a6e99] text-white text-sm font-medium hover:bg-[#145a7d] transition-all"
                 >
-                  <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5" /> Watch on YouTube
-                </a>
+                  <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5" /> Watch on YouTube </a>
               </div>
             </div>
           )}
@@ -114,14 +111,12 @@ export default function InsightsNewsDetailPage() {
 
           <div className="my-12 border-l-2 border-[#228DC1] pl-8 py-1">
             <p className="font-serif-display text-[#0a1628] leading-snug italic" style={{ fontSize: 'clamp(18px, 2vw, 24px)' }}>
-              AWTG's newsroom brings together project updates, technology milestones and partnership announcements from across its AI, connectivity and digital infrastructure work.
-            </p>
+              AWTG's newsroom brings together project updates, technology milestones and partnership announcements from across its AI, connectivity and digital infrastructure work. </p>
           </div>
 
           <div className="pt-8 border-t border-gray-100">
             <Link to="/news" className="inline-flex items-center gap-2 text-[#1a7aab] text-sm font-semibold hover:text-[#0a1628] transition-colors">
-              Back to all news
-            </Link>
+              Back to all news </Link>
           </div>
         </div>
       </section>
@@ -141,7 +136,7 @@ export default function InsightsNewsDetailPage() {
                   </h3>
                   <p className="text-[#0a1628]/60 text-xs mb-5">{newsItem.date}</p>
                   <span className="inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em]">
-                    Read                  </span>
+                    Read </span>
                 </Link>
               ))}
             </div>

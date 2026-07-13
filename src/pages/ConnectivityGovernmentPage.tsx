@@ -21,10 +21,10 @@ const heroVisual = (
     title="Gov Connectivity"
     subtitle="Secure government infrastructure"
     items={[
-      { icon: faNetworkWired, label: 'PSN-compliant networks' },
+      { icon: faNetworkWired, label: 'PSN compliant networks' },
       { icon: faShield, label: 'GovWifi infrastructure' },
       { icon: faLock, label: 'Classified environments' },
-      { icon: faCloud, label: 'G-Cloud connectivity' },
+      { icon: faCloud, label: 'G Cloud connectivity' },
     ]}
     badges={[
       { icon: faShield, label: 'PSN', color: '#059669' },
@@ -42,9 +42,9 @@ const data: SectorPageData = {
     heroImage: 'https://images.unsplash.com/photo-1750630443133-b53362899f2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for government',
     subtitle:
-      'PSN-compliant networks, GovWifi infrastructure and cleared managed services for central and local government.',
+      'PSN compliant networks, GovWifi infrastructure and cleared managed services for central and local government.',
     description:
-      'AWTG designs and delivers secure, compliant network infrastructure for government organisations, from PSN-aligned WAN programmes to classified network environments and cloud connectivity for digital transformation.',
+      'AWTG designs and delivers secure, compliant network infrastructure for government organisations, from PSN aligned WAN programmes to classified network environments and cloud connectivity for digital transformation.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faLandmark,
     visualItems: [
@@ -90,7 +90,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faNetworkWired,
-        title: 'PSN-compliant WAN and SD-WAN',
+        title: 'PSN compliant WAN and SD WAN',
         desc: 'Government-grade WAN architecture designed to meet PSN Code of Connection requirements, providing secure, resilient connectivity across departmental and local authority sites.',
         bullets: [
           'PSN compliance-led network architecture design',
@@ -191,7 +191,7 @@ const data: SectorPageData = {
   cta: {
     title: 'Connectivity designed for government',
     subtitle:
-      'Speak to AWTG about PSN-compliant networks, GovWifi programmes and managed connectivity for government organisations.',
+      'Speak to AWTG about PSN compliant networks, GovWifi programmes and managed connectivity for government organisations.',
     label: 'Talk to our experts',
   },
 }

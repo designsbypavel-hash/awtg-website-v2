@@ -25,7 +25,7 @@ const heroVisual = (
       { icon: faHeadset, label: 'AI customer support automation' },
       { icon: faLanguage, label: 'Multilingual query handling' },
       { icon: faRotateLeft, label: 'Returns & order management' },
-      { icon: faBolt, label: 'Real-time product recommendations' },
+      { icon: faBolt, label: 'Real time product recommendations' },
     ]}
     badges={[
       { icon: faShield, label: 'GDPR Aligned', color: '#059669' },
@@ -73,7 +73,7 @@ const data: SectorPageData = {
       },
       {
         icon: faRotateLeft,
-        title: 'Post-purchase friction',
+        title: 'Post purchase friction',
         desc: 'Returns, exchanges, delayed deliveries and order status queries drive high contact volumes with poor automation rates in most operations today.',
       },
       {
@@ -193,7 +193,7 @@ const data: SectorPageData = {
   },
 
   cta: {
-    title: 'AI for customer-led retail growth',
+    title: 'AI for customer led retail growth',
     subtitle:
       'Speak to AWTG about AI for customer service, product guidance, multilingual CX and commerce operations analytics.',
     label: 'Talk to our experts',

@@ -60,7 +60,7 @@ const products = [
 const benefits = [
   { label: 'Clear access', desc: 'Make it easier for people to find what is available and take the next step.', image: clearAccessImage, alt: 'Young person using a mobile phone to access local opportunities and public services', accent: '#228DC1' },
   { label: 'Better engagement', desc: 'Support participation through timely information, relevant content and a clearer user journey.', image: betterEngagementImage, alt: 'Youth worker facilitating an inclusive community workshop with young people', accent: '#059669' },
-  { label: 'Joined-up delivery', desc: 'Bring services, opportunities and activities into one connected experience rather than fragmented systems.', image: joinedUpDeliveryImage, alt: 'Cross-organisational team collaborating in a digital transformation workshop', accent: '#7C3AED' },
+  { label: 'Joined up delivery', desc: 'Bring services, opportunities and activities into one connected experience rather than fragmented systems.', image: joinedUpDeliveryImage, alt: 'Cross organisational team collaborating in a digital transformation workshop', accent: '#7C3AED' },
   { label: 'Stronger visibility', desc: 'Give delivery teams a better view of activity, engagement and programme performance.', image: strongerVisibilityImage, alt: 'Operations team reviewing programme analytics and performance metrics', accent: '#D97706' },
   { label: 'Web and mobile readiness', desc: 'Design for how people actually access services today.', image: webMobileReadinessImage, alt: 'Person accessing a modern digital service across a smartphone and laptop', accent: '#228DC1' },
 ]
@@ -189,11 +189,9 @@ export default function DigitalPlatformsPage() {
           <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <h1 className="font-serif-display mb-6 leading-[1.02] text-[#0a1628]">
-                Digital platforms for opportunity, engagement and service delivery
-              </h1>
+                Digital platforms for opportunity, engagement and service delivery </h1>
               <p className="max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
-                Our Digital Platforms support the services that connect people with opportunities, activities and support. They bring together clear user journeys, practical delivery tools and better visibility for the teams managing them.
-              </p>
+                Our Digital Platforms support the services that connect people with opportunities, activities and support. They bring together clear user journeys, practical delivery tools and better visibility for the teams managing them. </p>
             </div>
             {/* CSS tablet device showing LCR Reels screenshot */}
             <div className="flex justify-center lg:justify-end" style={{ perspective: '1100px' }}>
@@ -284,8 +282,7 @@ export default function DigitalPlatformsPage() {
           <div className="max-w-3xl">
             <h2 className="font-heading mb-6 text-[#0a1628]">What our platforms are built to deliver</h2>
             <p className="max-w-2xl text-[16px] font-normal leading-[1.75] text-[#0a1628]/60 sm:text-[17px]">
-              Digital services should make opportunity easier to find, participation simpler to manage and delivery clearer for every team involved.
-            </p>
+              Digital services should make opportunity easier to find, participation simpler to manage and delivery clearer for every team involved. </p>
           </div>
         </div>
 
@@ -299,11 +296,9 @@ export default function DigitalPlatformsPage() {
           <div ref={audienceRef} className="grid gap-14 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
             <div>
               <h2 className="font-heading text-[#0a1628] mb-5 max-w-xl">
-                Who these platforms are for
-              </h2>
+                Who these platforms are for </h2>
               <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.75] text-[#0a1628]/60">
-                Our Digital Platforms are suited to organisations working across youth engagement, employability, education, local programmes and community service delivery.
-              </p>
+                Our Digital Platforms are suited to organisations working across youth engagement, employability, education, local programmes and community service delivery. </p>
               <div className="relative overflow-hidden rounded-sm bg-[#0a1628] shadow-[0_24px_70px_rgba(10,22,40,0.16)]" style={{ aspectRatio: '4 / 3' }}>
                 <img
                   src="https://images.unsplash.com/photo-1758873269276-9518d0cb4a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"

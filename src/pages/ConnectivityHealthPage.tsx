@@ -21,7 +21,7 @@ const heroVisual = (
     title="NHS Connectivity"
     subtitle="Clinical network infrastructure"
     items={[
-      { icon: faShield, label: 'DSPT-compliant networks' },
+      { icon: faShield, label: 'DSPT compliant networks' },
       { icon: faWifi, label: 'Clinical wireless coverage' },
       { icon: faMicrochip, label: 'IoMT device connectivity' },
       { icon: faCloud, label: 'NHS cloud integration' },
@@ -42,13 +42,13 @@ const data: SectorPageData = {
     heroImage: 'https://images.unsplash.com/photo-1688565631550-ff8aa569f71a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for healthcare',
     subtitle:
-      'Secure, DSPT-compliant network infrastructure designed for the clinical environment, from acute ward to community care.',
+      'Secure, DSPT compliant network infrastructure designed for the clinical environment, from acute ward to community care.',
     description:
       'AWTG designs, deploys and manages network infrastructure for NHS trusts and healthcare organisations. Every solution is built around DSPT compliance, clinical continuity and the practical demands of a 24/7 care environment.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faHospital,
     visualItems: [
-      { icon: faShield, label: 'DSPT-compliant networks' },
+      { icon: faShield, label: 'DSPT compliant networks' },
       { icon: faWifi, label: 'Private clinical wireless' },
       { icon: faMicrochip, label: 'IoMT device connectivity' },
       { icon: faCloud, label: 'Healthcare cloud networking' },
@@ -72,7 +72,7 @@ const data: SectorPageData = {
       },
       {
         icon: faWifi,
-        title: 'Clinical Wi-Fi reliability',
+        title: 'Clinical Wi Fi reliability',
         desc: 'Poor wireless coverage in wards, theatres and clinical spaces directly impacts staff mobility, EPR access and patient care delivery at the point of need.',
       },
       {
@@ -90,7 +90,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faShield,
-        title: 'DSPT-compliant network design',
+        title: 'DSPT compliant network design',
         desc: 'Network architecture designed from the ground up around DSPT requirements, covering access control, segmentation, encryption and audit logging for clinical data.',
         bullets: [
           'Network segmentation aligned to clinical data classification',
@@ -191,7 +191,7 @@ const data: SectorPageData = {
   cta: {
     title: 'Secure connectivity for better patient care',
     subtitle:
-      'Speak to AWTG about DSPT-compliant network design, clinical wireless infrastructure and IoMT connectivity for NHS organisations.',
+      'Speak to AWTG about DSPT compliant network design, clinical wireless infrastructure and IoMT connectivity for NHS organisations.',
     label: 'Talk to our experts',
   },
 }

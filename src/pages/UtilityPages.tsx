@@ -55,8 +55,7 @@ function UtilityPage({
                 </h2>
                 <p className="text-[#0a1628]/75 text-sm leading-relaxed font-normal mb-6">{card.desc}</p>
                 <span className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab]">
-                  Explore
-                </span>
+                  Explore </span>
               </Link>
             ))}
           </div>
@@ -89,7 +88,7 @@ export function InnovationPage() {
   return (
     <UtilityPage
       eyebrow="Innovation"
-      title="Applied innovation, built for real-world deployment."
+      title="Applied innovation, built for real world deployment."
       intro="AWTG focuses innovation on systems that organisations can actually adopt: AI workflows, private networks, smart infrastructure and digital platforms with measurable value."
       cards={[
         { title: 'Kai, AI Agent', desc: 'Production-ready conversational AI for sales, support and customer services.', href: '/products/kai' },

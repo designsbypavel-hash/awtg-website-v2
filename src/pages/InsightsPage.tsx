@@ -13,11 +13,9 @@ export default function InsightsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <p className="text-[#1a7aab] font-semibold text-[14px] uppercase tracking-widest mb-3">Insights</p>
           <h1 className="font-serif-display text-[#0a1628] mb-6 leading-[1.1]">
-            News &amp; Thought Leadership
-          </h1>
+            News &amp; Thought Leadership </h1>
           <p className="text-[#0a1628]/60 text-[18px] max-w-2xl">
-            Stay ahead of the curve with insights, research and real-world stories from the AWTG team.
-          </p>
+            Stay ahead of the curve with insights, research and real world stories from the AWTG team. </p>
         </div>
       </section>
 

@@ -13,7 +13,7 @@ const solutions = [
   { icon: faMicrochip, title: 'Battlefield IoT', desc: 'Ruggedised IoT sensor integration for situational awareness, asset tracking, environmental monitoring and force protection across operational theatres.' },
   { icon: faLock, title: 'Encrypted Communications', desc: 'End-to-end encrypted voice, data and video communications platforms designed and validated for defence security classifications.' },
   { icon: faServer, title: 'ISR Data Platforms', desc: 'Intelligence, Surveillance and Reconnaissance data infrastructure, processing, fusing and distributing multi-sensor data to operational decision-makers.' },
-  { icon: faShieldHalved, title: 'NATO-Compatible Infrastructure', desc: 'Network architecture and protocol design aligned with NATO STANAG standards, enabling interoperability with allied forces and coalition operations.' },
+  { icon: faShieldHalved, title: 'NATO Compatible Infrastructure', desc: 'Network architecture and protocol design aligned with NATO STANAG standards, enabling interoperability with allied forces and coalition operations.' },
 ]
 
 export default function IndustriesDefencePage() {
@@ -22,11 +22,9 @@ export default function IndustriesDefencePage() {
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h1 className="font-serif-display text-[#0a1628] leading-tight mb-6">
-            Defence
-          </h1>
+            Defence </h1>
           <p className="text-[#0a1628]/60 text-lg max-w-2xl font-normal leading-relaxed">
-            Secure, mission-critical communications and private network solutions for defence, delivered by SC and DV cleared engineers with proven experience across MOD programmes and NATO-aligned environments.
-          </p>
+            Secure, mission critical communications and private network solutions for defence, delivered by SC and DV cleared engineers with proven experience across MOD programmes and NATO aligned environments. </p>
         </div>
       </section>
 
@@ -50,11 +48,9 @@ export default function IndustriesDefencePage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h2 className="font-heading text-[#0a1628] mb-4">
-            Solutions for Defence
-          </h2>
+            Solutions for Defence </h2>
           <p className="text-[#0a1628]/60 mb-14 max-w-2xl font-normal text-[16px] leading-[1.7]">
-            AWTG brings together classified-environment expertise, SC and DV cleared engineering capability, and cutting-edge private 5G technology to support the UK defence sector's most demanding connectivity requirements.
-          </p>
+            AWTG brings together classified environment expertise, SC and DV cleared engineering capability, and cutting edge private 5G technology to support the UK defence sector's most demanding connectivity requirements. </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {solutions.map((s, i) => {
               const color = COLORS[i % 4]
@@ -87,14 +83,12 @@ export default function IndustriesDefencePage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-3xl border-l-4 border-[#228DC1] pl-8">
             <p className="text-[#0a1628]/80 text-xl font-normal leading-relaxed">
-              AWTG is an MOD approved supplier with SC and DV cleared engineers available for classified programme delivery, ensuring continuity, security compliance and trusted access across the full project lifecycle.
-            </p>
+              AWTG is an MOD approved supplier with SC and DV cleared engineers available for classified programme delivery, ensuring continuity, security compliance and trusted access across the full project lifecycle. </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 mt-6 text-[#1a7aab] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
             >
-              Contact Defence Team
-            </Link>
+              Contact Defence Team </Link>
           </div>
         </div>
       </section>

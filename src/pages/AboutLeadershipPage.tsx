@@ -116,11 +116,9 @@ export default function AboutLeadershipPage() {
 
         <div className="relative max-w-7xl mx-auto px-8 lg:px-12">
           <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
-            The AWTG team is committed to cultivating a successful culture.
-          </h1>
+            The AWTG team is committed to cultivating a successful culture. </h1>
           <p className="text-[#0a1628]/60 text-[18px] leading-[1.7] max-w-3xl font-normal">
-            The AWTG team is committed to cultivating a successful culture that drives our transformation and sustains our global growth. Get to know the some of the brilliant minds behind our strides towards sustainability and innovation.
-          </p>
+            The AWTG team is committed to cultivating a successful culture that drives our transformation and sustains our global growth. Get to know the some of the brilliant minds behind our strides towards sustainability and innovation. </p>
         </div>
       </section>
 
@@ -163,8 +161,7 @@ export default function AboutLeadershipPage() {
             <h2 className="font-h2 text-[#0a1628]">Ready to explore what AWTG can do for you?</h2>
           </div>
           <Link to="/contact" className="shrink-0 px-7 py-3.5 bg-[#228DC1] text-white text-sm font-medium hover:bg-[#1a6e99] transition-all inline-flex items-center gap-2">
-            Contact Us
-          </Link>
+            Contact Us </Link>
         </div>
       </section>
     </>

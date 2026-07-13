@@ -17,8 +17,7 @@ export default function InsightsWhitePaperDetailPage() {
         <h1 className="text-4xl font-bold text-[#0a1628] mb-4">Whitepaper Not Found</h1>
         <p className="text-[#0a1628]/60 mb-8 font-normal">This whitepaper does not exist or may have been moved.</p>
         <Link to="/insights/white-papers" className="inline-flex items-center gap-2 text-sm font-medium text-[#1a7aab] border border-[#228DC1] px-5 py-2.5 hover:bg-[#228DC1] hover:text-white transition-all">
-          Back to Whitepapers
-        </Link>
+          Back to Whitepapers </Link>
       </div>
     )
   }
@@ -33,8 +32,7 @@ export default function InsightsWhitePaperDetailPage() {
                 to="/insights/white-papers"
                 className="inline-flex items-center gap-2 text-[#0a1628]/60 hover:text-[#1a7aab] text-xs font-medium uppercase tracking-[0.12em] transition-colors"
               >
-                Whitepapers
-              </Link>
+                Whitepapers </Link>
               <span className="text-[#0a1628]/30">/</span>
               <span className="text-[12px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1 bg-[#228DC1]/10 text-[#1a7aab]">
                 {paper.topic}
@@ -109,7 +107,7 @@ export default function InsightsWhitePaperDetailPage() {
                   </h3>
                   <p className="text-[#0a1628]/60 text-xs mb-5">{item.date}</p>
                   <span className="inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em]">
-                    Open                  </span>
+                    Open </span>
                 </Link>
               ))}
             </div>

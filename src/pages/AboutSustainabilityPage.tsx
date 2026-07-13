@@ -184,11 +184,9 @@ export default function AboutSustainabilityPage() {
           <div className="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-12 lg:gap-20 items-end">
             <div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
-                Carbon Reduction Plan and Social Value Statement
-              </h1>
+                Carbon Reduction Plan and Social Value Statement </h1>
               <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.7]">
-                Commitment to Achieving Net Zero. Supporting communities, enabling growth and economic wellbeing.
-              </p>
+                Commitment to Achieving Net Zero. Supporting communities, enabling growth and economic wellbeing. </p>
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
               <p className="font-h2 text-[#0a1628]">2045</p>
@@ -220,11 +218,9 @@ export default function AboutSustainabilityPage() {
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Carbon Reduction Plan</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-6" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
-                Commitment to Achieving Net Zero
-              </h2>
+                Commitment to Achieving Net Zero </h2>
               <p className="text-[#0a1628]/60 text-[15px] leading-[1.88] mb-8">
-                AWTG is committed to achieving Net Zero by 2045. We are currently working to develop a full implementation plan which will allow us to bring this target further forward. All emissions reported and future plans include the entities controlled by AWTG Ltd.
-              </p>
+                AWTG is committed to achieving Net Zero by 2045. We are currently working to develop a full implementation plan which will allow us to bring this target further forward. All emissions reported and future plans include the entities controlled by AWTG Ltd. </p>
               <div className="flex items-center gap-6">
                 <div className="text-center">
                   <p className="text-[40px] font-black text-[#228DC1] leading-none">2045</p>
@@ -257,8 +253,7 @@ export default function AboutSustainabilityPage() {
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Emissions Reporting</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-7" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
-                Baseline and current emission footprint
-              </h2>
+                Baseline and current emission footprint </h2>
               <div className="grid grid-cols-2 gap-5">
                 <div className="rounded-xl bg-[#f8fafc] border border-gray-100 p-5">
                   <p className="text-[#1a7aab] text-[11px] font-bold uppercase tracking-[0.14em] mb-4">Baseline 2019</p>
@@ -284,8 +279,7 @@ export default function AboutSustainabilityPage() {
                 </div>
               </div>
               <p className="text-[#0a1628]/60 text-[12px] leading-[1.7] mt-5">
-                2022 and 2023 represent more realistic post-pandemic emissions. AWTG has grown steadily while maintaining emissions per person below the sector average.
-              </p>
+                2022 and 2023 represent more realistic post pandemic emissions. AWTG has grown steadily while maintaining emissions per person below the sector average. </p>
             </div>
           </div>
         </div>
@@ -299,8 +293,7 @@ export default function AboutSustainabilityPage() {
                 <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a1628]/60">Action Plan</span>
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8" style={{ fontSize: 'clamp(22px, 2.2vw, 30px)' }}>
-                Targets, completed and planned projects
-              </h2>
+                Targets, completed and planned projects </h2>
               <div className="space-y-7">
                 {[
                   { icon: faBullseye,     label: 'Targets',   accent: '#228DC1', items: reductionTargets },
@@ -333,16 +326,13 @@ export default function AboutSustainabilityPage() {
               <p className="text-[#1a7aab] text-[11px] font-bold uppercase tracking-[0.18em] mb-4">Declaration and Sign Off</p>
               <h3 className="font-h5 text-[#0a1628] mb-5">Carbon Reduction Plan Compliance</h3>
               <p className="text-[#0a1628]/60 text-sm leading-[1.85] mb-4">
-                This Carbon Reduction Plan has been completed in accordance with PPN 06/21 and associated guidance and reporting standard for Carbon Reduction Plans. Emissions have been reported and recorded in accordance with the GHG Reporting Protocol corporate standard and uses the appropriate Government emission conversion factors for greenhouse gas company reporting.
-              </p>
+                This Carbon Reduction Plan has been completed in accordance with PPN 06/21 and associated guidance and reporting standard for Carbon Reduction Plans. Emissions have been reported and recorded in accordance with the GHG Reporting Protocol corporate standard and uses the appropriate Government emission conversion factors for greenhouse gas company reporting. </p>
               <p className="text-[#0a1628]/60 text-sm leading-[1.85] mb-4">
-                Scope 1 and Scope 2 emissions have been reported in accordance with SECR requirements, and the required subset of Scope 3 emissions have been reported in accordance with the Corporate Value Chain (Scope 3) Standard.
-              </p>
+                Scope 1 and Scope 2 emissions have been reported in accordance with SECR requirements, and the required subset of Scope 3 emissions have been reported in accordance with the Corporate Value Chain (Scope 3) Standard. </p>
               <p className="text-[#0a1628]/60 text-sm leading-[1.85]">This Carbon Reduction Plan has been reviewed and signed off by the management team.</p>
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <p className="text-[#0a1628] text-[14px] font-semibold">
-                  Signed: Abbey Alidoosti, Chief Executive Officer, 4th September 2024
-                </p>
+                  Signed: Abbey Alidoosti, Chief Executive Officer, 4th September 2024 </p>
               </div>
             </div>
           </div>
@@ -359,13 +349,11 @@ export default function AboutSustainabilityPage() {
               <div>
                 <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1a7aab] mb-4">Social Value Statement</p>
                 <h2 className="font-heading text-[#0a1628] leading-tight">
-                  Supporting communities, enabling growth and economic wellbeing
-                </h2>
+                  Supporting communities, enabling growth and economic wellbeing </h2>
               </div>
               <div className="space-y-4">
                 <p className="text-[#0a1628]/60 text-[15px] leading-[1.85]">
-                  AWTG creates innovation that supports communities, enables growth and economic wellbeing through technology, automation and transformation. We assist our customers to maximise social, economic, technological and environmental wellbeing of their local communities.
-                </p>
+                  AWTG creates innovation that supports communities, enables growth and economic wellbeing through technology, automation and transformation. We assist our customers to maximise social, economic, technological and environmental wellbeing of their local communities. </p>
               </div>
             </div>
           </div>
@@ -402,8 +390,7 @@ export default function AboutSustainabilityPage() {
             <div className="max-w-4xl">
               <div className="text-[#228DC1] text-[64px] font-serif leading-none mb-2 opacity-20 select-none">&ldquo;</div>
               <p className="text-[#0a1628] text-lg lg:text-2xl font-light leading-[1.65]">
-                Our social value goals, objectives and policies will be communicated clearly to our employees, contractors, supply chain partners, communities we work with and relevant parties. We will review our social value statements and related policies on an annual basis and aim for continuous improvement.
-              </p>
+                Our social value goals, objectives and policies will be communicated clearly to our employees, contractors, supply chain partners, communities we work with and relevant parties. We will review our social value statements and related policies on an annual basis and aim for continuous improvement. </p>
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ export const whitePapers: WhitePaper[] = [
   },
   {
     slug: 'rapps-in-hiper-ran',
-    title: 'rApps in HiPer-RAN',
+    title: 'rApps in HiPer RAN',
     date: 'August 15, 2024',
     topic: 'RAN Intelligence',
     desc: 'Insights from the HiPer-RAN project, including ML-driven rApps and xApps for energy efficiency, MIMO optimisation, RAN slice SLA assurance and security use cases.',
@@ -69,7 +69,7 @@ export const whitePapers: WhitePaper[] = [
   },
   {
     slug: 'ai-powered-dam-and-reservoir-management',
-    title: 'AI-Powered Dam and Reservoir Management',
+    title: 'AI Powered Dam and Reservoir Management',
     date: 'December 18, 2019',
     topic: 'AI Infrastructure',
     desc: 'A white paper exploring how AI and monitoring technologies can support ageing water infrastructure, helping identify risks around dams and reservoirs earlier.',
@@ -169,11 +169,9 @@ export default function InsightsWhitePapersPage() {
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
             >
-              White Papers
-            </h1>
+              White Papers </h1>
             <p className="text-white/65 text-[17px] font-normal leading-[1.8]" style={{ maxWidth: 500 }}>
-              Explore {whitePapers.length} white papers across Open RAN, private networks, public services, AI infrastructure, 5G strategy, rail, small cells and future networks.
-            </p>
+              Explore {whitePapers.length} white papers across Open RAN, private networks, public services, AI infrastructure, 5G strategy, rail, small cells and future networks. </p>
           </div>
         </div>
       </section>
@@ -197,7 +195,7 @@ export default function InsightsWhitePapersPage() {
               <div className="flex flex-wrap items-center justify-between gap-4 text-[#0a1628]/60 text-xs border-t border-gray-100 pt-7">
                 <span>{featuredPaper.date}</span>
                 <span className="inline-flex items-center gap-2 text-[#1a7aab] font-semibold uppercase tracking-[0.12em]">
-                  Read whitepaper                </span>
+                  Read whitepaper </span>
               </div>
             </div>
             <div className="lg:col-span-2 bg-[#0a1628] flex flex-col">
@@ -209,8 +207,7 @@ export default function InsightsWhitePapersPage() {
                   <FontAwesomeIcon icon={faFilePdf} className="w-10 h-10 text-[#7ac4e0] mb-8" />
                   <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#7ac4e0] mb-5">AWTG Research</p>
                   <p className="font-h3 text-white">
-                    Open RAN transformation, security and deployment insight.
-                  </p>
+                    Open RAN transformation, security and deployment insight. </p>
                 </div>
                 <p className="text-white/60 text-sm leading-relaxed mt-10">Dedicated PDF viewer and download available on the whitepaper page.</p>
               </div>
@@ -255,8 +252,7 @@ export default function InsightsWhitePapersPage() {
                     {paper.desc}
                   </p>
                   <span className="mt-auto inline-flex items-center gap-2 text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.12em] transition-colors group-hover:text-[#0a1628]">
-                    Open whitepaper
-                  </span>
+                    Open whitepaper </span>
                 </div>
               </Link>
             ))}

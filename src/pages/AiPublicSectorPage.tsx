@@ -24,7 +24,7 @@ const heroVisual = (
       { icon: faComments, label: 'Citizen enquiry automation' },
       { icon: faShieldHalved, label: 'Secure by design' },
       { icon: faClipboardList, label: 'Case management intelligence' },
-      { icon: faGlobe, label: 'Multi-channel service delivery' },
+      { icon: faGlobe, label: 'Multi channel service delivery' },
     ]}
     badges={[
       { icon: faShieldHalved, label: 'UK GDPR', color: '#059669' },
@@ -154,7 +154,7 @@ const data: SectorPageData = {
       },
       {
         icon: faGlobe,
-        title: 'Multi-channel citizen access',
+        title: 'Multi channel citizen access',
         desc: 'Consistent AI across web, mobile and telephony channels, meeting citizens where they are and supporting digital inclusion goals across the population.',
       },
     ],

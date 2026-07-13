@@ -21,14 +21,14 @@ const heroVisual = (
     title="Retail Network"
     subtitle="Commerce connectivity platform"
     items={[
-      { icon: faNetworkWired, label: 'Multi-site SD-WAN' },
+      { icon: faNetworkWired, label: 'Multi site SD WAN' },
       { icon: faShieldHalved, label: 'PCI DSS compliance' },
-      { icon: faWifi, label: 'Customer Wi-Fi' },
+      { icon: faWifi, label: 'Customer Wi Fi' },
       { icon: faCloud, label: 'Cloud integration' },
     ]}
     badges={[
       { icon: faShieldHalved, label: 'PCI DSS', color: '#059669' },
-      { icon: faWifi, label: 'SD-WAN', color: '#0891b2' },
+      { icon: faWifi, label: 'SD WAN', color: '#0891b2' },
       { icon: faStore, label: 'Retail Ready', color: '#d97706' },
     ]}
   />
@@ -42,15 +42,15 @@ const data: SectorPageData = {
     heroImage: '/images/connectivity-commerce/commerce-connectivity-hero.png',
     title: 'Connectivity for commerce and retail',
     subtitle:
-      'Multi-site SD-WAN, PCI DSS-compliant networks and customer Wi-Fi infrastructure for retail and commercial operations.',
+      'Multi site SD WAN, PCI DSS compliant networks and customer Wi Fi infrastructure for retail and commercial operations.',
     description:
       'AWTG designs and manages network infrastructure for retail, hospitality and commercial organisations, providing consistent, secure connectivity across all sites and the compliance controls that commerce demands.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faStore,
     visualItems: [
-      { icon: faNetworkWired, label: 'Multi-site SD-WAN' },
+      { icon: faNetworkWired, label: 'Multi site SD WAN' },
       { icon: faShieldHalved, label: 'PCI DSS compliance' },
-      { icon: faWifi, label: 'Customer Wi-Fi' },
+      { icon: faWifi, label: 'Customer Wi Fi' },
       { icon: faMicrochip, label: 'Retail IoT connectivity' },
     ],
   },
@@ -62,7 +62,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faNetworkWired,
-        title: 'Multi-site consistency',
+        title: 'Multi site consistency',
         desc: 'Maintaining consistent network quality, security policies and management across tens or hundreds of retail sites is operationally complex and costly without the right architecture.',
       },
       {
@@ -72,7 +72,7 @@ const data: SectorPageData = {
       },
       {
         icon: faWifi,
-        title: 'Customer Wi-Fi expectations',
+        title: 'Customer Wi Fi expectations',
         desc: 'Customers expect reliable, fast Wi-Fi in stores, restaurants and hospitality venues. Poorly performing customer wireless damages experience and dwell time.',
       },
       {
@@ -90,7 +90,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faNetworkWired,
-        title: 'Multi-site SD-WAN and WAN',
+        title: 'Multi site SD WAN and WAN',
         desc: 'Consistent, manageable connectivity across retail estates, SD-WAN architecture that delivers performance, centralised management and cost efficiency at scale.',
         bullets: [
           'Centralised policy management across all retail sites',
@@ -102,7 +102,7 @@ const data: SectorPageData = {
       },
       {
         icon: faShieldHalved,
-        title: 'PCI DSS-compliant network design',
+        title: 'PCI DSS compliant network design',
         desc: 'Network architecture designed to meet PCI DSS requirements, with appropriate segmentation of cardholder data environments and the documentation that compliance demands.',
         bullets: [
           'Cardholder data environment segmentation and isolation',
@@ -114,7 +114,7 @@ const data: SectorPageData = {
       },
       {
         icon: faWifi,
-        title: 'Customer Wi-Fi and retail IoT',
+        title: 'Customer Wi Fi and retail IoT',
         desc: 'High-quality customer-facing wireless infrastructure and segmented IoT connectivity across retail sites, improving customer experience and supporting operational IoT devices.',
         bullets: [
           'Customer Wi-Fi with captive portal and analytics capability',
@@ -134,7 +134,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faNetworkWired,
-        title: 'SD-WAN across the retail estate',
+        title: 'SD WAN across the retail estate',
         desc: 'Software-defined WAN providing consistent, centrally managed connectivity across multiple retail sites, with application performance visibility and cost efficiency.',
       },
       {
@@ -144,7 +144,7 @@ const data: SectorPageData = {
       },
       {
         icon: faWifi,
-        title: 'Customer and venue Wi-Fi',
+        title: 'Customer and venue Wi Fi',
         desc: 'Managed customer Wi-Fi infrastructure for stores, hospitality venues and commercial spaces, with analytics and captive portal capability to maximise value.',
       },
       {
@@ -154,7 +154,7 @@ const data: SectorPageData = {
       },
       {
         icon: faCloud,
-        title: 'Cloud and e-commerce connectivity',
+        title: 'Cloud and e commerce connectivity',
         desc: 'Reliable connectivity to cloud-hosted retail platforms, e-commerce systems and central management infrastructure that the omnichannel retail operation depends on.',
       },
     ],
@@ -177,7 +177,7 @@ const data: SectorPageData = {
       },
       {
         icon: faChartLine,
-        title: 'Estate-wide visibility',
+        title: 'Estate wide visibility',
         desc: 'Centralised monitoring and management provides IT teams with full visibility across the retail network estate from a single pane of glass.',
       },
       {
@@ -191,7 +191,7 @@ const data: SectorPageData = {
   cta: {
     title: 'Network infrastructure for modern retail',
     subtitle:
-      'Speak to AWTG about SD-WAN, PCI DSS-compliant networks and customer Wi-Fi for retail and commercial operations.',
+      'Speak to AWTG about SD WAN, PCI DSS compliant networks and customer Wi Fi for retail and commercial operations.',
     label: 'Talk to our experts',
     image: '/images/connectivity-commerce/app-ordering-pickup-cta.png',
     imagePosition: 'center',

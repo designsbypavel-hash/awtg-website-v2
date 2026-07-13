@@ -20,8 +20,7 @@ export default function Layout() {
     <div className="min-h-screen flex flex-col">
       {/* WCAG 2.4.1: Skip navigation link */}
       <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
+        Skip to main content </a>
       <Navigation />
       <Breadcrumbs />
       <main id="main-content" className="flex-1" tabIndex={-1}>

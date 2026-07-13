@@ -22,11 +22,9 @@ export default function IndustriesPublicSectorPage() {
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h1 className="font-serif-display text-[#0a1628] leading-tight mb-6">
-            Public Sector
-          </h1>
+            Public Sector </h1>
           <p className="text-[#0a1628]/60 text-lg max-w-2xl font-normal leading-relaxed">
-            Trusted technology partner to central and local government, delivering secure, compliant and future-ready connectivity and digital infrastructure across the UK public sector.
-          </p>
+            Trusted technology partner to central and local government, delivering secure, compliant and future ready connectivity and digital infrastructure across the UK public sector. </p>
         </div>
       </section>
 
@@ -50,11 +48,9 @@ export default function IndustriesPublicSectorPage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h2 className="font-heading text-[#0a1628] mb-4">
-            Solutions for Public Sector
-          </h2>
+            Solutions for Public Sector </h2>
           <p className="text-[#0a1628]/60 mb-14 max-w-2xl font-normal text-[16px] leading-[1.7]">
-            As a Crown Commercial Supplier with SC-cleared engineers, AWTG is fully accredited to support sensitive government programmes and public service infrastructure delivery.
-          </p>
+            As a Crown Commercial Supplier with SC cleared engineers, AWTG is fully accredited to support sensitive government programmes and public service infrastructure delivery. </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {solutions.map((s, i) => {
               const color = COLORS[i % 4]
@@ -87,14 +83,12 @@ export default function IndustriesPublicSectorPage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-3xl border-l-4 border-[#228DC1] pl-8">
             <p className="text-[#0a1628]/80 text-xl font-normal leading-relaxed">
-              AWTG is a Crown Commercial Supplier, enabling public sector bodies to procure our services directly under compliant framework agreements, reducing procurement timelines and administrative overhead.
-            </p>
+              AWTG is a Crown Commercial Supplier, enabling public sector bodies to procure our services directly under compliant framework agreements, reducing procurement timelines and administrative overhead. </p>
             <Link
               to="/about"
               className="inline-flex items-center gap-2 mt-6 text-[#1a7aab] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
             >
-              About AWTG
-            </Link>
+              About AWTG </Link>
           </div>
         </div>
       </section>

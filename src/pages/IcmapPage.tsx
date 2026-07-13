@@ -142,8 +142,7 @@ function CoverageMap() {
         <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
         <div className="flex-1 flex justify-center">
           <div className="bg-white border border-gray-200 px-3 py-1 text-[14px] text-gray-400" style={{ minWidth: '260px', textAlign: 'center' }}>
-            app.icmap.awtg.co.uk/coverage/uk-north
-          </div>
+            app.icmap.awtg.co.uk/coverage/uk north </div>
         </div>
         <span className="text-[14px] font-semibold uppercase tracking-[0.14em] text-[#059669]/70">Live</span>
       </div>
@@ -247,8 +246,7 @@ function CoverageMap() {
                 onClick={() => setSelected(null)}
                 className="mt-6 text-[14px] text-[#0a1628]/60 hover:text-[#0a1628] font-medium transition-colors"
               >
-                Clear selection
-              </button>
+                Clear selection </button>
             </div>
           ) : (
             <>
@@ -304,7 +302,7 @@ const useCases = [
   {
     label: 'Smart infrastructure teams',
     image: smartInfrastructureImage,
-    headline: 'Accelerate connected-place programmes.',
+    headline: 'Accelerate connected place programmes.',
     desc: 'Plan connectivity across transport corridors, towns, campuses and infrastructure programmes with geospatial context.',
     points: [
       'Overlay terrain, transport and asset layers',
@@ -517,15 +515,12 @@ export default function IcmapPage() {
               </div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.05] mb-6" style={{ fontSize: 'clamp(28px, 3.2vw, 40px)' }}>
                 Coverage intelligence for<br />
-                smarter network decisions.
-              </h1>
+                smarter network decisions. </h1>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
-                iCMAP helps organisations visualise, analyse and report on mobile network coverage across geographic areas. It brings coverage data, signal information and contextual layers into one map, so teams can identify weak zones, compare technologies and plan where to act next.
-              </p>
+                iCMAP helps organisations visualise, analyse and report on mobile network coverage across geographic areas. It brings coverage data, signal information and contextual layers into one map, so teams can identify weak zones, compare technologies and plan where to act next. </p>
               <div className="flex flex-wrap gap-4">
                 <button onClick={() => setIsDemoOpen(true)} className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
-                  Request a Demo
-                </button>
+                  Request a Demo </button>
               </div>
             </div>
 
@@ -556,12 +551,11 @@ export default function IcmapPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
                     <div style={{ flexShrink: 0 }}>
                       <p style={{ fontSize: 28, fontWeight: 900, lineHeight: 1, color: '#228DC1', margin: 0 }}>3G → 5G</p>
-                      <p style={{ marginTop: 4, fontSize: 12, fontWeight: 700, color: '#0a1628', margin: '4px 0 0' }}>Multi-generation coverage</p>
+                      <p style={{ marginTop: 4, fontSize: 12, fontWeight: 700, color: '#0a1628', margin: '4px 0 0' }}>Multi generation coverage</p>
                     </div>
                     <div style={{ width: 1, height: 40, flexShrink: 0, background: '#e5e7eb' }} />
                     <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.55, color: 'rgba(10,22,40,0.60)', margin: 0 }}>
-                      Map, filter and compare network coverage across all technologies in one view
-                    </p>
+                      Map, filter and compare network coverage across all technologies in one view </p>
                   </div>
                 </div>
               </div>
@@ -604,8 +598,7 @@ export default function IcmapPage() {
               From raw network data to <span className="text-[#1a7aab]">coverage decisions</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[18px] font-normal leading-[1.7] max-w-2xl">
-              iCMAP brings coverage, mapping and contextual data into one workspace, helping teams identify weak areas, understand local impact and plan improvements with clearer evidence.
-            </p>
+              iCMAP brings coverage, mapping and contextual data into one workspace, helping teams identify weak areas, understand local impact and plan improvements with clearer evidence. </p>
           </div>
           <div className="space-y-16 lg:space-y-24">
             {steps.map((step, i) => (
@@ -662,8 +655,7 @@ export default function IcmapPage() {
               Designed for modern <span className="text-[#1a7aab]">connectivity programmes</span>
             </h2>
             <p className="text-[#0a1628]/62 text-[16px] font-normal leading-[1.75] max-w-2xl">
-              From national coverage obligations to private network estates, iCMAP helps teams see the same evidence and decide where to act next.
-            </p>
+              From national coverage obligations to private network estates, iCMAP helps teams see the same evidence and decide where to act next. </p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {useCases.map((uc) => (

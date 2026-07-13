@@ -24,7 +24,7 @@ const heroVisual = (
     items={[
       { icon: faBrain, label: 'Intelligent process automation' },
       { icon: faDatabase, label: 'Knowledge extraction & RAG' },
-      { icon: faCloud, label: 'Cloud-native AI integration' },
+      { icon: faCloud, label: 'Cloud native AI integration' },
       { icon: faChartLine, label: 'Performance analytics' },
     ]}
     badges={[
@@ -51,7 +51,7 @@ const data: SectorPageData = {
     visualItems: [
       { icon: faBrain, label: 'Process automation AI' },
       { icon: faDatabase, label: 'Knowledge management' },
-      { icon: faCloud, label: 'Cloud-native deployment' },
+      { icon: faCloud, label: 'Cloud native deployment' },
       { icon: faChartLine, label: 'Organisational analytics' },
     ],
   },
@@ -145,7 +145,7 @@ const data: SectorPageData = {
       },
       {
         icon: faCloud,
-        title: 'Cloud-native AI deployment',
+        title: 'Cloud native AI deployment',
         desc: 'Deploy AI across cloud infrastructure with governance, observability and integration built in, designed for enterprise-scale operation from day one.',
       },
       {
@@ -155,7 +155,7 @@ const data: SectorPageData = {
       },
       {
         icon: faBrain,
-        title: 'AI-powered decision support',
+        title: 'AI powered decision support',
         desc: 'Provide leaders and teams with AI-generated insight to inform decisions, drawing on operational data, trends and risk signals in real time.',
       },
     ],
@@ -173,12 +173,12 @@ const data: SectorPageData = {
       },
       {
         icon: faUsers,
-        title: 'Faster organisation-wide adoption',
+        title: 'Faster organisation wide adoption',
         desc: 'AI tools designed for how people actually work drive higher adoption rates and fewer shadow processes.',
       },
       {
         icon: faLightbulb,
-        title: 'Better-informed decisions',
+        title: 'Better informed decisions',
         desc: 'Leaders and teams make decisions with better intelligence, drawn from operational data rather than anecdote or instinct.',
       },
       {

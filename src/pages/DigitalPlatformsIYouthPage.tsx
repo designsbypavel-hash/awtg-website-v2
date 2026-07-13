@@ -89,12 +89,12 @@ const useCases = [
   },
   {
     icon: faGraduationCap,
-    label: 'Education-linked youth initiatives',
+    label: 'Education linked youth initiatives',
     image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: faCalendarCheck,
-    label: 'Event and activity-based youth programmes',
+    label: 'Event and activity based youth programmes',
     image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80',
   },
 ]
@@ -163,27 +163,23 @@ export default function DigitalPlatformsIYouthPage() {
             <div>
               <div className="mb-3 w-fit">
                 <h1 className="font-serif-display leading-[1.02] text-[#1a2233]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)', textShadow: '0 8px 28px rgba(10,22,40,0.22)' }}>
-                  iYouth
-                </h1>
+                  iYouth </h1>
                 <div className="relative mt-3 h-[10px] w-full">
                   <div className="absolute inset-0 rounded-full opacity-80 blur-xl" style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899, #f97316, #eab308, #22c55e, #3b82f6)' }} />
                   <div className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899, #f97316, #eab308, #22c55e, #3b82f6)' }} />
                 </div>
               </div>
               <p className="mb-3 text-[#1a7aab] text-[17px] font-semibold">
-                A platform for youth engagement, activities and local participation
-              </p>
+                A platform for youth engagement, activities and local participation </p>
               <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
-                iYouth helps organisations bring youth activities, events and participation into one joined-up digital experience. It is designed to make access simpler for young people and families.
-              </p>
+                iYouth helps organisations bring youth activities, events and participation into one joined up digital experience. It is designed to make access simpler for young people and families. </p>
               <div className="flex flex-wrap gap-4">
                 <button
                   type="button"
                   onClick={() => setIsDemoOpen(true)}
                   className="inline-flex items-center gap-2 rounded-lg bg-[#228DC1] px-7 py-3.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#1a6e99]"
                 >
-                  Request a demo
-                </button>
+                  Request a demo </button>
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
@@ -228,8 +224,7 @@ export default function DigitalPlatformsIYouthPage() {
           <div className="mb-14 max-w-2xl">
             <h2 className="font-heading text-[#0a1628] mb-5">Where iYouth fits</h2>
             <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              iYouth is suited to organisations that need a clearer digital layer around youth participation and service delivery.
-            </p>
+              iYouth is suited to organisations that need a clearer digital layer around youth participation and service delivery. </p>
           </div>
           <div ref={useCasesRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {useCases.map((u, i) => (
@@ -259,8 +254,7 @@ export default function DigitalPlatformsIYouthPage() {
           <div className="max-w-3xl mb-14">
             <h2 className="font-heading text-[#0a1628] mb-5">Relevant youth service experience</h2>
             <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              Our wider work in this space includes youth-focused digital delivery such as My Youth Club in Limerick, which helped hundreds of students and families manage youth services. iYouth sits in that same broader area of youth engagement and service access.
-            </p>
+              Our wider work in this space includes youth focused digital delivery such as My Youth Club in Limerick, which helped hundreds of students and families manage youth services. iYouth sits in that same broader area of youth engagement and service access. </p>
           </div>
           <div ref={shotsRef} className="grid sm:grid-cols-3 gap-6">
             {proofShots.map((shot, i) => (

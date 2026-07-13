@@ -310,8 +310,7 @@ export default function Navigation() {
                       to="/digital-platforms"
                       className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
                     >
-                      Digital Platforms
-                    </Link>
+                      Digital Platforms </Link>
                   )}
                 </Fragment>
               ))}
@@ -319,14 +318,12 @@ export default function Navigation() {
                 to="/news"
                 className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
               >
-                News
-              </Link>
+                News </Link>
               <Link
                 to="/careers"
                 className={`px-4 py-5 text-[14px] font-medium transition-colors duration-200 ${linkCls}`}
               >
-                Careers
-              </Link>
+                Careers </Link>
             </nav>
 
             {/* Right CTAs */}
@@ -339,8 +336,7 @@ export default function Navigation() {
                     : 'border-white text-white hover:bg-white hover:text-[#0a1628]'
                 }`}
               >
-                Contact Us
-              </Link>
+                Contact Us </Link>
             </div>
 
             {/* Mobile toggle */}
@@ -527,8 +523,7 @@ export default function Navigation() {
             <Link to="/careers" className="block py-3.5 text-[#0a1628] text-sm border-b border-gray-50">Careers</Link>
             <div className="pt-4 flex flex-col gap-2">
               <Link to="/contact" className="w-full py-2.5 text-center text-sm border border-[#228DC1] text-[#1a7aab] hover:bg-[#228DC1] hover:text-white transition-colors rounded-lg">
-                Contact Us
-              </Link>
+                Contact Us </Link>
             </div>
           </div>
         )}

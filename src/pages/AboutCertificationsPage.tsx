@@ -139,11 +139,9 @@ export default function AboutCertificationsPage() {
           <div className="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-12 lg:gap-20 items-end">
             <div>
               <h1 className="font-serif-display text-[#0a1628] leading-[1.1] mb-6">
-                Trusted and safe solutions to accommodate your regulatory requirements.
-              </h1>
+                Trusted and safe solutions to accommodate your regulatory requirements. </h1>
               <p className="text-[#0a1628]/60 text-[18px] max-w-2xl font-normal leading-[1.7]">
-                ISO standards, cyber security, supplier accreditations, memberships, ratings and research partnerships.
-              </p>
+                ISO standards, cyber security, supplier accreditations, memberships, ratings and research partnerships. </p>
             </div>
             <div className="border-l-2 border-[#228DC1] pl-6 py-2">
               <p className="font-h2 text-[#0a1628]">{certificationGroups.reduce((n, g) => n + g.items.length, 0)}</p>

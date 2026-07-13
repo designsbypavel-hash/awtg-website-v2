@@ -249,8 +249,7 @@ function CurriculumAgnosticSection() {
               <span className="lg:whitespace-nowrap text-[#228DC1]">Every subject can use it.</span>
             </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-xl">
-              Aruva stays centralised while the curriculum changes around it. Geography, Physics, Biology, Psychology, Maths, Economics, Chemistry and History all connect to the same governed learning intelligence layer.
-            </p>
+              Aruva stays centralised while the curriculum changes around it. Geography, Physics, Biology, Psychology, Maths, Economics, Chemistry and History all connect to the same governed learning intelligence layer. </p>
             <div className="mt-8 grid sm:grid-cols-2 gap-3 max-w-xl">
               {['Subject-aware tutoring', 'Same governance model', 'Outcome mapping by course', 'Shared learning signals'].map((item) => (
                 <div key={item} className="flex items-center gap-3 rounded-[10px] border border-[#d7e9f2] bg-white px-4 py-3 shadow-[0_8px_20px_rgba(34,141,193,0.05)]">
@@ -526,8 +525,7 @@ function HowItWorksSection() {
             A learning story, guided by <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva</span>
           </h2>
           <p className="text-[#0a1628]/60 text-[16px] font-normal leading-relaxed max-w-2xl">
-            Start with a student question. Aruva guides the answer, captures the learning signal, adapts the next step and gives educators the evidence while learning is still happening.
-          </p>
+            Start with a student question. Aruva guides the answer, captures the learning signal, adapts the next step and gives educators the evidence while learning is still happening. </p>
         </div>
 
         {/* accordion LEFT + visual RIGHT - both pinned to top */}
@@ -638,8 +636,7 @@ function SyllabusVisual() {
         </div>
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h14M11 2l4 4-4 4" stroke="#228DC1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
         <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[14px] font-bold" style={{ background: '#1a7aab15', border: '1px solid #1a7aab30', color: '#1a7aab' }}>
-          Smart Syllabus
-        </div>
+          Smart Syllabus </div>
       </div>
       {/* Parsed weeks */}
       <p className="text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-3">Business Strategy 101: Parsed</p>
@@ -737,7 +734,7 @@ function MasteryStoryVisual() {
         <div>
           <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#0a1628]/60 mb-2">Skill Mastery</p>
           <h3 className="text-[#0a1628] text-2xl font-black leading-tight">Aruva turns learning into signals</h3>
-          <p className="text-[13px] text-[#0a1628]/60 mt-2">Real-time quantification of academic competency and cognitive growth.</p>
+          <p className="text-[13px] text-[#0a1628]/60 mt-2">Real time quantification of academic competency and cognitive growth.</p>
         </div>
         <div className="rounded-2xl bg-white px-5 py-3 text-center border border-gray-200 shadow-[0_6px_18px_rgba(10,22,40,0.06)]">
           <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#0a1628]/60">Global mastery</p>
@@ -914,7 +911,7 @@ function TutorVisual() {
         <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black shrink-0" style={{ background: '#f59e0b' }}>MG</div>
         <div>
           <p className="text-[13px] font-semibold text-[#0a1628] leading-none">Maria Garcia</p>
-          <p className="text-[11px] text-[#0a1628]/60 mt-0.5">Business Strategy 101, Analogy-oriented learner</p>
+          <p className="text-[11px] text-[#0a1628]/60 mt-0.5">Business Strategy 101, Analogy oriented learner</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fef3c7] border border-[#d97706]/20">
           <div className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
@@ -1169,8 +1166,7 @@ function PlatformDiagram() {
                   <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">One platform.</span>
                 </h2>
                 <p className="text-[#0a1628]/60 text-[16px] leading-[1.75]">
-                  Not a bundle of tools. One connected system where every layer talks to the next, from your LMS through to every student interface.
-                </p>
+                  Not a bundle of tools. One connected system where every layer talks to the next, from your LMS through to every student interface. </p>
               </div>
               <div className="flex flex-col gap-3">
                 {layers.map(l => (
@@ -1305,7 +1301,7 @@ const BLOOM_SEMS = [
   { id:'S1', label:'Semester 1', grade:62, gradeLabel:'D+',
     bloom:[65,55,50,42,28,52],
     cohortAvg:[62,54,58,47,44,56],
-    headline:'Higher-order thinking gaps flagged early',
+    headline:'Higher order thinking gaps flagged early',
     detail:'The student recalls facts well but Evaluate and Analyse are underdeveloped. Aruva surfaces this in week 2, not at the end of term.',
     delta: null, accent:'#e11d48' },
   { id:'S2', label:'Semester 2', grade:71, gradeLabel:'C+',
@@ -1508,8 +1504,7 @@ function MMImageDemo() {
             borderRadius:'14px 14px 4px 14px', fontSize:12.5, fontWeight:700, lineHeight:1.45,
             boxShadow:'0 8px 18px rgba(245,158,11,0.18)',
           }}>
-            Generate a detailed diagram of the electron transport chain and ATP synthesis for my biochemistry module.
-          </div>
+            Generate a detailed diagram of the electron transport chain and ATP synthesis for my biochemistry module. </div>
         </div>
 
         <div style={{
@@ -1519,8 +1514,7 @@ function MMImageDemo() {
         }}>
           <div style={{ display:'flex', alignItems:'center', gap:9, minWidth:0 }}>
             <div style={{ width:26, height:26, borderRadius:8, background:'#ecfdf5', border:'1px solid #bbf7d0', display:'flex', alignItems:'center', justifyContent:'center', color:'#059669', fontSize:11, fontWeight:900, flexShrink:0 }}>
-              A
-            </div>
+              A </div>
             <span style={{ fontSize:11, color:'rgba(10,22,40,0.60)', fontFamily:"'Roboto Mono','Courier New',monospace", fontWeight:600, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
               {imageStatus}
             </span>
@@ -1622,8 +1616,7 @@ function MMImageDemo() {
               boxShadow:'0 10px 22px rgba(5,150,105,0.24)',
               opacity:0, animation:'mmCardIn 0.32s ease 0.12s forwards',
             }}>
-              Complete image generated
-            </div>
+              Complete image generated </div>
           )}
         </div>
       </div>
@@ -1906,8 +1899,7 @@ function MultimodalSection() {
                 One AI. Every way <span style={{ color:'#228DC1' }}>students learn.</span>
               </h2>
               <p style={{ fontSize:16, color:'rgba(10,22,40,0.60)', lineHeight:1.75, marginTop:14 }}>
-                Aruva speaks, writes, draws and graphs, meeting every student exactly where their understanding breaks down, in whichever format makes it click.
-              </p>
+                Aruva speaks, writes, draws and graphs, meeting every student exactly where their understanding breaks down, in whichever format makes it click. </p>
             </div>
             {MM_MODALITIES.map((m, i) => {
               const isActive = active === i
@@ -2014,8 +2006,7 @@ function MultimodalSection() {
                       border:'1px solid rgba(34,141,193,0.18)', color:'#1a7aab',
                       fontSize:11, fontWeight:900, letterSpacing:'0.13em', textTransform:'uppercase',
                     }}>
-                      AI listening
-                    </div>
+                      AI listening </div>
                   </div>
 
                   <div style={{ flex:1, display:'grid', gridTemplateColumns:'1fr 220px', gap:22, minHeight:0, alignItems:'stretch' }}>
@@ -2027,8 +2018,7 @@ function MultimodalSection() {
                           padding:'12px 14px', borderRadius:'14px 14px 4px 14px', fontSize:13,
                           fontWeight:700, lineHeight:1.45, boxShadow:'0 9px 20px rgba(245,158,11,0.12)',
                         }}>
-                          "Can you explain Porter's Five Forces without giving me the answer?"
-                        </div>
+                          "Can you explain Porter's Five Forces without giving me the answer?" </div>
                       </div>
 
                       <div style={{ opacity:0, animation:'transcriptReveal 0.34s ease 0.45s forwards' }}>
@@ -2038,10 +2028,8 @@ function MultimodalSection() {
                           padding:'13px 15px', boxShadow:'0 8px 22px rgba(10,22,40,0.06)',
                           fontSize:13, color:'rgba(10,22,40,0.76)', lineHeight:1.55,
                         }}>
-                          Start with buyer power. What would give customers leverage here: many alternatives, low switching cost, or something else?
-                          <div style={{ marginTop:10, paddingTop:10, borderTop:'1px solid #eef2f6', color:'#1a7aab', fontSize:11, fontWeight:800 }}>
-                            Cited source: Porter (2008), Ch. 2
-                          </div>
+                          Start with buyer power. What would give customers leverage here: many alternatives, low switching cost, or something else? <div style={{ marginTop:10, paddingTop:10, borderTop:'1px solid #eef2f6', color:'#1a7aab', fontSize:11, fontWeight:800 }}>
+                            Cited source: Porter (2008), Ch. 2 </div>
                         </div>
                       </div>
 
@@ -2051,8 +2039,7 @@ function MultimodalSection() {
                           background:'#f59e0b', color:'#ffffff', padding:'12px 14px', borderRadius:'14px 14px 4px 14px',
                           boxShadow:'0 10px 22px rgba(245,158,11,0.18)', fontSize:13, fontWeight:700, lineHeight:1.45,
                         }}>
-                          "Switching costs. If it's easy to switch, buyers have more leverage."
-                        </div>
+                          "Switching costs. If it's easy to switch, buyers have more leverage." </div>
                       </div>
                     </div>
 
@@ -2128,8 +2115,7 @@ function MultimodalSection() {
                 <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:28, height:28, borderRadius:8, background:'#7c3aed', color:'#fff', fontSize:10, fontWeight:900, border:'2px solid #f8fafc', marginLeft:-6 }}>ER</span>
               </div>
               <p style={{ fontSize:14, color:'rgba(10,22,40,0.72)', lineHeight:1.65 }}>
-                Comparing Student A and Student B, two different learning profiles, the same question. See how Aruva tailors every response to each student's way of understanding.
-              </p>
+                Comparing Student A and Student B, two different learning profiles, the same question. See how Aruva tailors every response to each student's way of understanding. </p>
             </div>
           )}
           </div>
@@ -2319,8 +2305,7 @@ function BloomInsightSection() {
                       <div className="text-right">
                         <span className="text-2xl font-black leading-none tabular-nums"
                           style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.30)' }}>
-                          {s.grade}%
-                        </span>
+                          {s.grade}% </span>
                         <span className="text-[11px] font-bold ml-1.5"
                           style={{ color: isActive ? s.accent : 'rgba(10,22,40,0.22)' }}>
                           {s.gradeLabel}
@@ -2389,8 +2374,7 @@ function BloomInsightSection() {
                 <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-gray-200 bg-[#f8fafc] px-3 py-2 shadow-[0_1px_8px_rgba(10,22,40,0.04)]">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-black text-white shadow-sm"
                     style={{ background: `linear-gradient(135deg,${sem.accent},#fb7185)` }}>
-                    MG
-                  </div>
+                    MG </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
                     <p className="text-[11px] font-semibold text-[#0a1628]/60 leading-none mt-1">Student profile compared with class average</p>
@@ -2507,8 +2491,7 @@ function BloomInsightSection() {
                         <text x={p.x} y={p.y + 8} textAnchor="middle" dominantBaseline="middle"
                           fontSize="11.5" fontFamily="system-ui,sans-serif" fontWeight="700"
                           fill={val >= 75 ? '#059669cc' : isMax ? sem.accent : isMin ? '#d97706cc' : 'rgba(10,22,40,0.3)'}>
-                          {val}%
-                        </text>
+                          {val}% </text>
                       </g>
                     )
                   })}
@@ -2544,8 +2527,7 @@ function BloomInsightSection() {
                         </div>
                         <span className="text-[16px] font-black tabular-nums shrink-0 ml-3"
                           style={{ color: barColor }}>
-                          {val}%
-                        </span>
+                          {val}% </span>
                       </div>
                       <div className="relative h-[8px] bg-gray-100 rounded-full">
                         <div className="h-full rounded-full"
@@ -2592,8 +2574,7 @@ function BloomInsightSection() {
                 <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-gray-200 bg-[#f8fafc] px-3 py-2 shadow-[0_1px_8px_rgba(10,22,40,0.04)]">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-black text-white shadow-sm"
                     style={{ background: `linear-gradient(135deg,${dokSem.accent},#60a5fa)` }}>
-                    MG
-                  </div>
+                    MG </div>
                   <div>
                     <p className="text-[12px] font-bold text-[#0a1628] leading-none">Maria Garcia</p>
                     <p className="text-[11px] font-semibold text-[#0a1628]/60 leading-none mt-1">Student profile compared with class average</p>
@@ -2627,8 +2608,7 @@ function BloomInsightSection() {
                       </div>
                       <span className="text-[16px] font-black tabular-nums shrink-0 ml-3"
                         style={{ color: isLow ? '#d97706' : DOK_COLORS[i] }}>
-                        {val}%
-                      </span>
+                        {val}% </span>
                     </div>
                     <div className="relative h-[9px] bg-gray-100 rounded-full">
                       <div className="h-full rounded-full"
@@ -2656,8 +2636,7 @@ function BloomInsightSection() {
                         ))}
                       </div>
                       <p className="text-[11px] font-medium shrink-0 ml-2" style={{ color: 'rgba(10,22,40,0.60)' }}>
-                        Class avg {cavg}%
-                      </p>
+                        Class avg {cavg}% </p>
                     </div>
                   </div>
                 )
@@ -2725,11 +2704,9 @@ function PrinciplesAudienceSection({ onDemoClick }: { onDemoClick: () => void })
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div ref={ref} className="mb-12">
           <h2 className="font-heading text-[#0a1628] mb-3">
-            Four principles. <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>Built for every layer</span> of the institution.
-          </h2>
+            Four principles. <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>Built for every layer</span> of the institution. </h2>
           <p className="text-[#0a1628]/60 text-base font-normal leading-relaxed max-w-2xl">
-            The foundations that define how Aruva works, and how students, educators and institutions each benefit.
-          </p>
+            The foundations that define how Aruva works, and how students, educators and institutions each benefit. </p>
         </div>
 
         {/* Tier 1, four principles, compact strip */}
@@ -2937,13 +2914,11 @@ export default function AruvaPage() {
                 <span style={{ color: '#0a1628' }}>student learning.</span>
               </h1>
               <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] max-w-xl mb-10">
-                Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam.
-              </p>
+                Aruva maps every student interaction to Bloom's six levels of understanding in real time. Professors see exactly where learning breaks down, not just who failed the exam. </p>
               <div className="flex flex-wrap gap-4">
                 <button type="button" onClick={openDemo}
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors">
-                  Request a Demo
-                </button>
+                  Request a Demo </button>
               </div>
             </div>
             <div className="flex items-center justify-center lg:justify-end">
@@ -2981,8 +2956,7 @@ export default function AruvaPage() {
           <div className="mb-12">
             <h2 className="font-heading text-[#0a1628] mb-5">
               Most AI answers questions directly.<br />
-              <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva develops</span> students' critical thinking.
-            </h2>
+              <span className="bg-[#fde68a] px-1.5 py-0.5 rounded-sm">Aruva develops</span> students' critical thinking. </h2>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.75] max-w-2xl">
               Generic AI adds a chat interface to your institution. Aruva connects the entire academic lifecycle: syllabus, tutoring, assessment and analytics, into one <strong className="font-semibold text-[#0a1628]/80">continuous learning intelligence loop.</strong>
             </p>
@@ -3028,17 +3002,14 @@ export default function AruvaPage() {
                 <span style={{ background:'#fde68a', padding:'0 6px 2px', borderRadius:4 }}>can govern.</span>
               </h2>
               <p className="text-[#0a1628]/60 text-base font-normal leading-relaxed mb-8">
-                Built for the real requirements of higher education: data residency, audit trails, role based access and full control over how AI behaves.
-              </p>
+                Built for the real requirements of higher education: data residency, audit trails, role based access and full control over how AI behaves. </p>
               {/* Dark card */}
               <div className="rounded-2xl p-8" style={{ background:'#0a1628' }}>
                 <p className="type-label mb-4" style={{ color:'rgba(255,255,255,0.45)' }}>Governance Built In</p>
                 <h3 className="font-bold text-white mb-4" style={{ fontSize:22, lineHeight:1.3 }}>
-                  Designed for institutions with real compliance requirements
-                </h3>
+                  Designed for institutions with real compliance requirements </h3>
                 <p style={{ fontSize:14, color:'rgba(255,255,255,0.55)', lineHeight:1.75 }}>
-                  Audit trails, role based access and data residency are core to how Aruva is architected.
-                </p>
+                  Audit trails, role based access and data residency are core to how Aruva is architected. </p>
               </div>
             </div>
 
@@ -3105,8 +3076,7 @@ export default function AruvaPage() {
                   <span className="text-[#228DC1]">in your courses?</span>
                 </h2>
                 <p className="text-white/50 text-[15px] leading-[1.85]" style={{ maxWidth: 420 }}>
-                  Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution.
-                </p>
+                  Select 2 to 3 courses, connect your LMS and measure real learning impact before scaling across your institution. </p>
               </div>
               <div className="mt-12">
                 <button
@@ -3114,8 +3084,7 @@ export default function AruvaPage() {
                   onClick={openDemo}
                   className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/25 text-white text-[14px] font-medium hover:bg-white hover:text-[#0a1628] hover:border-white transition-all duration-200"
                 >
-                  Request a Demo
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  Request a Demo <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>

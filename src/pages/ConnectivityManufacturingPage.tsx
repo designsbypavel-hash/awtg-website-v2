@@ -24,7 +24,7 @@ const heroVisual = (
       { icon: faNetworkWired, label: 'OT/IT convergence' },
       { icon: faWifi, label: 'Private 5G networks' },
       { icon: faMicrochip, label: 'Industrial IoT' },
-      { icon: faGears, label: 'Automation-ready' },
+      { icon: faGears, label: 'Automation ready' },
     ]}
     badges={[
       { icon: faMicrochip, label: 'Private 5G', color: '#059669' },
@@ -114,7 +114,7 @@ const data: SectorPageData = {
       },
       {
         icon: faShieldHalved,
-        title: 'AI-ready and secure infrastructure',
+        title: 'AI ready and secure infrastructure',
         desc: 'Manufacturers exploring AI and automation need strong connectivity and reliable data foundations. AWTG can help build the secure, resilient infrastructure that makes future intelligent operations possible.',
         bullets: [
           'Infrastructure designed for AI and automation readiness',
@@ -149,7 +149,7 @@ const data: SectorPageData = {
       },
       {
         icon: faGears,
-        title: 'AI-ready operations',
+        title: 'AI ready operations',
         desc: 'Prepare the connectivity and data infrastructure needed for automation, analytics and future AI use cases, building the foundations before the applications are ready.',
       },
     ],

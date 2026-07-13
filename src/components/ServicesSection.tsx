@@ -21,7 +21,7 @@ const services: { icon: IconDefinition; title: string; description: string; href
   {
     icon: faMicrochip,
     title: 'Generative AI',
-    description: 'Integrate large language models and generative AI into your telecom workflows to accelerate decision-making and innovation.',
+    description: 'Integrate large language models and generative AI into your telecom workflows to accelerate decision making and innovation.',
     href: '/solutions/generative-ai',
     color: '#228DC1',
   },
@@ -42,8 +42,7 @@ export default function ServicesSection() {
           <p className="text-[#1a7aab] font-semibold text-[14px] uppercase tracking-widest mb-3">What We Do</p>
           <h2 className="font-heading text-[#0a1628] mb-4">Our Core Solutions</h2>
           <p className="text-[#0a1628]/60 text-[18px] max-w-2xl mx-auto">
-            From private 5G networks to AI-driven analytics, we deliver end-to-end telecoms transformation.
-          </p>
+            From private 5G networks to AI driven analytics, we deliver end to end telecoms transformation. </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -62,8 +61,7 @@ export default function ServicesSection() {
               <h3 className="text-[20px] font-semibold text-[#0a1628] mb-3">{service.title}</h3>
               <p className="text-[#0a1628]/75 text-[16px] leading-[1.7] mb-4">{service.description}</p>
               <span className="text-[#1a7aab] text-sm font-semibold">
-                Learn more
-              </span>
+                Learn more </span>
             </Link>
           ))}
         </div>

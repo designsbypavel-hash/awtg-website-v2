@@ -45,18 +45,18 @@ const data: SectorPageData = {
     heroImageWidth: '56%',
     heroImageHeight: '82%',
     heroImageTop: '8%',
-    title: 'AI-powered teaching and formative assessment for higher education',
+    title: 'AI powered teaching and formative assessment for higher education',
     subtitle:
       'Aruva helps universities personalise learning, generate meaningful feedback and understand student progress in real time.',
     description:
-      'Guided by educator intent, evidence-based pedagogy and institution-controlled AI, Aruva connects course design, adaptive tutoring, formative assessment, performance profiling and institutional analytics into one continuous learning loop.',
+      'Guided by educator intent, evidence based pedagogy and institution controlled AI, Aruva connects course design, adaptive tutoring, formative assessment, performance profiling and institutional analytics into one continuous learning loop.',
     ctaLabel: 'Request a demo',
     visualIcon: faGraduationCap,
     visualItems: [
       { icon: faBookOpen, label: 'Smart Syllabus' },
       { icon: faComments, label: 'Adaptive AI tutoring' },
       { icon: faClipboardList, label: 'Formative assessment' },
-      { icon: faChartLine, label: 'Real-time learning analytics' },
+      { icon: faChartLine, label: 'Real time learning analytics' },
     ],
   },
 
@@ -95,7 +95,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faBookOpen,
-        title: 'Smart Syllabus and professor-guided tutoring',
+        title: 'Smart Syllabus and professor guided tutoring',
         desc: 'Course outcomes, approved resources, policies and assessments become the intelligence layer that guides AI tutoring, assessment and analytics. Educators define tone, depth, rules and learning flow so AI support follows academic intent.',
         bullets: [
           'Turns syllabus structure into an intelligent learning framework',
@@ -147,7 +147,7 @@ const data: SectorPageData = {
       },
       {
         icon: faComments,
-        title: 'Professor-guided AI tutoring',
+        title: 'Professor guided AI tutoring',
         desc: 'Allows educators to define tone, depth, approved content and learning flow, so AI support follows academic intent and keeps students engaged with verified source material.',
       },
       {

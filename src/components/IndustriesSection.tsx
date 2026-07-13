@@ -17,8 +17,7 @@ export default function IndustriesSection() {
           <p className="text-[#1a7aab] font-semibold text-sm uppercase tracking-widest mb-3">Industries</p>
           <h2 className="font-heading text-[#0a1628] mb-4">Sectors We Serve</h2>
           <p className="text-[#0a1628]/60 text-[18px] max-w-2xl mx-auto">
-            We bring deep domain expertise across critical industries that demand reliable, secure connectivity.
-          </p>
+            We bring deep domain expertise across critical industries that demand reliable, secure connectivity. </p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

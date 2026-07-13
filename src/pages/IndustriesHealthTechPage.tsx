@@ -22,7 +22,7 @@ const data: SectorPageData = {
     visualItems: [
       { icon: faHeartPulse, label: 'Clinical AI platforms' },
       { icon: faMicrochip, label: 'IoMT device connectivity' },
-      { icon: faShield,     label: 'DSPT-compliant infrastructure' },
+      { icon: faShield,     label: 'DSPT compliant infrastructure' },
       { icon: faCloud,      label: 'Cloud healthcare solutions' },
     ],
   },
@@ -131,7 +131,7 @@ const data: SectorPageData = {
       },
       {
         icon: faCloud,
-        title: 'Cloud-based healthcare platforms',
+        title: 'Cloud based healthcare platforms',
         desc: 'Scalable, resilient cloud infrastructure for healthcare data, analytics and AI workloads, with full compliance, disaster recovery and 99.99% uptime SLAs.',
       },
     ],
@@ -154,7 +154,7 @@ const data: SectorPageData = {
       },
       {
         icon: faUserShield,
-        title: 'GDPR-aware implementation',
+        title: 'GDPR aware implementation',
         desc: 'Privacy-by-design principles embedded across every platform we build, with full data governance, audit trails and patient consent management.',
       },
       {

@@ -21,9 +21,9 @@ const heroVisual = (
     title="PSN Network"
     subtitle="Public sector connectivity"
     items={[
-      { icon: faShield, label: 'PSN-aligned networks' },
-      { icon: faNetworkWired, label: 'Government WAN & SD-WAN' },
-      { icon: faCloud, label: 'Cloud & G-Cloud connectivity' },
+      { icon: faShield, label: 'PSN aligned networks' },
+      { icon: faNetworkWired, label: 'Government WAN & SD WAN' },
+      { icon: faCloud, label: 'Cloud & G Cloud connectivity' },
       { icon: faWifi, label: 'GovWifi deployment' },
     ]}
     badges={[
@@ -42,14 +42,14 @@ const data: SectorPageData = {
     heroImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
     title: 'Connectivity for the public sector',
     subtitle:
-      'PSN-aligned network infrastructure, secure remote access and managed services for central and local government.',
+      'PSN aligned network infrastructure, secure remote access and managed services for central and local government.',
     description:
-      'AWTG designs, deploys and manages connectivity solutions for public sector organisations, meeting the security, compliance and resilience requirements of government networking while supporting the demands of a modern, hybrid-working workforce.',
+      'AWTG designs, deploys and manages connectivity solutions for public sector organisations, meeting the security, compliance and resilience requirements of government networking while supporting the demands of a modern, hybrid working workforce.',
     ctaLabel: 'Talk to our experts',
     visualIcon: faLandmark,
     visualItems: [
-      { icon: faShield, label: 'PSN-aligned networks' },
-      { icon: faNetworkWired, label: 'Government WAN & SD-WAN' },
+      { icon: faShield, label: 'PSN aligned networks' },
+      { icon: faNetworkWired, label: 'Government WAN & SD WAN' },
       { icon: faCloud, label: 'Cloud connectivity' },
       { icon: faWifi, label: 'GovWifi deployment' },
     ],
@@ -90,7 +90,7 @@ const data: SectorPageData = {
     items: [
       {
         icon: faNetworkWired,
-        title: 'PSN-aligned WAN and SD-WAN',
+        title: 'PSN aligned WAN and SD WAN',
         desc: 'Wide area network design and deployment aligned to PSN Code of Connection requirements, covering government sites from central departments to local authority offices.',
         bullets: [
           'PSN-compliant network architecture design',
@@ -149,7 +149,7 @@ const data: SectorPageData = {
       },
       {
         icon: faServer,
-        title: 'Data centre and co-location connectivity',
+        title: 'Data centre and co location connectivity',
         desc: 'High-availability connectivity for government data centres and co-location environments supporting critical public services and citizen-facing systems.',
       },
       {
@@ -191,7 +191,7 @@ const data: SectorPageData = {
   cta: {
     title: 'Connectivity built for public sector',
     subtitle:
-      'Speak to AWTG about PSN-compliant networks, government WAN, GovWifi and managed connectivity services.',
+      'Speak to AWTG about PSN compliant networks, government WAN, GovWifi and managed connectivity services.',
     label: 'Talk to our experts',
   },
 }

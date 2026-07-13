@@ -9,8 +9,8 @@ import { getBlogImage } from '@/lib/insightImages'
 
 const posts = [
   {
-    title: 'From Wi-Fi to Private 5G: The Evolution of Tourism Connectivity',
-    excerpt: 'How destinations can move from convenient public Wi-Fi to secure, high-capacity private 5G experiences for visitors, venues and operators.',
+    title: 'From Wi Fi to Private 5G: The Evolution of Tourism Connectivity',
+    excerpt: 'How destinations can move from convenient public Wi Fi to secure, high capacity private 5G experiences for visitors, venues and operators.',
     date: 'October 20, 2025',
     readTime: '5 min',
     slug: 'wifi-to-private-5g-tourism-connectivity',
@@ -27,8 +27,8 @@ const posts = [
     featured: false,
   },
   {
-    title: '5G-Connected Ports: The Gateway to Smarter Trade',
-    excerpt: 'Ports are becoming connected, data-driven environments where 5G can support safer, faster and more efficient operations.',
+    title: '5G Connected Ports: The Gateway to Smarter Trade',
+    excerpt: 'Ports are becoming connected, data driven environments where 5G can support safer, faster and more efficient operations.',
     date: 'September 15, 2025',
     readTime: '6 min',
     slug: '5g-connected-ports-smarter-trade',
@@ -36,8 +36,8 @@ const posts = [
     featured: false,
   },
   {
-    title: 'Public-Private Partnerships: Accelerating Rural Rail Digital Transformation',
-    excerpt: 'How public-sector coordination, national funding and private-sector delivery can close connectivity gaps across rural rail corridors.',
+    title: 'Public Private Partnerships: Accelerating Rural Rail Digital Transformation',
+    excerpt: 'How public sector coordination, national funding and private sector delivery can close connectivity gaps across rural rail corridors.',
     date: 'September 9, 2025',
     readTime: '7 min',
     slug: 'public-private-partnerships-rural-rail-digital-transformation',
@@ -45,8 +45,8 @@ const posts = [
     featured: false,
   },
   {
-    title: 'The Rise of Private Networks in Defense: A Secure, Reliable, and Future-Proof Solution',
-    excerpt: 'Why defence organisations need resilient private network infrastructure for mobile, connected and data-intensive operations.',
+    title: 'The Rise of Private Networks in Defense: A Secure, Reliable, and Future Proof Solution',
+    excerpt: 'Why defence organisations need resilient private network infrastructure for mobile, connected and data intensive operations.',
     date: 'June 27, 2025',
     readTime: '6 min',
     slug: 'private-networks-defense-secure-reliable-future-proof',
@@ -64,7 +64,7 @@ const posts = [
   },
   {
     title: 'Data Centres and the Future of Connectivity: How AWTG is Leading the Way in 5G Innovation',
-    excerpt: 'As organisations adopt more data-intensive applications, data centres are becoming a critical part of private 5G deployment strategy.',
+    excerpt: 'As organisations adopt more data intensive applications, data centres are becoming a critical part of private 5G deployment strategy.',
     date: 'May 30, 2025',
     readTime: '6 min',
     slug: 'data-centres-future-connectivity-5g-innovation',
@@ -82,7 +82,7 @@ const posts = [
   },
   {
     title: 'The Future of Education on the Move: How 5G Connectivity on Trains will Benefit Universities',
-    excerpt: 'How private 5G, Wi-Fi and IoT across rail corridors can support connected learning and education beyond the campus.',
+    excerpt: 'How private 5G, Wi Fi and IoT across rail corridors can support connected learning and education beyond the campus.',
     date: 'April 7, 2025',
     readTime: '6 min',
     slug: 'future-education-on-the-move-5g-trains-universities',
@@ -122,11 +122,9 @@ export default function InsightsBlogPage() {
               className="font-serif-display text-white leading-[1.06] mb-6"
               style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}
             >
-              Blog
-            </h1>
+              Blog </h1>
             <p className="text-white/65 text-[17px] font-normal leading-[1.8]" style={{ maxWidth: 500 }}>
-              Expert perspectives on telecoms, AI, private networks, and the infrastructure decisions that define the next decade.
-            </p>
+              Expert perspectives on telecoms, AI, private networks, and the infrastructure decisions that define the next decade. </p>
           </div>
         </div>
       </section>
@@ -165,7 +163,7 @@ export default function InsightsBlogPage() {
                     <span className="flex items-center gap-1.5"><FontAwesomeIcon icon={faClock} className="w-3 h-3" /> {featured.readTime} read</span>
                   </div>
                   <span className="text-[#1a7aab] text-xs font-semibold uppercase tracking-[0.1em] flex items-center gap-1.5">
-                    Read article                  </span>
+                    Read article </span>
                 </div>
               </div>
               <div className="lg:col-span-2 relative overflow-hidden rounded-2xl min-h-[320px]">

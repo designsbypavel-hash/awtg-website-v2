@@ -77,8 +77,7 @@ export default function ProductDemoModal({
               onClick={onClose}
               className="mb-10 inline-flex items-center border-b border-[#0a1628]/35 pb-1 text-[14px] font-medium text-[#0a1628]/75 transition-colors hover:border-[#228DC1] hover:text-[#1a7aab]"
             >
-              Back
-            </button>
+              Back </button>
 
             <div className="relative">
               <div className="mb-7">
@@ -99,8 +98,7 @@ export default function ProductDemoModal({
 
               <div className="mt-14">
                 <p className="mb-5 text-[11px] font-black uppercase tracking-[0.22em] text-[#0a1628]/60">
-                  What you can expect
-                </p>
+                  What you can expect </p>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {outcomes.map((outcome) => (
                     <div key={outcome} className="flex items-start gap-3">
@@ -170,8 +168,7 @@ export default function ProductDemoModal({
               </button>
 
               <p className="pt-4 text-[11px] font-normal leading-relaxed text-[#0a1628]/60">
-                By continuing, you agree that AWTG may process your details to respond to your request. We will only use your information in line with our privacy policy.
-              </p>
+                By continuing, you agree that AWTG may process your details to respond to your request. We will only use your information in line with our privacy policy. </p>
             </form>
           </div>
         </div>

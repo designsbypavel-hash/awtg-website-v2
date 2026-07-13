@@ -18,30 +18,26 @@ export default function HeroSection() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-[#228DC1]/10 border border-[#228DC1]/30 rounded-full px-4 py-1.5 mb-8">
             <span className="w-2 h-2 bg-[#228DC1] rounded-full animate-pulse" />
-            <span className="text-[#1a7aab] text-sm font-medium">Next-Generation Telecoms Solutions</span>
+            <span className="text-[#1a7aab] text-sm font-medium">Next Generation Telecoms Solutions</span>
           </div>
 
           <h1 className="font-serif-display text-[#0a1628] mb-6">
-            Connecting the <span className="text-[#1a7aab]">Future</span> of Enterprise Networks
-          </h1>
+            Connecting the <span className="text-[#1a7aab]">Future</span> of Enterprise Networks </h1>
 
           <p className="text-[16px] text-[#0a1628]/60 leading-[1.7] mb-10 max-w-2xl">
-            AWTG delivers cutting-edge 5G, AI, and private network solutions that empower businesses and governments to thrive in an increasingly connected world.
-          </p>
+            AWTG delivers cutting edge 5G, AI, and private network solutions that empower businesses and governments to thrive in an increasingly connected world. </p>
 
           <div className="flex flex-wrap gap-4">
             <Link
               to="/solutions"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white font-semibold hover:bg-[#1a6e99] transition-colors text-[16px]"
             >
-              Explore Solutions
-            </Link>
+              Explore Solutions </Link>
             <Link
               to="/about"
               className="inline-flex items-center gap-2 px-8 py-4 border border-gray-200 text-[#0a1628]/70 font-semibold hover:border-[#228DC1]/40 hover:bg-[#228DC1]/5 transition-colors text-[16px]"
             >
-              About AWTG
-            </Link>
+              About AWTG </Link>
           </div>
         </div>
       </div>

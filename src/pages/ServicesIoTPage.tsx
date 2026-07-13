@@ -276,7 +276,7 @@ const idamsUseCases = [
   { image: idamsUseCaseSmartCity, eyebrow: 'Urban assets', title: 'Smart City Assets', desc: 'Advertising, smart city, and street furniture asset reuse.' },
   { image: idamsUseCaseLand, eyebrow: 'Property', title: 'Land & Property', desc: 'Public and private land or property assets for infrastructure use.' },
   { image: idamsUseCaseStreetFurniture, eyebrow: 'Street estate', title: 'Street Furniture', desc: 'Street furniture reuse and repurposing for network deployment.' },
-  { image: idamsUseCaseApprovals, eyebrow: 'Governance', title: 'Multi-stakeholder Approvals', desc: 'Multi-stakeholder asset approval workflows with full audit trail.' },
+  { image: idamsUseCaseApprovals, eyebrow: 'Governance', title: 'Multi stakeholder Approvals', desc: 'Multi-stakeholder asset approval workflows with full audit trail.' },
 ]
 
 // -- Main page -----------------------------------------------------------------
@@ -360,23 +360,19 @@ export default function ServicesIoTPage() {
           <div>
             <div className="mb-8">
               <span className="font-serif-display block font-bold leading-none text-[#228DC1]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
-                iDAMS
-              </span>
+                iDAMS </span>
             </div>
             <h1 className="font-serif-display mb-6 leading-[1.05] text-[#0a1628]" style={{ fontSize: 'clamp(28px, 3.2vw, 40px)' }}>
-              Digital asset management for smarter infrastructure sharing.
-            </h1>
+              Digital asset management for smarter infrastructure sharing. </h1>
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
-              iDAMS helps local authorities, operators and infrastructure partners discover, assess and manage telecom and public assets through one secure map-based workspace.
-            </p>
+              iDAMS helps local authorities, operators and infrastructure partners discover, assess and manage telecom and public assets through one secure map based workspace. </p>
             <div className="flex flex-wrap gap-4">
               <button
                 type="button"
                 onClick={() => setIsDemoOpen(true)}
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold rounded-lg hover:bg-[#1a6e99] transition-colors"
               >
-                Request a Demo
-              </button>
+                Request a Demo </button>
             </div>
           </div>
 
@@ -397,8 +393,7 @@ export default function ServicesIoTPage() {
               Built for <span className="text-[#1a7aab]">asset owners and asset consumers</span>
             </h2>
             <p className="max-w-2xl text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              iDAMS serves both sides of the asset marketplace, those who hold infrastructure and those who need access to it.
-            </p>
+              iDAMS serves both sides of the asset marketplace, those who hold infrastructure and those who need access to it. </p>
           </div>
 
           {/* Audience rows - alternating text / image */}
@@ -483,8 +478,7 @@ export default function ServicesIoTPage() {
             <div className="mb-14 max-w-3xl">
               <h2 className="font-heading mb-5 text-white">Use <span className="text-[#67c5f3]">cases</span></h2>
               <p className="text-[16px] font-normal leading-[1.75] text-white/60">
-                iDAMS is designed for organisations deploying connectivity and infrastructure assets across the public and private sector.
-              </p>
+                iDAMS is designed for organisations deploying connectivity and infrastructure assets across the public and private sector. </p>
             </div>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

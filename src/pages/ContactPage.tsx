@@ -13,11 +13,9 @@ export default function ContactPage() {
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h1 className="font-h1 text-[#0a1628] mb-6">
-            Let&apos;s Start a Conversation
-          </h1>
+            Let&apos;s Start a Conversation </h1>
           <p className="text-[#0a1628]/60 text-[16px] max-w-xl font-light leading-[1.75] tracking-wide">
-            Whether you have a project in mind or just want to explore what&apos;s possible, our experts are ready to help.
-          </p>
+            Whether you have a project in mind or just want to explore what&apos;s possible, our experts are ready to help. </p>
         </div>
       </section>
 
@@ -87,12 +85,10 @@ export default function ContactPage() {
                   type="submit"
                   className="mt-2 inline-flex h-[52px] w-full items-center justify-center rounded-[7px] bg-[#3d3a8c] px-6 text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
                 >
-                  Send Message
-                </button>
+                  Send Message </button>
 
                 <p className="pt-4 text-[11px] font-normal leading-relaxed text-[#0a1628]/60">
-                  By submitting, you agree that AWTG may process your details to respond to your request. We will only use your information in line with our privacy policy.
-                </p>
+                  By submitting, you agree that AWTG may process your details to respond to your request. We will only use your information in line with our privacy policy. </p>
               </form>
             )}
           </div>

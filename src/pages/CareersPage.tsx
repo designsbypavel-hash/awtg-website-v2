@@ -23,7 +23,7 @@ const benefits: { icon: IconDefinition; title: string; desc: string }[] = [
   { icon: faGraduationCap, title: 'Learning & Development',   desc: 'Dedicated training budgets, certifications and mentorship.' },
   { icon: faHeartPulse,    title: 'Health & Wellbeing',       desc: 'Healthcare support and a culture that values balance.' },
   { icon: faHandshake,     title: 'Real Living Wage',         desc: 'AWTG is an accredited Living Wage Employer.' },
-  { icon: faLaptopCode,    title: 'Cutting-Edge Technology',  desc: 'Work daily with 5G, Open RAN, AI and the latest network tech.' },
+  { icon: faLaptopCode,    title: 'Cutting Edge Technology',  desc: 'Work daily with 5G, Open RAN, AI and the latest network tech.' },
   { icon: faPeopleGroup,   title: 'Inclusive Culture',        desc: 'A diverse team where every voice is heard and valued.' },
 ]
 
@@ -59,25 +59,21 @@ export default function CareersPage() {
               className="font-serif-display text-white leading-[1.06] mb-7"
               style={{ fontSize: 'clamp(36px, 4.5vw, 60px)' }}
             >
-              Be at the forefront of connectivity innovation
-            </h1>
+              Be at the forefront of connectivity innovation </h1>
             <p className="text-white/65 text-[17px] font-normal leading-[1.8] mb-10" style={{ maxWidth: 520 }}>
-              Join world-class engineers, researchers and innovators deploying 5G, Open RAN and AI solutions that connect communities and enterprises worldwide.
-            </p>
+              Join world class engineers, researchers and innovators deploying 5G, Open RAN and AI solutions that connect communities and enterprises worldwide. </p>
             <div className="flex flex-wrap gap-4">
               <a
                 href="#open-roles"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
               >
-                View Open Roles
-                <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+                View Open Roles <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
               </a>
               <a
                 href="mailto:recruitment@awtg.co.uk"
                 className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/30 text-white text-[14px] font-semibold hover:border-white/60 hover:bg-white/10 transition-all"
               >
-                Send your CV
-              </a>
+                Send your CV </a>
             </div>
           </div>
         </div>
@@ -123,8 +119,7 @@ export default function CareersPage() {
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8"
                 style={{ fontSize: 'clamp(24px, 2.4vw, 32px)' }}>
-                Why you belong here
-              </h2>
+                Why you belong here </h2>
               <div className="space-y-6">
                 {values.map((v) => (
                   <div key={v.title} className="flex items-start gap-4">
@@ -165,8 +160,7 @@ export default function CareersPage() {
               </div>
               <h2 className="font-heading text-[#0a1628] leading-[1.16] mb-8"
                 style={{ fontSize: 'clamp(24px, 2.4vw, 32px)' }}>
-                What we offer
-              </h2>
+                What we offer </h2>
               <div className="grid sm:grid-cols-2 gap-x-8 gap-y-0">
                 {benefits.map((b) => (
                   <div key={b.title} className="flex items-start gap-3 py-5 border-b border-gray-100 last:border-b-0">
@@ -194,8 +188,7 @@ export default function CareersPage() {
           <div className="max-w-3xl">
             <div className="text-[#1a7aab] text-[72px] font-serif leading-none mb-4 opacity-30 select-none">&ldquo;</div>
             <p className="text-white text-xl lg:text-2xl font-light leading-[1.65] mb-8">
-              At AWTG, your work connects communities, powers smart cities and shapes the future of communications, across three continents and counting.
-            </p>
+              At AWTG, your work connects communities, powers smart cities and shapes the future of communications, across three continents and counting. </p>
             <div className="flex items-center gap-4">
               <p className="text-white/45 text-[12px] font-bold uppercase tracking-[0.2em]">AWTG People Team</p>
             </div>
@@ -265,8 +258,7 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <span className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#228DC1] px-6 py-3 text-[13px] font-semibold text-white shadow-[0_10px_24px_rgba(34,141,193,0.22)] transition-all duration-300 group-hover:bg-[#1a7fa8] group-hover:shadow-[0_14px_30px_rgba(34,141,193,0.30)]">
-                    View Role
-                    <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    View Role <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
                 </Link>
               </li>
@@ -288,17 +280,14 @@ export default function CareersPage() {
           <div className="relative" style={{ maxWidth: 500 }}>
             <h2 className="font-heading text-white leading-tight mb-5"
               style={{ fontSize: 'clamp(24px, 2.4vw, 32px)' }}>
-              Don't see the right role?
-            </h2>
+              Don't see the right role? </h2>
             <p className="text-white/60 text-[15px] font-normal leading-[1.8] mb-9">
-              We are always interested in hearing from talented people. Send us your CV and tell us how you can contribute to the future of connectivity.
-            </p>
+              We are always interested in hearing from talented people. Send us your CV and tell us how you can contribute to the future of connectivity. </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#228DC1] text-white text-[14px] font-semibold hover:bg-[#1a7fa8] transition-colors"
             >
-              Send Speculative Application
-              <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+              Send Speculative Application <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
             </Link>
           </div>
         </div>

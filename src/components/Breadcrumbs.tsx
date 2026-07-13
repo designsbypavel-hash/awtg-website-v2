@@ -116,8 +116,7 @@ export default function Breadcrumbs() {
               to="/"
               className="text-xs font-medium text-[#0a1628]/60 hover:text-[#1a7aab] transition-colors duration-150 whitespace-nowrap"
             >
-              Home
-            </Link>
+              Home </Link>
           </li>
           {crumbs.map((crumb) => (
             <li key={crumb.href ?? crumb.label} className="flex items-center shrink-0 min-w-0">

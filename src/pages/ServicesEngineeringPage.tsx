@@ -180,8 +180,8 @@ const differentiators = [
   },
   {
     icon: faCubes,
-    label: 'Multi-vendor ready',
-    title: 'Standards-based and vendor-flexible',
+    label: 'Multi vendor ready',
+    title: 'Standards based and vendor flexible',
     desc: 'SCAP supports standards-based integration while allowing vendor-specific and legacy systems to be connected as requirements evolve.',
     color: '#d97706',
   },
@@ -286,11 +286,9 @@ export default function ServicesEngineeringPage() {
           <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <h1 className="font-serif-display mb-3 leading-[1.02] text-[#0a1628]" style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}>
-              SCAP
-            </h1>
+              SCAP </h1>
             <p className="mb-10 max-w-xl text-[16px] font-normal leading-[1.7] text-[#0a1628]/60">
-              SCAP unifies performance, configuration, fault and service management across multi-vendor 5G, private network, Open RAN and hybrid environments. Teams gain one operational view of network health, changes and service impact.
-            </p>
+              SCAP unifies performance, configuration, fault and service management across multi vendor 5G, private network, Open RAN and hybrid environments. Teams gain one operational view of network health, changes and service impact. </p>
             <div className="flex flex-wrap gap-4">
               <button
                 type="button"
@@ -298,8 +296,7 @@ export default function ServicesEngineeringPage() {
                 className="inline-flex items-center gap-2 rounded-xl bg-[#228DC1] px-7 py-3.5 text-[14px] font-semibold text-white transition-all hover:bg-[#1a6e99] hover:-translate-y-0.5"
                 style={{ boxShadow: '0 6px 24px rgba(34,141,193,0.28)' }}
               >
-                Request a Demo
-              </button>
+                Request a Demo </button>
             </div>
           </div>
 
@@ -316,8 +313,7 @@ export default function ServicesEngineeringPage() {
           <div style={reveal(diffInView, 0)} className="mb-14 max-w-3xl">
             <h2 className="font-heading text-[#0a1628] mb-5">Why SCAP is <span className="text-[#1a7aab]">different</span></h2>
             <p className="text-[16px] font-normal leading-[1.78] text-[#0a1628]/60">
-              SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi-vendor platform.
-            </p>
+              SCAP is designed to close the operational gaps left by traditional SMO and element management tools. It brings orchestration, performance monitoring, configuration management and fault management into one multi vendor platform. </p>
           </div>
 
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16 items-stretch">
@@ -402,10 +398,9 @@ export default function ServicesEngineeringPage() {
         <div ref={mvRef} className="mx-auto max-w-7xl px-8 lg:px-12">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
             <div style={reveal(mvInView, 0)}>
-              <h2 className="font-heading mb-6 text-white">Built for <span className="text-[#67c5f3]">multi-vendor network environments.</span></h2>
+              <h2 className="font-heading mb-6 text-white">Built for <span className="text-[#67c5f3]">multi vendor network environments.</span></h2>
               <p className="mb-8 text-[16px] font-normal leading-[1.78] text-white/60">
-                SCAP connects network equipment, systems and functions from different suppliers through standards-based interfaces and adaptable integration layers. It helps operators bring vendor data into one operational view, while allowing new integrations to be added as network requirements evolve.
-              </p>
+                SCAP connects network equipment, systems and functions from different suppliers through standards based interfaces and adaptable integration layers. It helps operators bring vendor data into one operational view, while allowing new integrations to be added as network requirements evolve. </p>
               <div className="mb-8">
                 <div className="flex flex-wrap gap-2">
                   {protocols.map(p => (
@@ -428,8 +423,7 @@ export default function ServicesEngineeringPage() {
                 ))}
               </div>
               <p className="mt-5 text-[13px] text-white/35">
-                Additional vendor support can be implemented and added as your network requirements evolve.
-              </p>
+                Additional vendor support can be implemented and added as your network requirements evolve. </p>
             </div>
           </div>
         </div>
@@ -442,8 +436,7 @@ export default function ServicesEngineeringPage() {
             <div className="mb-14 max-w-3xl">
               <h2 className="font-heading mb-5 text-white">Designed for <span className="text-[#67c5f3]">modern telecom use cases</span></h2>
               <p className="text-[16px] font-normal leading-[1.75] text-white/60">
-                SCAP is suitable for organisations seeking to modernise network operations through automation, assurance and orchestration.
-              </p>
+                SCAP is suitable for organisations seeking to modernise network operations through automation, assurance and orchestration. </p>
             </div>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">

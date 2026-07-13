@@ -261,7 +261,7 @@ const tickerLogos = [
   { id: 'vodafone',     src: '/logos/partners/Vodafone.png',                                alt: 'Vodafone' },
   { id: 'vodxone',      src: '/logos/partners/Vodafone Xone.png',                           alt: 'Vodafone Xone' },
   { id: 'westlondon',   src: '/logos/partners/West London Alliance.png',                    alt: 'West London Alliance' },
-  { id: 'wifi',         src: '/logos/partners/Wifi.png',                                    alt: 'Wi-Fi Powered by The Cloud' },
+  { id: 'wifi',         src: '/logos/partners/Wifi.png',                                    alt: 'Wi Fi Powered by The Cloud' },
   { id: 'ww5g',         src: '/logos/partners/WM 5G.png',                                   alt: 'WM 5G' },
   { id: 'cisco',        src: '/logos/partners/Cisco.png',                                   alt: 'Cisco' },
   { id: 'cpi',          src: '/logos/partners/CPI.png',                                     alt: 'CPI' },
@@ -396,15 +396,11 @@ function Hero() {
           className="home-hero-reveal font-serif-display text-white mb-6"
         >
           Helping organisations thrive<br />
-          through AI and connectivity.
-        </h1>
+          through AI and connectivity. </h1>
 
         {/* One-liner, StoryBrand: customer is the hero, AWTG is the guide */}
         <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-0 font-normal mx-auto" style={{ animationDelay: '160ms' }}>
-          AWTG delivers AI, 5G, private networks and software solutions
-          for UK enterprises and public sector, end-to-end,
-          accountable, built to perform.
-        </p>
+          AWTG delivers AI, 5G, private networks and software solutions for UK enterprises and public sector, end to end, accountable, built to perform. </p>
 
       </div>
 
@@ -413,8 +409,7 @@ function Hero() {
         <div className="flex items-center h-full">
           <div className="shrink-0 h-full flex items-center px-8 border-r border-black/10">
             <span className="text-[#0a1628]/60 text-[14px] font-semibold tracking-[0.22em] uppercase whitespace-nowrap">
-              Trusted by
-            </span>
+              Trusted by </span>
           </div>
           <div className="overflow-hidden flex-1 h-full">
             <div className="ticker-track h-full" aria-hidden="true" style={{ animationDuration: '160s' }}>
@@ -468,7 +463,7 @@ const whatWeDoItems = [
     description: [
       'AI is changing how organisations compete. AWTG helps clients lead that change.',
       'We design and build intelligent software products that solve real operational challenges, improve decision making, and create new opportunities for growth. Our AI solutions are built with security, reliability, and usability at the core, so clients can adopt innovation with confidence.',
-      'From strategy to deployment, AWTG gives organisations the tools, technology, and expertise to win in an increasingly AI-driven world.',
+      'From strategy to deployment, AWTG gives organisations the tools, technology, and expertise to win in an increasingly AI driven world.',
     ],
     points: ['Secure AI adoption', 'Operational decision intelligence', 'Production-ready software delivery'],
     accent: '#228DC1',
@@ -690,8 +685,7 @@ export function Vision() {
           <span className="text-[#1a7aab]">transform businesses</span>
           {', '}unlock new network value, and{' '}
           <span className="text-[#1a7aab]">empower communities</span>{' '}
-          worldwide.
-        </TypewriterHeading>
+          worldwide. </TypewriterHeading>
         <div className="mt-10 w-10 h-0.5 bg-[#228DC1] mx-auto" />
       </div>
     </section>
@@ -773,11 +767,9 @@ function Industries() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="max-w-2xl mb-16">
           <TypewriterHeading as="h2" className="font-heading text-white mb-4">
-            Case Studies
-          </TypewriterHeading>
+            Case Studies </TypewriterHeading>
           <p className="text-white/70 text-[16px] leading-[1.8] font-light tracking-wide">
-            Case studies spanning Open RAN security, network economics and public sector connectivity, with results backed by GSMA and operator data.
-          </p>
+            Case studies spanning Open RAN security, network economics and public sector connectivity, with results backed by GSMA and operator data. </p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -816,7 +808,7 @@ function Industries() {
 const tabs = [
   {
     label: 'Telecoms AI',
-    title: 'AI-Powered Telecoms Solutions',
+    title: 'AI Powered Telecoms Solutions',
     desc: 'AWTG combines advanced connectivity with AI and software to create intelligent telecoms solutions. Our Telecoms AI platform gives operators real-time network intelligence, predictive analytics, and autonomous optimisation capabilities.',
     features: [
       'Real-time network performance monitoring and anomaly detection',
@@ -880,10 +872,9 @@ export function TechSolutions() {
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="text-center mb-14">
           <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-[14px] font-semibold uppercase tracking-[0.18em] text-[#0a1628]/60 mb-5">
-            Technology Solutions
-          </span>
+            Technology Solutions </span>
           <TypewriterHeading as="h2" className="font-heading text-[#0a1628]">
-            AI-Powered Technology{' '}
+            AI Powered Technology{' '}
             <span className="text-[#1a7aab]">Solutions</span>
           </TypewriterHeading>
         </div>
@@ -918,8 +909,7 @@ export function TechSolutions() {
               ))}
             </ul>
             <Link to={tab.href} className="inline-flex items-center gap-2 px-6 py-3 bg-[#228DC1] hover:bg-[#1a6e99] text-white text-sm font-medium transition-colors w-fit">
-              Learn More
-            </Link>
+              Learn More </Link>
           </div>
         </div>
       </div>
@@ -942,24 +932,20 @@ export function PNaaS() {
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div>
             <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-[14px] font-semibold uppercase tracking-[0.2em] text-[#0a1628]/60 mb-8">
-              PNaaS, Private Network as a Service
-            </span>
+              PNaaS, Private Network as a Service </span>
             <TypewriterHeading as="h2" className="font-heading text-[#0a1628] mb-6">
               Transforming the future of connectivity{' '}
               <span className="text-[#1a7aab]">and beyond.</span>
             </TypewriterHeading>
             <p className="text-[#0a1628]/60 text-[16px] leading-[1.7] mb-10 font-normal">
-              AWTG's Private Network as a Service delivers enterprise-grade 4G/5G connectivity, fully managed, infinitely scalable, built around your operations.
-            </p>
+              AWTG's Private Network as a Service delivers enterprise grade 4G/5G connectivity, fully managed, infinitely scalable, built around your operations. </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 hover:border-[#228DC1] hover:bg-[#228DC1]/5 text-[#0a1628]/70 text-sm font-medium transition-all">
-                Explore PNaaS
-              </Link>
+                Explore PNaaS </Link>
               <Link to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 text-[#0a1628]/60 hover:text-white text-sm font-medium transition-colors">
-                Talk to an Engineer
-              </Link>
+                Talk to an Engineer </Link>
             </div>
           </div>
           <div className="space-y-3">
@@ -1002,8 +988,7 @@ export function Partners() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <p className="text-center text-[14px] font-semibold uppercase tracking-[0.22em] text-[#0a1628]/60 mb-12">
-          Trusted by Industry Leaders & Public Sector Bodies
-        </p>
+          Trusted by Industry Leaders & Public Sector Bodies </p>
         <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
           {partnerLogos.map((p) => (
             <div key={p.id}>
@@ -1026,7 +1011,7 @@ const articles = [
     date: 'Jun 2026',
     readTime: '5 min read',
     title: 'KAI: How AI Agents Are Transforming Customer Engagement in Telecoms',
-    excerpt: 'How AWTG\'s KAI platform deploys conversational AI at scale — reducing escalations, improving CSAT and handling complex queries end-to-end.',
+    excerpt: 'How AWTG\'s KAI platform deploys conversational AI at scale reducing escalations, improving CSAT and handling complex queries end to end.',
     img: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80&auto=format&fit=crop',
     href: '/products/kai',
   },
@@ -1037,7 +1022,7 @@ const articles = [
     date: 'Jun 2026',
     readTime: '6 min read',
     title: 'Aruva: Bringing Multimodal AI Tutoring to Universities and Colleges',
-    excerpt: 'How higher education institutions are using Aruva to deliver personalised voice, text, image and graph-based learning at scale.',
+    excerpt: 'How higher education institutions are using Aruva to deliver personalised voice, text, image and graph based learning at scale.',
     img: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80&auto=format&fit=crop',
     href: '/products/aruva',
   },
@@ -1058,7 +1043,7 @@ const articles = [
     accent: 'bg-[#f59e0b]',
     date: 'May 2026',
     readTime: '7 min read',
-    title: 'SCAP: AI-Driven RAN Management Across Multi-Vendor Networks',
+    title: 'SCAP: AI Driven RAN Management Across Multi Vendor Networks',
     excerpt: 'How AWTG\'s Service Correlation Assurance Platform gives operators unified performance management, fault detection and configuration control.',
     img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop',
     href: '/contact',
@@ -1080,8 +1065,8 @@ const articles = [
     accent: 'bg-[#dc2626]',
     date: 'Apr 2026',
     readTime: '5 min read',
-    title: 'Building NHS-Grade Networks for Safer, Smarter Patient Care',
-    excerpt: 'How AWTG designs DSPT-compliant connectivity and clinical wireless infrastructure built around patient outcomes and care delivery.',
+    title: 'Building NHS Grade Networks for Safer, Smarter Patient Care',
+    excerpt: 'How AWTG designs DSPT compliant connectivity and clinical wireless infrastructure built around patient outcomes and care delivery.',
     img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop',
     href: '/industries/health-tech',
   },
@@ -1198,8 +1183,7 @@ function Insights() {
             to="/news"
             className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#228DC1] text-[#1a7aab] text-sm font-medium hover:bg-[#228DC1] hover:text-white transition-all duration-200"
           >
-            View all insights
-          </Link>
+            View all insights </Link>
         </div>
       </div>
     </section>
@@ -1219,12 +1203,10 @@ function ContactCTA() {
               <span className="text-[#1a7aab]">something that matters?</span>
             </TypewriterHeading>
             <p className="text-[#0a1628]/60 text-[16px] font-normal leading-[1.7] mb-10">
-              No pitch. No jargon. Just honest advice from engineers who've done it before.
-            </p>
+              No pitch. No jargon. Just honest advice from engineers who've done it before. </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn btn-primary">
-                Talk to an Expert
-              </Link>
+                Talk to an Expert </Link>
             </div>
           </div>
           <div className="space-y-6">
@@ -1235,7 +1217,7 @@ function ContactCTA() {
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Phone</p>
               <a href="tel:+442035155151" className="text-[#0a1628] hover:text-[#1a7aab] transition-colors font-medium text-sm">+44 (0) 20 3515 5151</a>
-              <p className="text-xs text-[#0a1628]/60 mt-1 font-normal">Mon-Fri, 9am-6pm GMT</p>
+              <p className="text-xs text-[#0a1628]/60 mt-1 font-normal">Mon Fri, 9am 6pm GMT</p>
             </div>
             <div className="border-t border-gray-200 pt-6">
               <p className="form-label mb-2">Offices</p>

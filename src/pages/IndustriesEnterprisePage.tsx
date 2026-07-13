@@ -10,7 +10,7 @@ const COLORS = ['#228DC1', '#7c3aed', '#059669', '#d97706']
 const solutions = [
   { icon: faWifi, title: 'Private 5G and LTE Networks', desc: 'Campus-wide private wireless networks delivering guaranteed coverage, low latency and complete independence from public mobile networks for enterprise operations.' },
   { icon: faMicrochip, title: 'Industrial IoT Platforms', desc: 'Connected sensor and device management platforms providing real-time visibility across factories, warehouses, logistics estates and connected supply chains.' },
-  { icon: faBrain, title: 'AI-Driven Operations', desc: 'Machine learning and intelligent automation for asset monitoring, predictive maintenance, energy management and operational workflow optimisation.' },
+  { icon: faBrain, title: 'AI Driven Operations', desc: 'Machine learning and intelligent automation for asset monitoring, predictive maintenance, energy management and operational workflow optimisation.' },
   { icon: faDiagramProject, title: 'Digital Twin Integration', desc: 'Wireless infrastructure designed to feed real-time data into digital twin environments, enabling simulation, planning and remote operational oversight.' },
   { icon: faServer, title: 'Secure Edge Computing', desc: 'On-premises compute and connectivity architectures that keep sensitive operational data local while enabling real-time processing at the network edge.' },
   { icon: faCloud, title: 'Cloud and Hybrid Networking', desc: 'Enterprise-grade SD-WAN, cloud connectivity and hybrid networking solutions integrating sites, data centres and cloud platforms into a unified managed estate.' },
@@ -23,11 +23,9 @@ export default function IndustriesEnterprisePage() {
       <section className="pt-32 pb-20 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h1 className="font-serif-display text-[#0a1628] mb-6">
-            Enterprises and Connected Industries
-          </h1>
+            Enterprises and Connected Industries </h1>
           <p className="text-[#0a1628]/70 text-lg max-w-2xl font-normal leading-relaxed">
-            Private wireless, AI and IoT solutions for enterprises operating at scale, from manufacturing and logistics to energy, utilities and connected campuses.
-          </p>
+            Private wireless, AI and IoT solutions for enterprises operating at scale, from manufacturing and logistics to energy, utilities and connected campuses. </p>
         </div>
       </section>
 
@@ -53,11 +51,9 @@ export default function IndustriesEnterprisePage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <h2 className="font-heading text-[#0a1628] mb-4">
-            Solutions for enterprise connectivity
-          </h2>
+            Solutions for enterprise connectivity </h2>
           <p className="text-[#0a1628]/60 mb-14 max-w-2xl font-normal text-[16px] leading-[1.7]">
-            AWTG designs and deploys the wireless and AI infrastructure that enterprise organisations need to operate securely, efficiently and at scale.
-          </p>
+            AWTG designs and deploys the wireless and AI infrastructure that enterprise organisations need to operate securely, efficiently and at scale. </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {solutions.map((s, i) => {
               const color = COLORS[i % 4]
@@ -91,14 +87,12 @@ export default function IndustriesEnterprisePage() {
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
           <div className="max-w-3xl border-l-4 border-[#228DC1] pl-8">
             <p className="text-[#0a1628]/80 text-xl font-normal leading-relaxed">
-              AWTG deployed a campus-wide private 5G network across 500 hectares for a major UK port operator, enabling autonomous vehicle coordination, real-time cargo tracking and digital twin integration, delivering a 40% productivity gain.
-            </p>
+              AWTG deployed a campus wide private 5G network across 500 hectares for a major UK port operator, enabling autonomous vehicle coordination, real time cargo tracking and digital twin integration, delivering a 40% productivity gain. </p>
             <Link
               to="/insights/case-studies"
               className="inline-flex items-center gap-2 mt-6 text-[#1a7aab] text-sm font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity"
             >
-              View Case Studies
-            </Link>
+              View Case Studies </Link>
           </div>
         </div>
       </section>
