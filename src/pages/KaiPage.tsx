@@ -1466,7 +1466,7 @@ export default function KaiPage() {
         description="Share a few details and we will show how Kai can resolve customer and operational workflows across your systems, channels and governance rules."
         logoSrc="/kai-logo-horiz-hero.svg"
         accentColor="#228DC1"
-        submitLabel="Build your KAI Agent"
+        submitLabel="Build your Kai Agent"
         outcomes={[
           'A focused demo around your support or service workflow',
           'Recommended integrations for your CRM, helpdesk and channels',
