@@ -6,10 +6,6 @@ import CTASection from '@/components/CTASection'
 import VisualInsightCard from '@/components/VisualInsightCard'
 import ProductDemoModal from '@/components/ProductDemoModal'
 import icmapFeatureImage from '@/assets/iCMAP/1.png'
-import icmapStep1Image from '@/assets/iCMAP/generated/step-connect-network-data.png'
-import icmapStep2Image from '@/assets/iCMAP/generated/step-map-coverage-context.png'
-import icmapStep3Image from '@/assets/iCMAP/generated/step-assess-weak-zones.png'
-import icmapStep4Image from '@/assets/iCMAP/generated/step-plan-next-action.png'
 import networkOperatorsImage from '@/assets/iCMAP/use-cases/network-operators.png'
 import regulatorsImage from '@/assets/iCMAP/use-cases/regulators-local-authorities.png'
 import smartInfrastructureImage from '@/assets/iCMAP/use-cases/smart-infrastructure.png'
@@ -328,7 +324,8 @@ const useCases = [
 const steps = [
   {
     num: '01',
-    image: icmapStep1Image,
+    image: networkOperatorsImage,
+    imageAlt: 'Network engineer reviewing radio equipment at an outdoor site',
     imageClassName: 'object-cover object-center',
     color: '#228DC1',
     label: 'Connect network data',
@@ -338,7 +335,8 @@ const steps = [
   },
   {
     num: '02',
-    image: icmapStep2Image,
+    image: smartInfrastructureImage,
+    imageAlt: 'Connected urban infrastructure in a city environment',
     imageClassName: 'object-cover object-center',
     color: '#3d4d9e',
     label: 'Map coverage in context',
@@ -348,7 +346,8 @@ const steps = [
   },
   {
     num: '03',
-    image: icmapStep3Image,
+    image: enterpriseEstatesImage,
+    imageAlt: 'Enterprise estate infrastructure used to assess local coverage needs',
     imageClassName: 'object-cover object-center',
     color: '#059669',
     label: 'Assess weak zones',
@@ -358,7 +357,8 @@ const steps = [
   },
   {
     num: '04',
-    image: icmapStep4Image,
+    image: regulatorsImage,
+    imageAlt: 'Planning team reviewing local infrastructure priorities',
     imageClassName: 'object-cover object-center',
     color: '#d97706',
     label: 'Plan the next action',
@@ -609,7 +609,7 @@ export default function IcmapPage() {
                 <div className={`relative aspect-[16/10] overflow-hidden rounded-[20px] bg-white shadow-[0_16px_40px_rgba(10,22,40,0.10)] ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                   <img
                     src={step.image}
-                    alt={`${step.label} interface`}
+                    alt={step.imageAlt}
                     className={`absolute inset-0 block h-full w-full ${'imageClassName' in step ? step.imageClassName : 'object-cover object-center'}`}
                   />
                 </div>
