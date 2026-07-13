@@ -10,6 +10,10 @@ import networkOperatorsImage from '@/assets/iCMAP/use-cases/network-operators.pn
 import regulatorsImage from '@/assets/iCMAP/use-cases/regulators-local-authorities.png'
 import smartInfrastructureImage from '@/assets/iCMAP/use-cases/smart-infrastructure.png'
 import enterpriseEstatesImage from '@/assets/iCMAP/use-cases/enterprise-estates.png'
+import idamsIotInfrastructureImage from '@/assets/IDAMS/use-cases/iot-infrastructure.png'
+import idamsSmallCellImage from '@/assets/IDAMS/use-cases/5g-small-cell.png'
+import idamsLandPropertyImage from '@/assets/IDAMS/use-cases/land-property.png'
+import idamsApprovalsImage from '@/assets/IDAMS/use-cases/multi-stakeholder-approvals.png'
 import 'leaflet/dist/leaflet.css'
 import type { LatLngExpression } from 'leaflet'
 
@@ -324,8 +328,8 @@ const useCases = [
 const steps = [
   {
     num: '01',
-    image: networkOperatorsImage,
-    imageAlt: 'Network engineer reviewing radio equipment at an outdoor site',
+    image: idamsIotInfrastructureImage,
+    imageAlt: 'Field engineer working beside connected infrastructure equipment',
     imageClassName: 'object-cover object-center',
     color: '#228DC1',
     label: 'Connect network data',
@@ -335,8 +339,8 @@ const steps = [
   },
   {
     num: '02',
-    image: smartInfrastructureImage,
-    imageAlt: 'Connected urban infrastructure in a city environment',
+    image: idamsSmallCellImage,
+    imageAlt: '5G small cell installed on urban street infrastructure',
     imageClassName: 'object-cover object-center',
     color: '#3d4d9e',
     label: 'Map coverage in context',
@@ -346,8 +350,8 @@ const steps = [
   },
   {
     num: '03',
-    image: enterpriseEstatesImage,
-    imageAlt: 'Enterprise estate infrastructure used to assess local coverage needs',
+    image: idamsLandPropertyImage,
+    imageAlt: 'Land and property context used for local coverage assessment',
     imageClassName: 'object-cover object-center',
     color: '#059669',
     label: 'Assess weak zones',
@@ -357,8 +361,8 @@ const steps = [
   },
   {
     num: '04',
-    image: regulatorsImage,
-    imageAlt: 'Planning team reviewing local infrastructure priorities',
+    image: idamsApprovalsImage,
+    imageAlt: 'Stakeholders planning infrastructure delivery priorities',
     imageClassName: 'object-cover object-center',
     color: '#d97706',
     label: 'Plan the next action',
