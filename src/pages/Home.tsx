@@ -1032,7 +1032,7 @@ const articles = [
     accent: 'bg-[#0ea472]',
     date: 'May 2026',
     readTime: '6 min read',
-    title: 'IDAMS: Unlocking Street Asset Value for Mobile Network Operators',
+    title: 'iDAMS: Unlocking Street Asset Value for Mobile Network Operators',
     excerpt: 'How AWTG\'s asset discovery platform helps MNOs and asset owners identify, acquire and monetise street infrastructure for small cell deployment.',
     img: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80&auto=format&fit=crop',
     href: '/contact',
