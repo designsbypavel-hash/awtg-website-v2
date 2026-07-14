@@ -402,6 +402,11 @@ function Hero() {
         <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-0 font-normal mx-auto" style={{ animationDelay: '160ms' }}>
           AWTG delivers AI, 5G, private networks and software solutions for UK enterprises and public sector, end to end, accountable, built to perform. </p>
 
+        <div className="home-hero-reveal mt-8 flex flex-wrap justify-center gap-3" style={{ animationDelay: '240ms' }}>
+          <a href="#products" className="btn btn-primary">Explore solutions</a>
+          <Link to="/contact" className="btn btn-secondary border-white/70 text-white hover:border-[#228DC1]">Talk to an expert</Link>
+        </div>
+
       </div>
 
       {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
@@ -597,6 +602,68 @@ function WhatWeDo() {
     </section>
   )
 }
+
+// --- PRODUCTS ----------------------------------------------------------------
+
+const productCards = [
+  { name: 'Kai', description: 'AI powered assurance and intelligence for service operations and customer experience.', href: '/products/kai', logo: '/kai-logo.svg' },
+  { name: 'Aruva', description: 'Multimodal AI learning and knowledge experiences for education and organisations.', href: '/products/aruva', logo: '/aruva-logo-vector.svg' },
+  { name: 'iCMAP', description: 'Coverage, mapping and contextual intelligence for confident network decisions.', href: '/products/icmap', logo: '/icmap-logo.svg' },
+  { name: 'iDAMS', description: 'Asset and infrastructure data management for planning, delivery and operations.', href: '/connectivity/idams', logo: null },
+]
+
+function Products() {
+  return (
+    <section id="products" className="border-y border-[#d8e5ef] bg-white py-24 lg:py-28">
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        <SectionHeader title={<>Products built for <span className="text-[#1a7aab]">real operations.</span></>} description="A connected portfolio that turns data, infrastructure and expertise into better decisions and more resilient services." className="mb-14 max-w-3xl" />
+        <div className="grid border border-[#d8e5ef] md:grid-cols-2 lg:grid-cols-4">
+          {productCards.map((product) => (
+            <Link key={product.name} to={product.href} className="group flex min-h-[280px] flex-col border-b border-[#d8e5ef] p-7 transition-colors hover:bg-[#f7fafc] md:[&:nth-child(odd)]:border-r lg:border-b-0 lg:border-r lg:last:border-r-0">
+              <div className="mb-10 flex h-10 items-center">
+                {product.logo ? <img src={product.logo} alt={`${product.name} logo`} className="max-h-9 max-w-[128px] object-contain object-left" /> : <span className="font-h3 text-[#0a1628]">iDAMS</span>}
+              </div>
+              <p className="text-[15px] leading-[1.7] text-[#0a1628]/65">{product.description}</p>
+              <span className="mt-auto pt-8 text-[14px] font-semibold text-[#1a7aab]">Explore {product.name} <span aria-hidden="true">&#8594;</span></span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// --- INDUSTRIES --------------------------------------------------------------
+
+const industryPanels = [
+  { title: 'Telecoms', href: '/industries/telecoms', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85' },
+  { title: 'Transport', href: '/connectivity/engineering', image: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=900&q=85' },
+  { title: 'Public sector', href: '/industries/public-sector', image: '/images/government-connectivity/government-connectivity-hero.png' },
+  { title: 'Utilities', href: '/connectivity/public-sector', image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=85' },
+]
+
+function IndustryFocus() {
+  return (
+    <section className="bg-[#0a1628] py-24 lg:py-28">
+      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+        <div className="mb-14 max-w-3xl">
+          <p className="type-label mb-5 text-[#67c5f3]">Industries we serve</p>
+          <h2 className="font-heading mb-5 text-white">Infrastructure that performs where it matters.</h2>
+          <p className="text-[16px] leading-[1.7] text-white/70">AWTG works with operators, public bodies and enterprises to create practical systems for connected, resilient operations.</p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {industryPanels.map((industry) => (
+            <Link key={industry.title} to={industry.href} className="group relative aspect-[4/5] overflow-hidden bg-[#15243a]">
+              <img src={industry.image} alt="" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/90 via-[#07162b]/20 to-transparent" />
+              <span className="absolute inset-x-5 bottom-5 flex items-center justify-between border-b border-[#67c5f3]/70 pb-3 text-[17px] font-semibold text-white">{industry.title}<span aria-hidden="true">&#8594;</span></span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 // --- OUR SOLUTIONS -----------------------------------------------------------
 
 const solutionPanels = [
@@ -773,7 +840,7 @@ function Industries() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {industryCards.map((card) => (
+          {industryCards.slice(0, 3).map((card) => (
             <Link
               key={card.title}
               to={card.href}
@@ -1239,6 +1306,8 @@ export default function Home() {
       <main id="main-content" className="home-page-ambient">
         <Hero />
         <WhatWeDo />
+        <Products />
+        <IndustryFocus />
         <Industries />
         <Insights />
         <ContactCTA />
