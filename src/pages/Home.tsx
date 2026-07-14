@@ -644,7 +644,7 @@ const industryPanels = [
 
 function IndustryFocus() {
   return (
-    <section className="bg-[#0a1628] py-24 lg:py-28">
+    <section className="py-24 lg:py-28" style={{ backgroundColor: '#0a1628' }}>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
         <div className="mb-14 max-w-3xl">
           <p className="type-label mb-5 text-[#67c5f3]">Industries we serve</p>
