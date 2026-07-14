@@ -391,7 +391,7 @@ function Hero() {
       {/* -- AI first content -- */}
       <div className="relative flex flex-1 items-center justify-center px-8 lg:px-12">
         <div className="max-w-3xl text-center">
-          <p className="home-hero-reveal type-label mb-6 text-[#67c5f3]">Operational AI and connected infrastructure</p>
+
           <h1 className="home-hero-reveal font-serif-display mb-7 text-white">
             AI systems for<br />
             <span className="text-[#67c5f3]">real world operations.</span>
@@ -399,10 +399,7 @@ function Hero() {
           <p className="home-hero-reveal max-w-xl text-[17px] leading-[1.7] text-white/75" style={{ animationDelay: '160ms' }}>
             AWTG combines deployable AI, trusted data and resilient connectivity to help organisations make faster decisions and run critical services with confidence.
           </p>
-          <div className="home-hero-reveal mt-9 flex flex-wrap justify-center gap-3" style={{ animationDelay: '240ms' }}>
-            <a href="#ai-platform" className="btn btn-primary">Explore our AI platform</a>
-            <Link to="/contact" className="btn btn-secondary border-white/70 text-white hover:border-[#228DC1]">Talk to an expert</Link>
-          </div>
+
         </div>
       </div>
       {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
