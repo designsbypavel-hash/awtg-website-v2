@@ -279,9 +279,9 @@ export default function Navigation() {
             {/* Logo */}
             <Link to="/" className="flex items-center shrink-0 z-10" aria-label="AWTG, Home">
               <img
-                src="/logo-icon.svg"
+                src="/awtg-logo.png"
                 alt="AWTG"
-                className="h-9 w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
             </Link>
 
