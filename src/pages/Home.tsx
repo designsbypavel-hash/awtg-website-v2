@@ -384,31 +384,27 @@ function Hero() {
         {/* Soft colour glows for depth - blue (top-right) and violet (bottom-left) */}
         <div
           className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 55% 50% at 88% 8%, rgba(56,189,248,0.35) 0%, transparent 60%), radial-gradient(ellipse 50% 45% at 6% 78%, rgba(124,58,237,0.32) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse 65% 60% at 88% 10%, rgba(56,189,248,0.22) 0%, transparent 62%)' }}
         />
       </div>
 
-      {/* -- Content, centred both horizontally and vertically -- */}
-      <div className="relative flex flex-col items-center justify-center text-center max-w-7xl mx-auto w-full px-8 lg:px-12" style={{ height: '88%' }}>
-
-        {/* Headline */}
-        <h1
-          className="home-hero-reveal font-serif-display text-white mb-6"
-        >
-          Helping organisations thrive<br />
-          through AI and connectivity. </h1>
-
-        {/* One-liner, StoryBrand: customer is the hero, AWTG is the guide */}
-        <p className="home-hero-reveal text-white/70 text-[16px] leading-[1.7] max-w-sm mb-0 font-normal mx-auto" style={{ animationDelay: '160ms' }}>
-          AWTG delivers AI, 5G, private networks and software solutions for UK enterprises and public sector, end to end, accountable, built to perform. </p>
-
-        <div className="home-hero-reveal mt-8 flex flex-wrap justify-center gap-3" style={{ animationDelay: '240ms' }}>
-          <a href="#products" className="btn btn-primary">Explore solutions</a>
-          <Link to="/contact" className="btn btn-secondary border-white/70 text-white hover:border-[#228DC1]">Talk to an expert</Link>
+      {/* -- AI first content -- */}
+      <div className="relative flex w-full max-w-7xl flex-1 items-center px-8 lg:px-12">
+        <div className="max-w-3xl text-left">
+          <p className="home-hero-reveal type-label mb-6 text-[#67c5f3]">Operational AI and connected infrastructure</p>
+          <h1 className="home-hero-reveal font-serif-display mb-7 text-white">
+            AI systems for<br />
+            <span className="text-[#67c5f3]">real world operations.</span>
+          </h1>
+          <p className="home-hero-reveal max-w-xl text-[17px] leading-[1.7] text-white/75" style={{ animationDelay: '160ms' }}>
+            AWTG combines deployable AI, trusted data and resilient connectivity to help organisations make faster decisions and run critical services with confidence.
+          </p>
+          <div className="home-hero-reveal mt-9 flex flex-wrap gap-3" style={{ animationDelay: '240ms' }}>
+            <a href="#ai-platform" className="btn btn-primary">Explore our AI platform</a>
+            <Link to="/contact" className="btn btn-secondary border-white/70 text-white hover:border-[#228DC1]">Talk to an expert</Link>
+          </div>
         </div>
-
       </div>
-
       {/* -- Logo ticker bar, client logos do the talking (Harvey principle) -- */}
       <div className="relative bg-white overflow-hidden" style={{ height: '12%' }}>
         <div className="flex items-center h-full">
@@ -460,153 +456,42 @@ function SectionHeader({
   )
 }
 
-// --- WHAT WE DO -------------------------------------------------------------
+// --- AI PLATFORM AND PRODUCTS -------------------------------------------------
 
-const whatWeDoItems = [
-  {
-    label: 'AI Transformation',
-    description: [
-      'AI is changing how organisations compete. AWTG helps clients lead that change.',
-      'We design and build intelligent software products that solve real operational challenges, improve decision making, and create new opportunities for growth. Our AI solutions are built with security, reliability, and usability at the core, so clients can adopt innovation with confidence.',
-      'From strategy to deployment, AWTG gives organisations the tools, technology, and expertise to win in an increasingly AI driven world.',
-    ],
-    points: ['Secure AI adoption', 'Operational decision intelligence', 'Production-ready software delivery'],
-    accent: '#228DC1',
-    image: kaiMockup,
-    imageFit: 'cover',
-  },
-  {
-    label: 'Connectivity Solutions',
-    description: [
-      'Connectivity is the foundation of every modern organisation. AWTG helps clients build it with confidence.',
-      'We design and deliver telecoms and connectivity solutions that improve performance, expand coverage, and enable smarter operations. Whether supporting public sector transformation, enterprise networks, smart cities, transport, or critical infrastructure, our focus is on reliable technology that works in real environments.',
-      'With AWTG, clients gain a trusted partner for building stronger, faster, and more intelligent networks.',
-    ],
-    points: ['Reliable real-world coverage', 'Private, public and enterprise networks', 'Smarter connected operations'],
-    accent: '#0ea472',
-    image: 'https://images.unsplash.com/photo-1533664488202-6af66d26c44a?auto=format&fit=crop&w=1800&q=85',
-    imageFit: 'cover',
-    imagePosition: 'center 45%',
-  },
+const aiCapabilities = [
+  { number: '01', title: 'AI agents', copy: 'Automate complex service and customer operations with controlled, outcome led workflows.' },
+  { number: '02', title: 'Operational intelligence', copy: 'Turn live network, asset and business data into clear decisions and faster action.' },
+  { number: '03', title: 'Secure deployment', copy: 'Build AI into the systems teams rely on, with governance, reliability and human oversight.' },
 ]
 
-function WhatWeDo() {
-  const rowRefs = useRef<(HTMLElement | null)[]>([])
-  const [visibleRows, setVisibleRows] = useState<Set<number>>(() => new Set())
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return
-          const index = Number((entry.target as HTMLElement).dataset.revealIndex)
-          setVisibleRows((current) => {
-            if (current.has(index)) return current
-            const next = new Set(current)
-            next.add(index)
-            return next
-          })
-          observer.unobserve(entry.target)
-        })
-      },
-      { threshold: 0.2, rootMargin: '0px 0px -14% 0px' },
-    )
-
-    rowRefs.current.forEach((row) => row && observer.observe(row))
-    return () => observer.disconnect()
-  }, [])
-
+function AiPlatform() {
   return (
-    <section className="relative overflow-hidden bg-[#f7fafc] py-24 lg:py-28">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d8e5ef] to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#d8e5ef] to-transparent" />
+    <section id="ai-platform" className="border-y border-white/10 py-24 lg:py-32" style={{ backgroundColor: '#0a1628' }}>
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <SectionHeader
-          title={<>What We <span className="text-[#1a7aab]">Do</span></>}
-          description="Two connected capabilities, delivered with the same engineering discipline: intelligent software for better decisions and resilient networks that perform in the real world."
-          className="mb-14 max-w-3xl"
-        />
-
-        <div className="space-y-10 lg:space-y-12">
-          {whatWeDoItems.map((item, index) => {
-            const imageFirst = index % 2 === 1
-            const isVisible = visibleRows.has(index)
-            const [firstWord, ...remainingWords] = item.label.split(' ')
-            const image = (
-              <div className="group relative h-full min-h-[320px] overflow-hidden bg-white lg:min-h-[430px]">
-                <img
-                  src={item.image}
-                  alt={item.label}
-                  className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.025] ${item.imageFit === 'contain' ? 'object-contain p-8' : 'object-cover'}`}
-                  style={{ objectPosition: item.imagePosition ?? 'center' }}
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07162b]/12 via-transparent to-transparent" />
-
-              </div>
-            )
-            const copy = (
-              <div className="flex min-h-[320px] flex-col justify-center bg-white px-7 py-8 lg:min-h-[430px] lg:px-11 xl:px-14">
-                <div className="max-w-[640px]">
-
-                  <TypewriterHeading as="h3" className="mb-5 text-[30px] font-semibold leading-[1.08] tracking-[-0.015em] text-[#0a1628] lg:text-[40px]">
-                    {firstWord}{' '}
-                    <span className="text-[#1a7aab]">{remainingWords.join(' ')}</span>
-                  </TypewriterHeading>
-                  <p className="mb-5 text-[16px] font-normal leading-[1.72] text-[#0a1628]/72">
-                    {item.description[0]}
-                  </p>
-                  <p className="mb-7 text-[15px] font-normal leading-[1.72] text-[#0a1628]/62">
-                    {item.description[1]}
-                  </p>
-                  <ul className="mb-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                    {item.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2 text-[13px] font-semibold leading-snug text-[#0a1628]/78">
-                        <FontAwesomeIcon icon={faCircleCheck} className="mt-0.5 h-4 w-4 shrink-0" style={{ color: item.accent }} />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div>
+            <p className="type-label mb-6 text-[#67c5f3]">The AWTG AI platform</p>
+            <h2 className="font-heading mb-6 text-white">AI that is grounded in the work your organisation needs to do.</h2>
+            <p className="max-w-lg text-[16px] leading-[1.75] text-white/70">Our AI products are designed around real processes, trusted operational data and the connected infrastructure that makes intelligence useful at scale.</p>
+          </div>
+          <div className="border-t border-white/20">
+            {aiCapabilities.map((capability) => (
+              <div key={capability.number} className="grid gap-4 border-b border-white/20 py-7 sm:grid-cols-[64px_1fr] sm:gap-7">
+                <span className="type-label pt-1 text-[#67c5f3]">{capability.number}</span>
+                <div>
+                  <h3 className="mb-2 text-[22px] font-semibold leading-tight text-white">{capability.title}</h3>
+                  <p className="max-w-xl text-[15px] leading-[1.7] text-white/65">{capability.copy}</p>
                 </div>
               </div>
-            )
-
-            return (
-              <article
-                key={item.label}
-                ref={(node) => { rowRefs.current[index] = node }}
-                data-reveal-index={index}
-                className="grid items-stretch overflow-hidden rounded-xl border border-[#d8e5ef] bg-white shadow-[0_22px_60px_rgba(10,22,40,0.08)] lg:grid-cols-2"
-              >
-                <div
-                  className={`${imageFirst ? 'lg:order-1' : 'lg:order-2'} transition-all duration-700 ease-out ${
-                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                  }`}
-                >
-                  {image}
-                </div>
-                <div
-                  className={`${imageFirst ? 'lg:order-2' : 'lg:order-1'} transition-all delay-150 duration-700 ease-out ${
-                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                  }`}
-                >
-                  {copy}
-                </div>
-              </article>
-            )
-          })}
+            ))}
+          </div>
         </div>
-
       </div>
     </section>
   )
 }
 
-// --- PRODUCTS ----------------------------------------------------------------
-
-const productCards = [
-  { name: 'Kai', description: 'AI powered assurance and intelligence for service operations and customer experience.', href: '/products/kai', logo: '/kai-logo.svg' },
+const foundationProducts = [
   { name: 'Aruva', description: 'Multimodal AI learning and knowledge experiences for education and organisations.', href: '/products/aruva', logo: '/aruva-logo-vector.svg' },
   { name: 'iCMAP', description: 'Coverage, mapping and contextual intelligence for confident network decisions.', href: '/products/icmap', logo: '/icmap-logo.svg' },
   { name: 'iDAMS', description: 'Asset and infrastructure data management for planning, delivery and operations.', href: '/connectivity/idams', logo: null },
@@ -614,14 +499,29 @@ const productCards = [
 
 function Products() {
   return (
-    <section id="products" className="border-y border-[#d8e5ef] bg-white py-24 lg:py-28">
+    <section id="products" className="bg-white py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <SectionHeader title={<>Products built for <span className="text-[#1a7aab]">real operations.</span></>} description="A connected portfolio that turns data, infrastructure and expertise into better decisions and more resilient services." className="mb-14 max-w-3xl" />
-        <div className="grid border border-[#d8e5ef] md:grid-cols-2 lg:grid-cols-4">
-          {productCards.map((product) => (
-            <Link key={product.name} to={product.href} className="group flex min-h-[280px] flex-col border-b border-[#d8e5ef] p-7 transition-colors hover:bg-[#f7fafc] md:[&:nth-child(odd)]:border-r lg:border-b-0 lg:border-r lg:last:border-r-0">
-              <div className="mb-10 flex h-10 items-center">
-                {product.logo ? <img src={product.logo} alt={`${product.name} logo`} className="max-h-9 max-w-[128px] object-contain object-left" /> : <span className="font-h3 text-[#0a1628]">iDAMS</span>}
+        <div className="mb-14 max-w-2xl">
+          <p className="type-label mb-5 text-[#1a7aab]">Featured AI product</p>
+          <h2 className="font-heading text-[#0a1628]">From insight to action with Kai.</h2>
+        </div>
+        <article className="grid overflow-hidden border border-[#d8e5ef] bg-[#f7fafc] lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="flex min-h-[440px] flex-col justify-center p-8 sm:p-12 lg:p-16">
+            <img src="/kai-logo-horiz.svg" alt="Kai" className="mb-9 h-12 w-auto object-contain object-left" />
+            <h3 className="mb-5 text-[30px] font-bold leading-[1.12] text-[#0a1628] lg:text-[42px]">Practical AI for complex operations.</h3>
+            <p className="max-w-xl text-[16px] leading-[1.75] text-[#0a1628]/65">Kai brings AI agents, service intelligence and operational knowledge into one controlled environment so teams can resolve issues, reduce effort and deliver better outcomes.</p>
+            <div className="mt-9"><Link to="/products/kai" className="btn btn-primary">Explore Kai</Link></div>
+          </div>
+          <div className="relative min-h-[360px] overflow-hidden bg-[#0a1628]">
+            <img src={kaiMockup} alt="Kai AI platform" className="absolute inset-0 h-full w-full object-cover object-left" loading="lazy" />
+            <div className="absolute inset-0 bg-[#0a1628]/15" />
+          </div>
+        </article>
+        <div className="mt-4 grid border border-[#d8e5ef] md:grid-cols-3">
+          {foundationProducts.map((product) => (
+            <Link key={product.name} to={product.href} className="group flex min-h-[260px] flex-col border-b border-[#d8e5ef] p-7 transition-colors hover:bg-[#f7fafc] md:border-b-0 md:border-r md:last:border-r-0">
+              <div className="mb-10 flex h-9 items-center">
+                {product.logo ? <img src={product.logo} alt={`${product.name} logo`} className="max-h-8 max-w-[128px] object-contain object-left" /> : <span className="font-h3 text-[#0a1628]">iDAMS</span>}
               </div>
               <p className="text-[15px] leading-[1.7] text-[#0a1628]/65">{product.description}</p>
               <span className="mt-auto pt-8 text-[14px] font-semibold text-[#1a7aab]">Explore {product.name} <span aria-hidden="true">&#8594;</span></span>
@@ -632,7 +532,6 @@ function Products() {
     </section>
   )
 }
-
 // --- INDUSTRIES --------------------------------------------------------------
 
 const industryPanels = [
@@ -1305,7 +1204,7 @@ export default function Home() {
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#228DC1] focus:text-white focus:text-sm">Skip to main content</a>
       <main id="main-content" className="home-page-ambient">
         <Hero />
-        <WhatWeDo />
+        <AiPlatform />
         <Products />
         <IndustryFocus />
         <Industries />
